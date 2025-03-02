@@ -1,0 +1,7 @@
+# IDE folders
+.idea/
+
+# Build outputs
+P2XMLEditor/bin/
+P2XMLEditor/obj/
+*.user

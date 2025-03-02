@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2XMLEditor", "P2XMLEditor\P2XMLEditor.csproj", "{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
