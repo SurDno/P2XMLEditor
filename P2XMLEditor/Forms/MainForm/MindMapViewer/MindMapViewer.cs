@@ -3,6 +3,7 @@ using System.Drawing.Drawing2D;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.Forms.MainForm.MindMapViewer;
 

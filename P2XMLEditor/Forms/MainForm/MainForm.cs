@@ -1,7 +1,8 @@
 using System.Reflection;
 using P2XMLEditor.Core;
-using P2XMLEditor.Forms.MainForm.FSMViewer;
+using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
+using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
 
@@ -15,6 +16,8 @@ public class MainForm : Form {
     public VirtualMachine? VirtualMachine => _virtualMachine;
     public PathSelectionForm.Paths? Paths => _paths;
     
+    private TemplateManager? _templateManager;
+
     public MainForm() {
         _tabControl = new TabControl {
             Dock = DockStyle.Fill
@@ -49,6 +52,13 @@ public class MainForm : Form {
         var fsmTab = new TabPage("FSM Graphs");
         fsmTab.Controls.Add(new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(fsmTab);
+        
+
+        _templateManager = new TemplateManager(_paths.TemplatesPath);
+        _templateManager.LoadTemplates();
+        var templatesTab = new TabPage("Templates");
+        templatesTab.Controls.Add(new TemplatesViewer(_templateManager) { Dock = DockStyle.Fill });
+        _tabControl.TabPages.Add(templatesTab);
     }
     
     private void InitializeTabs() {

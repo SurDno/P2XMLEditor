@@ -2,6 +2,7 @@ using System.Xml.Linq;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;

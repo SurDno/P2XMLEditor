@@ -1,9 +1,8 @@
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
-using P2XMLEditor.GameData.VirtualMachineElements;
 
-namespace P2XMLEditor.Abstract;
+namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 public abstract class VmElement(string id) {
     public string Id { get; } = id;

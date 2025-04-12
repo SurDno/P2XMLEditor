@@ -1,11 +1,10 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
-using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
-namespace P2XMLEditor;
+namespace P2XMLEditor.Core;
 
 public class VirtualMachineReader(string vmPath) {
     private readonly VirtualMachine _virtualMachine = new();

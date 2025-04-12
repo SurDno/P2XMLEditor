@@ -2,7 +2,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
-namespace P2XMLEditor.Forms.MainForm.FSMViewer;
+namespace P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 
 public class FSMBrowser : SplitContainer {
     private readonly VirtualMachine _vm;

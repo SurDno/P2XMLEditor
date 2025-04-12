@@ -2,6 +2,7 @@ using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.Editors;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
 

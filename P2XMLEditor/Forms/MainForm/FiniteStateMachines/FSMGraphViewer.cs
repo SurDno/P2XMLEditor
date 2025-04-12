@@ -2,10 +2,11 @@ using System.Drawing.Drawing2D;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 
-namespace P2XMLEditor.Forms.MainForm.FSMViewer;
+namespace P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 
 public class FSMGraphViewer : GraphViewer {
     private readonly VirtualMachine _vm;
