@@ -1,4 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Abstract;
+using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -6,7 +8,9 @@ using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Refactoring;
 
-public class MergeNestedConditions(VirtualMachine vm) : RefactoringSuggestion(vm) {
+[Refactoring("Refactor/Merge nested conditions")]
+[SuppressMessage("ReSharper", "UnusedType.Global")]
+public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var conditions = _vm.GetElementsByType<Condition>();
 		List<Condition> subcondsToRemove = [];

@@ -89,4 +89,21 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
         };
         return par;
     }
+
+    public override void OnDestroy(VirtualMachine vm) {
+        switch (Parent.Element) {
+            case ParameterHolder ph:          
+                var keyToRemove = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;
+                if (keyToRemove != null)
+                    ph.StandartParams.Remove(keyToRemove);
+                keyToRemove = ph.CustomParams.FirstOrDefault(kvp => kvp.Value == this).Key;
+                if (keyToRemove != null)
+                    ph.CustomParams.Remove(keyToRemove);
+                break;
+            case Expression e:
+                // Do we need to redo something about the expression if we remove the const value? Needs testing.
+                e.Const = null;
+                break;
+        }
+    }
 }

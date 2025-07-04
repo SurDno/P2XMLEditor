@@ -1,3 +1,6 @@
+using System.Reflection;
+using P2XMLEditor.Abstract;
+using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
@@ -25,32 +28,50 @@ public class MenuStripManager {
        var saveVmMenuItem = new ToolStripMenuItem("Save virtual machine...");
        saveVmMenuItem.Click += SaveVmMenuItem_Click;
        fileMenu.DropDownItems.AddRange([loadVmMenuItem, saveVmMenuItem]);
-       
+
+       _menuStrip.Items.Add(fileMenu);
+
        var refactorMenu = new ToolStripMenuItem("Refactor");
-       var simplifyTrueComparisonsItem = new ToolStripMenuItem("Simplify true comparisons");
-       simplifyTrueComparisonsItem.Click += (_, _) => 
-           new SimplifyTrueComparisons(_mainForm.VirtualMachine).Execute();
-       var flattenRootConditionsItem = new ToolStripMenuItem("Flatten root conditions");
-       flattenRootConditionsItem.Click += (_, _) => 
-           new FlattenSinglePredicateRootConditions(_mainForm.VirtualMachine).Execute();
-       var mergeNestedConditionsItem = new ToolStripMenuItem("Merge nested conditions");
-       mergeNestedConditionsItem.Click += (_, _) =>
-           new MergeNestedConditions(_mainForm.VirtualMachine).Execute();
-       var a = new ToolStripMenuItem("Remove empty event graphs");
-       a.Click += (_, _) =>
-           new RemoveEmptyEventGraphs(_mainForm.VirtualMachine).Execute();
-       var b = new ToolStripMenuItem("Remove orphaned game strings");
-       b.Click += (_, _) =>
-           new RemoveOrphanedGameStrings(_mainForm.VirtualMachine).Execute();
-       refactorMenu.DropDownItems.AddRange([
-           simplifyTrueComparisonsItem, 
-           flattenRootConditionsItem, 
-           mergeNestedConditionsItem,
-           a, b
-       ]);
-       
-       _menuStrip.Items.AddRange([fileMenu, refactorMenu]);
+
+       var executeAllItem = new ToolStripMenuItem("Execute All");
+       var allTypes = typeof(Suggestion).Assembly.GetTypes()
+           .Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract);
+       executeAllItem.Click += (_, _) => {
+           var suggestionTypes = allTypes.Where(t => t.GetCustomAttribute<RefactoringAttribute>() != null);
+           foreach (var type in suggestionTypes) 
+               ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+       };
+       refactorMenu.DropDownItems.Add(executeAllItem);
+
+       refactorMenu.DropDownItems.Add(new ToolStripSeparator());
+
+       var menuMap = new Dictionary<string, ToolStripMenuItem>();
+       foreach (var type in allTypes) {
+           var attr = type.GetCustomAttribute<RefactoringAttribute>();
+           if (attr == null) continue;
+
+           var pathParts = attr.MenuPath.Split('/');
+           var currentMenu = refactorMenu;
+
+           for (int i = 0; i < pathParts.Length - 1; i++) {
+               var key = string.Join("/", pathParts.Take(i + 1));
+               if (!menuMap.TryGetValue(key, out var submenu)) {
+                   submenu = new ToolStripMenuItem(pathParts[i]);
+                   currentMenu.DropDownItems.Add(submenu);
+                   menuMap[key] = submenu;
+               }
+
+               currentMenu = submenu;
+           }
+
+           var leaf = new ToolStripMenuItem(pathParts.Last());
+           leaf.Click += (_, _) => ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+           currentMenu.DropDownItems.Add(leaf);
+       }
+
+       _menuStrip.Items.Add(refactorMenu);
    }
+
 
    private void LoadVmMenuItem_Click(object? sender, EventArgs e) {
        var pathForm = new PathSelectionForm();

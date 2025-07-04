@@ -14,8 +14,8 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
     protected override HashSet<string> KnownElements => BaseGameObjectElements.Concat(base.KnownElements).ToHashSet();
 
     public string? WorldPositionGuid { get; set; }
-    public string EngineTemplateId { get; set; }
-    public string EngineBaseTemplateId { get; set; }
+    public string? EngineTemplateId { get; set; }
+    public string? EngineBaseTemplateId { get; set; }
     public bool Instantiated { get; set; }
 
     private record RawGameObjectData(string Id, bool? Static, List<string> FunctionalComponentIds, string? EventGraphId,
@@ -29,11 +29,11 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
         var element = base.ToXml(settings);
         
         // Reverse order here since we're using AddFirst.
-        element.AddFirst(
-            new XElement("EngineTemplateID", EngineTemplateId),
-            new XElement("EngineBaseTemplateID", EngineBaseTemplateId),
-            CreateBoolElement("Instantiated", Instantiated)
-        );
+        element.AddFirst(CreateBoolElement("Instantiated", Instantiated));
+        if (EngineBaseTemplateId != null)
+            element.AddFirst(CreateSelfClosingElement("EngineBaseTemplateID", EngineBaseTemplateId));
+        if (EngineTemplateId != null)
+            element.AddFirst(CreateSelfClosingElement("EngineTemplateID", EngineTemplateId));
         if (WorldPositionGuid != null)
             element.AddFirst(CreateSelfClosingElement("WorldPositionGuid", WorldPositionGuid));
         return element;

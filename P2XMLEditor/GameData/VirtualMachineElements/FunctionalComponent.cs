@@ -57,5 +57,11 @@ public class FunctionalComponent(string id) : VmElement(id) {
     }
     
     protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+
+    public override void OnDestroy(VirtualMachine vm) {
+        var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
+        if (compToRemove != null)
+            Parent.FunctionalComponents.Remove(compToRemove);
+    }
 }
 

@@ -1,11 +1,17 @@
+
+using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Abstract;
+using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 namespace P2XMLEditor.Refactoring;
 
-public class SimplifyTrueComparisons(VirtualMachine vm) : RefactoringSuggestion(vm) {
+// TODO: fix. Currently not working as expected.
+//[Refactoring("Refactor/Simplify true comparisons")]
+[SuppressMessage("ReSharper", "UnusedType.Global")]
+public class SimplifyTrueComparisons(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var pcs = _vm.GetElementsByType<PartCondition>();
 

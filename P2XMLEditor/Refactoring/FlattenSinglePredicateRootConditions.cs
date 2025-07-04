@@ -1,12 +1,15 @@
+using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Abstract;
+using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
-using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Refactoring;
 
-public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : RefactoringSuggestion(vm) {
+[Refactoring("Refactor/Flatten single predicate root conditions")]
+[SuppressMessage("ReSharper", "UnusedType.Global")]
+public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var conditions = _vm.GetElementsByType<Condition>();
 
