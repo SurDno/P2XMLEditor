@@ -2,6 +2,8 @@ using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
@@ -21,7 +23,7 @@ public class GameRoot(string id) : ParameterHolder(id) {
     public List<MindMap> LogicMaps { get; set; }
     public List<GameMode> GameModes { get; set; }
     public Dictionary<string, string> BaseToEngineGuidsTable { get; set; }
-    public Dictionary<string, List<string>> HierarchyScenesStructure { get; set; }
+    public Dictionary<string, SceneStructureEntry> HierarchyScenesStructure { get; set; }
     public List<string> HierarchyEngineGuidsTable { get; set; }
     public bool WorldObjectSaveOptimizeMode { get; set; }
 
@@ -29,7 +31,7 @@ public class GameRoot(string id) : ParameterHolder(id) {
         Dictionary<string, string> StandartParamIds, Dictionary<string, string> CustomParamIds, string? GameTimeContext,
         string Name, string ParentId, List<string>? InheritanceInfo, List<string>? EventIds, 
         List<string>? ChildObjectIds, List<string> SampleIds, List<string> LogicMapIds, List<string> GameModeIds,
-        Dictionary<string, string> BaseToEngineGuidsTable, Dictionary<string, List<string>> HierarchyScenesStructure,
+        Dictionary<string, string> BaseToEngineGuidsTable, Dictionary<string, SceneStructureEntry> HierarchyScenesStructure,
         List<string> HierarchyEngineGuidsTable, bool WorldObjectSaveOptimizeMode) : RawParameterHolderData(Id, Static, 
         FunctionalComponentIds, EventGraphId, StandartParamIds, CustomParamIds, GameTimeContext, Name, ParentId, 
         InheritanceInfo, EventIds, ChildObjectIds);
@@ -37,19 +39,26 @@ public class GameRoot(string id) : ParameterHolder(id) {
     private XElement CreateHierachyScenesStructure() {
         var structureElement = new XElement("HierarchyScenesStructure",
             new XAttribute("count", HierarchyScenesStructure.Count));
-            
-        foreach (var kvp in HierarchyScenesStructure) {
-            var itemElement = new XElement("Item", new XAttribute("key", kvp.Key));
-            if (kvp.Value.Any()) {
-                itemElement.Add(new XElement("Childs",
-                    new XAttribute("count", kvp.Value.Count),
-                    kvp.Value.Select(id => new XElement("Item", id))));
+
+        foreach (var (key, entry) in HierarchyScenesStructure) {
+            var itemElement = new XElement("Item", new XAttribute("key", key));
+
+            foreach (var (type, children) in entry.Containers) {
+                if (children.Count == 0) continue;
+                var container = new XElement(type.ToString(),
+                    new XAttribute("count", children.Count),
+                    children.Select(id => new XElement("Item", id))
+                );
+                itemElement.Add(container);
             }
+
             structureElement.Add(itemElement);
         }
-        
+
         return structureElement;
     }
+
+    
     public override XElement ToXml(WriterSettings settings) {
         var element = base.ToXml(settings);
         
@@ -70,19 +79,25 @@ public class GameRoot(string id) : ParameterHolder(id) {
     protected override RawData CreateRawData(XElement element) {
         var baseData = (RawParameterHolderData)base.CreateRawData(element);
 
-        var scenesStructure = new Dictionary<string, List<string>>();
+        var scenesStructure = new Dictionary<string, SceneStructureEntry>();
         var structureElement = element.Element("HierarchyScenesStructure");
+
         if (structureElement != null) {
             foreach (var item in structureElement.Elements("Item")) {
                 var key = item.Attribute("key")?.Value;
-                if (key != null) {
-                    var childsList = new List<string>();
-                    var childsElement = item.Element("Childs");
-                    if (childsElement != null) {
-                        childsList.AddRange(childsElement.Elements("Item").Select(x => x.Value));
-                    }
-                    scenesStructure[key] = childsList;
+                if (key == null) continue;
+
+                var entry = new SceneStructureEntry();
+
+                foreach (var name in Enum.GetNames(typeof(ChildContainerType))) {
+                    var container = item.Element(name);
+                    if (container == null) continue;
+                    var type = Enum.Parse<ChildContainerType>(name);
+                    var children = container.Elements("Item").Select(e => e.Value).ToList();
+                    entry.Containers[type] = children;
                 }
+
+                scenesStructure[key] = entry;
             }
         }
 
