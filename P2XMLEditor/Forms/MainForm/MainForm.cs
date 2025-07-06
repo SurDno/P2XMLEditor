@@ -18,12 +18,20 @@ public class MainForm : Form {
     public PathSelectionForm.Paths? Paths => _paths;
     
     private TemplateManager? _templateManager;
+    private StatusStrip _statusStrip;
+    private ToolStripStatusLabel _logStatusLabel;
+    private LogViewerForm? _logViewerForm;
 
     public MainForm() {
-        _tabControl = new TabControl {
-            Dock = DockStyle.Fill
-        };
+        _tabControl = new TabControl { Dock = DockStyle.Fill }; 
+        _tabControl.Height = Height - 25; 
         Controls.Add(_tabControl); 
+        _statusStrip = new StatusStrip { Height = 25 };
+        _logStatusLabel = new ToolStripStatusLabel { Spring = true, TextAlign = ContentAlignment.MiddleLeft };
+        _logStatusLabel.Click += OnLogStatusClick;
+        Logger.LogMessageAdded += OnLogMessageAdded;
+        _statusStrip.Items.Add(_logStatusLabel);
+        Controls.Add(_statusStrip);
         InitializeTabs();
         var menuStripManager = new MenuStripManager(this);
         ShowPathSelection();
@@ -72,5 +80,31 @@ public class MainForm : Form {
         Text = $"P2XMLEditor {currentVersion}";
         Size = new(1200, 800);
         MinimumSize = new(600, 600); 
+    }
+    
+    private void OnLogMessageAdded(string message) {
+        if (InvokeRequired) {
+            Invoke(() => OnLogMessageAdded(message));
+            return;
+        }
+    
+        var displayMessage = message;
+        if (message.Contains("] ")) 
+            displayMessage = message[(message.IndexOf("] ", StringComparison.Ordinal) + 2)..];
+    
+        _logStatusLabel.Text = displayMessage.Length > 100 ? $"{displayMessage[..97]}..." : displayMessage;
+    }
+
+    private void OnLogStatusClick(object? sender, EventArgs e) {
+        if (_logViewerForm == null || _logViewerForm.IsDisposed) 
+            _logViewerForm = new LogViewerForm();
+
+        _logViewerForm.Show();
+    }
+    
+    protected override void Dispose(bool disposing) {
+        if (disposing) 
+            Logger.LogMessageAdded -= OnLogMessageAdded;
+        base.Dispose(disposing);
     }
 }

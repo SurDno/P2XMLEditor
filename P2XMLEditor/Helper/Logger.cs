@@ -3,6 +3,9 @@ namespace P2XMLEditor.Helper;
 public static class Logger {
     private static readonly string ExeLogFilePath;
     private static readonly object LockObject = new();
+    
+    public static event Action<string>? LogMessageAdded;
+    private static readonly List<string> _logMessages = new();
 
     static Logger() {
         var logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
@@ -15,6 +18,12 @@ public static class Logger {
         var logMsg = timestamped ? $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] {content}" : content;
         Console.WriteLine(logMsg);
 
+        lock (LockObject) {
+            _logMessages.Add(logMsg);
+        }
+
+        LogMessageAdded?.Invoke(logMsg);
+
         try {
             lock (LockObject) {
                 File.AppendAllText(ExeLogFilePath, logMsg + Environment.NewLine);
@@ -22,6 +31,10 @@ public static class Logger {
         } catch (Exception ex) {
             ErrorHandler.Handle($"Error writing to log file: {ex.Message}", ex, skipLogging: true);
         }
+    }
+    
+    public static List<string> GetAllMessages() {
+        lock (LockObject) { return [.._logMessages]; }
     }
 
     public static void LogError(string msg) => WriteToLogs($"ERROR: {msg}");
