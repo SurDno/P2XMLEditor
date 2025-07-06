@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;

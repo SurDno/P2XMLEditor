@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -19,12 +18,12 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
     public FunctionalComponent? OwnerComponent { get; set; }
     public string Type { get; set; }
     public string Value { get; set; }
-    public bool Implicit { get; set; }
+    public bool? Implicit { get; set; }
     public VmEither<ParameterHolder, Expression> Parent { get; set; }
-    public bool Custom { get; set; }
+    public bool? Custom { get; set; }
 
     private record RawParameterData(string Id, string Name, string? OwnerComponentId, string Type, string Value,
-        bool Implicit, string ParentId, bool Custom) : RawData(Id);
+        bool? Implicit, string ParentId, bool? Custom) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
@@ -35,11 +34,13 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
             element.Add(new XElement("OwnerComponent", OwnerComponent.Id));
         element.Add(
             new XElement("Type", Type),
-            CreateSelfClosingElement("Value", Value),
-            CreateBoolElement("Implicit", Implicit),
-            new XElement("Parent", Parent.Id),
-            CreateBoolElement("Custom", Custom)
+            CreateSelfClosingElement("Value", Value)
         );
+        if (Implicit != null)
+            element.Add(CreateBoolElement("Implicit", (bool)Implicit));
+        element.Add(new XElement("Parent", Parent.Id));
+        if (Custom != null)
+            element.Add(CreateBoolElement("Custom", (bool)Custom));
         return element;
     }
 
@@ -50,9 +51,9 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
             element.Element("OwnerComponent")?.Value,
             GetRequiredElement(element, "Type").Value,
             GetRequiredElement(element, "Value").Value,
-            ParseBool(GetRequiredElement(element, "Implicit")),
+            element.Element("Implicit")?.Let(ParseBool),
             GetRequiredElement(element, "Parent").Value,
-            ParseBool(GetRequiredElement(element, "Custom"))
+            element.Element("Custom")?.Let(ParseBool)
         );
     }
 

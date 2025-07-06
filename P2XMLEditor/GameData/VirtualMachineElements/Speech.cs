@@ -1,9 +1,7 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
@@ -20,20 +18,20 @@ public class Speech(string id) : VmElement(id) {
     public List<Reply> Replies { get; set; }
     public GameString Text { get; set; }
     public VmEither<Blueprint, Character> AuthorGuid { get; set; }
-    public bool OnlyOnce { get; set; }
-    public bool IsTrade { get; set; }
+    public bool? OnlyOnce { get; set; }
+    public bool? IsTrade { get; set; }
     public List<EntryPoint> EntryPoints { get; set; }
-    public bool IgnoreBlock { get; set; }
+    public bool? IgnoreBlock { get; set; }
     public VmEither<Blueprint, Character> Owner { get; set; }
     public List<GraphLink>? InputLinks { get; set; }
     public List<GraphLink>? OutputLinks { get; set; }
-    public bool Initial { get; set; }
+    public bool? Initial { get; set; }
     public string Name { get; set; }
     public Talking Parent { get; set; }
 
-    private record RawSpeechData(string Id, List<string> ReplyIds, string TextId, string AuthorGuid, bool OnlyOnce,
-        bool IsTrade, List<string> EntryPoints, bool IgnoreBlock, string Owner, List<string>? InputLinks, 
-        List<string>? OutputLinks, bool Initial, string Name, string ParentId) : RawData(Id);
+    private record RawSpeechData(string Id, List<string> ReplyIds, string TextId, string AuthorGuid, bool? OnlyOnce,
+        bool? IsTrade, List<string> EntryPoints, bool? IgnoreBlock, string Owner, List<string>? InputLinks, 
+        List<string>? OutputLinks, bool? Initial, string Name, string ParentId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
@@ -41,22 +39,24 @@ public class Speech(string id) : VmElement(id) {
             element.Add(CreateListElement("Replyes", Replies.Select(r => r.Id)));
         element.Add(
             new XElement("Text", Text.Id),
-            new XElement("AuthorGuid", AuthorGuid.Id),
-            CreateBoolElement("OnlyOnce", OnlyOnce),
-            CreateBoolElement("IsTrade", IsTrade)
+            new XElement("AuthorGuid", AuthorGuid.Id)
         );
+        if (OnlyOnce != null)
+            element.Add(CreateBoolElement("OnlyOnce", (bool)OnlyOnce));
+        if (IsTrade != null)
+            element.Add(CreateBoolElement("IsTrade", (bool)IsTrade));
         if (EntryPoints.Any())
             element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id)));
-        element.Add(
-            CreateBoolElement("IgnoreBlock", IgnoreBlock),
-            new XElement("Owner", Owner.Id)
-        );
+        if (IgnoreBlock != null)
+            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
+        element.Add(new XElement("Owner", Owner.Id));
         if (InputLinks?.Any() == true)
             element.Add(CreateListElement("InputLinks", InputLinks.Select(i => i.Id)));
         if (OutputLinks?.Any() == true)
             element.Add(CreateListElement("OutputLinks", OutputLinks.Select(o=> o.Id)));
+        if (Initial != null)
+            element.Add(CreateBoolElement("Initial", (bool)Initial));
         element.Add(
-            CreateBoolElement("Initial", Initial),
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
         );
@@ -69,14 +69,14 @@ public class Speech(string id) : VmElement(id) {
             ParseListElement(element, "Replyes"),
             GetRequiredElement(element, "Text").Value,
             GetRequiredElement(element, "AuthorGuid").Value,
-            ParseBool(GetRequiredElement(element, "OnlyOnce")),
-            ParseBool(GetRequiredElement(element, "IsTrade")),
+            element.Element("OnlyOnce")?.Let(ParseBool),
+            element.Element("IsTrade")?.Let(ParseBool),
             ParseListElement(element, "EntryPoints"),
-            ParseBool(GetRequiredElement(element, "IgnoreBlock")),
+            element.Element("IgnoreBlock")?.Let(ParseBool),
             GetRequiredElement(element, "Owner").Value,
             ParseListElement(element, "InputLinks"),
             ParseListElement(element, "OutputLinks"),
-            ParseBool(GetRequiredElement(element, "Initial")),
+            element.Element("Initial")?.Let(ParseBool),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value
         );

@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -15,7 +14,7 @@ public class GameMode(string id) : VmElement(id), ICommonVariableParameter {
         "PlayerRef", "Name", "Parent"
     ];
 
-    public bool IsMain { get; set; }
+    public bool? IsMain { get; set; }
     public TimeSpan StartGameTime { get; set; }
     public float GameTimeSpeed { get; set; }
     public TimeSpan StartSolarTime { get; set; }
@@ -24,15 +23,16 @@ public class GameMode(string id) : VmElement(id), ICommonVariableParameter {
     public string Name { get; set; }
     public GameRoot Parent { get; set; }
 
-    private record RawGameModeData(string Id, bool IsMain, TimeSpan StartGameTime, float GameTimeSpeed,
+    private record RawGameModeData(string Id, bool? IsMain, TimeSpan StartGameTime, float GameTimeSpeed,
         TimeSpan StartSolarTime, float SolarTimeSpeed, string PlayerRef, string Name, string ParentId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         var sgt = StartGameTime;
         var sst = StartSolarTime;
+        if (IsMain != null)
+            element.Add(CreateBoolElement("IsMain", (bool)IsMain));
         element.Add(
-            CreateBoolElement("IsMain", IsMain),
             new XElement("StartGameTime", $"{sgt.Days}:{sgt.Hours}:{sgt.Minutes}:{sgt.Seconds}"),
             new XElement("GameTimeSpeed", GameTimeSpeed),
             new XElement("StartSolarTime", $"{sst.Days}:{sst.Hours}:{sst.Minutes}:{sst.Seconds}"),
@@ -47,7 +47,7 @@ public class GameMode(string id) : VmElement(id), ICommonVariableParameter {
     protected override RawData CreateRawData(XElement element) {
         return new RawGameModeData(
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            ParseBool(GetRequiredElement(element, "IsMain")),
+            element.Element("IsMain")?.Let(ParseBool),
             ParseTimeSpan(GetRequiredElement(element, "StartGameTime")),
             ParseFloat(GetRequiredElement(element, "GameTimeSpeed")),
             ParseTimeSpan(GetRequiredElement(element, "StartSolarTime")),
@@ -73,4 +73,8 @@ public class GameMode(string id) : VmElement(id), ICommonVariableParameter {
     }
     
     protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+    
+    public override void OnDestroy(VirtualMachine vm) {
+        vm.First<GameRoot>(_ => true).GameModes.Remove(this);
+    }
 }

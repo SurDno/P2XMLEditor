@@ -1,4 +1,3 @@
-using P2XMLEditor.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 

@@ -8,6 +8,6 @@ public interface IGraphElement {
 	List<GraphLink>? OutputLinks { get; set; }
 	public ParameterHolder Owner { get; set; }
     public string Name { get; set; }
-    public bool IgnoreBlock { get; set; }
-    public bool Initial { get; set; }
+    public bool? IgnoreBlock { get; set; }
+    public bool? Initial { get; set; }
 }

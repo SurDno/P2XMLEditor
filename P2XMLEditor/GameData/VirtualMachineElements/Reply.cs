@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -17,26 +16,29 @@ public class Reply(string id) : VmElement(id) {
     ];
     public string Name { get; set; }
     public GameString Text { get; set; }
-    public bool OnlyOnce { get; set; }
-    public bool OnlyOneReply { get; set; }
-    public bool Default { get; set; }
+    public bool? OnlyOnce { get; set; }
+    public bool? OnlyOneReply { get; set; }
+    public bool? Default { get; set; }
     public Condition? EnableCondition { get; set; }
     public ActionLine? ActionLine { get; set; }
     public int OrderIndex { get; set; }
     public Speech Parent { get; set; }
 
-    private record RawReplyData(string Id, string Name, string TextId, bool OnlyOnce, bool OnlyOneReply, bool Default,
+    private record RawReplyData(string Id, string Name, string TextId, bool? OnlyOnce, bool? OnlyOneReply, bool? Default,
         string? EnableConditionId, string? ActionLineId, int OrderIndex, string ParentId) : RawData(Id);
     
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         element.Add(
             new XElement("Name", Name),
-            new XElement("Text", Text.Id),
-            CreateBoolElement("OnlyOnce", OnlyOnce),
-            CreateBoolElement("OnlyOneReply", OnlyOneReply),
-            CreateBoolElement("Default", Default)
+            new XElement("Text", Text.Id)
         );
+        if (OnlyOnce != null)
+            element.Add(CreateBoolElement("OnlyOnce", (bool)OnlyOnce));
+        if (OnlyOneReply != null)
+            element.Add(CreateBoolElement("OnlyOneReply", (bool)OnlyOneReply));
+        if (Default != null)
+            element.Add(CreateBoolElement("Default", (bool)Default));
         if (EnableCondition != null)
             element.Add(new XElement("EnableCondition", EnableCondition.Id));
         if (ActionLine != null)
@@ -53,9 +55,9 @@ public class Reply(string id) : VmElement(id) {
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Text").Value,
-            ParseBool(GetRequiredElement(element, "OnlyOnce")),
-            ParseBool(GetRequiredElement(element, "OnlyOneReply")),
-            ParseBool(GetRequiredElement(element, "Default")),
+            element.Element("OnlyOnce")?.Let(ParseBool),
+            element.Element("OnlyOneReply")?.Let(ParseBool),
+            element.Element("Default")?.Let(ParseBool),
             element.Element("EnableCondition")?.Value,
             element.Element("ActionLine")?.Value, 
             ParseInt(GetRequiredElement(element, "OrderIndex")),

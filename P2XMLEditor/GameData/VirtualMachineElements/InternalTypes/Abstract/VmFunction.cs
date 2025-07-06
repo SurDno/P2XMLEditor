@@ -1,6 +1,5 @@
 using System.Reflection;
 using P2XMLEditor.Core;
-using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
 

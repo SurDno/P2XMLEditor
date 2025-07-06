@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -46,4 +45,8 @@ public class Sample(string id) : VmElement(id), ICommonVariableParameter {
 	}
 	
 	protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+
+	public override void OnDestroy(VirtualMachine vm) {
+		vm.First<GameRoot>(_ => true).Samples.Remove(this);
+	}
 }

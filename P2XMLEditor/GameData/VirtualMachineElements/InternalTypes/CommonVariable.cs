@@ -12,7 +12,7 @@ public class CommonVariable : IEquatable<CommonVariable> {
 
 	private CommonVariable(VirtualMachine vm) => _vm = vm;
 
-	public static CommonVariable Read(string data, VirtualMachine vm) {
+	public static CommonVariable? Read(string data, VirtualMachine vm) {
 		var inst = new CommonVariable(vm);
 		var parts = data.Split('%');
 

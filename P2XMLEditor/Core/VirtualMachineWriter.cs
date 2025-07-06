@@ -1,12 +1,10 @@
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
-using P2XMLEditor.Refactoring;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -94,13 +92,13 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
     }
 
     private void SaveLocalizations() {
-        var localizationPath = Path.Combine(vmPath, "Localizations");
-        Directory.CreateDirectory(localizationPath);
+        var locPath = Path.Combine(vmPath, "Localizations");
+        Directory.CreateDirectory(locPath);
 
-        foreach (var language in virtualMachine.Languages) {
-            using var writer = new StreamWriter(Path.Combine(localizationPath, $"{language}.txt"), false);
+        foreach (var lang in virtualMachine.Languages) {
+            using var writer = new StreamWriter(Path.Combine(locPath, $"{lang}.txt"), false, new UTF8Encoding(true));
             foreach (var gameString in virtualMachine.GetElementsByType<GameString>().OrderBy(gs => gs.Id))
-                writer.WriteLine($"{gameString.Id} {gameString.GetText(language)}");
+                writer.WriteLine($"{gameString.Id} {gameString.GetText(lang)}");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace P2XMLEditor.Refactoring;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
-		var conditions = _vm.GetElementsByType<Condition>();
+		var conditions = Vm.GetElementsByType<Condition>();
 
 		List<Condition> subcondsToRemove = [];
 		
@@ -29,6 +29,6 @@ public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : Suggestio
 		}
 		
 		foreach(var subcond in subcondsToRemove)
-			_vm.RemoveElement(subcond);
+			Vm.RemoveElement(subcond);
 	}
 }

@@ -10,12 +10,12 @@ namespace P2XMLEditor.Refactoring;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class RemoveEmptyEventGraphs(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
-		var items = _vm.GetElementsByType<Item>();
+		var items = Vm.GetElementsByType<Item>();
 		
 		foreach (var item in items) {
 			var itemGraph = item.EventGraph;
 			if (itemGraph == null) continue;
-			_vm.RemoveElement(itemGraph);
+			Vm.RemoveElement(itemGraph);
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 public abstract class VmElement(string id) {
     public string Id { get; } = id;
-    public abstract XElement ToXml(WriterSettings settings = default);
+    public abstract XElement ToXml(WriterSettings settings);
     protected abstract HashSet<string> KnownElements { get; }
     protected abstract RawData CreateRawData(XElement element);
 

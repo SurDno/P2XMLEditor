@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -23,11 +22,10 @@ public class MindMapNode(string id) : VmElement(id) {
     public List<MindMapNodeContent> Content { get; set; }
     public List<MindMapLink> InputLinks { get; set; }
     public List<MindMapLink> OutputLinks { get; set; }
+    
     public float GameScreenPosX { get; set; }
     public float GameScreenPosY { get; set; }
-
-    private const float POS_STEP = 0.0025f;
-
+    
     private record RawMindMapNodeData(string Id, string Name, string ParentId, string LogicMapNodeType, 
         List<string>? ContentIds, List<string>? InputLinkIds, List<string>? OutputLinkIds, float GameScreenPosX,
         float GameScreenPosY) : RawData(Id);
@@ -40,8 +38,8 @@ public class MindMapNode(string id) : VmElement(id) {
         if (Content.Count != 0)
             element.Add(CreateListElement("NodeContent", Content.Select(c => c.Id)));
         element.Add(
-            new XElement("GameScreenPosX", (float)Math.Round(GameScreenPosX / POS_STEP) * POS_STEP),
-            new XElement("GameScreenPosY", (float)Math.Round(GameScreenPosY / POS_STEP) * POS_STEP)
+            new XElement("GameScreenPosX", FormatPos(GameScreenPosX)),
+            new XElement("GameScreenPosY", FormatPos(GameScreenPosY))
         );
         if (InputLinks.Count != 0)
             element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id)));
@@ -53,7 +51,13 @@ public class MindMapNode(string id) : VmElement(id) {
         );
         return element;
     }
-
+    
+    private static string FormatPos(float value) {
+        const float posStep = 0.0025f;
+        var str = (MathF.Round(value / posStep) * posStep).ToString("0.#####");
+        return str.Contains('.') ? str.TrimEnd('0').TrimEnd('.') : str;
+    }
+    
     protected override RawData CreateRawData(XElement element) {
         return new RawMindMapNodeData(
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),

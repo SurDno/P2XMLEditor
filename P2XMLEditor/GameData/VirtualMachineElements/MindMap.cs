@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -71,6 +70,7 @@ public class MindMap(string id) : VmElement(id) {
             Parent = parent as GameRoot ?? throw new ArgumentException("MindMap parent must be GameRoot")
         };
         node.Title = CreateDefault<GameString>(vm, node.Parent);
+        node.Parent.LogicMaps.Add(node);
         return node;
     }
 
@@ -80,5 +80,6 @@ public class MindMap(string id) : VmElement(id) {
         foreach (var link in Links)
             vm.RemoveElement(link);
         vm.RemoveElement(Title);
+        Parent.LogicMaps.Remove(this);
     }
 }

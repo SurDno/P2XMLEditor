@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -22,7 +21,7 @@ public class ActionLine(string id) : VmElement(id) {
     public VmEither<State, Graph, Branch, Talking, Speech> LocalContext { get; set; }
     public int OrderIndex { get; set; }
 
-    public record ActionLoopInfo(string Name, string Start, string End, bool Random);
+    public record ActionLoopInfo(string Name, string Start, string End, bool? Random);
 
     private record RawActionLineData(string Id, List<string>? ActionIds, string ActionLineType, 
         ActionLoopInfo? LoopInfo, string Name, string LocalContextId, int OrderIndex) : RawData(Id);
@@ -35,12 +34,14 @@ public class ActionLine(string id) : VmElement(id) {
         element.Add(new XElement("ActionLineType", ActionLineType.Serialize()));
         
         if (LoopInfo != null) {
-            element.Add(new XElement("ActionLoopInfo",
+            var actionLineInfo = new XElement("ActionLoopInfo",
                 CreateSelfClosingElement("Name", LoopInfo.Name),
                 new XElement("Start", LoopInfo.Start),
-                new XElement("End", LoopInfo.End),
-                CreateBoolElement("Random", LoopInfo.Random)
-            ));
+                new XElement("End", LoopInfo.End)
+            );
+            if (LoopInfo.Random != null)
+                actionLineInfo.Add(CreateBoolElement("Random", (bool)LoopInfo.Random!));
+            element.Add(actionLineInfo);
         }
         
         element.Add(
@@ -59,7 +60,7 @@ public class ActionLine(string id) : VmElement(id) {
                 GetRequiredElement(loopInfoElement, "Name").Value,
                 GetRequiredElement(loopInfoElement, "Start").Value,
                 GetRequiredElement(loopInfoElement, "End").Value,
-                ParseBool(GetRequiredElement(loopInfoElement, "Random"))
+                loopInfoElement.Element("Random")?.Let(ParseBool)
             );
         }
         

@@ -1,5 +1,6 @@
 using System.Reflection;
 using P2XMLEditor.Core;
+using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
@@ -49,10 +50,14 @@ public class MainForm : Form {
         var mindMapTab = new TabPage("Mind Maps");
         mindMapTab.Controls.Add(new MindMapTabControl(_virtualMachine) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(mindMapTab);
+        
         var fsmTab = new TabPage("FSM Graphs");
         fsmTab.Controls.Add(new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(fsmTab);
         
+        var combinationsTab = new TabPage("Combinations");
+        combinationsTab.Controls.Add(new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        _tabControl.TabPages.Add(combinationsTab);
 
         _templateManager = new TemplateManager(_paths.TemplatesPath);
         _templateManager.LoadTemplates();
@@ -69,4 +74,3 @@ public class MainForm : Form {
         MinimumSize = new(600, 600); 
     }
 }
-

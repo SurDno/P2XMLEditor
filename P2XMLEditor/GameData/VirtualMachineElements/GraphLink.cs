@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -19,18 +18,18 @@ public class GraphLink(string id) : VmElement(id) {
     ];
 
     public Event? Event { get; set; }
-    public CommonVariable EventObject { get; set; }
+    public CommonVariable? EventObject { get; set; }
     public int SourceExitPointIndex { get; set; }
     public int DestEntryPointIndex { get; set; }
     public List<string>? SourceParams { get; set; }
     public VmEither<Graph, Branch, Speech, State, GraphPlaceholder>? Source { get; set; }
     public VmEither<Graph, Branch, Speech, State>? Destination { get; set; }
-    public bool Enabled { get; set; }
+    public bool? Enabled { get; set; } = true;
     public string Name { get; set; }
     public VmEither<Graph, Talking> Parent { get; set; }
 
     private record RawGraphLinkData(string Id, string? Event, string EventObject, int SourceExitPointIndex,
-        int DestEntryPointIndex, List<string>? SourceParams, string? Source, string? Destination, bool Enabled, 
+        int DestEntryPointIndex, List<string>? SourceParams, string? Source, string? Destination, bool? Enabled, 
         string Name, string ParentId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
@@ -48,8 +47,9 @@ public class GraphLink(string id) : VmElement(id) {
             element.Add(new XElement("Source", Source.Id));
         if (Destination != null)
             element.Add(new XElement("Destination", Destination.Id));
+        if (Enabled != null)
+            element.Add(CreateBoolElement("Enabled", (bool)Enabled));
         element.Add(
-            CreateBoolElement("Enabled", Enabled),
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
         );
@@ -66,7 +66,7 @@ public class GraphLink(string id) : VmElement(id) {
             ParseListElement(element, "SourceParams"),
             element.Element("Source")?.Value,
             element.Element("Destination")?.Value,
-            ParseBool(GetRequiredElement(element, "Enabled")),
+            element.Element("Enabled")?.Let(ParseBool),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value
         );

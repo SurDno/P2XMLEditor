@@ -25,14 +25,14 @@ public class GameRoot(string id) : ParameterHolder(id) {
     public Dictionary<string, string> BaseToEngineGuidsTable { get; set; }
     public Dictionary<string, SceneStructureEntry> HierarchyScenesStructure { get; set; }
     public List<string> HierarchyEngineGuidsTable { get; set; }
-    public bool WorldObjectSaveOptimizeMode { get; set; }
+    public bool? WorldObjectSaveOptimizeMode { get; set; }
 
     private record RawGameRootData(string Id, bool? Static, List<string> FunctionalComponentIds, string? EventGraphId,
         Dictionary<string, string> StandartParamIds, Dictionary<string, string> CustomParamIds, string? GameTimeContext,
         string Name, string ParentId, List<string>? InheritanceInfo, List<string>? EventIds, 
         List<string>? ChildObjectIds, List<string> SampleIds, List<string> LogicMapIds, List<string> GameModeIds,
         Dictionary<string, string> BaseToEngineGuidsTable, Dictionary<string, SceneStructureEntry> HierarchyScenesStructure,
-        List<string> HierarchyEngineGuidsTable, bool WorldObjectSaveOptimizeMode) : RawParameterHolderData(Id, Static, 
+        List<string> HierarchyEngineGuidsTable, bool? WorldObjectSaveOptimizeMode) : RawParameterHolderData(Id, Static, 
         FunctionalComponentIds, EventGraphId, StandartParamIds, CustomParamIds, GameTimeContext, Name, ParentId, 
         InheritanceInfo, EventIds, ChildObjectIds);
 
@@ -63,14 +63,15 @@ public class GameRoot(string id) : ParameterHolder(id) {
         var element = base.ToXml(settings);
         
         // Reverse order here since we're using AddFirst.
+        if (WorldObjectSaveOptimizeMode != null)
+            element.AddFirst(CreateBoolElement("WorldObjectSaveOptimizeMode", (bool)WorldObjectSaveOptimizeMode));
         element.AddFirst(
             CreateListElement("Samples", Samples.Select(s => s.Id)),
             CreateListElement("LogicMaps", LogicMaps.Select(m => m.Id)),
             CreateListElement("GameModes", GameModes.Select(m => m.Id)),
             CreateDictionaryElement("BaseToEngineGuidsTable", BaseToEngineGuidsTable),
             CreateHierachyScenesStructure(),
-            CreateListElement("HierarchyEngineGuidsTable", HierarchyEngineGuidsTable),
-            CreateBoolElement("WorldObjectSaveOptimizeMode", WorldObjectSaveOptimizeMode)
+            CreateListElement("HierarchyEngineGuidsTable", HierarchyEngineGuidsTable)
         );
 
         return element;
@@ -120,7 +121,7 @@ public class GameRoot(string id) : ParameterHolder(id) {
             ParseDictionaryElement(element, "BaseToEngineGuidsTable"),
             scenesStructure,
             ParseListElement(element, "HierarchyEngineGuidsTable"),
-            ParseBool(GetRequiredElement(element, "WorldObjectSaveOptimizeMode"))
+            element.Element("WorldObjectSaveOptimizeMode")?.Let(ParseBool)
         );
     }
 

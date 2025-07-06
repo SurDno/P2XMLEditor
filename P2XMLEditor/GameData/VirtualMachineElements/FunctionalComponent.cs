@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -14,19 +13,20 @@ public class FunctionalComponent(string id) : VmElement(id) {
     protected override HashSet<string> KnownElements { get; } = ["Events", "Main", "LoadPriority", "Name", "Parent"];
 
     public List<Event> Events { get; set; }
-    public bool Main { get; set; }
+    public bool? Main { get; set; }
     public long LoadPriority { get; set; }
     public string Name { get; set; }
     public ParameterHolder Parent { get; set; }
 
-    public record RawFunctionalComponentData(string Id, List<string>? EventIds, bool Main, long LoadPriority,
+    public record RawFunctionalComponentData(string Id, List<string>? EventIds, bool? Main, long LoadPriority,
         string Name, string ParentId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         element.Add(CreateListElement("Events", Events.Select(e => e.Id)));
+        if (Main != null)
+            element.Add(CreateBoolElement("Main", (bool)Main));
         element.Add(
-            CreateBoolElement("Main", Main),
             new XElement("LoadPriority", LoadPriority),
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
@@ -38,7 +38,7 @@ public class FunctionalComponent(string id) : VmElement(id) {
         return new RawFunctionalComponentData(
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             ParseListElement(element, "Events"),
-            ParseBool(GetRequiredElement(element, "Main")),
+            element.Element("Main")?.Let(ParseBool),
             ParseLong(GetRequiredElement(element, "LoadPriority")),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value

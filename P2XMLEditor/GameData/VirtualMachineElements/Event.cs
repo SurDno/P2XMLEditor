@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -18,35 +17,36 @@ public class Event(string id) : VmElement(id) {
     ];
 
     public TimeSpan EventTime { get; set; }
-    public bool Manual { get; set; }
+    public bool? Manual { get; set; } = true;
     public EventRaisingType EventRaisingType { get; set; }
-    public bool ChangeTo { get; set; }
-    public bool Repeated { get; set; }
+    public bool? ChangeTo { get; set; } = true;
+    public bool? Repeated { get; set; } = true;
     public string Name { get; set; }
     public VmEither<Blueprint, Quest, FunctionalComponent, Character, GameRoot> Parent { get; set; }
     public Parameter? EventParameter { get; set; }
     public Condition? Condition { get; set; }
     public List<MessageInfo>? MessagesInfo { get; set; }
 
-    private record RawEventData(string Id, TimeSpan EventTime, bool Manual, string EventRaisingType, bool ChangeTo,
-        bool Repeated, string Name, string ParentId, string? EventParameterId, string? ConditionId, 
+    private record RawEventData(string Id, TimeSpan EventTime, bool? Manual, string EventRaisingType, bool? ChangeTo,
+        bool? Repeated, string Name, string ParentId, string? EventParameterId, string? ConditionId, 
         List<MessageInfo>? MessagesInfo) : RawData(Id);
     
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (EventParameter != null)
             element.Add(new XElement("EventParameter", EventParameter.Id));
-        element.Add(
-            new XElement("EventTime", $"{EventTime.Days}:{EventTime.Hours}:{EventTime.Minutes}:{EventTime.Seconds}"),
-            CreateBoolElement("Manual", Manual),
-            new XElement("EventRaisingType", EventRaisingType.Serialize())
-        );
+        element.Add(new XElement("EventTime",
+            $"{EventTime.Days}:{EventTime.Hours}:{EventTime.Minutes}:{EventTime.Seconds}"));
+        
+        if (Manual != null)
+            element.Add(CreateBoolElement("Manual", (bool)Manual));
+        element.Add(new XElement("EventRaisingType", EventRaisingType.Serialize()));
         if (Condition != null)
             element.Add(new XElement("Condition", Condition.Id));
-        element.Add(
-            CreateBoolElement("ChangeTo", ChangeTo),
-            CreateBoolElement("Repeated", Repeated)
-        );
+        if (ChangeTo != null)
+            element.Add(CreateBoolElement("ChangeTo", (bool)ChangeTo));
+        if (Repeated != null)
+            element.Add(CreateBoolElement("Repeated", (bool)Repeated));
         if (MessagesInfo?.Count > 0) {
             element.Add(new XElement("MessagesInfo",
                 new XAttribute("count", MessagesInfo.Count),
@@ -78,10 +78,10 @@ public class Event(string id) : VmElement(id) {
         return new RawEventData(
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             ParseTimeSpan(GetRequiredElement(element, "EventTime")),
-            ParseBool(GetRequiredElement(element, "Manual")),
+            element.Element("Manual")?.Let(ParseBool),
             GetRequiredElement(element, "EventRaisingType").Value,
-            ParseBool(GetRequiredElement(element, "ChangeTo")),
-            ParseBool(GetRequiredElement(element, "Repeated")),
+            element.Element("ChangeTo")?.Let(ParseBool),
+            element.Element("Repeated")?.Let(ParseBool),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value,
             element.Element("EventParameter")?.Value,

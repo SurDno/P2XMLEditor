@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -21,43 +20,42 @@ public class Expression(string id) : VmElement(id) {
 
     public ExpressionType ExpressionType { get; set; }
     public CommonVariable TargetObject;
-    public CommonVariable TargetParam;
+    public CommonVariable? TargetParam;
     
     public Parameter? Const { get; set; }
     public VmEither<Branch, Event, MindMapNode, Speech, State> LocalContext { get; set; }
-    public bool Inversion { get; set; }
+    public bool? Inversion { get; set; }
     public List<Expression>? FormulaChilds { get; set; } 
     public List<FormulaOperation>? FormulaOperations { get; set; }
 
     public VmFunction? Function;
 
-    private record RawExpressionData(string Id, string ExpressionType, string TargetFunctionName, string TargetObject,
-        string TargetParam, string? Const, List<string>? SourceParams, string LocalContext, bool Inversion,
+    private record RawExpressionData(string Id, string ExpressionType, string? TargetFunctionName, string TargetObject,
+        string? TargetParam, string? Const, List<string>? SourceParams, string LocalContext, bool? Inversion,
         List<string>? FormulaChilds, List<string>? FormulaOperations) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
-   
-        element.Add(
-            new XElement("ExpressionType", ExpressionType.Serialize()),
-            CreateSelfClosingElement("TargetFunctionName", Function?.Name ?? string.Empty),            
-            new XElement("TargetObject", TargetObject.Write()),
-            new XElement("TargetParam", ExpressionType == ExpressionType.Param ? TargetParam.Write() : "%")
-        );
-        
-        if (Const != null && ExpressionType == ExpressionType.Const)
-            element.Add(new XElement("Const", Const.Id));
-           
-        if (Function != null && ExpressionType == ExpressionType.Function && Function.GetParamStrings() is { Count: > 0 } sourceParams) {
-            element.Add(CreateListElement("SourceParams", sourceParams));
-        }
 
+        element.Add(new XElement("ExpressionType", ExpressionType.Serialize()));
+        if (Function != null)
+            element.Add(CreateSelfClosingElement("TargetFunctionName", Function.Name));
+        element.Add( new XElement("TargetObject", TargetObject.Write()));
+        
+        if (TargetParam != null)
+            element.Add(new XElement("TargetParam", TargetParam.Write()));
+        if (Function?.GetParamStrings() is { Count: > 0 } sourceParams) 
+            element.Add(CreateListElement("SourceParams", sourceParams));
+        if (Const != null)
+            element.Add(new XElement("Const", Const.Id));
+        
         element.Add(new XElement("LocalContext", LocalContext.Id));
         if (FormulaChilds?.Count > 0) {
             element.Add(CreateListElement("FormulaChilds", FormulaChilds.Select(c => c.Id)));
             element.Add(CreateListElement("FormulaOperations", FormulaOperations!.Select(o => o.Serialize())));
         }
-        element.Add(CreateBoolElement("Inversion", Inversion));
+        if (Inversion != null)
+            element.Add(CreateBoolElement("Inversion", (bool)Inversion));
         return element;
     }
 
@@ -71,7 +69,7 @@ public class Expression(string id) : VmElement(id) {
             element.Element("Const")?.Value,
             ParseListElement(element, "SourceParams"),
             GetRequiredElement(element, "LocalContext").Value,
-            ParseBool(GetRequiredElement(element, "Inversion")),
+            element.Element("Inversion")?.Let(ParseBool),
             ParseListElement(element, "FormulaChilds"),
             ParseListElement(element, "FormulaOperations")
         );
@@ -88,25 +86,13 @@ public class Expression(string id) : VmElement(id) {
         
         TargetObject = CommonVariable.Read(data.TargetObject, vm);
         Const = data.Const != null ? vm.GetElement<Parameter>(data.Const) : null;
-        switch (ExpressionType) {
-            case ExpressionType.Function:
-                Function = VmFunction.GetFunction(data.TargetFunctionName, vm, data.SourceParams ?? []);
-                TargetParam = null!;
-                break;
-            case ExpressionType.Complex when data.FormulaChilds != null:
-                FormulaChilds = data.FormulaChilds.Select(vm.GetElement<Expression>).ToList();
-                FormulaOperations = data.FormulaOperations?.Select(e => e.Deserialize<FormulaOperation>()).ToList();
-                TargetParam = null!;
-                break;
-            case ExpressionType.Const:
-                TargetParam = null!;
-                break;
-            case ExpressionType.Param:
-                TargetParam = CommonVariable.Read(data.TargetParam, vm);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        if (data.TargetFunctionName != null)
+            Function = VmFunction.GetFunction(data.TargetFunctionName, vm, data.SourceParams ?? []);
+        if (data.TargetParam != null)
+            TargetParam = CommonVariable.Read(data.TargetParam, vm);
+        if (data.FormulaChilds != null)
+            FormulaChilds = data.FormulaChilds.Select(vm.GetElement<Expression>).ToList();
+        FormulaOperations = data.FormulaOperations?.Select(e => e.Deserialize<FormulaOperation>()).ToList();
     }
 
     public override bool IsOrphaned() {

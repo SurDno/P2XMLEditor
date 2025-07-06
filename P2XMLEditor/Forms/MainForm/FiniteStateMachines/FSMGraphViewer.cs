@@ -53,8 +53,8 @@ public class FSMGraphViewer : GraphViewer {
 
         
         var initialStates = validStates.Where(s => {
-            if (s.Element is IGraphElement graphElement) return graphElement.Initial;
-            if (s.Element is Talking talking) return talking.Initial;
+            if (s.Element is IGraphElement graphElement) return graphElement.Initial ?? false;
+            if (s.Element is Talking talking) return talking.Initial ?? false;
             return false;
         }).ToList();
 
@@ -129,8 +129,8 @@ public class FSMGraphViewer : GraphViewer {
     }
 
 private bool IsInitialState(VmElement element) {
-    if (element is IGraphElement graphElement) return graphElement.Initial;
-    if (element is Talking talking) return talking.Initial;
+    if (element is IGraphElement graphElement) return graphElement.Initial ?? false;
+    if (element is Talking talking) return talking.Initial ?? false;
     return false;
 }
 

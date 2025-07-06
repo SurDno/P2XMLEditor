@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -19,14 +18,14 @@ public class Talking(string id) : VmElement(id), ICommonVariableParameter {
     public List<VmEither<Branch, Speech, State>> States { get; set; }
     public List<GraphLink> EventLinks { get; set; }
     public List<EntryPoint> EntryPoints { get; set; }
-    public bool IgnoreBlock { get; set; }
+    public bool? IgnoreBlock { get; set; }
     public VmEither<Blueprint, Character> Owner { get; set; }
-    public bool Initial { get; set; }
+    public bool? Initial { get; set; }
     public string Name { get; set; }
     public Graph Parent { get; set; }
 
     private record RawTalkingData(string Id, List<string> StateIds, List<string> EventLinkIds,
-        List<string> EntryPoints, bool IgnoreBlock, string Owner, bool Initial, string Name,
+        List<string> EntryPoints, bool? IgnoreBlock, string Owner, bool? Initial, string Name,
         string ParentId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
@@ -37,10 +36,14 @@ public class Talking(string id) : VmElement(id), ICommonVariableParameter {
             element.Add(CreateListElement("EventLinks", EventLinks.Select(l => l.Id)));
         element.Add(
             new XElement("GraphType", "GRAPH_TYPE_TALKING"),
-            CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id)),
-            CreateBoolElement("IgnoreBlock", IgnoreBlock),
-            new XElement("Owner", Owner.Id),
-            CreateBoolElement("Initial", Initial),
+            CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id))
+        );
+        if (IgnoreBlock != null)
+            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
+        element.Add(new XElement("Owner", Owner.Id));
+        if (Initial != null)
+            element.Add(CreateBoolElement("Initial", (bool)Initial));
+        element.Add(
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
         );
@@ -53,9 +56,9 @@ public class Talking(string id) : VmElement(id), ICommonVariableParameter {
             ParseListElement(element, "States"),
             ParseListElement(element, "EventLinks"),
             ParseListElement(element, "EntryPoints"),
-            ParseBool(GetRequiredElement(element, "IgnoreBlock")),
+            element.Element("IgnoreBlock")?.Let(ParseBool),
             GetRequiredElement(element, "Owner").Value,
-            ParseBool(GetRequiredElement(element, "Initial")),
+            element.Element("Initial")?.Let(ParseBool),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value
         );

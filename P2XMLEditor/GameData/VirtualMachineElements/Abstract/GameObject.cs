@@ -16,20 +16,21 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
     public string? WorldPositionGuid { get; set; }
     public string? EngineTemplateId { get; set; }
     public string? EngineBaseTemplateId { get; set; }
-    public bool Instantiated { get; set; }
+    public bool? Instantiated { get; set; }
 
     private record RawGameObjectData(string Id, bool? Static, List<string> FunctionalComponentIds, string? EventGraphId,
         Dictionary<string, string> StandartParamIds, Dictionary<string, string> CustomParamIds, string? GameTimeContext,
         string Name, string? ParentId, List<string>? InheritanceInfo, List<string>? EventIds, 
-        List<string>? ChildObjectIds, string? WorldPositionGuid, string EngineTemplateId, string EngineBaseTemplateId,
-        bool Instantiated) : RawParameterHolderData(Id, Static, FunctionalComponentIds, EventGraphId, StandartParamIds, 
+        List<string>? ChildObjectIds, string? WorldPositionGuid, string? EngineTemplateId, string? EngineBaseTemplateId,
+        bool? Instantiated) : RawParameterHolderData(Id, Static, FunctionalComponentIds, EventGraphId, StandartParamIds, 
         CustomParamIds, GameTimeContext, Name, ParentId, InheritanceInfo, EventIds, ChildObjectIds);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = base.ToXml(settings);
         
         // Reverse order here since we're using AddFirst.
-        element.AddFirst(CreateBoolElement("Instantiated", Instantiated));
+        if (Instantiated != null)
+           element.AddFirst(CreateBoolElement("Instantiated", (bool)Instantiated));
         if (EngineBaseTemplateId != null)
             element.AddFirst(CreateSelfClosingElement("EngineBaseTemplateID", EngineBaseTemplateId));
         if (EngineTemplateId != null)
@@ -59,9 +60,9 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
             baseData.EventIds,
             baseData.ChildObjectIds,
             element.Element("WorldPositionGuid")?.Value,
-            GetRequiredElement(element, "EngineTemplateID").Value,
-            GetRequiredElement(element, "EngineBaseTemplateID").Value,
-            ParseBool(GetRequiredElement(element, "Instantiated"))
+            element.Element("EngineTemplateID")?.Value,
+            element.Element("EngineBaseTemplateID")?.Value,      
+            element.Element("Instantiated")?.Let(ParseBool)
         );
     }
 

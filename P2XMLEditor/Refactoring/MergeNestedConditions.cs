@@ -4,7 +4,6 @@ using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
-using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Refactoring;
 
@@ -12,7 +11,7 @@ namespace P2XMLEditor.Refactoring;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
-		var conditions = _vm.GetElementsByType<Condition>();
+		var conditions = Vm.GetElementsByType<Condition>();
 		List<Condition> subcondsToRemove = [];
         
 		foreach (var cond in conditions) {
@@ -31,6 +30,6 @@ public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 		}
         
 		foreach(var subcond in subcondsToRemove)
-			_vm.RemoveElement(subcond);
+			Vm.RemoveElement(subcond);
 	}
 }

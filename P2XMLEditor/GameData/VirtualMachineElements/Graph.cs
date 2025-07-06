@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using System.Xml.Linq;
-using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -32,12 +30,12 @@ public class Graph(string id) : VmElement(id), IGraphElement {
     public List<GraphLink>? OutputLinks { get; set; }
     public ParameterHolder Owner { get; set; }
     public string Name { get; set; }
-    public bool IgnoreBlock { get; set; }
-    public bool Initial { get; set; }
+    public bool? IgnoreBlock { get; set; }
+    public bool? Initial { get; set; }
 
     private record RawGraphData(string Id, List<string> StateIds, List<string> EventLinkIds, string GraphType,
-        List<string> EntryPoints, bool IgnoreBlock, string Owner, List<GraphParamInfo>? InputParamsInfo, 
-        List<string>? InputLinks, List<string>? OutputLinks, bool Initial, string Name, string ParentId,
+        List<string> EntryPoints, bool? IgnoreBlock, string Owner, List<GraphParamInfo>? InputParamsInfo, 
+        List<string>? InputLinks, List<string>? OutputLinks, bool? Initial, string Name, string ParentId,
         string? SubstituteGraphId) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
@@ -60,16 +58,16 @@ public class Graph(string id) : VmElement(id), IGraphElement {
         }
         if (EntryPoints.Any())
             element.Add(CreateListElement("EntryPoints", EntryPoints.Select(l => l.Id)));
-        element.Add(
-            CreateBoolElement("IgnoreBlock", IgnoreBlock),
-            new XElement("Owner", Owner.Id)
-        );
+        if (IgnoreBlock != null)
+            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
+        element.Add(new XElement("Owner", Owner.Id));
         if (InputLinks?.Any() == true)
             element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id)));
         if (OutputLinks?.Any() == true)
             element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id)));
+        if (Initial != null)
+            element.Add(CreateBoolElement("Initial", (bool)Initial));
         element.Add(
-            CreateBoolElement("Initial", Initial),
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
         );
@@ -90,12 +88,12 @@ public class Graph(string id) : VmElement(id), IGraphElement {
             ParseListElement(element, "EventLinks"),
             GetRequiredElement(element, "GraphType").Value,
             ParseListElement(element, "EntryPoints"),
-            ParseBool(GetRequiredElement(element, "IgnoreBlock")),
+            element.Element("IgnoreBlock")?.Let(ParseBool),
             GetRequiredElement(element, "Owner").Value,
             paramInfos.Count > 0 ? paramInfos : null,
             ParseListElement(element, "InputLinks"),
             ParseListElement(element, "OutputLinks"),
-            ParseBool(GetRequiredElement(element, "Initial")),
+            element.Element("Initial")?.Let(ParseBool),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value,
             element.Element("SubstituteGraph")?.Value
