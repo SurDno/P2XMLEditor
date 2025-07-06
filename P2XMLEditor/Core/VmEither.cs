@@ -7,8 +7,9 @@ public class VmEither<T1, T2> where T1 : VmElement where T2 : VmElement {
     public VmEither(T2 value) => Element = value;
     public VmEither(VmElement element) {
         if (element is not T1 and not T2)
-            throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+            throw new ArgumentException($"Element must be of type " +
+                                        $"{string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                                        $"Instead, received {element.GetType()}");
         Element = element;
     }
 
