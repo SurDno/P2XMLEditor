@@ -5,6 +5,8 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Suggestions.Abstract;
+using P2XMLEditor.Suggestions.Attributes;
 
 namespace P2XMLEditor.Forms.MainForm;
 
@@ -29,28 +31,34 @@ public class MenuStripManager {
        fileMenu.DropDownItems.AddRange([loadVmMenuItem, saveVmMenuItem]);
 
        _menuStrip.Items.Add(fileMenu);
+       var allTypes = typeof(Suggestion).Assembly.GetTypes().Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract);
 
        var refactorMenu = new ToolStripMenuItem("Refactor");
+       var refactoringTypes = allTypes.Where(t => t.GetCustomAttribute<RefactoringAttribute>() != null);
+       SetupSuggestionMenu(refactorMenu, refactoringTypes, t => t.GetCustomAttribute<RefactoringAttribute>()!.MenuPath);
+       
+       var cleanupMenu = new ToolStripMenuItem("Cleanup");
+       var cleanupTypes = allTypes.Where(t => t.GetCustomAttribute<CleanupAttribute>() != null);
+       SetupSuggestionMenu(cleanupMenu, cleanupTypes, t => t.GetCustomAttribute<CleanupAttribute>()!.MenuPath);
 
+       _menuStrip.Items.Add(refactorMenu);
+       _menuStrip.Items.Add(cleanupMenu);
+   }
+
+   private void SetupSuggestionMenu(ToolStripMenuItem parentMenu, IEnumerable<Type> suggestionTypes, Func<Type, string> getMenuPath) {
        var executeAllItem = new ToolStripMenuItem("Execute All");
-       var allTypes = typeof(Suggestion).Assembly.GetTypes()
-           .Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract);
        executeAllItem.Click += (_, _) => {
-           var suggestionTypes = allTypes.Where(t => t.GetCustomAttribute<RefactoringAttribute>() != null);
            foreach (var type in suggestionTypes) 
                ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
        };
-       refactorMenu.DropDownItems.Add(executeAllItem);
-
-       refactorMenu.DropDownItems.Add(new ToolStripSeparator());
+       parentMenu.DropDownItems.Add(executeAllItem);
+       parentMenu.DropDownItems.Add(new ToolStripSeparator());
 
        var menuMap = new Dictionary<string, ToolStripMenuItem>();
-       foreach (var type in allTypes) {
-           var attr = type.GetCustomAttribute<RefactoringAttribute>();
-           if (attr == null) continue;
-
-           var pathParts = attr.MenuPath.Split('/');
-           var currentMenu = refactorMenu;
+       foreach (var type in suggestionTypes) {
+           var menuPath = getMenuPath(type);
+           var pathParts = menuPath.Split('/');
+           var currentMenu = parentMenu;
 
            for (int i = 0; i < pathParts.Length - 1; i++) {
                var key = string.Join("/", pathParts.Take(i + 1));
@@ -67,10 +75,7 @@ public class MenuStripManager {
            leaf.Click += (_, _) => ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
            currentMenu.DropDownItems.Add(leaf);
        }
-
-       _menuStrip.Items.Add(refactorMenu);
    }
-
 
    private void LoadVmMenuItem_Click(object? sender, EventArgs e) {
        var pathForm = new PathSelectionForm();

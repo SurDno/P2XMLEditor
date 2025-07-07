@@ -1,6 +1,7 @@
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.MainForm.Combinations;
 
@@ -68,7 +69,7 @@ public class CombinationsBrowser : Panel {
         var text = _searchBox.Text.ToLowerInvariant();
 
         foreach (var el in combos) {
-            var contents = CombinationDataParser.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
+            var contents = CombinationHelper.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
 
             if (!string.IsNullOrEmpty(text) && !IsIn(el.Name, text) && !IsIn(el.Id, text) && !IsIn(contents, text))
                 continue;

@@ -62,6 +62,8 @@ public class FunctionalComponent(string id) : VmElement(id) {
         var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
         if (compToRemove != null)
             Parent.FunctionalComponents.Remove(compToRemove);
+        foreach (var @event in Events.ToList())
+            vm.RemoveElement(@event);
     }
 }
 

@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
-using P2XMLEditor.Abstract;
-using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.Suggestions.Abstract;
+using P2XMLEditor.Suggestions.Attributes;
 
-namespace P2XMLEditor.Refactoring;
+namespace P2XMLEditor.Suggestions.Refactoring;
 
 [Refactoring("Refactor/Parameter Holders/Remove empty world position references")]
 [SuppressMessage("ReSharper", "UnusedType.Global")]

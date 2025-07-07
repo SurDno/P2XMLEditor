@@ -106,5 +106,9 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
                 e.Const = null;
                 break;
         }
+        
+        // TODO: Redo when we start parsing types like normal human beings.
+        if (Type == "ITextRef" && !string.IsNullOrEmpty(Value))
+            vm.RemoveElement(vm.GetElement<GameString>(Value));
     }
 }

@@ -17,7 +17,7 @@ public sealed class CombinationEditorForm : Form {
     public CombinationEditorForm(VirtualMachine vm, string initialValue, List<ParameterHolder> availableStorables, List<ParameterHolder> availableCombinations, Action<string> onSaveCallback) {
         _vm = vm;
         _onSaveCallback = onSaveCallback;
-        _originalEntries = CombinationDataParser.Parse(_vm, initialValue);
+        _originalEntries = CombinationHelper.Parse(_vm, initialValue);
 
         _comboItems = availableCombinations;
         _storableItems = availableStorables;
@@ -61,7 +61,7 @@ public sealed class CombinationEditorForm : Form {
         var removeButton = CreateButton("Remove Entry", 492, 150, AnchorStyles.Left);
         removeButton.Click += RemoveButton_Click;
         AcceptButton = CreateButton("Save", 1000, 75, AnchorStyles.Right, true, DialogResult.OK);
-        ((Button)AcceptButton).Click += (_, _) => _onSaveCallback(CombinationDataParser.Serialize(_originalEntries));
+        ((Button)AcceptButton).Click += (_, _) => _onSaveCallback(CombinationHelper.Serialize(_originalEntries));
         CancelButton = CreateButton("Cancel", 1085, 75, AnchorStyles.Right, true, DialogResult.Cancel);
 
         Controls.AddRange([_gridView, addItemButton, addGroupButton, addToGroupButton, removeButton, 

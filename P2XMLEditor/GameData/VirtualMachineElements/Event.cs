@@ -109,6 +109,12 @@ public class Event(string id) : VmElement(id) {
     }
     
     protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+    
+    public override void OnDestroy(VirtualMachine vm) {
+        vm.RemoveElement(EventParameter);
+        vm.RemoveElement(Condition);
+        // TODO: Kill reference in parent if event is destroyed independently of parent.
+    }
 }
 
 public record struct MessageInfo(string Name, string Type);
