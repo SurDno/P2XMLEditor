@@ -7,16 +7,14 @@ namespace P2XMLEditor.Forms.MainForm.Combinations;
 
 public sealed class CombinationEditorForm : Form {
     private readonly VirtualMachine _vm;
-    private readonly Action<string> _onSaveCallback;
     private readonly DataGridView _gridView;
     private readonly List<ICombinationPart> _originalEntries;
     private readonly List<ParameterHolder> _comboItems;
     private readonly List<ParameterHolder> _storableItems;
-    private bool _suppressEvents = false;
+    private bool _suppressEvents;
 
     public CombinationEditorForm(VirtualMachine vm, string initialValue, List<ParameterHolder> availableStorables, List<ParameterHolder> availableCombinations, Action<string> onSaveCallback) {
         _vm = vm;
-        _onSaveCallback = onSaveCallback;
         _originalEntries = CombinationHelper.Parse(_vm, initialValue);
 
         _comboItems = availableCombinations;
@@ -61,7 +59,7 @@ public sealed class CombinationEditorForm : Form {
         var removeButton = CreateButton("Remove Entry", 492, 150, AnchorStyles.Left);
         removeButton.Click += RemoveButton_Click;
         AcceptButton = CreateButton("Save", 1000, 75, AnchorStyles.Right, true, DialogResult.OK);
-        ((Button)AcceptButton).Click += (_, _) => _onSaveCallback(CombinationHelper.Serialize(_originalEntries));
+        ((Button)AcceptButton).Click += (_, _) => onSaveCallback(CombinationHelper.Serialize(_originalEntries));
         CancelButton = CreateButton("Cancel", 1085, 75, AnchorStyles.Right, true, DialogResult.Cancel);
 
         Controls.AddRange([_gridView, addItemButton, addGroupButton, addToGroupButton, removeButton, 
@@ -143,80 +141,59 @@ public sealed class CombinationEditorForm : Form {
     }
 
     private void GridView_EditingControlShowing(object? sender, DataGridViewEditingControlShowingEventArgs e) {
-        if (e.Control is ComboBox comboBox) {
-            comboBox.SelectedIndexChanged -= TypeSelector_SelectedIndexChanged;
-
-            if (_gridView.CurrentCell?.ColumnIndex == 1) {
-                comboBox.SelectedIndexChanged += TypeSelector_SelectedIndexChanged;
-            }
-        }
+        if (e.Control is not ComboBox comboBox) return;
+        comboBox.SelectedIndexChanged -= TypeSelector_SelectedIndexChanged;
+        if (_gridView.CurrentCell?.ColumnIndex != 1) return;
+        comboBox.SelectedIndexChanged += TypeSelector_SelectedIndexChanged;
     }
-
-
-    private void GridView_DataError(object? sender, DataGridViewDataErrorEventArgs e) {
-        if (e.Exception is ArgumentException && e.Context == DataGridViewDataErrorContexts.Formatting) {
+    
+    private static void GridView_DataError(object? sender, DataGridViewDataErrorEventArgs e) {
+        if (e is { Exception: ArgumentException, Context: DataGridViewDataErrorContexts.Formatting }) 
             e.Cancel = true;
-        }
     }
 
-private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
-    if (_gridView.CurrentRow == null || _suppressEvents) {
-        return;
-    }
+    private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
+        if (_gridView.CurrentRow is not { Tag: CombinationEntry entry } || _suppressEvents || 
+            _gridView.CurrentCell?.OwningColumn?.Name != "ItemType")
+            return;
+        
+        var comboBox = sender as ComboBox;
+        var selectedType = comboBox?.SelectedItem?.ToString();
 
-    var currentRowIndex = _gridView.CurrentRow.Index;
-    var entry = _gridView.CurrentRow.Tag as CombinationEntry;
-    if (entry == null) {
-        return;
-    }
+        _suppressEvents = true;
 
-    var comboBox = sender as ComboBox;
-    var selectedType = comboBox?.SelectedItem?.ToString();
+        try {
+            var targetList = selectedType == "Storable" ? _storableItems : _comboItems;
 
-    _suppressEvents = true;
-
-    try {
-        var targetList = selectedType == "Storable" ? _storableItems : _comboItems;
-
-        if (targetList.Count > 0) {
+            if (targetList.Count <= 0) return;
             var newId = targetList[0].Id;
 
             entry.Target = _vm.GetElement<Item, Other>(newId);
 
-            var itemCell = _gridView.Rows[currentRowIndex].Cells[2] as DataGridViewComboBoxCell;
-            if (itemCell != null) {
-                itemCell.DataSource = targetList;
-                itemCell.DisplayMember = "Name";
-                itemCell.ValueMember = "Id";
-                
-                var currentValue = itemCell.Value?.ToString();
+            if (_gridView.Rows[_gridView.CurrentRow.Index].Cells[2] is not DataGridViewComboBoxCell itemCell) return;
+            itemCell.DataSource = targetList;
+            itemCell.DisplayMember = "Name";
+            itemCell.ValueMember = "Id";
+                    
+            var currentValue = itemCell.Value?.ToString();
 
-                bool isValid = targetList.Any(ph => ph.Id == currentValue);
-
-                if (!isValid) {
-                    itemCell.Value = newId;
-                    entry.Target = _vm.GetElement<Item, Other>(newId);
-                }
-            }
+            if (targetList.Any(ph => ph.Id == currentValue)) return;
+            itemCell.Value = newId;
+            entry.Target = _vm.GetElement<Item, Other>(newId);
+        } finally {
+            _suppressEvents = false;
         }
     }
-    finally {
-        _suppressEvents = false;
-    }
-}
-
 
     private void GridView_CellValueChanged(object? sender, DataGridViewCellEventArgs e) {
         if (_suppressEvents || e.RowIndex < 0) return;
 
         var row = _gridView.Rows[e.RowIndex];
-        
-        if (e.ColumnIndex == 2 && row.Tag is CombinationEntry itemEntry) {
-            var newItemId = row.Cells[2].Value?.ToString();
-            if (!string.IsNullOrEmpty(newItemId)) {
-                itemEntry.Target = _vm.GetElement<Item, Other>(newItemId);
-            }
-        }
+
+        if (e.ColumnIndex != 2 || row.Tag is not CombinationEntry itemEntry) return;
+        var newItemId = row.Cells[2].Value?.ToString();
+        if (string.IsNullOrEmpty(newItemId)) return;
+        itemEntry.Target = _vm.GetElement<Item, Other>(newItemId);
     }
 
 
@@ -228,8 +205,7 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
         
         row.Cells[0].Value = isGrouped ? (isLastInGroup ? "└─" : "├─") : "";
 
-        bool isStorable = _storableItems.Any(ph => ph.Id == entry.ItemId);
-        
+        var isStorable = _storableItems.Any(ph => ph.Id == entry.ItemId);
         var actualType = isStorable ? "Storable" : "Combination";
         var sourceList = isStorable ? _storableItems : _comboItems;
         
@@ -269,8 +245,7 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
         using var pen = new Pen(Color.Gray);
         using var headerBrush = new SolidBrush(SystemColors.Control);
 
-        var headerHeight = 40;
-        var subHeaderHeight = 20;
+        const int headerHeight = 40, subHeaderHeight = 20;
         var gridLeft = _gridView.Left;
         var gridTop = _gridView.Top;
 
@@ -288,9 +263,7 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
         g.FillRectangle(headerBrush, headerRect);
         g.DrawRectangle(pen, headerRect);
 
-        var minAmountCol = columns.FirstOrDefault(c => c.name == "MinAmount");
         var maxAmountCol = columns.FirstOrDefault(c => c.name == "MaxAmount");
-        var minDurabilityCol = columns.FirstOrDefault(c => c.name == "MinDurability");
         var maxDurabilityCol = columns.FirstOrDefault(c => c.name == "MaxDurability");
 
         foreach (var (name, x, width) in columns) {
@@ -299,41 +272,36 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
                     var expandRect = new Rectangle(x, gridTop - headerHeight, width, headerHeight);
                     g.DrawLine(pen, expandRect.Right, expandRect.Top, expandRect.Right, expandRect.Bottom);
                     break;
-                    
                 case "ItemType":
                     if (columns.FirstOrDefault(c => c.name == "Item") is var itemCol) {
-                        var itemHeaderRect = new Rectangle(x, gridTop - headerHeight, width + itemCol.width, headerHeight);
-                        DrawCenteredText(g, "Item", headerFont, brush, itemHeaderRect);
-                        g.DrawRectangle(pen, itemHeaderRect);
+                        var rect = new Rectangle(x, gridTop - headerHeight, width + itemCol.width, headerHeight);
+                        DrawCenteredText(g, "Item", headerFont, brush, rect);
+                        g.DrawRectangle(pen, rect);
                     }
                     break;
-                    
                 case "MinAmount":
                     if (maxAmountCol != default) {
                         var amountWidth = width + maxAmountCol.width;
-                        var amountRect = new Rectangle(x, gridTop - headerHeight, amountWidth, subHeaderHeight);
-                        DrawCenteredText(g, "Amount", headerFont, brush, amountRect);
-                        g.DrawLine(pen, amountRect.Right, amountRect.Top, amountRect.Right, amountRect.Bottom + subHeaderHeight);
-                        g.DrawLine(pen, amountRect.Left, amountRect.Bottom, amountRect.Right, amountRect.Bottom);
+                        var rect = new Rectangle(x, gridTop - headerHeight, amountWidth, subHeaderHeight);
+                        DrawCenteredText(g, "Amount", headerFont, brush, rect);
+                        g.DrawLine(pen, rect.Right, rect.Top, rect.Right, rect.Bottom + subHeaderHeight);
+                        g.DrawLine(pen, rect.Left, rect.Bottom, rect.Right, rect.Bottom);
                     }
                     break;
-                    
                 case "Weight":
                     var weightRect = new Rectangle(x, gridTop - headerHeight, width, headerHeight);
                     DrawCenteredText(g, "Weight", headerFont, brush, weightRect);
                     g.DrawLine(pen, weightRect.Right, weightRect.Top, weightRect.Right, weightRect.Bottom);
                     break;
-                    
                 case "MinDurability":
                     if (maxDurabilityCol != default) {
                         var durabilityWidth = width + maxDurabilityCol.width;
-                        var durabilityRect = new Rectangle(x, gridTop - headerHeight, durabilityWidth, subHeaderHeight);
-                        DrawCenteredText(g, "Durability", headerFont, brush, durabilityRect);
-                        g.DrawLine(pen, durabilityRect.Right, durabilityRect.Top, durabilityRect.Right, durabilityRect.Bottom + subHeaderHeight);
-                        g.DrawLine(pen, durabilityRect.Left, durabilityRect.Bottom, durabilityRect.Right, durabilityRect.Bottom);
+                        var rect = new Rectangle(x, gridTop - headerHeight, durabilityWidth, subHeaderHeight);
+                        DrawCenteredText(g, "Durability", headerFont, brush, rect);
+                        g.DrawLine(pen, rect.Right, rect.Top, rect.Right, rect.Bottom + subHeaderHeight);
+                        g.DrawLine(pen, rect.Left, rect.Bottom, rect.Right, rect.Bottom);
                     }
                     break;
-                    
                 case "Probability":
                     var probRect = new Rectangle(x, gridTop - headerHeight, width, headerHeight);
                     DrawCenteredText(g, "Probability (%)", headerFont, brush, probRect);
@@ -379,7 +347,7 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
         e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
         using var font = new Font("Arial", 8, FontStyle.Bold);
         var buttonText = group.IsCollapsed ? "+" : "–";
-        var textSize = e.Graphics.MeasureString(buttonText, font);
+        var textSize = e.Graphics!.MeasureString(buttonText, font);
         var x = e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2;
         var y = e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2;
         e.Graphics.DrawString(buttonText, font, Brushes.Black, x, y);
@@ -390,9 +358,8 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
         var row = _gridView.Rows[e.RowIndex];
         if (row.Tag is CombinationEntry entry) {
             var newItemId = row.Cells[2].Value?.ToString();
-            if (!string.IsNullOrEmpty(newItemId)) {
+            if (!string.IsNullOrEmpty(newItemId)) 
                 entry.Target = _vm.GetElement<Item, Other>(newItemId);
-            }
             
             if (int.TryParse(row.Cells[3].Value?.ToString(), out var minAmount))
                 entry.MinAmount = minAmount;
@@ -406,28 +373,21 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
                 entry.MaxDurability = maxDur;
             if (int.TryParse(row.Cells[8].Value?.ToString(), out var prob))
                 entry.Probability = prob;
-        }
-        else if (row.Tag is CombinationGroup group) {
+        } else if (row.Tag is CombinationGroup group) {
             if (int.TryParse(row.Cells[8].Value?.ToString(), out var prob))
                 group.Probability = prob;
         }
     }
 
     private void GridView_CellBeginEdit(object? sender, DataGridViewCellCancelEventArgs e) {
-        if (e.RowIndex < 0) return;
-        
-        if (_gridView.Rows[e.RowIndex].Tag is not CombinationGroup) return;
-
-        if (e.ColumnIndex != 8)
-            e.Cancel = true;
+        if (e.RowIndex < 0 || _gridView.Rows[e.RowIndex].Tag is not CombinationGroup || e.ColumnIndex == 8) return;
+        e.Cancel = true;
     }
 
     private void GridView_CellClick(object? sender, DataGridViewCellEventArgs e) {
         if (e.RowIndex < 0 || e.ColumnIndex != 0) return;
-            
         var row = _gridView.Rows[e.RowIndex];
         if (row.Tag is not CombinationGroup group) return;
-
         group.IsCollapsed = !group.IsCollapsed;
         _suppressEvents = true;
         PopulateGrid(_originalEntries);
@@ -437,10 +397,8 @@ private void TypeSelector_SelectedIndexChanged(object? sender, EventArgs e) {
     private void AddItemButton_Click(object? sender, EventArgs e) {
         var firstItem = _comboItems.FirstOrDefault() ?? _storableItems.FirstOrDefault();
         if (firstItem == null) return;
-        
         var entry = CombinationEntry.New(_vm.GetElement<Item, Other>(firstItem.Id));
         _originalEntries.Add(entry);
-
         _suppressEvents = true;
         PopulateGrid(_originalEntries);
         _suppressEvents = false;

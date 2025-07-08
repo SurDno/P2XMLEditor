@@ -1,6 +1,4 @@
 using System.Reflection;
-using P2XMLEditor.Abstract;
-using P2XMLEditor.Attributes;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
@@ -31,7 +29,7 @@ public class MenuStripManager {
        fileMenu.DropDownItems.AddRange([loadVmMenuItem, saveVmMenuItem]);
 
        _menuStrip.Items.Add(fileMenu);
-       var allTypes = typeof(Suggestion).Assembly.GetTypes().Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract);
+       var allTypes = typeof(Suggestion).Assembly.GetTypes().Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract).ToList();
 
        var refactorMenu = new ToolStripMenuItem("Refactor");
        var refactoringTypes = allTypes.Where(t => t.GetCustomAttribute<RefactoringAttribute>() != null);
@@ -60,7 +58,7 @@ public class MenuStripManager {
            var pathParts = menuPath.Split('/');
            var currentMenu = parentMenu;
 
-           for (int i = 0; i < pathParts.Length - 1; i++) {
+           for (var i = 0; i < pathParts.Length - 1; i++) {
                var key = string.Join("/", pathParts.Take(i + 1));
                if (!menuMap.TryGetValue(key, out var submenu)) {
                    submenu = new ToolStripMenuItem(pathParts[i]);

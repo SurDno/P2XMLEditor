@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualBasic.Logging;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -11,9 +10,9 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 namespace P2XMLEditor.Suggestions.Cleanup;
 
 // TODO: completely refactor once we start storing Action function references and Parameter types normally. 
-[Cleanup("References/Delete storables not appearing in combinations")]
+[Cleanup("References/Delete unused storables")]
 [SuppressMessage("ReSharper", "UnusedType.Global")]
-public class DeleteStorablesNotAppearingInCombinations(VirtualMachine vm) : Suggestion(vm) {
+public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var all = Vm.GetElementsByType<Item>().Cast<GameObject>().Concat(Vm.GetElementsByType<Other>()).ToList();
 		var combos = all.Where(i => i.StandartParams.ContainsKey(CombinationHelper.CombinationKey)).ToList();
@@ -34,15 +33,13 @@ public class DeleteStorablesNotAppearingInCombinations(VirtualMachine vm) : Sugg
 			}
 			if (referencedInParameters) continue;
 			var referencedInActions = false;
-			foreach (var action in actions) {
-				if (!action.TargetFuncName.Contains("PickUpByTemplate") && 
-				    !action.TargetFuncName.Contains("PickUpToInentoryByTemplate") && 
-				    !action.TargetFuncName.Contains("RemoveThingByTemplate")) continue;
+			foreach (var action in actions.Where(action => 
+				         action.TargetFuncName.Contains("PickUpByTemplate") ||     
+				         action.TargetFuncName.Contains("PickUpToInentoryByTemplate") ||  
+				         action.TargetFuncName.Contains("RemoveThingByTemplate"))) {
 				if (action.SourceParams == null) continue;
-				foreach (var param in action.SourceParams.Where(p => p.Contains(storable.EngineTemplateId!))) {
+				if (action.SourceParams.Any(p => p.Contains(storable.EngineTemplateId!)))
 					referencedInActions = true;
-					break;
-				}
 			}
 			if (referencedInActions) continue;
 			

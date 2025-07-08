@@ -1,5 +1,4 @@
 using P2XMLEditor.Core;
-using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 
