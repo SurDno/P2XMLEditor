@@ -1,5 +1,6 @@
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
@@ -8,7 +9,7 @@ public class UnresolvedParameter : ICommonVariableParameter {
 	public string Id => RawData; 
 
 	public UnresolvedParameter(string rawData) {
-		Logger.LogError($"Unresolved parameter {rawData}, preserving as string.");
+		Logger.Log(LogLevel.Error, $"Unresolved parameter {rawData}, preserving as string.");
 		RawData = rawData;
 	}
 }

@@ -5,6 +5,7 @@ using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -47,7 +48,7 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
     
 
     public void SaveVirtualMachine(WriterSettings settings) {
-        Logger.LogInfo("Saving virtual machine.");
+        Logger.Log(LogLevel.Info, $"Saving virtual machine.");
         foreach (var (type, (fileName, getElements)) in _typeMapping) {
             SaveElements(fileName, getElements(virtualMachine), type, settings);
         }
@@ -85,9 +86,9 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
             using var writer = XmlWriter.Create(stream, xmlSettings);
             root.Save(writer);
         
-            Logger.LogInfo($"Saved {elementsList.Count} elements of type {elementType.Name} to {fileName}");
+            Logger.Log(LogLevel.Info, $"Saved {elementsList.Count} elements of type {elementType.Name} to {fileName}");
         } catch (Exception ex) {
-            Logger.LogError($"Error saving {fileName}: {ex.Message}, {ex.StackTrace}");
+            Logger.Log(LogLevel.Error, $"Error saving {fileName}: {ex.Message}, {ex.StackTrace}");
         }
     }
 

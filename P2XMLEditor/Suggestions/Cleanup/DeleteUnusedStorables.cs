@@ -3,6 +3,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using P2XMLEditor.Suggestions.Abstract;
 using P2XMLEditor.Suggestions.Attributes;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
@@ -43,7 +44,7 @@ public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 			}
 			if (referencedInActions) continue;
 			
-			Logger.LogInfo($"Deleting unused storable {storable.Name}.");
+			Logger.Log(LogLevel.Info, $"Deleting unused storable {storable.Name}.");
 			Vm.RemoveElement(storable);
 		}
 	}

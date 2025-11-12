@@ -5,6 +5,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.Editors;
 
@@ -378,7 +379,7 @@ public class ExpressionEditorForm : Form {
             if (targetParam.VariableParameter is not Parameter p) return;
             cmbParameter.SelectedItem = cmbParameter.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Value == p);
         } catch {
-            Logger.LogWarning("Current values of TargetObject and TargetParam were not parsed.");
+            Logger.Log(LogLevel.Warning, $"Current values of TargetObject and TargetParam were not parsed.");
         }
     }
 

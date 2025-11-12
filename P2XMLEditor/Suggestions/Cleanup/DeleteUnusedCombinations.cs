@@ -4,6 +4,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using P2XMLEditor.Suggestions.Abstract;
 using P2XMLEditor.Suggestions.Attributes;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
@@ -44,7 +45,7 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 			if (referencedInExpressions) continue;
 			
 			
-			Logger.LogInfo($"Deleting unused combination {combo.Id} {combo.Name}.");
+			Logger.Log(LogLevel.Info, $"Deleting unused combination {combo.Id} {combo.Name}.");
 			Vm.RemoveElement(combo);
 		}
 	}

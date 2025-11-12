@@ -5,6 +5,7 @@ using P2XMLEditor.Helper;
 using System.IO.Compression;
 using System.Text;
 using System.Xml.Linq;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Core;
 
@@ -37,14 +38,14 @@ public class TemplateManager(string templatesPath) {
                     localTemplates[templateObject.Id] = templateObject;
                 }
             } catch (Exception ex) {
-                Logger.LogError($"Error loading template file {file}: {ex.Message}");
+                Logger.Log(LogLevel.Error, $"Error loading template file {file}: {ex.Message}");
             }
         });
 
         foreach (var kvp in localTemplates)
             Templates[kvp.Key] = kvp.Value;
 
-        Logger.LogInfo($"Loaded {Templates.Count} templates from {templateFiles.Length} files");
+        Logger.Log(LogLevel.Info, $"Loaded {Templates.Count} templates from {templateFiles.Length} files");
     }
 
 

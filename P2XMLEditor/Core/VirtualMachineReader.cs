@@ -2,6 +2,7 @@ using System.Xml.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -54,7 +55,7 @@ public class VirtualMachineReader(string vmPath) {
         LoadLocalizations();
 
         foreach (var el in _virtualMachine.ElementsById.Where(el => el.Value.IsOrphaned()))
-            Logger.LogWarning($"Orphaned {el.Value.GetType().Name} with ID {el.Value.Id}.");
+            Logger.Log(LogLevel.Warning, $"Orphaned {el.Value.GetType().Name} with ID {el.Value.Id}.");
 
         return _virtualMachine;
     }
@@ -70,7 +71,7 @@ public class VirtualMachineReader(string vmPath) {
                     rawData.SourceType = type;
                     _rawData[rawData.Id] = rawData;
                 } catch (Exception ex) {
-                    Logger.LogError($"Error parsing {type.Name} from {fileName}: {ex.Message}");
+                    Logger.Log(LogLevel.Error, $"Error parsing {type.Name} from {fileName}: {ex.Message}");
                 }
             }
         }

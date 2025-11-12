@@ -1,12 +1,13 @@
 using P2XMLEditor.Forms.MainForm;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor;
 
 internal static class Program {
     [STAThread]
     private static void Main() {
-        Logger.LogInfo("Starting P2XMLEditor...");
+        Logger.Log(LogLevel.Info, $"Starting P2XMLEditor...");
         ApplicationConfiguration.Initialize();
         MessageBox.Show("P2XMLEditor is currently in Beta. Some of its functions have not been tested properly and " +
                         "may cause virtual machine corruption, resulting in it not being loaded by the game " +

@@ -5,6 +5,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 
@@ -45,9 +46,9 @@ public class FSMGraphViewer : GraphViewer {
         var invalidStates = _graph.States.Where(s => s?.Element == null).ToList();
 
         if (invalidStates.Any()) {
-            Logger.LogWarning($"Graph {_graph.Id} contains {invalidStates.Count} invalid states");
+            Logger.Log(LogLevel.Warning, $"Graph {_graph.Id} contains {invalidStates.Count} invalid states");
             foreach (var state in invalidStates) {
-                Logger.LogWarning($"Invalid state ID: {state?.Id ?? "null"}");
+                Logger.Log(LogLevel.Warning, $"Invalid state ID: {state?.Id ?? "null"}");
             }
         }
 
@@ -237,7 +238,7 @@ protected override void DrawNodes(Graphics g) {
                     indicatorBounds.Width, indicatorBounds.Height);
             }
         } catch (Exception ex) {
-            Logger.LogError($"Error drawing node {state.Id}: {ex.Message}");
+            Logger.Log(LogLevel.Error, $"Error drawing node {state.Id}: {ex.Message}");
             g.FillRectangle(Brushes.Red, nodeBounds);
             g.DrawRectangle(Pens.DarkRed, nodeBounds.X, nodeBounds.Y, nodeBounds.Width, nodeBounds.Height);
             g.DrawString("Error", font, Brushes.White, nodeBounds, format);

@@ -3,6 +3,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -122,7 +123,7 @@ public abstract class ParameterHolder(string id) : VmElement(id), ICommonVariabl
         
         // ??? Why do we need to do this? TODO: figure out why it doesn't work without this workaround
         foreach (var gs in vm.GetElementsByType<GameString>().Where(g => g.Parent.Element == this).ToList()) {
-            Logger.LogWarning($"A string with ID {gs.Id} did not remove after parameter removal. Please check!!!");
+            Logger.Log(LogLevel.Warning, $"A string with ID {gs.Id} did not remove after parameter removal. Please check!!!");
             vm.RemoveElement(gs);
         }
     }

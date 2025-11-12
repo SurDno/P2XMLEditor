@@ -2,6 +2,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.MindMapViewer;
 
@@ -20,7 +21,7 @@ public class MindMapTabControl : TabControl {
 			AddMindMapTab(mindMap);
 		
 		Selected += OnTabSelected;
-		Logger.LogInfo($"Loaded {TabPages.Count - 1} mind maps");
+		Logger.Log(LogLevel.Info, $"Loaded {TabPages.Count - 1} mind maps");
 	}
 
 	private void OnTabSelected(object? sender, TabControlEventArgs e) {

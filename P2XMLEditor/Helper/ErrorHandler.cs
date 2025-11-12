@@ -1,3 +1,5 @@
+using P2XMLEditor.Logging;
+
 namespace P2XMLEditor.Helper;
 
 public static class ErrorHandler {
@@ -7,7 +9,7 @@ public static class ErrorHandler {
 		var stackTrace = e != null ? e.StackTrace + "\n\n" : string.Empty;
 		
 		if (e != null && !skipLogging)
-			Logger.LogError(message + "\n" + stackTrace);
+			Logger.Log(LogLevel.Error, $"{message}\n{stackTrace}");
 		
 		MessageBox.Show($"{msg}{message}.\n\n{stackTrace}See P2XMLEditor.log in your Logs directory for more info.",
 			"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

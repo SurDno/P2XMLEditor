@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Helper;
 
@@ -21,7 +22,7 @@ public static class InstallationLocator {
 
         // Looking for Linux + Wine setup by @isatsam
         if (steamPath == null && Path.Exists(@"Z:\home")) {
-            Logger.LogInfo("Steam not found at Windows paths. Looking for Linux path.");
+            Logger.Log(LogLevel.Info, $"Steam not found at Windows paths. Looking for Linux path.");
             steamPath = Path.Join(@"Z:\home\", Environment.GetEnvironmentVariable("USERNAME"), STEAM_LINUX_PATH);
             steamPath = Path.Exists(steamPath) ? steamPath : null;
         }
@@ -32,7 +33,7 @@ public static class InstallationLocator {
     public static string? FindInstall() {
         var steamPath = FindSteam();
         if (!string.IsNullOrEmpty(steamPath)) {
-            Logger.LogInfo("Found Steam installation: " + steamPath);
+            Logger.Log(LogLevel.Info, $"Found Steam installation: {steamPath}");
             return FindSteamInstall(steamPath);
         };
 

@@ -2,6 +2,7 @@ using P2XMLEditor.GameData.Templates.Abstract;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates;
@@ -24,7 +25,7 @@ public class EntityObject : TemplateObject {
 					component.LoadFromXml(componentElement);
 					Components.Add(component);
 				} catch (Exception e) {
-					Logger.LogError(e.Message);
+					Logger.Log(LogLevel.Error, $"{e.Message}");
 				}
 			}
 		}

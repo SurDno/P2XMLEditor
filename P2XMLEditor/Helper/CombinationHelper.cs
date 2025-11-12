@@ -3,6 +3,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Helper;
 
@@ -46,7 +47,7 @@ public static partial class CombinationHelper {
                 }
             }
         } catch (Exception ex) {
-            Logger.LogError($"Failed to parse combination data: {ex.Message}");
+            Logger.Log(LogLevel.Error, $"Failed to parse combination data: {ex.Message}");
         }
 
         return entries;
@@ -85,7 +86,7 @@ public static partial class CombinationHelper {
         if (!ph.StandartParams.ContainsKey(StorableKey) && !ph.StandartParams.ContainsKey(CombinationKey)) return;
 
         foreach (var combo in GetCombinationsWithItem(vm, ph)) {
-            Logger.LogInfo($"Removing {ph.Name} from combination: {combo.Name}.");
+            Logger.Log(LogLevel.Info, $"Removing {ph.Name} from combination: {combo.Name}.");
             var parsedList = Parse(vm, combo.StandartParams[CombinationKey].Value);
             List<ICombinationPart> toRemoveFromCombo = [];
             foreach (var element in parsedList) {

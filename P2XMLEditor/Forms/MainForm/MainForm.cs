@@ -6,6 +6,7 @@ using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm;
 
@@ -40,7 +41,7 @@ public class MainForm : Form {
     private void ShowPathSelection() {
         var pathForm = new PathSelectionForm();
         if (pathForm.ShowDialog() != DialogResult.OK) {
-            Logger.LogInfo("Closing P2XMLEditor as paths were not specified.");
+            Logger.Log(LogLevel.Info, $"Closing P2XMLEditor as paths were not specified.");
             Environment.Exit(0);
         }
         if (pathForm.SelectedPaths != null) 
@@ -52,7 +53,7 @@ public class MainForm : Form {
         var reader = new VirtualMachineReader(_paths!.VmPath);
         _virtualMachine = reader.LoadVirtualMachine();
 
-        Logger.LogInfo($"DataCapacity: {_virtualMachine.GetDataCapacity()}");
+        Logger.Log(LogLevel.Info, $"DataCapacity: {_virtualMachine.GetDataCapacity()}");
         _tabControl.TabPages.Cast<TabPage>().ToList().ForEach(t => _tabControl.TabPages.Remove(t));
         
         var mindMapTab = new TabPage("Mind Maps");

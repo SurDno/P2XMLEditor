@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.Combinations;
 
@@ -76,7 +77,7 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
                 MaxDurability = maxDurability
             };
         } catch (Exception ex) {
-            Logger.LogError($"Failed to parse combination entry: {ex.Message}");
+            Logger.Log(LogLevel.Error, $"Failed to parse combination entry: {ex.Message}");
             return null;
         }
     }
