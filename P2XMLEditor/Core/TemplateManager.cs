@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using P2XMLEditor.GameData.Templates;
 using P2XMLEditor.GameData.Templates.Abstract;
 using P2XMLEditor.Helper;
@@ -14,17 +15,38 @@ public class TemplateManager(string templatesPath) {
         Templates.Clear();
 
         var templateFiles = Directory.GetFiles(templatesPath, "*.xml.gz");
+        var localTemplates = new ConcurrentDictionary<Guid, TemplateObject>();
 
-        foreach (var file in templateFiles) {
+        Parallel.ForEach(templateFiles, file => {
             try {
-                LoadTemplateFile(file);
+                using var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using var gzipStream = new GZipStream(fileStream, CompressionMode.Decompress);
+                using var reader = new StreamReader(gzipStream, Encoding.UTF8);
+
+                var content = reader.ReadToEnd();
+                var document = XDocument.Parse(content);
+
+                foreach (var objElement in document.Root?.Elements("Object") ?? Enumerable.Empty<XElement>()) {
+                    var type = objElement.Attribute("type")?.Value;
+                    if (string.IsNullOrEmpty(type)) continue;
+
+                    var templateObject = CreateTemplateObject(type);
+                    if (templateObject == null) continue;
+
+                    templateObject.LoadFromXml(objElement);
+                    localTemplates[templateObject.Id] = templateObject;
+                }
             } catch (Exception ex) {
                 Logger.LogError($"Error loading template file {file}: {ex.Message}");
             }
-        }
+        });
+
+        foreach (var kvp in localTemplates)
+            Templates[kvp.Key] = kvp.Value;
 
         Logger.LogInfo($"Loaded {Templates.Count} templates from {templateFiles.Length} files");
     }
+
 
     private void LoadTemplateFile(string filePath) {
         using var fileStream = new FileStream(filePath, FileMode.Open);
@@ -34,7 +56,7 @@ public class TemplateManager(string templatesPath) {
         var content = reader.ReadToEnd();
         var document = XDocument.Parse(content);
 
-        foreach (var objElement in document.Root?.Elements("Object") ?? Enumerable.Empty<XElement>()) {
+        foreach (var objElement in document.Root?.Elements("Object") ?? []) {
             var type = objElement.Attribute("type")?.Value;
             if (string.IsNullOrEmpty(type))
                 continue;
