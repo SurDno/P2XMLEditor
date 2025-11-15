@@ -5,17 +5,15 @@ using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public class BuildingComponent : TemplateComponent {
-	public override string Type => "BuildingComponent";
+public struct BuildingComponent() : ITemplateComponent {
 	public BuildingType Building { get; set; } = BuildingType.None;
 
-	public override void LoadFromXml(XElement element) {
+	public void LoadFromXml(XElement element) {
 		Building = element.Element("Building")!.Value.Deserialize<BuildingType>();
 	}
 
-	public override XElement ToXml() {
-		var element = base.ToXml();
-		element.Add(new XElement("Building", Building.Serialize()));
-		return element;
+	 public XElement ToXml(XElement baseElement) { 
+		 baseElement.Add(new XElement("Building", Building.Serialize())); 
+		 return baseElement;
 	}
 }

@@ -61,7 +61,7 @@ public class IsObjectCompatibleFunction : VmFunction {
         var componentsStr = param2[12..];
         var componentNames = componentsStr.Split("&");
         
-        requiredComponents = new();
+        requiredComponents = [];
         foreach (var name in componentNames) {
             if (Enum.TryParse<ObjectComponentType>(name, out var component)) {
                 requiredComponents.Add(component);

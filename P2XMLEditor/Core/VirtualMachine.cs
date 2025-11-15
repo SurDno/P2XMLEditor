@@ -8,14 +8,13 @@ public class VirtualMachine {
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new();
 	public HashSet<string> Languages { get; } = [];
 
-	public T AddElement<T>(T element) where T : VmElement {
+	public T AddElement<T>(T element, Type elementType) where T : VmElement {
 		ElementsById[element.Id] = element;
-		var type = element.GetType();
-		while (type != typeof(VmElement) && type != typeof(object)) {
-			if (!ElementsByType.TryGetValue(type, out var list))
-				ElementsByType[type] = list = [];
+		while (elementType != typeof(VmElement) && elementType != typeof(object)) {
+			if (!ElementsByType.TryGetValue(elementType, out var list))
+				ElementsByType[elementType] = list = [];
 			list.Add(element);
-			type = type.BaseType!;
+			elementType = elementType.BaseType!;
 		}
 		return element;
 	}
@@ -25,7 +24,7 @@ public class VirtualMachine {
 	public T Register<T>(T element) where T : VmElement {
 		if (ElementsById.TryGetValue(element.Id, out var el))
 			throw new ArgumentException($"Element with id {element.Id} already exists.");
-		return AddElement(element);
+		return AddElement(element, element.GetType());
 	}
 	
 	public void RemoveElement(VmElement? el) {

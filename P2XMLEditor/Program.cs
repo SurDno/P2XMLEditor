@@ -1,5 +1,4 @@
 using P2XMLEditor.Forms.MainForm;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor;

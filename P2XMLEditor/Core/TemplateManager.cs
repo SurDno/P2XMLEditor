@@ -10,8 +10,11 @@ using P2XMLEditor.Logging;
 namespace P2XMLEditor.Core;
 
 public class TemplateManager(string templatesPath) {
+    static readonly XName ObjectName = "Object";
+    static readonly XName TypeAttr = "type";
     public Dictionary<Guid, TemplateObject> Templates { get; } = new();
 
+    [PerformanceLogHook]
     public void LoadTemplates() {
         Templates.Clear();
 
@@ -20,15 +23,12 @@ public class TemplateManager(string templatesPath) {
 
         Parallel.ForEach(templateFiles, file => {
             try {
-                using var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using var fileStream = File.OpenRead(file);
                 using var gzipStream = new GZipStream(fileStream, CompressionMode.Decompress);
-                using var reader = new StreamReader(gzipStream, Encoding.UTF8);
+                var document = XDocument.Load(gzipStream, LoadOptions.None);
 
-                var content = reader.ReadToEnd();
-                var document = XDocument.Parse(content);
-
-                foreach (var objElement in document.Root?.Elements("Object") ?? Enumerable.Empty<XElement>()) {
-                    var type = objElement.Attribute("type")?.Value;
+                foreach (var objElement in document.Root?.Elements(ObjectName) ?? []) {
+                    var type = objElement.Attribute(TypeAttr)?.Value;
                     if (string.IsNullOrEmpty(type)) continue;
 
                     var templateObject = CreateTemplateObject(type);
@@ -44,6 +44,9 @@ public class TemplateManager(string templatesPath) {
 
         foreach (var kvp in localTemplates)
             Templates[kvp.Key] = kvp.Value;
+
+        foreach (var invalidType in EntityObject.invalidComponent) 
+            Logger.Log(LogLevel.Info, $"Invalid component type {invalidType.Key}: {invalidType.Value}");
 
         Logger.Log(LogLevel.Info, $"Loaded {Templates.Count} templates from {templateFiles.Length} files");
     }

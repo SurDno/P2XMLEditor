@@ -4,17 +4,15 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public class DetectorComponent : TemplateComponent {
-    public override string Type => "DetectorComponent";
+public struct DetectorComponent() : ITemplateComponent {
     public bool IsEnabled { get; set; } = true;
 
-    public override void LoadFromXml(XElement element) {
+    public void LoadFromXml(XElement element) {
         IsEnabled = ParseBool(element.Element("IsEnabled")!);
     }
 
-    public override XElement ToXml() {
-        var element = base.ToXml();
-        element.Add(CreateBoolElement("IsEnabled", IsEnabled));
-        return element;
+     public XElement ToXml(XElement baseElement) {
+        baseElement.Add(CreateBoolElement("IsEnabled", IsEnabled));
+        return baseElement;
     }
 }

@@ -3,8 +3,8 @@ using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public class CrowdPointsComponent : TemplateComponent {
-	public override string Type => "CrowdPointsComponent";
+public struct CrowdPointsComponent() : ITemplateComponent {
 	
-	public override void LoadFromXml(XElement element) { }
+	public void LoadFromXml(XElement element) { }
+	public XElement ToXml(XElement baseElement) => baseElement;
 }

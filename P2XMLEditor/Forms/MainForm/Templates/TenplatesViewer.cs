@@ -47,8 +47,8 @@ public class TemplatesViewer : SplitContainer {
                 templateNode.Tag = template;
 
                 if (template is not EntityObject entity) continue;
-                foreach (var component in entity.Components) {
-                    var componentNode = templateNode.Nodes.Add(component.Type);
+                foreach (var component in entity.Components) { 
+                    var componentNode = templateNode.Nodes.Add(component.GetType().Name);
                     componentNode.Tag = component;
                 }
             }

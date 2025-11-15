@@ -144,7 +144,7 @@ private string GetNodeName(VmElement element) {
 private List<EntryPoint> GetEntryPoints(VmElement element) {
     if (element is IGraphElement graphElement) return graphElement.EntryPoints;
     if (element is Talking talking) return talking.EntryPoints;
-    return new List<EntryPoint>();
+    return [];
 }
 
 protected override void DrawNodes(Graphics g) {

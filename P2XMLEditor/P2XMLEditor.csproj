@@ -3,12 +3,18 @@
         <Version>0.1.0</Version>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net8.0-windows</TargetFramework>
-        <LangVersion>latestmajor</LangVersion>
+        <LangVersion>preview</LangVersion>
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
         <ImplicitUsings>enable</ImplicitUsings>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="PostSharp.Redist" Version="2026.0.1-preview" />
+      <PackageReference Include="Fody" Version="6.9.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="MethodDecorator.Fody" Version="1.1.1" />
+      <PackageReference Include="ZLinq" Version="1.5.4" />
     </ItemGroup>
 </Project>

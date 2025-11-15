@@ -48,26 +48,27 @@ public class VirtualMachineReader(string vmPath) {
 
     public VirtualMachine LoadVirtualMachine() {
         LoadAllRawData();
-        foreach (var i in _rawData.Values)
-            CreateAndAddMinimalInstance(i.SourceType, i.Id);
-        foreach (var rawData in _rawData.Values)
-            _virtualMachine.GetElement<VmElement>(rawData.Id).FillFromRawData(rawData, _virtualMachine);
+        CreateMinimalInstances();
+        FillFromRawData();
         LoadLocalizations();
-
+        /*
         foreach (var el in _virtualMachine.ElementsById.Where(el => el.Value.IsOrphaned()))
             Logger.Log(LogLevel.Warning, $"Orphaned {el.Value.GetType().Name} with ID {el.Value.Id}.");
-
+        */
+         
         return _virtualMachine;
     }
 
+    [PerformanceLogHook]
     private void LoadAllRawData() {
         foreach (var (type, fileName) in TypeMappings) {
             var filePath = Path.Combine(vmPath, fileName);
             if (!File.Exists(filePath)) continue;
 
+            var minimalInstance = CreateMinimalInstance(type, null!);
             foreach (var element in XDocument.Load(filePath).Root!.Elements("Item")) {
                 try {
-                    var rawData = CreateMinimalInstance(type, null!).GetRawData(element);
+                    var rawData = minimalInstance.GetRawData(element);
                     rawData.SourceType = type;
                     _rawData[rawData.Id] = rawData;
                 } catch (Exception ex) {
@@ -77,6 +78,42 @@ public class VirtualMachineReader(string vmPath) {
         }
     }
 
+    [PerformanceLogHook]
+    private void CreateMinimalInstances() {
+        var typeChains = new Dictionary<Type, Type[]>();
+        foreach (var t in ElementCreators.Keys) {
+            var chain = new List<Type>();
+            var cur = t;
+            while (cur != typeof(VmElement) && cur != typeof(object)) {
+                chain.Add(cur);
+                cur = cur.BaseType!;
+            }
+            typeChains[t] = chain.ToArray();
+        }
+
+        foreach (var chain in typeChains.Values)
+            foreach (var t in chain)
+                if (!_virtualMachine.ElementsByType.ContainsKey(t))
+                    _virtualMachine.ElementsByType[t] = new List<VmElement>();
+
+        foreach (var raw in _rawData.Values) {
+            var element = ElementCreators[raw.SourceType](raw.Id);
+            _virtualMachine.ElementsById[element.Id] = element;
+
+            var chain = typeChains[raw.SourceType];
+            for (int i = 0; i < chain.Length; i++)
+                _virtualMachine.ElementsByType[chain[i]].Add(element);
+        }
+    }
+
+
+    [PerformanceLogHook]
+    private void FillFromRawData() {
+        foreach (var rawData in _rawData.Values)
+            _virtualMachine.GetElement<VmElement>(rawData.Id).FillFromRawData(rawData, _virtualMachine);
+    }
+
+    [PerformanceLogHook]
     private void LoadLocalizations() {
         var localizationPath = Path.Combine(vmPath, "Localizations");
         if (!Directory.Exists(localizationPath)) return;
@@ -131,14 +168,6 @@ public class VirtualMachineReader(string vmPath) {
         { typeof(State), id => new State(id) },
         { typeof(Talking), id => new Talking(id) }
     };
-
-    private VmElement CreateAndAddMinimalInstance(Type type, string id) {
-        if (!ElementCreators.TryGetValue(type, out var creator))
-            throw new ArgumentException($"Unsupported type: {type?.Name}");
-
-        var element = creator(id);
-        return _virtualMachine.AddElement(element);
-    }
 
     private static VmElement CreateMinimalInstance(Type type, string id) {
         if (!ElementCreators.TryGetValue(type, out var creator))

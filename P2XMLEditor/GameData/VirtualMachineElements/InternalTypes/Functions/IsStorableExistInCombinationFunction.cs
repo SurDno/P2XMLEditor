@@ -55,8 +55,8 @@ public class IsStorableExistInCombinationFunction : VmFunction {
         }
     }
     
-    public override List<string> GetParamStrings() => new() {
+    public override List<string> GetParamStrings() => [
         $"{root.Id}%{combination.Id}",
         isSecondParameter ? $"{parameter!.Parent!.Id}%{parameter.Id}" : $"{root.Id}%{templateItem!.EngineTemplateId}"
-    };
+    ];
 }

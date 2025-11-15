@@ -47,6 +47,7 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
     };
     
 
+    [PerformanceLogHook]
     public void SaveVirtualMachine(WriterSettings settings) {
         Logger.Log(LogLevel.Info, $"Saving virtual machine.");
         foreach (var (type, (fileName, getElements)) in _typeMapping) {

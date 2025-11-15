@@ -38,7 +38,7 @@ public abstract class VmElement(string id) {
             not null when type == typeof(GameString) => new GameString(null!).New(vm, id, parent),
             not null when type == typeof(Expression) => new Expression(null!).New(vm, id, parent),
             not null when type == typeof(Parameter) => new Parameter(null!).New(vm, id, parent),
-            _ => throw new ArgumentException($"Type {type!.Name} does not support default creation")
+            _ => throw new ArgumentException($"Type {type!.Name} does not yet support default creation")
         };
     }
     

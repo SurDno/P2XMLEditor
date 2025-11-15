@@ -5,17 +5,15 @@ using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public class SpreadingComponent : TemplateComponent {
-	public override string Type => "SpreadingComponent";
+public struct SpreadingComponent() : ITemplateComponent {
 	public DiseasedStateType DiseasedState { get; set; } = DiseasedStateType.Normal;
 
-	public override void LoadFromXml(XElement element) {
+	public void LoadFromXml(XElement element) {
 		DiseasedState = element.Element("DiseasedState")!.Value.Deserialize<DiseasedStateType>();
 	}
 
-	public override XElement ToXml() {
-		var element = base.ToXml();
-		element.Add(new XElement("DiseasedState", DiseasedState.Serialize()));
-		return element;
+	 public XElement ToXml(XElement baseElement) {
+		 baseElement.Add(new XElement("DiseasedState", DiseasedState.Serialize())); 
+		 return baseElement;
 	}
 }

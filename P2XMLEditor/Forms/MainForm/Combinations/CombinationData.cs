@@ -98,7 +98,7 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 public sealed class CombinationGroup : ICombinationPart {
     private int? _probability = 100;
     
-    public List<CombinationEntry> Items { get; init; } = new();
+    public List<CombinationEntry> Items { get; init; } = [];
     public bool IsCollapsed { get; set; } = true;
     
     public int? Probability {
