@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum SampleType {
 	[SerializationData("IModel")] IModel,
 	[SerializationData("IBehaviorObject")] IBehaviorObject,

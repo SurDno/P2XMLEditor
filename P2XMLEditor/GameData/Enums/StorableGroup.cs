@@ -1,0 +1,55 @@
+using System.ComponentModel;
+using P2XMLEditor.Attributes;
+
+namespace P2XMLEditor.GameData.Enums;
+
+[TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
+public enum StorableGroup {
+    [SerializationData("None")] None,
+    [SerializationData("Weapons_Primary")] WeaponsPrimary,
+    [SerializationData("Clothes_Ammo")] ClothesAmmo,
+    [SerializationData("Autopsy_Instrument_Head")] AutopsyInstrumentHead,
+    [SerializationData("Clothes_Head")] ClothesHead,
+    [SerializationData("Clothes_Arms")] ClothesArms,
+    [SerializationData("Clothes_Body")] ClothesBody,
+    [SerializationData("Clothes_Feet")] ClothesFeet,
+    [SerializationData("Usable")] Usable,
+    [SerializationData("Quest")] Quest,
+    [SerializationData("Weapons_Secondary")] WeaponsSecondary,
+    [SerializationData("Autopsy_Instrument_Chest")] AutopsyInstrumentChest,
+    [SerializationData("Autopsy_Instrument_Stomach")] AutopsyInstrumentStomach,
+    [SerializationData("Loot_Instrument_Lockpick")] LootInstrumentLockpick,
+    [SerializationData("Autopsy_Head")] AutopsyHead,
+    [SerializationData("Autopsy_Chest")] AutopsyChest,
+    [SerializationData("Autopsy_Stomach")] AutopsyStomach,
+    [SerializationData("Craft_Grass")] CraftGrass,
+    [SerializationData("Craft_Liquid")] CraftLiquid,
+    [SerializationData("Craft_Mixture")] CraftMixture,
+    [SerializationData("Craft_Organ")] CraftOrgan,
+    [SerializationData("Craft_Medicament")] CraftMedicament,
+    [SerializationData("Lockpick_Container")] LockpickContainer,
+    [SerializationData("Lockpick_Door")] LockpickDoor,
+    [SerializationData("Weapons_Hands")] WeaponsHands,
+    [SerializationData("Autopsy_Blood")] AutopsyBlood,
+    [SerializationData("Autopsy_Instrument_Bottle")] AutopsyInstrumentBottle,
+    [SerializationData("Money")] Money,
+    [SerializationData("Disease")] Disease,
+    [SerializationData("Symptom")] Symptom,
+    [SerializationData("Key")] Key,
+    [SerializationData("Ammo_Revolver")] AmmoRevolver,
+    [SerializationData("Ammo_Rifle")] AmmoRifle,
+    [SerializationData("Ammo_Shotgun")] AmmoShotgun,
+    [SerializationData("Pharmacy_Medicament")] PharmacyMedication,
+    [SerializationData("Diagnostic")] Diagnostic,
+    [SerializationData("Antibiotic")] Antibiotic,
+    [SerializationData("Painkiller")] Painkiller,
+    [SerializationData("Fuel_Lamp")] FuelLamp,
+    [SerializationData("ImmuneBooster")] ImmuneBooster,
+    [SerializationData("Weapons_Lamp")] WeaponsLamp,
+    [SerializationData("Weapons_Npc")] WeaponsNpc,
+    [SerializationData("Chalk")] Chalk,
+    [SerializationData("Plague_Map")] PlagueMap,
+    [SerializationData("Miracle")] Miracle,
+    [SerializationData("Bottled_Liquid")] BottledLiquid
+}

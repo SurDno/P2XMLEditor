@@ -9,11 +9,11 @@ public struct StorageComponent() : ITemplateComponent {
 		public string InventoryTemplateId;
 	}
 
-	public string Tag { get; set; }
+	public string? Tag { get; set; } // actually a string
 	public List<InventoryEntry> InventoryTemplates { get; } = [];
 
 	public void LoadFromXml(XElement element) {
-		Tag = element.Element("Tag")!.Value;
+		Tag = element.Element("Tag")?.Value ?? null;
 
 		var invEl = element.Element("InventoryTemplates");
 		if (invEl != null) {
@@ -28,7 +28,8 @@ public struct StorageComponent() : ITemplateComponent {
 	}
 
 	public XElement ToXml(XElement baseElement) {
-		baseElement.Add(new XElement("Tag", Tag));
+		if (Tag != null)
+			baseElement.Add(new XElement("Tag", Tag));
 
 		var inv = new XElement("InventoryTemplates");
 		foreach (var entry in InventoryTemplates) {

@@ -1,9 +1,10 @@
 using System.ComponentModel;
 using P2XMLEditor.Attributes;
 
-namespace P2XMLEditor.GameData.Templates.Enums;
+namespace P2XMLEditor.GameData.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum ParameterName {
     [SerializationData("None")] None = 0,
     [SerializationData("Health")] Health = 1,
@@ -125,7 +126,7 @@ public enum ParameterName {
     [SerializationData("DoorDifficulty")] DoorDifficulty = 1060,
     [SerializationData("HealingSuccessfull")] HealingSuccessful = 1061,
     [SerializationData("ReputationForGifts")] ReputationForGifts = 1062,
-    [SerializationData("SayReplicsInIdle")] SayReplicsInIdle = 1063,
+    [SerializationData("SayReplicsInIdle")] SayVoicelinesInIdle = 1063,
     [SerializationData("FundEnabled")] FundEnabled = 1064,
     [SerializationData("FundFinished")] FundFinished = 1065,
     [SerializationData("FundPoints")] FundPoints = 1066,

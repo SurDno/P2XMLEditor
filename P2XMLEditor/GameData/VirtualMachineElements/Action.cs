@@ -67,7 +67,7 @@ public class Action(string id) : VmElement(id) {
             ParseListElement(element, "SourceParams"),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "LocalContext").Value,
-            ParseInt(GetRequiredElement(element, "OrderIndex"))
+            GetRequiredElement(element, "OrderIndex").ParseInt()
         );
     }
 

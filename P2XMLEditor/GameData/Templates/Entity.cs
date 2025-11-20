@@ -3,14 +3,12 @@ using P2XMLEditor.GameData.Templates.Abstract;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.GameData.Templates.InternalTypes.Components;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates;
 
-public class EntityObject : TemplateObject {
-	public override string Type => "Entity";
+public class Entity : TemplateObject, IEnableable {
 	public List<ITemplateComponent> Components { get; set; } = [];
 	public bool IsEnabled { get; set; } = true;
 	
@@ -26,8 +24,13 @@ public class EntityObject : TemplateObject {
 				var type = componentElement.Attribute("type")!.Value;
 				var component = CreateComponent(type);
 				if (component != null) {
-					component.LoadFromXml(componentElement);
-					Components.Add(component);
+					try {
+						component.LoadFromXml(componentElement);
+						Components.Add(component);
+					}
+					catch (Exception e) {
+						Logger.Log(LogLevel.Error, $"Error loading {component.GetType()} from XML: {e}");
+					}
 				} else {
 					if (!invalidComponent.TryAdd(type, 1))
 						invalidComponent[type]++;
@@ -39,6 +42,22 @@ public class EntityObject : TemplateObject {
 	}
 	
 	public static ITemplateComponent? CreateComponent(string? type) => type switch {
+		// CROWDS
+		nameof(IndoorCrowdComponent) => new IndoorCrowdComponent(),
+		nameof(OutdoorCrowdComponent) => new OutdoorCrowdComponent(),
+		
+		// INTERACTIONS
+		nameof(FastTravelComponent) => new FastTravelComponent(),
+		nameof(MarketComponent) => new MarketComponent(),
+		nameof(RepairerComponent) => new RepairerComponent(),
+		
+		// PLAYER
+		nameof(AttackerPlayerComponent) => new AttackerPlayerComponent(),
+		nameof(ControllerComponent) => new ControllerComponent(),
+		nameof(PlayerControllerComponent) => new PlayerControllerComponent(),
+		nameof(PlayerLocationComponent) => new PlayerLocationComponent(),
+		nameof(PlayerInteractableComponent) => new PlayerInteractableComponent(),
+		
 		nameof(StaticModelComponent) => new StaticModelComponent(),
 		nameof(LocationComponent) => new LocationComponent(),
 		nameof(CrowdPointsComponent) => new CrowdPointsComponent(),
@@ -57,11 +76,8 @@ public class EntityObject : TemplateObject {
 		nameof(MapItemComponent) => new MapItemComponent(),
 		nameof(StorableComponent) => new StorableComponent(),
 		nameof(MailComponent) => new MailComponent(),
-		nameof(FastTravelComponent) => new FastTravelComponent(),
-		nameof(MarketComponent) => new MarketComponent(),
 		nameof(DetectableComponent) => new DetectableComponent(),
 		nameof(TestComponent) => new TestComponent(),
-		nameof(RepairerComponent) => new RepairerComponent(),
 		nameof(RepairableComponent) => new RepairableComponent(),
 		nameof(ParentComponent) => new ParentComponent(),	
 		nameof(ContextComponent) => new ContextComponent(),
@@ -73,6 +89,19 @@ public class EntityObject : TemplateObject {
 		nameof(RegisterComponent) => new RegisterComponent(),
 		nameof(AbilitiesComponent) => new AbilitiesComponent(),
 		nameof(RegionComponent) => new RegionComponent(),
+		nameof(NpcControllerComponent) => new NpcControllerComponent(),
+		nameof(CrowdItemComponent) => new CrowdItemComponent(),
+		nameof(SpawnpointComponent) => new SpawnpointComponent(),
+		nameof(BoundCharacterComponent) => new BoundCharacterComponent(),
+		nameof(StorageComponent) => new StorageComponent(),
+		nameof(SelectorComponent) => new SelectorComponent(),
+		nameof(MessangerStationaryComponent) => new MessangerStationaryComponent(),
+		nameof(CollectControllerComponent) => new CollectControllerComponent(),
+		nameof(InventoryComponent) => new InventoryComponent(),
+		nameof(MapCustomMarkerComponent) => new MapCustomMarkerComponent(),
+		nameof(DynamicModelComponent) => new DynamicModelComponent(),
+		nameof(MessangerComponent) => new MessangerComponent(),
+		nameof(ParametersComponent) => new ParametersComponent(),
 		_ => null
 	};
 
@@ -81,7 +110,7 @@ public class EntityObject : TemplateObject {
 
 		var componentsElement = new XElement("Components");
 		foreach (var component in Components) 
-			componentsElement.Add(component.ToXml(new XElement("Item", new XAttribute("type", Type))));
+			componentsElement.Add(component.ToXml(new XElement("Item", new XAttribute("type", GetType().Name))));
 
 		element.Add(componentsElement);
 		element.Add(CreateBoolElement("IsEnabled", IsEnabled));

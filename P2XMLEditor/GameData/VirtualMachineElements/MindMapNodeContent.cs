@@ -49,7 +49,7 @@ public class MindMapNodeContent(string id) : VmElement(id) {
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             GetRequiredElement(element, "Parent").Value,
             GetRequiredElement(element, "ContentType").Value,
-            ParseInt(GetRequiredElement(element, "Number")),
+            GetRequiredElement(element, "Number").ParseInt(),
             GetRequiredElement(element, "ContentDescriptionText").Value,
             element.Element("ContentPicture")?.Value,
             GetRequiredElement(element, "ContentCondition").Value,

@@ -67,8 +67,8 @@ public class MindMapNode(string id) : VmElement(id) {
             ParseListElement(element, "NodeContent"),
             ParseListElement(element, "InputLinks"),
             ParseListElement(element, "OutputLinks"),
-            ParseFloat(GetRequiredElement(element, "GameScreenPosX")),
-            ParseFloat(GetRequiredElement(element, "GameScreenPosY"))
+            GetRequiredElement(element, "GameScreenPosX").ParseFloat(),
+            GetRequiredElement(element, "GameScreenPosY").ParseFloat()
         );
     }
     

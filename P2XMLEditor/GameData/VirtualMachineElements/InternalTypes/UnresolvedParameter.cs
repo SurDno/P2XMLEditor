@@ -1,5 +1,4 @@
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;

@@ -1,6 +1,4 @@
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Logging;
 

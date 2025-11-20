@@ -8,6 +8,11 @@ public class VirtualMachine {
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new();
 	public HashSet<string> Languages { get; } = [];
 
+
+	public VirtualMachine(int capacity) {
+		ElementsById = new Dictionary<string, VmElement>(capacity);
+	}
+	
 	public T AddElement<T>(T element, Type elementType) where T : VmElement {
 		ElementsById[element.Id] = element;
 		while (elementType != typeof(VmElement) && elementType != typeof(object)) {

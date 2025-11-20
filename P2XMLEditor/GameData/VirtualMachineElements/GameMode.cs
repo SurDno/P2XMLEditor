@@ -49,9 +49,9 @@ public class GameMode(string id) : VmElement(id), ICommonVariableParameter {
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             element.Element("IsMain")?.Let(ParseBool),
             ParseTimeSpan(GetRequiredElement(element, "StartGameTime")),
-            ParseFloat(GetRequiredElement(element, "GameTimeSpeed")),
+            GetRequiredElement(element, "GameTimeSpeed").ParseFloat(),
             ParseTimeSpan(GetRequiredElement(element, "StartSolarTime")),
-            ParseFloat(GetRequiredElement(element, "SolarTimeSpeed")),
+            GetRequiredElement(element, "SolarTimeSpeed").ParseFloat(),
             GetRequiredElement(element, "PlayerRef").Value,
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value

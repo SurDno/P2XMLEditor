@@ -4,7 +4,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.Editors;

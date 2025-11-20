@@ -23,17 +23,17 @@ public struct HerbRootsComponent() : ITemplateComponent {
             foreach (var item in templatesEl.Elements("Item")) {
                 var entry = new TemplateEntry {
                     TemplateId = item.Element("Template")!.Element("Id")!.Value,
-                    Weight = ParseInt(item.Element("Weight")!)
+                    Weight = item.Element("Weight")!.ParseInt()
                 };
                 Templates.Add(entry);
             }
         }
 
-        HerbsBudget = ParseInt(element.Element("HerbsBudget")!);
-        HerbsCountMin = ParseInt(element.Element("HerbsCountMin")!);
-        HerbsCountMax = ParseInt(element.Element("HerbsCountMax")!);
-        HerbsGrowTimeInMinutesMin = ParseInt(element.Element("HerbsGrowTimeInMinutesMin")!);
-        HerbsGrowTimeInMinutesMax = ParseInt(element.Element("HerbsGrowTimeInMinutesMax")!);
+        HerbsBudget = element.Element("HerbsBudget")!.ParseInt();
+        HerbsCountMin = element.Element("HerbsCountMin")!.ParseInt();
+        HerbsCountMax = element.Element("HerbsCountMax")!.ParseInt();
+        HerbsGrowTimeInMinutesMin = element.Element("HerbsGrowTimeInMinutesMin")!.ParseInt();
+        HerbsGrowTimeInMinutesMax = element.Element("HerbsGrowTimeInMinutesMax")!.ParseInt();
     }
 
     public XElement ToXml(XElement baseElement) {

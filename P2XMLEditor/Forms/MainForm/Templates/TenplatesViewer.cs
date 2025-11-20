@@ -36,17 +36,17 @@ public class TemplatesViewer : SplitContainer {
         _templatesTree.Nodes.Clear();
 
         var templatesByType = _templateManager.Templates
-            .GroupBy(t => t.Value.Type)
+            .GroupBy(t => t.Value.GetType())
             .ToDictionary(g => g.Key, g => g.Select(t => t.Value).ToList());
 
         foreach (var typeGroup in templatesByType) {
-            var typeNode = _templatesTree.Nodes.Add(typeGroup.Key);
+            var typeNode = _templatesTree.Nodes.Add(typeGroup.Key.Name);
 
             foreach (var template in typeGroup.Value.OrderBy(t => t.Name)) {
                 var templateNode = typeNode.Nodes.Add(template.Name);
                 templateNode.Tag = template;
 
-                if (template is not EntityObject entity) continue;
+                if (template is not Entity entity) continue;
                 foreach (var component in entity.Components) { 
                     var componentNode = templateNode.Nodes.Add(component.GetType().Name);
                     componentNode.Tag = component;

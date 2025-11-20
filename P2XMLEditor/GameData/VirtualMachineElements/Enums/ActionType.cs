@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum ActionType {
 	[SerializationData("ACTION_TYPE_NONE")] None,
 	[SerializationData("ACTION_TYPE_SET_PARAM")] SetParam,

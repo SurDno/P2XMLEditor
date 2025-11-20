@@ -27,7 +27,8 @@ public class VmEither<T1, T2, T3> where T1 : VmElement where T2 : VmElement wher
     public VmEither(VmElement element) {
         if (element is not T1 and not T2 and not T3)
             throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                $"Instead, received {element.GetType()}");
         Element = element;
     }
 
@@ -48,7 +49,8 @@ public class VmEither<T1, T2, T3, T4> where T1 : VmElement where T2 : VmElement 
     public VmEither(VmElement element) {
         if (element is not T1 and not T2 and not T3 and not T4)
             throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                $"Instead, received {element.GetType()}");
         Element = element;
     }
 
@@ -71,7 +73,8 @@ public class VmEither<T1, T2, T3, T4, T5> where T1 : VmElement where T2 : VmElem
     public VmEither(VmElement element) {
         if (element is not T1 and not T2 and not T3 and not T4 and not T5)
             throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                $"Instead, received {element.GetType()}");
         Element = element;
     }
 
@@ -96,7 +99,8 @@ public class VmEither<T1, T2, T3, T4, T5, T6> where T1 : VmElement where T2 : Vm
     public VmEither(VmElement element) {
         if (element is not T1 and not T2 and not T3 and not T4 and not T5 and not T6)
             throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                $"Instead, received {element.GetType()}");
         Element = element;
     }
 
@@ -123,7 +127,8 @@ public class VmEither<T1, T2, T3, T4, T5, T6, T7> where T1 : VmElement where T2 
     public VmEither(VmElement element) {
         if (element is not T1 and not T2 and not T3 and not T4 and not T5 and not T6 and not T7)
             throw new ArgumentException(
-                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}");
+                $"Element must be of type {string.Join(", ", GetType().GetGenericArguments().Select(t => t.Name))}." +
+                $"Instead, received {element.GetType()}");
         Element = element;
     }
 

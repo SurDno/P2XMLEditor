@@ -71,7 +71,7 @@ public class ActionLine(string id) : VmElement(id) {
             loopInfo,
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "LocalContext").Value,
-            ParseInt(GetRequiredElement(element, "OrderIndex"))
+            GetRequiredElement(element, "OrderIndex").ParseInt()
         );
     }
 

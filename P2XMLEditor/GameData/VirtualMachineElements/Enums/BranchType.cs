@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum BranchType {
 	[SerializationData("STATE_TYPE_CASE_BRANCH")] Case,
 	[SerializationData("STATE_TYPE_FLIPFLOP_BRANCH")] FlipFlop,
@@ -12,7 +13,7 @@ public enum BranchType {
 	[SerializationData("STATE_TYPE_MESSAGE_CAST_BRANCH")] MessageCast,
 }
 
-/* TODO: Figure out if following types are needed (never used):
+/* TODO: Figure out if following types are needed (never used in default VMs):
 	[SerializationData("STATE_TYPE_STATE")] STATE_TYPE_STATE,
 	[SerializationData("STATE_TYPE_SPEECH")] STATE_TYPE_SPEECH,
 	[SerializationData("STATE_TYPE_GRAPH")] STATE_TYPE_GRAPH

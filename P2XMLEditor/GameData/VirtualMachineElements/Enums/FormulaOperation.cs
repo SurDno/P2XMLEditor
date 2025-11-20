@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum FormulaOperation {
 	[SerializationData("FORMULA_OP_NONE")] None,
 	[SerializationData("FORMULA_OP_PLUS")] Plus,

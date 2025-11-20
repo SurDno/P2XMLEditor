@@ -60,7 +60,7 @@ public class Reply(string id) : VmElement(id) {
             element.Element("Default")?.Let(ParseBool),
             element.Element("EnableCondition")?.Value,
             element.Element("ActionLine")?.Value, 
-            ParseInt(GetRequiredElement(element, "OrderIndex")),
+            GetRequiredElement(element, "OrderIndex").ParseInt(),
             GetRequiredElement(element, "Parent").Value
         );
     }

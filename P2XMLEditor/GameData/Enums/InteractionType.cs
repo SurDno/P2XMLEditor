@@ -1,10 +1,11 @@
 using System.ComponentModel;
 using P2XMLEditor.Attributes;
 
-namespace P2XMLEditor.GameData.Templates.Enums;
+namespace P2XMLEditor.GameData.Enums;
 
-[TypeConverter(typeof(EnumConverter))]
-  public enum InteractType {
+[TypeConverter(typeof(EnumConverter))] 
+[SerializationEnum]
+public enum InteractType {
     [SerializationData("None")] None,
     [SerializationData("Interact")] Interact,
     [SerializationData("Indoor")] Indoor,
@@ -48,4 +49,4 @@ namespace P2XMLEditor.GameData.Templates.Enums;
     [SerializationData("TheaterAfisha")] TheaterAfisha,
     [SerializationData("HealEarthExausted")] HealEarthExhausted,
     [SerializationData("CraftTable")] CraftTable,
-  }
+}

@@ -39,7 +39,7 @@ public class FunctionalComponent(string id) : VmElement(id) {
             element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
             ParseListElement(element, "Events"),
             element.Element("Main")?.Let(ParseBool),
-            ParseLong(GetRequiredElement(element, "LoadPriority")),
+            GetRequiredElement(element, "LoadPriority").ParseLong(),
             GetRequiredElement(element, "Name").Value,
             GetRequiredElement(element, "Parent").Value
         );

@@ -4,7 +4,6 @@ using System.Xml.Linq;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 

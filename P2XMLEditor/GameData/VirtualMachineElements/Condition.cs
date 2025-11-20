@@ -39,7 +39,7 @@ public class Condition(string id) : VmElement(id) {
 			ParseListElement(element, "Predicates"),
 			GetRequiredElement(element, "Operation").Value,
 			GetRequiredElement(element, "Name").Value,
-			ParseInt(GetRequiredElement(element, "OrderIndex"))
+			GetRequiredElement(element, "OrderIndex").ParseInt()
 		);
 	}
 

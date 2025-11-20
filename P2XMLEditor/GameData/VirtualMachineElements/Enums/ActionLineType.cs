@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum ActionLineType {
 	[SerializationData("ACTION_LINE_TYPE_COMMON")] Common,
 	[SerializationData("ACTION_LINE_TYPE_LOOP")] Loop,

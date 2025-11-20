@@ -3,7 +3,6 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
-using P2XMLEditor.Logging;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -114,17 +113,17 @@ public abstract class ParameterHolder(string id) : VmElement(id), ICommonVariabl
             vm.RemoveElement(kvp.Value);
         foreach (var kvp in CustomParams.ToList()) 
             vm.RemoveElement(kvp.Value);
-        foreach (var ev in Events.ToList())
+        foreach (var ev in Events?.ToList() ?? [])
             vm.RemoveElement(ev);
         foreach (var ph in vm.GetElementsByType<ParameterHolder>()) {
             if (ph.ChildObjects != null && ph.ChildObjects.Contains(this))
                 ph.ChildObjects.Remove(this);
         }
         
-        // ??? Why do we need to do this? TODO: figure out why it doesn't work without this workaround
-        foreach (var gs in vm.GetElementsByType<GameString>().Where(g => g.Parent.Element == this).ToList()) {
-            Logger.Log(LogLevel.Warning, $"A string with ID {gs.Id} did not remove after parameter removal. Please check!!!");
+        // There are cases of one-sided ParameterHolder-GameString relations.
+        // Those are all outdated strings and aren't actually used by the game, but will crash P2XMLE on later reloads.
+        // So they have to be forcibly removed at this step (but can theoretically be cleaned up earlier).
+        foreach (var gs in vm.GetElementsByType<GameString>().Where(g => g.Parent.Element == this).ToList())
             vm.RemoveElement(gs);
-        }
     }
 }

@@ -1,7 +1,10 @@
+using System.ComponentModel;
 using P2XMLEditor.Attributes;
 
-namespace P2XMLEditor.GameData.Templates.Enums;
+namespace P2XMLEditor.GameData.Enums;
 
+[TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum GameActionType {
     [SerializationData("None")] None,
     [SerializationData("Loot")] Loot,
@@ -12,7 +15,7 @@ public enum GameActionType {
     [SerializationData("Cancel")] Cancel,
     [SerializationData("MainMenu")] MainMenu,
     [SerializationData("Unholster")] Unholster,
-    [SerializationData("__Vizir__NOT_USING")] Vizir,
+    [SerializationData("__Vizir__NOT_USING")] Plaguefinder,
     [SerializationData("Flashlight")] Flashlight,
     [SerializationData("Fire")] Fire,
     [SerializationData("Block")] Block,

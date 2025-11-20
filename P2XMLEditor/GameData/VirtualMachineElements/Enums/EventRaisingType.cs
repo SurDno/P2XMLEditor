@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum EventRaisingType {
 	[SerializationData("EVENT_RAISING_TYPE_BY_ENGINE")] ByEngine,
 	[SerializationData("EVENT_RAISING_TYPE_TIME")] Time,

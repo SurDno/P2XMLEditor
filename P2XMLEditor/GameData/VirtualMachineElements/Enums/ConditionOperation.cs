@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum ConditionOperation {
 	[SerializationData("COP_ROOT")] Root,
 	[SerializationData("COP_OR")] Or,

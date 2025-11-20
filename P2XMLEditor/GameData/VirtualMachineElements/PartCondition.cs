@@ -48,7 +48,7 @@ public class PartCondition(string id) : VmElement(id) {
             GetRequiredElement(element, "ConditionType").Value,
             element.Element("FirstExpression")?.Value,
             element.Element("SecondExpression")?.Value,
-            ParseInt(GetRequiredElement(element, "OrderIndex"))
+            GetRequiredElement(element, "OrderIndex").ParseInt()
         );
     }
 

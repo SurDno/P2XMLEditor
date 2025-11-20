@@ -5,7 +5,6 @@ using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm;

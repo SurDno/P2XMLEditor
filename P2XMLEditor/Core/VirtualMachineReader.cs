@@ -7,9 +7,39 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
 
-public class VirtualMachineReader(string vmPath) {
-    private readonly VirtualMachine _virtualMachine = new();
-    private readonly Dictionary<string, VmElement.RawData> _rawData = new();
+public class VirtualMachineReader {
+    private readonly string _vmPath;
+    private readonly VirtualMachine _virtualMachine;
+    private readonly Dictionary<string, VmElement.RawData> _rawData;
+
+    public VirtualMachineReader(string vmPath) {
+        _vmPath = vmPath;
+        var dataCapacity = ReadDataCapacity(vmPath);
+        _virtualMachine = new VirtualMachine(dataCapacity);
+        _rawData = new Dictionary<string, VmElement.RawData>(dataCapacity);
+    }
+
+    private static int ReadDataCapacity(string vmPath) {
+        const int fallbackCapacity = 131072;
+        
+        var versionPath = Path.Combine(vmPath, "Version.xml");
+        if (!File.Exists(versionPath)) {
+            Logger.Log(LogLevel.Error, $"No Version.xml is found, cannot infer data capacity! Loading the " +
+                                       $"virtual machine will be significantly slower, and it can't be loaded by the " +
+                                       $"game. Please ensure a valid Version.xml file exists in the VM folder.");
+            return fallbackCapacity;
+        }
+
+        if (!int.TryParse(XDocument.Load(versionPath).Root?.Element("DataCapacity")?.Value, out var val)) {
+            Logger.Log(LogLevel.Error, $"No DataCapacity tag in Version.xml or the value is invalid! Loading the " +
+                                       $"virtual machine will be significantly slower, and it can't be loaded by the " +
+                                       $"game. Please ensure a valid Version.xml file exists in the VM folder.");
+            return fallbackCapacity;
+        }
+
+        Logger.Log(LogLevel.Info, $"DataCapacity inferred from Version.xml: {val}");
+        return val;
+    }
 
     private static readonly (Type Type, string FileName)[] TypeMappings = [
         (typeof(Action), "Action.xml"),
@@ -51,10 +81,6 @@ public class VirtualMachineReader(string vmPath) {
         CreateMinimalInstances();
         FillFromRawData();
         LoadLocalizations();
-        /*
-        foreach (var el in _virtualMachine.ElementsById.Where(el => el.Value.IsOrphaned()))
-            Logger.Log(LogLevel.Warning, $"Orphaned {el.Value.GetType().Name} with ID {el.Value.Id}.");
-        */
          
         return _virtualMachine;
     }
@@ -62,11 +88,11 @@ public class VirtualMachineReader(string vmPath) {
     [PerformanceLogHook]
     private void LoadAllRawData() {
         foreach (var (type, fileName) in TypeMappings) {
-            var filePath = Path.Combine(vmPath, fileName);
+            var filePath = Path.Combine(_vmPath, fileName);
             if (!File.Exists(filePath)) continue;
 
             var minimalInstance = CreateMinimalInstance(type, null!);
-            foreach (var element in XDocument.Load(filePath).Root!.Elements("Item")) {
+            foreach (var element in XDocument.Load(filePath).Root!.Elements()) {
                 try {
                     var rawData = minimalInstance.GetRawData(element);
                     rawData.SourceType = type;
@@ -80,15 +106,27 @@ public class VirtualMachineReader(string vmPath) {
 
     [PerformanceLogHook]
     private void CreateMinimalInstances() {
+        var typeChains = ComputeTypeChains();
+        
+        foreach (var raw in _rawData.Values) {
+            var element = CreateMinimalInstance(raw.SourceType, raw.Id);
+            _virtualMachine.ElementsById[element.Id] = element;
+
+            foreach (var t in typeChains[raw.SourceType])
+                _virtualMachine.ElementsByType[t].Add(element);
+        }
+    }
+
+    private Dictionary<Type, Type[]> ComputeTypeChains() {
         var typeChains = new Dictionary<Type, Type[]>();
-        foreach (var t in ElementCreators.Keys) {
+        foreach (var (type, _) in TypeMappings) {
             var chain = new List<Type>();
-            var cur = t;
+            var cur = type;
             while (cur != typeof(VmElement) && cur != typeof(object)) {
                 chain.Add(cur);
                 cur = cur.BaseType!;
             }
-            typeChains[t] = chain.ToArray();
+            typeChains[type] = chain.ToArray();
         }
 
         foreach (var chain in typeChains.Values)
@@ -96,16 +134,8 @@ public class VirtualMachineReader(string vmPath) {
                 if (!_virtualMachine.ElementsByType.ContainsKey(t))
                     _virtualMachine.ElementsByType[t] = new List<VmElement>();
 
-        foreach (var raw in _rawData.Values) {
-            var element = ElementCreators[raw.SourceType](raw.Id);
-            _virtualMachine.ElementsById[element.Id] = element;
-
-            var chain = typeChains[raw.SourceType];
-            for (int i = 0; i < chain.Length; i++)
-                _virtualMachine.ElementsByType[chain[i]].Add(element);
-        }
+        return typeChains;
     }
-
 
     [PerformanceLogHook]
     private void FillFromRawData() {
@@ -115,7 +145,7 @@ public class VirtualMachineReader(string vmPath) {
 
     [PerformanceLogHook]
     private void LoadLocalizations() {
-        var localizationPath = Path.Combine(vmPath, "Localizations");
+        var localizationPath = Path.Combine(_vmPath, "Localizations");
         if (!Directory.Exists(localizationPath)) return;
 
         foreach (var file in Directory.GetFiles(localizationPath, "*.txt")) {
@@ -133,46 +163,42 @@ public class VirtualMachineReader(string vmPath) {
             }
         }
     }
-
-    private static readonly Dictionary<Type, Func<string, VmElement>> ElementCreators = new() {
-        { typeof(Action), id => new Action(id) },
-        { typeof(ActionLine), id => new ActionLine(id) },
-        { typeof(Blueprint), id => new Blueprint(id) },
-        { typeof(Branch), id => new Branch(id) },
-        { typeof(Character), id => new Character(id) },
-        { typeof(Condition), id => new Condition(id) },
-        { typeof(CustomType), id => new CustomType(id) },
-        { typeof(EntryPoint), id => new EntryPoint(id) },
-        { typeof(Event), id => new Event(id) },
-        { typeof(Expression), id => new Expression(id) },
-        { typeof(FunctionalComponent), id => new FunctionalComponent(id) },
-        { typeof(GameMode), id => new GameMode(id) },
-        { typeof(GameRoot), id => new GameRoot(id) },
-        { typeof(GameString), id => new GameString(id) },
-        { typeof(Geom), id => new Geom(id) },
-        { typeof(Graph), id => new Graph(id) },
-        { typeof(GraphLink), id => new GraphLink(id) },
-        { typeof(Item), id => new Item(id) },
-        { typeof(MindMap), id => new MindMap(id) },
-        { typeof(MindMapLink), id => new MindMapLink(id) },
-        { typeof(MindMapNode), id => new MindMapNode(id) },
-        { typeof(MindMapNodeContent), id => new MindMapNodeContent(id) },
-        { typeof(Other), id => new Other(id) },
-        { typeof(Parameter), id => new Parameter(id) },
-        { typeof(PartCondition), id => new PartCondition(id) },
-        { typeof(Quest), id => new Quest(id) },
-        { typeof(Reply), id => new Reply(id) },
-        { typeof(Sample), id => new Sample(id) },
-        { typeof(Scene), id => new Scene(id) },
-        { typeof(Speech), id => new Speech(id) },
-        { typeof(State), id => new State(id) },
-        { typeof(Talking), id => new Talking(id) }
-    };
-
+    
     private static VmElement CreateMinimalInstance(Type type, string id) {
-        if (!ElementCreators.TryGetValue(type, out var creator))
-            throw new ArgumentException($"Unsupported type: {type?.Name}");
-
-        return creator(id);
+        return type switch {
+            not null when type == typeof(Action) => new Action(id),
+            not null when type == typeof(ActionLine) => new ActionLine(id),
+            not null when type == typeof(Blueprint) => new Blueprint(id),
+            not null when type == typeof(Branch) => new Branch(id),
+            not null when type == typeof(Character) => new Character(id),
+            not null when type == typeof(Condition) => new Condition(id),
+            not null when type == typeof(CustomType) => new CustomType(id),
+            not null when type == typeof(EntryPoint) => new EntryPoint(id),
+            not null when type == typeof(Event) => new Event(id),
+            not null when type == typeof(Expression) => new Expression(id),
+            not null when type == typeof(FunctionalComponent) => new FunctionalComponent(id),
+            not null when type == typeof(GameMode) => new GameMode(id),
+            not null when type == typeof(GameRoot) => new GameRoot(id),
+            not null when type == typeof(GameString) => new GameString(id),
+            not null when type == typeof(Geom) => new Geom(id),
+            not null when type == typeof(Graph) => new Graph(id),
+            not null when type == typeof(GraphLink) => new GraphLink(id),
+            not null when type == typeof(Item) => new Item(id),
+            not null when type == typeof(MindMap) => new MindMap(id),
+            not null when type == typeof(MindMapLink) => new MindMapLink(id),
+            not null when type == typeof(MindMapNode) => new MindMapNode(id),
+            not null when type == typeof(MindMapNodeContent) => new MindMapNodeContent(id),
+            not null when type == typeof(Other) => new Other(id),
+            not null when type == typeof(Parameter) => new Parameter(id),
+            not null when type == typeof(PartCondition) => new PartCondition(id),
+            not null when type == typeof(Quest) => new Quest(id),
+            not null when type == typeof(Reply) => new Reply(id),
+            not null when type == typeof(Sample) => new Sample(id),
+            not null when type == typeof(Scene) => new Scene(id),
+            not null when type == typeof(Speech) => new Speech(id),
+            not null when type == typeof(State) => new State(id),
+            not null when type == typeof(Talking) => new Talking(id),
+            _ => throw new ArgumentException($"Unsupported type: {type?.Name}")
+        };
     }
 }

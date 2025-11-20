@@ -1,18 +1,18 @@
 using System.ComponentModel;
 using P2XMLEditor.Attributes;
 
-namespace P2XMLEditor.GameData.Templates.Enums;
+namespace P2XMLEditor.GameData.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
-public enum BuildingType
-{
+[SerializationEnum]
+public enum BuildingType {
 	[SerializationData("None")] None,
 	[SerializationData("Government")] Government,
 	[SerializationData("Theater")] Theater,
 	[SerializationData("Georgy")] Georgy,
 	[SerializationData("Maria")] Maria,
 	[SerializationData("Victor")] Victor,
-	[SerializationData("Eva")] Eva,
+	[SerializationData("Eva")] Slough,
 	[SerializationData("Julia")] Julia,
 	[SerializationData("Young_Vlad")] YoungVlad,
 	[SerializationData("Kapella")] Capella,
@@ -24,7 +24,7 @@ public enum BuildingType
 	[SerializationData("Saburov")] Saburov,
 	[SerializationData("Katerina")] Katerina,
 	[SerializationData("Laska")] Laska,
-	[SerializationData("Ospina")] Aspity,
+	[SerializationData("Ospina")] AspityHospice,
 	[SerializationData("Rubin")] Rubin,
 	[SerializationData("Anna")] Anna,
 	[SerializationData("Haruspex")] Haruspex,

@@ -1,4 +1,5 @@
 using System.Xml.Linq;
+using P2XMLEditor.GameData.Types;
 
 namespace P2XMLEditor.Helper;
 
@@ -11,6 +12,8 @@ public static class XmlParsingHelper {
         string.IsNullOrEmpty(value) ? new(name) : new(name, value);
 
     public static XElement CreateBoolElement(string name, bool value) => new(name, value ? "True" : "False");
+    
+    public static XElement CreateVector3Element(string name, Vector3 vec) => new(name, $"{vec.X}, {vec.Y}, {vec.Z}");
 
     public static XElement? CreateListElement(string name, IEnumerable<string>? items) {
         if (items?.Any() != true) return null;
@@ -30,12 +33,19 @@ public static class XmlParsingHelper {
     public static bool ParseBool(XElement element) => 
         element.Value.Equals("True", StringComparison.OrdinalIgnoreCase);
     
-    public static int ParseInt(XElement element) => int.Parse(element.Value);
-    public static float ParseFloat(XElement element) => float.Parse(element.Value);
-    public static long ParseLong(XElement element) => long.Parse(element.Value);
-    public static TimeSpan ParseTimeSpan(XElement element) {
-        var parts = element.Value.Split(':').Select(int.Parse).ToArray();
-        return new(parts[0], parts[1], parts[2], parts[3]);
+    public static int ParseInt(this XElement element) => int.Parse(element.Value);
+    public static float ParseFloat(this XElement element) => float.Parse(element.Value);
+    public static long ParseLong(this XElement element) => long.Parse(element.Value);
+    public static Vector3 ParseVector3(this XElement element) {
+        var parts = element.Value.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return new Vector3(float.Parse(parts[0]), float.Parse(parts[1]), float.Parse(parts[2]));
+    }
+
+    public static TimeSpan ParseTimeSpan(XElement element) => ParseTimeSpan(element.Value);
+    public static TimeSpan ParseTimeSpan(string timeSpanAsText) {
+        var parts = timeSpanAsText.Split(':');
+        var tail = TimeSpan.Parse("0:0:" + parts[2] + ":" + parts[3]);
+        return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), 0, 0) + tail;
     }
 
     public static List<string> ParseListElement(XElement? parent, string elementName) =>

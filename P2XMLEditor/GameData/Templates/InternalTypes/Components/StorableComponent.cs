@@ -1,5 +1,5 @@
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.Enums;
+using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
@@ -17,14 +17,14 @@ public struct StorableComponent() : ITemplateComponent {
 
     public struct DurabilityTooltip {
         public bool IsEnabled;
-        public StorableTooltipName Name;
+        public TooltipName Name;
         public ParameterName Parameter;
         public bool IsFood;
     }
 
     public struct SimpleTooltip {
         public bool IsEnabled;
-        public StorableTooltipName Name;
+        public TooltipName Name;
         public string Value;
         public string Color;
     }
@@ -48,7 +48,7 @@ public struct StorableComponent() : ITemplateComponent {
                 if (type == "StorableTooltipItemDurability") {
                     var tt = new DurabilityTooltip {
                         IsEnabled = ParseBool(item.Element("IsEnabled")),
-                        Name = item.Element("Name")!.Value.Deserialize<StorableTooltipName>(),
+                        Name = item.Element("Name")!.Value.Deserialize<TooltipName>(),
                         Parameter = item.Element("Parameter")!.Value.Deserialize<ParameterName>(),
                         IsFood = ParseBool(item.Element("IsFood"))
                     };
@@ -58,7 +58,7 @@ public struct StorableComponent() : ITemplateComponent {
                     var info = item.Element("Info")!;
                     var tt = new SimpleTooltip {
                         IsEnabled = ParseBool(item.Element("IsEnabled")),
-                        Name = info.Element("Name")!.Value.Deserialize<StorableTooltipName>(),
+                        Name = info.Element("Name")!.Value.Deserialize<TooltipName>(),
                         Value = info.Element("Value")!.Value,
                         Color = info.Element("Color")!.Value
                     };

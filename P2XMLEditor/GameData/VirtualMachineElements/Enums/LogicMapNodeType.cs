@@ -4,6 +4,7 @@ using P2XMLEditor.Attributes;
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 [TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum LogicMapNodeType {
 	[SerializationData("LM_NODE_TYPE_INITIAL")] Initial,
 	[SerializationData("LM_NODE_TYPE_COMMON")] Common,

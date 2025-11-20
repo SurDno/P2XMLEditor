@@ -1,12 +1,12 @@
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.Enums;
+using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct InteractableComponent() : ITemplateComponent {
+public struct InteractableComponent() : ITemplateComponent, IEnableable {
 	public struct InteractItem {
 		public InteractType Type;
 		public string? BlueprintId;
