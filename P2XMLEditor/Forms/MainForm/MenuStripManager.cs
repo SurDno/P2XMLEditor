@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
@@ -20,13 +21,14 @@ public class MenuStripManager {
        _mainForm.MainMenuStrip = _menuStrip;
    }
 
+   [SuppressMessage("ReSharper", "UseCollectionExpression")]
    private void InitializeMenuStrip() {
        var fileMenu = new ToolStripMenuItem("File");
        var loadVmMenuItem = new ToolStripMenuItem("Load another virtual machine...");
        loadVmMenuItem.Click += LoadVmMenuItem_Click;
        var saveVmMenuItem = new ToolStripMenuItem("Save virtual machine...");
        saveVmMenuItem.Click += SaveVmMenuItem_Click;
-       fileMenu.DropDownItems.AddRange([loadVmMenuItem, saveVmMenuItem]);
+       fileMenu.DropDownItems.AddRange(new ToolStripItem[] { loadVmMenuItem, saveVmMenuItem });
 
        _menuStrip.Items.Add(fileMenu);
        var allTypes = typeof(Suggestion).Assembly.GetTypes().Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract).ToList();

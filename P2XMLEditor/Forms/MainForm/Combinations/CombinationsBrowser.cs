@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -114,6 +115,7 @@ public class CombinationsBrowser : Panel {
         LoadCombinations();
     }
 
+    [SuppressMessage("ReSharper", "UseCollectionExpression")]
     private void SetupContextMenu() {
         _contextMenu = new ContextMenuStrip();
         var editItem = new ToolStripMenuItem("Edit");
@@ -122,6 +124,6 @@ public class CombinationsBrowser : Panel {
         editItem.Click += (_, _) => EditSelectedCombination();
         deleteItem.Click += (_, _) => DeleteSelectedCombination();
 
-        _contextMenu.Items.AddRange([editItem, deleteItem]);
+        _contextMenu.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
     }
 }
