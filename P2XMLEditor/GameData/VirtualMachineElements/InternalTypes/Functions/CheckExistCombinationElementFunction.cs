@@ -25,8 +25,8 @@ public class CheckExistCombinationElementFunction : VmFunction {
 		if (parts.Length != 2)
 			throw new ArgumentException($"Invalid parameter format: {parameters[0]}");
            
-		root = vm.GetElement<GameRoot>(parts[0]);
-		item = vm.GetElement<Item>(parts[1]);
+		root = vm.GetElement<GameRoot>(ulong.Parse(parts[0]));
+		item = vm.GetElement<Item>(ulong.Parse(parts[1]));
 	}
    
 	public override List<string> GetParamStrings() => [$"{root.Id}%{item.Id}"];

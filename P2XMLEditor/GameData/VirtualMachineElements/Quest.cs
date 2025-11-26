@@ -1,35 +1,39 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
+using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Quest(string id) : ParameterHolder(id) {
+public class Quest(ulong id) : ParameterHolder(id), IFiller<RawQuestData> {
     private static readonly HashSet<string> BaseQuestElements = ["StartEvent"];
     protected override HashSet<string> KnownElements => BaseQuestElements.Concat(base.KnownElements).ToHashSet();
     
     public Event? StartEvent { get; set; }
+    
+    public void FillFromRawData(RawQuestData data, VirtualMachine vm) {
+        Static = data.Static;
+        FunctionalComponents = data.FunctionalComponentIds.Select(vm.GetElement<FunctionalComponent>).ToList();
+        EventGraph = vm.GetElement<Graph>(data.EventGraphId);
+        StandartParams = data.StandartParamIds.ToDictionary(kvp => kvp.Key, kvp => vm.GetElement<Parameter>(kvp.Value));
+        CustomParams = data.CustomParamIds.ToDictionary(kvp => kvp.Key, kvp => vm.GetElement<Parameter>(kvp.Value));
+        GameTimeContext = data.GameTimeContext;
+        Name = data.Name;
+        Parent = vm.GetElement<ParameterHolder>(data.ParentId);
+        InheritanceInfo = data.InheritanceInfo ?? [];
+        Events = data.EventIds != null ? data.EventIds.Select(vm.GetElement<Event>).ToList() : [];
+        ChildObjects = data.ChildObjectIds != null 
+            ? data.ChildObjectIds.Select(vm.GetElement<ParameterHolder>).ToList() : [];
 
-    private record RawQuestData(string Id, bool? Static, List<string> FunctionalComponentIds, string? EventGraphId,
-        Dictionary<string, string> StandartParamIds, Dictionary<string, string> CustomParamIds, string? GameTimeContext,
-        string Name, string ParentId, List<string>? InheritanceInfo, List<string>? EventIds, 
-        List<string>? ChildObjectIds, string? StartEventId) : RawParameterHolderData(Id, Static, FunctionalComponentIds, 
-        EventGraphId, StandartParamIds, CustomParamIds, GameTimeContext, Name, ParentId, InheritanceInfo, EventIds, 
-        ChildObjectIds);
-
-    protected override RawData CreateRawData(XElement element) {
-        var baseData = (RawParameterHolderData)base.CreateRawData(element);
-        
-        return new RawQuestData(
-            baseData.Id, baseData.Static, baseData.FunctionalComponentIds, baseData.EventGraphId,
-            baseData.StandartParamIds, baseData.CustomParamIds, baseData.GameTimeContext,
-            baseData.Name, baseData.ParentId, baseData.InheritanceInfo, baseData.EventIds,
-            baseData.ChildObjectIds, element.Element("StartEvent")?.Value
-        );
+        StartEvent = data.StartEventId.HasValue ? vm.GetElement<Event>(data.StartEventId.Value) : null;
     }
-
+    
     public override XElement ToXml(WriterSettings settings) {
         var element = base.ToXml(settings);
         if (StartEvent != null)
@@ -37,12 +41,4 @@ public class Quest(string id) : ParameterHolder(id) {
         return element;
     }
 
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawQuestData data)
-            throw new ArgumentException($"Expected RawQuestData but got {rawData.GetType()}");
-
-        base.FillFromRawData(data, vm);
-        StartEvent = data.StartEventId != null ?
-            vm.GetElement<Event>(data.StartEventId) : null;
-    }
 }

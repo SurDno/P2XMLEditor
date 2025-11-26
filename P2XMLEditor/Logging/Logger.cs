@@ -41,7 +41,6 @@ public static class Logger {
                 var installLogPath = ExeLogFilePath;
                 if (installLogPath == null) return;
                 HandleInstallPathChange(installLogPath);
-                File.AppendAllText(installLogPath, logMessage + Environment.NewLine);
             }
         } catch (Exception ex) {
             ErrorHandler.Handle($"Error writing to log file: {ex.Message}", ex, skipLogging: true);

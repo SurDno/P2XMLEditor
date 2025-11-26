@@ -102,7 +102,7 @@ public class FSMPropertiesPanel : Panel {
         } else if (_selectedElement is Talking talking) {
             AddProperty("Name", talking.Name, value => talking.Name = value);
         }
-        AddProperty("ID", _selectedElement.Id, null); 
+        AddProperty("ID", _selectedElement.Id.ToString(), null); 
         
         switch (_selectedElement) {
             case Graph graph:

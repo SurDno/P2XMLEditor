@@ -1,23 +1,25 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class EntryPoint(string id) : VmElement(id) {
+public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 	protected override HashSet<string> KnownElements { get; } = ["Name", "ActionLine", "Parent"];
 
 	public string Name { get; set; }
 	public ActionLine? ActionLine { get; set; }
 	public VmEither<State, Graph, Branch, Speech, Talking> Parent { get; set; }
 
-	private record RawEntryPointData(string Id, string Name, string? ActionLineId, string ParentId) : RawData(Id);
-	
 	public override XElement ToXml(WriterSettings settings) {
 		var element = CreateBaseElement(Id);
 		element.Add(new XElement("Name", Name));
@@ -27,27 +29,16 @@ public class EntryPoint(string id) : VmElement(id) {
 		return element;
 	}
 
-	protected override RawData CreateRawData(XElement element) {
-		return new RawEntryPointData(
-			element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-			GetRequiredElement(element, "Name").Value,
-			element.Element("ActionLine")?.Value,
-			GetRequiredElement(element, "Parent").Value
-		);
-	}
-
-	public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-		if (rawData is not RawEntryPointData data)
-			throw new ArgumentException($"Expected RawEntryPointData but got {rawData.GetType()}");
-
+	public void FillFromRawData(RawEntryPointData data, VirtualMachine vm) {
 		Name = data.Name;
-		ActionLine = data.ActionLineId != null ? vm.GetElement<ActionLine>(data.ActionLineId) : null;
+		ActionLine = data.ActionLineId.HasValue ? 
+			vm.GetElement<ActionLine>(data.ActionLineId.Value) : null;
 		Parent = vm.GetElement<State, Graph, Branch, Speech, Talking>(data.ParentId);
 	}
 	
-	protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+	public static VmElement New(VirtualMachine vm, ulong id, VmElement parent) => throw new NotImplementedException();
 	
-	public override void OnDestroy(VirtualMachine vm) {
+	public void OnDestroy(VirtualMachine vm) {
 		if (ActionLine != null)
 			vm.RemoveElement(ActionLine);
 	}

@@ -8,6 +8,7 @@
         <UseWindowsForms>true</UseWindowsForms>
         <ImplicitUsings>enable</ImplicitUsings>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Fody" Version="6.9.3">

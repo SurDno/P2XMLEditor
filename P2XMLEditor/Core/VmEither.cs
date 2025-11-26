@@ -13,7 +13,7 @@ public class VmEither<T1, T2> where T1 : VmElement where T2 : VmElement {
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2>(T1 value) => new(value);
@@ -32,7 +32,7 @@ public class VmEither<T1, T2, T3> where T1 : VmElement where T2 : VmElement wher
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2, T3>(T1 value) => new(value);
@@ -54,7 +54,7 @@ public class VmEither<T1, T2, T3, T4> where T1 : VmElement where T2 : VmElement 
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2, T3, T4>(T1 value) => new(value);
@@ -78,7 +78,7 @@ public class VmEither<T1, T2, T3, T4, T5> where T1 : VmElement where T2 : VmElem
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5>(T1 value) => new(value);
@@ -104,7 +104,7 @@ public class VmEither<T1, T2, T3, T4, T5, T6> where T1 : VmElement where T2 : Vm
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6>(T1 value) => new(value);
@@ -132,7 +132,7 @@ public class VmEither<T1, T2, T3, T4, T5, T6, T7> where T1 : VmElement where T2 
         Element = element;
     }
 
-    public string Id => Element.Id;
+    public ulong Id => Element.Id;
     public VmElement Element { get; }
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6, T7>(T1 value) => new(value);

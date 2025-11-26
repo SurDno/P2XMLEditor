@@ -1,8 +1,12 @@
+using System.ComponentModel;
+using P2XMLEditor.Attributes;
+
 namespace P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
-// TODO: figure out if serialization is needed?
+[TypeConverter(typeof(EnumConverter))]
+[SerializationEnum]
 public enum ChildContainerType {
-	Childs,
-	SimpleChilds,
-	Scenes
+	[SerializationData("Childs")] Childs,
+	[SerializationData("SimpleChilds")] SimpleChilds,
+	[SerializationData("Scenes")] Scenes
 }

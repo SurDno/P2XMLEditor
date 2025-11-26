@@ -38,17 +38,17 @@ public class CheckListObjectExistFunction : VmFunction {
         if (parts1.Length != 2)
             throw new ArgumentException($"Invalid first parameter format: {parameters[0]}");
             
-        holder = vm.GetElement<ParameterHolder>(parts1[0]);
-        firstParameter = vm.GetElement<Parameter>(parts1[1]);
+        holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts1[0]));
+        firstParameter = vm.GetElement<Parameter>(ulong.Parse(parts1[1]));
         
         var parts2 = parameters[1].Split('%');
         if (parts2.Length != 2)
             throw new ArgumentException($"Invalid second parameter format: {parameters[1]}");
             
-        holder2 = vm.GetElement<ParameterHolder>(parts2[0]);
+        holder2 = vm.GetElement<ParameterHolder>(ulong.Parse(parts2[0]));
         
         try {
-            secondAsParameter = vm.GetElement<Parameter>(parts2[1]);
+            secondAsParameter = vm.GetElement<Parameter>(ulong.Parse(parts2[1]));
             isSecondMessage = false;
         } catch {
             secondAsMessage = parts2[1];

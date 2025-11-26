@@ -62,7 +62,7 @@ public class ResetableParameter<T> : Parameter<T> {
 		BaseValue = ConvertValue(element.Element("BaseValue")!.Value);
 	}
 
-	public override XElement ToXml() {
+	public XElement ToXml() {
 		return new XElement("Item",
 			new XAttribute("type", GetXmlType()),
 			new XElement("Name", Name.Serialize()),
@@ -91,7 +91,7 @@ public class MinMaxParameter<T> : Parameter<T> {
 		MaxValue = ConvertValue(element.Element("MaxValue")!.Value);
 	}
 
-	public override XElement ToXml() {
+	public XElement ToXml() {
 		var baseXml = base.ToXml(); 
 		baseXml.Add(new XElement("MinValue", MinValue)); 
 		baseXml.Add(new XElement("MaxValue", MaxValue));
@@ -117,7 +117,7 @@ public class ResetableMinMaxParameter<T> : MinMaxParameter<T> {
 		BaseValue = ConvertValue(element.Element("BaseValue")!.Value);
 	}
 
-	public override XElement ToXml() {
+	public XElement ToXml() {
 		return new XElement("Item",
 			new XAttribute("type", GetXmlType()),
 			new XElement("Name", Name.Serialize()),

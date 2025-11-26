@@ -175,7 +175,7 @@ public sealed class CombinationEditorForm : Form {
             itemCell.DisplayMember = "Name";
             itemCell.ValueMember = "Id";
                     
-            var currentValue = itemCell.Value?.ToString();
+            var currentValue = ulong.Parse(itemCell.Value?.ToString());
 
             if (targetList.Any(ph => ph.Id == currentValue)) return;
             itemCell.Value = newId;
@@ -193,7 +193,7 @@ public sealed class CombinationEditorForm : Form {
         if (e.ColumnIndex != 2 || row.Tag is not CombinationEntry itemEntry) return;
         var newItemId = row.Cells[2].Value?.ToString();
         if (string.IsNullOrEmpty(newItemId)) return;
-        itemEntry.Target = _vm.GetElement<Item, Other>(newItemId);
+        itemEntry.Target = _vm.GetElement<Item, Other>(ulong.Parse(newItemId));
     }
 
 
@@ -359,7 +359,7 @@ public sealed class CombinationEditorForm : Form {
         if (row.Tag is CombinationEntry entry) {
             var newItemId = row.Cells[2].Value?.ToString();
             if (!string.IsNullOrEmpty(newItemId)) 
-                entry.Target = _vm.GetElement<Item, Other>(newItemId);
+                entry.Target = _vm.GetElement<Item, Other>(ulong.Parse(newItemId));
             
             if (int.TryParse(row.Cells[3].Value?.ToString(), out var minAmount))
                 entry.MinAmount = minAmount;

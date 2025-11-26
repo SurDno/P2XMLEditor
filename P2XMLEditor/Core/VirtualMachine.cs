@@ -1,16 +1,56 @@
+using P2XMLEditor.GameData.Types;
+using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
+using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
 
 public class VirtualMachine {
-	public readonly Dictionary<string, VmElement> ElementsById = new();
-	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new();
+	public readonly Dictionary<ulong, VmElement> ElementsById = new();
+
+	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new() {
+		[typeof(VmElement)] = [],
+		[typeof(ParameterHolder)] = [],
+		[typeof(GameObject)] = [],
+		[typeof(Action)] = [],
+		[typeof(ActionLine)] = [],
+		[typeof(Blueprint)] = [],
+		[typeof(Branch)] = [],
+		[typeof(Character)] = [],
+		[typeof(Condition)] = [],
+		[typeof(CustomType)] = [],
+		[typeof(EntryPoint)] = [],
+		[typeof(Event)] = [],
+		[typeof(Expression)] = [],
+		[typeof(FunctionalComponent)] = [],
+		[typeof(GameMode)] = [],
+		[typeof(GameRoot)] = [],
+		[typeof(GameString)] = [],
+		[typeof(Geom)] = [],
+		[typeof(Graph)] = [],
+		[typeof(GraphLink)] = [],
+		[typeof(Item)] = [],
+		[typeof(MindMap)] = [],
+		[typeof(MindMapLink)] = [],
+		[typeof(MindMapNode)] = [],
+		[typeof(MindMapNodeContent)] = [],
+		[typeof(Other)] = [],
+		[typeof(Parameter)] = [],
+		[typeof(PartCondition)] = [],
+		[typeof(Quest)] = [],
+		[typeof(Reply)] = [],
+		[typeof(Sample)] = [],
+		[typeof(Scene)] = [],
+		[typeof(Speech)] = [],
+		[typeof(State)] = [],
+		[typeof(Talking)] = []
+	};
 	public HashSet<string> Languages { get; } = [];
 
 
 	public VirtualMachine(int capacity) {
-		ElementsById = new Dictionary<string, VmElement>(capacity);
+		ElementsById = new Dictionary<ulong, VmElement>(capacity);
 	}
 	
 	public T AddElement<T>(T element, Type elementType) where T : VmElement {

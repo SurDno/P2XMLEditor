@@ -1,15 +1,19 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Reply(string id) : VmElement(id) {
+public class Reply(ulong id) : VmElement(id), IFiller<RawReplyData> {
     protected override HashSet<string> KnownElements { get; } = [
         "Name", "Text", "OnlyOnce", "OnlyOneReply", "Default", "OrderIndex", "Parent",
         "EnableCondition", "ActionLine"
@@ -23,9 +27,18 @@ public class Reply(string id) : VmElement(id) {
     public ActionLine? ActionLine { get; set; }
     public int OrderIndex { get; set; }
     public Speech Parent { get; set; }
-
-    private record RawReplyData(string Id, string Name, string TextId, bool? OnlyOnce, bool? OnlyOneReply, bool? Default,
-        string? EnableConditionId, string? ActionLineId, int OrderIndex, string ParentId) : RawData(Id);
+    
+    public void FillFromRawData(RawReplyData data, VirtualMachine vm) {
+        Name = data.Name;
+        Text = vm.GetElement<GameString>(data.TextId);
+        OnlyOnce = data.OnlyOnce;
+        OnlyOneReply = data.OnlyOneReply;
+        Default = data.Default;
+        OrderIndex = data.OrderIndex;
+        Parent = vm.GetElement<Speech>(data.ParentId);
+        EnableCondition = data.EnableConditionId != null ? vm.GetElement<Condition>(data.EnableConditionId.Value) : null;
+        ActionLine = data.ActionLineId != null ? vm.GetElement<ActionLine>(data.ActionLineId.Value) : null;
+    }
     
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
@@ -49,38 +62,6 @@ public class Reply(string id) : VmElement(id) {
         );
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        return new RawReplyData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Text").Value,
-            element.Element("OnlyOnce")?.Let(ParseBool),
-            element.Element("OnlyOneReply")?.Let(ParseBool),
-            element.Element("Default")?.Let(ParseBool),
-            element.Element("EnableCondition")?.Value,
-            element.Element("ActionLine")?.Value, 
-            GetRequiredElement(element, "OrderIndex").ParseInt(),
-            GetRequiredElement(element, "Parent").Value
-        );
-    }
-    
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawReplyData data)
-            throw new ArgumentException($"Expected RawReplyData but got {rawData.GetType()}");
-
-        Name = data.Name;
-        Text = vm.GetElement<GameString>(data.TextId);
-        OnlyOnce = data.OnlyOnce;
-        OnlyOneReply = data.OnlyOneReply;
-        Default = data.Default;
-        OrderIndex = data.OrderIndex;
-        Parent = vm.GetElement<Speech>(data.ParentId);
-        EnableCondition = data.EnableConditionId != null ? vm.GetElement<Condition>(data.EnableConditionId) : null;
-        ActionLine = data.ActionLineId != null ? vm.GetElement<ActionLine>(data.ActionLineId) : null;
-    }
-    
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
     
     public override bool IsOrphaned() => Parent.Replies.All(r => r != this);
 }

@@ -107,7 +107,7 @@ public class MindMapViewer : GraphViewer {
 
     protected override float GetNodeRadius() => CIRCLE_SIZE / 2;
 
-    protected override string? GetNodeAtPosition(Point screenPoint) {
+    protected override ulong? GetNodeAtPosition(Point screenPoint) {
         foreach (var (nodeId, pos) in NodePositions) {
             var nodePos = GameToScreen(pos.x, pos.y);
             var size = (int)(CIRCLE_SIZE * ZoomLevel);
@@ -118,7 +118,7 @@ public class MindMapViewer : GraphViewer {
     }
 
     [SuppressMessage("ReSharper", "SwitchStatementMissingSomeEnumCasesNoDefault")]
-    protected override void HandleNodeClick(string nodeId, MouseButtons button, Point screenPoint) {
+    protected override void HandleNodeClick(ulong nodeId, MouseButtons button, Point screenPoint) {
         var node = _mindMap.Nodes.First(n => n.Id == nodeId);
         
         switch (button) {
@@ -139,7 +139,7 @@ public class MindMapViewer : GraphViewer {
         GraphPanel.Invalidate();
     }
 
-    protected override void HandleNodeMoved(string nodeId, (float x, float y) newPosition) {
+    protected override void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition) {
         var node = _mindMap.Nodes.First(n => n.Id == nodeId);
         node.GameScreenPosX = newPosition.x;
         node.GameScreenPosY = newPosition.y;

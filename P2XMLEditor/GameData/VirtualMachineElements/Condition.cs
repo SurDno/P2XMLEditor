@@ -1,16 +1,20 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-
+using static P2XMLEditor.Helper.XmlReaderExtensions;
+	
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Condition(string id) : VmElement(id) {
+public class Condition(ulong id) : VmElement(id), IFiller<RawConditionData>, IVmCreator<Condition> {
 	protected override HashSet<string> KnownElements { get; } = ["Predicates", "Operation", "Name", "OrderIndex"];
 
 	public List<VmEither<Condition, PartCondition>> Predicates { get; set; }
@@ -18,13 +22,10 @@ public class Condition(string id) : VmElement(id) {
 	public string Name { get; set; }
 	public byte OrderIndex { get; set; }
 
-	private record RawConditionData(string Id, List<string> PredicateIds, string Operation, string Name,
-		int OrderIndex) : RawData(Id);
-
 	public override XElement ToXml(WriterSettings settings) {
 		var element = CreateBaseElement(Id);
 		if (Predicates.Any())
-			element.Add(CreateListElement("Predicates", Predicates.Select(p => p.Id)));
+			element.Add(CreateListElement("Predicates", Predicates.Select(p => p.Id.ToString())));
 		element.Add(
 			new XElement("Operation", Operation.Serialize()),
 			CreateSelfClosingElement("Name", Name),
@@ -32,35 +33,22 @@ public class Condition(string id) : VmElement(id) {
 		);
 		return element;
 	}
-
-	protected override RawData CreateRawData(XElement element) {
-		return new RawConditionData(
-			element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-			ParseListElement(element, "Predicates"),
-			GetRequiredElement(element, "Operation").Value,
-			GetRequiredElement(element, "Name").Value,
-			GetRequiredElement(element, "OrderIndex").ParseInt()
-		);
-	}
-
-	public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-		if (rawData is not RawConditionData data)
-			throw new ArgumentException($"Expected RawConditionData but got {rawData.GetType()}");
-
+	
+	public void FillFromRawData(RawConditionData data, VirtualMachine vm) {
 		Predicates = data.PredicateIds.Select(vm.GetElement<Condition, PartCondition>).ToList();
-		Operation = data.Operation.Deserialize<ConditionOperation>();
+		Operation = data.Operation;
 		Name = data.Name;
 		OrderIndex = (byte)data.OrderIndex;
 	}
 	
-	protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => new Condition(id) {
+	public static Condition New(VirtualMachine vm, ulong id, VmElement parent) => new Condition(id) {
 		Name = "Default Condition",
 		Operation = ConditionOperation.Root,
 		OrderIndex = 0,
 		Predicates = [new VmEither<Condition, PartCondition>(CreateDefault<PartCondition>(vm, null!))]
 	};
 
-	public override void OnDestroy(VirtualMachine vm) {
+	public void OnDestroy(VirtualMachine vm) {
 		foreach (var predicate in Predicates)
 			vm.RemoveElement(predicate.Element);
 	}

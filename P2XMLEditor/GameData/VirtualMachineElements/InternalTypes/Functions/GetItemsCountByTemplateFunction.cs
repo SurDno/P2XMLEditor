@@ -26,7 +26,7 @@ public class GetItemsCountByTemplateFunction : VmFunction {
 		if (parts.Length != 2) 
 			throw new ArgumentException($"Invalid parameter format: {parameters[0]}");
             
-		root = vm.GetElement<GameRoot>(parts[0]);
+		root = vm.GetElement<GameRoot>(ulong.Parse(parts[0]));
 		itemRef = vm.GetElementsByType<Item>().FirstOrDefault(i => i.EngineTemplateId == parts[1]) as GameObject ?? 
 		          vm.GetElementsByType<Other>().FirstOrDefault(i => i.EngineTemplateId == parts[1]) as GameObject ??
 		          throw new ArgumentException($"No item found with template ID {parts[1]}");

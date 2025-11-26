@@ -61,7 +61,7 @@ public static partial class CombinationHelper {
         }));
     }
 
-    public static string FormatReadable(string value, Dictionary<string, string> itemNames, VirtualMachine vm) {
+    public static string FormatReadable(string value, Dictionary<ulong, string> itemNames, VirtualMachine vm) {
         var entries = Parse(vm, value);
 
         return string.Join(", ", entries.Select(entry => entry switch {
@@ -71,8 +71,8 @@ public static partial class CombinationHelper {
         } + (entry.Probability == 100 ? string.Empty : $" ({entry.Probability}%)")));
     }
 
-    private static string GetName(Dictionary<string, string> names, CombinationEntry entry) {
-        return names.TryGetValue(entry.ItemId!, out var name) ? name : entry.ItemId!;
+    private static string GetName(Dictionary<ulong, string> names, CombinationEntry entry) {
+        return names.TryGetValue(entry.ItemId!, out var name) ? name : entry.ItemId.ToString();
     }
 
     private static string GetCount(CombinationEntry entry) {
@@ -111,7 +111,7 @@ public static partial class CombinationHelper {
     public static List<ParameterHolder> GetCombinationsWithItem(VirtualMachine vm, ParameterHolder ph) {
         return vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(vm.GetElementsByType<Other>()).
             Where(item => item.StandartParams.ContainsKey(CombinationKey) && item != ph &&
-                          item.StandartParams[CombinationKey].Value.Contains($"{ph.Id}END")).ToList();
+                          item.StandartParams[CombinationKey].Value.Contains($"{ph.ParamId}END")).ToList();
     }
 
     [GeneratedRegex(@"Probability_(\d+)", RegexOptions.Compiled)]

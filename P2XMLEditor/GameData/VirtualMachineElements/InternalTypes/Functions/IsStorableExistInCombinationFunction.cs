@@ -37,15 +37,15 @@ public class IsStorableExistInCombinationFunction : VmFunction {
         if (parts1.Length != 2)
             throw new ArgumentException($"Invalid first parameter format: {parameters[0]}");
             
-        root = vm.GetElement<GameRoot>(parts1[0]);
-        combination = vm.GetElement<Item>(parts1[1]);
+        root = vm.GetElement<GameRoot>(ulong.Parse(parts1[0]));
+        combination = vm.GetElement<Item>(ulong.Parse(parts1[1]));
         
         var parts2 = parameters[1].Split('%');
         if (parts2.Length != 2)
             throw new ArgumentException($"Invalid second parameter format: {parameters[1]}");
         
         try {
-            parameter = vm.GetElement<Parameter>(parts2[1]);
+            parameter = vm.GetElement<Parameter>(ulong.Parse(parts2[1]));
             isSecondParameter = true;
         }
         catch {

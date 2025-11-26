@@ -12,7 +12,7 @@ public class CommonVariable : IEquatable<CommonVariable> {
 
 	private CommonVariable(VirtualMachine vm) => _vm = vm;
 
-	public static CommonVariable? Read(string data, VirtualMachine vm) {
+	public static CommonVariable Read(string data, VirtualMachine vm) {
 		var inst = new CommonVariable(vm);
 		var parts = data.Split('%');
 
@@ -35,10 +35,10 @@ public class CommonVariable : IEquatable<CommonVariable> {
 			return new Message(data);
 		if (data.Contains('H') && HierarchyGuid.TryParse(data, vm, out var hierarchyGuid))
 			return hierarchyGuid!;
-		if (vm.ElementsById.ContainsKey(data))
-			return vm.GetElement<ICommonVariableParameter>(data);
-		if (ulong.TryParse(data, out _))
-			return vm.Register(new ParameterPlaceholder(data));
+		if (ulong.TryParse(data, out var id)) {
+			return vm.ElementsById.ContainsKey(id) ? vm.GetElement<ICommonVariableParameter>(id) : 
+				vm.Register(new ParameterPlaceholder(id));
+		}
 		if (Guid.TryParse(data, out var guid))
 			return new GuidParameter(guid);
 		if (data.Contains("_inputparam_")) {
@@ -52,8 +52,8 @@ public class CommonVariable : IEquatable<CommonVariable> {
 	}
 
 	public string Write() {
-		return VariableParameter == null ? ContextParameter?.Id ?? "%" :
-			   ContextParameter == null  ? $"%{VariableParameter.Id}" : $"{ContextParameter.Id}%{VariableParameter.Id}";
+		return VariableParameter == null ? ContextParameter?.ParamId ?? "%" :
+			   ContextParameter == null  ? $"%{VariableParameter.ParamId}" : $"{ContextParameter.ParamId}%{VariableParameter.ParamId}";
 	}
 
 	public override bool Equals(object? obj) => Equals(obj as CommonVariable);

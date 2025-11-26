@@ -58,13 +58,13 @@ public static class PreviewHelper {
 			case null:
 				return string.Empty;
 			case ParamByName paramByName:
-				return paramByName.Id;
+				return paramByName.ParamId;
 			case ParameterHolder ph:
 				return ph.Name;
 			case Parameter param:
 				return param.Name;
 			default:
-				return commonVariableParameter.Id;
+				return commonVariableParameter.ParamId.ToString();
 		}
 	}
 }

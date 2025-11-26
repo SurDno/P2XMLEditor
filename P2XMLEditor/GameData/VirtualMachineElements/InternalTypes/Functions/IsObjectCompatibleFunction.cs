@@ -51,7 +51,7 @@ public class IsObjectCompatibleFunction : VmFunction {
         if (parts1.Length != 2)
             throw new ArgumentException($"Invalid first parameter format: {parameters[0]}");
             
-        holder = vm.GetElement<ParameterHolder>(parts1[0]);
+        holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts1[0]));
         message = parts1[1];
         
         var param2 = parameters[1];

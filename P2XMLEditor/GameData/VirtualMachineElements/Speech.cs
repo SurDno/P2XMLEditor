@@ -1,20 +1,23 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Speech(string id) : VmElement(id) {
+public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
     protected override HashSet<string> KnownElements { get; } = [
         "Replyes", "Text", "AuthorGuid", "OnlyOnce", "IsTrade", "EntryPoints",
         "IgnoreBlock", "Owner", "InputLinks", "OutputLinks", "Initial", "Name", "Parent"
     ];
-
     public List<Reply> Replies { get; set; }
     public GameString Text { get; set; }
     public VmEither<Blueprint, Character> AuthorGuid { get; set; }
@@ -29,14 +32,26 @@ public class Speech(string id) : VmElement(id) {
     public string Name { get; set; }
     public Talking Parent { get; set; }
 
-    private record RawSpeechData(string Id, List<string> ReplyIds, string TextId, string AuthorGuid, bool? OnlyOnce,
-        bool? IsTrade, List<string> EntryPoints, bool? IgnoreBlock, string Owner, List<string>? InputLinks, 
-        List<string>? OutputLinks, bool? Initial, string Name, string ParentId) : RawData(Id);
-
+    public void FillFromRawData(RawSpeechData data, VirtualMachine vm) {
+        Replies = data.ReplyIds.Select(vm.GetElement<Reply>).ToList();
+        Text = vm.GetElement<GameString>(data.TextId);
+        AuthorGuid = vm.GetElement<Blueprint, Character>(data.AuthorGuidId);
+        OnlyOnce = data.OnlyOnce;
+        IsTrade = data.IsTrade;
+        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
+        IgnoreBlock = data.IgnoreBlock;
+        Owner = vm.GetElement<Blueprint, Character>(data.OwnerId);
+        InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
+        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
+        Initial = data.Initial;
+        Name = data.Name;
+        Parent = vm.GetElement<Talking>(data.ParentId);
+    }
+    
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (Replies.Any())
-            element.Add(CreateListElement("Replyes", Replies.Select(r => r.Id)));
+            element.Add(CreateListElement("Replyes", Replies.Select(r => r.Id.ToString())));
         element.Add(
             new XElement("Text", Text.Id),
             new XElement("AuthorGuid", AuthorGuid.Id)
@@ -46,14 +61,14 @@ public class Speech(string id) : VmElement(id) {
         if (IsTrade != null)
             element.Add(CreateBoolElement("IsTrade", (bool)IsTrade));
         if (EntryPoints.Any())
-            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id)));
+            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString())));
         if (IgnoreBlock != null)
             element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
         element.Add(new XElement("Owner", Owner.Id));
         if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(i => i.Id)));
+            element.Add(CreateListElement("InputLinks", InputLinks.Select(i => i.Id.ToString())));
         if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(o=> o.Id)));
+            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(o => o.Id.ToString())));
         if (Initial != null)
             element.Add(CreateBoolElement("Initial", (bool)Initial));
         element.Add(
@@ -62,46 +77,6 @@ public class Speech(string id) : VmElement(id) {
         );
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        return new RawSpeechData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            ParseListElement(element, "Replyes"),
-            GetRequiredElement(element, "Text").Value,
-            GetRequiredElement(element, "AuthorGuid").Value,
-            element.Element("OnlyOnce")?.Let(ParseBool),
-            element.Element("IsTrade")?.Let(ParseBool),
-            ParseListElement(element, "EntryPoints"),
-            element.Element("IgnoreBlock")?.Let(ParseBool),
-            GetRequiredElement(element, "Owner").Value,
-            ParseListElement(element, "InputLinks"),
-            ParseListElement(element, "OutputLinks"),
-            element.Element("Initial")?.Let(ParseBool),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Parent").Value
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawSpeechData data)
-            throw new ArgumentException($"Expected RawSpeechData but got {rawData.GetType()}");
-
-        Replies = data.ReplyIds.Select(vm.GetElement<Reply>).ToList();
-        Text = vm.GetElement<GameString>(data.TextId);
-        AuthorGuid = vm.GetElement<Blueprint, Character>(data.AuthorGuid);
-        OnlyOnce = data.OnlyOnce;
-        IsTrade = data.IsTrade;
-        EntryPoints = data.EntryPoints.Select(vm.GetElement<EntryPoint>).ToList();
-        IgnoreBlock = data.IgnoreBlock;
-        Owner = vm.GetElement<Blueprint, Character>(data.Owner);
-        InputLinks = data.InputLinks?.Select(vm.GetElement<GraphLink>).ToList();
-        OutputLinks = data.OutputLinks?.Select(vm.GetElement<GraphLink>).ToList();
-        Initial = data.Initial;
-        Name = data.Name;
-        Parent = vm.GetElement<Talking>(data.ParentId);
-    }
-    
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
     
     public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
 }

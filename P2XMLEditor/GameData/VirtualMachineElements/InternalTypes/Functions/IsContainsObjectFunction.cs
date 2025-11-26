@@ -27,7 +27,7 @@ public class IsContainsObjectFunction : VmFunction {
 		if (parts[0] != parts[1])
 			throw new ArgumentException($"Both parts of parameter must be the same GameObject ID: {parameters[0]}");
            
-		gameObject = vm.GetElement<GameObject>(parts[0]);
+		gameObject = vm.GetElement<GameObject>(ulong.Parse(parts[0]));
 	}
    
 	public override List<string> GetParamStrings() => [$"{gameObject.Id}%{gameObject.Id}"];

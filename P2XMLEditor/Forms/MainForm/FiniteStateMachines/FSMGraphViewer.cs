@@ -38,7 +38,7 @@ public class FSMGraphViewer : GraphViewer {
     }
 
     private void InitializeNodePositions() {
-        var processed = new HashSet<string>();
+        var processed = new HashSet<ulong>();
 
         
         var validStates = _graph.States.Where(s => s?.Element != null).ToList();
@@ -47,7 +47,7 @@ public class FSMGraphViewer : GraphViewer {
         if (invalidStates.Any()) {
             Logger.Log(LogLevel.Warning, $"Graph {_graph.Id} contains {invalidStates.Count} invalid states");
             foreach (var state in invalidStates) {
-                Logger.Log(LogLevel.Warning, $"Invalid state ID: {state?.Id ?? "null"}");
+                Logger.Log(LogLevel.Warning, $"Invalid state ID: {state?.Id.ToString() ?? "null"}");
             }
         }
 
@@ -137,7 +137,7 @@ private bool IsInitialState(VmElement element) {
 private string GetNodeName(VmElement element) {
     if (element is IGraphElement graphElement) return graphElement.Name;
     if (element is Talking talking) return talking.Name;
-    return element.Id;
+    return element.Id.ToString();
 }
 
 private List<EntryPoint> GetEntryPoints(VmElement element) {
@@ -221,7 +221,7 @@ protected override void DrawNodes(Graphics g) {
 
             
             var displayName = GetNodeName(state.Element);
-            if (string.IsNullOrEmpty(displayName)) displayName = state.Element.Id;
+            if (string.IsNullOrEmpty(displayName)) displayName = state.Element.Id.ToString();
             g.DrawString(displayName, font, Brushes.Black, nodeBounds, format);
 
             
@@ -298,7 +298,7 @@ protected override void DrawEdges(Graphics g) {
 
     protected override float GetNodeRadius() => NODE_SIZE / 2;
 
-    protected override string? GetNodeAtPosition(Point screenPoint) {
+    protected override ulong? GetNodeAtPosition(Point screenPoint) {
         foreach (var (nodeId, pos) in NodePositions) {
             var nodePos = GameToScreen(pos.x, pos.y);
             var size = (int)(NODE_SIZE * ZoomLevel);
@@ -308,7 +308,7 @@ protected override void DrawEdges(Graphics g) {
         return null;
     }
 
-    protected override void HandleNodeClick(string nodeId, MouseButtons button, Point screenPoint) {
+    protected override void HandleNodeClick(ulong nodeId, MouseButtons button, Point screenPoint) {
         var node = _graph.States.First(n => n.Id == nodeId);
         
         switch (button) {
@@ -330,7 +330,7 @@ protected override void DrawEdges(Graphics g) {
         GraphPanel.Invalidate();
     }
 
-    protected override void HandleNodeMoved(string nodeId, (float x, float y) newPosition) {
+    protected override void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition) {
         NodePositions[nodeId] = newPosition;
     }
 

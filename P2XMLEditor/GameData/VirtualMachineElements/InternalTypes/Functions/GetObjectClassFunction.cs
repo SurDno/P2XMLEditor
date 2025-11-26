@@ -23,10 +23,10 @@ public class GetObjectClassFunction : VmFunction {
 			throw new ArgumentException($"Expected 1 parameter, got {parameters.Count}");
            
 		var parts = parameters[0].Split('%', 2);
-		holder = vm.GetElement<ParameterHolder>(parts[0]);
+		holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts[0]));
 		messageParam = parts.Length > 1 ? parts[1] : null;
 	}
    
 	public override List<string> GetParamStrings() =>
-		[messageParam != null ? $"{holder.Id}%{messageParam}" : holder.Id];
+		[messageParam != null ? $"{holder.Id}%{messageParam}" : holder.Id.ToString()];
 }

@@ -1,3 +1,4 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -5,18 +6,19 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Branch(string id) : VmElement(id), IGraphElement {
+public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchData> {
     protected override HashSet<string> KnownElements { get; } = [
         "BranchConditions", "BranchType", "EntryPoints", "IgnoreBlock", "Owner",
         "InputLinks", "OutputLinks", "Initial", "Name", "Parent", "BranchVariantInfo"
     ];
-
     public List<VmEither<Condition, PartCondition>> BranchConditions { get; set; }
     public BranchType BranchType { get; set; }
     public List<BranchVariantInfo>? BranchVariantInfo { get; set; }
@@ -30,14 +32,10 @@ public class Branch(string id) : VmElement(id), IGraphElement {
     public bool? IgnoreBlock { get; set; }
     public bool? Initial { get; set; }
 
-    private record RawBranchData(string Id, List<string> BranchConditionIds, string BranchType,
-        List<BranchVariantInfo>? BranchVariantInfo, List<string> EntryPoints, bool? IgnoreBlock, string Owner,
-        List<string>? InputLinks, List<string>? OutputLinks, bool? Initial, string Name, string ParentId) : RawData(Id);
-
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (BranchConditions.Any())
-            element.Add(CreateListElement("BranchConditions", BranchConditions.Select(c => c.Id)));
+            element.Add(CreateListElement("BranchConditions", BranchConditions.Select(c => c.Id.ToString())));
         element.Add(new XElement("BranchType", BranchType.Serialize()));
         
         if (BranchVariantInfo?.Count > 0) {
@@ -51,14 +49,14 @@ public class Branch(string id) : VmElement(id), IGraphElement {
             ));
             element.Add(variantInfo);
         }
-        element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id)));
+        element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString())));
         if (IgnoreBlock != null)
             element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
         element.Add(new XElement("Owner", Owner.Id));
         if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id)));
+            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id.ToString())));
         if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id)));
+            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id.ToString())));
         if (Initial != null)
             element.Add(CreateBoolElement("Initial", (bool)Initial));
         element.Add(
@@ -66,47 +64,6 @@ public class Branch(string id) : VmElement(id), IGraphElement {
             new XElement("Parent", Parent.Id)
         );
         return element;
-    }
-
-    protected override RawData CreateRawData(XElement element) {
-        var branchVariantInfo = element.Element("BranchVariantInfo")?.Elements("Item")
-            .Select(item => new BranchVariantInfo {
-                Name = item.Element("Name")?.Value ?? string.Empty,
-                Type = item.Element("Type")?.Value ?? string.Empty
-            })
-            .ToList() ?? null;
-
-        return new RawBranchData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            ParseListElement(element, "BranchConditions"),
-            GetRequiredElement(element, "BranchType").Value,
-            branchVariantInfo,
-            ParseListElement(element, "EntryPoints"),
-            element.Element("IgnoreBlock")?.Let(ParseBool),
-            GetRequiredElement(element, "Owner").Value,
-            ParseListElement(element, "InputLinks"),
-            ParseListElement(element, "OutputLinks"),
-            element.Element("Initial")?.Let(ParseBool),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Parent").Value
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawBranchData data)
-            throw new ArgumentException($"Expected RawBranchData but got {rawData.GetType()}");
-
-        BranchConditions = data.BranchConditionIds.Select(vm.GetElement<Condition, PartCondition>).ToList();
-        BranchType = data.BranchType.Deserialize<BranchType>();
-        BranchVariantInfo = data.BranchVariantInfo;
-        EntryPoints = data.EntryPoints.Select(vm.GetElement<EntryPoint>).ToList();
-        IgnoreBlock = data.IgnoreBlock;
-        Owner = vm.GetElement<ParameterHolder>(data.Owner);
-        InputLinks = data.InputLinks?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
-        OutputLinks = data.OutputLinks?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
-        Initial = data.Initial;
-        Name = data.Name;
-        Parent = vm.GetElement<Graph, Talking>(data.ParentId);
     }
     
     public override bool IsOrphaned() {
@@ -117,9 +74,21 @@ public class Branch(string id) : VmElement(id), IGraphElement {
         };
     }
     
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
+    public void FillFromRawData(RawBranchData data, VirtualMachine vm) {
+        BranchConditions = data.BranchConditionIds?.Select(vm.GetElement<Condition, PartCondition>).ToList() ?? [];
+        BranchType = data.BranchType;
+        BranchVariantInfo = data.BranchVariantInfo;
+        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
+        IgnoreBlock = data.IgnoreBlock;
+        Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
+        InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
+        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
+        Initial = data.Initial;
+        Name = data.Name;
+        Parent = vm.GetElement<Graph, Talking>(data.ParentId);
+    }
     
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         foreach (var link in InputLinks ?? []) 
             vm.RemoveElement(link);
         foreach (var entryPoint in EntryPoints) 
@@ -127,7 +96,7 @@ public class Branch(string id) : VmElement(id), IGraphElement {
     }
 }
 
-public class BranchVariantInfo {
+public record struct BranchVariantInfo {
     public string Name { get; set; }
     public string Type { get; set; }
 }

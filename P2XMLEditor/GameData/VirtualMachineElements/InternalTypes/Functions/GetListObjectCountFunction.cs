@@ -28,10 +28,10 @@ public class GetListObjectsCountFunction : VmFunction {
 		if (parts.Length != 2)
 			throw new ArgumentException($"Invalid parameter format: {parameters[0]}");
            
-		holder = vm.GetElement<ParameterHolder>(parts[0]);
-		parameter = ulong.TryParse(parts[1], out _) ? vm.GetElement<Parameter>(parts[1]) : null;
+		holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts[0]));
+		parameter = ulong.TryParse(parts[1], out var id) ? vm.GetElement<Parameter>(id) : null;
 		if (parameter == null) TEMP = parts[1];
 	}
    
-	public override List<string> GetParamStrings() => [$"{holder.Id}%{parameter?.Id ?? TEMP}"];
+	public override List<string> GetParamStrings() => [$"{holder.Id}%{parameter?.Id.ToString() ?? TEMP}"];
 }

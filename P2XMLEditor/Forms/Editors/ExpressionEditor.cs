@@ -428,7 +428,7 @@ public class ExpressionEditorForm : Form {
                     _expression.TargetParam = CommonVariable.Read(txtTargetParam.Text, _vm);
                 } else if (cmbHolder.SelectedItem is ComboBoxItem holderItem &&
                            cmbParameter.SelectedItem is ComboBoxItem paramItem) {
-                    _expression.TargetObject = CommonVariable.Read(((ParameterHolder)holderItem.Value).Id, _vm);
+                    _expression.TargetObject = CommonVariable.Read(((ParameterHolder)holderItem.Value).ParamId.ToString(), _vm);
                     _expression.TargetParam = CommonVariable.Read($"%{((Parameter)paramItem.Value).Id}", _vm);
                 }
 

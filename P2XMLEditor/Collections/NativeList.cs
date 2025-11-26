@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 namespace P2XMLEditor.Collections;
 
 public unsafe struct NativeList<T> : IDisposable where T : unmanaged {
-    private T* ptr;        // start of memory
-    private T* end;        // next free slot
+    private T* ptr;       
+    private T* end;       
     private nuint capacity;
 
     public NativeList(int initialCapacity) {
         capacity = (nuint)initialCapacity;
-        ptr = (T*)NativeMemory.Alloc(capacity, (nuint)sizeof(T));  // uninitialized & fastest
+        ptr = (T*)NativeMemory.Alloc(capacity, (nuint)sizeof(T));  
         end = ptr;
     }
 
@@ -44,7 +44,7 @@ public unsafe struct NativeList<T> : IDisposable where T : unmanaged {
         if (capacity < 256) {
             newCap = capacity * 2;
         } else {
-            newCap = capacity + capacity / 2;    // grow 1.5× for large buffers
+            newCap = capacity + capacity / 2; 
         }
 
         if (newCap < needed)

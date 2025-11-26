@@ -24,9 +24,9 @@ public class IsObjectExistFunction : VmFunction {
            
 		var parts = parameters[0].Split('%', 2);
        
-		holder = vm.GetElement<ParameterHolder>(parts[0]);
+		holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts[0]));
 		message = parts.Length > 1 ? parts[1] : null;
 	}
    
-	public override List<string> GetParamStrings() => [message != null ? $"{holder.Id}%{message}" : holder.Id];
+	public override List<string> GetParamStrings() => [message != null ? $"{holder.Id}%{message}" : holder.Id.ToString()];
 }

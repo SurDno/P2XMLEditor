@@ -4,14 +4,14 @@ using P2XMLEditor.WindowsFormsExtensions;
 namespace P2XMLEditor.Abstract;
 
 public abstract class GraphViewer : UserControl {
-    protected readonly Dictionary<string, (float x, float y)> NodePositions = new();
+    protected readonly Dictionary<ulong, (float x, float y)> NodePositions = new();
     protected readonly Panel GraphPanel;
     protected float ZoomLevel = 1.0f;
     protected Point ViewOffset;
     protected Point LastMousePosition;
     private bool _isPanning;
     private bool _isDraggingNode;
-    private string? _draggedNodeId;
+    private ulong? _draggedNodeId;
     private (float x, float y) _dragOffset;
 
     private const float GRID_STEP = 0.0025f;
@@ -39,9 +39,9 @@ public abstract class GraphViewer : UserControl {
 
     protected abstract void DrawNodes(Graphics g);
     protected abstract void DrawEdges(Graphics g);
-    protected abstract string? GetNodeAtPosition(Point screenPoint);
-    protected abstract void HandleNodeClick(string nodeId, MouseButtons button, Point screenPoint);
-    protected abstract void HandleNodeMoved(string nodeId, (float x, float y) newPosition);
+    protected abstract ulong? GetNodeAtPosition(Point screenPoint);
+    protected abstract void HandleNodeClick(ulong nodeId, MouseButtons button, Point screenPoint);
+    protected abstract void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition);
     protected abstract float GetNodeRadius(); 
 
     protected virtual void LimitPanOffset() {
@@ -117,13 +117,13 @@ public abstract class GraphViewer : UserControl {
             case MouseButtons.Left: {
                 var nodeId = GetNodeAtPosition(e.Location);
                 if (nodeId != null) {
-                    HandleNodeClick(nodeId, e.Button, e.Location);
+                    HandleNodeClick(nodeId.Value, e.Button, e.Location);
                 }
                 _draggedNodeId = nodeId;
                 if (_draggedNodeId != null) {
                     _isDraggingNode = true;
                     GraphPanel.Cursor = Cursors.Hand;
-                    if (NodePositions.TryGetValue(_draggedNodeId, out var nodePos)) {
+                    if (NodePositions.TryGetValue(_draggedNodeId.Value, out var nodePos)) {
                         var mouseGamePos = ScreenToGame(e.Location);
                         _dragOffset = (mouseGamePos.x - nodePos.x, mouseGamePos.y - nodePos.y);
                     }
@@ -133,7 +133,7 @@ public abstract class GraphViewer : UserControl {
             case MouseButtons.Right: {
                 var nodeId = GetNodeAtPosition(e.Location);
                 if (nodeId != null) {
-                    HandleNodeClick(nodeId, e.Button, e.Location);
+                    HandleNodeClick(nodeId.Value, e.Button, e.Location);
                 }
                 break;
             }
@@ -142,7 +142,7 @@ public abstract class GraphViewer : UserControl {
 
     private void OnMouseUp(object? sender, MouseEventArgs e) {
         if (_isDraggingNode && _draggedNodeId != null) {
-            HandleNodeMoved(_draggedNodeId, NodePositions[_draggedNodeId]);
+            HandleNodeMoved(_draggedNodeId.Value, NodePositions[(ulong)_draggedNodeId]);
         }
    
         _isPanning = false;
@@ -168,9 +168,9 @@ public abstract class GraphViewer : UserControl {
             var newX = SnapToGrid(gameCoords.x - _dragOffset.x);
             var newY = SnapToGrid(gameCoords.y - _dragOffset.y);
 
-            var currentPos = NodePositions[_draggedNodeId];
+            var currentPos = NodePositions[_draggedNodeId.Value];
             if (Math.Abs(currentPos.x - newX) > float.Epsilon || Math.Abs(currentPos.y - newY) > float.Epsilon) {
-                NodePositions[_draggedNodeId] = (newX, newY);
+                NodePositions[_draggedNodeId.Value] = (newX, newY);
                 GraphPanel.Invalidate();
             }
         }

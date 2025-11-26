@@ -19,7 +19,7 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 
     public VmEither<Item, Other> Target { get; set; } = target;
 
-    public string ItemId => Target.Element.Id;
+    public ulong ItemId => Target.Element.Id;
 
     public int MinAmount {
         get => _minAmount;
@@ -69,7 +69,7 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
             var minDurability = int.Parse(durMatch[0].Groups[1].Value);
             var maxDurability = int.Parse(durMatch[1].Groups[1].Value);
             
-            return new CombinationEntry(vm.GetElement<Item, Other>(parts[0])) {
+            return new CombinationEntry(vm.GetElement<Item, Other>(ulong.Parse(parts[0]))) {
                 MinAmount = minAmount,
                 MaxAmount = maxAmount,
                 Weight = weight,

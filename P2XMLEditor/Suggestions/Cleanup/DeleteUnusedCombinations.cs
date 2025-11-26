@@ -31,7 +31,7 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 				         action.TargetFuncName.Contains("AddItemsToStoragesLinear") ||
 				         action.TargetFuncName.Contains("PickUpCombination"))) {
 				if (action.SourceParams == null) continue;
-				if (action.SourceParams.Any(p => p.Contains(combo.Id)))
+				if (action.SourceParams.Any(p => p.Contains(combo.ParamId.ToString())))
 					referencedInActions = true;
 			}
 			if (referencedInActions) continue;
@@ -39,13 +39,13 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 			foreach (var expression in expressions) {
 				if (expression.Function is not IsStorableExistInCombinationFunction func) continue;
 				var sourceParams = func.GetParamStrings();
-				if (sourceParams.Any(e => e.Contains(combo.Id)))
+				if (sourceParams.Any(e => e.Contains(combo.ParamId.ToString())))
 					referencedInExpressions = true;
 			}
 			if (referencedInExpressions) continue;
 			
 			
-			Logger.Log(LogLevel.Info, $"Deleting unused combination {combo.Id} {combo.Name}.");
+			Logger.Log(LogLevel.Info, $"Deleting unused combination {combo.ParamId} {combo.Name}.");
 			Vm.RemoveElement(combo);
 		}
 	}

@@ -72,7 +72,7 @@ public class CombinationsBrowser : Panel {
         foreach (var el in combos) {
             var contents = CombinationHelper.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
 
-            if (!string.IsNullOrEmpty(text) && !IsIn(el.Name, text) && !IsIn(el.Id, text) && !IsIn(contents, text))
+            if (!string.IsNullOrEmpty(text) && !IsIn(el.Name, text) && !IsIn(el.Id.ToString(), text) && !IsIn(contents, text))
                 continue;
 
             var listItem = new ListViewItem(el.Name) { Tag = el };

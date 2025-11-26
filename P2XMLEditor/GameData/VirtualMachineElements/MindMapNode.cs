@@ -1,21 +1,25 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.ElementParsers;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class MindMapNode(string id) : VmElement(id) {
+public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>, IVmCreator<MindMapNode> {
     protected override HashSet<string> KnownElements { get; } = [
         "Name", "Parent", "LogicMapNodeType", "NodeContent", "GameScreenPosX", "GameScreenPosY",
         "InputLinks", "OutputLinks"
     ];
-
     public string Name { get; set; }
     public MindMap Parent { get; set; }
     public LogicMapNodeType LogicMapNodeType { get; set; }
@@ -26,25 +30,21 @@ public class MindMapNode(string id) : VmElement(id) {
     public float GameScreenPosX { get; set; }
     public float GameScreenPosY { get; set; }
     
-    private record RawMindMapNodeData(string Id, string Name, string ParentId, string LogicMapNodeType, 
-        List<string>? ContentIds, List<string>? InputLinkIds, List<string>? OutputLinkIds, float GameScreenPosX,
-        float GameScreenPosY) : RawData(Id);
-
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         element.Add(
             new XElement("LogicMapNodeType", LogicMapNodeType.Serialize())
         );
         if (Content.Count != 0)
-            element.Add(CreateListElement("NodeContent", Content.Select(c => c.Id)));
+            element.Add(CreateListElement("NodeContent", Content.Select(c => c.Id.ToString())));
         element.Add(
             new XElement("GameScreenPosX", FormatPos(GameScreenPosX)),
             new XElement("GameScreenPosY", FormatPos(GameScreenPosY))
         );
         if (InputLinks.Count != 0)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id)));
+            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id.ToString())));
         if (OutputLinks.Count != 0)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id)));
+            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id.ToString())));
         element.Add(
             new XElement("Name", Name),
             new XElement("Parent", Parent.Id)
@@ -57,36 +57,8 @@ public class MindMapNode(string id) : VmElement(id) {
         var str = (MathF.Round(value / posStep) * posStep).ToString("0.#####");
         return str.Contains('.') ? str.TrimEnd('0').TrimEnd('.') : str;
     }
-    
-    protected override RawData CreateRawData(XElement element) {
-        return new RawMindMapNodeData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Parent").Value,
-            GetRequiredElement(element, "LogicMapNodeType").Value,
-            ParseListElement(element, "NodeContent"),
-            ParseListElement(element, "InputLinks"),
-            ParseListElement(element, "OutputLinks"),
-            GetRequiredElement(element, "GameScreenPosX").ParseFloat(),
-            GetRequiredElement(element, "GameScreenPosY").ParseFloat()
-        );
-    }
-    
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawMindMapNodeData data)
-            throw new ArgumentException($"Expected RawMindMapNodeData but got {rawData.GetType()}");
-        
-        Name = data.Name;
-        Parent = vm.GetElement<MindMap>(data.ParentId);
-        LogicMapNodeType = data.LogicMapNodeType.Deserialize<LogicMapNodeType>();
-        Content = data.ContentIds?.Select(vm.GetElement<MindMapNodeContent>).ToList() ?? [];
-        InputLinks = data.InputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
-        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
-        GameScreenPosX = data.GameScreenPosX;
-        GameScreenPosY = data.GameScreenPosY;
-    }
-    
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) {
+
+    public static MindMapNode New(VirtualMachine vm, ulong id, VmElement parent) {
         var node = new MindMapNode(id) {
             Name = "New Node",
             LogicMapNodeType = LogicMapNodeType.Common,
@@ -99,8 +71,19 @@ public class MindMapNode(string id) : VmElement(id) {
         node.Parent.Nodes.Add(node);
         return node;
     }
+    
+    public void FillFromRawData(RawMindMapNodeData data, VirtualMachine vm) {
+        Name = data.Name;
+        Parent = vm.GetElement<MindMap>(data.ParentId);
+        LogicMapNodeType = data.LogicMapNodeType.Deserialize<LogicMapNodeType>();
+        Content = data.ContentIds?.Select(vm.GetElement<MindMapNodeContent>).ToList() ?? [];
+        InputLinks = data.InputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
+        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
+        GameScreenPosX = data.GameScreenPosX;
+        GameScreenPosY = data.GameScreenPosY;
+    }
 
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         Parent.Nodes.Remove(this);
         foreach (var link in InputLinks.Concat(OutputLinks))
             vm.RemoveElement(link);

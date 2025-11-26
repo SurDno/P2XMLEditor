@@ -1,35 +1,35 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
+using P2XMLEditor.Parsing.RawData;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class MindMap(string id) : VmElement(id) {
+public class MindMap(ulong id) : VmElement(id), IFiller<RawMindMapData>, IVmCreator<MindMap> {
     protected override HashSet<string> KnownElements { get; } =
         ["Name", "LogicMapType", "Title", "Parent", "Nodes", "Links"];
-
     public string Name { get; set; }
     public LogicMapType LogicMapType { get; set; }
     public GameString Title { get; set; }
     public GameRoot Parent { get; set; }
     public List<MindMapNode> Nodes { get; set; } = [];
     public List<MindMapLink> Links { get; set; } = [];
-
-    private record RawMindMapData(string Id, string Name, string LogicMapType, string Title, string ParentId,
-        List<string> NodeIds, List<string> LinkIds) : RawData(Id);
-
+    
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (Nodes.Count != 0)
-            element.Add(CreateListElement("Nodes", Nodes.Select(n => n.Id)));
+            element.Add(CreateListElement("Nodes", Nodes.Select(n => n.Id.ToString())));
         if (Links.Count != 0)
-            element.Add(CreateListElement("Links", Links.Select(l => l.Id)));
+            element.Add(CreateListElement("Links", Links.Select(l => l.Id.ToString())));
         element.Add(
             new XElement("LogicMapType", LogicMapType.Serialize()),
             new XElement("Title", Title.Id),
@@ -38,32 +38,17 @@ public class MindMap(string id) : VmElement(id) {
         );
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        return new RawMindMapData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "LogicMapType").Value,
-            GetRequiredElement(element, "Title").Value,
-            GetRequiredElement(element, "Parent").Value,
-            ParseListElement(element, "Nodes"),
-            ParseListElement(element, "Links")
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawMindMapData data)
-            throw new ArgumentException($"Expected RawMindMapData but got {rawData.GetType()}");
-
+    
+    public void FillFromRawData(RawMindMapData data, VirtualMachine vm) {
         Name = data.Name;
-        LogicMapType = data.LogicMapType.Deserialize<LogicMapType>();
-        Title = vm.GetElement<GameString>(data.Title);
+        LogicMapType = data.LogicMapType;
+        Title = vm.GetElement<GameString>(data.TitleId);
         Parent = vm.GetElement<GameRoot>(data.ParentId);
         Nodes = data.NodeIds.Select(vm.GetElement<MindMapNode>).ToList();
-        Links = data.LinkIds.Select(vm.GetElement<MindMapLink>).ToList();
+        Links = data.LinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
     }
     
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) {
+    public static MindMap New(VirtualMachine vm, ulong id, VmElement parent) {
         var node = new MindMap(id) {
             Name = "New Mind Map",
             LogicMapType = LogicMapType.Global,
@@ -74,7 +59,7 @@ public class MindMap(string id) : VmElement(id) {
         return node;
     }
 
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         foreach (var node in Nodes)
             vm.RemoveElement(node);
         foreach (var link in Links)

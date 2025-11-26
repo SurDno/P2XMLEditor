@@ -6,6 +6,7 @@ using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Logging;
+using P2XMLEditor.Parsing;
 
 namespace P2XMLEditor.Forms.MainForm;
 
@@ -49,7 +50,7 @@ public class MainForm : Form {
 
     public void LoadVirtualMachine(PathSelectionForm.Paths paths) {
         _paths = paths;
-        var reader = new VirtualMachineReader(_paths!.VmPath);
+        var reader = new VirtualMachineReader(_paths!.VmPath, _paths.Mode);
         _virtualMachine = reader.LoadVirtualMachine();
 
         Logger.Log(LogLevel.Info, $"DataCapacity: {_virtualMachine.GetDataCapacity()}");

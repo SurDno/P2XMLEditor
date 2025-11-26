@@ -32,7 +32,7 @@ public class CheckItemInPlaceFunction : VmFunction {
 		if (parts2.Length != 2)
 			throw new ArgumentException($"Invalid second parameter format: {parameters[1]}");
            
-		root = vm.GetElement<GameRoot>(parts1[0]);
+		root = vm.GetElement<GameRoot>(ulong.Parse(parts1[0]));
 		item = vm.GetElementsByType<Item>().FirstOrDefault(i => i.EngineTemplateId == parts1[1]) as GameObject ?? 
 		       vm.GetElementsByType<Other>().FirstOrDefault(i => i.EngineTemplateId == parts1[1]) as GameObject ??
 		       throw new ArgumentException($"No item found with template ID {parts1[1]}");

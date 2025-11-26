@@ -1,21 +1,23 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class State(string id) : VmElement(id), IGraphElement {
+public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphElement {
     protected override HashSet<string> KnownElements { get; } = [
         "EntryPoints", "IgnoreBlock", "Owner", "InputLinks", "OutputLinks",
         "Initial", "Name", "Parent"
     ];
-
     public Graph Parent { get; set; }
     
     public List<EntryPoint> EntryPoints { get; set; }
@@ -26,19 +28,16 @@ public class State(string id) : VmElement(id), IGraphElement {
     public bool? IgnoreBlock { get; set; }
     public bool? Initial { get; set; }
 
-    private record RawStateData(string Id, List<string> EntryPoints, bool? IgnoreBlock, string Owner, 
-        List<string>? InputLinks, List<string>? OutputLinks, bool? Initial, string Name, string ParentId) : RawData(Id);
-
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
-        element.Add(CreateListElement("EntryPoints", EntryPoints.Select(a => a.Id)));
+        element.Add(CreateListElement("EntryPoints", EntryPoints.Select(a => a.Id.ToString())));
         if (IgnoreBlock != null)
             element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
         element.Add(new XElement("Owner", Owner.Id));
         if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(a => a.Id)));
+            element.Add(CreateListElement("InputLinks", InputLinks.Select(a => a.Id.ToString())));
         if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(a => a.Id)));
+            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(a => a.Id.ToString())));
         if (Initial != null)
             element.Add(CreateBoolElement("Initial", (bool)Initial));
         element.Add(
@@ -47,40 +46,21 @@ public class State(string id) : VmElement(id), IGraphElement {
         );
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        return new RawStateData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            ParseListElement(element, "EntryPoints"),
-            element.Element("IgnoreBlock")?.Let(ParseBool),
-            GetRequiredElement(element, "Owner").Value,
-            ParseListElement(element, "InputLinks"),
-            ParseListElement(element, "OutputLinks"),
-            element.Element("Initial")?.Let(ParseBool),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Parent").Value
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawStateData data)
-            throw new ArgumentException($"Expected RawStateData but got {rawData.GetType()}");
-
-        EntryPoints = data.EntryPoints.Select(vm.GetElement<EntryPoint>).ToList();
+    
+    public void FillFromRawData(RawStateData data, VirtualMachine vm) {
+        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
         IgnoreBlock = data.IgnoreBlock;
-        Owner = vm.GetElement<ParameterHolder>(data.Owner);
-        InputLinks = data.InputLinks?.Select(vm.GetElement<GraphLink>).ToList();
-        OutputLinks =  data.OutputLinks?.Select(vm.GetElement<GraphLink>).ToList();
+        Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
+        InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
+        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
         Initial = data.Initial;
         Name = data.Name;
         Parent = vm.GetElement<Graph>(data.ParentId);
     }
     
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
-    
     public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
     
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         foreach (var link in InputLinks ?? []) 
             vm.RemoveElement(link);
         foreach (var entryPoint in EntryPoints) 

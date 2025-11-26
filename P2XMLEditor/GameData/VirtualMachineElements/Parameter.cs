@@ -1,19 +1,21 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
+public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICommonVariableParameter, IVmCreator<Parameter> {
     protected override HashSet<string> KnownElements { get; } =
         ["Name", "OwnerComponent", "Type", "Value", "Implicit", "Parent", "Custom"];
-
     public string Name { get; set; }
     public FunctionalComponent? OwnerComponent { get; set; }
     public string Type { get; set; }
@@ -21,9 +23,6 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
     public bool? Implicit { get; set; }
     public VmEither<ParameterHolder, Expression> Parent { get; set; }
     public bool? Custom { get; set; }
-
-    private record RawParameterData(string Id, string Name, string? OwnerComponentId, string Type, string Value,
-        bool? Implicit, string ParentId, bool? Custom) : RawData(Id);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
@@ -44,33 +43,6 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
         return element;
     }
 
-    protected override RawData CreateRawData(XElement element) {
-        return new RawParameterData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            GetRequiredElement(element, "Name").Value,
-            element.Element("OwnerComponent")?.Value,
-            GetRequiredElement(element, "Type").Value,
-            GetRequiredElement(element, "Value").Value,
-            element.Element("Implicit")?.Let(ParseBool),
-            GetRequiredElement(element, "Parent").Value,
-            element.Element("Custom")?.Let(ParseBool)
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawParameterData data)
-            throw new ArgumentException($"Expected RawParameterData but got {rawData.GetType()}");
-
-        Name = data.Name;
-        OwnerComponent = data.OwnerComponentId != null ?
-            vm.GetElement<FunctionalComponent>(data.OwnerComponentId) : null;
-        Type = data.Type;
-        Value = data.Value;
-        Implicit = data.Implicit;
-        Parent = vm.GetElement<ParameterHolder, Expression>(data.ParentId);
-        Custom = data.Custom;
-    }
-    
     public override bool IsOrphaned() {
         return Parent.Element switch {
             ParameterHolder ph => ph.StandartParams.Concat(ph.CustomParams).All(p => p.Value != this),
@@ -79,7 +51,19 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
         };
     }
     
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) {
+    public void FillFromRawData(RawParameterData data, VirtualMachine vm) {
+        Name = data.Name;
+        OwnerComponent = data.OwnerComponentId.HasValue
+            ? vm.GetElement<FunctionalComponent>(data.OwnerComponentId.Value)
+            : null;
+        Type = data.Type;
+        Value = data.Value;
+        Implicit = data.Implicit;
+        Parent = vm.GetElement<ParameterHolder, Expression>(data.ParentId);
+        Custom = data.Custom;
+    }
+
+    public static Parameter New(VirtualMachine vm, ulong id, VmElement parent) {
         var par = new Parameter(id) {
             Name = "NewParam",
             Parent = new(parent),
@@ -91,7 +75,7 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
         return par;
     }
 
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         switch (Parent.Element) {
             case ParameterHolder ph:          
                 var keyToRemove = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;
@@ -109,6 +93,8 @@ public class Parameter(string id) : VmElement(id), ICommonVariableParameter {
         
         // TODO: Redo when we start parsing types like normal human beings.
         if (Type == "ITextRef" && !string.IsNullOrEmpty(Value))
-            vm.RemoveElement(vm.GetElement<GameString>(Value));
+            vm.RemoveElement(vm.GetElement<GameString>(ulong.Parse(Value)));
     }
+
+    public string ParamId => id.ToString();
 }

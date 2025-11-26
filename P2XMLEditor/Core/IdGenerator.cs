@@ -8,8 +8,7 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 namespace P2XMLEditor.Core;
 
 public static class IdGenerator {
-	[SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]
-	private static readonly IReadOnlyDictionary<Type, byte> OffsetMultiplierByType = new Dictionary<Type, byte> {
+	public static readonly Dictionary<Type, byte> OffsetMultiplierByType = new Dictionary<Type, byte> {
 		{ typeof(GameRoot), 1 },
 		{ typeof(Parameter), 2 },
 		{ typeof(Expression), 4},
@@ -49,10 +48,10 @@ public static class IdGenerator {
 		OffsetMultiplierByType.TryGetValue(type, out var v) ? v * 281470681677825UL : 
 		throw new Exception($"Type not supported: {type}");
 
-	public static string GetNewId<T>(VirtualMachine vm) {  
+	public static ulong GetNewId<T>(VirtualMachine vm) {  
 		var firstFreeId = GetMinIdForType(typeof(T));
-		while (vm.GetNullableElement<VmElement>(firstFreeId.ToString()) != null) 
+		while (vm.GetNullableElement(firstFreeId) != null) 
 			firstFreeId++;
-		return firstFreeId.ToString();
+		return firstFreeId;
 	}
 }

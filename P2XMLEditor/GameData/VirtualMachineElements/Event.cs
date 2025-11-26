@@ -1,21 +1,24 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Event(string id) : VmElement(id) {
+public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
     protected override HashSet<string> KnownElements { get; } = [
         "EventTime", "Manual", "EventRaisingType", "EventParameter", "Condition",
         "ChangeTo", "Repeated", "Name", "Parent", "MessagesInfo"
     ];
-
     public TimeSpan EventTime { get; set; }
     public bool? Manual { get; set; } = true;
     public EventRaisingType EventRaisingType { get; set; }
@@ -26,10 +29,6 @@ public class Event(string id) : VmElement(id) {
     public Parameter? EventParameter { get; set; }
     public Condition? Condition { get; set; }
     public List<MessageInfo>? MessagesInfo { get; set; }
-
-    private record RawEventData(string Id, TimeSpan EventTime, bool? Manual, string EventRaisingType, bool? ChangeTo,
-        bool? Repeated, string Name, string ParentId, string? EventParameterId, string? ConditionId, 
-        List<MessageInfo>? MessagesInfo) : RawData(Id);
     
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
@@ -62,55 +61,24 @@ public class Event(string id) : VmElement(id) {
         );
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        var messagesInfo = new List<MessageInfo>();
-        var messagesElement = element.Element("MessagesInfo");
-        if (messagesElement != null) {
-            foreach (var item in messagesElement.Elements("Item")) {
-                messagesInfo.Add(new(
-                    GetRequiredElement(item, "Name").Value,
-                    GetRequiredElement(item, "Type").Value
-                ));
-            }
-        }
-
-        return new RawEventData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            ParseTimeSpan(GetRequiredElement(element, "EventTime")),
-            element.Element("Manual")?.Let(ParseBool),
-            GetRequiredElement(element, "EventRaisingType").Value,
-            element.Element("ChangeTo")?.Let(ParseBool),
-            element.Element("Repeated")?.Let(ParseBool),
-            GetRequiredElement(element, "Name").Value,
-            GetRequiredElement(element, "Parent").Value,
-            element.Element("EventParameter")?.Value,
-            element.Element("Condition")?.Value,
-            messagesInfo.Count > 0 ? messagesInfo : null
-        );
+    
+    public void FillFromRawData(RawEventData data, VirtualMachine vm) {
+        EventTime = data.EventTime;
+        Manual = data.Manual;
+        EventRaisingType = data.EventRaisingType;
+        ChangeTo = data.ChangeTo;
+        Repeated = data.Repeated;
+        Name = data.Name;
+        Parent = vm.GetElement<Blueprint, Quest, FunctionalComponent, Character, GameRoot>(data.ParentId);
+        EventParameter = data.EventParameterId.HasValue ? 
+            vm.GetElement<Parameter>(data.EventParameterId.Value) : null;
+        Condition = data.ConditionId.HasValue ? 
+            vm.GetElement<Condition>(data.ConditionId.Value) : null;
+        MessagesInfo = data.MessagesInfo;
     }
 
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawEventData eventData)
-            throw new ArgumentException($"Expected RawEventData but got {rawData.GetType()}");
-
-        EventTime = eventData.EventTime;
-        Manual = eventData.Manual;
-        EventRaisingType = eventData.EventRaisingType.Deserialize<EventRaisingType>();
-        ChangeTo = eventData.ChangeTo;
-        Repeated = eventData.Repeated;
-        Name = eventData.Name;
-        Parent = vm.GetElement<Blueprint, Quest, FunctionalComponent, Character, GameRoot>(eventData.ParentId);
-        EventParameter = eventData.EventParameterId != null ? 
-            vm.GetElement<Parameter>(eventData.EventParameterId) : null;
-        Condition = eventData.ConditionId != null ? 
-            vm.GetElement<Condition>(eventData.ConditionId) : null;
-        MessagesInfo = eventData.MessagesInfo;
-    }
     
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => throw new NotImplementedException();
-    
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         vm.RemoveElement(EventParameter);
         vm.RemoveElement(Condition);
         // TODO: Kill reference in parent if event is destroyed independently of parent.

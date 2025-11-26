@@ -1,28 +1,28 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class PartCondition(string id) : VmElement(id) {
+public class PartCondition(ulong id) : VmElement(id), IFiller<RawPartConditionData>, IVmCreator<PartCondition> {
     protected override HashSet<string> KnownElements { get; } =
         ["Name", "ConditionType", "FirstExpression", "SecondExpression", "OrderIndex"];
-
     public string? Name { get; set; }
     public ConditionType ConditionType { get; set; }
     public Expression? FirstExpression { get; set; }
     public Expression? SecondExpression { get; set; }
     public int OrderIndex { get; set; }
     
-    private record RawPartConditionData(string Id, string? Name, string ConditionType, string? FirstExpressionId,
-        string? SecondExpressionId, int OrderIndex) : RawData(Id);
-
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (!settings.CleanUpNames) 
@@ -41,34 +41,24 @@ public class PartCondition(string id) : VmElement(id) {
         return element;
     }
 
-    protected override RawData CreateRawData(XElement element) {
-        return new RawPartConditionData(
-            element.Attribute("id")?.Value ?? throw new ArgumentException("Id missing"),
-            element.Element("Name")?.Value,
-            GetRequiredElement(element, "ConditionType").Value,
-            element.Element("FirstExpression")?.Value,
-            element.Element("SecondExpression")?.Value,
-            GetRequiredElement(element, "OrderIndex").ParseInt()
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawPartConditionData data)
-            throw new ArgumentException($"Expected RawPartConditionData but got {rawData.GetType()}");
-
+    public void FillFromRawData(RawPartConditionData data, VirtualMachine vm) {
         Name = data.Name;
         ConditionType = data.ConditionType.Deserialize<ConditionType>();
         OrderIndex = data.OrderIndex;
-        FirstExpression = data.FirstExpressionId != null ? vm.GetElement<Expression>(data.FirstExpressionId) : null;
-        SecondExpression = data.SecondExpressionId != null ? vm.GetElement<Expression>(data.SecondExpressionId) : null;
+        FirstExpression = data.FirstExpressionId.HasValue
+            ? vm.GetElement<Expression>(data.FirstExpressionId.Value)
+            : null;
+        SecondExpression = data.SecondExpressionId.HasValue
+            ? vm.GetElement<Expression>(data.SecondExpressionId.Value)
+            : null;
     }
-    
-    protected override VmElement New(VirtualMachine vm, string id, VmElement parent) => new PartCondition(id) {
+
+    public static PartCondition New(VirtualMachine vm, ulong id, VmElement parent) => new PartCondition(id) {
         Name = "Always True",
         ConditionType = ConditionType.ConstTrue
     };
 
-    public override void OnDestroy(VirtualMachine vm) {
+    public void OnDestroy(VirtualMachine vm) {
         vm.RemoveElement(FirstExpression);
         vm.RemoveElement(SecondExpression);
     }

@@ -1,13 +1,18 @@
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.Helper;
+using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
-public abstract class GameObject(string id) : ParameterHolder(id) {
+public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGameObjectData> {
     private static readonly HashSet<string> BaseGameObjectElements =
         ["WorldPositionGuid", "EngineTemplateID", "EngineBaseTemplateID", "Instantiated"];
     
@@ -17,13 +22,6 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
     public string? EngineTemplateId { get; set; }
     public string? EngineBaseTemplateId { get; set; }
     public bool? Instantiated { get; set; }
-
-    private record RawGameObjectData(string Id, bool? Static, List<string> FunctionalComponentIds, string? EventGraphId,
-        Dictionary<string, string> StandartParamIds, Dictionary<string, string> CustomParamIds, string? GameTimeContext,
-        string Name, string? ParentId, List<string>? InheritanceInfo, List<string>? EventIds, 
-        List<string>? ChildObjectIds, string? WorldPositionGuid, string? EngineTemplateId, string? EngineBaseTemplateId,
-        bool? Instantiated) : RawParameterHolderData(Id, Static, FunctionalComponentIds, EventGraphId, StandartParamIds, 
-        CustomParamIds, GameTimeContext, Name, ParentId, InheritanceInfo, EventIds, ChildObjectIds);
 
     public override XElement ToXml(WriterSettings settings) {
         var element = base.ToXml(settings);
@@ -39,39 +37,19 @@ public abstract class GameObject(string id) : ParameterHolder(id) {
             element.AddFirst(CreateSelfClosingElement("WorldPositionGuid", WorldPositionGuid));
         return element;
     }
-
-    protected override RawData CreateRawData(XElement element) {
-        var baseData = (RawParameterHolderData)base.CreateRawData(element);
-
-        if (baseData.ParentId == null)
-            throw new ArgumentException($"Parent is for {GetType().Name}");
-
-        return new RawGameObjectData(
-            baseData.Id,
-            baseData.Static,
-            baseData.FunctionalComponentIds,
-            baseData.EventGraphId,
-            baseData.StandartParamIds,
-            baseData.CustomParamIds,
-            baseData.GameTimeContext,
-            baseData.Name,
-            baseData.ParentId,
-            baseData.InheritanceInfo,
-            baseData.EventIds,
-            baseData.ChildObjectIds,
-            element.Element("WorldPositionGuid")?.Value,
-            element.Element("EngineTemplateID")?.Value,
-            element.Element("EngineBaseTemplateID")?.Value,      
-            element.Element("Instantiated")?.Let(ParseBool)
-        );
-    }
-
-    public override void FillFromRawData(RawData rawData, VirtualMachine vm) {
-        if (rawData is not RawGameObjectData data)
-            throw new ArgumentException($"Expected RawGameObjectData but got {rawData.GetType()}");
-
-        base.FillFromRawData(data, vm);
-        
+    
+    public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {
+        Static = data.Static;
+        FunctionalComponents = data.FunctionalComponentIds?.Select(vm.GetElement<FunctionalComponent>).ToList() ?? [];
+        EventGraph = data.EventGraphId.HasValue ? vm.GetElement<Graph>(data.EventGraphId.Value) : null;
+        StandartParams = data.StandartParamIds?.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value)) ?? [];
+        CustomParams = data.CustomParamIds?.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value)) ?? [];
+        GameTimeContext = data.GameTimeContext;
+        Name = data.Name;
+        Parent = vm.GetElement<ParameterHolder>(data.ParentId);
+        InheritanceInfo = data.InheritanceInfo;
+        Events = data.EventIds?.Select(vm.GetElement<Event>).ToList();
+        ChildObjects = data.ChildObjectIds?.Select(vm.GetElement<ParameterHolder>).ToList();
         WorldPositionGuid = data.WorldPositionGuid;
         EngineTemplateId = data.EngineTemplateId;
         EngineBaseTemplateId = data.EngineBaseTemplateId;
