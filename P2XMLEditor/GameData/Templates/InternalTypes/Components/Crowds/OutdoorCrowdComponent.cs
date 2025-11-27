@@ -1,7 +1,7 @@
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 
-namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
+namespace P2XMLEditor.GameData.Templates.InternalTypes.Components.Crowds;
 
 public struct OutdoorCrowdComponent() : ITemplateComponent {
 	public string? DataId { get; set; }

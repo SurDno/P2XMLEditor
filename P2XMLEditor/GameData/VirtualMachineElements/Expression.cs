@@ -9,6 +9,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
+
 using static P2XMLEditor.Helper.XmlParsingHelper;
 using static P2XMLEditor.Helper.XmlReaderExtensions;
 using ExpressionType = P2XMLEditor.GameData.VirtualMachineElements.Enums.ExpressionType;

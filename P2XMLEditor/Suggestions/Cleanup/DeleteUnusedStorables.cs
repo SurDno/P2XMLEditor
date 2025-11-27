@@ -4,8 +4,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
-using P2XMLEditor.Suggestions.Abstract;
-using P2XMLEditor.Suggestions.Attributes;
+
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Suggestions.Cleanup;

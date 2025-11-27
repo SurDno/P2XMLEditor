@@ -6,6 +6,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
+
 using static P2XMLEditor.Helper.XmlParsingHelper;
 using static P2XMLEditor.Helper.XmlReaderExtensions;
 

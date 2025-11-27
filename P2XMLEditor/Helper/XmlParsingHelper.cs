@@ -11,12 +11,7 @@ public static class XmlParsingHelper {
         var parts = s.Split(':');
         if (parts.Length != 4)
             return default;
-        return new TimeSpan(
-            int.Parse(parts[0]),
-            int.Parse(parts[1]),
-            int.Parse(parts[2]),
-            int.Parse(parts[3])
-        );
+        return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]), int.Parse(parts[3]));
     }
     
     //

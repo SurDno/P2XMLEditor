@@ -11,7 +11,8 @@ public static class XmlReaderExtensions {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static XmlReader InitializeFullFileReader(string path, int size = 32768) {
 		var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, size, FileOptions.SequentialScan);
-		var settings = new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true };
+		var settings = new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true, CheckCharacters = false,
+			DtdProcessing = DtdProcessing.Ignore, ConformanceLevel = ConformanceLevel.Fragment };
 		return XmlReader.Create(fs, settings);
 	}
 

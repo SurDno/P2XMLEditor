@@ -4,8 +4,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
-using P2XMLEditor.Suggestions.Abstract;
-using P2XMLEditor.Suggestions.Attributes;
+using P2XMLEditor.Suggestions;
 
 namespace P2XMLEditor.Forms.MainForm;
 

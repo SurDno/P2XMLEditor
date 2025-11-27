@@ -17,5 +17,9 @@
       </PackageReference>
       <PackageReference Include="MethodDecorator.Fody" Version="1.1.1" />
       <PackageReference Include="ZLinq" Version="1.5.4" />
+      <PackageReference Include="ZLinq.DropInGenerator" Version="1.5.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

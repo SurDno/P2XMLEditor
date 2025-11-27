@@ -1,10 +1,12 @@
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Enums;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 // TODO: store PlaceholderId as GUID or direct class ref
+namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
+
 public struct StorableComponent() : ITemplateComponent {
 
     public bool IsEnabled { get; set; }

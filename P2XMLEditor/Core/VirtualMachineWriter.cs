@@ -74,7 +74,8 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
             var xmlSettings = new XmlWriterSettings { 
                 Encoding = Encoding.UTF8, 
                 Indent = true, 
-                OmitXmlDeclaration = true 
+                OmitXmlDeclaration = true,
+                NewLineChars = "\r\n"
             };
         
             using var stream = File.Create(filePath);

@@ -1,9 +1,9 @@
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Enums;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.Helper;
 
-namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
+namespace P2XMLEditor.GameData.Templates.InternalTypes.Components.Interactions;
 
 public struct RepairerComponent() : ITemplateComponent {
     public List<StorableGroup> RepairableGroups { get; } = [];

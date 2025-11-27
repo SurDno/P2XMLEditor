@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
-using P2XMLEditor.Suggestions.Abstract;
 
 namespace P2XMLEditor.Suggestions.Refactoring.Deprecated;
 

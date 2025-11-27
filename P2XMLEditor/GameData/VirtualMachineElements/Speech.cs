@@ -6,6 +6,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
+
 using static P2XMLEditor.Helper.XmlParsingHelper;
 using static P2XMLEditor.Helper.XmlReaderExtensions;
 
@@ -61,7 +62,7 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
         if (IsTrade != null)
             element.Add(CreateBoolElement("IsTrade", (bool)IsTrade));
         if (EntryPoints.Any())
-            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString())));
+            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString())) );
         if (IgnoreBlock != null)
             element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
         element.Add(new XElement("Owner", Owner.Id));

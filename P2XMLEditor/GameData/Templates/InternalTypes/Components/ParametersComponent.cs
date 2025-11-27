@@ -1,6 +1,6 @@
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.GameData.Enums;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.GameData.Types;
 using P2XMLEditor.Logging;
 

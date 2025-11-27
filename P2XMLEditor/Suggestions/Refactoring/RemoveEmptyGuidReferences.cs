@@ -1,8 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.Suggestions.Abstract;
-using P2XMLEditor.Suggestions.Attributes;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 

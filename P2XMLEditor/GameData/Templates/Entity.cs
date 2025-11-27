@@ -1,8 +1,11 @@
 using System.Collections.Concurrent;
 using P2XMLEditor.GameData.Templates.Abstract;
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using P2XMLEditor.GameData.Templates.InternalTypes.Components;
+using P2XMLEditor.GameData.Templates.InternalTypes.Components.Crowds;
+using P2XMLEditor.GameData.Templates.InternalTypes.Components.Interactions;
+using P2XMLEditor.GameData.Templates.InternalTypes.Components.Player;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.Logging;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 

@@ -1,5 +1,5 @@
-using P2XMLEditor.Parsing.ElementParsers;
-using P2XMLEditor.Parsing.ElementParsers.XElement;
+using P2XMLEditor.Parsing.Element;
+using P2XMLEditor.Parsing.Element.XElementParsers;
 using P2XMLEditor.Parsing.RawData;
 
 namespace P2XMLEditor.Parsing.Executors;

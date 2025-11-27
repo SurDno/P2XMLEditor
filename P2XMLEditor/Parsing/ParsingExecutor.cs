@@ -1,8 +1,8 @@
 using P2XMLEditor.Logging;
-using P2XMLEditor.Parsing.ElementParsers;
+using P2XMLEditor.Parsing.Element;
 using P2XMLEditor.Parsing.RawData;
 
-namespace P2XMLEditor.Parsing.Executors;
+namespace P2XMLEditor.Parsing;
 
 public abstract class ParsingExecutor {
     protected internal abstract IParser<RawActionLineData> ActionLineLoader { get; }

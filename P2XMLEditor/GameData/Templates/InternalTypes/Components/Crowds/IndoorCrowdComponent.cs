@@ -1,10 +1,9 @@
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Enums;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.Helper;
-using static P2XMLEditor.Helper.XmlParsingHelper;
 
-namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
+namespace P2XMLEditor.GameData.Templates.InternalTypes.Components.Crowds;
 
 public struct IndoorCrowdComponent() : ITemplateComponent {
     public string? RegionId { get; set; }

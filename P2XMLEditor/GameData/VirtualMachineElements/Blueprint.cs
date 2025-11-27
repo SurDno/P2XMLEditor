@@ -4,6 +4,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 
+
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Blueprint(ulong id) : ParameterHolder(id), IFiller<RawBlueprintData> {

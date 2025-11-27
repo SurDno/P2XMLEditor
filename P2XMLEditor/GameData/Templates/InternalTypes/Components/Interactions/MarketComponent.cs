@@ -1,8 +1,8 @@
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
-namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
+namespace P2XMLEditor.GameData.Templates.InternalTypes.Components.Interactions;
 
 public struct MarketComponent() : ITemplateComponent, IEnableable {
 	public bool IsEnabled { get; set; }

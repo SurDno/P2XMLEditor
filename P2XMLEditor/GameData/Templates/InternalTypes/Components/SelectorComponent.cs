@@ -1,5 +1,5 @@
-using P2XMLEditor.GameData.Templates.InternalTypes.Abstract;
 using System.Xml.Linq;
+using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
