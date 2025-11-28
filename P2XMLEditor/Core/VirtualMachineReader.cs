@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
@@ -98,6 +99,7 @@ public class VirtualMachineReader {
         AddElements(_executor.Samples);
         AddElements(_executor.Quests);
     }
+
 
     /* ============================================================
      * AddElements INTERNAL CORE
@@ -435,74 +437,226 @@ public class VirtualMachineReader {
             _vm.ElementsByType[typeof(Quest)].Add(elem);
         }
     }
+[PerformanceLogHook]
+private void FillGameRoots() {
+    foreach (var raw in _executor.GameRoots)
+        _vm.GetElement<GameRoot>(raw.Id).FillFromRawData(raw, _vm);
+}
 
-    [PerformanceLogHook]
-    private void FillFromRawData() {
-        foreach (var raw in _executor.GameRoots)
-            _vm.GetElement<GameRoot>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.CustomTypes)
-            _vm.GetElement<CustomType>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.GameStrings)
-            _vm.GetElement<GameString>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Blueprints)
-            _vm.GetElement<Blueprint>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Characters)
-            _vm.GetElement<Character>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Items)
-            _vm.GetElement<Item>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Others)
-            _vm.GetElement<Other>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Geoms)
-            _vm.GetElement<Geom>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Scenes)
-            _vm.GetElement<Scene>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.FunctionalComponents)
-            _vm.GetElement<FunctionalComponent>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.GameModes)
-            _vm.GetElement<GameMode>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Parameters)
-            _vm.GetElement<Parameter>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Expressions)
-            _vm.GetElement<Expression>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.PartConditions)
-            _vm.GetElement<PartCondition>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Conditions)
-            _vm.GetElement<Condition>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Branches)
-            _vm.GetElement<Branch>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Replies)
-            _vm.GetElement<Reply>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Speeches)
-            _vm.GetElement<Speech>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.States)
-            _vm.GetElement<State>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Talkings)
-            _vm.GetElement<Talking>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Events)
-            _vm.GetElement<Event>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.ActionLines)
-            _vm.GetElement<ActionLine>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Actions)
-            _vm.GetElement<Action>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.EntryPoints)
-            _vm.GetElement<EntryPoint>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.GraphLinks)
-            _vm.GetElement<GraphLink>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Graphs)
-            _vm.GetElement<Graph>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.MindMaps)
-            _vm.GetElement<MindMap>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.MindMapLinks)
-            _vm.GetElement<MindMapLink>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.MindMapNodes)
-            _vm.GetElement<MindMapNode>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.MindMapNodeContents)
-            _vm.GetElement<MindMapNodeContent>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Samples)
-            _vm.GetElement<Sample>(raw.Id).FillFromRawData(raw, _vm);
-        foreach (var raw in _executor.Quests)
-            _vm.GetElement<Quest>(raw.Id).FillFromRawData(raw, _vm);
-    }
+private void FillCustomTypes() {
+    foreach (var raw in _executor.CustomTypes)
+        _vm.GetElement<CustomType>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillGameStrings() {
+    foreach (var raw in _executor.GameStrings)
+        _vm.GetElement<GameString>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillBlueprints() {
+    foreach (var raw in _executor.Blueprints)
+        _vm.GetElement<Blueprint>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillCharacters() {
+    foreach (var raw in _executor.Characters)
+        _vm.GetElement<Character>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillItems() {
+    foreach (var raw in _executor.Items)
+        _vm.GetElement<Item>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillOthers() {
+    foreach (var raw in _executor.Others)
+        _vm.GetElement<Other>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillGeoms() {
+    foreach (var raw in _executor.Geoms)
+        _vm.GetElement<Geom>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillScenes() {
+    foreach (var raw in _executor.Scenes)
+        _vm.GetElement<Scene>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillFunctionalComponents() {
+    foreach (var raw in _executor.FunctionalComponents)
+        _vm.GetElement<FunctionalComponent>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillGameModes() {
+    foreach (var raw in _executor.GameModes)
+        _vm.GetElement<GameMode>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillParameters() {
+    foreach (var raw in _executor.Parameters)
+        _vm.GetElement<Parameter>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillExpressions() {
+    foreach (var raw in _executor.Expressions)
+        _vm.GetElement<Expression>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillPartConditions() {
+    foreach (var raw in _executor.PartConditions)
+        _vm.GetElement<PartCondition>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillConditions() {
+    foreach (var raw in _executor.Conditions)
+        _vm.GetElement<Condition>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillBranches() {
+    foreach (var raw in _executor.Branches)
+        _vm.GetElement<Branch>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillReplies() {
+    foreach (var raw in _executor.Replies)
+        _vm.GetElement<Reply>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillSpeeches() {
+    foreach (var raw in _executor.Speeches)
+        _vm.GetElement<Speech>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillStates() {
+    foreach (var raw in _executor.States)
+        _vm.GetElement<State>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillTalkings() {
+    foreach (var raw in _executor.Talkings)
+        _vm.GetElement<Talking>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillEvents() {
+    foreach (var raw in _executor.Events)
+        _vm.GetElement<Event>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillActionLines() {
+    foreach (var raw in _executor.ActionLines)
+        _vm.GetElement<ActionLine>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillActions() {
+    foreach (var raw in _executor.Actions)
+        _vm.GetElement<Action>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillEntryPoints() {
+    foreach (var raw in _executor.EntryPoints)
+        _vm.GetElement<EntryPoint>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillGraphLinks() {
+    foreach (var raw in _executor.GraphLinks)
+        _vm.GetElement<GraphLink>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillGraphs() {
+    foreach (var raw in _executor.Graphs)
+        _vm.GetElement<Graph>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillMindMaps() {
+    foreach (var raw in _executor.MindMaps)
+        _vm.GetElement<MindMap>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillMindMapLinks() {
+    foreach (var raw in _executor.MindMapLinks)
+        _vm.GetElement<MindMapLink>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillMindMapNodes() {
+    foreach (var raw in _executor.MindMapNodes)
+        _vm.GetElement<MindMapNode>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillMindMapNodeContents() {
+    foreach (var raw in _executor.MindMapNodeContents)
+        _vm.GetElement<MindMapNodeContent>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+private void FillSamples() {
+    foreach (var raw in _executor.Samples)
+        _vm.GetElement<Sample>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillQuests() {
+    foreach (var raw in _executor.Quests)
+        _vm.GetElement<Quest>(raw.Id).FillFromRawData(raw, _vm);
+}
+
+[PerformanceLogHook]
+private void FillFromRawData() {  
+    FillGameRoots();
+    FillCustomTypes();
+    FillGameStrings();
+    FillBlueprints();
+    FillCharacters();
+    FillItems();
+    FillOthers();
+    FillGeoms();
+    FillScenes();
+    FillFunctionalComponents();
+    FillGameModes();
+    FillParameters();
+    FillExpressions();
+    FillPartConditions();
+    FillConditions();
+    FillBranches();
+    FillReplies();
+    FillSpeeches();
+    FillStates();
+    FillTalkings();
+    FillEvents();
+    FillActionLines();
+    FillActions();
+    FillEntryPoints();
+    FillGraphLinks();
+    FillGraphs();
+    FillMindMaps();
+    FillMindMapLinks();
+    FillMindMapNodes();
+    FillMindMapNodeContents();
+    FillSamples();
+    FillQuests();
+}
 
     [PerformanceLogHook]
     private void LoadLocalizations() {

@@ -1,4 +1,6 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -6,9 +8,8 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
-using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 using P2XMLEditor.Parsing.RawData;
+using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
 
@@ -44,8 +45,13 @@ public class MindMap(ulong id) : VmElement(id), IFiller<RawMindMapData>, IVmCrea
         LogicMapType = data.LogicMapType;
         Title = vm.GetElement<GameString>(data.TitleId);
         Parent = vm.GetElement<GameRoot>(data.ParentId);
-        Nodes = data.NodeIds.Select(vm.GetElement<MindMapNode>).ToList();
-        Links = data.LinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
+        Nodes = new();
+        foreach (var nodeId in data.NodeIds)
+            Nodes.Add(vm.GetElement<MindMapNode>(nodeId));
+        Links = new();
+        if (data.LinkIds == null) return;
+        foreach (var nodeId in data.LinkIds)
+            Links.Add(vm.GetElement<MindMapLink>(nodeId));
     }
     
     public static MindMap New(VirtualMachine vm, ulong id, VmElement parent) {

@@ -3,7 +3,7 @@ using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct BehaviorComponent() : ITemplateComponent {
+public struct BehaviorComponent : ITemplateComponent {
 	public string? BehaviorTreeId { get; set; }
 
 	public void LoadFromXml(XElement element) {

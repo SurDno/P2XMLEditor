@@ -6,7 +6,7 @@ namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
 
 // TODO: store PlaceholderId as GUID or direct class ref
-public struct MapItemComponent() : ITemplateComponent, IEnableable {
+public struct MapItemComponent : ITemplateComponent, IEnableable {
 	public bool IsEnabled { get; set; }
 	public string PlaceholderId { get; set; }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 

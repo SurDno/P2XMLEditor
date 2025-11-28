@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using P2XMLEditor.Attributes;
 using P2XMLEditor.Logging;
@@ -66,11 +69,9 @@ public static class EnumExtensions {
 	}
 
 	private static Enum AssignUnknownValue(Type enumType, string value) {
-		var allValues = Enum.GetValues(enumType).Cast<Enum>().ToArray();
+		var allValues = Enum.GetValues(enumType).Cast<Enum>();
 		var used = SerializeCache[enumType];
-		var free = allValues
-			.Select(ev => Convert.ToInt32(ev))
-			.FirstOrDefault(intVal => !used.ContainsKey(intVal));
+		var free = allValues.Select(Convert.ToInt32).FirstOrDefault(intVal => !used.ContainsKey(intVal));
 
 		if (!Enum.IsDefined(enumType, free))
 			throw new InvalidOperationException($"No free value available in {enumType.Name} to map '{value}'");

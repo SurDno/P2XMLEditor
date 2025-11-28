@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 

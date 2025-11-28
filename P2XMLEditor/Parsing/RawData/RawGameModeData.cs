@@ -1,3 +1,5 @@
+using System;
+
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGameModeData {

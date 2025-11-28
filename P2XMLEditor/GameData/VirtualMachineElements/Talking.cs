@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -6,9 +7,9 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
+using ZLinq;
+using ZLinq.Linq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -29,8 +30,12 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData>, ICommon
     
     public void FillFromRawData(RawTalkingData data, VirtualMachine vm) {
         States = data.StateIds.Select(vm.GetElement<Branch, Speech, State>).ToList();
-        EventLinks = data.EventLinkIds.Select(vm.GetElement<GraphLink>).ToList();
-        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
+        EventLinks = new();
+        foreach (var eventLinkId in data.EventLinkIds) 
+            EventLinks.Add(vm.GetElement<GraphLink>(eventLinkId));
+        EntryPoints = new();
+        foreach (var entryPointId in data.EntryPointIds) 
+            EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<Blueprint, Character>(data.OwnerId);
         Initial = data.Initial;

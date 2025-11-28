@@ -1,14 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.Helper;
 
 public static class VmElementExtensions {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static VmElement GetElementById(VirtualMachine vm, ulong id) {
-        vm.ElementsById.TryGetValue(id, out var el);
-        if (el is null)
-            throw new KeyNotFoundException($"Element {id} was not found");
-        return el;
+        return vm.ElementsById[id];
     }
 
     private static void ValidateVmElementType<T>() {
@@ -28,8 +30,12 @@ public static class VmElementExtensions {
         return GetElementById(vm, id);
     }
 
-    public static T GetElement<T>(this VirtualMachine vm, ulong id) {
-        ValidateVmElementType<T>();
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T GetElement<T>(this VirtualMachine vm, ulong id) where T: VmElement {
+        return (T)GetElementById(vm, id);
+    }
+    
+    public static T GetElementInterface<T>(this VirtualMachine vm, ulong id) {
         var el = GetElementById(vm, id);
 
         if (el is not T value)
@@ -160,9 +166,5 @@ public static class VmElementExtensions {
 
 
         return new(el);
-    }
-    
-    public static IEnumerable<T> GetElementsByType<T>(this VirtualMachine vm) where T : VmElement {
-        return vm.ElementsByType.TryGetValue(typeof(T), out var elements) ? elements.Cast<T>() : [];
     }
 }

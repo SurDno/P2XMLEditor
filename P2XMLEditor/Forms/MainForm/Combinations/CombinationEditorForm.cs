@@ -1,6 +1,11 @@
-using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.MainForm.Combinations;

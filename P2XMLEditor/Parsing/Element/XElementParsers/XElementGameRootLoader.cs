@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
@@ -14,8 +18,8 @@ public class XElementGameRootLoader : IParser<RawGameRootData> {
         xr.MoveToContent();
         xr.ReadStartElement();
 		
-        while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-            var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+        while (xr.NodeType == XmlNodeType.Element) {
+            var element = (XElement)XNode.ReadFrom(xr);
             var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
             var scenesStructure = new Dictionary<ulong, SceneStructureEntry>();
@@ -29,7 +33,8 @@ public class XElementGameRootLoader : IParser<RawGameRootData> {
                         var container = item.Element(containerName);
                         if (container == null) continue;
                         var type = Enum.Parse<ChildContainerType>(containerName);
-                        var children = container.Elements(XNameCache.Item).Select(e => ulong.Parse(e.Value)).ToList();
+                        var children = container.Elements(XNameCache.Item).
+                            Select(e => ulong.Parse(e.Value)).ToList();
                         entry.Containers[type] = children;
                     }
 

@@ -6,7 +6,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
 // TODO: store actual vector3s instead of strings?
-public struct PositionComponent() : ITemplateComponent {
+public struct PositionComponent : ITemplateComponent {
 	public Vector3 Position { get; set; }
 	public Vector3 Rotation { get; set; }
 

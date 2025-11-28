@@ -1,4 +1,8 @@
+using System;
+using System.Drawing;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
@@ -6,7 +10,6 @@ using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Logging;
-using P2XMLEditor.Parsing;
 
 namespace P2XMLEditor.Forms.MainForm;
 

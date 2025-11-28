@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using P2XMLEditor.GameData.VirtualMachineElements;

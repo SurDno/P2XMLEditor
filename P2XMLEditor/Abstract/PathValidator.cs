@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace P2XMLEditor.Abstract;
 
 public abstract class PathValidator {

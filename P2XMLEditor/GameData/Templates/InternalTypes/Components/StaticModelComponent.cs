@@ -5,7 +5,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
 // TODO: store ConnectionId as GUID or direct class ref
-public struct StaticModelComponent() : ITemplateComponent {
+public struct StaticModelComponent : ITemplateComponent {
 	public bool RelativePosition { get; set; }
 	public string ConnectionId { get; set; }
 

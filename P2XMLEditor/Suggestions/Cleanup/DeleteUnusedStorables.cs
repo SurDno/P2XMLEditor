@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
-
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Suggestions.Cleanup;
@@ -14,12 +14,12 @@ namespace P2XMLEditor.Suggestions.Cleanup;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
-		var all = Vm.GetElementsByType<Item>().Cast<GameObject>().Concat(Vm.GetElementsByType<Other>()).ToList();
-		var combos = all.Where(i => i.StandartParams.ContainsKey(CombinationHelper.CombinationKey)).ToList();
-		var items = all.Where(i => i.StandartParams.ContainsKey(CombinationHelper.StorableKey)).Except(combos).ToList();
+		var all = Vm.GetElementsByType<Item>().Cast<GameObject>().Concat(Vm.GetElementsByType<Other>());
+		var combos = all.Where(i => i.StandartParams.ContainsKey(CombinationHelper.CombinationKey));
+		var items = all.Where(i => i.StandartParams.ContainsKey(CombinationHelper.StorableKey)).Except(combos);
 
-		var parameters = Vm.GetElementsByType<Parameter>().ToList();
-		var actions = Vm.GetElementsByType<Action>().ToList();
+		var parameters = Vm.GetElementsByType<Parameter>();
+		var actions = Vm.GetElementsByType<Action>();
 		
 		foreach (var storable in items.Where(item => CombinationHelper.GetCombinationsWithItem(Vm, item).Count == 0)) {
 

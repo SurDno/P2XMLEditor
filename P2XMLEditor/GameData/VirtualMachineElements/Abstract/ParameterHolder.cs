@@ -1,11 +1,11 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
-using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -60,15 +60,15 @@ public abstract class ParameterHolder(ulong id) : VmElement(id), ICommonVariable
 
 
     public void OnDestroy(VirtualMachine vm) {
-        foreach (var functionalComponent in FunctionalComponents.ToList())
+        foreach (var functionalComponent in FunctionalComponents)
             vm.RemoveElement(functionalComponent);
         if (EventGraph != null)
             vm.RemoveElement(EventGraph);
-        foreach (var kvp in StandartParams.ToList()) 
+        foreach (var kvp in StandartParams ?? []) 
             vm.RemoveElement(kvp.Value);
-        foreach (var kvp in CustomParams.ToList()) 
+        foreach (var kvp in CustomParams ?? []) 
             vm.RemoveElement(kvp.Value);
-        foreach (var ev in Events?.ToList() ?? [])
+        foreach (var ev in Events ?? [])
             vm.RemoveElement(ev);
         foreach (var ph in vm.GetElementsByType<ParameterHolder>()) {
             if (ph.ChildObjects != null && ph.ChildObjects.Contains(this))

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -29,7 +30,7 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 				         action.TargetFuncName.Contains("AddItemsToStoragesLinear") ||
 				         action.TargetFuncName.Contains("PickUpCombination"))) {
 				if (action.SourceParams == null) continue;
-				if (action.SourceParams.Any(p => p.Contains(combo.ParamId.ToString())))
+				if (action.SourceParams.Any(p => p.Contains(combo.ParamId)))
 					referencedInActions = true;
 			}
 			if (referencedInActions) continue;
@@ -37,7 +38,7 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 			foreach (var expression in expressions) {
 				if (expression.Function is not IsStorableExistInCombinationFunction func) continue;
 				var sourceParams = func.GetParamStrings();
-				if (sourceParams.Any(e => e.Contains(combo.ParamId.ToString())))
+				if (sourceParams.Any(e => e.Contains(combo.ParamId)))
 					referencedInExpressions = true;
 			}
 			if (referencedInExpressions) continue;

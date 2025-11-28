@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -6,9 +7,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -34,16 +33,28 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
     public Talking Parent { get; set; }
 
     public void FillFromRawData(RawSpeechData data, VirtualMachine vm) {
-        Replies = data.ReplyIds.Select(vm.GetElement<Reply>).ToList();
+        Replies = new();
+        foreach (var replyId in data.ReplyIds) 
+            Replies.Add(vm.GetElement<Reply>(replyId));
         Text = vm.GetElement<GameString>(data.TextId);
         AuthorGuid = vm.GetElement<Blueprint, Character>(data.AuthorGuidId);
         OnlyOnce = data.OnlyOnce;
         IsTrade = data.IsTrade;
-        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
+        EntryPoints = new();
+        foreach (var entryPointId in data.EntryPointIds) 
+            EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<Blueprint, Character>(data.OwnerId);
-        InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
-        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList();
+        InputLinks = new();
+        if (data.InputLinkIds != null) {
+            foreach (var inputLinkId in data.InputLinkIds)
+                InputLinks.Add(vm.GetElement<GraphLink>(inputLinkId));
+        }
+        OutputLinks = new();
+        if (data.OutputLinkIds != null) {
+            foreach (var outputLinkId in data.OutputLinkIds)
+                OutputLinks.Add(vm.GetElement<GraphLink>(outputLinkId));
+        }
         Initial = data.Initial;
         Name = data.Name;
         Parent = vm.GetElement<Talking>(data.ParentId);

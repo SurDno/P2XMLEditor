@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -8,7 +9,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -75,14 +75,28 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
     }
     
     public void FillFromRawData(RawBranchData data, VirtualMachine vm) {
-        BranchConditions = data.BranchConditionIds?.Select(vm.GetElement<Condition, PartCondition>).ToList() ?? [];
+        BranchConditions = new();
+        if (data.BranchConditionIds != null) {
+            foreach (var branchConditionId in data.BranchConditionIds)
+                BranchConditions.Add(vm.GetElement<Condition, PartCondition>(branchConditionId));
+        }
         BranchType = data.BranchType;
         BranchVariantInfo = data.BranchVariantInfo;
-        EntryPoints = data.EntryPointIds.Select(vm.GetElement<EntryPoint>).ToList();
+        EntryPoints = new();
+        foreach (var entryPointId in data.EntryPointIds)
+            EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-        InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
-        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
+        InputLinks = new();
+        if (data.InputLinkIds != null) {
+            foreach (var inputLinkId in data.InputLinkIds)
+                InputLinks.Add(vm.GetElement<GraphLink>(inputLinkId));
+        }
+        OutputLinks = new();
+        if (data.OutputLinkIds != null) {
+            foreach (var outputLinkId in data.OutputLinkIds)
+                OutputLinks.Add(vm.GetElement<GraphLink>(outputLinkId));
+        }
         Initial = data.Initial;
         Name = data.Name;
         Parent = vm.GetElement<Graph, Talking>(data.ParentId);

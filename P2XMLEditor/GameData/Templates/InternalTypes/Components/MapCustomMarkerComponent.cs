@@ -4,7 +4,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct MapCustomMarkerComponent() : ITemplateComponent, IEnableable {
+public struct MapCustomMarkerComponent : ITemplateComponent, IEnableable {
 	public bool IsEnabled { get; set; }
 
 	public void LoadFromXml(XElement element) {

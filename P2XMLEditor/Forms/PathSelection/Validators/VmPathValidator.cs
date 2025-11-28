@@ -1,3 +1,5 @@
+using System.IO;
+using System.Windows.Forms;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Helper;
 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
@@ -12,8 +14,8 @@ public class XElementQuestLoader : IParser<RawQuestData> {
         xr.MoveToContent();
         xr.ReadStartElement();
 		
-        while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-            var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+        while (xr.NodeType == XmlNodeType.Element) {
+            var element = (XElement)XNode.ReadFrom(xr);
             ulong id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
             var raw = new RawQuestData {

@@ -1,8 +1,10 @@
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawMindMapNodeContentData {
 	public ulong Id;
-	public string ContentType;
+	public NodeContentType ContentType;
 	public int Number;
 	public ulong ContentDescriptionTextId;
 	public ulong? ContentPictureId;

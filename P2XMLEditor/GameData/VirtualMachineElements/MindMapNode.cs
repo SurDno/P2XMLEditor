@@ -1,4 +1,6 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -7,9 +9,8 @@ using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
+using ZLinq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -75,10 +76,22 @@ public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>,
     public void FillFromRawData(RawMindMapNodeData data, VirtualMachine vm) {
         Name = data.Name;
         Parent = vm.GetElement<MindMap>(data.ParentId);
-        LogicMapNodeType = data.LogicMapNodeType.Deserialize<LogicMapNodeType>();
-        Content = data.ContentIds?.Select(vm.GetElement<MindMapNodeContent>).ToList() ?? [];
-        InputLinks = data.InputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
-        OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<MindMapLink>).ToList() ?? [];
+        LogicMapNodeType = data.LogicMapNodeType;
+        Content = new();
+        if (data.ContentIds != null) {
+            foreach (var contentId in data.ContentIds)
+                Content.Add(vm.GetElement<MindMapNodeContent>(contentId));
+        }
+        InputLinks = new();
+        if (data.InputLinkIds != null) {
+            foreach (var inputLinkId in data.InputLinkIds)
+                InputLinks.Add(vm.GetElement<MindMapLink>(inputLinkId));
+        }
+        OutputLinks = new();
+        if (data.OutputLinkIds != null) {
+            foreach (var outputLinkId in data.OutputLinkIds)
+                OutputLinks.Add(vm.GetElement<MindMapLink>(outputLinkId));
+        }
         GameScreenPosX = data.GameScreenPosX;
         GameScreenPosY = data.GameScreenPosY;
     }

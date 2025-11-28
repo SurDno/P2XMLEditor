@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 
@@ -11,14 +14,14 @@ public class XElementMindMapNodeContentLoader : IParser<RawMindMapNodeContentDat
 		xr.MoveToContent();
 		xr.ReadStartElement();
 		
-		while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-			var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+		while (xr.NodeType == XmlNodeType.Element) {
+			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
 			var raw = new RawMindMapNodeContentData {
 				Id = id,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
-				ContentType = element.Element(XNameCache.ContentType)!.Value,
+				ContentType = element.Element(XNameCache.ContentType)!.Value.Deserialize<NodeContentType>(),
 				Number = int.Parse(element.Element(XNameCache.Number)!.Value),
 				ContentDescriptionTextId = ulong.Parse(element.Element(XNameCache.ContentDescriptionText)!.Value),
 				ContentPictureId = element.Element(XNameCache.ContentPicture) != null ?

@@ -1,6 +1,6 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
-using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 

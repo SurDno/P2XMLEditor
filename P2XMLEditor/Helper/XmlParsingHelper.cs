@@ -1,6 +1,9 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Types;
+using ZLinq;
 
 namespace P2XMLEditor.Helper;
 
@@ -26,15 +29,38 @@ public static class XmlParsingHelper {
     public static XElement CreateVector3Element(string name, Vector3 vec) => new(name, $"{vec.X}, {vec.Y}, {vec.Z}");
 
     public static XElement? CreateListElement(string name, IEnumerable<string>? items) {
-        if (items?.Any() != true) return null;
-        return new(name, new XAttribute("count", items.Count()),
+        var itemsValue = items;
+        if (itemsValue.Any() != true) return null;
+        return new(name, new XAttribute("count", itemsValue.Count()),
+            itemsValue.Select(x => new XElement("Item", x)));
+    }
+
+
+
+    public static XElement? CreateListElement<TEnumerator>(string name, ValueEnumerable<TEnumerator, string> items)
+                                                              where TEnumerator : struct, IValueEnumerator<string> {
+        if (!items.Any()) return null;
+        return new XElement(name, new XAttribute("count", items.Count()), 
             items.Select(x => new XElement("Item", x)));
     }
 
+
     public static XElement? CreateDictionaryElement(string name, Dictionary<string, string>? items) {
-        if (items?.Any() != true) return null;
+        var itemsValue = items;
+        if (itemsValue.Any() != true) return null;
         return new(name, new XAttribute("count", items.Count),
-            items.Select(x => new XElement("Item", new XAttribute("key", x.Key), x.Value)));
+            itemsValue.Select(x => new XElement("Item", new XAttribute("key", x.Key), x.Value)));
+    }
+    
+
+    public static XElement? CreateDictionaryElement<TEnumerator>(string name, ValueEnumerable<TEnumerator,
+                                                                     KeyValuePair<string, string>> items) 
+                                            where TEnumerator : struct, IValueEnumerator<KeyValuePair<string, string>> {
+        if (!items.Any()) return null;
+
+        return new XElement(name, new XAttribute("count", items.Count()),
+            items.Select(x => new XElement("Item", new XAttribute("key", x.Key), x.Value))
+        );
     }
 
     public static XElement GetRequiredElement(XElement parent, string name) =>
@@ -91,21 +117,21 @@ public static class XmlParsingHelper {
     }
     
     public static List<ulong> ReadULongList(XElement element) {
-        return element.Elements("Item")
+        return element.Elements(XNameCache.Item)
             .Select(x => ulong.Parse(x.Value))
             .ToList();
     }
 
     public static List<string> ReadStrList(XElement element) {
-        return element.Elements("Item")
+        return element.Elements(XNameCache.Item)
             .Select(x => x.Value)
             .ToList();
     }
 
     public static Dictionary<string, ulong> ReadDictULong(XElement element) {
         var dict = new Dictionary<string, ulong>();
-        foreach (var item in element.Elements("Item")) {
-            var key = item.Attribute("key");
+        foreach (var item in element.Elements(XNameCache.Item)) {
+            var key = item.Attribute(XNameCache.KeyAttribute);
             if (key != null)
                 dict[key.Value] = ulong.Parse(item.Value);
         }

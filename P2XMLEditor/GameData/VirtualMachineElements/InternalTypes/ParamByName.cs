@@ -1,3 +1,4 @@
+using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
@@ -9,6 +10,7 @@ public class ParamByName(string name) : ICommonVariableParameter {
 	public string ParamId => Name;
 
 	public static bool Validate(string name, VirtualMachine vm) {
-		return vm.GetElementsByType<ParameterHolder>().Any(holder => holder.StandartParams.Any(kvp => kvp.Key == name));
+		return vm.GetElementsByType<ParameterHolder>().
+			Any(holder => holder.StandartParams.Any(kvp => kvp.Key == name));
 	}
 }

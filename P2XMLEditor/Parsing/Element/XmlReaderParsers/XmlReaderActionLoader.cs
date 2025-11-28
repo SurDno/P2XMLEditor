@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;

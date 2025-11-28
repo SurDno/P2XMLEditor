@@ -1,4 +1,4 @@
-using System.Xml;
+using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -9,7 +9,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -43,9 +42,9 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
         if (SourceParams?.Count > 0)
             element.Add(CreateListElement("SourceParams", SourceParams));
         if (Source != null)
-            element.Add(new XElement("Source", Source.Id));
+            element.Add(new XElement("Source", Source.Value.Id));
         if (Destination != null)
-            element.Add(new XElement("Destination", Destination.Id));
+            element.Add(new XElement("Destination", Destination.Value.Id));
         if (Enabled != null)
             element.Add(CreateBoolElement("Enabled", (bool)Enabled));
         element.Add(
@@ -63,9 +62,9 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
         SourceParams = data.SourceParams;
         Source = data.SourceId.HasValue ? 
             vm.GetNullableElement<Graph, Branch, Speech, State, GraphPlaceholder>(data.SourceId.Value) ?? 
-            new(vm.Register(new GraphPlaceholder(data.SourceId.Value))) : null;
+            new(vm.Register(new GraphPlaceholder(data.SourceId.Value))) : default;
         Destination = data.DestinationId.HasValue ? 
-            vm.GetElement<Graph, Branch, Speech, State, Talking>(data.DestinationId.Value) : null;
+            vm.GetElement<Graph, Branch, Speech, State, Talking>(data.DestinationId.Value) : default;
         Enabled = data.Enabled;
         Name = data.Name;
         Parent = vm.GetElement<Graph, Talking>(data.ParentId);

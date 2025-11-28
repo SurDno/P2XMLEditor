@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawMindMapNodeData {
 	public ulong Id;
-	public string LogicMapNodeType;
+	public LogicMapNodeType LogicMapNodeType;
 	public List<ulong>? ContentIds;
 	public float GameScreenPosX;
 	public float GameScreenPosY;

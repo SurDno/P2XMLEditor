@@ -1,5 +1,6 @@
+using System.Collections.Generic;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
-using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlReaderExtensions;
 
@@ -15,7 +16,7 @@ public class XmlReaderMindMapNodeContentLoader : IParser<RawMindMapNodeContentDa
 
 			var raw = new RawMindMapNodeContentData {
 				Id = xr.GetIdAndEnter(),
-				ContentType = xr.GetStringValueAndAdvance(),
+				ContentType = xr.GetStringValueAndAdvance().Deserialize<NodeContentType>(),
 				Number = xr.GetIntValueAndAdvance(),
 				ContentDescriptionTextId = xr.GetULongValueAndAdvance(),
 				ContentPictureId = xr.Name == "ContentPicture" ? xr.GetULongValueAndAdvance() : null,

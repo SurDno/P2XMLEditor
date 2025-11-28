@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Linq;
 
 namespace P2XMLEditor.GameData.Templates.Abstract;

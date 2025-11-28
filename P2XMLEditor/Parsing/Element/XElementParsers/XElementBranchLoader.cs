@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -14,12 +17,12 @@ public class XElementBranchLoader : IParser<RawBranchData> {
 		xr.MoveToContent();
 		xr.ReadStartElement();
 		
-		while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-			var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+		while (xr.NodeType == XmlNodeType.Element) {
+			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
             
-			var branchVariantInfo = element.Element(XNameCache.BranchVariantInfo)?.Elements(XNameCache.Item)
-				.Select(item => new BranchVariantInfo {
+			var branchVariantInfo = element.Element(XNameCache.BranchVariantInfo)?.Elements(XNameCache.Item).
+				Select(item => new BranchVariantInfo {
 					Name = item.Element(XNameCache.Name)!.Value,
 					Type = item.Element(XNameCache.Type)!.Value
 				})

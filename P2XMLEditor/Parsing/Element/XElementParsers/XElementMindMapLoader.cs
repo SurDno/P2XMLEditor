@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
@@ -13,8 +15,8 @@ public class XElementMindMapLoader : IParser<RawMindMapData> {
 		xr.MoveToContent();
 		xr.ReadStartElement();
 		
-		while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-			var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+		while (xr.NodeType == XmlNodeType.Element) {
+			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
 			var raw = new RawMindMapData {

@@ -1,6 +1,7 @@
-using System.Reflection; 
-using MethodDecorator.Fody.Interfaces; 
-using P2XMLEditor.Logging; 
+using System;
+using System.Reflection;
+using MethodDecorator.Fody.Interfaces;
+using P2XMLEditor.Logging;
 
 [assembly: PerformanceLogHook] 
 namespace P2XMLEditor.Logging;

@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using System.Xml;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlReaderExtensions;

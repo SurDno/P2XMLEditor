@@ -1,4 +1,6 @@
-using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -7,8 +9,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -54,7 +54,10 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
     }
     
     public void FillFromRawData(RawActionLineData data, VirtualMachine vm) {
-        Actions = data.ActionIds?.Select(vm.GetElement<Action, ActionLine>).ToList();
+        Actions = new();
+        if (data.ActionIds != null)
+            foreach (var actionId in data.ActionIds)
+                Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
         ActionLineType = data.ActionLineType;
         LoopInfo = data.LoopInfo;
         Name = data.Name;

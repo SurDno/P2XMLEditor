@@ -5,7 +5,7 @@ using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct MessangerStationaryComponent() : ITemplateComponent {
+public struct MessangerStationaryComponent : ITemplateComponent {
 	public SpawnpointKind SpawnpointKindEnum { get; set; }
 
 	public void LoadFromXml(XElement element) {

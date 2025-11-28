@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Parsing.Element;

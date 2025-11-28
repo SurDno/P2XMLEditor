@@ -4,7 +4,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components.Interactions;
 
-public struct MarketComponent() : ITemplateComponent, IEnableable {
+public struct MarketComponent : ITemplateComponent, IEnableable {
 	public bool IsEnabled { get; set; }
 
 	public void LoadFromXml(XElement element) {

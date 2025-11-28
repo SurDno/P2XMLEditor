@@ -1,3 +1,7 @@
+using System;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -428,7 +432,7 @@ public class ExpressionEditorForm : Form {
                     _expression.TargetParam = CommonVariable.Read(txtTargetParam.Text, _vm);
                 } else if (cmbHolder.SelectedItem is ComboBoxItem holderItem &&
                            cmbParameter.SelectedItem is ComboBoxItem paramItem) {
-                    _expression.TargetObject = CommonVariable.Read(((ParameterHolder)holderItem.Value).ParamId.ToString(), _vm);
+                    _expression.TargetObject = CommonVariable.Read(((ParameterHolder)holderItem.Value).ParamId, _vm);
                     _expression.TargetParam = CommonVariable.Read($"%{((Parameter)paramItem.Value).Id}", _vm);
                 }
 

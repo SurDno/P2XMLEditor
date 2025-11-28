@@ -5,7 +5,7 @@ using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct RegionComponent() : ITemplateComponent {
+public struct RegionComponent : ITemplateComponent {
 	public RegionEnum Region { get; set; }
 	public RegionBehaviourEnum RegionBehavior { get; set; }
 

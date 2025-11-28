@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
@@ -41,16 +46,7 @@ public class FSMGraphViewer : GraphViewer {
         var processed = new HashSet<ulong>();
 
         
-        var validStates = _graph.States.Where(s => s?.Element != null).ToList();
-        var invalidStates = _graph.States.Where(s => s?.Element == null).ToList();
-
-        if (invalidStates.Any()) {
-            Logger.Log(LogLevel.Warning, $"Graph {_graph.Id} contains {invalidStates.Count} invalid states");
-            foreach (var state in invalidStates) {
-                Logger.Log(LogLevel.Warning, $"Invalid state ID: {state?.Id.ToString() ?? "null"}");
-            }
-        }
-
+        var validStates = _graph.States.ToList();
         
         var initialStates = validStates.Where(s => {
             if (s.Element is IGraphElement graphElement) return graphElement.Initial ?? false;
@@ -84,10 +80,10 @@ public class FSMGraphViewer : GraphViewer {
             currentX = 0;
             var statesToProcess = new List<VmEither<State, Graph, Branch, Talking>>();
 
-            foreach (var link in _graph.EventLinks.Where(l => l?.Source != null && l?.Destination != null)) {
-                if (processed.Contains(link.Source.Id) && !processed.Contains(link.Destination.Id)) {
-                    var destState = validStates.FirstOrDefault(s => s.Id == link.Destination.Id);
-                    if (destState != null && !statesToProcess.Contains(destState)) {
+            foreach (var link in _graph.EventLinks.Where(l => l is { Source: not null, Destination: not null })) {
+                if (processed.Contains(link.Source!.Value.Id) && !processed.Contains(link.Destination!.Value.Id)) {
+                    var destState = validStates.FirstOrDefault(s => s.Id == link.Destination.Value.Id);
+                    if (destState.Element != null && !statesToProcess.Contains(destState)) {
                         statesToProcess.Add(destState);
                     }
                 }
@@ -151,7 +147,6 @@ protected override void DrawNodes(Graphics g) {
     var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
 
     foreach (var state in _graph.States) {
-        if (state?.Element == null) continue;
         if (!NodePositions.TryGetValue(state.Id, out var pos)) continue;
 
         var screenPos = GameToScreen(pos.x, pos.y);
@@ -251,10 +246,10 @@ protected override void DrawEdges(Graphics g) {
         
         foreach (var link in _graph.EventLinks) {
             if (link.Source == null || link.Destination == null) continue;
-            if (!NodePositions.ContainsKey(link.Source.Id) || !NodePositions.ContainsKey(link.Destination.Id)) continue;
+            if (!NodePositions.ContainsKey(link.Source.Value.Id) || !NodePositions.ContainsKey(link.Destination.Value.Id)) continue;
             
-            var sourcePos = NodePositions[link.Source.Id];
-            var destPos = NodePositions[link.Destination.Id];
+            var sourcePos = NodePositions[link.Source.Value.Id];
+            var destPos = NodePositions[link.Destination.Value.Id];
             DrawArrow(g, pen, sourcePos, destPos);
 
             

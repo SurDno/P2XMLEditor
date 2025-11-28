@@ -1,4 +1,8 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;

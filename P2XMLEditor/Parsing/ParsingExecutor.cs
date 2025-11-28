@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.IO;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing.Element;
 using P2XMLEditor.Parsing.RawData;

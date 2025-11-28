@@ -4,7 +4,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
-public struct CollectControllerComponent() : ITemplateComponent {
+public struct CollectControllerComponent : ITemplateComponent {
 	public string? StorableId { get; set; }
 	public bool SendActionEvent { get; set; }
 

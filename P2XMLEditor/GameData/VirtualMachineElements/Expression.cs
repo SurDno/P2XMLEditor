@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -9,9 +10,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 using ExpressionType = P2XMLEditor.GameData.VirtualMachineElements.Enums.ExpressionType;
 
 #pragma warning disable CS8618
@@ -65,7 +64,7 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
             Event e => !ConditionValid(e.Condition),
             MindMapNode mm => !mm.Content.Any(c => InCondition(c.ContentCondition)),
             Branch b => !b.BranchConditions.Any(HasValidBranchCondition),
-            State st => !st.EntryPoints.Where(e => e.ActionLine != null).Any(e => InActionLine(e.ActionLine!)),
+            State st => !st.EntryPoints.Any(e => e.ActionLine != null && InActionLine(e.ActionLine!)),
             Speech sp => !sp.Replies.Any(r => r.EnableCondition != null && InCondition(r.EnableCondition)),
             _ => true
         };

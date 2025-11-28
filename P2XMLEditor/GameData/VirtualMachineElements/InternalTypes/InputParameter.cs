@@ -1,3 +1,4 @@
+using System;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 

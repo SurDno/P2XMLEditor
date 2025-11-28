@@ -1,3 +1,6 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 using P2XMLEditor.Data;
 
 namespace P2XMLEditor.Forms.MainForm.SaveSettings;

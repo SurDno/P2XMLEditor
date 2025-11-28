@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.PathSelection;
@@ -34,7 +38,7 @@ public class VmSelectionForm : Form {
 
     private void LoadDirectories(string basePath) {
         try {
-            _listBox!.Items.AddRange(Directory.GetDirectories(basePath).Select(Path.GetFileName)!.ToArray<object>());
+            _listBox!.Items.AddRange(Directory.GetDirectories(basePath).Select(Path.GetFileName).ToArray());
         } catch (Exception ex) {
             ErrorHandler.Handle("Error loading directories", ex);
         }

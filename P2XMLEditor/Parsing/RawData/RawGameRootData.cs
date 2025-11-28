@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
 namespace P2XMLEditor.Parsing.RawData;

@@ -1,3 +1,5 @@
+using System;
+
 namespace P2XMLEditor.Suggestions;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]

@@ -1,13 +1,12 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -41,16 +40,36 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
     
     public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {
         Static = data.Static;
-        FunctionalComponents = data.FunctionalComponentIds?.Select(vm.GetElement<FunctionalComponent>).ToList() ?? [];
+        FunctionalComponents = new();
+        if (data.FunctionalComponentIds != null) {
+            foreach (var functionalComponentId in data.FunctionalComponentIds)
+                FunctionalComponents.Add(vm.GetElement<FunctionalComponent>(functionalComponentId));
+        }
         EventGraph = data.EventGraphId.HasValue ? vm.GetElement<Graph>(data.EventGraphId.Value) : null;
-        StandartParams = data.StandartParamIds?.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value)) ?? [];
-        CustomParams = data.CustomParamIds?.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value)) ?? [];
+        StandartParams = new();
+        if (data.StandartParamIds != null) {
+            foreach (var kvp in data.StandartParamIds)
+                StandartParams.Add(kvp.Key, vm.GetElement<Parameter>(kvp.Value));
+        }
+        CustomParams = new();
+        if (data.CustomParamIds != null) {
+            foreach (var kvp in data.CustomParamIds)
+                CustomParams.Add(kvp.Key, vm.GetElement<Parameter>(kvp.Value));
+        }
         GameTimeContext = data.GameTimeContext;
         Name = data.Name;
         Parent = vm.GetElement<ParameterHolder>(data.ParentId);
         InheritanceInfo = data.InheritanceInfo;
-        Events = data.EventIds?.Select(vm.GetElement<Event>).ToList();
-        ChildObjects = data.ChildObjectIds?.Select(vm.GetElement<ParameterHolder>).ToList();
+        Events = new();
+        if (data.EventIds != null) {
+            foreach (var eventId in data.EventIds)
+                Events.Add(vm.GetElement<Event>(eventId));
+        }
+        ChildObjects = new();
+        if (data.ChildObjectIds != null) {
+            foreach (var eventId in data.ChildObjectIds)
+                ChildObjects.Add(vm.GetElement<ParameterHolder>(eventId));
+        }
         WorldPositionGuid = data.WorldPositionGuid;
         EngineTemplateId = data.EngineTemplateId;
         EngineBaseTemplateId = data.EngineBaseTemplateId;

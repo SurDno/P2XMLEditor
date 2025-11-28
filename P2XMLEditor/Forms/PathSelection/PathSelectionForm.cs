@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using P2XMLEditor.Abstract;
 using P2XMLEditor.Forms.PathSelection.Validators;
 using P2XMLEditor.Parsing;

@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -8,9 +9,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-
 using static P2XMLEditor.Helper.XmlParsingHelper;
-using static P2XMLEditor.Helper.XmlReaderExtensions;
 
 #pragma warning disable CS8618
 
@@ -39,7 +38,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
     public override XElement ToXml(WriterSettings settings) {
         var element = CreateBaseElement(Id);
         if (SubstituteGraph != null)
-            element.Add(new XElement("SubstituteGraph", SubstituteGraph.Id));
+            element.Add(new XElement("SubstituteGraph", SubstituteGraph.Value.Id));
         if (States.Any())
             element.Add(CreateListElement("States", States.Select(s => s.Id.ToString())));
         if (EventLinks.Any())
@@ -87,7 +86,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
         Name = data.Name;
         Parent = vm.GetElement<ParameterHolder, Graph>(data.ParentId);
         SubstituteGraph = data.SubstituteGraphId.HasValue ? 
-            vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value) : null;
+            vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value) : default;
     }
     
     public void OnDestroy(VirtualMachine vm) {
@@ -102,7 +101,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
                 parameterHolder.EventGraph = null;
                 break;
             case Graph graph:
-                if (graph.SubstituteGraph.Element == this)
+                if (graph.SubstituteGraph.HasValue && graph.SubstituteGraph.Value.Element == this)
                     graph.SubstituteGraph = null;
                 graph.States.RemoveAll(s => s.Element == this);
                 break;

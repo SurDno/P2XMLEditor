@@ -1,3 +1,4 @@
+using System;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
@@ -36,7 +37,7 @@ public class CommonVariable : IEquatable<CommonVariable> {
 		if (data.Contains('H') && HierarchyGuid.TryParse(data, vm, out var hierarchyGuid))
 			return hierarchyGuid!;
 		if (ulong.TryParse(data, out var id)) {
-			return vm.ElementsById.ContainsKey(id) ? vm.GetElement<ICommonVariableParameter>(id) : 
+			return vm.ElementsById.ContainsKey(id) ? vm.GetElementInterface<ICommonVariableParameter>(id) : 
 				vm.Register(new ParameterPlaceholder(id));
 		}
 		if (Guid.TryParse(data, out var guid))

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGameObjectData {

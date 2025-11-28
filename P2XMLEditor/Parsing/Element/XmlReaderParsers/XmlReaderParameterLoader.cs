@@ -1,4 +1,4 @@
-using P2XMLEditor.Helper;
+using System.Collections.Generic;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlReaderExtensions;

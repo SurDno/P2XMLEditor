@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -14,8 +16,8 @@ public class XElementActionLineLoader : IParser<RawActionLineData> {
 		xr.MoveToContent();
 		xr.ReadStartElement();
 		
-		while (xr.NodeType == System.Xml.XmlNodeType.Element) {
-			var element = (System.Xml.Linq.XElement)XNode.ReadFrom(xr);
+		while (xr.NodeType == XmlNodeType.Element) {
+			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
             
 			ActionLine.ActionLoopInfo? loopInfo = null;

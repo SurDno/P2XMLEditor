@@ -1,3 +1,5 @@
+using System;
+using System.Windows.Forms;
 using P2XMLEditor.Forms.MainForm;
 using P2XMLEditor.Logging;
 

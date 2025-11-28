@@ -1,3 +1,4 @@
+using System;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;

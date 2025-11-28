@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;

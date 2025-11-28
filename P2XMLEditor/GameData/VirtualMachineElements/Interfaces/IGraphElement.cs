@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
