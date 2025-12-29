@@ -26,11 +26,11 @@ public class XElementExpressionLoader : IParser<RawExpressionData> {
 				TargetParam = element.Element(XNameCache.TargetParam)?.Value,
 				ConstId = element.Element(XNameCache.Const) != null ?
 					ulong.Parse(element.Element(XNameCache.Const)!.Value) : null,
-				SourceParams = ParseListElement(element, XNameCache.SourceParams),
+				SourceParams = ParseListElement(element, XNameCache.SourceParams).ToArray(),
 				LocalContextId = ulong.Parse(element.Element(XNameCache.LocalContext)!.Value),
 				Inversion = element.Element(XNameCache.Inversion)?.Let(ParseBool),
-				FormulaChilds = ParseListElementAsUlong(element, XNameCache.FormulaChilds),
-				FormulaOperations = ParseListElement(element, XNameCache.FormulaOperations)
+				FormulaChilds = ParseListElementAsUlong(element, XNameCache.FormulaChilds).ToArray(),
+				FormulaOperations = ParseListElement(element, XNameCache.FormulaOperations).ToArray()
 			};
 
 			raws.Add(raw);

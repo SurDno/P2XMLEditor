@@ -11,5 +11,5 @@ public class FunctionPlaceholder : VmFunction {
 	public override int ParamCount => 0;
 	public override List<string>? GetParamStrings() => null;
 	
-	public FunctionPlaceholder(VirtualMachine vm, List<string> parameters) { }
+	public FunctionPlaceholder(VirtualMachine vm, string[] parameters) { }
 }

@@ -19,15 +19,14 @@ public class XmlReaderActionLineLoader : IParser<RawActionLineData> {
         while (xr.Read()) {
             if (xr.EndOfContainerReached()) break;
 
-            var raw = new RawActionLineData {
-                Id = xr.GetIdAndEnter(),
-                ActionIds = xr.Name == "Actions" ? xr.GetULongListAndAdvance() : null,
-                ActionLineType = xr.GetStringValueAndAdvance().Deserialize<ActionLineType>(),
-                LoopInfo = xr.Name == "ActionLoopInfo" ? ReadLoopInfo(xr) : null,
-                Name = xr.GetOptionalStringValueAndAdvance(),
-                LocalContextId = xr.GetULongValueAndAdvance(),
-                OrderIndex = xr.GetIntValueAndAdvance()
-            };
+            var raw = new RawActionLineData();
+            raw.Id = xr.GetIdAndEnter();
+            raw.ActionIds = xr.Name == "Actions" ? xr.GetULongListAndAdvance() : null;
+            raw.ActionLineType = xr.GetStringValueAndAdvance().Deserialize<ActionLineType>();
+            raw.LoopInfo = xr.Name == "ActionLoopInfo" ? ReadLoopInfo(xr) : null;
+            raw.Name = xr.GetOptionalStringValueAndAdvance();
+            raw.LocalContextId = xr.GetULongValueAndAdvance();
+            raw.OrderIndex = xr.GetIntValueAndAdvance();
 
             raws.Add(raw);
         }

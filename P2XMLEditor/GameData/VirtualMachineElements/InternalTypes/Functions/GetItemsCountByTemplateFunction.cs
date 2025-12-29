@@ -21,9 +21,9 @@ public class GetItemsCountByTemplateFunction : VmFunction {
 		itemRef = itemReference ?? throw new ArgumentNullException(nameof(itemReference));
 	}
     
-	public GetItemsCountByTemplateFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 1) 
-			throw new ArgumentException($"Expected 1 parameter, got {parameters.Count}");
+	public GetItemsCountByTemplateFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 1) 
+			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
             
 		var parts = parameters[0].Split('%');
 		if (parts.Length != 2) 

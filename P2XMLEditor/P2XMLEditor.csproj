@@ -8,6 +8,7 @@
         <UseWindowsForms>true</UseWindowsForms>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Fody" Version="6.9.3">

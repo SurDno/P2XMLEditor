@@ -9,7 +9,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-using ZLinq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -77,17 +76,17 @@ public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>,
         Name = data.Name;
         Parent = vm.GetElement<MindMap>(data.ParentId);
         LogicMapNodeType = data.LogicMapNodeType;
-        Content = new();
+        Content = [];
         if (data.ContentIds != null) {
             foreach (var contentId in data.ContentIds)
                 Content.Add(vm.GetElement<MindMapNodeContent>(contentId));
         }
-        InputLinks = new();
+        InputLinks = [];
         if (data.InputLinkIds != null) {
             foreach (var inputLinkId in data.InputLinkIds)
                 InputLinks.Add(vm.GetElement<MindMapLink>(inputLinkId));
         }
-        OutputLinks = new();
+        OutputLinks = [];
         if (data.OutputLinkIds != null) {
             foreach (var outputLinkId in data.OutputLinkIds)
                 OutputLinks.Add(vm.GetElement<MindMapLink>(outputLinkId));

@@ -19,7 +19,7 @@ public class XmlReaderMindMapLinkLoader : IParser<RawMindMapLinkData> {
 				SourceId = xr.GetULongValueAndAdvance(),
 				DestinationId = xr.GetULongValueAndAdvance()
 			};
-			xr.SkipEmptyELement();
+			xr.SkipEmptyElement();
 			raw.ParentId = xr.GetULongValueAndAdvance();
 
 			raws.Add(raw);

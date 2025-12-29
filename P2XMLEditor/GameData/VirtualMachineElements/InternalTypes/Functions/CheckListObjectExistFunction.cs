@@ -32,9 +32,9 @@ public class CheckListObjectExistFunction : VmFunction {
         isSecondMessage = true;
     }
     
-    public CheckListObjectExistFunction(VirtualMachine vm, List<string> parameters) {
-        if (parameters.Count != 2)
-            throw new ArgumentException($"Expected 2 parameters, got {parameters.Count}");
+    public CheckListObjectExistFunction(VirtualMachine vm, string[] parameters) {
+        if (parameters.Length != 2)
+            throw new ArgumentException($"Expected 2 parameters, got {parameters.Length}");
             
         var parts1 = parameters[0].Split('%');
         if (parts1.Length != 2)

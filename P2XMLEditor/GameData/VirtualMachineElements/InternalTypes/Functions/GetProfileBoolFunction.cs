@@ -16,9 +16,9 @@ public class GetProfileBoolValueFunction : VmFunction {
 		_profileKey = profileKey ?? throw new ArgumentNullException(nameof(profileKey));
 	}
    
-	public GetProfileBoolValueFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 1)
-			throw new ArgumentException($"Expected 1 parameter, got {parameters.Count}");
+	public GetProfileBoolValueFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 1)
+			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
            
 		var value = parameters[0];
 		if (!value.StartsWith('%'))

@@ -33,24 +33,24 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
     public Talking Parent { get; set; }
 
     public void FillFromRawData(RawSpeechData data, VirtualMachine vm) {
-        Replies = new();
+        Replies = [];
         foreach (var replyId in data.ReplyIds) 
             Replies.Add(vm.GetElement<Reply>(replyId));
         Text = vm.GetElement<GameString>(data.TextId);
         AuthorGuid = vm.GetElement<Blueprint, Character>(data.AuthorGuidId);
         OnlyOnce = data.OnlyOnce;
         IsTrade = data.IsTrade;
-        EntryPoints = new();
+        EntryPoints = [];
         foreach (var entryPointId in data.EntryPointIds) 
             EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<Blueprint, Character>(data.OwnerId);
-        InputLinks = new();
+        InputLinks = [];
         if (data.InputLinkIds != null) {
             foreach (var inputLinkId in data.InputLinkIds)
                 InputLinks.Add(vm.GetElement<GraphLink>(inputLinkId));
         }
-        OutputLinks = new();
+        OutputLinks = [];
         if (data.OutputLinkIds != null) {
             foreach (var outputLinkId in data.OutputLinkIds)
                 OutputLinks.Add(vm.GetElement<GraphLink>(outputLinkId));

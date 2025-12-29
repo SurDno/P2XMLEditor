@@ -44,20 +44,20 @@ public class XElementGameRootLoader : IParser<RawGameRootData> {
 
             var raw = new RawGameRootData {
                 Id = id,
-                FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents),
+                FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents).ToArray(),
                 EventGraphId = element.Element(XNameCache.EventGraph) != null ?
                     ulong.Parse(element.Element(XNameCache.EventGraph)!.Value) : null,
-                StandartParamIds = ParseDictionaryElementAsUlong(element, XNameCache.StandartParams),
-                CustomParamIds = ParseDictionaryElementAsUlong(element, XNameCache.CustomParams),
+                StandartParamIds = ReadDictULong(element.Element(XNameCache.StandartParams)!),
+                CustomParamIds = ReadDictULong(element.Element(XNameCache.CustomParams)!),
                 Name = element.Element(XNameCache.Name)!.Value,
-                EventIds = ParseListElementAsUlong(element, XNameCache.Events),
-                ChildObjectIds = ParseListElementAsUlong(element, XNameCache.ChildObjects),
-                SampleIds = ParseListElementAsUlong(element, XNameCache.Samples),
-                LogicMapIds = ParseListElementAsUlong(element, XNameCache.LogicMaps),
-                GameModeIds = ParseListElementAsUlong(element, XNameCache.GameModes),
+                EventIds = ParseListElementAsUlong(element, XNameCache.Events).ToArray(),
+                ChildObjectIds = ParseListElementAsUlong(element, XNameCache.ChildObjects).ToArray(),
+                SampleIds = ParseListElementAsUlong(element, XNameCache.Samples).ToArray(),
+                LogicMapIds = ParseListElementAsUlong(element, XNameCache.LogicMaps).ToArray(),
+                GameModeIds = ParseListElementAsUlong(element, XNameCache.GameModes).ToArray(),
                 BaseToEngineGuidsTable = ParseDictionaryElement(element, XNameCache.BaseToEngineGuidsTable),
                 HierarchyScenesStructure = scenesStructure,
-                HierarchyEngineGuidsTable = ParseListElement(element, XNameCache.HierarchyEngineGuidsTable),
+                HierarchyEngineGuidsTable = ParseListElement(element, XNameCache.HierarchyEngineGuidsTable).ToArray(),
                 WorldObjectSaveOptimizeMode = element.Element(XNameCache.WorldObjectSaveOptimizeMode)?.Let(ParseBool)
             };
 

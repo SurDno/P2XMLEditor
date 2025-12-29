@@ -78,15 +78,15 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
         EntryPoints = data.EntryPointIds?.Select(vm.GetElement<EntryPoint>).ToList() ?? [];
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-        InputParamsInfo = data.InputParamsInfo;
+        InputParamsInfo = data.InputParamsInfo?.ToList();
         InputParamsInfo?.ForEach(p => p.ResolveReferences(vm));
         InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
         OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
         Initial = data.Initial;
         Name = data.Name;
         Parent = vm.GetElement<ParameterHolder, Graph>(data.ParentId);
-        SubstituteGraph = data.SubstituteGraphId.HasValue ? 
-            vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value) : default;
+        if (data.SubstituteGraphId.HasValue)
+            SubstituteGraph = vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value);
     }
     
     public void OnDestroy(VirtualMachine vm) {

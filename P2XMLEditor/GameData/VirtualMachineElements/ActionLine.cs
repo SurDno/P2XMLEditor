@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -54,7 +53,7 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
     }
     
     public void FillFromRawData(RawActionLineData data, VirtualMachine vm) {
-        Actions = new();
+        Actions = [];
         if (data.ActionIds != null)
             foreach (var actionId in data.ActionIds)
                 Actions.Add(vm.GetElement<Action,ActionLine>(actionId));

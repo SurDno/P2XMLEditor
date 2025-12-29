@@ -12,12 +12,12 @@ public class Blueprint(ulong id) : ParameterHolder(id), IFiller<RawBlueprintData
 		Static = data.Static;
 		FunctionalComponents = data.FunctionalComponentIds.Select(vm.GetElement<FunctionalComponent>).ToList();
 		EventGraph = data.EventGraphId.HasValue ? vm.GetElement<Graph>(data.EventGraphId.Value) : null;
-		StandartParams = data.StandartParamIds.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value));
-		CustomParams = data.CustomParamIds.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value));
+		StandartParams = data.StandartParamIds.ToDictionary(kv => kv.Item1, kv => vm.GetElement<Parameter>(kv.Item2));
+		CustomParams = data.CustomParamIds.ToDictionary(kv => kv.Item1, kv => vm.GetElement<Parameter>(kv.Item2));
 		GameTimeContext = data.GameTimeContext;
 		Name = data.Name;
 		Parent = data.ParentId.HasValue ? vm.GetElement<ParameterHolder>(data.ParentId.Value) : null;
-		InheritanceInfo = data.InheritanceInfo;
+		InheritanceInfo = data.InheritanceInfo?.ToList();
 		Events = data.EventIds?.Select(vm.GetElement<Event>).ToList();
 		ChildObjects = data.ChildObjectIds?.Select(vm.GetElement<ParameterHolder>).ToList();
 	}

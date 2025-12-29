@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
@@ -143,12 +142,8 @@ public static class VmElementExtensions {
         where T4 : VmElement
         where T5 : VmElement {
         vm.ElementsById.TryGetValue(id, out var el);
-
-        if (el is null)
-            return default;
-
-
-        return new(el);
+        
+        return el != null ? new(el) : null;
     }
 
     

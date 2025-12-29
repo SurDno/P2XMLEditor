@@ -17,6 +17,7 @@ public static class XNameCache {
 	public static readonly XName SourceParams = "SourceParams";
 	public static readonly XName Events = "Events";
 	public static readonly XName EntryPoints = "EntryPoints";
+	public static readonly XName CountAttribute = "count";
 	
 	// PARAMETER HOLDER
 	public static readonly XName Static = "Static";

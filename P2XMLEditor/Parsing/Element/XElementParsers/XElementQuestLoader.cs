@@ -23,7 +23,7 @@ public class XElementQuestLoader : IParser<RawQuestData> {
                 Static = element.Element(XNameCache.Static) != null
                     ? bool.Parse(element.Element(XNameCache.Static)!.Value)
                     : null,
-                FunctionalComponentIds = ReadULongList(element.Element(XNameCache.FunctionalComponents)!),
+                FunctionalComponentIds = ReadULongList(element.Element(XNameCache.FunctionalComponents)!).ToArray(),
                 EventGraphId = ulong.Parse(element.Element(XNameCache.EventGraph)!.Value),
                 StandartParamIds = ReadDictULong(element.Element(XNameCache.StandartParams)!),
                 CustomParamIds = ReadDictULong(element.Element(XNameCache.CustomParams)!),
@@ -31,13 +31,13 @@ public class XElementQuestLoader : IParser<RawQuestData> {
                 Name = element.Element(XNameCache.Name)!.Value,
                 ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
                 InheritanceInfo = element.Element(XNameCache.InheritanceInfo) != null
-                    ? ReadStrList(element.Element(XNameCache.InheritanceInfo)!)
+                    ? ReadStrList(element.Element(XNameCache.InheritanceInfo)!).ToArray()
                     : null,
                 EventIds = element.Element(XNameCache.Events) != null
-                    ? ReadULongList(element.Element(XNameCache.Events)!)
+                    ? ReadULongList(element.Element(XNameCache.Events)!).ToArray()
                     : null,
                 ChildObjectIds = element.Element(XNameCache.ChildObjects) != null
-                    ? ReadULongList(element.Element(XNameCache.ChildObjects)!)
+                    ? ReadULongList(element.Element(XNameCache.ChildObjects)!).ToArray()
                     : null,
                 StartEventId = element.Element(XNameCache.StartEvent) != null
                     ? ulong.Parse(element.Element(XNameCache.StartEvent)!.Value)

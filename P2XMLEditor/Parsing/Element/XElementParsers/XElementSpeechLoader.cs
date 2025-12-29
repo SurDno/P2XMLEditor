@@ -21,7 +21,7 @@ public class XElementSpeechLoader : IParser<RawSpeechData> {
             var raw = new RawSpeechData {
                 Id = id,
                 ReplyIds = element.Element(XNameCache.Replyes) != null
-                    ? ReadULongList(element.Element(XNameCache.Replyes)!)
+                    ? ReadULongList(element.Element(XNameCache.Replyes)!).ToArray()
                     : [],
                 TextId = ulong.Parse(element.Element(XNameCache.Text)!.Value),
                 AuthorGuidId = ulong.Parse(element.Element(XNameCache.AuthorGuid)!.Value),
@@ -32,17 +32,17 @@ public class XElementSpeechLoader : IParser<RawSpeechData> {
                     ? bool.Parse(element.Element(XNameCache.IsTrade)!.Value)
                     : null,
                 EntryPointIds = element.Element(XNameCache.EntryPoints) != null
-                    ? ReadULongList(element.Element(XNameCache.EntryPoints)!)
+                    ? ReadULongList(element.Element(XNameCache.EntryPoints)!).ToArray()
                     : [],
                 IgnoreBlock = element.Element(XNameCache.IgnoreBlock) != null
                     ? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)
                     : null,
                 OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
                 InputLinkIds = element.Element(XNameCache.InputLinks) != null
-                    ? ReadULongList(element.Element(XNameCache.InputLinks)!)
+                    ? ReadULongList(element.Element(XNameCache.InputLinks)!).ToArray()
                     : null,
                 OutputLinkIds = element.Element(XNameCache.OutputLinks) != null
-                    ? ReadULongList(element.Element(XNameCache.OutputLinks)!)
+                    ? ReadULongList(element.Element(XNameCache.OutputLinks)!).ToArray()
                     : null,
                 Initial = element.Element(XNameCache.Initial) != null
                     ? bool.Parse(element.Element(XNameCache.Initial)!.Value)

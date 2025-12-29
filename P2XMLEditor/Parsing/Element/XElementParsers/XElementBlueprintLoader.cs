@@ -21,18 +21,18 @@ public class XElementBlueprintLoader : IParser<RawBlueprintData> {
 			var raw = new RawBlueprintData {
 				Id = id,
 				Static = element.Element(XNameCache.Static)?.Let(ParseBool),
-				FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents),
+				FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents).ToArray(),
 				EventGraphId = element.Element(XNameCache.EventGraph) != null ?
 					ulong.Parse(element.Element(XNameCache.EventGraph)!.Value) : null,
-				StandartParamIds = ParseDictionaryElementAsUlong(element, XNameCache.StandartParams),
-				CustomParamIds = ParseDictionaryElementAsUlong(element, XNameCache.CustomParams),
+				StandartParamIds = ReadDictULong(element.Element(XNameCache.StandartParams)!),
+				CustomParamIds = ReadDictULong(element.Element(XNameCache.CustomParams)!),
 				GameTimeContext = element.Element(XNameCache.GameTimeContext)?.Value,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = element.Element(XNameCache.Parent) != null ?
 					ulong.Parse(element.Element(XNameCache.Parent)!.Value) : null,
-				InheritanceInfo = ParseListElement(element, XNameCache.InheritanceInfo),
-				EventIds = ParseListElementAsUlong(element, XNameCache.Events),
-				ChildObjectIds = ParseListElementAsUlong(element, XNameCache.ChildObjects)
+				InheritanceInfo = ParseListElement(element, XNameCache.InheritanceInfo).ToArray(),
+				EventIds = ParseListElementAsUlong(element, XNameCache.Events).ToArray(),
+				ChildObjectIds = ParseListElementAsUlong(element, XNameCache.ChildObjects).ToArray()
 			};
 
 			raws.Add(raw);

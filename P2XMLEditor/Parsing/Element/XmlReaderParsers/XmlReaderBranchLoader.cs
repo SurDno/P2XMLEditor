@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -37,21 +38,18 @@ public class XmlReaderBranchLoader : IParser<RawBranchData> {
 		}
 	}
 
-	private static List<BranchVariantInfo>? ReadBranchVariantInfo(XmlReader xr) {
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private static BranchVariantInfo[] ReadBranchVariantInfo(XmlReader xr) {
+		var length = int.Parse(xr.GetAttribute("count")!);
 		xr.Read();
-		if (xr.EndOfContainerReached()) {
+		
+		var list = new BranchVariantInfo[length];
+		for(var i = 0; i < length; i++) {
 			xr.Read();
-			return null;
-		}
-
-		var list = new List<BranchVariantInfo>();
-		while (!xr.EndOfContainerReached()) {
-			xr.Read();
-			var info = new BranchVariantInfo {
-				Name = xr.GetStringValueAndAdvance(),
+			list[i] = new BranchVariantInfo {
+				Name = xr.GetStringValueAndAdvance(), 
 				Type = xr.GetStringValueAndAdvance()
 			};
-			list.Add(info);
 			xr.Read();
 		}
 

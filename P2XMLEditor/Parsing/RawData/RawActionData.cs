@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 namespace P2XMLEditor.Parsing.RawData;
@@ -11,7 +10,7 @@ public struct RawActionData {
 	public ulong? SourceExpressionId;
 	public string TargetObject;
 	public string TargetParam;
-	public List<string>? SourceParams;
+	public string[]? SourceParams;
 	public string Name;
 	public ulong LocalContextId;
 	public int OrderIndex;

@@ -7,8 +7,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-using ZLinq;
-using ZLinq.Linq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -30,10 +28,10 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData>, ICommon
     
     public void FillFromRawData(RawTalkingData data, VirtualMachine vm) {
         States = data.StateIds.Select(vm.GetElement<Branch, Speech, State>).ToList();
-        EventLinks = new();
+        EventLinks = [];
         foreach (var eventLinkId in data.EventLinkIds) 
             EventLinks.Add(vm.GetElement<GraphLink>(eventLinkId));
-        EntryPoints = new();
+        EntryPoints = [];
         foreach (var entryPointId in data.EntryPointIds) 
             EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;

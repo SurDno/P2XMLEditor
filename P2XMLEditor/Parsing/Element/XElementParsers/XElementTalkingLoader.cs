@@ -21,13 +21,13 @@ public class XElementTalkingLoader : IParser<RawTalkingData> {
 			var raw = new RawTalkingData {
 				Id = id,
 				StateIds = element.Element(XNameCache.States) != null
-					? ReadULongList(element.Element(XNameCache.States)!)
+					? ReadULongList(element.Element(XNameCache.States)!).ToArray()
 					: [],
 				EventLinkIds = element.Element(XNameCache.EventLinks) != null
-					? ReadULongList(element.Element(XNameCache.EventLinks)!)
+					? ReadULongList(element.Element(XNameCache.EventLinks)!).ToArray()
 					: [],
 				EntryPointIds = element.Element(XNameCache.EntryPoints) != null
-					? ReadULongList(element.Element(XNameCache.EntryPoints)!)
+					? ReadULongList(element.Element(XNameCache.EntryPoints)!).ToArray()
 					: [],
 				IgnoreBlock = element.Element(XNameCache.IgnoreBlock) != null
 					? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)

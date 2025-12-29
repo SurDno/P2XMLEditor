@@ -12,9 +12,9 @@ public class GetRegionFunction : VmFunction {
    
 	public GetRegionFunction() {}
    
-	public GetRegionFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 0)
-			throw new ArgumentException($"Expected no parameters, got {parameters.Count}");
+	public GetRegionFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 0)
+			throw new ArgumentException($"Expected no parameters, got {parameters.Length}");
 	}
    
 	public override List<string>? GetParamStrings() => null;

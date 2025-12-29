@@ -13,7 +13,8 @@ public static class XmlReaderExtensions {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static XmlReader InitializeFullFileReader(string path, int size = 32768) {
 		var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, size, FileOptions.SequentialScan);
-		var settings = new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true, CheckCharacters = false,
+		var settings = new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true,
+			IgnoreProcessingInstructions = true, CheckCharacters = false,
 			DtdProcessing = DtdProcessing.Ignore, ConformanceLevel = ConformanceLevel.Fragment };
 		return XmlReader.Create(fs, settings);
 	}
@@ -33,15 +34,30 @@ public static class XmlReaderExtensions {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetStringValueAndAdvance(this XmlReader r) {
-		r.Read();
-		var value = r.Value;
-		r.Read();
-		r.Read();
+		var value = r.ReadElementContentAsString();
 		return value;
 	}
 
+	private static readonly char[] internal_buf = new char[32];
+	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static ulong GetULongValueAndAdvance(this XmlReader r) => ulong.Parse(r.GetStringValueAndAdvance());
+	public static ulong GetULongValueAndAdvance(this XmlReader r) => GetULongValueAndAdvance(r, internal_buf);
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static ulong GetULongValueAndAdvance(this XmlReader r, char[] buf) {
+		r.Read(); 
+
+		var len = r.ReadValueChunk(buf, 0, buf.Length);
+
+		r.Read(); 
+		r.Read(); 
+
+		ulong v = 0;
+		for (var i = 0; i < len; i++)
+			v = (v << 1) + (v << 3) + (ulong)(buf[i] - '0');
+		
+		return v;
+	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static long GetLongValueAndAdvance(this XmlReader r) => long.Parse(r.GetStringValueAndAdvance());
@@ -64,7 +80,7 @@ public static class XmlReaderExtensions {
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void SkipEmptyELement(this XmlReader r) => r.Read();
+	public static void SkipEmptyElement(this XmlReader r) => r.Read();
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void SkipFilledElement(this XmlReader r) {
@@ -74,34 +90,34 @@ public static class XmlReaderExtensions {
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static List<string> GetStringListAndAdvance(this XmlReader r) {
+	public static string[] GetStringListAndAdvance(this XmlReader r) {
+		int length = int.Parse(r.GetAttribute("count")!);
 		r.Read();
-		var list = new List<string>();
-		while (!r.EndOfContainerReached()) 
-			list.Add(r.GetStringValueAndAdvance());
-		r.Read();
-		return list;
-	}
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static List<ulong> GetULongListAndAdvance(this XmlReader r) {
-		r.Read();
-		var list = new List<ulong>();
-		while (!r.EndOfContainerReached()) 
-			list.Add(ulong.Parse(r.GetStringValueAndAdvance()));
+		var list = new string[length];
+		for (var i = 0; i < length; i++) 
+			list[i] = r.GetStringValueAndAdvance();
 		r.Read();
 		return list;
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static Dictionary<string, ulong> GetULongDictAndAdvance(this XmlReader r) {
+	public static ulong[] GetULongListAndAdvance(this XmlReader r) {
+		int length = int.Parse(r.GetAttribute("count")!);
 		r.Read();
-		var dict = new Dictionary<string, ulong>();
-		while (!r.EndOfContainerReached()) {
-			var key = r.GetAttribute("key")!;
-			dict[key] = r.GetULongValueAndAdvance();
-		}
-
+		var list = new ulong[length];
+		for (var i = 0; i < length; i++) 
+			list[i] = r.GetULongValueAndAdvance();
+		r.Read();
+		return list;
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static (string, ulong)[] GetULongDictAndAdvance(this XmlReader r) {
+		int length = int.Parse(r.GetAttribute("count")!);
+		r.Read();
+		var dict = new (string, ulong)[length];
+		for (var i = 0; i < length; i++)
+			dict[i] = (r.GetAttribute("key")!, r.GetULongValueAndAdvance());
 		r.Read();
 		return dict;
 	}

@@ -143,7 +143,7 @@ public class ResetableMinMaxParameter<T> : MinMaxParameter<T> {
 public class PriorityParameter<T> : IParameter {
     public ParameterName Name { get; set; }
     
-    public List<Entry> Items { get; } = new();
+    public List<Entry> Items { get; } = [];
 
     public struct Entry {
         public Priority Priority;

@@ -34,8 +34,8 @@ public static class Logger {
         Console.WriteLine(logMessage);
 
         try {
-            lock (LockObject) {
-                File.AppendAllText(ExeLogFilePath, logMessage + Environment.NewLine);
+            //lock (LockObject) {
+                //File.AppendAllText(ExeLogFilePath, logMessage + Environment.NewLine);
                 BufferedLogs.Add(logMessage);
 
                 _logMessages.Add(logMessage);
@@ -44,7 +44,7 @@ public static class Logger {
                 var installLogPath = ExeLogFilePath;
                 if (installLogPath == null) return;
                 HandleInstallPathChange(installLogPath);
-            }
+            //}
         } catch (Exception ex) {
             ErrorHandler.Handle($"Error writing to log file: {ex.Message}", ex, skipLogging: true);
         }

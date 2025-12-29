@@ -25,8 +25,8 @@ public class XElementMindMapLoader : IParser<RawMindMapData> {
 				LogicMapType = element.Element(XNameCache.LogicMapType)!.Value.Deserialize<LogicMapType>(),
 				TitleId = ulong.Parse(element.Element(XNameCache.Title)!.Value),
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
-				NodeIds = ParseListElementAsUlong(element, XNameCache.Nodes),
-				LinkIds = ParseListElementAsUlong(element, XNameCache.Links)
+				NodeIds = ParseListElementAsUlong(element, XNameCache.Nodes).ToArray(),
+				LinkIds = ParseListElementAsUlong(element, XNameCache.Links).ToArray()
 			};
 
 			raws.Add(raw);

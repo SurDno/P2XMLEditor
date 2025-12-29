@@ -42,40 +42,40 @@ public abstract class ParsingExecutor {
     protected internal abstract IParser<RawStateData> StateLoader { get; }
     protected internal abstract IParser<RawTalkingData> TalkingLoader { get; }
 
-    public readonly List<RawActionLineData> ActionLines = new();
-    public readonly List<RawActionData> Actions = new();
-    public readonly List<RawBlueprintData> Blueprints = new();
-    public readonly List<RawBranchData> Branches = new();
-    public readonly List<RawConditionData> Conditions = new();
-    public readonly List<RawCustomTypeData> CustomTypes = new();
-    public readonly List<RawEntryPointData> EntryPoints = new();
-    public readonly List<RawEventData> Events = new();
-    public readonly List<RawExpressionData> Expressions = new();
-    public readonly List<RawFunctionalComponentData> FunctionalComponents = new();
-    public readonly List<RawGameModeData> GameModes = new();
+    public readonly List<RawActionLineData> ActionLines = [];
+    public readonly List<RawActionData> Actions = [];
+    public readonly List<RawBlueprintData> Blueprints = [];
+    public readonly List<RawBranchData> Branches = [];
+    public readonly List<RawConditionData> Conditions = [];
+    public readonly List<RawCustomTypeData> CustomTypes = [];
+    public readonly List<RawEntryPointData> EntryPoints = [];
+    public readonly List<RawEventData> Events = [];
+    public readonly List<RawExpressionData> Expressions = [];
+    public readonly List<RawFunctionalComponentData> FunctionalComponents = [];
+    public readonly List<RawGameModeData> GameModes = [];
 
-    public readonly List<RawGameObjectData> Items = new();
-    public readonly List<RawGameObjectData> Others = new();
-    public readonly List<RawGameObjectData> Scenes = new();
-    public readonly List<RawGameObjectData> Geoms = new();
-    public readonly List<RawGameObjectData> Characters = new();
+    public readonly List<RawGameObjectData> Items = [];
+    public readonly List<RawGameObjectData> Others = [];
+    public readonly List<RawGameObjectData> Scenes = [];
+    public readonly List<RawGameObjectData> Geoms = [];
+    public readonly List<RawGameObjectData> Characters = [];
 
-    public readonly List<RawGameRootData> GameRoots = new();
-    public readonly List<RawGameStringData> GameStrings = new();
-    public readonly List<RawGraphLinkData> GraphLinks = new();
-    public readonly List<RawGraphData> Graphs = new();
-    public readonly List<RawMindMapLinkData> MindMapLinks = new();
-    public readonly List<RawMindMapData> MindMaps = new();
-    public readonly List<RawMindMapNodeContentData> MindMapNodeContents = new();
-    public readonly List<RawMindMapNodeData> MindMapNodes = new();
-    public readonly List<RawParameterData> Parameters = new();
-    public readonly List<RawPartConditionData> PartConditions = new();
-    public readonly List<RawQuestData> Quests = new();
-    public readonly List<RawReplyData> Replies = new();
-    public readonly List<RawSampleData> Samples = new();
-    public readonly List<RawSpeechData> Speeches = new();
-    public readonly List<RawStateData> States = new();
-    public readonly List<RawTalkingData> Talkings = new();
+    public readonly List<RawGameRootData> GameRoots = [];
+    public readonly List<RawGameStringData> GameStrings = [];
+    public readonly List<RawGraphLinkData> GraphLinks = [];
+    public readonly List<RawGraphData> Graphs = [];
+    public readonly List<RawMindMapLinkData> MindMapLinks = [];
+    public readonly List<RawMindMapData> MindMaps = [];
+    public readonly List<RawMindMapNodeContentData> MindMapNodeContents = [];
+    public readonly List<RawMindMapNodeData> MindMapNodes = [];
+    public readonly List<RawParameterData> Parameters = [];
+    public readonly List<RawPartConditionData> PartConditions = [];
+    public readonly List<RawQuestData> Quests = [];
+    public readonly List<RawReplyData> Replies = [];
+    public readonly List<RawSampleData> Samples = [];
+    public readonly List<RawSpeechData> Speeches = [];
+    public readonly List<RawStateData> States = [];
+    public readonly List<RawTalkingData> Talkings = [];
 
     [PerformanceLogHook]
     public void ExecuteAll(string directory) {

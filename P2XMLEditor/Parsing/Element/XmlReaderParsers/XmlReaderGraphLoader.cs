@@ -37,19 +37,16 @@ public class XmlReaderGraphLoader : IParser<RawGraphData> {
 		}
 	}
 
-	private static List<GraphParamInfo>? ReadInputParamsInfo(XmlReader xr) {
+	private static GraphParamInfo[] ReadInputParamsInfo(XmlReader xr) {
+		var length = int.Parse(xr.GetAttribute("count")!);
 		xr.Read();
-		if (xr.EndOfContainerReached()) {
-			xr.Read();
-			return null;
-		}
 
-		var list = new List<GraphParamInfo>();
-		while (!xr.EndOfContainerReached()) {
+		var list = new GraphParamInfo[length];
+		for (var i = 0; i < length; i++) {
 			xr.Read();
 			var name = xr.GetStringValueAndAdvance();
 			var type = xr.GetStringValueAndAdvance();
-			list.Add(new GraphParamInfo(name, type));
+			list[i] = new GraphParamInfo(name, type);
 			xr.Read();
 		}
 

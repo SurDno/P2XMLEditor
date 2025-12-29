@@ -10,7 +10,7 @@ public sealed class LogViewerForm : Form {
 
     public LogViewerForm() {
        Text = "P2XMLEditor Logs";
-       Size = new Size(1300, 600);
+       Size = new Size(1600, 600);
 
        _logTextBox = new TextBox {
           Dock = DockStyle.Fill,

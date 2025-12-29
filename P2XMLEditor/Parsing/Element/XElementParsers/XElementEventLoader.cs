@@ -44,7 +44,7 @@ public class XElementEventLoader : IParser<RawEventData> {
                     ulong.Parse(element.Element(XNameCache.EventParameter)!.Value) : null,
                 ConditionId = element.Element(XNameCache.Condition) != null ?
                     ulong.Parse(element.Element(XNameCache.Condition)!.Value) : null,
-                MessagesInfo = messagesInfo.Count > 0 ? messagesInfo : null
+                MessagesInfo = messagesInfo.Count > 0 ? messagesInfo.ToArray() : null
             };
 
             raws.Add(raw);

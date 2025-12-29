@@ -1,12 +1,10 @@
-using System.Collections.Generic;
-
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawTalkingData {
 	public ulong Id;
-	public List<ulong> StateIds;
-	public List<ulong> EventLinkIds;
-	public List<ulong> EntryPointIds;
+	public ulong[] StateIds;
+	public ulong[] EventLinkIds;
+	public ulong[] EntryPointIds;
 	public bool? IgnoreBlock;
 	public ulong OwnerId;
 	public bool? Initial;

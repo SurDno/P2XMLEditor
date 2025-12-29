@@ -20,17 +20,17 @@ public class XElementStateLoader : IParser<RawStateData> {
 			var raw = new RawStateData {
 				Id = id,
 				EntryPointIds = element.Element(XNameCache.EntryPoints) != null
-					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.EntryPoints)!)
-					: new List<ulong>(),
+					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.EntryPoints)!).ToArray()
+					: [],
 				IgnoreBlock = element.Element(XNameCache.IgnoreBlock) != null
 					? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)
 					: null,
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
 				InputLinkIds = element.Element(XNameCache.InputLinks) != null
-					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.InputLinks)!)
+					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.InputLinks)!).ToArray()
 					: null,
 				OutputLinkIds = element.Element(XNameCache.OutputLinks) != null
-					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.OutputLinks)!)
+					? XmlParsingHelper.ReadULongList(element.Element(XNameCache.OutputLinks)!).ToArray()
 					: null,
 				Initial = element.Element(XNameCache.Initial) != null
 					? bool.Parse(element.Element(XNameCache.Initial)!.Value)

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGameObjectData {
@@ -9,13 +7,13 @@ public struct RawGameObjectData {
 	public string? EngineBaseTemplateId;
 	public bool? Instantiated;
 	public bool? Static;
-	public List<string>? InheritanceInfo;
-	public List<ulong>? FunctionalComponentIds;
+	public string[]? InheritanceInfo;
+	public ulong[]? FunctionalComponentIds;
 	public ulong? EventGraphId;
-	public List<ulong>? ChildObjectIds;
-	public List<ulong>? EventIds;
-	public Dictionary<string, ulong>? CustomParamIds;
-	public Dictionary<string, ulong>? StandartParamIds;
+	public ulong[]? ChildObjectIds;
+	public ulong[]? EventIds;
+	public (string, ulong)[]? CustomParamIds;
+	public (string, ulong)[]? StandartParamIds;
 	public string? GameTimeContext;
 	public string Name;
 	public ulong ParentId;

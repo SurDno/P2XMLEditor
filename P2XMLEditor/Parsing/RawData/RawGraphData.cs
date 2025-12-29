@@ -1,20 +1,19 @@
-using System.Collections.Generic;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGraphData {
 	public ulong Id;
-	public List<ulong>? StateIds;
-	public List<ulong>? EventLinkIds;
+	public ulong[]? StateIds;
+	public ulong[]? EventLinkIds;
 	public ulong? SubstituteGraphId;
 	public string GraphType;
-	public List<GraphParamInfo>? InputParamsInfo;
-	public List<ulong>? EntryPointIds;
+	public GraphParamInfo[]? InputParamsInfo;
+	public ulong[]? EntryPointIds;
 	public bool? IgnoreBlock;
 	public ulong OwnerId;
-	public List<ulong>? InputLinkIds;
-	public List<ulong>? OutputLinkIds;
+	public ulong[]? InputLinkIds;
+	public ulong[]? OutputLinkIds;
 	public bool? Initial;
 	public string Name;
 	public ulong ParentId;

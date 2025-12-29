@@ -12,9 +12,9 @@ public class GetItemsCountFunction : VmFunction {
    
 	public GetItemsCountFunction() {}
    
-	public GetItemsCountFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 0)
-			throw new ArgumentException($"Expected no parameters, got {parameters.Count}");
+	public GetItemsCountFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 0)
+			throw new ArgumentException($"Expected no parameters, got {parameters.Length}");
 	}
    
 	public override List<string>? GetParamStrings() => null;

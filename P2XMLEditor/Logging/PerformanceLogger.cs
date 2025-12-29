@@ -16,7 +16,7 @@ public sealed class PerformanceLogger : IDisposable {
 
 	public void Dispose() {
 		_stopwatch.Stop();
-		var elapsed = _stopwatch.ElapsedMilliseconds;
+		var elapsed = _stopwatch.Elapsed.TotalMilliseconds;
         
 		var perfLevel = elapsed switch {
 			< 5 => LogLevel.Trace,

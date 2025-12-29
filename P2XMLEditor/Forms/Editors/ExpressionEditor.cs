@@ -440,7 +440,7 @@ public class ExpressionEditorForm : Form {
             case ExpressionType.Function:
                 if (cmbFunction.SelectedItem is string funcName) {
                     _expression.TargetObject = CommonVariable.Read(txtFuncTargetObject.Text, _vm);
-                    var parameters = lstFunctionParams.Items.Cast<string>().ToList();
+                    var parameters = lstFunctionParams.Items.Cast<string>().ToArray();
                     _expression.Function = VmFunction.GetFunction(funcName, _vm, parameters);
                 }
                 break;

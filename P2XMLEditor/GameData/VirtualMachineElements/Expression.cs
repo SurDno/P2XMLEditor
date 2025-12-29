@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -44,21 +45,22 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
         
         if (TargetParam != null)
             element.Add(new XElement("TargetParam", TargetParam.Write()));
-        if (Function?.GetParamStrings() is { Count: > 0 } sourceParams) 
+        if (Function?.GetParamStrings() is { Count: > 0 } sourceParams)
             element.Add(CreateListElement("SourceParams", sourceParams));
         if (Const != null)
             element.Add(new XElement("Const", Const.Id));
-        
+
         element.Add(new XElement("LocalContext", LocalContext.Id));
         if (FormulaChilds?.Count > 0) {
             element.Add(CreateListElement("FormulaChilds", FormulaChilds.Select(c => c.Id.ToString())));
             element.Add(CreateListElement("FormulaOperations", FormulaOperations!.Select(o => o.Serialize())));
         }
+
         if (Inversion != null)
             element.Add(CreateBoolElement("Inversion", (bool)Inversion));
         return element;
     }
-    
+
     public override bool IsOrphaned() {
         return LocalContext.Element switch {
             Event e => !ConditionValid(e.Condition),
@@ -116,7 +118,7 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
         return expr;
     }
 
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         if (Const is not null) 
             vm.RemoveElement(Const);
 

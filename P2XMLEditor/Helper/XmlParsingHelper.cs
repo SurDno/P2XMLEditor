@@ -96,46 +96,38 @@ public static class XmlParsingHelper {
         var dict = new Dictionary<string, string>();
         var element = parent?.Element(elementName);
         if (element != null) {
-            foreach (var item in element.Elements("Item")) {
-                var key = item.Attribute("key");
+            foreach (var item in element.Elements(XNameCache.Item)) {
+                var key = item.Attribute(XNameCache.KeyAttribute);
                 if (key != null) dict[key.Value] = item.Value;
             }
         }
         return dict;
     }
     
-    public static Dictionary<string, ulong> ParseDictionaryElementAsUlong(XElement? parent, XName elementName) {
-        var dict = new Dictionary<string, ulong>();
-        var element = parent?.Element(elementName);
-        if (element != null) {
-            foreach (var item in element.Elements("Item")) {
-                var key = item.Attribute("key");
-                if (key != null) dict[key.Value] = ulong.Parse(item.Value);
-            }
-        }
-        return dict;
-    }
-    
     public static List<ulong> ReadULongList(XElement element) {
-        return element.Elements(XNameCache.Item)
-            .Select(x => ulong.Parse(x.Value))
-            .ToList();
+        return element.Elements(XNameCache.Item).Select(x => ulong.Parse(x.Value)).ToList();
     }
 
     public static List<string> ReadStrList(XElement element) {
-        return element.Elements(XNameCache.Item)
-            .Select(x => x.Value)
-            .ToList();
+        return element.Elements(XNameCache.Item).Select(x => x.Value).ToList();
     }
 
-    public static Dictionary<string, ulong> ReadDictULong(XElement element) {
-        var dict = new Dictionary<string, ulong>();
-        foreach (var item in element.Elements(XNameCache.Item)) {
-            var key = item.Attribute(XNameCache.KeyAttribute);
-            if (key != null)
-                dict[key.Value] = ulong.Parse(item.Value);
+    public static (string, ulong)[] ReadDictULong(XElement element) {
+        try {
+            if (element == null) return null;
+            var length = int.Parse(element.Attribute(XNameCache.CountAttribute)!.Value);
+            var dict = new (string, ulong)[length];
+            var items = element.Elements(XNameCache.Item).ToList();
+            for (var i = 0; i < items.Count; i++) {
+                var item = items[i];
+                dict[i] = (item.Attribute(XNameCache.KeyAttribute)!.Value, ulong.Parse(item.Value));
+            }
+
+            return dict;
+        } catch(Exception e) {
+            Console.WriteLine(e + element.Parent!.FirstAttribute!.Value);
+            throw;
         }
-        return dict;
     }
     
     public static T? Let<T>(this XElement? element, Func<XElement, T> transform) => 

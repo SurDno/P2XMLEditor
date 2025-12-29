@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGraphLinkData {
@@ -8,7 +6,7 @@ public struct RawGraphLinkData {
 	public string EventObject;
 	public int SourceExitPointIndex;
 	public int DestEntryPointIndex;
-	public List<string>? SourceParams;
+	public string[]? SourceParams;
 	public ulong? SourceId;
 	public ulong? DestinationId;
 	public bool? Enabled;

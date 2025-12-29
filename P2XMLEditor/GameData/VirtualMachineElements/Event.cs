@@ -75,7 +75,7 @@ public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
             vm.GetElement<Parameter>(data.EventParameterId.Value) : null;
         Condition = data.ConditionId.HasValue ? 
             vm.GetElement<Condition>(data.ConditionId.Value) : null;
-        MessagesInfo = data.MessagesInfo;
+        MessagesInfo = data.MessagesInfo?.ToList();
     }
 
     

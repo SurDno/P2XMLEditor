@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawExpressionData {
@@ -9,11 +7,11 @@ public struct RawExpressionData {
 	public string TargetObject;
 	public string? TargetParam;
 	public ulong? ConstId;
-	public List<string>? SourceParams;
+	public string[]? SourceParams;
 	public ulong LocalContextId;
 	public bool? Inversion;
-	public List<ulong>? FormulaChilds;
-	public List<string>? FormulaOperations;
+	public ulong[]? FormulaChilds;
+	public string[]? FormulaOperations;
 
 	public override int GetHashCode() => Id.GetHashCode();
 	

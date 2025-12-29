@@ -33,9 +33,13 @@ public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctiona
         );
         return element;
     }
-    
+
     public void FillFromRawData(RawFunctionalComponentData data, VirtualMachine vm) {
-        Events = data.EventIds?.Select(vm.GetElement<Event>).ToList() ?? [];
+        Events = [];
+        if (data.EventIds != null) {
+            foreach (var eventId in data.EventIds)
+                Events.Add(vm.GetElement<Event>(eventId));
+        }
         Main = data.Main;
         LoadPriority = data.LoadPriority;
         Name = data.Name;

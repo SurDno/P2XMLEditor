@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -20,7 +22,7 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
         "SourceParams", "Source", "Destination", "Enabled", "Name", "Parent"
     ];
     public Event? Event { get; set; }
-    public CommonVariable? EventObject { get; set; }
+    public CommonVariable EventObject { get; set; }
     public int SourceExitPointIndex { get; set; }
     public int DestEntryPointIndex { get; set; }
     public List<string>? SourceParams { get; set; }
@@ -53,18 +55,19 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
         );
         return element;
     }
-    
+
     public void FillFromRawData(RawGraphLinkData data, VirtualMachine vm) {
         Event = data.EventId.HasValue ? vm.GetElement<Event>(data.EventId.Value) : null;
         EventObject = CommonVariable.Read(data.EventObject, vm);
         SourceExitPointIndex = data.SourceExitPointIndex;
         DestEntryPointIndex = data.DestEntryPointIndex;
-        SourceParams = data.SourceParams;
-        Source = data.SourceId.HasValue ? 
+        SourceParams = data.SourceParams?.ToList();
+        if (data.SourceId.HasValue)
+            Source = 
             vm.GetNullableElement<Graph, Branch, Speech, State, GraphPlaceholder>(data.SourceId.Value) ?? 
-            new(vm.Register(new GraphPlaceholder(data.SourceId.Value))) : default;
-        Destination = data.DestinationId.HasValue ? 
-            vm.GetElement<Graph, Branch, Speech, State, Talking>(data.DestinationId.Value) : default;
+            new(vm.Register(new GraphPlaceholder(data.SourceId.Value)));
+        if (data.DestinationId.HasValue)
+            Destination = vm.GetElement<Graph, Branch, Speech, State, Talking>(data.DestinationId.Value);
         Enabled = data.Enabled;
         Name = data.Name;
         Parent = vm.GetElement<Graph, Talking>(data.ParentId);

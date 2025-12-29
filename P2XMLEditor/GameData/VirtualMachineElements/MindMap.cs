@@ -45,10 +45,10 @@ public class MindMap(ulong id) : VmElement(id), IFiller<RawMindMapData>, IVmCrea
         LogicMapType = data.LogicMapType;
         Title = vm.GetElement<GameString>(data.TitleId);
         Parent = vm.GetElement<GameRoot>(data.ParentId);
-        Nodes = new();
+        Nodes = [];
         foreach (var nodeId in data.NodeIds)
             Nodes.Add(vm.GetElement<MindMapNode>(nodeId));
-        Links = new();
+        Links = [];
         if (data.LinkIds == null) return;
         foreach (var nodeId in data.LinkIds)
             Links.Add(vm.GetElement<MindMapLink>(nodeId));

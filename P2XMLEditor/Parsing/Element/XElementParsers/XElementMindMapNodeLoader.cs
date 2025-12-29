@@ -24,9 +24,9 @@ public class XElementMindMapNodeLoader : IParser<RawMindMapNodeData> {
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
 				LogicMapNodeType = element.Element(XNameCache.LogicMapNodeType)!.Value.Deserialize<LogicMapNodeType>(),
-				ContentIds = ParseListElementAsUlong(element, XNameCache.NodeContent),
-				InputLinkIds = ParseListElementAsUlong(element, XNameCache.InputLinks),
-				OutputLinkIds = ParseListElementAsUlong(element, XNameCache.OutputLinks),
+				ContentIds = ParseListElementAsUlong(element, XNameCache.NodeContent).ToArray(),
+				InputLinkIds = ParseListElementAsUlong(element, XNameCache.InputLinks).ToArray(),
+				OutputLinkIds = ParseListElementAsUlong(element, XNameCache.OutputLinks).ToArray(),
 				GameScreenPosX = float.Parse(element.Element(XNameCache.GameScreenPosX)!.Value),
 				GameScreenPosY = float.Parse(element.Element(XNameCache.GameScreenPosY)!.Value)
 			};

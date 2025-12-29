@@ -12,9 +12,9 @@ public class RandomFunction : VmFunction {
    
 	public RandomFunction() {}
    
-	public RandomFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 0)
-			throw new ArgumentException($"Expected no parameters, got {parameters.Count}");
+	public RandomFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 0)
+			throw new ArgumentException($"Expected no parameters, got {parameters.Length}");
 	}
    
 	public override List<string>? GetParamStrings() => null;

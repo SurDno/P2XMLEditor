@@ -21,7 +21,7 @@ public class XElementConditionLoader : IParser<RawConditionData> {
 
 			var raw = new RawConditionData {
 				Id = id,
-				PredicateIds = ParseListElementAsUlong(element, XNameCache.Predicates),
+				PredicateIds = ParseListElementAsUlong(element, XNameCache.Predicates).ToArray(),
 				Operation = element.Element(XNameCache.Operation)!.Value.Deserialize<ConditionOperation>(),
 				Name = element.Element(XNameCache.Name)!.Value,
 				OrderIndex = int.Parse(element.Element(XNameCache.OrderIndex)!.Value)

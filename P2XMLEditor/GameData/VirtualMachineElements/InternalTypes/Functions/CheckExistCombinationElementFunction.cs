@@ -19,9 +19,9 @@ public class CheckExistCombinationElementFunction : VmFunction {
 		this.item = item ?? throw new ArgumentNullException(nameof(item));
 	}
    
-	public CheckExistCombinationElementFunction(VirtualMachine vm, List<string> parameters) {
-		if (parameters.Count != 1)
-			throw new ArgumentException($"Expected 1 parameter, got {parameters.Count}");
+	public CheckExistCombinationElementFunction(VirtualMachine vm, string[] parameters) {
+		if (parameters.Length != 1)
+			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
            
 		var parts = parameters[0].Split('%');
 		if (parts.Length != 2)

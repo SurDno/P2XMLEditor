@@ -3,12 +3,10 @@ using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
-using P2XMLEditor.GameData.Types;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-using ZLinq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -50,16 +48,16 @@ public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphEleme
     }
     
     public void FillFromRawData(RawStateData data, VirtualMachine vm) {
-        EntryPoints = new();
+        EntryPoints = [];
         foreach (var entrypoint in data.EntryPointIds)
             EntryPoints.Add(vm.GetElement<EntryPoint>(entrypoint));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-        InputLinks = new();
+        InputLinks = [];
         if (data.InputLinkIds != null)
           foreach (var entrypoint in data.InputLinkIds)
              InputLinks.Add(vm.GetElement<GraphLink>(entrypoint));
-        OutputLinks = new();
+        OutputLinks = [];
         if (data.OutputLinkIds != null)
             foreach (var entrypoint in data.OutputLinkIds)
               OutputLinks.Add(vm.GetElement<GraphLink>(entrypoint));

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
@@ -61,7 +62,7 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData> {
             vm.GetElement<Expression>(data.SourceExpressionId.Value) : null;
         TargetObject = data.TargetObject;
         TargetParam = data.TargetParam;
-        SourceParams = data.SourceParams;
+        SourceParams = data.SourceParams?.ToList();
         Name = data.Name;
         LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
         OrderIndex = data.OrderIndex;

@@ -8,7 +8,6 @@ using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-using ZLinq;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
@@ -36,7 +35,7 @@ public class Condition(ulong id) : VmElement(id), IFiller<RawConditionData>, IVm
 	}
 	
 	public void FillFromRawData(RawConditionData data, VirtualMachine vm) {
-		Predicates = new();
+		Predicates = [];
 		foreach (var id in data.PredicateIds)
 			Predicates.Add(vm.GetElement<Condition, PartCondition>(id));
 		Operation = data.Operation;

@@ -72,7 +72,8 @@ public sealed class PathSelectionForm : Form {
             Width = 220
         };
 
-        _parsingModeCombo.Items.Add("XML Reader (fastest)");
+        _parsingModeCombo.Items.Add("Fastest");
+        _parsingModeCombo.Items.Add("XML Reader");
         _parsingModeCombo.Items.Add("XElement (legacy)");
         _parsingModeCombo.SelectedIndex = 0;
 
@@ -93,7 +94,11 @@ public sealed class PathSelectionForm : Form {
         };
 
         okButton.Click += (_, _) => {
-            var mode = _parsingModeCombo.SelectedIndex == 0 ? ParsingMode.XmlReader : ParsingMode.XElement;
+            var mode = _parsingModeCombo.SelectedIndex switch {
+                1 => ParsingMode.XmlReader,
+                2 => ParsingMode.XElement,
+                _ => ParsingMode.Fastest
+            };
 
             SelectedPaths = new(
                 _validators[0].PathBox.Text,

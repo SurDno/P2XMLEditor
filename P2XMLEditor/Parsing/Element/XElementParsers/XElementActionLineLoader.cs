@@ -33,7 +33,7 @@ public class XElementActionLineLoader : IParser<RawActionLineData> {
             
 			var raw = new RawActionLineData {
 				Id = id,
-				ActionIds = ParseListElementAsUlong(element, XNameCache.Actions),
+				ActionIds = ParseListElementAsUlong(element, XNameCache.Actions).ToArray(),
 				ActionLineType = element.Element(XNameCache.ActionLineType)!.Value.Deserialize<ActionLineType>(),
 				LoopInfo = loopInfo,
 				Name = element.Element(XNameCache.Name)!.Value,

@@ -10,6 +10,7 @@ namespace P2XMLEditor.Helper;
 public static class EnumExtensions {
 	private static readonly Dictionary<Type, Dictionary<int, string>> SerializeCache = new();
 	private static readonly Dictionary<Type, Dictionary<string, int>> DeserializeCache = new();
+	private static readonly Dictionary<Type, (string text, int raw)[]> SpanDeserializeCache = new();
 
 	[PerformanceLogHook]
 	static EnumExtensions() {
@@ -22,16 +23,22 @@ public static class EnumExtensions {
 			var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
 			var sDict = new Dictionary<int, string>(fields.Length);
 			var dDict = new Dictionary<string, int>(fields.Length);
+			var arr = new (string text, int raw)[fields.Length];
 
-			foreach (var field in fields) {
-				var attr = field.GetCustomAttribute<SerializationData>()!;
-				int intVal = (int)field.GetValue(null)!;
+			for (int i = 0; i < fields.Length; i++) {
+				var f = fields[i];
+				var attr = f.GetCustomAttribute<SerializationData>()!;
+				int intVal = (int)f.GetValue(null)!;
+
 				sDict[intVal] = attr.Value;
 				dDict[attr.Value] = intVal;
+
+				arr[i] = (attr.Value, intVal);
 			}
 
 			SerializeCache[type] = sDict;
 			DeserializeCache[type] = dDict;
+			SpanDeserializeCache[type] = arr;
 		}
 	}
 
@@ -47,25 +54,36 @@ public static class EnumExtensions {
 
 	public static T Deserialize<T>(this string value) where T : Enum {
 		var t = typeof(T);
-		if (DeserializeCache.TryGetValue(t, out var map)) {
-			if (map.TryGetValue(value, out var raw))
-				return (T)Enum.ToObject(t, raw);
+		if (!DeserializeCache.TryGetValue(t, out var map))
+			throw new ArgumentException($"Enum type {t.Name} not initialized in cache");
+		
+		if (map.TryGetValue(value, out var raw))
+			return (T)Enum.ToObject(t, raw);
 
-			return (T)AssignUnknownValue(t, value);
-		}
-
-		throw new ArgumentException($"Enum type {t.Name} not initialized in cache");
+		return (T)AssignUnknownValue(t, value);
 	}
 
+	
+	public static T Deserialize<T>(this ReadOnlySpan<char> span) where T : Enum {
+		var t = typeof(T);
+		if (!SpanDeserializeCache.TryGetValue(t, out var arr))
+			throw new ArgumentException($"Enum type {t.Name} not initialized in cache");
+
+		foreach (var (text, raw) in arr)
+			if (span.SequenceEqual(text.AsSpan()))
+				return (T)Enum.ToObject(t, raw);
+		
+		return (T)AssignUnknownValue(t, span.ToString());
+	}
+	
 	public static Enum Deserialize(this Type enumType, string value) {
-		if (DeserializeCache.TryGetValue(enumType, out var map)) {
-			if (map.TryGetValue(value, out var raw))
-				return (Enum)Enum.ToObject(enumType, raw);
+		if (!DeserializeCache.TryGetValue(enumType, out var map))
+			throw new ArgumentException($"Enum type {enumType.Name} not initialized in cache");
+		
+		if (map.TryGetValue(value, out var raw))
+			return (Enum)Enum.ToObject(enumType, raw);
 
-			return AssignUnknownValue(enumType, value);
-		}
-
-		throw new ArgumentException($"Enum type {enumType.Name} not initialized in cache");
+		return AssignUnknownValue(enumType, value);
 	}
 
 	private static Enum AssignUnknownValue(Type enumType, string value) {

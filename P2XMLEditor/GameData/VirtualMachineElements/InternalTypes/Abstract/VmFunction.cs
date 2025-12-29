@@ -47,7 +47,7 @@ public abstract class VmFunction {
 
 	public static IEnumerable<string> GetAvailableFunctions() => _functionTypes.Keys;
     
-	public static VmFunction GetFunction(string name, VirtualMachine vm, List<string> parameters) {
+	public static VmFunction GetFunction(string name, VirtualMachine vm, string[] parameters) {
 		if (!_functionTypes.TryGetValue(name, out var type))
 			throw new ArgumentException($"Unknown function name: {name}");
             

@@ -5,4 +5,5 @@ public struct WriterSettings() {
 	public bool CleanUpUnusedProperties = false;
 	public bool CleanUpNames = false;
 	public bool CleanUpEmptyStrings = false;
+	public bool MergeConstants = false;
 }

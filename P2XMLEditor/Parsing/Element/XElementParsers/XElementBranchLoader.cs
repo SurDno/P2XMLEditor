@@ -30,14 +30,14 @@ public class XElementBranchLoader : IParser<RawBranchData> {
             
 			var raw = new RawBranchData {
 				Id = id,
-				BranchConditionIds = ParseListElementAsUlong(element, XNameCache.BranchConditions),
+				BranchConditionIds = ParseListElementAsUlong(element, XNameCache.BranchConditions).ToArray(),
 				BranchType = element.Element(XNameCache.BranchType)!.Value.Deserialize<BranchType>(),
-				BranchVariantInfo = branchVariantInfo,
-				EntryPointIds = ParseListElementAsUlong(element, XNameCache.EntryPoints),
+				BranchVariantInfo = branchVariantInfo?.ToArray(),
+				EntryPointIds = ParseListElementAsUlong(element, XNameCache.EntryPoints).ToArray(),
 				IgnoreBlock = element.Element(XNameCache.IgnoreBlock)?.Let(ParseBool),
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
-				InputLinkIds = ParseListElementAsUlong(element, XNameCache.InputLinks),
-				OutputLinkIds = ParseListElementAsUlong(element, XNameCache.OutputLinks),
+				InputLinkIds = ParseListElementAsUlong(element, XNameCache.InputLinks).ToArray(),
+				OutputLinkIds = ParseListElementAsUlong(element, XNameCache.OutputLinks).ToArray(),
 				Initial = element.Element(XNameCache.Initial)?.Let(ParseBool),
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)

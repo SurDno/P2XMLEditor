@@ -25,7 +25,7 @@ public class XElementGraphLinkLoader : IParser<RawGraphLinkData> {
 				EventObject = element.Element(XNameCache.EventObject)!.Value,
 				SourceExitPointIndex = int.Parse(element.Element(XNameCache.SourceExitPointIndex)!.Value),
 				DestEntryPointIndex = int.Parse(element.Element(XNameCache.DestEntryPointIndex)!.Value),
-				SourceParams = ParseListElement(element, XNameCache.SourceParams),
+				SourceParams = ParseListElement(element, XNameCache.SourceParams).ToArray(),
 				SourceId = element.Element(XNameCache.Source) != null ?
 					ulong.Parse(element.Element(XNameCache.Source)!.Value) : null,
 				DestinationId = element.Element(XNameCache.Destination) != null ?

@@ -46,9 +46,9 @@ public class IsObjectCompatibleFunction : VmFunction {
         this.constParameter = constParameter;
     }
     
-    public IsObjectCompatibleFunction(VirtualMachine vm, List<string> parameters) {
-        if (parameters.Count != 2)
-            throw new ArgumentException($"Expected 2 parameters, got {parameters.Count}");
+    public IsObjectCompatibleFunction(VirtualMachine vm, string[] parameters) {
+        if (parameters.Length != 2)
+            throw new ArgumentException($"Expected 2 parameters, got {parameters.Length}");
             
         var parts1 = parameters[0].Split('%');
         if (parts1.Length != 2)

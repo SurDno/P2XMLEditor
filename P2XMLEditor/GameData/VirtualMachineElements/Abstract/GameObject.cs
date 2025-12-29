@@ -40,7 +40,7 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
     
     public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {
         Static = data.Static;
-        FunctionalComponents = new();
+        FunctionalComponents = [];
         if (data.FunctionalComponentIds != null) {
             foreach (var functionalComponentId in data.FunctionalComponentIds)
                 FunctionalComponents.Add(vm.GetElement<FunctionalComponent>(functionalComponentId));
@@ -49,23 +49,23 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
         StandartParams = new();
         if (data.StandartParamIds != null) {
             foreach (var kvp in data.StandartParamIds)
-                StandartParams.Add(kvp.Key, vm.GetElement<Parameter>(kvp.Value));
+                StandartParams.Add(kvp.Item1, vm.GetElement<Parameter>(kvp.Item2));
         }
         CustomParams = new();
         if (data.CustomParamIds != null) {
             foreach (var kvp in data.CustomParamIds)
-                CustomParams.Add(kvp.Key, vm.GetElement<Parameter>(kvp.Value));
+                CustomParams.Add(kvp.Item1, vm.GetElement<Parameter>(kvp.Item2));
         }
         GameTimeContext = data.GameTimeContext;
         Name = data.Name;
         Parent = vm.GetElement<ParameterHolder>(data.ParentId);
-        InheritanceInfo = data.InheritanceInfo;
-        Events = new();
+        InheritanceInfo = data.InheritanceInfo?.ToList();
+        Events = [];
         if (data.EventIds != null) {
             foreach (var eventId in data.EventIds)
                 Events.Add(vm.GetElement<Event>(eventId));
         }
-        ChildObjects = new();
+        ChildObjects = [];
         if (data.ChildObjectIds != null) {
             foreach (var eventId in data.ChildObjectIds)
                 ChildObjects.Add(vm.GetElement<ParameterHolder>(eventId));

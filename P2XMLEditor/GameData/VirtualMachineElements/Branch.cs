@@ -75,24 +75,24 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
     }
     
     public void FillFromRawData(RawBranchData data, VirtualMachine vm) {
-        BranchConditions = new();
+        BranchConditions = [];
         if (data.BranchConditionIds != null) {
             foreach (var branchConditionId in data.BranchConditionIds)
                 BranchConditions.Add(vm.GetElement<Condition, PartCondition>(branchConditionId));
         }
         BranchType = data.BranchType;
-        BranchVariantInfo = data.BranchVariantInfo;
-        EntryPoints = new();
+        BranchVariantInfo = data.BranchVariantInfo?.ToList();
+        EntryPoints = [];
         foreach (var entryPointId in data.EntryPointIds)
             EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-        InputLinks = new();
+        InputLinks = [];
         if (data.InputLinkIds != null) {
             foreach (var inputLinkId in data.InputLinkIds)
                 InputLinks.Add(vm.GetElement<GraphLink>(inputLinkId));
         }
-        OutputLinks = new();
+        OutputLinks = [];
         if (data.OutputLinkIds != null) {
             foreach (var outputLinkId in data.OutputLinkIds)
                 OutputLinks.Add(vm.GetElement<GraphLink>(outputLinkId));

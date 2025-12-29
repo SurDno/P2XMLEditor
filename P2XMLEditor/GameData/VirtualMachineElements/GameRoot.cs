@@ -54,8 +54,8 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
     public void FillFromRawData(RawGameRootData data, VirtualMachine vm) {
         FunctionalComponents = data.FunctionalComponentIds.Select(vm.GetElement<FunctionalComponent>).ToList();
         EventGraph = data.EventGraphId.HasValue ? vm.GetElement<Graph>(data.EventGraphId.Value) : null;
-        StandartParams = data.StandartParamIds.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value));
-        CustomParams = data.CustomParamIds.ToDictionary(kv => kv.Key, kv => vm.GetElement<Parameter>(kv.Value));
+        StandartParams = data.StandartParamIds.ToDictionary(kv => kv.Item1, kv => vm.GetElement<Parameter>(kv.Item2));
+        CustomParams = data.CustomParamIds.ToDictionary(kv => kv.Item1, kv => vm.GetElement<Parameter>(kv.Item2));
         Name = data.Name;
         Parent = null;
         Events = data.EventIds?.Select(vm.GetElement<Event>).ToList();
@@ -65,7 +65,7 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
         GameModes = data.GameModeIds.Select(vm.GetElement<GameMode>).ToList();
         BaseToEngineGuidsTable = data.BaseToEngineGuidsTable;
         HierarchyScenesStructure = data.HierarchyScenesStructure;
-        HierarchyEngineGuidsTable = data.HierarchyEngineGuidsTable;
+        HierarchyEngineGuidsTable = data.HierarchyEngineGuidsTable.ToList();
         WorldObjectSaveOptimizeMode = data.WorldObjectSaveOptimizeMode;
     }
     

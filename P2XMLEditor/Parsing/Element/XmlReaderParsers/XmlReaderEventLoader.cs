@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -36,19 +37,18 @@ public class XmlReaderEventLoader : IParser<RawEventData> {
 		}
 	}
 
-	private static List<MessageInfo>? ReadMessages(XmlReader xr) {
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private static MessageInfo[] ReadMessages(XmlReader xr) {
+		var length = int.Parse(xr.GetAttribute("count")!);
 		xr.Read();
-		if (xr.EndOfContainerReached()) {
-			xr.Read();
-			return null;
-		}
 
-		var list = new List<MessageInfo>();
-		while (!xr.EndOfContainerReached()) {
+		var list = new MessageInfo[length];
+		for (var i = 0; i < length; i++) {
 			xr.Read();
-			var name = xr.GetStringValueAndAdvance();
-			var type = xr.GetStringValueAndAdvance();
-			list.Add(new MessageInfo(name, type));
+			list[i] = new MessageInfo {
+				Name = xr.GetStringValueAndAdvance(), 
+				Type = xr.GetStringValueAndAdvance()
+			};
 			xr.Read();
 		}
 

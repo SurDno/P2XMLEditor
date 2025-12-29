@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -52,15 +53,21 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICo
     }
     
     public void FillFromRawData(RawParameterData data, VirtualMachine vm) {
-        Name = data.Name;
-        OwnerComponent = data.OwnerComponentId.HasValue
-            ? vm.GetElement<FunctionalComponent>(data.OwnerComponentId.Value)
-            : null;
-        Type = data.Type;
-        Value = data.Value;
-        Implicit = data.Implicit;
-        Parent = vm.GetElement<ParameterHolder, Expression>(data.ParentId);
-        Custom = data.Custom;
+        try {
+            Name = data.Name;
+            OwnerComponent = data.OwnerComponentId.HasValue
+                ? vm.GetElement<FunctionalComponent>(data.OwnerComponentId.Value)
+                : null;
+            Type = data.Type;
+            Value = data.Value;
+            Implicit = data.Implicit;
+            Parent = vm.GetElement<ParameterHolder, Expression>(data.ParentId);
+            Custom = data.Custom;
+        } catch (Exception e) {
+            Console.WriteLine(e);
+            Console.WriteLine(data.Id);
+            throw;
+        }
     }
 
     public static Parameter New(VirtualMachine vm, ulong id, VmElement parent) {
