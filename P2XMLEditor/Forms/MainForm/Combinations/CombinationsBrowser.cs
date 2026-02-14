@@ -7,14 +7,14 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.WindowsFormsExtensions;
 
 namespace P2XMLEditor.Forms.MainForm.Combinations;
 
 public class CombinationsBrowser : Panel {
     private VirtualMachine _vm;
     private ListView _comboList;
-    private TextBox _searchBox;
-    private Label _statusLabel;
+    private SearchControl _searchControl;
     private ContextMenuStrip _contextMenu;
 
     private const string COMBINATION_KEY = "Combination.CombinationData", STORABLE_KEY = "Storable.DefaultStackCount";
@@ -28,16 +28,12 @@ public class CombinationsBrowser : Panel {
     }
 
     private void SetupControls() {
-        var searchLabel = new Label { Text = "Search:", Location = new Point(10, 15), Size = new Size(70, 23) };
-
-        _searchBox = new TextBox { Location = new Point(80, 12), Size = new Size(300, 30) };
-        _searchBox.TextChanged += (_, _) => LoadCombinations();
-
-        _statusLabel = new Label { Location = new Point(390, 15), Size = new Size(400, 30) };
+        _searchControl = new SearchControl { Dock = DockStyle.Top };
+        _searchControl.SearchChanged += (_, _) => LoadCombinations();
 
         _comboList = new ListView {
-            Location = new Point(10, 55),
-            Size = new Size(Width - 20, Height - 65),
+            Location = new Point(10, 45),
+            Size = new Size(Width - 20, Height - 55),
             Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
             View = View.Details,
             FullRowSelect = true,
@@ -56,7 +52,7 @@ public class CombinationsBrowser : Panel {
 
         _comboList.ContextMenuStrip = _contextMenu;
 
-        Controls.AddRange([searchLabel, _searchBox, _statusLabel, _comboList]);
+        Controls.AddRange([_searchControl, _comboList]);
     }
 
     private void ResizeColumns() => _comboList.Columns[1].Width = _comboList.Width - _comboList.Columns[0].Width - 30;
@@ -71,12 +67,10 @@ public class CombinationsBrowser : Panel {
               Where(item => item.StandartParams.ContainsKey(STORABLE_KEY) ||
                             item.StandartParams.ContainsKey(COMBINATION_KEY)).ToDictionary(o => o.Id, o => o.Name);
 
-        var text = _searchBox.Text.ToLowerInvariant();
-
         foreach (var el in combos) {
             var contents = CombinationHelper.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
 
-            if (!string.IsNullOrEmpty(text) && !IsIn(el.Name, text) && !IsIn(el.Id.ToString(), text) && !IsIn(contents, text))
+            if (!_searchControl.IsMatchAny(el.Name, el.Id.ToString(), contents))
                 continue;
 
             var listItem = new ListViewItem(el.Name) { Tag = el };
@@ -84,10 +78,8 @@ public class CombinationsBrowser : Panel {
             _comboList.Items.Add(listItem);
         }
 
-        _statusLabel.Text = $"Displaying {_comboList.Items.Count}/{combos.Count} combinations.";
+        _searchControl.StatusText = $"Displaying {_comboList.Items.Count}/{combos.Count} combinations.";
     }
-
-    private static bool IsIn(string src, string val) => src.Contains(val, StringComparison.InvariantCultureIgnoreCase);
 
     private void OnCombinationDoubleClick(object? sender, EventArgs e) => EditSelectedCombination();
 
