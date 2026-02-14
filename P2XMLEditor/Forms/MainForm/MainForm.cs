@@ -21,7 +21,6 @@ public class MainForm : Form {
     public VirtualMachine? VirtualMachine => _virtualMachine;
     public PathSelectionForm.Paths? Paths => _paths;
     
-    private TemplateManager? _templateManager;
     private StatusStrip _statusStrip;
     private ToolStripStatusLabel _logStatusLabel;
     private LogViewerForm? _logViewerForm;
@@ -53,7 +52,7 @@ public class MainForm : Form {
 
     public void LoadVirtualMachine(PathSelectionForm.Paths paths) {
         _paths = paths;
-        var reader = new VirtualMachineReader(_paths!.VmPath, _paths.Mode);
+        var reader = new VirtualMachineReader(_paths!.VmPath, _paths.TemplatesPath, _paths.Mode);
         _virtualMachine = reader.LoadVirtualMachine();
 
         Logger.Log(LogLevel.Info, $"DataCapacity: {_virtualMachine.GetDataCapacity()}");
@@ -71,10 +70,8 @@ public class MainForm : Form {
         combinationsTab.Controls.Add(new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(combinationsTab);
 
-        _templateManager = new TemplateManager(_paths.TemplatesPath);
-        _templateManager.LoadTemplates();
         var templatesTab = new TabPage("Templates");
-        templatesTab.Controls.Add(new TemplatesViewer(_templateManager) { Dock = DockStyle.Fill });
+        templatesTab.Controls.Add(new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(templatesTab);
     }
     

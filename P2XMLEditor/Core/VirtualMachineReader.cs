@@ -18,18 +18,24 @@ public class VirtualMachineReader {
     private readonly string _vmPath;
     private readonly VirtualMachine _vm;
     private readonly ParsingExecutor _executor;
-
+    
     private Dictionary<byte, Type[]> _typeChains;
 
-    public VirtualMachineReader(string vmPath, ParsingMode mode) {
+    public VirtualMachineReader(string vmPath, string templatesPath, ParsingMode mode) {
         _vmPath = vmPath;
-        _vm = new VirtualMachine(ReadDataCapacity(vmPath));
+        _vm = new VirtualMachine(ReadDataCapacity(vmPath), GetTemplateManager(templatesPath));
 
         _executor = mode switch {
             ParsingMode.Fastest => new FastestParsingExecutor(),
             ParsingMode.XElement => new XElementParsingExecutor(),
             _ => new XmlReaderParsingExecutor()
         };
+    }
+    
+    public static TemplateManager GetTemplateManager(string templatesPath) {
+        var templateManager = new TemplateManager(templatesPath);
+        templateManager.LoadTemplates();
+        return templateManager;
     }
 
     private static int ReadDataCapacity(string vmPath) {

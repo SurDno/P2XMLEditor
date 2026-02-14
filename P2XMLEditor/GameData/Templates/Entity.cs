@@ -110,7 +110,7 @@ public class Entity : TemplateObject, IEnableable {
 		_ => null
 	};
 
-	public XElement ToXml() {
+	public override XElement ToXml() {
 		var element = base.ToXml();
 
 		var componentsElement = new XElement("Components");

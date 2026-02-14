@@ -63,6 +63,7 @@ public class TemplateManager(string templatesPath) {
     private static TemplateObject? CreateTemplateObject(string type) {
         return type switch {
             nameof(Entity) => new Entity(),
+            nameof(MMPlaceholder) => new MMPlaceholder(),
             _ => null
         };
     }
