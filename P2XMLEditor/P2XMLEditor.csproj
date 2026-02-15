@@ -9,10 +9,11 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PublishAot>true</PublishAot>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\P2XMLEditor.Parsing\P2XMLEditor.Parsing.csproj" />
-        <ProjectReference Include="..\P2XMLEditor.Enums\P2XMLEditor.Enums.csproj" />
       <PackageReference Include="Fody" Version="6.9.3">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

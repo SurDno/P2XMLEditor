@@ -1,0 +1,56 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Xml;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
+using P2XMLEditor.Parsing.RawData;
+using static P2XMLEditor.Parsing.Helpers.XmlReaderExtensions;
+
+namespace P2XMLEditor.Parsing.Element.XmlReaderParsers;
+
+public class XmlReaderBranchLoader : IParser<RawBranchData> {
+
+	[PerformanceLogHook]
+	public void ProcessFile(string filePath, List<RawBranchData> raws) {
+		using var xr = InitializeFullFileReader(filePath);
+		xr.SkipDeclarationAndRoot();
+
+		while (xr.Read()) {
+			if (xr.EndOfContainerReached()) break;
+
+			var raw = new RawBranchData {
+				Id = xr.GetIdAndEnter(),
+				BranchConditionIds = xr.Name == "BranchConditions" ? xr.GetULongListAndAdvance() : null,
+				BranchType = xr.GetStringValueAndAdvance().Deserialize<BranchType>(),
+				BranchVariantInfo = xr.Name == "BranchVariantInfo" ? ReadBranchVariantInfo(xr) : null,
+				EntryPointIds = xr.GetULongListAndAdvance(),
+				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : null,
+				OwnerId = xr.GetULongValueAndAdvance(),
+				InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : null,
+				OutputLinkIds = xr.Name == "OutputLinks" ? xr.GetULongListAndAdvance() : null,
+				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : null,
+				Name = xr.GetStringValueAndAdvance(),
+				ParentId = xr.GetULongValueAndAdvance()
+			};
+
+			raws.Add(raw);
+		}
+	}
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private static (string, string)[] ReadBranchVariantInfo(XmlReader xr) {
+		var length = int.Parse(xr.GetAttribute("count")!);
+		xr.Read();
+		
+		var list = new (string, string)[length];
+		for(var i = 0; i < length; i++) {
+			xr.Read();
+			list[i] = new(xr.GetStringValueAndAdvance(), xr.GetStringValueAndAdvance());
+			xr.Read();
+		}
+
+		xr.Read();
+		return list;
+	}
+}

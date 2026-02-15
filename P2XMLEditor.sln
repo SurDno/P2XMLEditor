@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2XMLEditor", "P2XMLEditor\P2XMLEditor.csproj", "{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2XMLEditor.Parsing", "P2XMLEditor.Parsing\P2XMLEditor.Parsing.csproj", "{5892FE8E-B22E-494B-8A4F-F387894400EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2XMLEditor.Enums", "P2XMLEditor.Enums\P2XMLEditor.Enums.csproj", "{58C1B04B-BEF0-496B-852B-8FC1BAA527C5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,13 +12,5 @@ Global
 		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEF7AA1-CF31-4167-8DEA-DE10E238422F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5892FE8E-B22E-494B-8A4F-F387894400EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5892FE8E-B22E-494B-8A4F-F387894400EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5892FE8E-B22E-494B-8A4F-F387894400EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5892FE8E-B22E-494B-8A4F-F387894400EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58C1B04B-BEF0-496B-852B-8FC1BAA527C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58C1B04B-BEF0-496B-852B-8FC1BAA527C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58C1B04B-BEF0-496B-852B-8FC1BAA527C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58C1B04B-BEF0-496B-852B-8FC1BAA527C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

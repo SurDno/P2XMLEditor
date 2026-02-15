@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using P2XMLEditor.Core;
-using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 

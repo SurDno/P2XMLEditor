@@ -61,7 +61,7 @@ public class VirtualMachineReader {
 
     [PerformanceLogHook]
     public VirtualMachine LoadVirtualMachine() {
-        CalLExecutors();
+        CallExecutors();
         CreateMinimalInstances();
         FillFromRawData();
         LoadLocalizations();
@@ -70,8 +70,12 @@ public class VirtualMachineReader {
     }
 
     [PerformanceLogHook]
-    private void CalLExecutors() {
-        _executor.ExecuteAll(_vmPath);
+    private void CallExecutors() {
+        try {
+            _executor.ExecuteAll(_vmPath);
+        } catch (Exception e) {
+            Logger.Log(LogLevel.Error, $"Error while executing VirtualMachine: {e.Message}");
+        }
     }
 
     [PerformanceLogHook]

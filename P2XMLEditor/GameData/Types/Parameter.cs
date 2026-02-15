@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Linq;
-using P2XMLEditor.Enums;
-using P2XMLEditor.Enums.Templates;
+using P2XMLEditor.GameData.Enums;
+using P2XMLEditor.Helper;
 using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 
 namespace P2XMLEditor.GameData.Types;

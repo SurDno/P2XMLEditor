@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
-using P2XMLEditor.Enums;
-using P2XMLEditor.Enums.Templates;
+using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
+using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 

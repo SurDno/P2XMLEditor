@@ -5,27 +5,28 @@ namespace P2XMLEditor.Logging;
 
 public sealed class PerformanceLogger : IDisposable {
 	private readonly string _context;
-	private readonly Stopwatch _stopwatch;
+	private readonly long _startTimestamp;
 
 	private PerformanceLogger(string context) {
 		_context = context;
-		_stopwatch = Stopwatch.StartNew();
+		_startTimestamp = Stopwatch.GetTimestamp();
         
 		Logger.Log(LogLevel.Trace, $"[{_context}] Starting.");
 	}
 
 	public void Dispose() {
-		_stopwatch.Stop();
-		var elapsed = _stopwatch.Elapsed.TotalMilliseconds;
+		long endTimestamp = Stopwatch.GetTimestamp();
+		long delta = endTimestamp - _startTimestamp;
+		double elapsedMs = delta * (0.0001d);
         
-		var perfLevel = elapsed switch {
+		var perfLevel = elapsedMs switch {
 			< 5 => LogLevel.Trace,
 			< 1000 => LogLevel.Performance,
 			< 5000 => LogLevel.Warning,
 			_ => LogLevel.Error
 		};
         
-		Logger.Log(perfLevel, $"[{_context}] Completed in {elapsed}ms");
+		Logger.Log(perfLevel, $"[{_context}] Completed in {elapsedMs}ms");
 	}
 	
 	public static PerformanceLogger Log(string method, string type) => new($"{type}.{method}");
