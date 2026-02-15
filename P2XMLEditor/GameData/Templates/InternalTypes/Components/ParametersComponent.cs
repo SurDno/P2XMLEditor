@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Enums;
+using P2XMLEditor.Enums.Templates;
 using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using P2XMLEditor.GameData.Types;
 using P2XMLEditor.Logging;

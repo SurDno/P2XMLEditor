@@ -44,7 +44,7 @@ public class MindMapLink(ulong id) : VmElement(id), IFiller<RawMindMapLinkData>,
 		return node;
 	}
 
-	public void OnDestroy(VirtualMachine vm) {
+	public override void OnDestroy(VirtualMachine vm) {
 		Parent.Links.Remove(this);
 		Source.OutputLinks.Remove(this);
 		Destination.InputLinks.Remove(this);

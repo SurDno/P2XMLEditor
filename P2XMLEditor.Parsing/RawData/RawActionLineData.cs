@@ -1,0 +1,18 @@
+using P2XMLEditor.Enums.VirtualMachine;
+
+namespace P2XMLEditor.Parsing.RawData;
+
+public struct RawActionLineData {
+	public ulong Id;
+	public ulong[]? ActionIds;
+	public ActionLineType ActionLineType;
+	public string LoopInfoName;
+	public string LoopInfoStart;
+	public string LoopInfoEnd;
+	public bool? LoopInfoRandom;
+	public string Name;
+	public ulong LocalContextId;
+	public int OrderIndex;
+
+	public override int GetHashCode() => Id.GetHashCode();
+}

@@ -68,7 +68,7 @@ public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphEleme
     
     public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
     
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         foreach (var link in InputLinks ?? []) 
             vm.RemoveElement(link);
         foreach (var entryPoint in EntryPoints) 

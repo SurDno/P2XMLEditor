@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 

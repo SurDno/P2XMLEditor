@@ -1,13 +1,12 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Clean up unused expression variables")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Clean up unused expression variables"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class CleanUpUnusedExpressionVariables(VirtualMachine vm) : Suggestion(vm) {
     public override void Execute() {
         foreach (var expression in Vm.GetElementsByType<Expression>()) {

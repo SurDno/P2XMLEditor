@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
@@ -81,7 +82,7 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
                 BranchConditions.Add(vm.GetElement<Condition, PartCondition>(branchConditionId));
         }
         BranchType = data.BranchType;
-        BranchVariantInfo = data.BranchVariantInfo?.ToList();
+        BranchVariantInfo = data.BranchVariantInfo?.Select(t => new BranchVariantInfo(t.Item1, t.Item2)).ToList();
         EntryPoints = [];
         foreach (var entryPointId in data.EntryPointIds)
             EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
@@ -102,7 +103,7 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
         Parent = vm.GetElement<Graph, Talking>(data.ParentId);
     }
     
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         foreach (var link in InputLinks ?? []) 
             vm.RemoveElement(link);
         foreach (var entryPoint in EntryPoints) 
@@ -110,7 +111,7 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
     }
 }
 
-public record struct BranchVariantInfo {
-    public string Name { get; set; }
-    public string Type { get; set; }
+public struct BranchVariantInfo(string name, string type) {
+    public string Name { get; set; } = name;
+    public string Type { get; set; } = type;
 }

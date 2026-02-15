@@ -37,7 +37,7 @@ public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 	
 	public static VmElement New(VirtualMachine vm, ulong id, VmElement parent) => throw new NotImplementedException();
 	
-	public void OnDestroy(VirtualMachine vm) {
+	public override void OnDestroy(VirtualMachine vm) {
 		if (ActionLine != null)
 			vm.RemoveElement(ActionLine);
 	}

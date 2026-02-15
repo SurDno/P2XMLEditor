@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
@@ -25,7 +27,7 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
     public List<MindMap> LogicMaps { get; set; }
     public List<GameMode> GameModes { get; set; }
     public Dictionary<string, string> BaseToEngineGuidsTable { get; set; }
-    public Dictionary<ulong, SceneStructureEntry> HierarchyScenesStructure { get; set; }
+    public Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>> HierarchyScenesStructure { get; set; }
     public List<string> HierarchyEngineGuidsTable { get; set; }
     public bool? WorldObjectSaveOptimizeMode { get; set; }
 
@@ -36,10 +38,10 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
         foreach (var (key, entry) in HierarchyScenesStructure) {
             var itemElement = new XElement("Item", new XAttribute("key", key));
 
-            foreach (var (type, children) in entry.Containers) {
-                if (children.Count == 0) continue;
+            foreach (var (type, children) in entry) {
+                if (children.Length == 0) continue;
                 var container = new XElement(type.Serialize(),
-                    new XAttribute("count", children.Count),
+                    new XAttribute("count", children.Length),
                     children.Select(id => new XElement("Item", id.ToString()))
                 );
                 itemElement.Add(container);

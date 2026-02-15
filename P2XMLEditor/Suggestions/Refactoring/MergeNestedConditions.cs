@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Merge nested conditions")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Merge nested conditions"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var conditions = Vm.GetElementsByType<Condition>();

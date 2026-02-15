@@ -54,7 +54,7 @@ public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData>, IComm
         Name = data.Name;
         Parent = vm.GetElement<GameRoot>(data.ParentId);
     }    
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         vm.First<GameRoot>(_ => true).GameModes.Remove(this);
     }
 

@@ -4,8 +4,8 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Parameter Holders/Remove empty GUID references")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Parameter Holders/Remove empty GUID references"),
+ SuppressMessage("ReSharper", "UnusedType.Global")]
 public class RemoveEmptyGuidReferences(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		foreach (var item in Vm.GetElementsByType<GameObject>()) {

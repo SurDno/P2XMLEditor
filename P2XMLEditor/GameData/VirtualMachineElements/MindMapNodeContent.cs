@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
@@ -64,7 +65,7 @@ public class MindMapNodeContent(ulong id) : VmElement(id), IFiller<RawMindMapNod
         ContentCondition = CreateDefault<Condition>(vm, null!)
     };
 
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         vm.RemoveElement(ContentDescriptionText);
         vm.RemoveElement(ContentCondition);
         Parent.Content.Remove(this);

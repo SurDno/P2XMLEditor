@@ -5,8 +5,8 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Parameters/Remove Object.Enabled from storables")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Parameters/Remove Object.Enabled from storables"),
+ SuppressMessage("ReSharper", "UnusedType.Global")]
 public class RemoveObjectEnabledFromStorables(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		foreach (var item in Vm.GetElementsByType<ParameterHolder>()) {

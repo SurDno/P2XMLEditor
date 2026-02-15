@@ -5,7 +5,7 @@ using P2XMLEditor.Helper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Item(ulong id) : GameObject(id) {
-	public void OnDestroy(VirtualMachine vm) {
+	public override void OnDestroy(VirtualMachine vm) {
 		CombinationHelper.RemoveFromPotentialCombinations(vm, this);
 		base.OnDestroy(vm);
 	}

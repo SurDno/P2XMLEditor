@@ -73,13 +73,21 @@ public class MainForm : Form {
         var templatesTab = new TabPage("Templates");
         templatesTab.Controls.Add(new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
         _tabControl.TabPages.Add(templatesTab);
+        
+        var actionsTab = new TabPage("Actions");
+        actionsTab.Controls.Add(new Actions.ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        _tabControl.TabPages.Add(actionsTab);
+        
+        var dialogsTab = new TabPage("Dialogs");
+        dialogsTab.Controls.Add(new Dialogs.DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        _tabControl.TabPages.Add(dialogsTab);
     }
     
     private void InitializeTabs() {
         var versionInfo = Assembly.GetExecutingAssembly().GetName().Version!;
         var currentVersion = $"{versionInfo.Major}.{versionInfo.Minor}.{versionInfo.Build}";
         Text = $"P2XMLEditor {currentVersion}";
-        Size = new(1200, 800);
+        Size = new(1920, 1080);
         MinimumSize = new(600, 600); 
     }
     

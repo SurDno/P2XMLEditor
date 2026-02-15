@@ -82,7 +82,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICo
         return par;
     }
 
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         switch (Parent.Element) {
             case ParameterHolder ph:          
                 var keyToRemove = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;

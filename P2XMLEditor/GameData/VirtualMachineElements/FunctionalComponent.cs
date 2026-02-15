@@ -46,7 +46,7 @@ public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctiona
         Parent = vm.GetElement<ParameterHolder>(data.ParentId);
     }
 
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
         if (compToRemove != null)
             Parent.FunctionalComponents.Remove(compToRemove);

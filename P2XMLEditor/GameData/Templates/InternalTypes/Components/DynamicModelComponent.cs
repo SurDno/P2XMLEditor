@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Templates.InternalTypes.Interfaces;
 using static P2XMLEditor.Helper.XmlParsingHelper;
+using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 

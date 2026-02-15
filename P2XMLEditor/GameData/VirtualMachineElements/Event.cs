@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
@@ -75,11 +77,11 @@ public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
             vm.GetElement<Parameter>(data.EventParameterId.Value) : null;
         Condition = data.ConditionId.HasValue ? 
             vm.GetElement<Condition>(data.ConditionId.Value) : null;
-        MessagesInfo = data.MessagesInfo?.ToList();
+        MessagesInfo = data.MessagesInfo?.Select(t => new MessageInfo(t.Item1, t.Item2)).ToList();
     }
 
     
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         vm.RemoveElement(EventParameter);
         vm.RemoveElement(Condition);
         // TODO: Kill reference in parent if event is destroyed independently of parent.

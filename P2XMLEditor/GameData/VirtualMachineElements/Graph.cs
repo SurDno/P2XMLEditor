@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
@@ -78,7 +79,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
         EntryPoints = data.EntryPointIds?.Select(vm.GetElement<EntryPoint>).ToList() ?? [];
         IgnoreBlock = data.IgnoreBlock;
         Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-        InputParamsInfo = data.InputParamsInfo?.ToList();
+        InputParamsInfo = data.InputParamsInfo?.Select(t => new GraphParamInfo(t.Item1, t.Item2)).ToList();
         InputParamsInfo?.ForEach(p => p.ResolveReferences(vm));
         InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
         OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
@@ -89,7 +90,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
             SubstituteGraph = vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value);
     }
     
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         foreach (var state in States) 
             vm.RemoveElement(state.Element);
         foreach (var link in InputLinks ?? []) 

@@ -7,8 +7,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Clear default boolean values")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Clear default boolean values"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class ClearDefaultBooleanValues(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		foreach (var parameterHolder in Vm.GetElementsByType<ParameterHolder>()) {

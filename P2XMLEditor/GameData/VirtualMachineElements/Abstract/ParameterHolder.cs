@@ -59,7 +59,7 @@ public abstract class ParameterHolder(ulong id) : VmElement(id), ICommonVariable
     }
 
 
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         foreach (var functionalComponent in FunctionalComponents)
             vm.RemoveElement(functionalComponent);
         if (EventGraph != null)

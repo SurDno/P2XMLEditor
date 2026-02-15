@@ -27,7 +27,7 @@ public class FSMBrowser : SplitContainer {
         _vm = vm;
         Dock = DockStyle.Fill;
         Orientation = Orientation.Vertical;
-        SplitterDistance = 300;
+        SplitterDistance = 400;
         
         var leftPanel = new Panel { 
             Dock = DockStyle.Fill,

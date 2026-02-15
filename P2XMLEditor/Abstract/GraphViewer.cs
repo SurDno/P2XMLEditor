@@ -65,41 +65,36 @@ public abstract class GraphViewer : UserControl {
         ViewOffset.Y = (int)Math.Max(minY - padding - viewHeight, Math.Min(maxY + padding, ViewOffset.Y));
     }
     
-    protected void DrawArrow(Graphics g, Pen pen, (float x, float y) start, (float x, float y) end) {
-        const int maxCoord = 30000;
-    
-        var startPoint = GameToScreen(start.x, start.y);
-        var endPoint = GameToScreen(end.x, end.y);
-    
-        if (Math.Abs(startPoint.X) > maxCoord || Math.Abs(startPoint.Y) > maxCoord || 
-            Math.Abs(endPoint.X) > maxCoord || Math.Abs(endPoint.Y) > maxCoord) 
-            return;
-    
-        float dx = endPoint.X - startPoint.X;
-        float dy = endPoint.Y - startPoint.Y;
-        var length = (float)Math.Sqrt(dx * dx + dy * dy);
+    protected void DrawArrow(
+        Graphics g,
+        Pen pen,
+        (float x, float y) from,
+        (float x, float y) to)
+    {
+        var start = GameToScreen(from.x, from.y);
+        var end = GameToScreen(to.x, to.y);
 
-        if (length <= float.Epsilon) 
-            return;
-    
-        dx /= length;
-        dy /= length;
-    
-        var radius = GetNodeRadius() * ZoomLevel;
-    
-        var startX = Math.Max(-maxCoord, Math.Min(maxCoord, startPoint.X + dx * radius));
-        var startY = Math.Max(-maxCoord, Math.Min(maxCoord, startPoint.Y + dy * radius));
-        var endX = Math.Max(-maxCoord, Math.Min(maxCoord, endPoint.X - dx * radius));
-        var endY = Math.Max(-maxCoord, Math.Min(maxCoord, endPoint.Y - dy * radius));
-    
-        var adjustedStart = new PointF(startX, startY);
-        var adjustedEnd = new PointF(endX, endY);
-    
-        if (Math.Abs(adjustedEnd.X - adjustedStart.X) > maxCoord || Math.Abs(adjustedEnd.Y - adjustedStart.Y) > maxCoord) 
-            return;
-        
-        g.DrawLine(pen, adjustedStart, adjustedEnd);
+        float startOffset = 40f * ZoomLevel;
+        float endOffset = 40f * ZoomLevel;
+
+        var direction = new PointF(end.X - start.X, end.Y - start.Y);
+        float length = (float)Math.Sqrt(direction.X * direction.X + direction.Y * direction.Y);
+        if (length < 0.01f) return;
+
+        direction.X /= length;
+        direction.Y /= length;
+
+        start = new Point(
+            (int)(start.X + direction.X * startOffset),
+            (int)(start.Y + direction.Y * startOffset));
+
+        end = new Point(
+            (int)(end.X - direction.X * endOffset),
+            (int)(end.Y - direction.Y * endOffset));
+
+        g.DrawLine(pen, start, end);
     }
+
 
     protected Point GameToScreen(float x, float y) => 
         new((int)(x * GRAPH_SCALE * ZoomLevel + ViewOffset.X), (int)(-y * GRAPH_SCALE * ZoomLevel + ViewOffset.Y));

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
@@ -36,7 +36,7 @@ public class Sample(ulong id) : VmElement(id), IFiller<RawSampleData>, ICommonVa
 
 	public static VmElement New(VirtualMachine vm, ulong id, VmElement parent) => throw new NotImplementedException();
 
-	public void OnDestroy(VirtualMachine vm) {
+	public override void OnDestroy(VirtualMachine vm) {
 		vm.First<GameRoot>(_ => true).Samples.Remove(this);
 	}
 

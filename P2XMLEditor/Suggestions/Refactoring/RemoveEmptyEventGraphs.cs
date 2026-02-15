@@ -4,8 +4,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
-[Refactoring("Refactor/Event Graphs/Remove empty event graphs")]
-[SuppressMessage("ReSharper", "UnusedType.Global")]
+[Refactoring("Refactor/Event Graphs/Remove empty event graphs"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class RemoveEmptyEventGraphs(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var items = Vm.GetElementsByType<Item>();
@@ -14,6 +13,7 @@ public class RemoveEmptyEventGraphs(VirtualMachine vm) : Suggestion(vm) {
 			var itemGraph = item.EventGraph;
 			if (itemGraph == null) continue;
 			Vm.RemoveElement(itemGraph);
+			item.EventGraph = null;
 		}
 	}
 }

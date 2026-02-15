@@ -9,25 +9,24 @@ namespace P2XMLEditor.WindowsFormsExtensions;
 public class SearchControl : Panel {
     private readonly TextBox _searchBox;
     private readonly CheckBox _regexCheckBox;
-    private readonly Label _searchLabel;
     private readonly Label _statusLabel;
     
     public event EventHandler? SearchChanged;
     
     public string SearchText => _searchBox.Text;
     
-    public bool IsRegexEnabled => _regexCheckBox.Checked;
+    public bool IsRegexEnabled =>_regexCheckBox is { Checked: true };
     
     public string StatusText {
         get => _statusLabel.Text;
         set => _statusLabel.Text = value;
     }
     
-    public SearchControl() {
+    public SearchControl(bool enableRegex = true) {
         Height = 40;
         Dock = DockStyle.Top;
         
-        _searchLabel = new Label {
+        var searchLabel = new Label {
             Text = "Search:",
             Location = new Point(10, 10),
             Size = new Size(70, 20),
@@ -39,15 +38,18 @@ public class SearchControl : Panel {
             Size = new Size(300, 15)
         };
         _searchBox.TextChanged += (_, _) => OnSearchChanged();
+
+        if (enableRegex) {
+            _regexCheckBox = new CheckBox {
+                Text = "Regex",
+                Location = new Point(405, 11),
+                Size = new Size(60, 20),
+                AutoSize = true
+            };
+            _regexCheckBox.CheckedChanged += (_, _) => OnSearchChanged();
+        }
         
-        _regexCheckBox = new CheckBox {
-            Text = "Regex",
-            Location = new Point(405, 11),
-            Size = new Size(60, 20),
-            AutoSize = true
-        };
-        _regexCheckBox.CheckedChanged += (_, _) => OnSearchChanged();
-        
+
         _statusLabel = new Label {
             Height = 30,
             AutoSize = true,
@@ -60,7 +62,8 @@ public class SearchControl : Panel {
             _statusLabel.Left = Width - _statusLabel.Width - 10;
         };
         
-        Controls.AddRange([_searchLabel, _searchBox, _regexCheckBox, _statusLabel]);
+        Controls.AddRange(enableRegex ? [searchLabel, _searchBox, _regexCheckBox!, _statusLabel] : 
+            [searchLabel, _searchBox, _statusLabel]);
     }
     
     public bool IsMatch(string text) {

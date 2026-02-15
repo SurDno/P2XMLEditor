@@ -61,13 +61,17 @@ public class VirtualMachineReader {
 
     [PerformanceLogHook]
     public VirtualMachine LoadVirtualMachine() {
-        _executor.ExecuteAll(_vmPath);
-
+        CalLExecutors();
         CreateMinimalInstances();
         FillFromRawData();
         LoadLocalizations();
 
         return _vm;
+    }
+
+    [PerformanceLogHook]
+    private void CalLExecutors() {
+        _executor.ExecuteAll(_vmPath);
     }
 
     [PerformanceLogHook]

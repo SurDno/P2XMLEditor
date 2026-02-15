@@ -9,6 +9,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.FiniteStateMachines;
@@ -43,71 +44,31 @@ public class FSMGraphViewer : GraphViewer {
     }
 
     private void InitializeNodePositions() {
-        var processed = new HashSet<ulong>();
+        NodePositions.Clear();
 
-        
-        var validStates = _graph.States.ToList();
-        
-        var initialStates = validStates.Where(s => {
-            if (s.Element is IGraphElement graphElement) return graphElement.Initial ?? false;
-            if (s.Element is Talking talking) return talking.Initial ?? false;
-            return false;
-        }).ToList();
+        var layout = new SugiyamaLayout<ulong>();
 
-        float currentX = 0;
+        foreach (var state in _graph.States) {
+            layout.AddNode(state.Id);
+        }
 
-        if (initialStates.Any()) {
-            foreach (var state in initialStates) {
-                NodePositions[state.Id] = (currentX, 0);
-                processed.Add(state.Id);
-                currentX += HORIZONTAL_SPACING;
-            }
-        } else {
-            
-            if (validStates.Any()) {
-                var firstState = validStates.First();
-                NodePositions[firstState.Id] = (currentX, 0);
-                processed.Add(firstState.Id);
-                currentX += HORIZONTAL_SPACING;
+        foreach (var link in _graph.EventLinks) {
+            if (link.Source != null && link.Destination != null) {
+                layout.AddEdge(
+                    link.Source.Value.Id,
+                    link.Destination.Value.Id);
             }
         }
 
-        
-        var currentRow = 0;
-        bool addedAny;
-        do {
-            addedAny = false;
-            currentX = 0;
-            var statesToProcess = new List<VmEither<State, Graph, Branch, Talking>>();
+        var result = layout.Layout(
+            HORIZONTAL_SPACING,
+            VERTICAL_SPACING);
 
-            foreach (var link in _graph.EventLinks.Where(l => l is { Source: not null, Destination: not null })) {
-                if (processed.Contains(link.Source!.Value.Id) && !processed.Contains(link.Destination!.Value.Id)) {
-                    var destState = validStates.FirstOrDefault(s => s.Id == link.Destination.Value.Id);
-                    if (destState.Element != null && !statesToProcess.Contains(destState)) {
-                        statesToProcess.Add(destState);
-                    }
-                }
-            }
-
-            foreach (var state in statesToProcess) {
-                NodePositions[state.Id] = (currentX, currentRow * -VERTICAL_SPACING);
-                processed.Add(state.Id);
-                currentX += HORIZONTAL_SPACING;
-                addedAny = true;
-            }
-
-            if (!addedAny && processed.Count < validStates.Count) {
-                currentRow++;
-                foreach (var state in validStates.Where(s => !processed.Contains(s.Id))) {
-                    NodePositions[state.Id] = (currentX, currentRow * -VERTICAL_SPACING);
-                    processed.Add(state.Id);
-                    currentX += HORIZONTAL_SPACING;
-                }
-            }
-
-            currentRow++;
-        } while (addedAny);
+        foreach (var kvp in result) {
+            NodePositions[kvp.Key] = kvp.Value;
+        }
     }
+
 
     private void InitializeContextMenu() {
         _backgroundMenu = new ContextMenuStrip();

@@ -1,0 +1,16 @@
+using System.ComponentModel;
+
+namespace P2XMLEditor.Enums.VirtualMachine;
+
+[TypeConverter(typeof(EnumConverter)), SerializationEnum]
+public enum SampleType {
+	[SerializationData("IModel")] IModel,
+	[SerializationData("IBehaviorObject")] IBehaviorObject,
+	[SerializationData("MindMap2.IPlaceholder")] MindMapPicture,
+	[SerializationData("ISnapshot")] ISnapshot,
+	[SerializationData("IMapPlaceholder")] IMapPlaceholder,
+	[SerializationData("IBlueprintObject")] IBlueprintObject,
+	[SerializationData("ILipSyncObject")] ILipSyncObject,
+	[SerializationData("IBoundCharacterPlaceholder")] IBoundCharacterPlaceholder,
+	[SerializationData("IMapTooltipResource")] IMapTooltipResource
+}

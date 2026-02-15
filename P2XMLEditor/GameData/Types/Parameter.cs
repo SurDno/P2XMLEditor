@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Linq;
-using P2XMLEditor.GameData.Enums;
-using P2XMLEditor.Helper;
+using P2XMLEditor.Enums;
+using P2XMLEditor.Enums.Templates;
+using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 
 namespace P2XMLEditor.GameData.Types;
 
@@ -21,7 +22,7 @@ public class Parameter<T> : IParameter {
 		if (typeof(T).IsEnum) 
 			return (T)(object)typeof(T).Deserialize(v);
 		if (typeof(T) == typeof(TimeSpan))
-			return (T)(object)XmlParsingHelper.ParseTimeSpan(v);
+			return (T)(object)ParseTimeSpan(v);
 		return (T)Convert.ChangeType(v, typeof(T), CultureInfo.InvariantCulture);
 	}
 

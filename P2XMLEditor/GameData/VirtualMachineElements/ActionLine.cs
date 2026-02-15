@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
+using P2XMLEditor.Enums;
 using P2XMLEditor.Data;
+using P2XMLEditor.Enums.VirtualMachine;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
@@ -58,13 +59,13 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
             foreach (var actionId in data.ActionIds)
                 Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
         ActionLineType = data.ActionLineType;
-        LoopInfo = data.LoopInfo;
+        LoopInfo = new(data.LoopInfoName, data.LoopInfoStart, data.LoopInfoEnd, data.LoopInfoRandom);
         Name = data.Name;
         LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
         OrderIndex = data.OrderIndex;
     }
     
-    public void OnDestroy(VirtualMachine vm) {
+    public override void OnDestroy(VirtualMachine vm) {
         foreach(var action in Actions ?? [])
             vm.RemoveElement(action.Element);
     }
