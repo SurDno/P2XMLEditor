@@ -10,7 +10,7 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 namespace P2XMLEditor.Suggestions.Cleanup;
 
 // TODO: completely refactor once we start storing Action function references and Parameter types normally. 
-[Cleanup("References/Delete unused storables"), SuppressMessage("ReSharper", "UnusedType.Global")]
+[Cleanup("References/Game Objects/Delete unused storables"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var all = Vm.GetElementsByType<Item>().Cast<GameObject>().Concat(Vm.GetElementsByType<Other>());

@@ -1,10 +1,15 @@
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using P2XMLEditor.WindowsFormsExtensions;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
@@ -16,6 +21,7 @@ public class ActionsBrowser : Panel {
     private SearchControl _searchControl;
     private ContextMenuStrip _contextMenu;
 
+    [PerformanceLogHook]
     public ActionsBrowser(VirtualMachine vm) {
         _vm = vm;
         Dock = DockStyle.Fill;
@@ -114,28 +120,89 @@ public class ActionsBrowser : Panel {
             displayedCount++;
         }
 
+        _treeView.ExpandAll();
         _treeView.EndUpdate();
         _searchControl.StatusText = $"Displaying {displayedCount}/{actionLines.Count} action lines.";
     }
 
     private TreeNode CreateActionNode(Action action) {
-        var actionText = $"[Action] {action.Name} - {action.ActionType.Serialize()}";
+        var actionText = $"[Action] {action.Name} ";
+        
+        var targetObject = action.TargetObject;
+        if (ulong.TryParse(targetObject, out var targetObjectId)) {
+            var targetObjectElement = _vm.GetNullableElement<VmElement>(targetObjectId);
+            var name = targetObjectElement switch {
+                ParameterHolder ph => ph.Name,
+                Parameter p => p.Name,
+                _ => ""
+            };
+            if (targetObjectElement != null)
+                targetObject = name;
+        } else if (HierarchyGuid.TryParse(targetObject, _vm, out var targetObjectHierarchyGuid)) {
+            targetObject = "";
+            foreach (VmEither<Scene, Geom, Other, Item, ScenePlaceholder> element in targetObjectHierarchyGuid.Elements) {
+                var name = element.Element switch {
+                    ParameterHolder ph => ph.Name,
+                    ScenePlaceholder sp => sp.Id.ToString(),
+                    _ => ""
+                };
+                targetObject += $"{name}H";
+            }
+        }
+        
+        var targetParam = action.TargetParam.Replace("%", "");
+        if (ulong.TryParse(targetParam, out var targetParamId)) {
+            var targetParamElement = _vm.GetNullableElement<Parameter>(targetParamId);
+            if (targetParamElement != null) 
+                targetParam = targetParamElement.Name;
+        }
+
+        var targetFuncName = action.TargetFuncName;
+        if (ulong.TryParse(targetFuncName, out var targetFuncNameId)) {
+            var targetEvent = _vm.GetNullableElement<Event>(targetFuncNameId);
+            if (targetEvent != null) 
+                targetFuncName = targetEvent.Name;
+        }
+        
         
         switch (action.ActionType) {
             case ActionType.SetParam:
-                actionText += $" → {action.TargetParam}";
+                actionText += $" SetParam → {targetObject} {targetParam} = " +
+                              $"({string.Join(",", action.SourceParams ?? [])})";
                 break;
             case ActionType.SetExpression:
-                actionText += $" → {PreviewHelper.Preview(action.SourceExpression)}";
+                actionText += $" SetExpression → {targetObject} {targetParam} = " +
+                              $"{PreviewHelper.Preview(action.SourceExpression)}";
                 break;
             case ActionType.Math:
-                actionText += $" {action.MathOperationType.Serialize()}";
+                switch (action.MathOperationType) {
+                    case MathOperationType.Addition:
+                        actionText += $" Add {targetObject} {targetParam} + " +
+                                      $"{string.Join(",", action.SourceParams ?? [])}";
+                        break;
+                    case MathOperationType.Subtraction:
+                        actionText += $" Subtract {targetObject} {targetParam} - " +
+                                      $"{string.Join(",", action.SourceParams ?? [])}";
+                        break;
+                    case MathOperationType.Multiply:
+                        actionText += $" Multiply {targetObject} {targetParam} * " +
+                                      $"{string.Join(",", action.SourceParams ?? [])}";
+                        break;
+                    case MathOperationType.Division:
+                        actionText += $" Divide {targetObject} {targetParam} / " +
+                                      $"{string.Join(",", action.SourceParams ?? [])}";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 break;
             case ActionType.DoFunction:
-                actionText += $" → {action.TargetFuncName}";
+                actionText += $" DoFunction → {targetObject} {targetParam} " +
+                              $"{action.TargetFuncName}({string.Join(",", action.SourceParams ?? [])})";
                 break;
             case ActionType.RaiseEvent:
-                actionText += $" → Event";
+                actionText += $" RaiseEvent → {targetObject} {targetParam} " +
+                              $"{targetFuncName}({string.Join(",", action.SourceParams ?? [])})";
                 break;
         }
 

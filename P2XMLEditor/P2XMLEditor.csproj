@@ -7,13 +7,15 @@
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <PublishAot>true</PublishAot>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+        <Configuration>Release</Configuration>
+        <Optimize>true</Optimize>
+        <TieredCompilation>true</TieredCompilation>
+        <TieredPGO>true</TieredPGO>
+        <ReadyToRun>true</ReadyToRun>
+        <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
+       <!--<ProjectReference Include="..\P2XMLEditor.NativeParsers\P2XMLEditor.NativeParsers.vcxproj" />-->
       <PackageReference Include="Fody" Version="6.9.3">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

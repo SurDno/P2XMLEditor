@@ -12,6 +12,7 @@ public class MindMapTabControl : TabControl {
 	private readonly VirtualMachine _vm;
 	private readonly TabPage _newTabButton;
 
+	[PerformanceLogHook]
 	public MindMapTabControl(VirtualMachine vm) {
 		_vm = vm;
         

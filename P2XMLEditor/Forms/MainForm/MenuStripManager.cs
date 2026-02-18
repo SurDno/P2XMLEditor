@@ -26,15 +26,22 @@ public class MenuStripManager {
 
    [SuppressMessage("ReSharper", "UseCollectionExpression")]
    private void InitializeMenuStrip() {
+       // File Menu
        var fileMenu = new ToolStripMenuItem("File");
        var loadVmMenuItem = new ToolStripMenuItem("Load another virtual machine...");
        loadVmMenuItem.Click += LoadVmMenuItem_Click;
        var saveVmMenuItem = new ToolStripMenuItem("Save virtual machine...");
        saveVmMenuItem.Click += SaveVmMenuItem_Click;
        fileMenu.DropDownItems.AddRange(new ToolStripItem[] { loadVmMenuItem, saveVmMenuItem });
-
        _menuStrip.Items.Add(fileMenu);
-       var allTypes = typeof(Suggestion).Assembly.GetTypes().Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract).ToList();
+       
+       // Window Menu
+       var windowMenu = new ToolStripMenuItem("Window");
+       _menuStrip.Items.Add(windowMenu);
+       
+       // Refactor and Cleanup Menus
+       var allTypes = typeof(Suggestion).Assembly.GetTypes()
+           .Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract).ToList();
 
        var refactorMenu = new ToolStripMenuItem("Refactor");
        var refactoringTypes = allTypes.Where(t => t.GetCustomAttribute<RefactoringAttribute>() != null);
@@ -46,6 +53,59 @@ public class MenuStripManager {
 
        _menuStrip.Items.Add(refactorMenu);
        _menuStrip.Items.Add(cleanupMenu);
+       
+       // Update window menu when it's opened
+       windowMenu.DropDownOpening += (_, _) => UpdateWindowMenu(windowMenu);
+   }
+
+   private void UpdateWindowMenu(ToolStripMenuItem windowMenu) {
+       windowMenu.DropDownItems.Clear();
+       
+       if (_mainForm.VirtualMachine == null) {
+           var noVmItem = new ToolStripMenuItem("No virtual machine loaded") { Enabled = false };
+           windowMenu.DropDownItems.Add(noVmItem);
+           return;
+       }
+
+       foreach (var tabName in _mainForm.GetAvailableTabNames()) {
+           var menuItem = new ToolStripMenuItem(tabName) {
+               CheckOnClick = true,
+               Checked = _mainForm.IsTabVisible(tabName)
+           };
+           
+           // Show if tab is loaded but hidden
+           if (_mainForm.IsTabLoaded(tabName) && !_mainForm.IsTabVisible(tabName)) {
+               menuItem.Font = new System.Drawing.Font(menuItem.Font, System.Drawing.FontStyle.Italic);
+           }
+           
+           menuItem.Click += (_, _) => {
+               if (menuItem.Checked) {
+                   _mainForm.ShowTab(tabName);
+               } else {
+                   _mainForm.HideTab(tabName);
+               }
+           };
+           
+           windowMenu.DropDownItems.Add(menuItem);
+       }
+       
+       windowMenu.DropDownItems.Add(new ToolStripSeparator());
+       
+       var showAllItem = new ToolStripMenuItem("Show All");
+       showAllItem.Click += (_, _) => {
+           foreach (var tabName in _mainForm.GetAvailableTabNames()) {
+               _mainForm.ShowTab(tabName);
+           }
+       };
+       windowMenu.DropDownItems.Add(showAllItem);
+       
+       var hideAllItem = new ToolStripMenuItem("Hide All");
+       hideAllItem.Click += (_, _) => {
+           foreach (var tabName in _mainForm.GetAvailableTabNames()) {
+               _mainForm.HideTab(tabName);
+           }
+       };
+       windowMenu.DropDownItems.Add(hideAllItem);
    }
 
    private void SetupSuggestionMenu(ToolStripMenuItem parentMenu, IEnumerable<Type> suggestionTypes, Func<Type, string> getMenuPath) {

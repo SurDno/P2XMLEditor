@@ -2,6 +2,7 @@ using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.Templates;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.Templates;
 
@@ -10,6 +11,7 @@ public class TemplatesViewer : SplitContainer {
     private readonly PropertyGrid _propertyGrid;
     private readonly TemplateManager _templateManager;
 
+    [PerformanceLogHook]
     public TemplatesViewer(TemplateManager templateManager) {
         _templateManager = templateManager;
         Dock = DockStyle.Fill;

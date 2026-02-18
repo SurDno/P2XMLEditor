@@ -120,14 +120,17 @@ public abstract class GraphViewer : UserControl {
                     HandleNodeClick(nodeId.Value, e.Button, e.Location);
                 }
                 _draggedNodeId = nodeId;
-                if (_draggedNodeId != null) {
+
+                if (_draggedNodeId != null && CanMoveNode(_draggedNodeId.Value)) {
                     _isDraggingNode = true;
                     GraphPanel.Cursor = Cursors.Hand;
                     if (NodePositions.TryGetValue(_draggedNodeId.Value, out var nodePos)) {
                         var mouseGamePos = ScreenToGame(e.Location);
                         _dragOffset = (mouseGamePos.x - nodePos.x, mouseGamePos.y - nodePos.y);
                     }
-                }
+                } else
+                    _draggedNodeId = null;
+
                 break;
             }
             case MouseButtons.Right: {
@@ -141,8 +144,8 @@ public abstract class GraphViewer : UserControl {
     }
 
     private void OnMouseUp(object? sender, MouseEventArgs e) {
-        if (_isDraggingNode && _draggedNodeId != null) {
-            HandleNodeMoved(_draggedNodeId.Value, NodePositions[(ulong)_draggedNodeId]);
+        if (_isDraggingNode && _draggedNodeId != null && CanMoveNode(_draggedNodeId.Value)) {
+            HandleNodeMoved(_draggedNodeId.Value, NodePositions[_draggedNodeId.Value]);
         }
    
         _isPanning = false;
@@ -215,4 +218,6 @@ public abstract class GraphViewer : UserControl {
 
         GraphPanel.Invalidate();
     }
+    
+    protected virtual bool CanMoveNode(ulong nodeId) => true;
 }

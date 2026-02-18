@@ -7,6 +7,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Logging;
 using P2XMLEditor.WindowsFormsExtensions;
 
 namespace P2XMLEditor.Forms.MainForm.Combinations;
@@ -19,6 +20,7 @@ public class CombinationsBrowser : Panel {
 
     private const string COMBINATION_KEY = "Combination.CombinationData", STORABLE_KEY = "Storable.DefaultStackCount";
 
+    [PerformanceLogHook]
     public CombinationsBrowser(VirtualMachine vm) {
         _vm = vm;
         Dock = DockStyle.Fill;

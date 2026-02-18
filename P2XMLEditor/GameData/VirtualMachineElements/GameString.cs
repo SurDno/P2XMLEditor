@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -38,7 +39,12 @@ public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, I
 	}
 	
 	public void FillFromRawData(RawGameStringData data, VirtualMachine vm) {
-		Parent = vm.GetElement<ParameterHolder, MindMap, Reply, Speech>(data.ParentId);
+		try {
+			Parent = vm.GetElement<ParameterHolder, MindMap, Reply, Speech>(data.ParentId);
+		} catch (Exception e) {
+			Console.WriteLine(this.Id);
+			throw;
+		}
 	}
 	
     public static GameString New(VirtualMachine vm, ulong id, VmElement parent) => new GameString(id) {

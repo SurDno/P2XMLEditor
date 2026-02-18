@@ -82,7 +82,10 @@ public static unsafe class RawPointerExtensions {
         p += result ? 4 : 5;
         return result;
     }
-
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int ParseCount1(byte* p) => *p - '0';
+    
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int ParseCount2(byte* p, out int digitCount) {
         var d0 = p[0] - '0';
@@ -125,6 +128,24 @@ public static unsafe class RawPointerExtensions {
         return d0;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int ParseInt3(byte* p, out int digitCount) {
+        var d0 = p[0] - '0';
+        if (p[1] == '<') {
+            digitCount = 1;
+            return d0;
+        }
+
+        var d1 = p[1] - '0';
+        if (p[2] == '<') {
+            digitCount = 2;
+            return d0 * 10 + d1;
+        }
+
+        digitCount = 3;
+        return d0 * 100 + d1 * 10 + (p[2] - '0');
+    }
+    
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int FindTagContentLength(byte* p) {
         byte* start = p;

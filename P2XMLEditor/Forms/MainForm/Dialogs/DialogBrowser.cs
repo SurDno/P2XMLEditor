@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.Logging;
 using P2XMLEditor.WindowsFormsExtensions;
 
 namespace P2XMLEditor.Forms.MainForm.Dialogs;
@@ -13,6 +14,7 @@ public class DialogBrowser : SplitContainer {
     private readonly ListView _dialogList;
     private DialogGraphViewer? _currentViewer;
     
+    [PerformanceLogHook]
     public DialogBrowser(VirtualMachine vm) {
         _vm = vm;
         Dock = DockStyle.Fill;

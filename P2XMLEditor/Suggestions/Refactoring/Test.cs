@@ -9,7 +9,7 @@ namespace P2XMLEditor.Suggestions.Refactoring;
 public class Test(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		foreach (var branch in Vm.GetElementsByType<Branch>()) {
-			if (branch.Name == "Talking beginning" && branch.OutputLinks is { Count: > 1 }) {
+			if (branch is { Name: "Talking beginning", OutputLinks.Count: > 1 }) {
 				var parent = branch.Parent.Element;
 				if (parent is Talking talking) 
 					Console.WriteLine(talking.Name);

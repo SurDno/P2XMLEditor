@@ -4,8 +4,6 @@
 # Build outputs
 P2XMLEditor/bin/
 P2XMLEditor/obj/
-P2XMLEditor.Parsing/bin/
-P2XMLEditor.Parsing/obj/
-P2XMLEditor.Enums/bin/
-P2XMLEditor.Enums/obj/
+P2XMLEditor.NativeParsers/x64/
+P2XMLEditor.NativeParsers/obj/
 *.user

@@ -68,15 +68,12 @@ public class SugiyamaLayout<T> where T : notnull {
         }
 
         for (int iter = 0; iter < 4; iter++) {
-            // Down sweep
-            for (int i = 1; i < layers.Count; i++) {
+            for (int i = 1; i < layers.Count; i++) 
                 OrderLayer(layers[i], true);
-            }
-
-            // Up sweep
-            for (int i = layers.Count - 2; i >= 0; i--) {
+            
+            for (int i = layers.Count - 2; i >= 0; i--) 
                 OrderLayer(layers[i], false);
-            }
+            
         }
     }
 

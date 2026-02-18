@@ -19,13 +19,14 @@ public class DialogGraphViewer : GraphViewer {
     private readonly DialogPropertiesPanel _propertiesPanel;
     private readonly Panel _headerPanel;
     private ContextMenuStrip _backgroundMenu;
-    
+    private readonly Dictionary<ulong, (ulong from, ulong to)> _conditionEdgeMarkers = [], _actionEdgeMarkers = [];
+    private readonly HashSet<ulong> _decoratorIds = [];
+
     private const float NODE_WIDTH = 220f;
     private const float NODE_HEIGHT = 100f;
-    private const float VERTICAL_SPACING = 0.05f;
-    private const float HORIZONTAL_SPACING = 0.2f;
-    private const float CONDITION_NODE_SIZE = 60f;
-    private const float ACTION_NODE_SIZE = 60f;
+    private const float H_SPACING = 1.0f;
+    private const float V_SPACING = 0.55f;
+    private const float DECORATOR_SIZE = 60f;
 
     private enum NodeType {
         Speech,
@@ -37,8 +38,6 @@ public class DialogGraphViewer : GraphViewer {
     private class DialogNode {
         public VmElement Element { get; set; }
         public NodeType Type { get; set; }
-        public int Column { get; set; }
-        public int Row { get; set; }
     }
 
     private readonly Dictionary<ulong, DialogNode> _dialogNodes = new();
@@ -102,270 +101,361 @@ public class DialogGraphViewer : GraphViewer {
         InitializeContextMenu();
         CenterView();
     }
-    
-private void CalculateLayout() {
-    _dialogNodes.Clear();
-    NodePositions.Clear();
 
-    const float H_SPACING = 1f;
-    const float V_SPACING = 1f;
+    private void CalculateLayout() {
 
-    var adjacency = new Dictionary<ulong, List<ulong>>();
-    var reverseAdj = new Dictionary<ulong, List<ulong>>();
-    var incoming = new Dictionary<ulong, int>();
-    var rawLayer = new Dictionary<ulong, int>();
+        _dialogNodes.Clear();
+        NodePositions.Clear();
+        _conditionEdgeMarkers.Clear();
+        _actionEdgeMarkers.Clear();
+        _decoratorIds.Clear();
 
-    void AddNode(ulong id, VmElement? element, NodeType type) {
-        if (!_dialogNodes.ContainsKey(id) && element != null) {
-            _dialogNodes[id] = new DialogNode {
-                Element = element,
-                Type = type
-            };
+        var adjacency = new Dictionary<ulong, List<ulong>>();
+        var reverseAdj = new Dictionary<ulong, List<ulong>>();
+        var incoming = new Dictionary<ulong, int>();
+        var layer = new Dictionary<ulong, int>();
+        var layoutNodes = new HashSet<ulong>();
+
+        void AddDialogNode(ulong id, VmElement element, NodeType type) {
+            if (!_dialogNodes.ContainsKey(id)) {
+                _dialogNodes[id] = new DialogNode {
+                    Element = element,
+                    Type = type
+                };
+            }
         }
-        if (!adjacency.ContainsKey(id)) adjacency[id] = new List<ulong>();
-        if (!reverseAdj.ContainsKey(id)) reverseAdj[id] = new List<ulong>();
-        if (!incoming.ContainsKey(id)) incoming[id] = 0;
-        if (!rawLayer.ContainsKey(id)) rawLayer[id] = 0;
-    }
 
-    void AddEdge(ulong from, ulong to) {
-        adjacency[from].Add(to);
-        reverseAdj[to].Add(from);
-        incoming[to]++;
-    }
-
-    foreach (var state in _talking.States) {
-        if (state.Element is not Speech speech) continue;
-
-        AddNode(speech.Id, speech, NodeType.Speech);
-
-        var replies = speech.Replies.OrderBy(r => r.OrderIndex).ToList();
-
-        for (int i = 0; i < replies.Count; i++) {
-            var reply = replies[i];
-
-            AddNode(reply.Id, reply, NodeType.Reply);
-            AddEdge(speech.Id, reply.Id);
-
-            if (reply.EnableCondition != null) {
-                AddNode(reply.EnableCondition.Id, reply.EnableCondition, NodeType.Condition);
-                AddEdge(reply.EnableCondition.Id, reply.Id);
+        void EnsureLayoutNode(ulong id) {
+            if (!layoutNodes.Add(id)) {
+                return;
             }
 
-            ulong transition = reply.Id;
+            if (!adjacency.ContainsKey(id)) adjacency[id] = new List<ulong>();
+            if (!reverseAdj.ContainsKey(id)) reverseAdj[id] = new List<ulong>();
+            if (!incoming.ContainsKey(id)) incoming[id] = 0;
+            if (!layer.ContainsKey(id)) layer[id] = 0;
+        }
 
-            if (reply.ActionLine != null) {
-                AddNode(reply.ActionLine.Id, reply.ActionLine, NodeType.Action);
-                AddEdge(reply.Id, reply.ActionLine.Id);
-                transition = reply.ActionLine.Id;
+        void AddLayoutNode(ulong id, VmElement element, NodeType type) {
+            AddDialogNode(id, element, type);
+            EnsureLayoutNode(id);
+        }
+
+        void AddDecoratorNode(ulong id, VmElement element, NodeType type, ulong from, ulong to) {
+            AddDialogNode(id, element, type);
+            _decoratorIds.Add(id);
+
+            if (type == NodeType.Condition) {
+                _conditionEdgeMarkers[id] = (from, to);
+            } else if (type == NodeType.Action) {
+                _actionEdgeMarkers[id] = (from, to);
             }
+        }
 
-            if (speech.OutputLinks != null && i < speech.OutputLinks.Count) {
-                var link = speech.OutputLinks[i];
-                if (link.Destination?.Element is Speech nextSpeech) {
-                    AddNode(nextSpeech.Id, nextSpeech, NodeType.Speech);
-                    AddEdge(transition, nextSpeech.Id);
+        void AddLayoutEdge(ulong from, ulong to) {
+            EnsureLayoutNode(from);
+            EnsureLayoutNode(to);
+
+            adjacency[from].Add(to);
+            reverseAdj[to].Add(from);
+            incoming[to]++;
+        }
+
+        foreach (var state in _talking.States) {
+            if (state.Element is not Speech speech) continue;
+
+            AddLayoutNode(speech.Id, speech, NodeType.Speech);
+
+            var replies = speech.Replies.OrderBy(r => r.OrderIndex).ToList();
+
+            for (int i = 0; i < replies.Count; i++) {
+                var reply = replies[i];
+                AddLayoutNode(reply.Id, reply, NodeType.Reply);
+
+                if (reply.EnableCondition != null) {
+                    var cond = reply.EnableCondition;
+                    AddDecoratorNode(cond.Id, cond, NodeType.Condition, speech.Id, reply.Id);
+                }
+
+                AddLayoutEdge(speech.Id, reply.Id);
+
+                Speech? nextSpeech = null;
+
+                if (speech.OutputLinks != null) {
+                    var link = speech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == i);
+                    if (link?.Destination?.Element is Speech ns) {
+                        nextSpeech = ns;
+                        AddLayoutNode(ns.Id, ns, NodeType.Speech);
+                    }
+                }
+
+                if (reply.ActionLine != null) {
+                    var action = reply.ActionLine;
+
+                    if (nextSpeech != null) {
+                        AddDecoratorNode(action.Id, action, NodeType.Action, reply.Id, nextSpeech.Id);
+                        AddLayoutEdge(reply.Id, nextSpeech.Id);
+                    } else {
+                        AddLayoutNode(action.Id, action, NodeType.Action);
+                        AddLayoutEdge(reply.Id, action.Id);
+                    }
+                } else {
+                    if (nextSpeech != null) {
+                        AddLayoutEdge(reply.Id, nextSpeech.Id);
+                    }
                 }
             }
         }
-    }
 
-    
-
-    var queue = new Queue<ulong>(
-        incoming.Where(kv => kv.Value == 0).Select(kv => kv.Key));
-
-    var topo = new List<ulong>();
-
-    while (queue.Count > 0) {
-        var node = queue.Dequeue();
-        topo.Add(node);
-        foreach (var child in adjacency[node]) {
-            incoming[child]--;
-            if (incoming[child] == 0)
-                queue.Enqueue(child);
+        if (layoutNodes.Count == 0) {
+            return;
         }
-    }
 
-    
+        var queue = new Queue<ulong>(incoming.Where(x => x.Value == 0).Select(x => x.Key));
+        var topo = new List<ulong>();
 
-    foreach (var node in topo)
-        foreach (var child in adjacency[node])
-            rawLayer[child] = Math.Max(rawLayer[child], rawLayer[node] + 1);
+        while (queue.Count > 0) {
+            var n = queue.Dequeue();
+            topo.Add(n);
 
-    
-
-    var visualLayer = new Dictionary<ulong, int>();
-    int visualIndex = 0;
-
-    foreach (var group in rawLayer
-        .Where(kv => _dialogNodes.ContainsKey(kv.Key))
-        .GroupBy(kv => kv.Value)
-        .OrderBy(g => g.Key)) {
-
-        foreach (var type in new[] {
-            NodeType.Speech,
-            NodeType.Reply,
-            NodeType.Action
-        }) {
-            var nodes = group
-                .Where(n => _dialogNodes[n.Key].Type == type)
-                .Select(n => n.Key)
-                .ToList();
-
-            if (!nodes.Any()) continue;
-
-            foreach (var n in nodes)
-                visualLayer[n] = visualIndex;
-
-            visualIndex++;
-        }
-    }
-
-    var column = new Dictionary<ulong, float>();
-
-    
-
-    int rootIndex = 0;
-    foreach (var node in _dialogNodes) {
-        if (node.Value.Type == NodeType.Speech &&
-            reverseAdj[node.Key].Count == 0) {
-            column[node.Key] = rootIndex * 4f;
-            rootIndex++;
-        }
-    }
-
-    
-    foreach (var node in topo) {
-
-        if (column.ContainsKey(node)) continue;
-
-        var parents = reverseAdj[node]
-            .Where(p => column.ContainsKey(p))
-            .ToList();
-
-        if (parents.Count == 1) {
-
-            var parent = parents[0];
-
-            var siblings = adjacency[parent]
-                .Where(c => _dialogNodes.ContainsKey(c))
-                .ToList();
-
-            if (siblings.Count == 1) {
-                column[node] = column[parent];
+            foreach (var c in adjacency[n]) {
+                incoming[c]--;
+                if (incoming[c] == 0) {
+                    queue.Enqueue(c);
+                }
             }
         }
-    }
-
-
-    
-
-    foreach (var speech in _dialogNodes
-        .Where(n => n.Value.Type == NodeType.Speech)
-        .Select(n => n.Key)) {
-
-        if (!column.ContainsKey(speech)) continue;
-
-        var replies = adjacency[speech]
-            .Where(r => _dialogNodes.ContainsKey(r) &&
-                        _dialogNodes[r].Type == NodeType.Reply)
-            .ToList();
-
-        if (!replies.Any()) continue;
-
-        bool anySkip = false;
-
-        foreach (var r in replies) {
-            var targets = adjacency[r]
-                .Where(c => _dialogNodes.ContainsKey(c) &&
-                            _dialogNodes[c].Type == NodeType.Speech)
-                .ToList();
-
-            if (!targets.Any()) continue;
-
-            int skip = visualLayer[targets[0]] - visualLayer[r];
-            if (skip > 1) {
-                anySkip = true;
-                break;
+        
+        if (topo.Count != layoutNodes.Count)
+        {
+            foreach (var id in layoutNodes)
+            {
+                if (!topo.Contains(id))
+                {
+                    topo.Add(id);
+                }
             }
         }
 
-        float spacing = anySkip ? 2f : 1f;
-        float center = column[speech];
-        int count = replies.Count;
-
-        for (int i = 0; i < count; i++) {
-            float offset = i - (count - 1) / 2f;
-            column[replies[i]] = center + offset * spacing;
-        }
-    }
-
-    
-
-    foreach (var node in topo) {
-        var parents = reverseAdj[node]
-            .Where(p => column.ContainsKey(p))
-            .ToList();
-
-        if (parents.Count > 1) {
-            float min = parents.Min(p => column[p]);
-            float max = parents.Max(p => column[p]);
-            column[node] = (min + max) / 2f;
-        }
-    }
-
-    
-
-    void ShiftSubtree(ulong node, float dx) {
-        column[node] += dx;
-        foreach (var child in adjacency[node])
-            if (column.ContainsKey(child))
-                ShiftSubtree(child, dx);
-    }
-
-    foreach (var layer in visualLayer.GroupBy(kv => kv.Value)) {
-
-        var nodes = layer
-            .Select(n => n.Key)
-            .Where(n => column.ContainsKey(n))
-            .OrderBy(n => column[n])
-            .ToList();
-
-        for (int i = 1; i < nodes.Count; i++) {
-            float delta = column[nodes[i]] - column[nodes[i - 1]];
-            if (delta < 1f) {
-                float shift = 1f - delta;
-                ShiftSubtree(nodes[i], shift);
+        foreach (var n in topo) {
+            foreach (var c in adjacency[n]) {
+                layer[c] = Math.Max(layer[c], layer[n] + 1);
             }
         }
-    }
 
-    
+        var layers = layer
+            .Where(kv => layoutNodes.Contains(kv.Key))
+            .GroupBy(kv => kv.Value)
+            .OrderBy(g => g.Key)
+            .Select(g => g.Select(x => x.Key).ToList())
+            .ToList();
 
-    foreach (var id in visualLayer.Keys) {
-        float x = column.ContainsKey(id) ? column[id] * H_SPACING : 0f;
-        float y = -visualLayer[id] * V_SPACING;
-        NodePositions[id] = (x, y);
-    }
+        var halfWidth = new Dictionary<ulong, float>();
 
-    
-
-    foreach (var node in _dialogNodes) {
-        if (node.Value.Type != NodeType.Condition) continue;
-
-        var parent = reverseAdj[node.Key].FirstOrDefault();
-        var child = adjacency[node.Key].FirstOrDefault();
-
-        if (column.ContainsKey(parent) && column.ContainsKey(child)) {
-            float x = (column[parent] + column[child]) / 2f * H_SPACING;
-            float y = (NodePositions[parent].y + NodePositions[child].y) / 2f;
-            NodePositions[node.Key] = (x, y);
+        foreach (var n in layoutNodes) {
+            int childCount = adjacency.TryGetValue(n, out var list) ? list.Count : 0;
+            halfWidth[n] = childCount > 1 ? (childCount - 1) * H_SPACING * 0.5f : 0f;
         }
+
+        var xPos = new Dictionary<ulong, float>();
+        
+        var roots = layers[0];
+        float cursor = 0f;
+
+        for (int i = 0; i < roots.Count; i++) {
+            ulong node = roots[i];
+
+            if (i == 0) {
+                xPos[node] = 0f;
+                cursor = 0f;
+            } else {
+                ulong prev = roots[i - 1];
+
+                float minDist =
+                    halfWidth[prev] +
+                    halfWidth[node] +
+                    H_SPACING;
+
+                cursor += minDist;
+                xPos[node] = cursor;
+            }
+        }
+
+        {
+            float minR = roots.Min(r => xPos[r]);
+            float maxR = roots.Max(r => xPos[r]);
+            float midR = (minR + maxR) * 0.5f;
+
+            for (int i = 0; i < roots.Count; i++) {
+                xPos[roots[i]] -= midR;
+            }
+        }
+
+        for (int li = 1; li < layers.Count; li++) {
+            var current = layers[li];
+
+            var blocks = new List<(ulong parent, List<ulong> nodes)>();
+            var grouped = new HashSet<ulong>();
+
+            var groups = new Dictionary<ulong, List<ulong>>();
+
+            for (int i = 0; i < current.Count; i++) {
+                ulong node = current[i];
+
+                if (!reverseAdj.TryGetValue(node, out var parents) || parents.Count != 1) {
+                    continue;
+                }
+
+                ulong p = parents[0];
+                if (!xPos.ContainsKey(p)) {
+                    continue;
+                }
+
+                if (!groups.TryGetValue(p, out var list)) {
+                    list = new List<ulong>();
+                    groups[p] = list;
+                }
+
+                list.Add(node);
+            }
+
+            foreach (var kv in groups) {
+                var nodes = kv.Value;
+                nodes.Sort((a, b) => current.IndexOf(a).CompareTo(current.IndexOf(b)));
+
+                blocks.Add((kv.Key, nodes));
+
+                for (int i = 0; i < nodes.Count; i++) {
+                    grouped.Add(nodes[i]);
+                }
+            }
+
+            for (int i = 0; i < current.Count; i++) {
+                ulong node = current[i];
+                if (grouped.Contains(node)) {
+                    continue;
+                }
+
+                blocks.Add((0UL, new List<ulong> { node }));
+            }
+
+            for (int b = 0; b < blocks.Count; b++) {
+                var (parent, nodes) = blocks[b];
+
+                if (parent != 0UL) {
+                    float parentX = xPos[parent];
+                    float center = (nodes.Count - 1) * 0.5f;
+
+                    for (int i = 0; i < nodes.Count; i++) {
+                        xPos[nodes[i]] = parentX + (i - center) * H_SPACING;
+                    }
+                } else {
+                    ulong node = nodes[0];
+
+                    if (!reverseAdj.TryGetValue(node, out var parents) || parents.Count == 0) {
+                        xPos[node] = 0f;
+                    } else {
+                        var positionedParents = parents.Where(p => xPos.ContainsKey(p)).ToList();
+                        xPos[node] = positionedParents.Count == 0 ? 0f : positionedParents.Average(p => xPos[p]);
+                    }
+                }
+            }
+
+            float BlockCenterX((ulong parent, List<ulong> nodes) block) {
+                float min = float.PositiveInfinity;
+                float max = float.NegativeInfinity;
+
+                for (int i = 0; i < block.nodes.Count; i++) {
+                    float x = xPos[block.nodes[i]];
+                    if (x < min) min = x;
+                    if (x > max) max = x;
+                }
+
+                return (min + max) * 0.5f;
+            }
+
+            blocks = blocks.OrderBy(b => BlockCenterX(b)).ToList();
+
+            float BlockMin((ulong parent, List<ulong> nodes) block) {
+                float min = float.PositiveInfinity;
+
+                for (int i = 0; i < block.nodes.Count; i++) {
+                    ulong n = block.nodes[i];
+                    float x = xPos[n] - halfWidth[n];
+                    if (x < min) min = x;
+                }
+
+                return min;
+            }
+
+            float BlockMax((ulong parent, List<ulong> nodes) block) {
+                float max = float.NegativeInfinity;
+
+                for (int i = 0; i < block.nodes.Count; i++) {
+                    ulong n = block.nodes[i];
+                    float x = xPos[n] + halfWidth[n];
+                    if (x > max) max = x;
+                }
+
+                return max;
+            }
+
+            for (int i = 1; i < blocks.Count; i++) {
+                var leftBlock = blocks[i - 1];
+                var rightBlock = blocks[i];
+
+                float gap = BlockMin(rightBlock) - BlockMax(leftBlock);
+                if (gap >= H_SPACING) {
+                    continue;
+                }
+
+                float dx = H_SPACING - gap;
+
+                for (int k = 0; k < rightBlock.nodes.Count; k++) {
+                    xPos[rightBlock.nodes[k]] += dx;
+                }
+            }
+        }
+
+        float minX = float.PositiveInfinity;
+        float maxX = float.NegativeInfinity;
+
+        foreach (var id in layoutNodes) {
+            if (!xPos.ContainsKey(id)) continue;
+
+            float x = xPos[id];
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+        }
+
+        float mid = (minX + maxX) * 0.5f;
+
+        foreach (var id in layoutNodes) {
+            if (!xPos.ContainsKey(id)) continue;
+            xPos[id] -= mid;
+        }
+
+        foreach (var id in layoutNodes) 
+            NodePositions[id] = (xPos.GetValueOrDefault(id, 0f), -layer.GetValueOrDefault(id, 0) * V_SPACING);
     }
-}
 
+    private bool TryGetNodeGamePosition(ulong nodeId, out (float x, float y) pos) {
+        if (_conditionEdgeMarkers.TryGetValue(nodeId, out var e1)) {
+            if (NodePositions.TryGetValue(e1.from, out var a) && NodePositions.TryGetValue(e1.to, out var b)) {
+                pos = ((a.x + b.x) * 0.5f, (a.y + b.y) * 0.5f);
+                return true;
+            }
+        }
 
+        if (_actionEdgeMarkers.TryGetValue(nodeId, out var e2)) {
+            if (NodePositions.TryGetValue(e2.from, out var a) && NodePositions.TryGetValue(e2.to, out var b)) {
+                pos = ((a.x + b.x) * 0.5f, (a.y + b.y) * 0.5f);
+                return true;
+            }
+        }
+
+        return NodePositions.TryGetValue(nodeId, out pos);
+    }
 
     private void InitializeContextMenu() {
         _backgroundMenu = new ContextMenuStrip();
@@ -378,7 +468,7 @@ private void CalculateLayout() {
     }
 
     protected override void DrawNodes(Graphics g) {
-        using var font = new Font(FontFamily.GenericSansSerif, Math.Max(1.0f, 9f * ZoomLevel));
+        using var font = new Font(FontFamily.GenericSansSerif, Math.Max(1.0f, 8f * ZoomLevel));
         using var smallFont = new Font(FontFamily.GenericSansSerif, Math.Max(1.0f, 7f * ZoomLevel));
         using var format = new StringFormat { 
             Alignment = StringAlignment.Center, 
@@ -387,9 +477,8 @@ private void CalculateLayout() {
         };
 
         foreach (var (id, node) in _dialogNodes) {
-            if (!NodePositions.ContainsKey(id)) continue;
+            if (!TryGetNodeGamePosition(id, out var pos)) continue;
             
-            var pos = NodePositions[id];
             var screenPos = GameToScreen(pos.x, pos.y);
             
             
@@ -399,21 +488,47 @@ private void CalculateLayout() {
             
             switch (node.Type) {
                 case NodeType.Speech:
-                    DrawSpeechNode(g, node.Element as Speech, screenPos, font, format);
+                    DrawSpeechNode(g, (Speech)node.Element, screenPos, font, format);
                     break;
                 case NodeType.Reply:
-                    DrawReplyNode(g, node.Element as Reply, screenPos, font, format);
+                    DrawReplyNode(g, (Reply)node.Element, screenPos, font, format);
                     break;
                 case NodeType.Condition:
-                    DrawConditionNode(g, node.Element as Condition, screenPos, smallFont, format);
+                    DrawConditionNode(g, (Condition)node.Element, screenPos, smallFont, format);
                     break;
                 case NodeType.Action:
-                    DrawActionNode(g, node.Element as ActionLine, screenPos, smallFont, format);
+                    DrawActionNode(g, (ActionLine)node.Element, screenPos, smallFont, format);
                     break;
             }
         }
     }
+    
+    private void DrawSmartArrow(Graphics g, Pen pen, (float x, float y) from, (float x, float y) to) {
+        if (to.y < from.y) {
+            DrawArrow(g, pen, from, to);
+            return;
+        }
 
+        var p1 = GameToScreen(from.x, from.y);
+        var p2 = GameToScreen(to.x, to.y);
+
+        float dx = p2.X - p1.X;
+        float dy = p2.Y - p1.Y;
+
+        float controlOffset = Math.Max(80f * ZoomLevel, Math.Abs(dx) * 0.5f);
+
+        var c1 = new PointF(p1.X, p1.Y - controlOffset);
+        var c2 = new PointF(p2.X, p2.Y - controlOffset);
+
+        using var path = new GraphicsPath();
+        path.AddBezier(p1, c1, c2, p2);
+
+        g.DrawPath(pen, path);
+    }
+
+    protected override bool CanMoveNode(ulong nodeId) => !_decoratorIds.Contains(nodeId);
+    
+    
     private void DrawSpeechNode(Graphics g, Speech speech, Point screenPos, Font font, StringFormat format) {
         var width = (int)(NODE_WIDTH * ZoomLevel);
         var height = (int)(NODE_HEIGHT * ZoomLevel);
@@ -431,21 +546,8 @@ private void CalculateLayout() {
         
         using var pen = new Pen(Color.DarkGoldenrod, Math.Max(1.0f, 2f * ZoomLevel));
         g.DrawRectangle(pen, bounds);
-
-        
-        var authorName = speech.AuthorGuid.Element switch {
-            Character c => c.Name,
-            Blueprint b => b.Name,
-            _ => "Unknown"
-        };
-        
-        var authorBounds = new RectangleF(bounds.X, bounds.Y + 3, bounds.Width, bounds.Height * 0.2f);
-        using var authorBrush = new SolidBrush(Color.DarkGoldenrod);
-        g.DrawString(authorName, font, authorBrush, authorBounds, format);
-
         
         var text = speech.Text.GetText("english");
-        if (text.Length > 150) text = text.Substring(0, 147) + "...";
         
         var textFormat = new StringFormat { 
             Alignment = StringAlignment.Near, 
@@ -455,10 +557,10 @@ private void CalculateLayout() {
         };
         
         var textBounds = new RectangleF(
-            bounds.X + 8, 
-            bounds.Y + bounds.Height * 0.25f, 
-            bounds.Width - 16, 
-            bounds.Height * 0.7f
+            bounds.X + 8,
+            bounds.Y + 8,
+            bounds.Width - 16,
+            bounds.Height - 16
         );
         g.DrawString(text, font, Brushes.Black, textBounds, textFormat);
     }
@@ -509,7 +611,7 @@ private void CalculateLayout() {
     }
 
     private void DrawConditionNode(Graphics g, Condition condition, Point screenPos, Font font, StringFormat format) {
-        var size = (int)(CONDITION_NODE_SIZE * ZoomLevel);
+        var size = (int)(DECORATOR_SIZE * ZoomLevel);
         var bounds = new Rectangle(
             screenPos.X - size / 2,
             screenPos.Y - size / 2,
@@ -535,7 +637,7 @@ private void CalculateLayout() {
     }
 
     private void DrawActionNode(Graphics g, ActionLine actionLine, Point screenPos, Font font, StringFormat format) {
-        var size = (int)(ACTION_NODE_SIZE * ZoomLevel);
+        var size = (int)(DECORATOR_SIZE * ZoomLevel);
         var bounds = new Rectangle(
             screenPos.X - size / 2,
             screenPos.Y - size / 2,
@@ -565,40 +667,39 @@ private void CalculateLayout() {
                 case Speech speech:
                     
                     foreach (var reply in speech.Replies.OrderBy(r => r.OrderIndex)) {
-                        if (!NodePositions.ContainsKey(reply.Id)) continue;
-                        
-                        var replyPos = NodePositions[reply.Id];
-                        
-                        
+                        if (!NodePositions.TryGetValue(reply.Id, out var replyPos)) continue;
+
+
                         if (reply.EnableCondition != null && 
                             NodePositions.ContainsKey(reply.EnableCondition.Id)) {
                             var condPos = NodePositions[reply.EnableCondition.Id];
-                            DrawArrow(g, pen, pos, condPos);
-                            DrawArrow(g, pen, condPos, replyPos);
+                            DrawSmartArrow(g, pen, pos, condPos);
+                            DrawSmartArrow(g, pen, condPos, replyPos);
                         } else {
-                            DrawArrow(g, pen, pos, replyPos);
+                            DrawSmartArrow(g, pen, pos, replyPos);
                         }
                     }
                     break;
 
                 case Reply reply:
-                    
-                    if (reply.ActionLine != null && 
-                        NodePositions.ContainsKey(reply.ActionLine.Id)) {
+                    if (reply.ActionLine != null && NodePositions.ContainsKey(reply.ActionLine.Id)) {
                         var actionPos = NodePositions[reply.ActionLine.Id];
-                        DrawArrow(g, pen, pos, actionPos);
+                        DrawSmartArrow(g, pen, pos, actionPos);
                     }
-                    
-                    
-                    if (reply.Parent is { OutputLinks: not null } parentSpeech &&
-                        reply.OrderIndex < parentSpeech.OutputLinks.Count) {
-                        var link = parentSpeech.OutputLinks[reply.OrderIndex];
-
-                        if (link.Destination?.Element is Speech nextSpeech && NodePositions.TryGetValue(nextSpeech.Id, out var nextPos)) {
-                            DrawArrow(g, pen, pos, nextPos);
+    
+                    if (reply.Parent is { OutputLinks: not null } parentSpeech) {
+        
+                        var replyIndex = parentSpeech.Replies.OrderBy(r => r.OrderIndex).ToList().IndexOf(reply);
+        
+                        if (replyIndex >= 0) {
+                            var link = parentSpeech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == replyIndex);
+            
+                            if (link?.Destination?.Element is Speech nextSpeech && 
+                                NodePositions.TryGetValue(nextSpeech.Id, out var nextPos)) {
+                                DrawSmartArrow(g, pen, pos, nextPos);
+                            }
                         }
                     }
-
                     break;
             }
         }
@@ -608,26 +709,29 @@ private void CalculateLayout() {
 
     protected override ulong? GetNodeAtPosition(Point screenPoint) {
         foreach (var (nodeId, node) in _dialogNodes) {
-            if (!NodePositions.ContainsKey(nodeId)) continue;
+            if (!TryGetNodeGamePosition(nodeId, out var pos)) continue;
             
-            var pos = NodePositions[nodeId];
             var nodePos = GameToScreen(pos.x, pos.y);
-            
+
             var (width, height) = node.Type switch {
                 NodeType.Speech or NodeType.Reply => (NODE_WIDTH, NODE_HEIGHT),
-                NodeType.Condition => (CONDITION_NODE_SIZE, CONDITION_NODE_SIZE),
-                NodeType.Action => (ACTION_NODE_SIZE, ACTION_NODE_SIZE),
+                NodeType.Condition => (DECORATOR_SIZE, DECORATOR_SIZE),
+                NodeType.Action => (DECORATOR_SIZE, DECORATOR_SIZE),
                 _ => (0f, 0f)
             };
-            
+
             var w = (int)(width * ZoomLevel);
             var h = (int)(height * ZoomLevel);
-            var bounds = new Rectangle(nodePos.X - w/2, nodePos.Y - h/2, w, h);
-            
-            if (bounds.Contains(screenPoint)) return nodeId;
+            var bounds = new Rectangle(nodePos.X - w / 2, nodePos.Y - h / 2, w, h);
+
+            if (bounds.Contains(screenPoint)) {
+                return nodeId;
+            }
         }
+
         return null;
     }
+    
 
     protected override void HandleNodeClick(ulong nodeId, MouseButtons button, Point screenPoint) {
         if (!_dialogNodes.TryGetValue(nodeId, out var node))
@@ -642,10 +746,13 @@ private void CalculateLayout() {
         }
     }
 
-    protected override void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition) {
-        
+    protected override void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition)
+    {
+        if (_decoratorIds.Contains(nodeId)) return;
         NodePositions[nodeId] = newPosition;
+        GraphPanel.Invalidate();
     }
+
 
     private void ShowNodeContextMenu(VmElement element, Point location) {
         var menu = new ContextMenuStrip();

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -17,6 +18,13 @@ public class MainForm : Form {
     private VirtualMachine? _virtualMachine;
     private PathSelectionForm.Paths? _paths;
     private readonly TabControl _tabControl;
+    private MenuStripManager? _menuStripManager;
+    
+    // Dictionary to track loaded tab pages
+    private readonly Dictionary<string, TabPage> _loadedTabs = new();
+    
+    // Factories for creating tab content on demand
+    private readonly Dictionary<string, Func<Control>> _tabFactories = new();
     
     public VirtualMachine? VirtualMachine => _virtualMachine;
     public PathSelectionForm.Paths? Paths => _paths;
@@ -36,7 +44,7 @@ public class MainForm : Form {
         _statusStrip.Items.Add(_logStatusLabel);
         Controls.Add(_statusStrip);
         InitializeTabs();
-        var menuStripManager = new MenuStripManager(this);
+        _menuStripManager = new MenuStripManager(this);
         ShowPathSelection();
     }
     
@@ -56,31 +64,68 @@ public class MainForm : Form {
         _virtualMachine = reader.LoadVirtualMachine();
 
         Logger.Log(LogLevel.Info, $"DataCapacity: {_virtualMachine.GetDataCapacity()}");
-        _tabControl.TabPages.Cast<TabPage>().ToList().ForEach(t => _tabControl.TabPages.Remove(t));
         
-        var mindMapTab = new TabPage("Mind Maps");
-        mindMapTab.Controls.Add(new MindMapTabControl(_virtualMachine) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(mindMapTab);
+        // Clear existing tabs
+        _tabControl.TabPages.Clear();
+        _loadedTabs.Clear();
+        _tabFactories.Clear();
         
-        var fsmTab = new TabPage("FSM Graphs");
-        fsmTab.Controls.Add(new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(fsmTab);
+        // Register tab factories (but don't create the tabs yet)
+        RegisterTabFactory("Mind Maps", () => new MindMapTabControl(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("FSM Graphs", () => new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Actions", () => new Actions.ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Dialogs", () => new Dialogs.DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         
-        var combinationsTab = new TabPage("Combinations");
-        combinationsTab.Controls.Add(new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(combinationsTab);
-
-        var templatesTab = new TabPage("Templates");
-        templatesTab.Controls.Add(new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(templatesTab);
+        // Show Mind Maps tab by default (this will create it)
+        ShowTab("Mind Maps");
+    }
+    
+    private void RegisterTabFactory(string name, Func<Control> factory) {
+        _tabFactories[name] = factory;
+    }
+    
+    public void ShowTab(string tabName) {
+        if (!_tabFactories.ContainsKey(tabName)) return;
         
-        var actionsTab = new TabPage("Actions");
-        actionsTab.Controls.Add(new Actions.ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(actionsTab);
+        // Check if tab is already loaded
+        if (!_loadedTabs.ContainsKey(tabName)) {
+            // Create the tab on demand
+            Logger.Log(LogLevel.Info, $"Loading tab: {tabName}");
+            var tabPage = new TabPage(tabName);
+            var content = _tabFactories[tabName]();
+            tabPage.Controls.Add(content);
+            _loadedTabs[tabName] = tabPage;
+        }
         
-        var dialogsTab = new TabPage("Dialogs");
-        dialogsTab.Controls.Add(new Dialogs.DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-        _tabControl.TabPages.Add(dialogsTab);
+        var tab = _loadedTabs[tabName];
+        if (!_tabControl.TabPages.Contains(tab)) {
+            _tabControl.TabPages.Add(tab);
+        }
+        _tabControl.SelectedTab = tab;
+    }
+    
+    public void HideTab(string tabName) {
+        if (!_loadedTabs.ContainsKey(tabName)) return;
+        
+        var tabPage = _loadedTabs[tabName];
+        if (_tabControl.TabPages.Contains(tabPage)) {
+            _tabControl.TabPages.Remove(tabPage);
+        }
+    }
+    
+    public bool IsTabVisible(string tabName) {
+        if (!_loadedTabs.ContainsKey(tabName)) return false;
+        return _tabControl.TabPages.Contains(_loadedTabs[tabName]);
+    }
+    
+    public bool IsTabLoaded(string tabName) {
+        return _loadedTabs.ContainsKey(tabName);
+    }
+    
+    public IEnumerable<string> GetAvailableTabNames() {
+        return _tabFactories.Keys;
     }
     
     private void InitializeTabs() {

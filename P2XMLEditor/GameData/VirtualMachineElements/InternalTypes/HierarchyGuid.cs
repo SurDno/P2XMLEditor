@@ -17,6 +17,8 @@ public class HierarchyGuid(string data, VirtualMachine vm) : ICommonVariablePara
 
 	public bool IsHierarchy => _elements.Count > 1;
 
+	public List<VmEither<Scene, Geom, Other, Item, ScenePlaceholder>> Elements => _elements;
+	
 	public string Write() => string.Join("H", _elements.Select(el => el.Id.ToString()));
 
 	public static bool TryParse(string data, VirtualMachine vm, out HierarchyGuid? result) {

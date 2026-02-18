@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 
@@ -23,6 +24,7 @@ public class FSMBrowser : SplitContainer {
         GameRoot
     }
 
+    [PerformanceLogHook]
     public FSMBrowser(VirtualMachine vm) {
         _vm = vm;
         Dock = DockStyle.Fill;
