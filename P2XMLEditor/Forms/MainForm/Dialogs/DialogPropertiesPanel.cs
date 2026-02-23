@@ -6,6 +6,7 @@ using P2XMLEditor.Forms.Editors;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Services;
 
 namespace P2XMLEditor.Forms.MainForm.Dialogs;
 
@@ -78,7 +79,7 @@ public class DialogPropertiesPanel : Panel {
         AddProperty("Author", authorName, null);
 
         // Text
-        var textPreview = speech.Text.GetText("english");
+        var textPreview = speech.Text.GetText(PreviewLanguageService.CurrentLanguage);
         if (textPreview.Length > 100) textPreview = textPreview.Substring(0, 97) + "...";
         
         var textLabel = new Label { 
@@ -101,7 +102,7 @@ public class DialogPropertiesPanel : Panel {
         editButton.Click += (_, _) => {
             using var editor = new GameStringEditor(speech.Text, _vm);
             editor.ShowDialog();
-            textDisplay.Text = speech.Text.GetText("english");
+            textDisplay.Text = speech.Text.GetText(PreviewLanguageService.CurrentLanguage);
         };
 
         _propertiesTable.Controls.Add(textLabel, 0, _propertiesTable.RowCount);
@@ -127,7 +128,7 @@ public class DialogPropertiesPanel : Panel {
         AddHeader("Reply");
 
         // Text
-        var textPreview = reply.Text.GetText("english");
+        var textPreview = reply.Text.GetText(PreviewLanguageService.CurrentLanguage);
         if (textPreview.Length > 100) textPreview = textPreview.Substring(0, 97) + "...";
         
         var textLabel = new Label { 
@@ -150,7 +151,7 @@ public class DialogPropertiesPanel : Panel {
         editButton.Click += (_, _) => {
             using var editor = new GameStringEditor(reply.Text, _vm);
             editor.ShowDialog();
-            textDisplay.Text = reply.Text.GetText("english");
+            textDisplay.Text = reply.Text.GetText(PreviewLanguageService.CurrentLanguage);
         };
 
         _propertiesTable.Controls.Add(textLabel, 0, _propertiesTable.RowCount);

@@ -8,6 +8,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Services;
 using P2XMLEditor.Suggestions;
 
 namespace P2XMLEditor.Forms.MainForm;
@@ -26,7 +27,6 @@ public class MenuStripManager {
 
    [SuppressMessage("ReSharper", "UseCollectionExpression")]
    private void InitializeMenuStrip() {
-       // File Menu
        var fileMenu = new ToolStripMenuItem("File");
        var loadVmMenuItem = new ToolStripMenuItem("Load another virtual machine...");
        loadVmMenuItem.Click += LoadVmMenuItem_Click;
@@ -34,12 +34,14 @@ public class MenuStripManager {
        saveVmMenuItem.Click += SaveVmMenuItem_Click;
        fileMenu.DropDownItems.AddRange(new ToolStripItem[] { loadVmMenuItem, saveVmMenuItem });
        _menuStrip.Items.Add(fileMenu);
-       
-       // Window Menu
+
+       var displayMenu = new ToolStripMenuItem("Display");
+       _menuStrip.Items.Add(displayMenu);
+       displayMenu.DropDownOpening += (_, _) => UpdateDisplayMenu(displayMenu);
+
        var windowMenu = new ToolStripMenuItem("Window");
        _menuStrip.Items.Add(windowMenu);
        
-       // Refactor and Cleanup Menus
        var allTypes = typeof(Suggestion).Assembly.GetTypes()
            .Where(t => typeof(Suggestion).IsAssignableFrom(t) && !t.IsAbstract).ToList();
 
@@ -54,8 +56,35 @@ public class MenuStripManager {
        _menuStrip.Items.Add(refactorMenu);
        _menuStrip.Items.Add(cleanupMenu);
        
-       // Update window menu when it's opened
        windowMenu.DropDownOpening += (_, _) => UpdateWindowMenu(windowMenu);
+   }
+
+   private void UpdateDisplayMenu(ToolStripMenuItem displayMenu) {
+       displayMenu.DropDownItems.Clear();
+
+       var langMenu = new ToolStripMenuItem("Game String Preview Language");
+       displayMenu.DropDownItems.Add(langMenu);
+
+       var vm = _mainForm.VirtualMachine;
+       if (vm == null || vm.Languages.Count == 0) {
+           var noLangs = new ToolStripMenuItem("(No VM loaded)") { Enabled = false };
+           langMenu.DropDownItems.Add(noLangs);
+           return;
+       }
+
+       foreach (var lang in vm.Languages) {
+           var langCopy = lang; // capture for closure
+           var item = new ToolStripMenuItem(langCopy) {
+               CheckOnClick = false,
+               Checked = PreviewLanguageService.CurrentLanguage == langCopy
+           };
+           item.Click += (_, _) => {
+               PreviewLanguageService.SetLanguage(langCopy);
+               foreach (ToolStripMenuItem mi in langMenu.DropDownItems)
+                   mi.Checked = mi.Text == PreviewLanguageService.CurrentLanguage;
+           };
+           langMenu.DropDownItems.Add(item);
+       }
    }
 
    private void UpdateWindowMenu(ToolStripMenuItem windowMenu) {

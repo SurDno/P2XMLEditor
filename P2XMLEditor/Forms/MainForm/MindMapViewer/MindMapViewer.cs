@@ -8,6 +8,7 @@ using P2XMLEditor.Abstract;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.Services;
 
 namespace P2XMLEditor.Forms.MainForm.MindMapViewer;
 
@@ -36,6 +37,24 @@ public class MindMapViewer : GraphViewer {
 
         InitializeContextMenu();
         CenterView();
+
+        PreviewLanguageService.LanguageChanged += OnPreviewLanguageChanged;
+    }
+
+    private void OnPreviewLanguageChanged(string _) {
+        if (IsDisposed) return;
+        if (InvokeRequired) {
+            Invoke(() => OnPreviewLanguageChanged(_));
+            return;
+        }
+        GraphPanel.Invalidate();
+        _propertiesPanel.RefreshLanguage();
+    }
+
+    protected override void Dispose(bool disposing) {
+        if (disposing)
+            PreviewLanguageService.LanguageChanged -= OnPreviewLanguageChanged;
+        base.Dispose(disposing);
     }
     
     protected override void OnMouseClick(MouseEventArgs e) {
@@ -86,7 +105,10 @@ public class MindMapViewer : GraphViewer {
                 g.DrawPath(pen, path);
             }
 
-            g.DrawString(node.Name, font, Brushes.Black, nodeBounds, format);
+            // Draw the node name — use the mind map title's language text if available,
+            // otherwise fall back to the node's Name property.
+            var displayText = node.Name;
+            g.DrawString(displayText, font, Brushes.Black, nodeBounds, format);
         }
     }
 

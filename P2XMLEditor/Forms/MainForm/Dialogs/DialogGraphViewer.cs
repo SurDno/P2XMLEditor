@@ -9,6 +9,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Services;
 
 namespace P2XMLEditor.Forms.MainForm.Dialogs;
 
@@ -100,6 +101,23 @@ public class DialogGraphViewer : GraphViewer {
 
         InitializeContextMenu();
         CenterView();
+
+        PreviewLanguageService.LanguageChanged += OnPreviewLanguageChanged;
+    }
+
+    private void OnPreviewLanguageChanged(string _) {
+        if (IsDisposed) return;
+        if (InvokeRequired) {
+            Invoke(() => OnPreviewLanguageChanged(_));
+            return;
+        }
+        GraphPanel.Invalidate();
+    }
+
+    protected override void Dispose(bool disposing) {
+        if (disposing)
+            PreviewLanguageService.LanguageChanged -= OnPreviewLanguageChanged;
+        base.Dispose(disposing);
     }
 
     private void CalculateLayout() {
@@ -547,7 +565,8 @@ public class DialogGraphViewer : GraphViewer {
         using var pen = new Pen(Color.DarkGoldenrod, Math.Max(1.0f, 2f * ZoomLevel));
         g.DrawRectangle(pen, bounds);
         
-        var text = speech.Text.GetText("english");
+        // Use the currently selected preview language
+        var text = speech.Text.GetText(PreviewLanguageService.CurrentLanguage);
         
         var textFormat = new StringFormat { 
             Alignment = StringAlignment.Near, 
@@ -592,7 +611,7 @@ public class DialogGraphViewer : GraphViewer {
         g.DrawPolygon(pen, points);
 
         
-        var text = reply.Text.GetText("english");
+        var text = reply.Text.GetText(PreviewLanguageService.CurrentLanguage);
         if (text.Length > 80) text = text.Substring(0, 77) + "...";
         
         var textBounds = new RectangleF(
@@ -779,12 +798,12 @@ public class DialogGraphViewer : GraphViewer {
     }
 
     private void EditSpeech(Speech speech) {
-        MessageBox.Show($"Speech Editor not yet implemented.\n\nText: {speech.Text.GetText("english")}", 
+        MessageBox.Show($"Speech Editor not yet implemented.\n\nText: {speech.Text.GetText(PreviewLanguageService.CurrentLanguage)}", 
             "Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void EditReply(Reply reply) {
-        MessageBox.Show($"Reply Editor not yet implemented.\n\nText: {reply.Text.GetText("english")}", 
+        MessageBox.Show($"Reply Editor not yet implemented.\n\nText: {reply.Text.GetText(PreviewLanguageService.CurrentLanguage)}", 
             "Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 

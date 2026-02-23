@@ -11,6 +11,7 @@ using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Logging;
+using P2XMLEditor.Services;
 
 namespace P2XMLEditor.Forms.MainForm;
 
@@ -62,7 +63,8 @@ public class MainForm : Form {
         _paths = paths;
         var reader = new VirtualMachineReader(_paths!.VmPath, _paths.TemplatesPath, _paths.Mode);
         _virtualMachine = reader.LoadVirtualMachine();
-
+        PreviewLanguageService.Initialise(languages: _virtualMachine.Languages);
+        
         Logger.Log(LogLevel.Info, $"DataCapacity: {_virtualMachine.GetDataCapacity()}");
         
         // Clear existing tabs

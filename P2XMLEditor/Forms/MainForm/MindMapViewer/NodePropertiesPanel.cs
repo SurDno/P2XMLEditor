@@ -9,6 +9,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Services;
 
 namespace P2XMLEditor.Forms.MainForm.MindMapViewer;
 
@@ -202,12 +203,19 @@ public class NodePropertiesPanel : Panel {
             _contentList.Items.Add(content);
     }
     
+    /// <summary>
+    /// Called when the preview language changes to refresh the description preview text.
+    /// </summary>
+    public void RefreshLanguage() {
+        RefreshContentDetails();
+    }
+
     private void RefreshContentDetails() {
 	    if (_selectedContent == null) return;
 	    _contentDetailsPanel.Visible = true;
 	    _contentNameBox.Text = _selectedContent.Name;
 	    _contentTypeComboBox.SelectedItem = _selectedContent.ContentType;
-	    _contentDescriptionPreview.Text = _selectedContent.ContentDescriptionText.GetText("english");
+	    _contentDescriptionPreview.Text = _selectedContent.ContentDescriptionText.GetText(PreviewLanguageService.CurrentLanguage);
 	    _contentConditionPreview.Text = PreviewHelper.Preview(_selectedContent.ContentCondition);
 
 	    _updatingPictureComboBox = true;
@@ -238,7 +246,7 @@ public class NodePropertiesPanel : Panel {
         if (_selectedContent == null) return;
         var editor = new GameStringEditor(_selectedContent.ContentDescriptionText, _vm);
         if (editor.ShowDialog() == DialogResult.OK) {
-            _contentDescriptionPreview.Text = _selectedContent.ContentDescriptionText.GetText("english");
+            _contentDescriptionPreview.Text = _selectedContent.ContentDescriptionText.GetText(PreviewLanguageService.CurrentLanguage);
         }
     }
 
