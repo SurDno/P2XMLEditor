@@ -15,8 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
-    protected override HashSet<string> KnownElements { get; } =
-        ["Actions", "ActionLineType", "Name", "LocalContext", "OrderIndex", "ActionLoopInfo"];
     public List<VmEither<Action, ActionLine>>? Actions { get; set; }
     public ActionLineType ActionLineType { get; set; }
     public ActionLoopInfo? LoopInfo { get; set; }

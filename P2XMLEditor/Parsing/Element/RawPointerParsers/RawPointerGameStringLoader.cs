@@ -7,7 +7,6 @@ using static P2XMLEditor.Parsing.Helpers.RawPointerExtensions;
 
 namespace P2XMLEditor.Parsing.Element.RawPointerParsers;
 
-// ASSUMPTIONS:
 public class RawPointerGameStringLoader : IParser<RawGameStringData> {
 
 	[PerformanceLogHook]

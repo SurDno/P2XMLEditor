@@ -8,7 +8,5 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 // For cases where a part of HierarchyGuid points to a non-existing Scene.
 public class ScenePlaceholder(ulong id) : VmElement(id) {
-	protected override HashSet<string> KnownElements => throw new InvalidOperationException();
-
 	public override XElement ToXml(WriterSettings settings) => throw new InvalidOperationException();
 }

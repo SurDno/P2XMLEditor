@@ -7,8 +7,9 @@ using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing.Helpers;
 using P2XMLEditor.Parsing.RawData;
+
 namespace P2XMLEditor.Parsing.Element.XElementParsers;
-using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
+using static XElementExtensions;
 
 public class XElementBranchLoader : IParser<RawBranchData> {
 	

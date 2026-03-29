@@ -16,10 +16,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "Event", "EventObject", "SourceExitPointIndex", "DestEntryPointIndex",
-        "SourceParams", "Source", "Destination", "Enabled", "Name", "Parent"
-    ];
     public Event? Event { get; set; }
     public CommonVariable EventObject { get; set; }
     public int SourceExitPointIndex { get; set; }

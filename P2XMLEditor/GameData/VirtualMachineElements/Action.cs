@@ -15,10 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Action(ulong id) : VmElement(id), IFiller<RawActionData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "ActionType", "MathOperationType", "TargetFuncName", "TargetObject", "TargetParam",
-        "SourceParams", "Name", "LocalContext", "OrderIndex", "SourceExpression"
-    ];
     public ActionType ActionType { get; set; }
     public MathOperationType MathOperationType { get; set; }
     public string TargetFuncName { get; set; }

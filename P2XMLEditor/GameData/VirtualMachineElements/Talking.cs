@@ -14,9 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData>, ICommonVariableParameter {
-    protected override HashSet<string> KnownElements { get; } = [
-        "States", "EventLinks", "GraphType", "EntryPoints", "IgnoreBlock", "Owner", "Initial", "Name", "Parent"
-    ];
     public List<VmEither<Branch, Speech, State>> States { get; set; }
     public List<GraphLink> EventLinks { get; set; }
     public List<EntryPoint> EntryPoints { get; set; }

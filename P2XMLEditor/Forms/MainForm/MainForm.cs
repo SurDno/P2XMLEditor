@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
+using P2XMLEditor.Forms.MainForm.Actions;
 using P2XMLEditor.Forms.MainForm.Combinations;
+using P2XMLEditor.Forms.MainForm.Dialogs;
 using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
@@ -77,8 +78,8 @@ public class MainForm : Form {
         RegisterTabFactory("FSM Graphs", () => new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
-        RegisterTabFactory("Actions", () => new Actions.ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-        RegisterTabFactory("Dialogs", () => new Dialogs.DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+        RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
         
         // Show Mind Maps tab by default (this will create it)
         ShowTab("Mind Maps");
@@ -140,7 +141,7 @@ public class MainForm : Form {
     
     private void OnLogMessageAdded(string message) {
         if (InvokeRequired) {
-            Invoke(() => OnLogMessageAdded(message));
+            BeginInvoke(() => OnLogMessageAdded(message));
             return;
         }
     

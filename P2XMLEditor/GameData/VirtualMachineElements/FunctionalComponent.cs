@@ -14,7 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctionalComponentData> {
-    protected override HashSet<string> KnownElements { get; } = ["Events", "Main", "LoadPriority", "Name", "Parent"];
     public List<Event> Events { get; set; }
     public bool? Main { get; set; }
     public long LoadPriority { get; set; }

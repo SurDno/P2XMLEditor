@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using P2XMLEditor.Parsing.Element;
 using P2XMLEditor.Parsing.RawData;
 
@@ -76,44 +77,50 @@ public abstract class ParsingExecutor {
     public readonly List<RawStateData> States = [];
     public readonly List<RawTalkingData> Talkings = [];
 
-    public void ExecuteAll(string directory) {
-        Load(ActionLineLoader, Path.Combine(directory, "ActionLine.xml"), ActionLines);
-        Load(ActionLoader, Path.Combine(directory, "Action.xml"), Actions);
-        Load(BlueprintLoader, Path.Combine(directory, "Blueprint.xml"), Blueprints);
-        Load(BranchLoader, Path.Combine(directory, "Branch.xml"), Branches);
-        Load(ConditionLoader, Path.Combine(directory, "Condition.xml"), Conditions);
-        Load(CustomTypeLoader, Path.Combine(directory, "CustomType.xml"), CustomTypes);
-        Load(EntryPointLoader, Path.Combine(directory, "EntryPoint.xml"), EntryPoints);
-        Load(EventLoader, Path.Combine(directory, "Event.xml"), Events);
-        Load(ExpressionLoader, Path.Combine(directory, "Expression.xml"), Expressions);
-        Load(FunctionalComponentLoader, Path.Combine(directory, "FunctionalComponent.xml"), FunctionalComponents);
-        Load(GameModeLoader, Path.Combine(directory, "GameMode.xml"), GameModes);
+    public void ExecuteAll(string directory)
+    {
+        // Arranged in the order of most-expensive to least-expensive in unmodded PathologicSandbox
+        Parallel.Invoke(
+            () => Load(EventLoader, Path.Combine(directory, "Event.xml"), Events),
+            () => Load(GraphLinkLoader, Path.Combine(directory, "GraphLink.xml"), GraphLinks),
+            () => Load(GameRootLoader, Path.Combine(directory, "GameRoot.xml"), GameRoots),
+            () => Load(StateLoader, Path.Combine(directory, "State.xml"), States),
+            () => Load(FunctionalComponentLoader, Path.Combine(directory, "FunctionalComponent.xml"), FunctionalComponents),
+            
+            () => Load(ActionLineLoader, Path.Combine(directory, "ActionLine.xml"), ActionLines),
+            () => Load(ActionLoader, Path.Combine(directory, "Action.xml"), Actions),
+            () => Load(BranchLoader, Path.Combine(directory, "Branch.xml"), Branches),
+            () => Load(ConditionLoader, Path.Combine(directory, "Condition.xml"), Conditions),
+            () => Load(EntryPointLoader, Path.Combine(directory, "EntryPoint.xml"), EntryPoints),
+            () => Load(ExpressionLoader, Path.Combine(directory, "Expression.xml"), Expressions),
 
-        Load(ItemLoader, Path.Combine(directory, "Item.xml"), Items);
-        Load(OtherLoader, Path.Combine(directory, "Other.xml"), Others);
-        Load(SceneLoader, Path.Combine(directory, "Scene.xml"), Scenes);
-        Load(GeomLoader, Path.Combine(directory, "Geom.xml"), Geoms);
-        Load(CharacterLoader, Path.Combine(directory, "Character.xml"), Characters);
+            () => Load(ItemLoader, Path.Combine(directory, "Item.xml"), Items),
+            () => Load(OtherLoader, Path.Combine(directory, "Other.xml"), Others),
+            () => Load(SceneLoader, Path.Combine(directory, "Scene.xml"), Scenes),
+            () => Load(GeomLoader, Path.Combine(directory, "Geom.xml"), Geoms),
+            () => Load(CharacterLoader, Path.Combine(directory, "Character.xml"), Characters),
 
-        Load(GameRootLoader, Path.Combine(directory, "GameRoot.xml"), GameRoots);
-        Load(GameStringLoader, Path.Combine(directory, "GameString.xml"), GameStrings);
-        Load(GraphLinkLoader, Path.Combine(directory, "GraphLink.xml"), GraphLinks);
-        Load(GraphLoader, Path.Combine(directory, "Graph.xml"), Graphs);
-        Load(MindMapLinkLoader, Path.Combine(directory, "MindMapLink.xml"), MindMapLinks);
-        Load(MindMapLoader, Path.Combine(directory, "MindMap.xml"), MindMaps);
-        Load(MindMapNodeContentLoader, Path.Combine(directory, "MindMapNodeContent.xml"), MindMapNodeContents);
-        Load(MindMapNodeLoader, Path.Combine(directory, "MindMapNode.xml"), MindMapNodes);
-        Load(ParameterLoader, Path.Combine(directory, "Parameter.xml"), Parameters);
-        Load(PartConditionLoader, Path.Combine(directory, "PartCondition.xml"), PartConditions);
-        Load(QuestLoader, Path.Combine(directory, "Quest.xml"), Quests);
-        Load(ReplyLoader, Path.Combine(directory, "Reply.xml"), Replies);
-        Load(SampleLoader, Path.Combine(directory, "Sample.xml"), Samples);
-        Load(SpeechLoader, Path.Combine(directory, "Speech.xml"), Speeches);
-        Load(StateLoader, Path.Combine(directory, "State.xml"), States);
-        Load(TalkingLoader, Path.Combine(directory, "Talking.xml"), Talkings);
+            () => Load(GameStringLoader, Path.Combine(directory, "GameString.xml"), GameStrings),
+            () => Load(GraphLoader, Path.Combine(directory, "Graph.xml"), Graphs),
+            () => Load(MindMapNodeContentLoader, Path.Combine(directory, "MindMapNodeContent.xml"), MindMapNodeContents),
+            () => Load(MindMapNodeLoader, Path.Combine(directory, "MindMapNode.xml"), MindMapNodes),
+            () => Load(ParameterLoader, Path.Combine(directory, "Parameter.xml"), Parameters),
+            () => Load(PartConditionLoader, Path.Combine(directory, "PartCondition.xml"), PartConditions),
+            () => Load(QuestLoader, Path.Combine(directory, "Quest.xml"), Quests),
+            () => Load(ReplyLoader, Path.Combine(directory, "Reply.xml"), Replies),
+            () => Load(SampleLoader, Path.Combine(directory, "Sample.xml"), Samples),
+            () => Load(SpeechLoader, Path.Combine(directory, "Speech.xml"), Speeches),
+            () => Load(TalkingLoader, Path.Combine(directory, "Talking.xml"), Talkings),
+            
+            () => Load(BlueprintLoader, Path.Combine(directory, "Blueprint.xml"), Blueprints),
+            () => Load(GameModeLoader, Path.Combine(directory, "GameMode.xml"), GameModes),
+            () => Load(CustomTypeLoader, Path.Combine(directory, "CustomType.xml"), CustomTypes),
+            () => Load(MindMapLoader, Path.Combine(directory, "MindMap.xml"), MindMaps),
+            () => Load(MindMapLinkLoader, Path.Combine(directory, "MindMapLink.xml"), MindMapLinks)
+        );
     }
     
-    private static void Load<T>(IParser<T> loader, string path, List<T> target) where T : struct {
+    protected static void Load<T>(IParser<T> loader, string path, List<T> target) where T : struct {
         loader.ProcessFile(path, target);
     }
 }

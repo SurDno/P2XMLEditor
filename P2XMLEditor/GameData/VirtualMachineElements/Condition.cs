@@ -15,8 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Condition(ulong id) : VmElement(id), IFiller<RawConditionData>, IVmCreator<Condition> {
-	protected override HashSet<string> KnownElements { get; } = ["Predicates", "Operation", "Name", "OrderIndex"];
-
 	public List<VmEither<Condition, PartCondition>> Predicates { get; set; }
 	public ConditionOperation Operation { get; set; }
 	public string Name { get; set; }

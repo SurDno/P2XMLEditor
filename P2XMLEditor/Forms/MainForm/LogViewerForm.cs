@@ -44,7 +44,7 @@ public sealed class LogViewerForm : Form {
 
     private void OnLogMessageAdded(string message) {
        if (InvokeRequired) {
-          Invoke(() => OnLogMessageAdded(message));
+          BeginInvoke(() => OnLogMessageAdded(message));
           return;
        }
        _logTextBox.AppendText(Environment.NewLine + message);

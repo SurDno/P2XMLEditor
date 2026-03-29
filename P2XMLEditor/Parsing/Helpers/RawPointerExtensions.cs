@@ -234,7 +234,7 @@ public static unsafe class RawPointerExtensions {
                         i += 3;
                         continue;
                     case (byte)'g':
-                        tmp[o++] = (byte)'<';
+                        tmp[o++] = (byte)'>';
                         i += 3;
                         continue;
                     case (byte)'a':

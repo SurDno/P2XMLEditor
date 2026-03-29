@@ -15,7 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, IVmCreator<GameString> {
-	protected override HashSet<string> KnownElements { get; } = ["Parent"];
 	public VmEither<ParameterHolder, MindMap, Reply, Speech> Parent { get; set; }
 	private Dictionary<string, string> _texts = new();
     
@@ -42,7 +41,7 @@ public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, I
 		try {
 			Parent = vm.GetElement<ParameterHolder, MindMap, Reply, Speech>(data.ParentId);
 		} catch (Exception e) {
-			Console.WriteLine(this.Id);
+			Console.WriteLine(Id);
 			throw;
 		}
 	}

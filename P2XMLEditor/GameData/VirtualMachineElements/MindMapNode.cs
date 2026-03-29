@@ -16,10 +16,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>, IVmCreator<MindMapNode> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "Name", "Parent", "LogicMapNodeType", "NodeContent", "GameScreenPosX", "GameScreenPosY",
-        "InputLinks", "OutputLinks"
-    ];
     public string Name { get; set; }
     public MindMap Parent { get; set; }
     public LogicMapNodeType LogicMapNodeType { get; set; }

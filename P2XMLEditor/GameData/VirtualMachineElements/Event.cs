@@ -16,10 +16,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "EventTime", "Manual", "EventRaisingType", "EventParameter", "Condition",
-        "ChangeTo", "Repeated", "Name", "Parent", "MessagesInfo"
-    ];
     public TimeSpan EventTime { get; set; }
     public bool? Manual { get; set; } = true;
     public EventRaisingType EventRaisingType { get; set; }

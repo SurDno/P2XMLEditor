@@ -1,14 +1,10 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
-using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions;
-using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
-using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Suggestions.Cleanup;
 

@@ -17,10 +17,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, IVmCreator<Expression> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "ExpressionType", "TargetFunctionName", "TargetObject", "TargetParam",
-        "Const", "SourceParams", "LocalContext", "Inversion", "FormulaChilds", "FormulaOperations"
-    ];
     public ExpressionType ExpressionType { get; set; }
     public CommonVariable TargetObject;
     public CommonVariable? TargetParam;

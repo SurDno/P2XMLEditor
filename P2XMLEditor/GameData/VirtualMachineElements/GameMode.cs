@@ -12,11 +12,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData>, ICommonVariableParameter {
-    protected override HashSet<string> KnownElements { get; } = [
-        "IsMain", "StartGameTime", "GameTimeSpeed", "StartSolarTime", "SolarTimeSpeed",
-        "PlayerRef", "Name", "Parent"
-    ];
-    
     public bool? IsMain { get; set; }
     public TimeSpan StartGameTime { get; set; }
     public float GameTimeSpeed { get; set; }

@@ -14,10 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphElement {
-    protected override HashSet<string> KnownElements { get; } = [
-        "EntryPoints", "IgnoreBlock", "Owner", "InputLinks", "OutputLinks",
-        "Initial", "Name", "Parent"
-    ];
     public Graph Parent { get; set; }
     
     public List<EntryPoint> EntryPoints { get; set; }

@@ -15,8 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICommonVariableParameter, IVmCreator<Parameter> {
-    protected override HashSet<string> KnownElements { get; } =
-        ["Name", "OwnerComponent", "Type", "Value", "Implicit", "Parent", "Custom"];
     public string Name { get; set; }
     public FunctionalComponent? OwnerComponent { get; set; }
     public string Type { get; set; }

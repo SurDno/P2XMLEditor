@@ -12,8 +12,6 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Quest(ulong id) : ParameterHolder(id), IFiller<RawQuestData> {
     private static readonly HashSet<string> BaseQuestElements = ["StartEvent"];
-    protected override HashSet<string> KnownElements => BaseQuestElements.Concat(base.KnownElements).ToHashSet();
-    
     public Event? StartEvent { get; set; }
     
     public void FillFromRawData(RawQuestData data, VirtualMachine vm) {

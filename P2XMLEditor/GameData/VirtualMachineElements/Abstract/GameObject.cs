@@ -15,8 +15,6 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGameObjectData> {
     private static readonly HashSet<string> BaseGameObjectElements =
         ["WorldPositionGuid", "EngineTemplateID", "EngineBaseTemplateID", "Instantiated"];
-    
-    protected override HashSet<string> KnownElements => BaseGameObjectElements.Concat(base.KnownElements).ToHashSet();
 
     public string? WorldPositionGuid { get; set; }
     public string? EngineTemplateId { get; set; }

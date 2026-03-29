@@ -14,8 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class CustomType(ulong id) : VmElement(id), IFiller<RawCustomTypeData> {
-	protected override HashSet<string> KnownElements { get; } = ["Name", "Parent"];
-    
 	public string Name { get; set; }
 	public GameRoot Parent { get; set; }
 

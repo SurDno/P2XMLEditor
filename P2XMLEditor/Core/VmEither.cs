@@ -12,13 +12,10 @@ public readonly struct VmEither<T1, T2>(VmElement element) where T1 : VmElement 
 }
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public readonly struct VmEither<T1, T2, T3> where T1 : VmElement where T2 : VmElement where T3 : VmElement {
-    public VmEither(VmElement element) {
-        Element = element;
-    }
-
+public readonly struct VmEither<T1, T2, T3>(VmElement element) where T1 : VmElement where T2 : VmElement
+    where T3 : VmElement {
     public ulong Id => Element.Id;
-    public VmElement Element { get; }
+    public VmElement Element { get; } = element;
 
     public static implicit operator VmEither<T1, T2, T3>(T1 value) => new(value);
     public static implicit operator VmEither<T1, T2, T3>(T2 value) => new(value);
@@ -26,14 +23,10 @@ public readonly struct VmEither<T1, T2, T3> where T1 : VmElement where T2 : VmEl
 }
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public readonly struct VmEither<T1, T2, T3, T4> where T1 : VmElement where T2 : VmElement where T3 : VmElement 
-    where T4 : VmElement {
-    public VmEither(VmElement element) {
-        Element = element;
-    }
-
+public readonly struct VmEither<T1, T2, T3, T4>(VmElement element) where T1 : VmElement where T2 : VmElement
+    where T3 : VmElement where T4 : VmElement {
     public ulong Id => Element.Id;
-    public VmElement Element { get; }
+    public VmElement Element { get; } = element;
 
     public static implicit operator VmEither<T1, T2, T3, T4>(T1 value) => new(value);
     public static implicit operator VmEither<T1, T2, T3, T4>(T2 value) => new(value);
@@ -42,14 +35,10 @@ public readonly struct VmEither<T1, T2, T3, T4> where T1 : VmElement where T2 : 
 }
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public readonly struct VmEither<T1, T2, T3, T4, T5> where T1 : VmElement where T2 : VmElement where T3 : VmElement 
+public readonly struct VmEither<T1, T2, T3, T4, T5>(VmElement element) where T1 : VmElement where T2 : VmElement where T3 : VmElement
     where T4 : VmElement where T5 : VmElement {
-    public VmEither(VmElement element) {
-        Element = element;
-    }
-
     public ulong Id => Element.Id;
-    public VmElement Element { get; }
+    public VmElement Element { get; } = element;
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5>(T1 value) => new(value);
     public static implicit operator VmEither<T1, T2, T3, T4, T5>(T2 value) => new(value);
@@ -59,14 +48,10 @@ public readonly struct VmEither<T1, T2, T3, T4, T5> where T1 : VmElement where T
 }
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public readonly struct VmEither<T1, T2, T3, T4, T5, T6> where T1 : VmElement where T2 : VmElement where T3 : VmElement 
-    where T4 : VmElement where T5 : VmElement where T6 : VmElement {
-    public VmEither(VmElement element) {
-        Element = element;
-    }
-
+public readonly struct VmEither<T1, T2, T3, T4, T5, T6>(VmElement element) where T1 : VmElement where T2 : VmElement
+    where T3 : VmElement where T4 : VmElement where T5 : VmElement where T6 : VmElement {
     public ulong Id => Element.Id;
-    public VmElement Element { get; }
+    public VmElement Element { get; } = element;
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6>(T1 value) => new(value);
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6>(T2 value) => new(value);
@@ -77,14 +62,10 @@ public readonly struct VmEither<T1, T2, T3, T4, T5, T6> where T1 : VmElement whe
 }
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public readonly struct VmEither<T1, T2, T3, T4, T5, T6, T7> where T1 : VmElement where T2 : VmElement where T3 : VmElement 
-    where T4 : VmElement where T5 : VmElement where T6 : VmElement where T7 : VmElement {
-    public VmEither(VmElement element) {
-        Element = element;
-    }
-
+public readonly struct VmEither<T1, T2, T3, T4, T5, T6, T7>(VmElement element) where T1 : VmElement where T2 : VmElement
+    where T3 : VmElement where T4 : VmElement where T5 : VmElement where T6 : VmElement where T7 : VmElement {
     public ulong Id => Element.Id;
-    public VmElement Element { get; }
+    public VmElement Element { get; } = element;
 
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6, T7>(T1 value) => new(value);
     public static implicit operator VmEither<T1, T2, T3, T4, T5, T6, T7>(T2 value) => new(value);

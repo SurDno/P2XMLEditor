@@ -14,8 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
-	protected override HashSet<string> KnownElements { get; } = ["Name", "ActionLine", "Parent"];
-
 	public string Name { get; set; }
 	public ActionLine? ActionLine { get; set; }
 	public VmEither<State, Graph, Branch, Speech, Talking> Parent { get; set; }

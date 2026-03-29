@@ -14,10 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Reply(ulong id) : VmElement(id), IFiller<RawReplyData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "Name", "Text", "OnlyOnce", "OnlyOneReply", "Default", "OrderIndex", "Parent",
-        "EnableCondition", "ActionLine"
-    ];
     public string Name { get; set; }
     public GameString Text { get; set; }
     public bool? OnlyOnce { get; set; }

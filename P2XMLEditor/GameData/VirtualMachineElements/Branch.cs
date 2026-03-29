@@ -15,10 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "BranchConditions", "BranchType", "EntryPoints", "IgnoreBlock", "Owner",
-        "InputLinks", "OutputLinks", "Initial", "Name", "Parent", "BranchVariantInfo"
-    ];
     public List<VmEither<Condition, PartCondition>> BranchConditions { get; set; }
     public BranchType BranchType { get; set; }
     public List<BranchVariantInfo>? BranchVariantInfo { get; set; }

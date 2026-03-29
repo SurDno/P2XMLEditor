@@ -2,13 +2,17 @@ using P2XMLEditor.Parsing.Element;
 using P2XMLEditor.Parsing.Element.RawPointerParsers;
 using P2XMLEditor.Parsing.Element.SimdParsers;
 using P2XMLEditor.Parsing.Element.XmlReaderParsers;
+using P2XMLEditor.Parsing.Element;
+using P2XMLEditor.Parsing.Element.RawPointerParsers;
+using P2XMLEditor.Parsing.Element.SimdParsers;
+using P2XMLEditor.Parsing.Element.XmlReaderParsers;
 using P2XMLEditor.Parsing.RawData;
 
 namespace P2XMLEditor.Parsing.Executors;
 
 public class FastestParsingExecutor : ParsingExecutor {
 
-    protected internal override IParser<RawActionLineData> ActionLineLoader => new XmlReaderActionLineLoader();
+    protected internal override IParser<RawActionLineData> ActionLineLoader => new RawPointerActionLineLoader();
     protected internal override IParser<RawActionData> ActionLoader => new RawPointerActionLoader();
     protected internal override IParser<RawBlueprintData> BlueprintLoader => new XmlReaderBlueprintLoader();
     protected internal override IParser<RawBranchData> BranchLoader => new XmlReaderBranchLoader();
@@ -27,7 +31,7 @@ public class FastestParsingExecutor : ParsingExecutor {
     protected internal override IParser<RawGameObjectData> CharacterLoader => new XmlReaderGameObjectLoader();
 
     protected internal override IParser<RawGameRootData> GameRootLoader => new XmlReaderGameRootLoader();
-    protected internal override IParser<RawGameStringData> GameStringLoader => new NativeGameStringLoader();
+    protected internal override IParser<RawGameStringData> GameStringLoader => new RawPointerGameStringLoader();
     protected internal override IParser<RawGraphLinkData> GraphLinkLoader => new XmlReaderGraphLinkLoader();
     protected internal override IParser<RawGraphData> GraphLoader => new XmlReaderGraphLoader();
     protected internal override IParser<RawMindMapLinkData> MindMapLinkLoader => new XmlReaderMindMapLinkLoader();

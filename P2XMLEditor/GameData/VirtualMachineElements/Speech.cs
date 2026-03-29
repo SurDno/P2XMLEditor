@@ -14,10 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
-    protected override HashSet<string> KnownElements { get; } = [
-        "Replyes", "Text", "AuthorGuid", "OnlyOnce", "IsTrade", "EntryPoints",
-        "IgnoreBlock", "Owner", "InputLinks", "OutputLinks", "Initial", "Name", "Parent"
-    ];
     public List<Reply> Replies { get; set; }
     public GameString Text { get; set; }
     public VmEither<Blueprint, Character> AuthorGuid { get; set; }

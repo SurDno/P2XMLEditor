@@ -14,8 +14,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class PartCondition(ulong id) : VmElement(id), IFiller<RawPartConditionData>, IVmCreator<PartCondition> {
-    protected override HashSet<string> KnownElements { get; } =
-        ["Name", "ConditionType", "FirstExpression", "SecondExpression", "OrderIndex"];
     public string? Name { get; set; }
     public ConditionType ConditionType { get; set; }
     public Expression? FirstExpression { get; set; }

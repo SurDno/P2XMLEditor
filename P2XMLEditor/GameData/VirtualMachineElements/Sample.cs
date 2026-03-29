@@ -15,8 +15,6 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Sample(ulong id) : VmElement(id), IFiller<RawSampleData>, ICommonVariableParameter {
-	protected override HashSet<string> KnownElements { get; } = ["SampleType", "EngineID"];
-	
 	public SampleType SampleType { get; set; }
 	public string EngineId { get; set; }
 	

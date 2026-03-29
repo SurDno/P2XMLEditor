@@ -20,7 +20,6 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
         "EventGraph", "ChildObjects"
     ];
 
-    protected override HashSet<string> KnownElements => BaseGameRootElements.Concat(base.KnownElements).ToHashSet();
     public List<Sample> Samples { get; set; }
     public List<MindMap> LogicMaps { get; set; }
     public List<GameMode> GameModes { get; set; }

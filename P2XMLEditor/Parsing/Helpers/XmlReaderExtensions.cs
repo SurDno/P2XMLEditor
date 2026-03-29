@@ -38,26 +38,8 @@ public static class XmlReaderExtensions {
 		return value;
 	}
 
-	private static readonly char[] internal_buf = new char[32];
-	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static ulong GetULongValueAndAdvance(this XmlReader r) => GetULongValueAndAdvance(r, internal_buf);
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static ulong GetULongValueAndAdvance(this XmlReader r, char[] buf) {
-		r.Read(); 
-
-		var len = r.ReadValueChunk(buf, 0, buf.Length);
-
-		r.Read(); 
-		r.Read(); 
-
-		ulong v = 0;
-		for (var i = 0; i < len; i++)
-			v = (v << 1) + (v << 3) + (ulong)(buf[i] - '0');
-		
-		return v;
-	}
+	public static ulong GetULongValueAndAdvance(this XmlReader r) => ulong.Parse(r.ReadElementContentAsString());
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static long GetLongValueAndAdvance(this XmlReader r) => long.Parse(r.GetStringValueAndAdvance());

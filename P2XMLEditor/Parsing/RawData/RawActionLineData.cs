@@ -6,9 +6,9 @@ public struct RawActionLineData {
 	public ulong Id;
 	public ulong[]? ActionIds;
 	public ActionLineType ActionLineType;
-	public string LoopInfoName;
-	public string LoopInfoStart;
-	public string LoopInfoEnd;
+	public string? LoopInfoName;
+	public string? LoopInfoStart;
+	public string? LoopInfoEnd;
 	public bool? LoopInfoRandom;
 	public string Name;
 	public ulong LocalContextId;
