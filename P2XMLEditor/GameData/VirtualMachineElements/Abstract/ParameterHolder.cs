@@ -24,36 +24,6 @@ public abstract class ParameterHolder(ulong id) : VmElement(id), ICommonVariable
     public List<Event>? Events { get; set; }
     public List<ParameterHolder>? ChildObjects { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(id);
-        if (Static != null)
-            element.Add(CreateBoolElement("Static", (bool)Static));
-        if (InheritanceInfo?.Any() == true)
-            element.Add(CreateListElement("InheritanceInfo", InheritanceInfo));
-        if (FunctionalComponents.Any())
-            element.Add(CreateListElement("FunctionalComponents", FunctionalComponents.Select(f => f.Id.ToString())));
-        if (EventGraph != null)
-            element.Add(new XElement("EventGraph", EventGraph.Id));
-        if (ChildObjects?.Any() == true)
-            element.Add(CreateListElement("ChildObjects", ChildObjects.Select(c => c.Id.ToString())));
-        if (Events?.Any() == true)
-            element.Add(CreateListElement("Events", Events.Select(e => e.Id.ToString())));
-        if (CustomParams.Any())
-            element.Add(CreateDictionaryElement("CustomParams", CustomParams.ToDictionary(kv => kv.Key, kv => kv.Value.Id.ToString())));
-        if (StandartParams.Any())
-            element.Add(CreateDictionaryElement("StandartParams", StandartParams.ToDictionary(kv => kv.Key, kv => kv.Value.Id.ToString())));
-        if (GameTimeContext != null)
-            element.Add(new XElement("GameTimeContext", GameTimeContext));
-        element.Add(new XElement("Name", Name));
-        
-        if (Parent != null)
-            element.Add(new XElement("Parent", Parent.Id));
-        else if (this is not GameRoot)
-            throw new InvalidOperationException($"Parent is missing for {GetType().Name} {ParamId}");
-        
-        return element;
-    }
-
 
     public override void OnDestroy(VirtualMachine vm) {
         foreach (var functionalComponent in FunctionalComponents)

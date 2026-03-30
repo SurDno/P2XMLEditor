@@ -37,28 +37,6 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData>, ICommon
         Name = data.Name;
         Parent = vm.GetElement<Graph>(data.ParentId);
     }
-
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (States.Any())
-            element.Add(CreateListElement("States", States.Select(s => s.Id.ToString())));
-        if (EventLinks.Any())
-            element.Add(CreateListElement("EventLinks", EventLinks.Select(l => l.Id.ToString())));
-        element.Add(
-            new XElement("GraphType", "GRAPH_TYPE_TALKING"),
-            CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString()))
-        );
-        if (IgnoreBlock != null)
-            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
-        element.Add(new XElement("Owner", Owner.Id));
-        if (Initial != null)
-            element.Add(CreateBoolElement("Initial", (bool)Initial));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
     
     public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
 

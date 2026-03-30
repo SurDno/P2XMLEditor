@@ -17,16 +17,6 @@ public class MindMapLink(ulong id) : VmElement(id), IFiller<RawMindMapLinkData>,
 	public MindMapNode Destination { get; set; }
 
 
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		element.Add(
-			new XElement("Source", Source.Id),
-			new XElement("Destination", Destination.Id),
-			new XElement("Name"),
-			new XElement("Parent", Parent.Id)
-		);
-		return element;
-	}
 	
 	public void FillFromRawData(RawMindMapLinkData data, VirtualMachine vm) {
 		Parent = vm.GetElement<MindMap>(data.ParentId);

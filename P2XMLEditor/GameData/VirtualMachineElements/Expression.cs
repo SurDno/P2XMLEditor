@@ -29,31 +29,6 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 
     public VmFunction? Function;
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-
-        element.Add(new XElement("ExpressionType", ExpressionType.Serialize()));
-        if (Function != null)
-            element.Add(CreateSelfClosingElement("TargetFunctionName", Function.Name));
-        element.Add( new XElement("TargetObject", TargetObject.Write()));
-        
-        if (TargetParam != null)
-            element.Add(new XElement("TargetParam", TargetParam.Write()));
-        if (Function?.GetParamStrings() is { Count: > 0 } sourceParams)
-            element.Add(CreateListElement("SourceParams", sourceParams));
-        if (Const != null)
-            element.Add(new XElement("Const", Const.Id));
-
-        element.Add(new XElement("LocalContext", LocalContext.Id));
-        if (FormulaChilds?.Count > 0) {
-            element.Add(CreateListElement("FormulaChilds", FormulaChilds.Select(c => c.Id.ToString())));
-            element.Add(CreateListElement("FormulaOperations", FormulaOperations!.Select(o => o.Serialize())));
-        }
-
-        if (Inversion != null)
-            element.Add(CreateBoolElement("Inversion", (bool)Inversion));
-        return element;
-    }
 
     public override bool IsOrphaned() {
         return LocalContext.Element switch {

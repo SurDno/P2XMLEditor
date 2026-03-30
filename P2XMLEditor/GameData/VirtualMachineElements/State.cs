@@ -23,25 +23,6 @@ public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphEleme
     public string Name { get; set; }
     public bool? IgnoreBlock { get; set; }
     public bool? Initial { get; set; }
-
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(CreateListElement("EntryPoints", EntryPoints.Select(a => a.Id.ToString())));
-        if (IgnoreBlock != null)
-            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
-        element.Add(new XElement("Owner", Owner.Id));
-        if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(a => a.Id.ToString())));
-        if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(a => a.Id.ToString())));
-        if (Initial != null)
-            element.Add(CreateBoolElement("Initial", (bool)Initial));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
     
     public void FillFromRawData(RawStateData data, VirtualMachine vm) {
         EntryPoints = [];

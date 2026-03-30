@@ -36,28 +36,5 @@ public class Reply(ulong id) : VmElement(id), IFiller<RawReplyData> {
         ActionLine = data.ActionLineId != null ? vm.GetElement<ActionLine>(data.ActionLineId.Value) : null;
     }
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Text", Text.Id)
-        );
-        if (OnlyOnce != null)
-            element.Add(CreateBoolElement("OnlyOnce", (bool)OnlyOnce));
-        if (OnlyOneReply != null)
-            element.Add(CreateBoolElement("OnlyOneReply", (bool)OnlyOneReply));
-        if (Default != null)
-            element.Add(CreateBoolElement("Default", (bool)Default));
-        if (EnableCondition != null)
-            element.Add(new XElement("EnableCondition", EnableCondition.Id));
-        if (ActionLine != null)
-            element.Add(new XElement("ActionLine", ActionLine.Id));
-        element.Add(
-            new XElement("OrderIndex", OrderIndex),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-    
     public override bool IsOrphaned() => Parent.Replies.All(r => r != this);
 }

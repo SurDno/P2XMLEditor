@@ -27,30 +27,6 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
     public string Name { get; set; }
     public VmEither<Graph, Talking> Parent { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (Event != null)
-            element.Add(new XElement("Event", Event.Id));
-        element.Add(
-            new XElement("EventObject", EventObject.Write()),
-            new XElement("SourceExitPointIndex", SourceExitPointIndex),
-            new XElement("DestEntryPointIndex", DestEntryPointIndex)
-        );
-        if (SourceParams?.Count > 0)
-            element.Add(CreateListElement("SourceParams", SourceParams));
-        if (Source != null)
-            element.Add(new XElement("Source", Source.Value.Id));
-        if (Destination != null)
-            element.Add(new XElement("Destination", Destination.Value.Id));
-        if (Enabled != null)
-            element.Add(CreateBoolElement("Enabled", (bool)Enabled));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-
     public void FillFromRawData(RawGraphLinkData data, VirtualMachine vm) {
         Event = data.EventId.HasValue ? vm.GetElement<Event>(data.EventId.Value) : null;
         EventObject = CommonVariable.Read(data.EventObject, vm);

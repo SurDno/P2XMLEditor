@@ -20,17 +20,6 @@ public class Condition(ulong id) : VmElement(id), IFiller<RawConditionData>, IVm
 	public string Name { get; set; }
 	public byte OrderIndex { get; set; }
 
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		if (Predicates.Any())
-			element.Add(CreateListElement("Predicates", Predicates.Select(p => p.Id.ToString())));
-		element.Add(
-			new XElement("Operation", Operation.Serialize()),
-			CreateSelfClosingElement("Name", Name),
-			new XElement("OrderIndex", OrderIndex)
-		);
-		return element;
-	}
 	
 	public void FillFromRawData(RawConditionData data, VirtualMachine vm) {
 		Predicates = [];

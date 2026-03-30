@@ -24,22 +24,6 @@ public class MindMapNodeContent(ulong id) : VmElement(id), IFiller<RawMindMapNod
     public Condition ContentCondition { get; private set; }
     public string Name { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(
-            new XElement("ContentType", ContentType.Serialize()),
-            new XElement("Number", Number),
-            new XElement("ContentDescriptionText", ContentDescriptionText.Id)
-        );
-        if (ContentPicture != null)
-            element.Add(new XElement("ContentPicture", ContentPicture.Id));
-        element.Add(
-            new XElement("ContentCondition", ContentCondition.Id),
-            CreateSelfClosingElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
     
     public void FillFromRawData(RawMindMapNodeContentData data, VirtualMachine vm) {
         Parent = vm.GetElement<MindMapNode>(data.ParentId);

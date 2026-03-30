@@ -30,42 +30,6 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
     public string Name { get; set; }
     public bool? IgnoreBlock { get; set; }
     public bool? Initial { get; set; }
-
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (SubstituteGraph != null)
-            element.Add(new XElement("SubstituteGraph", SubstituteGraph.Value.Id));
-        if (States.Any())
-            element.Add(CreateListElement("States", States.Select(s => s.Id.ToString())));
-        if (EventLinks.Any())
-            element.Add(CreateListElement("EventLinks", EventLinks.Select(l => l.Id.ToString())));
-        element.Add(new XElement("GraphType", GraphType.Serialize()));
-        if (InputParamsInfo?.Any() == true) {
-            element.Add(new XElement("InputParamsInfo",
-                new XAttribute("count", InputParamsInfo.Count),
-                InputParamsInfo.Select(p => new XElement("Item",
-                    new XElement("Name", p.Name),
-                    new XElement("Type", p.Type)
-                ))
-            ));
-        }
-        if (EntryPoints.Any())
-            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(l => l.Id.ToString())));
-        if (IgnoreBlock != null)
-            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
-        element.Add(new XElement("Owner", Owner.Id));
-        if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id.ToString())));
-        if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id.ToString())));
-        if (Initial != null)
-            element.Add(CreateBoolElement("Initial", (bool)Initial));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
     
     public void FillFromRawData(RawGraphData data, VirtualMachine vm) {
         States = data.StateIds?.Select(vm.GetElement<State, Graph, Branch, Talking>).ToList() ?? [];

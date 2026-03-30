@@ -20,23 +20,6 @@ public class PartCondition(ulong id) : VmElement(id), IFiller<RawPartConditionDa
     public Expression? SecondExpression { get; set; }
     public int OrderIndex { get; set; }
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (!settings.CleanUpNames) 
-            element.Add(CreateSelfClosingElement("Name", Name));
-        element.Add(new XElement("ConditionType", ConditionType.Serialize()));
-        if (ConditionType is not (ConditionType.ConstTrue or ConditionType.ConstFalse) ||
-             !settings.CleanUpUnusedProperties) {
-            if (FirstExpression != null)
-                element.Add(new XElement("FirstExpression", FirstExpression.Id));
-            if (SecondExpression != null && (ConditionType != ConditionType.ValueExpression || 
-                                             !settings.CleanUpUnusedProperties))
-                element.Add(new XElement("SecondExpression", SecondExpression.Id));
-        }
-
-        element.Add(new XElement("OrderIndex", OrderIndex));
-        return element;
-    }
 
     public void FillFromRawData(RawPartConditionData data, VirtualMachine vm) {
         Name = data.Name;

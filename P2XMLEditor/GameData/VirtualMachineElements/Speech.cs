@@ -56,35 +56,5 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
         Parent = vm.GetElement<Talking>(data.ParentId);
     }
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (Replies.Any())
-            element.Add(CreateListElement("Replyes", Replies.Select(r => r.Id.ToString())));
-        element.Add(
-            new XElement("Text", Text.Id),
-            new XElement("AuthorGuid", AuthorGuid.Id)
-        );
-        if (OnlyOnce != null)
-            element.Add(CreateBoolElement("OnlyOnce", (bool)OnlyOnce));
-        if (IsTrade != null)
-            element.Add(CreateBoolElement("IsTrade", (bool)IsTrade));
-        if (EntryPoints.Any())
-            element.Add(CreateListElement("EntryPoints", EntryPoints.Select(e => e.Id.ToString())) );
-        if (IgnoreBlock != null)
-            element.Add(CreateBoolElement("IgnoreBlock", (bool)IgnoreBlock));
-        element.Add(new XElement("Owner", Owner.Id));
-        if (InputLinks?.Any() == true)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(i => i.Id.ToString())));
-        if (OutputLinks?.Any() == true)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(o => o.Id.ToString())));
-        if (Initial != null)
-            element.Add(CreateBoolElement("Initial", (bool)Initial));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-    
     public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
 }

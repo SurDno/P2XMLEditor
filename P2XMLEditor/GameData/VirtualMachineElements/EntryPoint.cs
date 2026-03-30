@@ -18,14 +18,6 @@ public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 	public ActionLine? ActionLine { get; set; }
 	public VmEither<State, Graph, Branch, Speech, Talking> Parent { get; set; }
 
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		element.Add(new XElement("Name", Name));
-		if (ActionLine != null)
-			element.Add(new XElement("ActionLine", ActionLine.Id));
-		element.Add(new XElement("Parent", Parent.Id));
-		return element;
-	}
 
 	public void FillFromRawData(RawEntryPointData data, VirtualMachine vm) {
 		Name = data.Name;

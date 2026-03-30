@@ -20,18 +20,6 @@ public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctiona
     public string Name { get; set; }
     public ParameterHolder Parent { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(CreateListElement("Events", Events.Select(e => e.Id.ToString())));
-        if (Main != null)
-            element.Add(CreateBoolElement("Main", (bool)Main));
-        element.Add(
-            new XElement("LoadPriority", LoadPriority),
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
 
     public void FillFromRawData(RawFunctionalComponentData data, VirtualMachine vm) {
         Events = [];

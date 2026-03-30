@@ -8,7 +8,6 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 public abstract class VmElement(ulong id) {
     public ulong Id { get; } = id;
-    public abstract XElement ToXml(WriterSettings settings);
 
     public static T CreateDefault<T>(VirtualMachine vm, VmElement parent) where T : VmElement => 
         vm.Register((T)CreateDefaultImpl(vm, IdGenerator.GetNewId<T>(vm), typeof(T), parent));

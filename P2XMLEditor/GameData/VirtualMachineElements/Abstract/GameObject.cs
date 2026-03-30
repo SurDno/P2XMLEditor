@@ -21,20 +21,6 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
     public string? EngineBaseTemplateId { get; set; }
     public bool? Instantiated { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = base.ToXml(settings);
-        
-        // Reverse order here since we're using AddFirst.
-        if (Instantiated != null)
-           element.AddFirst(CreateBoolElement("Instantiated", (bool)Instantiated));
-        if (EngineBaseTemplateId != null)
-            element.AddFirst(CreateSelfClosingElement("EngineBaseTemplateID", EngineBaseTemplateId));
-        if (EngineTemplateId != null)
-            element.AddFirst(CreateSelfClosingElement("EngineTemplateID", EngineTemplateId));
-        if (WorldPositionGuid != null)
-            element.AddFirst(CreateSelfClosingElement("WorldPositionGuid", WorldPositionGuid));
-        return element;
-    }
     
     public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {
         Static = data.Static;

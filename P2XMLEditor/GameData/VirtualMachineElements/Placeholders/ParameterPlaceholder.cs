@@ -9,6 +9,5 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 // For cases where TargetParam property in Expression point to a non-existing Parameter.
 public class ParameterPlaceholder(ulong id) : VmElement(id), ICommonVariableParameter {
-	public override XElement ToXml(WriterSettings settings) => throw new InvalidOperationException();
 	public string ParamId => Id.ToString();
 }

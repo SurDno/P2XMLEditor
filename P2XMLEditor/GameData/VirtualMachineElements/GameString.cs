@@ -21,11 +21,6 @@ public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, I
 	public string GetText(string lang) => _texts.TryGetValue(lang, out var text) ? text : string.Empty;
 	public void SetText(string text, string lang) => _texts[lang] = text;
 
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		element.Add(new XElement("Parent", Parent.Id));
-		return element;
-	}
 
 	public override bool IsOrphaned() {
 		return Parent.Element switch {

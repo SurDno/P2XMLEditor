@@ -25,34 +25,6 @@ public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>,
     
     public float GameScreenPosX { get; set; }
     public float GameScreenPosY { get; set; }
-    
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(
-            new XElement("LogicMapNodeType", LogicMapNodeType.Serialize())
-        );
-        if (Content.Count != 0)
-            element.Add(CreateListElement("NodeContent", Content.Select(c => c.Id.ToString())));
-        element.Add(
-            new XElement("GameScreenPosX", FormatPos(GameScreenPosX)),
-            new XElement("GameScreenPosY", FormatPos(GameScreenPosY))
-        );
-        if (InputLinks.Count != 0)
-            element.Add(CreateListElement("InputLinks", InputLinks.Select(l => l.Id.ToString())));
-        if (OutputLinks.Count != 0)
-            element.Add(CreateListElement("OutputLinks", OutputLinks.Select(l => l.Id.ToString())));
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-    
-    private static string FormatPos(float value) {
-        const float posStep = 0.0025f;
-        var str = (MathF.Round(value / posStep) * posStep).ToString("0.#####");
-        return str.Contains('.') ? str.TrimEnd('0').TrimEnd('.') : str;
-    }
 
     public static MindMapNode New(VirtualMachine vm, ulong id, VmElement parent) {
         var node = new MindMapNode(id) {

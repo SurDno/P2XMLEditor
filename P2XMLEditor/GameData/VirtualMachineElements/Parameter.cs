@@ -23,24 +23,6 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICo
     public VmEither<ParameterHolder, Expression> Parent { get; set; }
     public bool? Custom { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        element.Add(
-            CreateSelfClosingElement("Name", Name)
-        );
-        if (OwnerComponent != null)
-            element.Add(new XElement("OwnerComponent", OwnerComponent.Id));
-        element.Add(
-            new XElement("Type", Type),
-            CreateSelfClosingElement("Value", Value)
-        );
-        if (Implicit != null)
-            element.Add(CreateBoolElement("Implicit", (bool)Implicit));
-        element.Add(new XElement("Parent", Parent.Id));
-        if (Custom != null)
-            element.Add(CreateBoolElement("Custom", (bool)Custom));
-        return element;
-    }
 
     public override bool IsOrphaned() {
         return Parent.Element switch {

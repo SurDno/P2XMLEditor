@@ -26,30 +26,6 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData> {
     public VmEither<State, Graph, Branch, Talking, Speech> LocalContext { get; set; }
     public int OrderIndex { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        
-        element.Add(
-            new XElement("ActionType", ActionType.Serialize()),
-            new XElement("MathOperationType", MathOperationType.Serialize()),
-            CreateSelfClosingElement("TargetFuncName", TargetFuncName)
-        );
-        if (SourceExpression != null) 
-            element.Add(new XElement("SourceExpression", SourceExpression.Id));
-        element.Add(
-            new XElement("TargetObject", TargetObject),
-            new XElement("TargetParam", TargetParam)
-        );
-        if (SourceParams?.Count > 0)
-            element.Add(CreateListElement("SourceParams", SourceParams));
-        element.Add(
-            CreateSelfClosingElement("Name", Name),
-            new XElement("LocalContext", LocalContext.Id),
-            new XElement("OrderIndex", OrderIndex)
-        );
-        return element;
-    }
-
     public void FillFromRawData(RawActionData data, VirtualMachine vm) {
         ActionType = data.ActionType;
         MathOperationType = data.MathOperationType;

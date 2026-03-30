@@ -9,6 +9,7 @@ using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Logging;
+using P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -48,6 +49,41 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
             { typeof(State), ("State.xml", vm => vm.GetElementsByType<State>()) },
             { typeof(Talking), ("Talking.xml", vm => vm.GetElementsByType<Talking>()) }
     };
+
+    private readonly Dictionary<Type, IReleaseXElementWriter> _writers = new() {
+        { typeof(Action), new ReleaseXElementActionWriter() },
+        { typeof(ActionLine), new ReleaseXElementActionLineWriter() },
+        { typeof(Blueprint), new ReleaseXElementBlueprintWriter() },
+        { typeof(Branch), new ReleaseXElementBranchWriter() },
+        { typeof(Character), new ReleaseXElementCharacterWriter() },
+        { typeof(Condition), new ReleaseXElementConditionWriter() },
+        { typeof(CustomType), new ReleaseXElementCustomTypeWriter() },
+        { typeof(EntryPoint), new ReleaseXElementEntryPointWriter() },
+        { typeof(Event), new ReleaseXElementEventWriter() },
+        { typeof(Expression), new ReleaseXElementExpressionWriter() },
+        { typeof(FunctionalComponent), new ReleaseXElementFunctionalComponentWriter() },
+        { typeof(GameMode), new ReleaseXElementGameModeWriter() },
+        { typeof(GameRoot), new ReleaseXElementGameRootWriter() },
+        { typeof(GameString), new ReleaseXElementGameStringWriter() },
+        { typeof(Geom), new ReleaseXElementGeomWriter() },
+        { typeof(Graph), new ReleaseXElementGraphWriter() },
+        { typeof(GraphLink), new ReleaseXElementGraphLinkWriter() },
+        { typeof(Item), new ReleaseXElementItemWriter() },
+        { typeof(MindMap), new ReleaseXElementMindMapWriter() },
+        { typeof(MindMapLink), new ReleaseXElementMindMapLinkWriter() },
+        { typeof(MindMapNode), new ReleaseXElementMindMapNodeWriter() },
+        { typeof(MindMapNodeContent), new ReleaseXElementMindMapNodeContentWriter() },
+        { typeof(Other), new ReleaseXElementOtherWriter() },
+        { typeof(Parameter), new ReleaseXElementParameterWriter() },
+        { typeof(PartCondition), new ReleaseXElementPartConditionWriter() },
+        { typeof(Quest), new ReleaseXElementQuestWriter() },
+        { typeof(Reply), new ReleaseXElementReplyWriter() },
+        { typeof(Sample), new ReleaseXElementSampleWriter() },
+        { typeof(Scene), new ReleaseXElementSceneWriter() },
+        { typeof(Speech), new ReleaseXElementSpeechWriter() },
+        { typeof(State), new ReleaseXElementStateWriter() },
+        { typeof(Talking), new ReleaseXElementTalkingWriter() }
+    };
     
 
     [PerformanceLogHook]
@@ -72,7 +108,7 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
             var root = new XElement("Root",
                 new XAttribute("xml_data_format_version", "14"),
                 new XAttribute("default_type", elementType.Name),
-                elementsList.Select(element => element.ToXml(settings))
+                elementsList.Select(element => _writers[elementType].ToXml(element, settings))
             );
 
             var xmlSettings = new XmlWriterSettings { 
@@ -107,4 +143,4 @@ public class VirtualMachineWriter(string vmPath, VirtualMachine virtualMachine) 
                 writer.WriteLine($"{gameString.Id} {gameString.GetText(lang)}");
         }
     }
-}
+}

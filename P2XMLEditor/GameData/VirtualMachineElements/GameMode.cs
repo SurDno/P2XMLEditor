@@ -21,23 +21,6 @@ public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData>, IComm
     public string Name { get; set; }
     public GameRoot Parent { get; set; }
 
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        var sgt = StartGameTime;
-        var sst = StartSolarTime;
-        if (IsMain != null)
-            element.Add(CreateBoolElement("IsMain", (bool)IsMain));
-        element.Add(
-            new XElement("StartGameTime", $"{sgt.Days}:{sgt.Hours}:{sgt.Minutes}:{sgt.Seconds}"),
-            new XElement("GameTimeSpeed", GameTimeSpeed),
-            new XElement("StartSolarTime", $"{sst.Days}:{sst.Hours}:{sst.Minutes}:{sst.Seconds}"),
-            new XElement("SolarTimeSpeed", SolarTimeSpeed),
-            new XElement("PlayerRef", PlayerRef),
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
     
     public void FillFromRawData(RawGameModeData data, VirtualMachine vm) {
         IsMain = data.IsMain;

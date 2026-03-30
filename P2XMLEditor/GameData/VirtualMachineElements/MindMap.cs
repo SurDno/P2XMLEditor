@@ -23,21 +23,6 @@ public class MindMap(ulong id) : VmElement(id), IFiller<RawMindMapData>, IVmCrea
     public List<MindMapNode> Nodes { get; set; } = [];
     public List<MindMapLink> Links { get; set; } = [];
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (Nodes.Count != 0)
-            element.Add(CreateListElement("Nodes", Nodes.Select(n => n.Id.ToString())));
-        if (Links.Count != 0)
-            element.Add(CreateListElement("Links", Links.Select(l => l.Id.ToString())));
-        element.Add(
-            new XElement("LogicMapType", LogicMapType.Serialize()),
-            new XElement("Title", Title.Id),
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-    
     public void FillFromRawData(RawMindMapData data, VirtualMachine vm) {
         Name = data.Name;
         LogicMapType = data.LogicMapType;

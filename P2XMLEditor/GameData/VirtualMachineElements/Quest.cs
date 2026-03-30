@@ -31,11 +31,5 @@ public class Quest(ulong id) : ParameterHolder(id), IFiller<RawQuestData> {
         StartEvent = data.StartEventId.HasValue ? vm.GetElement<Event>(data.StartEventId.Value) : null;
     }
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = base.ToXml(settings);
-        if (StartEvent != null)
-            element.AddFirst(new XElement("StartEvent", StartEvent.Id));
-        return element;
-    }
 
 }

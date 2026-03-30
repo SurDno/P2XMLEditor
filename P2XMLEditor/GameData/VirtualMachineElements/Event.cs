@@ -27,38 +27,6 @@ public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
     public Condition? Condition { get; set; }
     public List<MessageInfo>? MessagesInfo { get; set; }
     
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (EventParameter != null)
-            element.Add(new XElement("EventParameter", EventParameter.Id));
-        element.Add(new XElement("EventTime",
-            $"{EventTime.Days}:{EventTime.Hours}:{EventTime.Minutes}:{EventTime.Seconds}"));
-        
-        if (Manual != null)
-            element.Add(CreateBoolElement("Manual", (bool)Manual));
-        element.Add(new XElement("EventRaisingType", EventRaisingType.Serialize()));
-        if (Condition != null)
-            element.Add(new XElement("Condition", Condition.Id));
-        if (ChangeTo != null)
-            element.Add(CreateBoolElement("ChangeTo", (bool)ChangeTo));
-        if (Repeated != null)
-            element.Add(CreateBoolElement("Repeated", (bool)Repeated));
-        if (MessagesInfo?.Count > 0) {
-            element.Add(new XElement("MessagesInfo",
-                new XAttribute("count", MessagesInfo.Count),
-                MessagesInfo.Select(m => new XElement("Item",
-                    new XElement("Name", m.Name),
-                    new XElement("Type", m.Type)
-                ))
-            ));
-        }
-        element.Add(
-            new XElement("Name", Name),
-            new XElement("Parent", Parent.Id)
-        );
-        return element;
-    }
-    
     public void FillFromRawData(RawEventData data, VirtualMachine vm) {
         EventTime = data.EventTime;
         Manual = data.Manual;

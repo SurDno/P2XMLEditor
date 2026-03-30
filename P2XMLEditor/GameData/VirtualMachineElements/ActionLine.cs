@@ -23,32 +23,6 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
     public int OrderIndex { get; set; }
 
     public record struct ActionLoopInfo(string Name, string Start, string End, bool? Random);
-
-    public override XElement ToXml(WriterSettings settings) {
-        var element = CreateBaseElement(Id);
-        if (Actions is not null && Actions.Count != 0)
-            element.Add(CreateListElement("Actions", Actions.Select(a => a.Id.ToString())));
-        
-        element.Add(new XElement("ActionLineType", ActionLineType.Serialize()));
-        
-        if (LoopInfo != null) {
-            var actionLineInfo = new XElement("ActionLoopInfo",
-                CreateSelfClosingElement("Name", LoopInfo.Value.Name),
-                new XElement("Start", LoopInfo.Value.Start),
-                new XElement("End", LoopInfo.Value.End)
-            );
-            if (LoopInfo.Value.Random != null)
-                actionLineInfo.Add(CreateBoolElement("Random", (bool)LoopInfo.Value.Random!));
-            element.Add(actionLineInfo);
-        }
-        
-        element.Add(
-            CreateSelfClosingElement("Name", Name),
-            new XElement("LocalContext", LocalContext.Id),
-            new XElement("OrderIndex", OrderIndex)
-        );
-        return element;
-    }
     
     public void FillFromRawData(RawActionLineData data, VirtualMachine vm) {
         Actions = [];

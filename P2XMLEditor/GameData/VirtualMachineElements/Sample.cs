@@ -22,15 +22,6 @@ public class Sample(ulong id) : VmElement(id), IFiller<RawSampleData>, ICommonVa
 		SampleType = data.SampleType;
 		EngineId = data.EngineId;
 	}
-	
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		element.Add(
-			new XElement("SampleType", SampleType.Serialize()),
-			new XElement("EngineID", EngineId)
-		);
-		return element;
-	}
 
 	public static VmElement New(VirtualMachine vm, ulong id, VmElement parent) => throw new NotImplementedException();
 

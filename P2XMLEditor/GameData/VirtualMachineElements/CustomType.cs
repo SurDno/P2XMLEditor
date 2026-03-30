@@ -17,14 +17,6 @@ public class CustomType(ulong id) : VmElement(id), IFiller<RawCustomTypeData> {
 	public string Name { get; set; }
 	public GameRoot Parent { get; set; }
 
-	public override XElement ToXml(WriterSettings settings) {
-		var element = CreateBaseElement(Id);
-		element.Add(
-			new XElement("Name", Name),
-			new XElement("Parent", Parent.Id.ToString())
-		);
-		return element;
-	}
 
 	public void FillFromRawData(RawCustomTypeData data, VirtualMachine vm) {
 		Name = data.Name;
