@@ -6,14 +6,14 @@ using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 namespace P2XMLEditor.GameData.Templates.InternalTypes.Components;
 
 public struct DetectorComponent : ITemplateComponent, IEnableable {
-    public bool IsEnabled { get; set; }
+	public bool IsEnabled { get; set; }
 
-    public void LoadFromXml(XElement element) {
-        IsEnabled = ParseBool(element.Element("IsEnabled")!);
-    }
+	public void LoadFromXml(XElement element) {
+		IsEnabled = ParseBool(element.Element("IsEnabled")!);
+	}
 
-     public XElement ToXml(XElement baseElement) {
-        baseElement.Add(CreateBoolElement("IsEnabled", IsEnabled));
-        return baseElement;
-    }
+	 public XElement ToXml(XElement baseElement) {
+		baseElement.Add(CreateBoolElement("IsEnabled", IsEnabled));
+		return baseElement;
+	}
 }

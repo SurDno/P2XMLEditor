@@ -13,115 +13,115 @@ using P2XMLEditor.WindowsFormsExtensions;
 namespace P2XMLEditor.Forms.MainForm.Combinations;
 
 public class CombinationsBrowser : Panel {
-    private VirtualMachine _vm;
-    private ListView _comboList;
-    private SearchControl _searchControl;
-    private ContextMenuStrip _contextMenu;
+	private VirtualMachine _vm;
+	private ListView _comboList;
+	private SearchControl _searchControl;
+	private ContextMenuStrip _contextMenu;
 
-    private const string COMBINATION_KEY = "Combination.CombinationData", STORABLE_KEY = "Storable.DefaultStackCount";
+	private const string COMBINATION_KEY = "Combination.CombinationData", STORABLE_KEY = "Storable.DefaultStackCount";
 
-    [PerformanceLogHook]
-    public CombinationsBrowser(VirtualMachine vm) {
-        _vm = vm;
-        Dock = DockStyle.Fill;
+	[PerformanceLogHook]
+	public CombinationsBrowser(VirtualMachine vm) {
+		_vm = vm;
+		Dock = DockStyle.Fill;
 
-        SetupControls();
-        LoadCombinations();
-    }
+		SetupControls();
+		LoadCombinations();
+	}
 
-    private void SetupControls() {
-        _searchControl = new SearchControl { Dock = DockStyle.Top };
-        _searchControl.SearchChanged += (_, _) => LoadCombinations();
+	private void SetupControls() {
+		_searchControl = new SearchControl { Dock = DockStyle.Top };
+		_searchControl.SearchChanged += (_, _) => LoadCombinations();
 
-        _comboList = new ListView {
-            Location = new Point(10, 45),
-            Size = new Size(Width - 20, Height - 55),
-            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
-            View = View.Details,
-            FullRowSelect = true,
-            MultiSelect = false,
-            GridLines = true
-        };
+		_comboList = new ListView {
+			Location = new Point(10, 45),
+			Size = new Size(Width - 20, Height - 55),
+			Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
+			View = View.Details,
+			FullRowSelect = true,
+			MultiSelect = false,
+			GridLines = true
+		};
 
-        _comboList.Columns.Add("Item Name", 350);
-        _comboList.Columns.Add("Combination Data", -2);
-        _comboList.SizeChanged += (_, _) => ResizeColumns();
-        _comboList.ColumnWidthChanged += (_, e) => { if (e.ColumnIndex == 0) ResizeColumns(); };
-        _comboList.DoubleClick += OnCombinationDoubleClick;
-        _comboList.KeyDown += (s, e) => { if (e.KeyCode == Keys.Delete) DeleteSelectedCombination(); };
+		_comboList.Columns.Add("Item Name", 350);
+		_comboList.Columns.Add("Combination Data", -2);
+		_comboList.SizeChanged += (_, _) => ResizeColumns();
+		_comboList.ColumnWidthChanged += (_, e) => { if (e.ColumnIndex == 0) ResizeColumns(); };
+		_comboList.DoubleClick += OnCombinationDoubleClick;
+		_comboList.KeyDown += (s, e) => { if (e.KeyCode == Keys.Delete) DeleteSelectedCombination(); };
 
-        SetupContextMenu();
+		SetupContextMenu();
 
-        _comboList.ContextMenuStrip = _contextMenu;
+		_comboList.ContextMenuStrip = _contextMenu;
 
-        Controls.AddRange([_searchControl, _comboList]);
-    }
+		Controls.AddRange([_searchControl, _comboList]);
+	}
 
-    private void ResizeColumns() => _comboList.Columns[1].Width = _comboList.Width - _comboList.Columns[0].Width - 30;
+	private void ResizeColumns() => _comboList.Columns[1].Width = _comboList.Width - _comboList.Columns[0].Width - 30;
 
-    private void LoadCombinations() {
-        _comboList.Items.Clear();
+	private void LoadCombinations() {
+		_comboList.Items.Clear();
 
-        var combos = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).
-                             Where(item => item.StandartParams.ContainsKey(COMBINATION_KEY)).ToList();
+		var combos = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).
+							 Where(item => item.StandartParams.ContainsKey(COMBINATION_KEY)).ToList();
 
-        var allNames = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).
-              Where(item => item.StandartParams.ContainsKey(STORABLE_KEY) ||
-                            item.StandartParams.ContainsKey(COMBINATION_KEY)).ToDictionary(o => o.Id, o => o.Name);
+		var allNames = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).
+			  Where(item => item.StandartParams.ContainsKey(STORABLE_KEY) ||
+							item.StandartParams.ContainsKey(COMBINATION_KEY)).ToDictionary(o => o.Id, o => o.Name);
 
-        foreach (var el in combos) {
-            var contents = CombinationHelper.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
+		foreach (var el in combos) {
+			var contents = CombinationHelper.FormatReadable(el.StandartParams[COMBINATION_KEY].Value, allNames, _vm);
 
-            if (!_searchControl.IsMatchAny(el.Name, el.Id.ToString(), contents))
-                continue;
+			if (!_searchControl.IsMatchAny(el.Name, el.Id.ToString(), contents))
+				continue;
 
-            var listItem = new ListViewItem(el.Name) { Tag = el };
-            listItem.SubItems.Add(contents);
-            _comboList.Items.Add(listItem);
-        }
+			var listItem = new ListViewItem(el.Name) { Tag = el };
+			listItem.SubItems.Add(contents);
+			_comboList.Items.Add(listItem);
+		}
 
-        _searchControl.StatusText = $"Displaying {_comboList.Items.Count}/{combos.Count} combinations.";
-    }
+		_searchControl.StatusText = $"Displaying {_comboList.Items.Count}/{combos.Count} combinations.";
+	}
 
-    private void OnCombinationDoubleClick(object? sender, EventArgs e) => EditSelectedCombination();
+	private void OnCombinationDoubleClick(object? sender, EventArgs e) => EditSelectedCombination();
 
-    private void EditSelectedCombination() {
-        if (_comboList.SelectedItems.Count == 0) return;
+	private void EditSelectedCombination() {
+		if (_comboList.SelectedItems.Count == 0) return;
 
-        var selectedElement = (ParameterHolder)_comboList.SelectedItems[0].Tag!;
-        var combinationParam = selectedElement.StandartParams[COMBINATION_KEY];
+		var selectedElement = (ParameterHolder)_comboList.SelectedItems[0].Tag!;
+		var combinationParam = selectedElement.StandartParams[COMBINATION_KEY];
 
-        var allNames = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).ToList();
-        var availableCombinations = allNames.Where(item => item.StandartParams.ContainsKey(COMBINATION_KEY)).ToList();
-        var availableStorables = allNames.Where(item => item.StandartParams.ContainsKey(STORABLE_KEY)).Except(availableCombinations).ToList();
+		var allNames = _vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(_vm.GetElementsByType<Other>()).ToList();
+		var availableCombinations = allNames.Where(item => item.StandartParams.ContainsKey(COMBINATION_KEY)).ToList();
+		var availableStorables = allNames.Where(item => item.StandartParams.ContainsKey(STORABLE_KEY)).Except(availableCombinations).ToList();
 
-        new CombinationEditorForm(_vm, combinationParam.Value, availableStorables, availableCombinations, newValue => {
-            combinationParam.Value = newValue;
-            LoadCombinations();
-        }).ShowDialog();
-    }
+		new CombinationEditorForm(_vm, combinationParam.Value, availableStorables, availableCombinations, newValue => {
+			combinationParam.Value = newValue;
+			LoadCombinations();
+		}).ShowDialog();
+	}
 
-    private void DeleteSelectedCombination() {
-        if (_comboList.SelectedItems.Count == 0) return;
+	private void DeleteSelectedCombination() {
+		if (_comboList.SelectedItems.Count == 0) return;
 
-        var selectedElement = (ParameterHolder)_comboList.SelectedItems[0].Tag!;
-        if (!selectedElement.StandartParams.ContainsKey(COMBINATION_KEY)) return;
+		var selectedElement = (ParameterHolder)_comboList.SelectedItems[0].Tag!;
+		if (!selectedElement.StandartParams.ContainsKey(COMBINATION_KEY)) return;
 
-        if (MessageBox.Show($"Are you sure you want to delete the combination '{selectedElement.Name}'?",
-                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
-        _vm.RemoveElement(selectedElement);
-        LoadCombinations();
-    }
+		if (MessageBox.Show($"Are you sure you want to delete the combination '{selectedElement.Name}'?",
+				"Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+		_vm.RemoveElement(selectedElement);
+		LoadCombinations();
+	}
 
-    [SuppressMessage("ReSharper", "UseCollectionExpression")]
-    private void SetupContextMenu() {
-        _contextMenu = new ContextMenuStrip();
-        var editItem = new ToolStripMenuItem("Edit");
-        var deleteItem = new ToolStripMenuItem("Delete");
+	[SuppressMessage("ReSharper", "UseCollectionExpression")]
+	private void SetupContextMenu() {
+		_contextMenu = new ContextMenuStrip();
+		var editItem = new ToolStripMenuItem("Edit");
+		var deleteItem = new ToolStripMenuItem("Delete");
 
-        editItem.Click += (_, _) => EditSelectedCombination();
-        deleteItem.Click += (_, _) => DeleteSelectedCombination();
+		editItem.Click += (_, _) => EditSelectedCombination();
+		deleteItem.Click += (_, _) => DeleteSelectedCombination();
 
-        _contextMenu.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
-    }
+		_contextMenu.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
+	}
 }

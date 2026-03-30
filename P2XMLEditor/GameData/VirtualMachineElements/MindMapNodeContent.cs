@@ -15,39 +15,39 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class MindMapNodeContent(ulong id) : VmElement(id), IFiller<RawMindMapNodeContentData>, IVmCreator<MindMapNodeContent> {
-    public MindMapNode Parent { get; set; }
-    public NodeContentType ContentType { get; set; }
-    public int Number { get; set; }
-    public GameString ContentDescriptionText { get; private set; }
+	public MindMapNode Parent { get; set; }
+	public NodeContentType ContentType { get; set; }
+	public int Number { get; set; }
+	public GameString ContentDescriptionText { get; private set; }
 
-    public Sample? ContentPicture { get; set; }
-    public Condition ContentCondition { get; private set; }
-    public string Name { get; set; }
+	public Sample? ContentPicture { get; set; }
+	public Condition ContentCondition { get; private set; }
+	public string Name { get; set; }
 
-    
-    public void FillFromRawData(RawMindMapNodeContentData data, VirtualMachine vm) {
-        Parent = vm.GetElement<MindMapNode>(data.ParentId);
-        ContentType = data.ContentType;
-        Number = data.Number;
-        ContentDescriptionText = vm.GetElement<GameString>(data.ContentDescriptionTextId);
-        ContentPicture = data.ContentPictureId.HasValue ? 
-            vm.GetElement<Sample>(data.ContentPictureId.Value) : null;
-        ContentCondition = vm.GetElement<Condition>(data.ContentConditionId);
-        Name = data.Name;
-    }
-    
-    public static MindMapNodeContent New(VirtualMachine vm, ulong id, VmElement parent) => new MindMapNodeContent(id) {
-        Name = "Initial Content",
-        ContentType = NodeContentType.Info,
-        Parent = parent as MindMapNode ?? throw new ArgumentException("Parent must be MindMapNode"),
-        ContentPicture = vm.First<Sample>(s => s.SampleType is SampleType.MindMapPicture),
-        ContentDescriptionText = CreateDefault<GameString>(vm, (parent as MindMapNode)!.Parent),
-        ContentCondition = CreateDefault<Condition>(vm, null!)
-    };
+	
+	public void FillFromRawData(RawMindMapNodeContentData data, VirtualMachine vm) {
+		Parent = vm.GetElement<MindMapNode>(data.ParentId);
+		ContentType = data.ContentType;
+		Number = data.Number;
+		ContentDescriptionText = vm.GetElement<GameString>(data.ContentDescriptionTextId);
+		ContentPicture = data.ContentPictureId.HasValue ? 
+			vm.GetElement<Sample>(data.ContentPictureId.Value) : null;
+		ContentCondition = vm.GetElement<Condition>(data.ContentConditionId);
+		Name = data.Name;
+	}
+	
+	public static MindMapNodeContent New(VirtualMachine vm, ulong id, VmElement parent) => new MindMapNodeContent(id) {
+		Name = "Initial Content",
+		ContentType = NodeContentType.Info,
+		Parent = parent as MindMapNode ?? throw new ArgumentException("Parent must be MindMapNode"),
+		ContentPicture = vm.First<Sample>(s => s.SampleType is SampleType.MindMapPicture),
+		ContentDescriptionText = CreateDefault<GameString>(vm, (parent as MindMapNode)!.Parent),
+		ContentCondition = CreateDefault<Condition>(vm, null!)
+	};
 
-    public override void OnDestroy(VirtualMachine vm) {
-        vm.RemoveElement(ContentDescriptionText);
-        vm.RemoveElement(ContentCondition);
-        Parent.Content.Remove(this);
-    }
+	public override void OnDestroy(VirtualMachine vm) {
+		vm.RemoveElement(ContentDescriptionText);
+		vm.RemoveElement(ContentCondition);
+		Parent.Content.Remove(this);
+	}
 }

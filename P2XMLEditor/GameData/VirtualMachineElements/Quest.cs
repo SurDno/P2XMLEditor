@@ -11,25 +11,25 @@ using P2XMLEditor.Parsing.RawData;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Quest(ulong id) : ParameterHolder(id), IFiller<RawQuestData> {
-    private static readonly HashSet<string> BaseQuestElements = ["StartEvent"];
-    public Event? StartEvent { get; set; }
-    
-    public void FillFromRawData(RawQuestData data, VirtualMachine vm) {
-        Static = data.Static;
-        FunctionalComponents = data.FunctionalComponentIds.Select(vm.GetElement<FunctionalComponent>).ToList();
-        EventGraph = vm.GetElement<Graph>(data.EventGraphId);
-        StandartParams = data.StandartParamIds.ToDictionary(kvp => kvp.Item1, kvp => vm.GetElement<Parameter>(kvp.Item2));
-        CustomParams = data.CustomParamIds.ToDictionary(kvp => kvp.Item1, kvp => vm.GetElement<Parameter>(kvp.Item2));
-        GameTimeContext = data.GameTimeContext;
-        Name = data.Name;
-        Parent = vm.GetElement<ParameterHolder>(data.ParentId);
-        InheritanceInfo = data.InheritanceInfo?.ToList() ?? [];
-        Events = data.EventIds != null ? data.EventIds.Select(vm.GetElement<Event>).ToList() : [];
-        ChildObjects = data.ChildObjectIds != null 
-            ? data.ChildObjectIds.Select(vm.GetElement<ParameterHolder>).ToList() : [];
+	private static readonly HashSet<string> BaseQuestElements = ["StartEvent"];
+	public Event? StartEvent { get; set; }
+	
+	public void FillFromRawData(RawQuestData data, VirtualMachine vm) {
+		Static = data.Static;
+		FunctionalComponents = data.FunctionalComponentIds.Select(vm.GetElement<FunctionalComponent>).ToList();
+		EventGraph = vm.GetElement<Graph>(data.EventGraphId);
+		StandartParams = data.StandartParamIds.ToDictionary(kvp => kvp.Item1, kvp => vm.GetElement<Parameter>(kvp.Item2));
+		CustomParams = data.CustomParamIds.ToDictionary(kvp => kvp.Item1, kvp => vm.GetElement<Parameter>(kvp.Item2));
+		GameTimeContext = data.GameTimeContext;
+		Name = data.Name;
+		Parent = vm.GetElement<ParameterHolder>(data.ParentId);
+		InheritanceInfo = data.InheritanceInfo?.ToList() ?? [];
+		Events = data.EventIds != null ? data.EventIds.Select(vm.GetElement<Event>).ToList() : [];
+		ChildObjects = data.ChildObjectIds != null 
+			? data.ChildObjectIds.Select(vm.GetElement<ParameterHolder>).ToList() : [];
 
-        StartEvent = data.StartEventId.HasValue ? vm.GetElement<Event>(data.StartEventId.Value) : null;
-    }
-    
+		StartEvent = data.StartEventId.HasValue ? vm.GetElement<Event>(data.StartEventId.Value) : null;
+	}
+	
 
 }

@@ -19,11 +19,11 @@ public class GetProfileBoolValueFunction : VmFunction {
 	public GetProfileBoolValueFunction(VirtualMachine vm, string[] parameters) {
 		if (parameters.Length != 1)
 			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
-           
+		   
 		var value = parameters[0];
 		if (!value.StartsWith('%'))
 			throw new ArgumentException($"Profile key must start with %: {value}");
-           
+		   
 		_profileKey = value.TrimStart('%');
 	}
    

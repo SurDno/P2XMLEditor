@@ -7,63 +7,63 @@ using P2XMLEditor.Logging;
 namespace P2XMLEditor.Forms.MainForm.Templates;
 
 public class TemplatesViewer : SplitContainer {
-    private readonly TreeView _templatesTree;
-    private readonly PropertyGrid _propertyGrid;
-    private readonly TemplateManager _templateManager;
+	private readonly TreeView _templatesTree;
+	private readonly PropertyGrid _propertyGrid;
+	private readonly TemplateManager _templateManager;
 
-    [PerformanceLogHook]
-    public TemplatesViewer(TemplateManager templateManager) {
-        _templateManager = templateManager;
-        Dock = DockStyle.Fill;
-        Orientation = Orientation.Vertical;
-        SplitterDistance = 300;
+	[PerformanceLogHook]
+	public TemplatesViewer(TemplateManager templateManager) {
+		_templateManager = templateManager;
+		Dock = DockStyle.Fill;
+		Orientation = Orientation.Vertical;
+		SplitterDistance = 300;
 
-        _templatesTree = new TreeView {
-            Dock = DockStyle.Fill,
-            ShowLines = true,
-            HideSelection = false
-        };
-        _templatesTree.AfterSelect += OnTemplateSelected;
-        Panel1.Controls.Add(_templatesTree);
+		_templatesTree = new TreeView {
+			Dock = DockStyle.Fill,
+			ShowLines = true,
+			HideSelection = false
+		};
+		_templatesTree.AfterSelect += OnTemplateSelected;
+		Panel1.Controls.Add(_templatesTree);
 
-        _propertyGrid = new PropertyGrid {
-            Dock = DockStyle.Fill,
-            PropertySort = PropertySort.Categorized,
-            ToolbarVisible = true
-        };
-        Panel2.Controls.Add(_propertyGrid);
+		_propertyGrid = new PropertyGrid {
+			Dock = DockStyle.Fill,
+			PropertySort = PropertySort.Categorized,
+			ToolbarVisible = true
+		};
+		Panel2.Controls.Add(_propertyGrid);
 
-        LoadTemplatesTree();
-    }
+		LoadTemplatesTree();
+	}
 
-    private void LoadTemplatesTree() {
-        _templatesTree.Nodes.Clear();
+	private void LoadTemplatesTree() {
+		_templatesTree.Nodes.Clear();
 
-        var templatesByType = _templateManager.Templates
-            .GroupBy(t => t.Value.GetType())
-            .ToDictionary(g => g.Key, g => g.Select(t => t.Value).ToList());
+		var templatesByType = _templateManager.Templates
+			.GroupBy(t => t.Value.GetType())
+			.ToDictionary(g => g.Key, g => g.Select(t => t.Value).ToList());
 
-        foreach (var typeGroup in templatesByType) {
-            var typeNode = _templatesTree.Nodes.Add(typeGroup.Key.Name);
+		foreach (var typeGroup in templatesByType) {
+			var typeNode = _templatesTree.Nodes.Add(typeGroup.Key.Name);
 
-            foreach (var template in typeGroup.Value.OrderBy(t => t.Name)) {
-                var templateNode = typeNode.Nodes.Add(template.Name);
-                templateNode.Tag = template;
+			foreach (var template in typeGroup.Value.OrderBy(t => t.Name)) {
+				var templateNode = typeNode.Nodes.Add(template.Name);
+				templateNode.Tag = template;
 
-                if (template is not Entity entity) continue;
-                foreach (var component in entity.Components) { 
-                    var componentNode = templateNode.Nodes.Add(component.GetType().Name);
-                    componentNode.Tag = component;
-                }
-            }
-        }
-    }
+				if (template is not Entity entity) continue;
+				foreach (var component in entity.Components) { 
+					var componentNode = templateNode.Nodes.Add(component.GetType().Name);
+					componentNode.Tag = component;
+				}
+			}
+		}
+	}
 
-    private void OnTemplateSelected(object? sender, TreeViewEventArgs e) {
-        _propertyGrid.SelectedObject = e.Node?.Tag;
-    }
+	private void OnTemplateSelected(object? sender, TreeViewEventArgs e) {
+		_propertyGrid.SelectedObject = e.Node?.Tag;
+	}
 
-    public void RefreshView() {
-        LoadTemplatesTree();
-    }
+	public void RefreshView() {
+		LoadTemplatesTree();
+	}
 }

@@ -17,89 +17,89 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, IVmCreator<Expression> {
-    public ExpressionType ExpressionType { get; set; }
-    public CommonVariable TargetObject;
-    public CommonVariable? TargetParam;
-    
-    public Parameter? Const { get; set; }
-    public VmEither<Branch, Event, MindMapNode, Speech, State> LocalContext { get; set; }
-    public bool? Inversion { get; set; }
-    public List<Expression>? FormulaChilds { get; set; } 
-    public List<FormulaOperation>? FormulaOperations { get; set; }
+	public ExpressionType ExpressionType { get; set; }
+	public CommonVariable TargetObject;
+	public CommonVariable? TargetParam;
+	
+	public Parameter? Const { get; set; }
+	public VmEither<Branch, Event, MindMapNode, Speech, State> LocalContext { get; set; }
+	public bool? Inversion { get; set; }
+	public List<Expression>? FormulaChilds { get; set; } 
+	public List<FormulaOperation>? FormulaOperations { get; set; }
 
-    public VmFunction? Function;
+	public VmFunction? Function;
 
 
-    public override bool IsOrphaned() {
-        return LocalContext.Element switch {
-            Event e => !ConditionValid(e.Condition),
-            MindMapNode mm => !mm.Content.Any(c => InCondition(c.ContentCondition)),
-            Branch b => !b.BranchConditions.Any(HasValidBranchCondition),
-            State st => !st.EntryPoints.Any(e => e.ActionLine != null && InActionLine(e.ActionLine!)),
-            Speech sp => !sp.Replies.Any(r => r.EnableCondition != null && InCondition(r.EnableCondition)),
-            _ => true
-        };
+	public override bool IsOrphaned() {
+		return LocalContext.Element switch {
+			Event e => !ConditionValid(e.Condition),
+			MindMapNode mm => !mm.Content.Any(c => InCondition(c.ContentCondition)),
+			Branch b => !b.BranchConditions.Any(HasValidBranchCondition),
+			State st => !st.EntryPoints.Any(e => e.ActionLine != null && InActionLine(e.ActionLine!)),
+			Speech sp => !sp.Replies.Any(r => r.EnableCondition != null && InCondition(r.EnableCondition)),
+			_ => true
+		};
 
-        bool InExpression(Expression? e) => (e?.FormulaChilds?.Contains(this) ?? false) || e == this;
-        bool InPartCondition(PartCondition pc) => 
-            pc.ConditionType is not (ConditionType.ConstFalse or ConditionType.ConstTrue) && 
-            (InExpression(pc.FirstExpression) || (pc.ConditionType is not ConditionType.ValueExpression && 
-                                                  InExpression(pc.SecondExpression)));
-        bool InCondition(Condition cond) => cond.Predicates.Any(predicate => predicate.Element switch {
-            PartCondition pc => InPartCondition(pc),
-            Condition c => InCondition(c),
-            _ => false
-        });
-        bool InActionLine(ActionLine al) => al.Actions?.Any(a => a.Element switch {
-            ActionLine actionLine => InActionLine(actionLine),
-            Action action => InExpression(action.SourceExpression),
-            _ => false 
-        }) ?? false;
-        bool ConditionValid(Condition? condition) => condition != null && InCondition(condition);
-        bool HasValidBranchCondition(VmEither<Condition, PartCondition> bCond) => bCond.Element switch {
-            Condition cond => InCondition(cond),
-            PartCondition pc => InPartCondition(pc),
-            _ => false
-        };
-    }
-    
-    public void FillFromRawData(RawExpressionData data, VirtualMachine vm) {
-        ExpressionType = data.ExpressionType.Deserialize<ExpressionType>();
-        LocalContext = vm.GetElement<Branch, Event, MindMapNode, Speech, State>(data.LocalContextId);
-        Inversion = data.Inversion;
-        TargetObject = CommonVariable.Read(data.TargetObject, vm);
-        Const = data.ConstId.HasValue ? vm.GetElement<Parameter>(data.ConstId.Value) : null;
-        if (data.TargetFunctionName != null)
-            Function = VmFunction.GetFunction(data.TargetFunctionName, vm, data.SourceParams ?? []);
-        if (data.TargetParam != null)
-            TargetParam = CommonVariable.Read(data.TargetParam, vm);
-        if (data.FormulaChilds != null)
-            FormulaChilds = data.FormulaChilds.Select(vm.GetElement<Expression>).ToList();
-        FormulaOperations = data.FormulaOperations?.Select(e => e.Deserialize<FormulaOperation>()).ToList();
-    }
-    
-    public static Expression New(VirtualMachine vm, ulong id, VmElement parent) {
-        var expr = new Expression(id) {
-            ExpressionType = ExpressionType.Const,
-            LocalContext = new(parent)
-        };
-        expr.Const = CreateDefault<Parameter>(vm, expr);
-        return expr;
-    }
+		bool InExpression(Expression? e) => (e?.FormulaChilds?.Contains(this) ?? false) || e == this;
+		bool InPartCondition(PartCondition pc) => 
+			pc.ConditionType is not (ConditionType.ConstFalse or ConditionType.ConstTrue) && 
+			(InExpression(pc.FirstExpression) || (pc.ConditionType is not ConditionType.ValueExpression && 
+												  InExpression(pc.SecondExpression)));
+		bool InCondition(Condition cond) => cond.Predicates.Any(predicate => predicate.Element switch {
+			PartCondition pc => InPartCondition(pc),
+			Condition c => InCondition(c),
+			_ => false
+		});
+		bool InActionLine(ActionLine al) => al.Actions?.Any(a => a.Element switch {
+			ActionLine actionLine => InActionLine(actionLine),
+			Action action => InExpression(action.SourceExpression),
+			_ => false 
+		}) ?? false;
+		bool ConditionValid(Condition? condition) => condition != null && InCondition(condition);
+		bool HasValidBranchCondition(VmEither<Condition, PartCondition> bCond) => bCond.Element switch {
+			Condition cond => InCondition(cond),
+			PartCondition pc => InPartCondition(pc),
+			_ => false
+		};
+	}
+	
+	public void FillFromRawData(RawExpressionData data, VirtualMachine vm) {
+		ExpressionType = data.ExpressionType.Deserialize<ExpressionType>();
+		LocalContext = vm.GetElement<Branch, Event, MindMapNode, Speech, State>(data.LocalContextId);
+		Inversion = data.Inversion;
+		TargetObject = CommonVariable.Read(data.TargetObject, vm);
+		Const = data.ConstId.HasValue ? vm.GetElement<Parameter>(data.ConstId.Value) : null;
+		if (data.TargetFunctionName != null)
+			Function = VmFunction.GetFunction(data.TargetFunctionName, vm, data.SourceParams ?? []);
+		if (data.TargetParam != null)
+			TargetParam = CommonVariable.Read(data.TargetParam, vm);
+		if (data.FormulaChilds != null)
+			FormulaChilds = data.FormulaChilds.Select(vm.GetElement<Expression>).ToList();
+		FormulaOperations = data.FormulaOperations?.Select(e => e.Deserialize<FormulaOperation>()).ToList();
+	}
+	
+	public static Expression New(VirtualMachine vm, ulong id, VmElement parent) {
+		var expr = new Expression(id) {
+			ExpressionType = ExpressionType.Const,
+			LocalContext = new(parent)
+		};
+		expr.Const = CreateDefault<Parameter>(vm, expr);
+		return expr;
+	}
 
-    public override void OnDestroy(VirtualMachine vm) {
-        if (Const is not null) 
-            vm.RemoveElement(Const);
+	public override void OnDestroy(VirtualMachine vm) {
+		if (Const is not null) 
+			vm.RemoveElement(Const);
 
-        foreach (var pc in vm.GetElementsByType<PartCondition>()) {
-            if (pc.FirstExpression == this)
-                pc.FirstExpression = null!;
-            if (pc.SecondExpression == this)
-                pc.SecondExpression = null!;
-        }
+		foreach (var pc in vm.GetElementsByType<PartCondition>()) {
+			if (pc.FirstExpression == this)
+				pc.FirstExpression = null!;
+			if (pc.SecondExpression == this)
+				pc.SecondExpression = null!;
+		}
 
-        if (FormulaChilds is null) return;
-        foreach (var childExpression in FormulaChilds)
-            vm.RemoveElement(childExpression);
-    }
+		if (FormulaChilds is null) return;
+		foreach (var childExpression in FormulaChilds)
+			vm.RemoveElement(childExpression);
+	}
 }

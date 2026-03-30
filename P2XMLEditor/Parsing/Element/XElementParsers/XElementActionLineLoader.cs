@@ -22,9 +22,9 @@ public class XElementActionLineLoader : IParser<RawActionLineData> {
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
-            
+			
 			var loopInfoElement = element.Element(XNameCache.ActionLoopInfo)!;
-            
+			
 			var raw = new RawActionLineData {
 				Id = id,
 				ActionIds = ParseListElementAsUlong(element, XNameCache.Actions).ToArray(),

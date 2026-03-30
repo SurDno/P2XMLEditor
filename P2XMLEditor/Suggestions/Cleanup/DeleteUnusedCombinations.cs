@@ -25,9 +25,9 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 			
 			var referencedInActions = false;
 			foreach (var action in actions.Where(action => 
-				         action.TargetFuncName.Contains("PickUpCombinationToInentoryByTemplate") || 
-				         action.TargetFuncName.Contains("AddItemsToStoragesLinear") ||
-				         action.TargetFuncName.Contains("PickUpCombination"))) {
+						 action.TargetFuncName.Contains("PickUpCombinationToInentoryByTemplate") || 
+						 action.TargetFuncName.Contains("AddItemsToStoragesLinear") ||
+						 action.TargetFuncName.Contains("PickUpCombination"))) {
 				if (action.SourceParams == null) continue;
 				if (action.SourceParams.Any(p => p.Contains(combo.ParamId)))
 					referencedInActions = true;

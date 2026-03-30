@@ -17,7 +17,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, IVmCreator<GameString> {
 	public VmEither<ParameterHolder, MindMap, Reply, Speech> Parent { get; set; }
 	private Dictionary<string, string> _texts = new();
-    
+	
 	public string GetText(string lang) => _texts.TryGetValue(lang, out var text) ? text : string.Empty;
 	public void SetText(string text, string lang) => _texts[lang] = text;
 
@@ -39,10 +39,17 @@ public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, I
 			Console.WriteLine(Id);
 			throw;
 		}
+
+		if (data.LanguageTexts != null) {
+			foreach (var (lang, text) in data.LanguageTexts) {
+				vm.AddLanguage(lang);
+				_texts[lang] = text;
+			}
+		}
 	}
 	
-    public static GameString New(VirtualMachine vm, ulong id, VmElement parent) => new GameString(id) {
-	    Parent = new(parent),
-	    _texts = vm.Languages.ToDictionary(lang => lang, _ => string.Empty)
-    };
+	public static GameString New(VirtualMachine vm, ulong id, VmElement parent) => new GameString(id) {
+		Parent = new(parent),
+		_texts = vm.Languages.ToDictionary(lang => lang, _ => string.Empty)
+	};
 }

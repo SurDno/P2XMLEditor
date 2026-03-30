@@ -9,7 +9,7 @@ namespace P2XMLEditor.Suggestions.Refactoring;
 public class RemoveConstantReplyConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var replies = Vm.GetElementsByType<Reply>();
-        
+		
 		foreach (var reply in replies) {
 			var replyEnableCondition = reply.EnableCondition;
 			if (replyEnableCondition == null) continue;
@@ -22,6 +22,6 @@ public class RemoveConstantReplyConditions(VirtualMachine vm) : Suggestion(vm) {
 			Vm.RemoveElement(replyEnableCondition);
 			reply.EnableCondition = null;
 		}
-        
+		
 	}
 }

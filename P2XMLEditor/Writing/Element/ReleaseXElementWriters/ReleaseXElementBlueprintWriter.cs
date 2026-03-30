@@ -8,5 +8,5 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 
 public class ReleaseXElementBlueprintWriter : ReleaseXElementParameterHolderWriter<Blueprint> {
-    // Uses base implementation
+	// Uses base implementation
 }

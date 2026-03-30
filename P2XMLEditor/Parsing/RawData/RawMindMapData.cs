@@ -10,6 +10,8 @@ public struct RawMindMapData {
 	public ulong TitleId;
 	public string Name;
 	public ulong ParentId;
+	public ulong[]? TextObjectIds; // Demo-only
+	public ulong? ParentFolder; // Demo-only
 
 	public override int GetHashCode() => Id.GetHashCode();
 }

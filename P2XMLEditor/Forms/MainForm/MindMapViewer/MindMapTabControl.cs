@@ -15,7 +15,7 @@ public class MindMapTabControl : TabControl {
 	[PerformanceLogHook]
 	public MindMapTabControl(VirtualMachine vm) {
 		_vm = vm;
-        
+		
 		_newTabButton = new TabPage("+");
 		TabPages.Add(_newTabButton);
 
@@ -43,7 +43,7 @@ public class MindMapTabControl : TabControl {
 			MinimumSize = new Size(300, 300) 
 		};
 		tab.Controls.Add(viewer);
-        
+		
 		TabPages.Insert(TabPages.Count - 1, tab);
 		SelectedTab = tab;
 	}

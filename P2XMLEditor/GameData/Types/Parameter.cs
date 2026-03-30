@@ -142,55 +142,55 @@ public class ResetableMinMaxParameter<T> : MinMaxParameter<T> {
 }
 
 public class PriorityParameter<T> : IParameter {
-    public ParameterName Name { get; set; }
-    
-    public List<Entry> Items { get; } = [];
+	public ParameterName Name { get; set; }
+	
+	public List<Entry> Items { get; } = [];
 
-    public struct Entry {
-        public Priority Priority;
-        public T Value;
-    }
+	public struct Entry {
+		public Priority Priority;
+		public T Value;
+	}
 
-    protected T ConvertValue(string v) {
-	    var t = typeof(T);
-	    return t.IsEnum ? (T)(object)t.Deserialize(v) : (T)Convert.ChangeType(v, t, CultureInfo.InvariantCulture);
-    }
+	protected T ConvertValue(string v) {
+		var t = typeof(T);
+		return t.IsEnum ? (T)(object)t.Deserialize(v) : (T)Convert.ChangeType(v, t, CultureInfo.InvariantCulture);
+	}
 
-    public void LoadFromXml(XElement element) {
-        Name = element.Element("Name")!.Value.Deserialize<ParameterName>();
-        foreach (var item in element.Element("Container")!.Element("Items")!.Elements("Item")) {
-            var priority = item.Element("Priority")!.Value.Deserialize<Priority>();
-            var value = ConvertValue(item.Element("Value")!.Value);
-            Items.Add(new Entry { Priority = priority, Value = value });
-        }
-    }
+	public void LoadFromXml(XElement element) {
+		Name = element.Element("Name")!.Value.Deserialize<ParameterName>();
+		foreach (var item in element.Element("Container")!.Element("Items")!.Elements("Item")) {
+			var priority = item.Element("Priority")!.Value.Deserialize<Priority>();
+			var value = ConvertValue(item.Element("Value")!.Value);
+			Items.Add(new Entry { Priority = priority, Value = value });
+		}
+	}
 
-    public XElement ToXml() {
-        var container = new XElement("Container");
-        var list = new XElement("Items");
+	public XElement ToXml() {
+		var container = new XElement("Container");
+		var list = new XElement("Items");
 
-        foreach (var e in Items) {
-            list.Add(new XElement("Item",
-                new XElement("Priority", e.Priority.Serialize()),
-                new XElement("Value", typeof(T).IsEnum ? e.Value!.ToString() : e.Value)
-            ));
-        }
+		foreach (var e in Items) {
+			list.Add(new XElement("Item",
+				new XElement("Priority", e.Priority.Serialize()),
+				new XElement("Value", typeof(T).IsEnum ? e.Value!.ToString() : e.Value)
+			));
+		}
 
-        container.Add(list);
+		container.Add(list);
 
-        return new XElement("Item",
-            new XAttribute("type", GetXmlType()),
-            new XElement("Name", Name.Serialize()),
-            container
-        );
-    }
+		return new XElement("Item",
+			new XAttribute("type", GetXmlType()),
+			new XElement("Name", Name.Serialize()),
+			container
+		);
+	}
 
-    protected string GetXmlType() {
-        var t = typeof(T);
-        return t switch {
-            _ when t == typeof(bool) => "BoolPriorityParameter",
-            _ when t == typeof(LockState) => "LockStatePriorityParameter",
-            _ => throw new NotImplementedException($"Not implemented PriorityParameter type {nameof(T)}")
-        };
-    }
+	protected string GetXmlType() {
+		var t = typeof(T);
+		return t switch {
+			_ when t == typeof(bool) => "BoolPriorityParameter",
+			_ when t == typeof(LockState) => "LockStatePriorityParameter",
+			_ => throw new NotImplementedException($"Not implemented PriorityParameter type {nameof(T)}")
+		};
+	}
 }

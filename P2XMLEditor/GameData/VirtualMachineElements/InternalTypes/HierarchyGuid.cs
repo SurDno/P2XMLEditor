@@ -12,7 +12,7 @@ public class HierarchyGuid(string data, VirtualMachine vm) : ICommonVariablePara
 	private readonly List<VmEither<Scene, Geom, Other, Item, ScenePlaceholder>> _elements = 
 		data.Split('H', StringSplitOptions.RemoveEmptyEntries).Select(
 			d => vm.GetNullableElement<Scene, Geom, Other, Item, ScenePlaceholder>(ulong.Parse(d)) ?? 
-			     new(vm.Register(new ScenePlaceholder(ulong.Parse(d))))).ToList();
+				 new(vm.Register(new ScenePlaceholder(ulong.Parse(d))))).ToList();
 	private readonly VirtualMachine _vm = vm;
 
 	public bool IsHierarchy => _elements.Count > 1;

@@ -11,7 +11,7 @@ public class RemoveUnusedStorableParameters(VirtualMachine vm) : Suggestion(vm) 
 	public override void Execute() {
 		foreach (var item in Vm.GetElementsByType<ParameterHolder>()) {
 			if (item.StandartParams.TryGetValue("Storable.SpecialDescription", out var specialDesc))
-			    Vm.RemoveElement(specialDesc);
+				Vm.RemoveElement(specialDesc);
 			if (item.StandartParams.TryGetValue("Storable.StoreTag", out var storeTag))
 				Vm.RemoveElement(storeTag);
 			if (item.StandartParams.TryGetValue("Storable.StorableClass", out var storableClass))

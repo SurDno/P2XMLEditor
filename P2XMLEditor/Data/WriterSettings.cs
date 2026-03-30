@@ -1,9 +1,15 @@
+using System.Collections.Generic;
+
 namespace P2XMLEditor.Data;
 
-public struct WriterSettings() {
-	public bool CleanUpOrphanedElements = false;
-	public bool CleanUpUnusedProperties = false;
-	public bool CleanUpNames = false;
-	public bool CleanUpEmptyStrings = false;
-	public bool MergeConstants = false;
+public class WriterSettings {
+	public WriterFormat Format { get; set; } = WriterFormat.Release;
+	public bool CleanUpOrphanedElements { get; set; } = false;
+	public bool CleanUpUnusedProperties { get; set; } = false;
+	public bool CleanUpNames { get; set; } = false;
+	public bool CleanUpEmptyStrings { get; set; } = false;
+	public bool MergeConstants { get; set; } = false;
+	public List<string> Languages { get; set; } = [];
+	
+	public VmVersionSettings? VmMetadata { get; set; }
 }

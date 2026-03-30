@@ -17,7 +17,7 @@ public class InputParameter(Graph graph, string paramName) : ICommonVariablePara
 		if (parts.Length != 2) return false;
 
 		if (ulong.TryParse(parts[0], out var id) && vm.ElementsById.TryGetValue(id, out var element) && 
-		    element is Graph graph) { 
+			element is Graph graph) { 
 			result = new InputParameter(graph, parts[1]); 
 			return true;
 		}

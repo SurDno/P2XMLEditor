@@ -11,6 +11,7 @@ namespace P2XMLEditor.Core;
 public class VirtualMachine {
 	public readonly Dictionary<ulong, VmElement> ElementsById = new();
 	public readonly TemplateManager TemplateManagerInst;
+	public readonly VmType Type;
 
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new() {
 		[typeof(VmElement)] = [],
@@ -52,9 +53,10 @@ public class VirtualMachine {
 	public HashSet<string> Languages { get; } = [];
 
 
-	public VirtualMachine(int capacity, TemplateManager templateManagerInst) {
+	public VirtualMachine(int capacity, TemplateManager templateManagerInst, VmType type) {
 		ElementsById = new Dictionary<ulong, VmElement>(capacity);
 		TemplateManagerInst = templateManagerInst;
+		Type = type;
 	}
 	
 	public T AddElement<T>(T element, Type elementType) where T : VmElement {
@@ -98,7 +100,7 @@ public class VirtualMachine {
 	}
 	
 	public T First<T>(Func<T, bool> predicate) where T: VmElement => GetElementsByType<T>().FirstOrDefault(predicate) ??
-	                                                                 throw new Exception("No element found");
+																	 throw new Exception("No element found");
 	
 	public bool HasLanguage(string language) => Languages.Contains(language);
 	public void AddLanguage(string language) => Languages.Add(language);

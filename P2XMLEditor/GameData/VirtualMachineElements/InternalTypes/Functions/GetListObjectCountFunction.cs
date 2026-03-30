@@ -25,11 +25,11 @@ public class GetListObjectsCountFunction : VmFunction {
 	public GetListObjectsCountFunction(VirtualMachine vm, string[] parameters) {
 		if (parameters.Length != 1)
 			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
-           
+		   
 		var parts = parameters[0].Split('%');
 		if (parts.Length != 2)
 			throw new ArgumentException($"Invalid parameter format: {parameters[0]}");
-           
+		   
 		holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts[0]));
 		parameter = ulong.TryParse(parts[1], out var id) ? vm.GetElement<Parameter>(id) : null;
 		if (parameter == null) TEMP = parts[1];

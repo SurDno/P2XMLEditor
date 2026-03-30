@@ -10,7 +10,7 @@ public sealed class PerformanceLogger : IDisposable {
 	private PerformanceLogger(string context) {
 		_context = context;
 		_startTimestamp = Stopwatch.GetTimestamp();
-        
+		
 		Logger.Log(LogLevel.Trace, $"[{_context}] Starting.");
 	}
 
@@ -18,14 +18,14 @@ public sealed class PerformanceLogger : IDisposable {
 		long endTimestamp = Stopwatch.GetTimestamp();
 		long delta = endTimestamp - _startTimestamp;
 		double elapsedMs = delta * (0.0001d);
-        
+		
 		var perfLevel = elapsedMs switch {
 			< 5 => LogLevel.Trace,
 			< 1000 => LogLevel.Performance,
 			< 5000 => LogLevel.Warning,
 			_ => LogLevel.Error
 		};
-        
+		
 		Logger.Log(perfLevel, $"[{_context}] Completed in {elapsedMs}ms");
 	}
 	

@@ -33,9 +33,9 @@ public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 			if (referencedInParameters) continue;
 			var referencedInActions = false;
 			foreach (var action in actions.Where(action => 
-				         action.TargetFuncName.Contains("PickUpByTemplate") ||     
-				         action.TargetFuncName.Contains("PickUpToInentoryByTemplate") ||  
-				         action.TargetFuncName.Contains("RemoveThingByTemplate"))) {
+						 action.TargetFuncName.Contains("PickUpByTemplate") ||	 
+						 action.TargetFuncName.Contains("PickUpToInentoryByTemplate") ||  
+						 action.TargetFuncName.Contains("RemoveThingByTemplate"))) {
 				if (action.SourceParams == null) continue;
 				if (action.SourceParams.Any(p => p.Contains(storable.EngineTemplateId!)))
 					referencedInActions = true;

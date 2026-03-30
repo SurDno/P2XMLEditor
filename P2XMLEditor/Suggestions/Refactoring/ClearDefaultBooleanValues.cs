@@ -24,7 +24,7 @@ public class ClearDefaultBooleanValues(VirtualMachine vm) : Suggestion(vm) {
 				actionLine.LoopInfo = al;
 			}
 		foreach (var graphElement in Vm.GetElementsByType<Branch>().Cast<IGraphElement>().
-			         Concat(Vm.GetElementsByType<Graph>()).Concat(Vm.GetElementsByType<State>())) {
+					 Concat(Vm.GetElementsByType<Graph>()).Concat(Vm.GetElementsByType<State>())) {
 			if (graphElement.IgnoreBlock == false)
 				graphElement.IgnoreBlock = null;
 			if (graphElement.Initial == false)

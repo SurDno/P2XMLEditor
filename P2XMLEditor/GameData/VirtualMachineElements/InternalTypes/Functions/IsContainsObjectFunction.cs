@@ -21,14 +21,14 @@ public class IsContainsObjectFunction : VmFunction {
 	public IsContainsObjectFunction(VirtualMachine vm, string[] parameters) {
 		if (parameters.Length != 1)
 			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
-           
+		   
 		var parts = parameters[0].Split('%');
 		if (parts.Length != 2)
 			throw new ArgumentException($"Invalid parameter format: {parameters[0]}");
-           
+		   
 		if (parts[0] != parts[1])
 			throw new ArgumentException($"Both parts of parameter must be the same GameObject ID: {parameters[0]}");
-           
+		   
 		gameObject = vm.GetElement<GameObject>(ulong.Parse(parts[0]));
 	}
    

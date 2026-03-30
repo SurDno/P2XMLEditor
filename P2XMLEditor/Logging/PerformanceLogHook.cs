@@ -7,7 +7,7 @@ using P2XMLEditor.Logging;
 namespace P2XMLEditor.Logging;
 
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Class |
-                AttributeTargets.Assembly)]
+				AttributeTargets.Assembly)]
 public class PerformanceLogHookAttribute : Attribute, IMethodDecorator {
 	private IDisposable? _performanceLogger;
 	private string? _methodName;

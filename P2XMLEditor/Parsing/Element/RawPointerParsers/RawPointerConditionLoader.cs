@@ -36,7 +36,7 @@ public class RawPointerConditionLoader : IParser<RawConditionData> {
 					p += 16 + 21;
 				}
 				p += 11;
-                
+				
 				p += 11;
 				var operation = ParseOperation(ref p);
 				p += 18;
@@ -63,7 +63,7 @@ public class RawPointerConditionLoader : IParser<RawConditionData> {
 			}
 		}
 	}
-    
+	
 	private static unsafe ConditionOperation ParseOperation(ref byte* p) {
 		var start = p;
 		while (*p != '<')
@@ -76,7 +76,7 @@ public class RawPointerConditionLoader : IParser<RawConditionData> {
 			6 => ConditionOperation.Or,
 			_ => start[4] switch {
 				(byte)'A' => ConditionOperation.And,
-				_         => ConditionOperation.Xor
+				_		 => ConditionOperation.Xor
 			}
 		};
 	}

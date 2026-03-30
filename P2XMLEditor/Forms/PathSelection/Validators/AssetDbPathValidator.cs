@@ -7,11 +7,11 @@ namespace P2XMLEditor.Forms.PathSelection.Validators;
 
 public class AssetDbPathValidator : PathValidator {
 	protected override string GetLabelText() => "AssetDatabaseData.xml.gz:";
-    
+	
 	public override PathValidationResult Validate() {
 		if (string.IsNullOrEmpty(PathBox.Text)) 
 			return Hint("The file is usually located at Pathologic/Data/Database/AssetDatabaseData.xml.gz, " +
-			            "but you may choose to supply your own version of the file if it is modded.");
+						"but you may choose to supply your own version of the file if it is modded.");
 		
 		if (!File.Exists(PathBox.Text)) 
 			return Error("File does not exist");

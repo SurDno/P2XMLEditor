@@ -36,21 +36,21 @@ public abstract class VmFunction {
 	protected class FunctionAttribute(string name) : Attribute {
 		public string Name { get; } = name;
 	}
-    
+	
 	private static readonly Dictionary<string, Type> _functionTypes = new();
 
 	static VmFunction() {
 		foreach (var type in Assembly.GetExecutingAssembly().GetTypes()
-			         .Where(t => t.GetCustomAttribute<FunctionAttribute>() != null))
+					 .Where(t => t.GetCustomAttribute<FunctionAttribute>() != null))
 			_functionTypes[type.GetCustomAttribute<FunctionAttribute>()!.Name] = type;
 	}
 
 	public static IEnumerable<string> GetAvailableFunctions() => _functionTypes.Keys;
-    
+	
 	public static VmFunction GetFunction(string name, VirtualMachine vm, string[] parameters) {
 		if (!_functionTypes.TryGetValue(name, out var type))
 			throw new ArgumentException($"Unknown function name: {name}");
-            
+			
 		return (VmFunction)Activator.CreateInstance(type, vm, parameters)! ?? throw new InvalidOperationException();
 	}
 }

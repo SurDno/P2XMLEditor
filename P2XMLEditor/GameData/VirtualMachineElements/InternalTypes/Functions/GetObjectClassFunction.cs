@@ -23,7 +23,7 @@ public class GetObjectClassFunction : VmFunction {
 	public GetObjectClassFunction(VirtualMachine vm, string[] parameters) {
 		if (parameters.Length != 1)
 			throw new ArgumentException($"Expected 1 parameter, got {parameters.Length}");
-           
+		   
 		var parts = parameters[0].Split('%', 2);
 		holder = vm.GetElement<ParameterHolder>(ulong.Parse(parts[0]));
 		messageParam = parts.Length > 1 ? parts[1] : null;

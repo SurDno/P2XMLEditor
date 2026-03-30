@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
@@ -13,10 +14,13 @@ public static class XmlReaderExtensions {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static XmlReader InitializeFullFileReader(string path, int size = 32768) {
 		var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, size, FileOptions.SequentialScan);
+		Stream s = fs;
+		if (path.EndsWith(".gz"))
+			s = new GZipStream(fs, CompressionMode.Decompress);
 		var settings = new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true,
 			IgnoreProcessingInstructions = true, CheckCharacters = false,
 			DtdProcessing = DtdProcessing.Ignore, ConformanceLevel = ConformanceLevel.Fragment };
-		return XmlReader.Create(fs, settings);
+		return XmlReader.Create(s, settings);
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]

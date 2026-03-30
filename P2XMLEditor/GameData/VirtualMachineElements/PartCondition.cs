@@ -14,32 +14,32 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class PartCondition(ulong id) : VmElement(id), IFiller<RawPartConditionData>, IVmCreator<PartCondition> {
-    public string? Name { get; set; }
-    public ConditionType ConditionType { get; set; }
-    public Expression? FirstExpression { get; set; }
-    public Expression? SecondExpression { get; set; }
-    public int OrderIndex { get; set; }
-    
+	public string? Name { get; set; }
+	public ConditionType ConditionType { get; set; }
+	public Expression? FirstExpression { get; set; }
+	public Expression? SecondExpression { get; set; }
+	public int OrderIndex { get; set; }
+	
 
-    public void FillFromRawData(RawPartConditionData data, VirtualMachine vm) {
-        Name = data.Name;
-        ConditionType = data.ConditionType.Deserialize<ConditionType>();
-        OrderIndex = data.OrderIndex;
-        FirstExpression = data.FirstExpressionId.HasValue
-            ? vm.GetElement<Expression>(data.FirstExpressionId.Value)
-            : null;
-        SecondExpression = data.SecondExpressionId.HasValue
-            ? vm.GetElement<Expression>(data.SecondExpressionId.Value)
-            : null;
-    }
+	public void FillFromRawData(RawPartConditionData data, VirtualMachine vm) {
+		Name = data.Name;
+		ConditionType = data.ConditionType.Deserialize<ConditionType>();
+		OrderIndex = data.OrderIndex;
+		FirstExpression = data.FirstExpressionId.HasValue
+			? vm.GetElement<Expression>(data.FirstExpressionId.Value)
+			: null;
+		SecondExpression = data.SecondExpressionId.HasValue
+			? vm.GetElement<Expression>(data.SecondExpressionId.Value)
+			: null;
+	}
 
-    public static PartCondition New(VirtualMachine vm, ulong id, VmElement parent) => new PartCondition(id) {
-        Name = "Always True",
-        ConditionType = ConditionType.ConstTrue
-    };
+	public static PartCondition New(VirtualMachine vm, ulong id, VmElement parent) => new PartCondition(id) {
+		Name = "Always True",
+		ConditionType = ConditionType.ConstTrue
+	};
 
-    public override void OnDestroy(VirtualMachine vm) {
-        vm.RemoveElement(FirstExpression);
-        vm.RemoveElement(SecondExpression);
-    }
+	public override void OnDestroy(VirtualMachine vm) {
+		vm.RemoveElement(FirstExpression);
+		vm.RemoveElement(SecondExpression);
+	}
 }

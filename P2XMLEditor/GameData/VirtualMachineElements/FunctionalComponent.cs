@@ -14,31 +14,31 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctionalComponentData> {
-    public List<Event> Events { get; set; }
-    public bool? Main { get; set; }
-    public long LoadPriority { get; set; }
-    public string Name { get; set; }
-    public ParameterHolder Parent { get; set; }
+	public List<Event> Events { get; set; }
+	public bool? Main { get; set; }
+	public long LoadPriority { get; set; }
+	public string Name { get; set; }
+	public ParameterHolder Parent { get; set; }
 
 
-    public void FillFromRawData(RawFunctionalComponentData data, VirtualMachine vm) {
-        Events = [];
-        if (data.EventIds != null) {
-            foreach (var eventId in data.EventIds)
-                Events.Add(vm.GetElement<Event>(eventId));
-        }
-        Main = data.Main;
-        LoadPriority = data.LoadPriority;
-        Name = data.Name;
-        Parent = vm.GetElement<ParameterHolder>(data.ParentId);
-    }
+	public void FillFromRawData(RawFunctionalComponentData data, VirtualMachine vm) {
+		Events = [];
+		if (data.EventIds != null) {
+			foreach (var eventId in data.EventIds)
+				Events.Add(vm.GetElement<Event>(eventId));
+		}
+		Main = data.Main;
+		LoadPriority = data.LoadPriority;
+		Name = data.Name;
+		Parent = vm.GetElement<ParameterHolder>(data.ParentId);
+	}
 
-    public override void OnDestroy(VirtualMachine vm) {
-        var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
-        if (compToRemove != null)
-            Parent.FunctionalComponents.Remove(compToRemove);
-        foreach (var @event in Events.ToList())
-            vm.RemoveElement(@event);
-    }
+	public override void OnDestroy(VirtualMachine vm) {
+		var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
+		if (compToRemove != null)
+			Parent.FunctionalComponents.Remove(compToRemove);
+		foreach (var @event in Events.ToList())
+			vm.RemoveElement(@event);
+	}
 }
 

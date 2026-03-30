@@ -17,16 +17,16 @@ public struct RawExpressionData {
 	
 	public override string ToString() {
 		return $"RawExpressionData {{ " +
-		       $"Id={Id}, " +
-		       $"ExpressionType={ExpressionType}, " +
-		       $"TargetFunctionName={TargetFunctionName}, " +
-		       $"TargetObject={TargetObject}, " +
-		       $"TargetParam={TargetParam}, " +
-		       $"ConstId={ConstId}, " +
-		       $"SourceParams=[{(SourceParams != null ? string.Join(", ", SourceParams) : "")}], " +
-		       $"LocalContextId={LocalContextId}, " +
-		       $"Inversion={Inversion}, " +
-		       $"FormulaChilds=[{(FormulaChilds != null ? string.Join(", ", FormulaChilds) : "")}], " +
-		       $"FormulaOperations=[{(FormulaOperations != null ? string.Join(", ", FormulaOperations) : "")}] }}";
+			   $"Id={Id}, " +
+			   $"ExpressionType={ExpressionType}, " +
+			   $"TargetFunctionName={TargetFunctionName}, " +
+			   $"TargetObject={TargetObject}, " +
+			   $"TargetParam={TargetParam}, " +
+			   $"ConstId={ConstId}, " +
+			   $"SourceParams=[{(SourceParams != null ? string.Join(", ", SourceParams) : "")}], " +
+			   $"LocalContextId={LocalContextId}, " +
+			   $"Inversion={Inversion}, " +
+			   $"FormulaChilds=[{(FormulaChilds != null ? string.Join(", ", FormulaChilds) : "")}], " +
+			   $"FormulaOperations=[{(FormulaOperations != null ? string.Join(", ", FormulaOperations) : "")}] }}";
 	}
 }

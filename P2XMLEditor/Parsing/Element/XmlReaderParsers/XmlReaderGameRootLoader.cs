@@ -41,35 +41,35 @@ public class XmlReaderGameRootLoader : IParser<RawGameRootData> {
 	}
 
 	private static Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>> ReadHierarchyScenesStructure(XmlReader xr) {
-	    xr.Read();
+		xr.Read();
 
-	    var result = new Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>>();
+		var result = new Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>>();
 
-	    while (!xr.EndOfContainerReached()) {
+		while (!xr.EndOfContainerReached()) {
 
-	        var key = ulong.Parse(xr.GetAttribute("key")!);
-	        xr.Read();
+			var key = ulong.Parse(xr.GetAttribute("key")!);
+			xr.Read();
 
-	        var containers = new Dictionary<ChildContainerType, ulong[]>();
+			var containers = new Dictionary<ChildContainerType, ulong[]>();
 
-	        while (!xr.EndOfContainerReached()) {
+			while (!xr.EndOfContainerReached()) {
 
-	            var containerType = xr.Name.Deserialize<ChildContainerType>();
-	            var count = int.Parse(xr.GetAttribute("count")!);
-	            xr.Read();
-	            var array = new ulong[count];
-	            for (var i = 0; i < count; i++) 
-	                array[i] = xr.GetULongValueAndAdvance();
-	            xr.Read();
-	            containers[containerType] = array;
-	        }
+				var containerType = xr.Name.Deserialize<ChildContainerType>();
+				var count = int.Parse(xr.GetAttribute("count")!);
+				xr.Read();
+				var array = new ulong[count];
+				for (var i = 0; i < count; i++) 
+					array[i] = xr.GetULongValueAndAdvance();
+				xr.Read();
+				containers[containerType] = array;
+			}
 
-	        result[key] = containers;
-	        xr.Read();
-	    }
+			result[key] = containers;
+			xr.Read();
+		}
 
-	    xr.Read();
-	    return result;
+		xr.Read();
+		return result;
 	}
 
 

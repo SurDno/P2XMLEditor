@@ -15,5 +15,7 @@ public struct RawActionData {
 	public ulong LocalContextId;
 	public int OrderIndex;
 
+	public bool? Enabled; // Demo-only
+
 	public override int GetHashCode() => Id.GetHashCode();
 }

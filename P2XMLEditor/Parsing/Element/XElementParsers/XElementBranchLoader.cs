@@ -23,11 +23,11 @@ public class XElementBranchLoader : IParser<RawBranchData> {
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
-            
+			
 			var branchVariantInfo = element.Element(XNameCache.BranchVariantInfo)?.Elements(XNameCache.Item).
 				Select(item => (item.Element(XNameCache.Name)!.Value, item.Element(XNameCache.Type)!.Value)).ToList() 
-			                        ?? null;
-            
+									?? null;
+			
 			var raw = new RawBranchData {
 				Id = id,
 				BranchConditionIds = ParseListElementAsUlong(element, XNameCache.BranchConditions).ToArray(),
