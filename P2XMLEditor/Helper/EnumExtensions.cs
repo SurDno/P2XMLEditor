@@ -22,10 +22,10 @@ public static class EnumExtensions {
 			var dDict = new Dictionary<string, int>(fields.Length);
 			var arr = new (string text, int raw)[fields.Length];
 
-			for (int i = 0; i < fields.Length; i++) {
+			for (var i = 0; i < fields.Length; i++) {
 				var f = fields[i];
 				var attr = f.GetCustomAttribute<SerializationData>()!;
-				int intVal = (int)f.GetValue(null)!;
+				var intVal = (int)f.GetValue(null)!;
 
 				sDict[intVal] = attr.Value;
 				dDict[attr.Value] = intVal;
@@ -40,7 +40,7 @@ public static class EnumExtensions {
 
 	public static string Serialize(this Enum value) {
 		var t = value.GetType();
-		int key = Convert.ToInt32(value);
+		var key = Convert.ToInt32(value);
 
 		if (SerializeCache.TryGetValue(t, out var map) && map.TryGetValue(key, out var s))
 			return s;

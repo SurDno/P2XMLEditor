@@ -39,10 +39,21 @@ public static class PreviewHelper {
 		};
 	}
 
+	public static string Preview(Parameter p) {
+		return p.Value switch {
+			RefValue<GameString> textRef => textRef.TypedValue?.GetText("English") is { Length: > 0 } en ? en : 
+											textRef.TypedValue?.GetText("Russian") is { Length: > 0 } ru ? ru : 
+											textRef.TypedValue?.Id.ToString() ?? p.SerializedValue,
+			RefValue<VmElement> refVal => (refVal.TypedValue as INamedElement)?.Name ?? refVal.TypedValue?.Id.ToString() ?? p.SerializedValue,
+			BasicValue<bool> b => b.TypedValue ? "true" : "false",
+			_ => p.SerializedValue
+		};
+	}
+
 	public static string Preview(Expression? expression) {
 		return expression?.ExpressionType switch {
 			null => "<none>",
-			ExpressionType.Const => expression.Const!.Value,
+			ExpressionType.Const => Preview(expression.Const!),
 			ExpressionType.Function =>
 				$"{expression.Function!.Name}({string.Join(',', expression.Function!.GetParamStrings() ?? [])})",
 			ExpressionType.Param => Preview(expression.TargetObject) + " " + Preview(expression.TargetParam),
@@ -52,6 +63,7 @@ public static class PreviewHelper {
 	}
 
 	public static string Preview(CommonVariable? commonVariable) {
+		if (commonVariable == null) return "<null variable>";
 		return $"{Preview(commonVariable.VariableParameter)}%{Preview(commonVariable.ContextParameter)}";
 	}
 

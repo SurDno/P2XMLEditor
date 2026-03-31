@@ -186,7 +186,7 @@ public class DialogGraphViewer : GraphViewer {
 
 			var replies = speech.Replies.OrderBy(r => r.OrderIndex).ToList();
 
-			for (int i = 0; i < replies.Count; i++) {
+			for (var i = 0; i < replies.Count; i++) {
 				var reply = replies[i];
 				AddLayoutNode(reply.Id, reply, NodeType.Reply);
 
@@ -271,25 +271,25 @@ public class DialogGraphViewer : GraphViewer {
 		var halfWidth = new Dictionary<ulong, float>();
 
 		foreach (var n in layoutNodes) {
-			int childCount = adjacency.TryGetValue(n, out var list) ? list.Count : 0;
+			var childCount = adjacency.TryGetValue(n, out var list) ? list.Count : 0;
 			halfWidth[n] = childCount > 1 ? (childCount - 1) * H_SPACING * 0.5f : 0f;
 		}
 
 		var xPos = new Dictionary<ulong, float>();
 		
 		var roots = layers[0];
-		float cursor = 0f;
+		var cursor = 0f;
 
-		for (int i = 0; i < roots.Count; i++) {
-			ulong node = roots[i];
+		for (var i = 0; i < roots.Count; i++) {
+			var node = roots[i];
 
 			if (i == 0) {
 				xPos[node] = 0f;
 				cursor = 0f;
 			} else {
-				ulong prev = roots[i - 1];
+				var prev = roots[i - 1];
 
-				float minDist =
+				var minDist =
 					halfWidth[prev] +
 					halfWidth[node] +
 					H_SPACING;
@@ -300,16 +300,16 @@ public class DialogGraphViewer : GraphViewer {
 		}
 
 		{
-			float minR = roots.Min(r => xPos[r]);
-			float maxR = roots.Max(r => xPos[r]);
-			float midR = (minR + maxR) * 0.5f;
+			var minR = roots.Min(r => xPos[r]);
+			var maxR = roots.Max(r => xPos[r]);
+			var midR = (minR + maxR) * 0.5f;
 
-			for (int i = 0; i < roots.Count; i++) {
+			for (var i = 0; i < roots.Count; i++) {
 				xPos[roots[i]] -= midR;
 			}
 		}
 
-		for (int li = 1; li < layers.Count; li++) {
+		for (var li = 1; li < layers.Count; li++) {
 			var current = layers[li];
 
 			var blocks = new List<(ulong parent, List<ulong> nodes)>();
@@ -317,14 +317,14 @@ public class DialogGraphViewer : GraphViewer {
 
 			var groups = new Dictionary<ulong, List<ulong>>();
 
-			for (int i = 0; i < current.Count; i++) {
-				ulong node = current[i];
+			for (var i = 0; i < current.Count; i++) {
+				var node = current[i];
 
 				if (!reverseAdj.TryGetValue(node, out var parents) || parents.Count != 1) {
 					continue;
 				}
 
-				ulong p = parents[0];
+				var p = parents[0];
 				if (!xPos.ContainsKey(p)) {
 					continue;
 				}
@@ -343,13 +343,13 @@ public class DialogGraphViewer : GraphViewer {
 
 				blocks.Add((kv.Key, nodes));
 
-				for (int i = 0; i < nodes.Count; i++) {
+				for (var i = 0; i < nodes.Count; i++) {
 					grouped.Add(nodes[i]);
 				}
 			}
 
-			for (int i = 0; i < current.Count; i++) {
-				ulong node = current[i];
+			for (var i = 0; i < current.Count; i++) {
+				var node = current[i];
 				if (grouped.Contains(node)) {
 					continue;
 				}
@@ -357,18 +357,18 @@ public class DialogGraphViewer : GraphViewer {
 				blocks.Add((0UL, new List<ulong> { node }));
 			}
 
-			for (int b = 0; b < blocks.Count; b++) {
+			for (var b = 0; b < blocks.Count; b++) {
 				var (parent, nodes) = blocks[b];
 
 				if (parent != 0UL) {
-					float parentX = xPos[parent];
-					float center = (nodes.Count - 1) * 0.5f;
+					var parentX = xPos[parent];
+					var center = (nodes.Count - 1) * 0.5f;
 
-					for (int i = 0; i < nodes.Count; i++) {
+					for (var i = 0; i < nodes.Count; i++) {
 						xPos[nodes[i]] = parentX + (i - center) * H_SPACING;
 					}
 				} else {
-					ulong node = nodes[0];
+					var node = nodes[0];
 
 					if (!reverseAdj.TryGetValue(node, out var parents) || parents.Count == 0) {
 						xPos[node] = 0f;
@@ -380,11 +380,11 @@ public class DialogGraphViewer : GraphViewer {
 			}
 
 			float BlockCenterX((ulong parent, List<ulong> nodes) block) {
-				float min = float.PositiveInfinity;
-				float max = float.NegativeInfinity;
+				var min = float.PositiveInfinity;
+				var max = float.NegativeInfinity;
 
-				for (int i = 0; i < block.nodes.Count; i++) {
-					float x = xPos[block.nodes[i]];
+				for (var i = 0; i < block.nodes.Count; i++) {
+					var x = xPos[block.nodes[i]];
 					if (x < min) min = x;
 					if (x > max) max = x;
 				}
@@ -395,11 +395,11 @@ public class DialogGraphViewer : GraphViewer {
 			blocks = blocks.OrderBy(b => BlockCenterX(b)).ToList();
 
 			float BlockMin((ulong parent, List<ulong> nodes) block) {
-				float min = float.PositiveInfinity;
+				var min = float.PositiveInfinity;
 
-				for (int i = 0; i < block.nodes.Count; i++) {
-					ulong n = block.nodes[i];
-					float x = xPos[n] - halfWidth[n];
+				for (var i = 0; i < block.nodes.Count; i++) {
+					var n = block.nodes[i];
+					var x = xPos[n] - halfWidth[n];
 					if (x < min) min = x;
 				}
 
@@ -407,46 +407,46 @@ public class DialogGraphViewer : GraphViewer {
 			}
 
 			float BlockMax((ulong parent, List<ulong> nodes) block) {
-				float max = float.NegativeInfinity;
+				var max = float.NegativeInfinity;
 
-				for (int i = 0; i < block.nodes.Count; i++) {
-					ulong n = block.nodes[i];
-					float x = xPos[n] + halfWidth[n];
+				for (var i = 0; i < block.nodes.Count; i++) {
+					var n = block.nodes[i];
+					var x = xPos[n] + halfWidth[n];
 					if (x > max) max = x;
 				}
 
 				return max;
 			}
 
-			for (int i = 1; i < blocks.Count; i++) {
+			for (var i = 1; i < blocks.Count; i++) {
 				var leftBlock = blocks[i - 1];
 				var rightBlock = blocks[i];
 
-				float gap = BlockMin(rightBlock) - BlockMax(leftBlock);
+				var gap = BlockMin(rightBlock) - BlockMax(leftBlock);
 				if (gap >= H_SPACING) {
 					continue;
 				}
 
-				float dx = H_SPACING - gap;
+				var dx = H_SPACING - gap;
 
-				for (int k = 0; k < rightBlock.nodes.Count; k++) {
+				for (var k = 0; k < rightBlock.nodes.Count; k++) {
 					xPos[rightBlock.nodes[k]] += dx;
 				}
 			}
 		}
 
-		float minX = float.PositiveInfinity;
-		float maxX = float.NegativeInfinity;
+		var minX = float.PositiveInfinity;
+		var maxX = float.NegativeInfinity;
 
 		foreach (var id in layoutNodes) {
 			if (!xPos.ContainsKey(id)) continue;
 
-			float x = xPos[id];
+			var x = xPos[id];
 			if (x < minX) minX = x;
 			if (x > maxX) maxX = x;
 		}
 
-		float mid = (minX + maxX) * 0.5f;
+		var mid = (minX + maxX) * 0.5f;
 
 		foreach (var id in layoutNodes) {
 			if (!xPos.ContainsKey(id)) continue;
@@ -533,7 +533,7 @@ public class DialogGraphViewer : GraphViewer {
 		float dx = p2.X - p1.X;
 		float dy = p2.Y - p1.Y;
 
-		float controlOffset = Math.Max(80f * ZoomLevel, Math.Abs(dx) * 0.5f);
+		var controlOffset = Math.Max(80f * ZoomLevel, Math.Abs(dx) * 0.5f);
 
 		var c1 = new PointF(p1.X, p1.Y - controlOffset);
 		var c2 = new PointF(p2.X, p2.Y - controlOffset);
@@ -612,7 +612,7 @@ public class DialogGraphViewer : GraphViewer {
 
 		
 		var text = reply.Text.GetText(PreviewLanguageService.CurrentLanguage);
-		if (text.Length > 80) text = text.Substring(0, 77) + "...";
+		if (text.Length > 80) text = text[..77] + "...";
 		
 		var textBounds = new RectangleF(
 			bounds.X + 10, 

@@ -148,16 +148,16 @@ public static unsafe class RawPointerExtensions {
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static int FindTagContentLength(byte* p) {
-		byte* start = p;
+		var start = p;
 
 		for (;;) {
 			var v0 = Sse2.LoadVector128(p);
-			int m0 = Sse2.MoveMask(Sse2.CompareEqual(v0, V16Lt));
+			var m0 = Sse2.MoveMask(Sse2.CompareEqual(v0, V16Lt));
 			if (m0 != 0)
 				return (int)(p - start) + BitOperations.TrailingZeroCount(m0);
 
 			var v1 = Sse2.LoadVector128(p + 16);
-			int m1 = Sse2.MoveMask(Sse2.CompareEqual(v1, V16Lt));
+			var m1 = Sse2.MoveMask(Sse2.CompareEqual(v1, V16Lt));
 			if (m1 != 0)
 				return (int)(p - start) + 16 + BitOperations.TrailingZeroCount(m1);
 

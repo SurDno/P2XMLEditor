@@ -18,7 +18,7 @@ public class XElementTalkingLoader : IParser<RawTalkingData> {
 		
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
-			ulong id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
+			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
 			var raw = new RawTalkingData {
 				Id = id,

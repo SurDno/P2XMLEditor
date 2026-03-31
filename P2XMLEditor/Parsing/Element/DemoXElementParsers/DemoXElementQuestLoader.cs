@@ -19,7 +19,7 @@ public class DemoXElementQuestLoader : IParser<RawQuestData> {
 		
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
-			ulong id = ulong.Parse(element.Attribute("id")!.Value);
+			var id = ulong.Parse(element.Attribute("id")!.Value);
 
 			var raw = new RawQuestData {
 				Id = id,

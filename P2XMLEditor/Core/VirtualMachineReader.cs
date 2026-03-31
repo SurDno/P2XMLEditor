@@ -129,9 +129,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawGameRootData> raws) {
-		Span<RawGameRootData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameRootData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new GameRoot(id);
 			_vm.ElementsById[id] = elem;
@@ -142,9 +142,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawCustomTypeData> raws) {
-		Span<RawCustomTypeData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawCustomTypeData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new CustomType(id);
 			_vm.ElementsById[id] = elem;
@@ -154,9 +154,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawGameStringData> raws) {
-		Span<RawGameStringData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameStringData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new GameString(id);
 			_vm.ElementsById[id] = elem;
@@ -166,9 +166,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawBlueprintData> raws) {
-		Span<RawBlueprintData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawBlueprintData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Blueprint(id);
 			_vm.ElementsById[id] = elem;
@@ -179,9 +179,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElementsCharacter(List<RawGameObjectData> raws) {
-		Span<RawGameObjectData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameObjectData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Character(id);
 			_vm.ElementsById[id] = elem;
@@ -193,9 +193,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElementsItem(List<RawGameObjectData> raws) {
-		Span<RawGameObjectData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameObjectData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Item(id);
 			_vm.ElementsById[id] = elem;
@@ -207,9 +207,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElementsOther(List<RawGameObjectData> raws) {
-		Span<RawGameObjectData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameObjectData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Other(id);
 			_vm.ElementsById[id] = elem;
@@ -221,9 +221,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElementsScene(List<RawGameObjectData> raws) {
-		Span<RawGameObjectData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameObjectData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Scene(id);
 			_vm.ElementsById[id] = elem;
@@ -235,9 +235,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElementsGeom(List<RawGameObjectData> raws) {
-		Span<RawGameObjectData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameObjectData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Geom(id);
 			_vm.ElementsById[id] = elem;
@@ -249,9 +249,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawFunctionalComponentData> raws) {
-		Span<RawFunctionalComponentData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawFunctionalComponentData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new FunctionalComponent(id);
 			_vm.ElementsById[id] = elem;
@@ -261,9 +261,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawGameModeData> raws) {
-		Span<RawGameModeData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGameModeData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new GameMode(id);
 			_vm.ElementsById[id] = elem;
@@ -273,9 +273,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawParameterData> raws) {
-		Span<RawParameterData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawParameterData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Parameter(id);
 			_vm.ElementsById[id] = elem;
@@ -285,9 +285,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawExpressionData> raws) {
-		Span<RawExpressionData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawExpressionData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Expression(id);
 			_vm.ElementsById[id] = elem;
@@ -297,9 +297,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawPartConditionData> raws) {
-		Span<RawPartConditionData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawPartConditionData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new PartCondition(id);
 			_vm.ElementsById[id] = elem;
@@ -309,9 +309,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawConditionData> raws) {
-		Span<RawConditionData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawConditionData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Condition(id);
 			_vm.ElementsById[id] = elem;
@@ -321,9 +321,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawBranchData> raws) {
-		Span<RawBranchData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawBranchData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Branch(id);
 			_vm.ElementsById[id] = elem;
@@ -333,9 +333,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawReplyData> raws) {
-		Span<RawReplyData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawReplyData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Reply(id);
 			_vm.ElementsById[id] = elem;
@@ -345,9 +345,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawSpeechData> raws) {
-		Span<RawSpeechData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawSpeechData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Speech(id);
 			_vm.ElementsById[id] = elem;
@@ -357,9 +357,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawStateData> raws) {
-		Span<RawStateData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawStateData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new State(id);
 			_vm.ElementsById[id] = elem;
@@ -369,9 +369,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawTalkingData> raws) {
-		Span<RawTalkingData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawTalkingData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Talking(id);
 			_vm.ElementsById[id] = elem;
@@ -381,9 +381,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawEventData> raws) {
-		Span<RawEventData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawEventData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Event(id);
 			_vm.ElementsById[id] = elem;
@@ -393,9 +393,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawActionLineData> raws) {
-		Span<RawActionLineData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawActionLineData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new ActionLine(id);
 			_vm.ElementsById[id] = elem;
@@ -405,9 +405,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawActionData> raws) {
-		Span<RawActionData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawActionData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Action(id);
 			_vm.ElementsById[id] = elem;
@@ -417,9 +417,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawEntryPointData> raws) {
-		Span<RawEntryPointData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawEntryPointData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new EntryPoint(id);
 			_vm.ElementsById[id] = elem;
@@ -429,9 +429,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawGraphLinkData> raws) {
-		Span<RawGraphLinkData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGraphLinkData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new GraphLink(id);
 			_vm.ElementsById[id] = elem;
@@ -441,9 +441,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawGraphData> raws) {
-		Span<RawGraphData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawGraphData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Graph(id);
 			_vm.ElementsById[id] = elem;
@@ -453,9 +453,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawMindMapData> raws) {
-		Span<RawMindMapData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawMindMapData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new MindMap(id);
 			_vm.ElementsById[id] = elem;
@@ -465,9 +465,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawMindMapLinkData> raws) {
-		Span<RawMindMapLinkData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawMindMapLinkData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new MindMapLink(id);
 			_vm.ElementsById[id] = elem;
@@ -477,9 +477,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawMindMapNodeData> raws) {
-		Span<RawMindMapNodeData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawMindMapNodeData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new MindMapNode(id);
 			_vm.ElementsById[id] = elem;
@@ -489,9 +489,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawMindMapNodeContentData> raws) {
-		Span<RawMindMapNodeContentData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawMindMapNodeContentData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new MindMapNodeContent(id);
 			_vm.ElementsById[id] = elem;
@@ -501,9 +501,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawSampleData> raws) {
-		Span<RawSampleData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawSampleData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Sample(id);
 			_vm.ElementsById[id] = elem;
@@ -513,9 +513,9 @@ public class VirtualMachineReader {
 	}
 
 	private void AddElements(List<RawQuestData> raws) {
-		Span<RawQuestData> span = CollectionsMarshal.AsSpan(raws);
-		for (int i = 0; i < span.Length; i++) {
-			ref RawQuestData raw = ref span[i];
+		var span = CollectionsMarshal.AsSpan(raws);
+		for (var i = 0; i < span.Length; i++) {
+			ref var raw = ref span[i];
 			var id = raw.Id;
 			var elem = new Quest(id);
 			_vm.ElementsById[id] = elem;
@@ -758,11 +758,11 @@ public class VirtualMachineReader {
 			_vm.AddLanguage(lang);
 
 			foreach (var line in File.ReadLines(file)) {
-				int idx = line.IndexOf(' ');
+				var idx = line.IndexOf(' ');
 				if (idx <= 0) continue;
 
-				ulong id = ulong.Parse(line[..idx]);
-				string value = line[(idx + 1)..];
+				var id = ulong.Parse(line[..idx]);
+				var value = line[(idx + 1)..];
 
 				if (_vm.ElementsById.TryGetValue(id, out var elem) &&
 					elem is GameString gs)

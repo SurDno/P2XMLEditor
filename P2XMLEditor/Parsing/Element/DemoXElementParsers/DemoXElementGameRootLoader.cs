@@ -33,7 +33,7 @@ public class DemoXElementGameRootLoader : IParser<RawGameRootData> {
 					foreach (var container in item.Elements()) {
 						var typeName = container.Name.LocalName;
 						if (typeName.EndsWith(".List")) {
-							var type = Enum.Parse<ChildContainerType>(typeName.Substring(0, typeName.Length - 5));
+							var type = Enum.Parse<ChildContainerType>(typeName[..^5]);
 							var children = container.Elements("object")
 								.Select(e => ulong.Parse(e.Attribute("id")!.Value))
 								.ToArray();

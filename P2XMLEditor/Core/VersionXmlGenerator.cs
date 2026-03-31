@@ -8,7 +8,6 @@ namespace P2XMLEditor.Core;
 
 public static class VersionXmlGenerator {
 	public static void Generate(string path, VmVersionSettings settings, int dataCapacity) {
-		var solarTimeStr = $"{settings.SolarTime.Day}.{settings.SolarTime:HH:mm:ss}";
 
 		var root = new XElement("Root",
 			new XElement("DataCapacity", dataCapacity),
@@ -16,7 +15,7 @@ public static class VersionXmlGenerator {
 				new XElement("GameName", settings.GameName),
 				new XElement("Scene", settings.Scene),
 				new XElement("WeatherSnapshot", settings.WeatherSnapshot),
-				new XElement("SolarTime", solarTimeStr),
+				new XElement("SolarTime", $"{settings.SolarTime.Day}.{settings.SolarTime:HH:mm:ss}"),
 				new XElement("SkyRotation", settings.SkyRotation),
 				new XElement("LoadingWindowGameDay", settings.LoadingWindowGameDay),
 				new XElement("HideLoadingWindow", settings.HideLoadingWindow),
@@ -26,12 +25,16 @@ public static class VersionXmlGenerator {
 
 		var settingsXml = new XmlWriterSettings {
 			Indent = true,
-			Encoding = Encoding.UTF8,
+			Encoding = new UpperCaseUtf8Encoding(),
 			OmitXmlDeclaration = false
 		};
 
 		var versionPath = Path.Combine(path, "Version.xml");
 		using var writer = XmlWriter.Create(versionPath, settingsXml);
 		root.Save(writer);
+	}
+
+	private class UpperCaseUtf8Encoding : UTF8Encoding {
+		public override string WebName => "UTF-8";
 	}
 }

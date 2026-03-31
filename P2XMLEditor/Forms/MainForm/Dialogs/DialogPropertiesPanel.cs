@@ -80,7 +80,7 @@ public class DialogPropertiesPanel : Panel {
 
 		// Text
 		var textPreview = speech.Text.GetText(PreviewLanguageService.CurrentLanguage);
-		if (textPreview.Length > 100) textPreview = textPreview.Substring(0, 97) + "...";
+		if (textPreview.Length > 100) textPreview = textPreview[..97] + "...";
 		
 		var textLabel = new Label { 
 			Text = "Text:", 
@@ -129,7 +129,7 @@ public class DialogPropertiesPanel : Panel {
 
 		// Text
 		var textPreview = reply.Text.GetText(PreviewLanguageService.CurrentLanguage);
-		if (textPreview.Length > 100) textPreview = textPreview.Substring(0, 97) + "...";
+		if (textPreview.Length > 100) textPreview = textPreview[..97] + "...";
 		
 		var textLabel = new Label { 
 			Text = "Text:", 

@@ -62,16 +62,16 @@ public class SugiyamaLayout<T> where T : notnull {
 			.ToList();
 
 		foreach (var layer in layers) {
-			for (int i = 0; i < layer.Count; i++) {
+			for (var i = 0; i < layer.Count; i++) {
 				layer[i].Order = i;
 			}
 		}
 
-		for (int iter = 0; iter < 4; iter++) {
-			for (int i = 1; i < layers.Count; i++) 
+		for (var iter = 0; iter < 4; iter++) {
+			for (var i = 1; i < layers.Count; i++) 
 				OrderLayer(layers[i], true);
 			
-			for (int i = layers.Count - 2; i >= 0; i--) 
+			for (var i = layers.Count - 2; i >= 0; i--) 
 				OrderLayer(layers[i], false);
 			
 		}
@@ -92,7 +92,7 @@ public class SugiyamaLayout<T> where T : notnull {
 		layer.Sort((a, b) =>
 			barycenters[a].CompareTo(barycenters[b]));
 
-		for (int i = 0; i < layer.Count; i++) {
+		for (var i = 0; i < layer.Count; i++) {
 			layer[i].Order = i;
 		}
 	}

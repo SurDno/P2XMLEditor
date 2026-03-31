@@ -11,7 +11,7 @@ public class ReleaseXElementActionLineWriter : IReleaseXElementWriter<ActionLine
 	public XElement ToXml(ActionLine element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		if (element.Actions is not null && element.Actions.Count != 0)
-			xElement.Add(CreateListElement("Actions", element.Actions.Select(a => a.Id.ToString())));
+			xElement.Add(CreateListElementUnsorted("Actions", element.Actions.Select(a => a.Id.ToString())));
 		
 		xElement.Add(new XElement("ActionLineType", element.ActionLineType.Serialize()));
 		

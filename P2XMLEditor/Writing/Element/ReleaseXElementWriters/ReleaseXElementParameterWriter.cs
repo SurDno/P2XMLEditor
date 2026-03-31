@@ -17,7 +17,7 @@ public class ReleaseXElementParameterWriter : IReleaseXElementWriter<Parameter> 
 			xElement.Add(new XElement("OwnerComponent", ownerComponent.Id));
 		xElement.Add(
 			new XElement("Type", element.Type),
-			CreateSelfClosingElement("Value", element.Value)
+			CreateSelfClosingElement("Value", element.SerializedValue)
 		);
 		if (element.Implicit != null)
 			xElement.Add(CreateBoolElement("Implicit", (bool)element.Implicit));

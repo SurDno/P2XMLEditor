@@ -73,7 +73,7 @@ public class DeleteDisconnectedDialogueEntries(VirtualMachine vm) : Suggestion(v
 		
 		switch (current) {
 			case Speech speech:
-				for (int i = 0; i < speech.Replies.Count; i++) {
+				for (var i = 0; i < speech.Replies.Count; i++) {
 					var replyLink = speech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == i);
 					var destination = replyLink?.Destination?.Element;
 					if (destination != null) destinations.Add(destination);
@@ -86,9 +86,9 @@ public class DeleteDisconnectedDialogueEntries(VirtualMachine vm) : Suggestion(v
 				break;
 	
 			case Branch branch:
-				int exitPointCount = branch.BranchConditions.Count + 1;
+				var exitPointCount = branch.BranchConditions.Count + 1;
 	
-				for (int i = 0; i < exitPointCount; i++) {
+				for (var i = 0; i < exitPointCount; i++) {
 					var branchLink = branch.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == i);
 					var branchDestination = branchLink?.Destination?.Element;
 					if (branchDestination != null) destinations.Add(branchDestination);

@@ -9,7 +9,7 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Suggestions.Cleanup;
 
-// TODO: completely refactor once we start storing Action function references and Parameter types normally. 
+// TODO: completely refactor once we start storing Action function references normally. 
 [Cleanup("References/Game Objects/Delete unused storables"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
@@ -24,8 +24,7 @@ public class DeleteUnusedStorables(VirtualMachine vm) : Suggestion(vm) {
 
 			var referencedInParameters = false;
 			foreach (var parameter in parameters) {
-				if (!parameter.Type.Contains("IBlueprintRef")) continue;
-				if (parameter.Value.Contains(storable.EngineTemplateId!)) {
+				if (parameter.GetTypedValue<Blueprint>() is { Name: var blueprintName } && blueprintName == storable.EngineTemplateId) {
 					referencedInParameters = true;
 					break;
 				}

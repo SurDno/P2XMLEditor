@@ -99,9 +99,9 @@ public class SaveSettingsForm : Form {
 			metaLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
 			
 			// SET EXPLICIT ROW STYLES for perfect height distribution
-			for (int i = 0; i < 8; i++) metaLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5f));
+			for (var i = 0; i < 8; i++) metaLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5f));
 
-			int r = 0;
+			var r = 0;
 			AddMetaRow(metaLayout, r++, "Game Name:", _gameNameBox = new TextBox { Text = "Haruspex", Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
 			AddMetaRow(metaLayout, r++, "Scene:", _sceneCombo = CreateTemplateCombo<SceneObject>(templateManager, new Guid("1d70fc8a-a74d-5144-693c-ae5769293269")));
 			AddMetaRow(metaLayout, r++, "Weather Snapshot:", _weatherCombo = CreateTemplateCombo<WeatherSnapshot>(templateManager, new Guid("16de4259-4406-48d7-9244-84a87cbbc369")));
@@ -163,7 +163,7 @@ public class SaveSettingsForm : Form {
 		
 		if (defaultGuid.HasValue) {
 			var index = -1;
-			for(int i = 0; i < items.Length; i++) {
+			for(var i = 0; i < items.Length; i++) {
 				if (items[i].Id == defaultGuid.Value) { index = i; break; }
 			}
 			if (index >= 0) combo.SelectedIndex = index;

@@ -11,7 +11,7 @@ public class ReleaseXElementBranchWriter : IReleaseXElementWriter<Branch> {
 	public XElement ToXml(Branch element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		if (element.BranchConditions.Any())
-			xElement.Add(CreateListElement("BranchConditions", element.BranchConditions.Select(c => c.Id.ToString())));
+			xElement.Add(CreateListElementUnsorted("BranchConditions", element.BranchConditions.Select(c => c.Id.ToString())));
 		xElement.Add(new XElement("BranchType", element.BranchType.Serialize()));
 		
 		if (element.BranchVariantInfo?.Count > 0) {

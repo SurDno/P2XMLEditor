@@ -341,7 +341,7 @@ public class ExpressionEditorForm : Form {
 
 		if (_expression.Const != null) {
 			txtConstType.Text = _expression.Const.Type;
-			txtConstValue.Text = _expression.Const.Value;
+			txtConstValue.Text = _expression.Const.SerializedValue;
 		}
 
 		if (_expression.FormulaChilds != null) {
@@ -445,9 +445,7 @@ public class ExpressionEditorForm : Form {
 				}
 				break;
 			case ExpressionType.Const:
-				_expression.Const ??= VmElement.CreateDefault<Parameter>(_vm, _expression);
-				_expression.Const.Type = txtConstType.Text;
-				_expression.Const.Value = txtConstValue.Text;
+				_expression.Const.Value = ParameterValue.Create(_vm, txtConstType.Text, txtConstValue.Text);
 				break;
 			case ExpressionType.Complex:
 			default:

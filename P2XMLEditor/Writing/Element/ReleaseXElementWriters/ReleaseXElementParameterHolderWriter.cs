@@ -14,7 +14,7 @@ public class ReleaseXElementParameterHolderWriter<T> : IReleaseXElementWriter<T>
 		if (element.Static != null)
 			xElement.Add(CreateBoolElement("Static", (bool)element.Static));
 		if (element.InheritanceInfo?.Any() == true)
-			xElement.Add(CreateListElement("InheritanceInfo", element.InheritanceInfo));
+			xElement.Add(CreateListElementUnsorted("InheritanceInfo", element.InheritanceInfo));
 		if (element.FunctionalComponents.Any())
 			xElement.Add(CreateListElement("FunctionalComponents", element.FunctionalComponents.Select(f => f.Id.ToString())));
 		if (element.EventGraph != null)
@@ -39,5 +39,3 @@ public class ReleaseXElementParameterHolderWriter<T> : IReleaseXElementWriter<T>
 		return xElement;
 	}
 }
-
-public class ReleaseXElementParameterHolderWriter : ReleaseXElementParameterHolderWriter<ParameterHolder>;

@@ -145,7 +145,7 @@ public sealed class PathSelectionForm : Form {
             return;
         }
 
-        bool isDemo = false;
+        var isDemo = false;
         if (File.Exists(Path.Combine(path, "Version.xml"))) {
             isDemo = false;
         } else if (Directory.GetFiles(path, "*.xml.gz").Length > 0) {

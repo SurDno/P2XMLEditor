@@ -77,7 +77,6 @@ public class MainForm : Form {
 		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		
-		// Show Mind Maps tab by default (this will create it)
 		ShowTab("Mind Maps");
 	}
 	
@@ -88,9 +87,7 @@ public class MainForm : Form {
 	public void ShowTab(string tabName) {
 		if (!_tabFactories.ContainsKey(tabName)) return;
 		
-		// Check if tab is already loaded
 		if (!_loadedTabs.ContainsKey(tabName)) {
-			// Create the tab on demand
 			Logger.Log(LogLevel.Info, $"Loading tab: {tabName}");
 			var tabPage = new TabPage(tabName);
 			var content = _tabFactories[tabName]();

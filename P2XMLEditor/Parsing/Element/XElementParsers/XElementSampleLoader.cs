@@ -19,7 +19,7 @@ public class XElementSampleLoader : IParser<RawSampleData> {
 		
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
-			ulong id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
+			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
 			var raw = new RawSampleData {
 				Id = id,

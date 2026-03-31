@@ -26,24 +26,24 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 
 	public int MinAmount {
 		get => _minAmount;
-		set => _minAmount = Math.Max(0, value);
+		set => _minAmount = value;
 	}
 
 	public int MaxAmount {
 		get => _maxAmount;
-		set => _maxAmount = Math.Max(MinAmount, value);
+		set => _maxAmount = value;
 	}
 
 	public int Weight { get; set; } = 1;
 
 	public int MinDurability {
 		get => _minDurability;
-		set => _minDurability = Math.Max(0, Math.Min(100, value));
+		set => _minDurability = value;
 	}
 
 	public int MaxDurability {
 		get => _maxDurability;
-		set => _maxDurability = Math.Max(_minDurability, Math.Min(100, value));
+		set => _maxDurability = value;
 	}
 	
 	public int? Probability {

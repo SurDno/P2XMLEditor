@@ -14,7 +14,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Action(ulong id) : VmElement(id), IFiller<RawActionData> {
+public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedElement {
 	public ActionType ActionType { get; set; }
 	public MathOperationType MathOperationType { get; set; }
 	public string TargetFuncName { get; set; }

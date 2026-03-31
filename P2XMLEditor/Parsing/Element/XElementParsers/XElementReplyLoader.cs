@@ -17,7 +17,7 @@ public class XElementReplyLoader : IParser<RawReplyData> {
 		
 		while (xr.NodeType == XmlNodeType.Element) {
 			var element = (XElement)XNode.ReadFrom(xr);
-			ulong id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
+			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 
 			var raw = new RawReplyData {
 				Id = id,

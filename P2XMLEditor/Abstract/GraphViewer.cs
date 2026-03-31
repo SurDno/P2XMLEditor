@@ -74,11 +74,11 @@ public abstract class GraphViewer : UserControl {
 		var start = GameToScreen(from.x, from.y);
 		var end = GameToScreen(to.x, to.y);
 
-		float startOffset = 40f * ZoomLevel;
-		float endOffset = 40f * ZoomLevel;
+		var startOffset = 40f * ZoomLevel;
+		var endOffset = 40f * ZoomLevel;
 
 		var direction = new PointF(end.X - start.X, end.Y - start.Y);
-		float length = (float)Math.Sqrt(direction.X * direction.X + direction.Y * direction.Y);
+		var length = (float)Math.Sqrt(direction.X * direction.X + direction.Y * direction.Y);
 		if (length < 0.01f) return;
 
 		direction.X /= length;

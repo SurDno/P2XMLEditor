@@ -15,7 +15,7 @@ public class ReleaseXElementMindMapNodeWriter : IReleaseXElementWriter<MindMapNo
 			new XElement("LogicMapNodeType", element.LogicMapNodeType.Serialize())
 		);
 		if (element.Content.Count != 0)
-			xElement.Add(CreateListElement("NodeContent", element.Content.Select(c => c.Id.ToString())));
+			xElement.Add(CreateListElementUnsorted("NodeContent", element.Content.Select(c => c.Id.ToString())));
 		xElement.Add(
 			new XElement("GameScreenPosX", FormatPos(element.GameScreenPosX)),
 			new XElement("GameScreenPosY", FormatPos(element.GameScreenPosY))

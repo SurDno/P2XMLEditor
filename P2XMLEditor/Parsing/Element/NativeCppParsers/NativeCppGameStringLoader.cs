@@ -20,7 +20,7 @@ public sealed class NativeGameStringLoader : IParser<RawGameStringData>
 
 		CollectionsMarshal.SetCount(raws, capacity);
 
-		Span<RawGameStringData> span = CollectionsMarshal.AsSpan(raws);
+		var span = CollectionsMarshal.AsSpan(raws);
 
 		ulong count;
 

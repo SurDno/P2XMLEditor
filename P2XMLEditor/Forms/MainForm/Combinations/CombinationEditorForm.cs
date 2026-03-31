@@ -18,9 +18,9 @@ public sealed class CombinationEditorForm : Form {
 	private readonly List<ParameterHolder> _storableItems;
 	private bool _suppressEvents;
 
-	public CombinationEditorForm(VirtualMachine vm, string initialValue, List<ParameterHolder> availableStorables, List<ParameterHolder> availableCombinations, Action<string> onSaveCallback) {
+	public CombinationEditorForm(VirtualMachine vm, List<ICombinationPart> initialValue, List<ParameterHolder> availableStorables, List<ParameterHolder> availableCombinations, Action<List<ICombinationPart>> onSaveCallback) {
 		_vm = vm;
-		_originalEntries = CombinationHelper.Parse(_vm, initialValue);
+		_originalEntries = initialValue;
 
 		_comboItems = availableCombinations;
 		_storableItems = availableStorables;
@@ -64,7 +64,7 @@ public sealed class CombinationEditorForm : Form {
 		var removeButton = CreateButton("Remove Entry", 492, 150, AnchorStyles.Left);
 		removeButton.Click += RemoveButton_Click;
 		AcceptButton = CreateButton("Save", 1000, 75, AnchorStyles.Right, true, DialogResult.OK);
-		((Button)AcceptButton).Click += (_, _) => onSaveCallback(CombinationHelper.Serialize(_originalEntries));
+		((Button)AcceptButton).Click += (_, _) => onSaveCallback(_originalEntries);
 		CancelButton = CreateButton("Cancel", 1085, 75, AnchorStyles.Right, true, DialogResult.Cancel);
 
 		Controls.AddRange([_gridView, addItemButton, addGroupButton, addToGroupButton, removeButton, 

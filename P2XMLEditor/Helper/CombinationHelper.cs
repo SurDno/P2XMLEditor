@@ -64,9 +64,18 @@ public static partial class CombinationHelper {
 		}));
 	}
 
-	public static string FormatReadable(string value, Dictionary<ulong, string> itemNames, VirtualMachine vm) {
-		var entries = Parse(vm, value);
+	public static string FormatReadable(ParameterValue? value, Dictionary<ulong, string> itemNames, VirtualMachine vm) {
+		if (value is CombinationDataValue combo) {
+			return FormatEntries(combo.TypedValue, itemNames);
+		}
+		if (value is BasicValue<string> s) {
+			var entries = Parse(vm, s.TypedValue);
+			return FormatEntries(entries, itemNames);
+		}
+		return value?.Serialize() ?? string.Empty;
+	}
 
+	private static string FormatEntries(List<ICombinationPart> entries, Dictionary<ulong, string> itemNames) {
 		return string.Join(", ", entries.Select(entry => entry switch {
 			CombinationGroup group => $"[{string.Join("|", group.Items.Select(i => GetName(itemNames, i) + GetCount(i)))}]",
 			CombinationEntry item => $"{GetName(itemNames, item) + GetCount(item)}",
@@ -90,7 +99,7 @@ public static partial class CombinationHelper {
 
 		foreach (var combo in GetCombinationsWithItem(vm, ph)) {
 			Logger.Log(LogLevel.Info, $"Removing {ph.Name} from combination: {combo.Name}.");
-			var parsedList = Parse(vm, combo.StandartParams[CombinationKey].Value);
+			var parsedList = ((CombinationDataValue)combo.StandartParams[CombinationKey].Value).TypedValue;
 			List<ICombinationPart> toRemoveFromCombo = [];
 			foreach (var element in parsedList) {
 				switch (element) {
@@ -107,14 +116,20 @@ public static partial class CombinationHelper {
 			}
 			foreach (var combinationPart in toRemoveFromCombo) 
 				parsedList.Remove(combinationPart);
-			combo.StandartParams[CombinationKey].Value = Serialize(parsedList);
 		}
 	}
 
 	public static List<ParameterHolder> GetCombinationsWithItem(VirtualMachine vm, ParameterHolder ph) {
 		return vm.GetElementsByType<Item>().Cast<ParameterHolder>().Concat(vm.GetElementsByType<Other>()).
-			Where(item => item.StandartParams.ContainsKey(CombinationKey) && item != ph &&
-						  item.StandartParams[CombinationKey].Value.Contains($"{ph.ParamId}END")).ToList();
+			Where(item => {
+				if (!item.StandartParams.TryGetValue(CombinationKey, out var param) || item == ph) return false;
+				var list = ((CombinationDataValue)param.Value).TypedValue;
+				return list.Any(part => part switch {
+					CombinationEntry entry => entry.Target.Element == ph,
+					CombinationGroup group => group.Items.Any(i => i.Target.Element == ph),
+					_ => false
+				});
+			}).ToList();
 	}
 
 	[GeneratedRegex(@"Probability_(\d+)", RegexOptions.Compiled)]

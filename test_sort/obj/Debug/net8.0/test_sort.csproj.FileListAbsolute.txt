@@ -1,0 +1,15 @@
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.GeneratedMSBuildEditorConfig.editorconfig
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.AssemblyInfoInputs.cache
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.AssemblyInfo.cs
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.csproj.CoreCompileInputs.cache
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.sourcelink.json
+C:\P2VMEditor\P2XMLEditor\test_sort\bin\Debug\net8.0\test_sort.exe
+C:\P2VMEditor\P2XMLEditor\test_sort\bin\Debug\net8.0\test_sort.deps.json
+C:\P2VMEditor\P2XMLEditor\test_sort\bin\Debug\net8.0\test_sort.runtimeconfig.json
+C:\P2VMEditor\P2XMLEditor\test_sort\bin\Debug\net8.0\test_sort.dll
+C:\P2VMEditor\P2XMLEditor\test_sort\bin\Debug\net8.0\test_sort.pdb
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.dll
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\refint\test_sort.dll
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.pdb
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\test_sort.genruntimeconfig.cache
+C:\P2VMEditor\P2XMLEditor\test_sort\obj\Debug\net8.0\ref\test_sort.dll

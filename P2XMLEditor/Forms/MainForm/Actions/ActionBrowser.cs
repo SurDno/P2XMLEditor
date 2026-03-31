@@ -219,7 +219,6 @@ public class ActionsBrowser : Panel {
 			ForeColor = Color.DarkGreen
 		};
 
-		// Recursively add child actions/actionlines
 		if (actionLine.Actions != null && actionLine.Actions.Any()) {
 			foreach (var action in actionLine.Actions) {
 				var childNode = action.Element switch {

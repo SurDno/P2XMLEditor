@@ -10,7 +10,7 @@ public class ReleaseXElementSpeechWriter : IReleaseXElementWriter<Speech> {
 	public XElement ToXml(Speech element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		if (element.Replies.Any())
-			xElement.Add(CreateListElement("Replyes", element.Replies.Select(r => r.Id.ToString())));
+			xElement.Add(CreateListElementUnsorted("Replyes", element.Replies.Select(r => r.Id.ToString())));
 		xElement.Add(
 			new XElement("Text", element.Text.Id),
 			new XElement("AuthorGuid", element.AuthorGuid.Id)

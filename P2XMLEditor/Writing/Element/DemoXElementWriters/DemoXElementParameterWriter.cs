@@ -16,7 +16,7 @@ public class DemoXElementParameterWriter : IDemoXElementWriter<Parameter> {
 		if (element.Type.StartsWith("System"))
 			styledType += "%";
 		obj.Add(CreateDemoStringElement("Type", styledType));
-		obj.Add(CreateDemoStringElement("Value", element.Value));
+		obj.Add(CreateDemoStringElement("Value", element.SerializedValue));
 
 		if (element.Implicit.HasValue)
 			obj.Add(CreateDemoBoolElement("Implicit", element.Implicit.Value));

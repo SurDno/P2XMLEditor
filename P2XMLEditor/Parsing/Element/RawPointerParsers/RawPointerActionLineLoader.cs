@@ -24,10 +24,10 @@ public class RawPointerActionLineLoader : IParser<RawActionLineData> {
 				ulong[] actionIds = null;
 				if (*p == (byte)'s') {
 					p += 9;
-					var count = ParseCount3(p, out int digitCount);
+					var count = ParseCount3(p, out var digitCount);
 					actionIds = new ulong[count];
 					p += digitCount;
-					for (int i = 0; i < count; i++) {
+					for (var i = 0; i < count; i++) {
 						p += 16;
 						actionIds[i] = ParseUlong16(p);
 						p += 21;
@@ -81,7 +81,7 @@ public class RawPointerActionLineLoader : IParser<RawActionLineData> {
 						break;
 				}
 
-				string name = string.Empty;
+				var name = string.Empty;
 				if (*p == (byte)'>') {
 					p++;
 					name = ParseStringUtf8NoSpecialSymbols(ref p);

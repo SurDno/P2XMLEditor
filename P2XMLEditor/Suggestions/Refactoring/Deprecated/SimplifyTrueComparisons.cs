@@ -14,7 +14,7 @@ public class SimplifyTrueComparisons(VirtualMachine vm) : Suggestion(vm) {
 
 		foreach (var pc in pcs) {
 			if (pc is { ConditionType: ConditionType.ValueEqual, SecondExpression.ExpressionType: ExpressionType.Const }
-				&& pc.SecondExpression.Const!.Value == "True") {
+				&& pc.SecondExpression.Const!.GetTypedValue<bool>()) {
 					Vm.RemoveElement(pc.SecondExpression.Const!);
 					Vm.RemoveElement(pc.SecondExpression);
 					pc.SecondExpression = null;

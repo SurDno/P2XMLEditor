@@ -58,7 +58,7 @@ public unsafe struct NativeList<T> : IDisposable where T : unmanaged {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Add(T value) {
-		nuint len = (nuint)(end - ptr);
+		var len = (nuint)(end - ptr);
 		if (len == capacity) {
 			EnsureCapacity(len + 1);
 		}

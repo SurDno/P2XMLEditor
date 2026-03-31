@@ -15,9 +15,9 @@ public sealed class PerformanceLogger : IDisposable {
 	}
 
 	public void Dispose() {
-		long endTimestamp = Stopwatch.GetTimestamp();
-		long delta = endTimestamp - _startTimestamp;
-		double elapsedMs = delta * (0.0001d);
+		var endTimestamp = Stopwatch.GetTimestamp();
+		var delta = endTimestamp - _startTimestamp;
+		var elapsedMs = delta * (0.0001d);
 		
 		var perfLevel = elapsedMs switch {
 			< 5 => LogLevel.Trace,

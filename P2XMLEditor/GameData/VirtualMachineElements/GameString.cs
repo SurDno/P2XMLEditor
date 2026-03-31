@@ -25,7 +25,7 @@ public class GameString(ulong id) : VmElement(id), IFiller<RawGameStringData>, I
 	public override bool IsOrphaned() {
 		return Parent.Element switch {
 			MindMap mm => !mm.Nodes.Any(n => n.Content.Any(c => c.ContentDescriptionText == this)) && mm.Title != this,
-			ParameterHolder ph => ph.StandartParams.All(kvp => kvp.Value.Value != Id.ToString()),
+			ParameterHolder ph => ph.StandartParams.All(kvp => !(kvp.Value.Value is RefValue<GameString> r && r.TypedValue == this)),
 			Speech s => s.Text != this,
 			Reply r => r.Text != this,
 			_ => true

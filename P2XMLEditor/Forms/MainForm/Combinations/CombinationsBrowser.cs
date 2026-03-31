@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
@@ -95,8 +96,8 @@ public class CombinationsBrowser : Panel {
 		var availableCombinations = allNames.Where(item => item.StandartParams.ContainsKey(COMBINATION_KEY)).ToList();
 		var availableStorables = allNames.Where(item => item.StandartParams.ContainsKey(STORABLE_KEY)).Except(availableCombinations).ToList();
 
-		new CombinationEditorForm(_vm, combinationParam.Value, availableStorables, availableCombinations, newValue => {
-			combinationParam.Value = newValue;
+		new CombinationEditorForm(_vm, ((CombinationDataValue)combinationParam.Value).TypedValue, availableStorables, availableCombinations, newValue => {
+			combinationParam.Value = new CombinationDataValue(newValue);
 			LoadCombinations();
 		}).ShowDialog();
 	}

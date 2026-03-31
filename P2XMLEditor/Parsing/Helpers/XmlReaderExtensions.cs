@@ -77,7 +77,7 @@ public static class XmlReaderExtensions {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string[] GetStringListAndAdvance(this XmlReader r) {
-		int length = int.Parse(r.GetAttribute("count")!);
+		var length = int.Parse(r.GetAttribute("count")!);
 		r.Read();
 		var list = new string[length];
 		for (var i = 0; i < length; i++) 
@@ -88,7 +88,7 @@ public static class XmlReaderExtensions {
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ulong[] GetULongListAndAdvance(this XmlReader r) {
-		int length = int.Parse(r.GetAttribute("count")!);
+		var length = int.Parse(r.GetAttribute("count")!);
 		r.Read();
 		var list = new ulong[length];
 		for (var i = 0; i < length; i++) 
@@ -99,7 +99,7 @@ public static class XmlReaderExtensions {
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static (string, ulong)[] GetULongDictAndAdvance(this XmlReader r) {
-		int length = int.Parse(r.GetAttribute("count")!);
+		var length = int.Parse(r.GetAttribute("count")!);
 		r.Read();
 		var dict = new (string, ulong)[length];
 		for (var i = 0; i < length; i++)

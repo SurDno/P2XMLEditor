@@ -14,7 +14,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
+public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, INamedElement {
 	public List<VmEither<Action, ActionLine>>? Actions { get; set; }
 	public ActionLineType ActionLineType { get; set; }
 	public ActionLoopInfo? LoopInfo { get; set; }
@@ -30,7 +30,10 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData> {
 			foreach (var actionId in data.ActionIds)
 				Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
 		ActionLineType = data.ActionLineType;
-		LoopInfo = new(data.LoopInfoName, data.LoopInfoStart, data.LoopInfoEnd, data.LoopInfoRandom);
+		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom.HasValue)
+			LoopInfo = new(data.LoopInfoName ?? "", data.LoopInfoStart ?? "", data.LoopInfoEnd ?? "", data.LoopInfoRandom);
+		else
+			LoopInfo = null;
 		Name = data.Name;
 		LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
 		OrderIndex = data.OrderIndex;
