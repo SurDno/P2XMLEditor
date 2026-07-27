@@ -74,7 +74,7 @@ public class MainForm : Form {
 		RegisterTabFactory("FSM Graphs", () => new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
-		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+		//RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		
 		ShowTab("Mind Maps");

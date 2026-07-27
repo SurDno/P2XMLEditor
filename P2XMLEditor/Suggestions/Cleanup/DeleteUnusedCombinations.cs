@@ -3,7 +3,7 @@ using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Actions.GlobalStorageManager;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
@@ -28,14 +28,14 @@ public class DeleteUnusedCombinations(VirtualMachine vm) : Suggestion(vm) {
 						 action.TargetFuncName.Contains("PickUpCombinationToInentoryByTemplate") || 
 						 action.TargetFuncName.Contains("AddItemsToStoragesLinear") ||
 						 action.TargetFuncName.Contains("PickUpCombination"))) {
-				if (action.SourceParams == null) continue;
-				if (action.SourceParams.Any(p => p.Contains(combo.ParamId)))
+				if (action.GetParamStrings() == null) continue;
+				if (action.GetParamStrings().Any(p => p.Contains(combo.ParamId)))
 					referencedInActions = true;
 			}
 			if (referencedInActions) continue;
 			var referencedInExpressions = false;
 			foreach (var expression in expressions) {
-				if (expression.Function is not IsStorableExistInCombinationFunction func) continue;
+				if (expression.Function is not GlobalStorageManagerIsStorableExistInCombinationFunction func) continue;
 				var sourceParams = func.GetParamStrings();
 				if (sourceParams.Any(e => e.Contains(combo.ParamId)))
 					referencedInExpressions = true;

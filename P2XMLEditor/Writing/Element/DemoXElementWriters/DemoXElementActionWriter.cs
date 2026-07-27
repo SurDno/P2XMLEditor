@@ -25,8 +25,8 @@ public class DemoXElementActionWriter : IDemoXElementWriter<Action> {
 			new XElement("TargetParam", element.TargetParam)
 		);
 
-		obj.Add(CreateDemoListElement("SourceParams", element.SourceParams));
 
+		obj.Add(CreateDemoListElement("SourceParams", element.GetParamStrings()));
 		obj.Add(
 			CreateDemoStringElement("Name", element.Name),
 			new XElement("LocalContext", element.LocalContext.Id),

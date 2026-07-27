@@ -19,13 +19,10 @@ public class MindMapViewer : GraphViewer {
 	private MindMapNode? _linkSourceNode;
 	private readonly NodePropertiesPanel _propertiesPanel;
 	private ContextMenuStrip _backgroundMenu;
-	
 	private const float CIRCLE_SIZE = 100f; 
-
 	public MindMapViewer(VirtualMachine vm, MindMap mindMap) {
 		_vm = vm;
 		_mindMap = mindMap;
-		
 		foreach (var node in mindMap.Nodes) 
 			NodePositions[node.Id] = (node.GameScreenPosX, node.GameScreenPosY);
 
@@ -34,13 +31,10 @@ public class MindMapViewer : GraphViewer {
 			Width = 350 
 		};
 		Controls.Add(_propertiesPanel);
-
 		InitializeContextMenu();
 		CenterView();
-
 		PreviewLanguageService.LanguageChanged += OnPreviewLanguageChanged;
 	}
-
 	private void OnPreviewLanguageChanged(string _) {
 		if (IsDisposed) return;
 		if (InvokeRequired) {
@@ -50,37 +44,31 @@ public class MindMapViewer : GraphViewer {
 		GraphPanel.Invalidate();
 		_propertiesPanel.RefreshLanguage();
 	}
-
 	protected override void Dispose(bool disposing) {
 		if (disposing)
 			PreviewLanguageService.LanguageChanged -= OnPreviewLanguageChanged;
 		base.Dispose(disposing);
 	}
-	
 	protected override void OnMouseClick(MouseEventArgs e) {
 		base.OnMouseClick(e);
 		if (e.Button == MouseButtons.Right && GetNodeAtPosition(e.Location) != null) {
 			GraphPanel.ContextMenuStrip.Hide();
 		}
 	}
-
 	private void InitializeContextMenu() {
 		_backgroundMenu = new ContextMenuStrip();
 		_backgroundMenu.Items.Add("Add Node", null, (_, _) => 
 			AddNewNode(ScreenToGame(GraphPanel.PointToClient(Cursor.Position))));
 		_backgroundMenu.Items.Add("Fit View", null, (_, _) => CenterView());
-
 		GraphPanel.MouseClick += (_, e) => {
 			if (e.Button == MouseButtons.Right && GetNodeAtPosition(e.Location) == null) {
 				_backgroundMenu.Show(GraphPanel, e.Location);
 			}
 		};
 	}
-
 	protected override void DrawNodes(Graphics g) {
 		using var font = new Font(FontFamily.GenericSansSerif, Math.Max(1.0f, 10f * ZoomLevel));
 		var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-
 		foreach (var node in _mindMap.Nodes) {
 			var pos = NodePositions[node.Id];
 			var screenPos = GameToScreen(pos.x, pos.y);
@@ -90,7 +78,6 @@ public class MindMapViewer : GraphViewer {
 				screenPos.Y - size/2,
 				size, size
 			);
-
 			using (var path = new GraphicsPath()) {
 				path.AddEllipse(nodeBounds);
 				using var brush = new LinearGradientBrush(
@@ -104,22 +91,18 @@ public class MindMapViewer : GraphViewer {
 				using var pen = new Pen(Color.Black, Math.Max(1.0f, 1.5f * ZoomLevel));
 				g.DrawPath(pen, path);
 			}
-
 			var displayText = node.Name;
 			g.DrawString(displayText, font, Brushes.Black, nodeBounds, format);
 		}
 	}
-
 	protected override void DrawEdges(Graphics g) {
 		using var pen = new Pen(Color.Gray, Math.Max(1.0f, 1.5f * ZoomLevel));
 		pen.CustomEndCap = new AdjustableArrowCap(5 * ZoomLevel, 5 * ZoomLevel);
-		
 		foreach (var link in _mindMap.Links) {
 			var sourcePos = NodePositions[link.Source.Id];
 			var destPos = NodePositions[link.Destination.Id];
 			DrawArrow(g, pen, sourcePos, destPos);
 		}
-
 		if (_linkSourceNode != null) {
 			using var tempPen = new Pen(Color.Gray, Math.Max(1.0f, 1.5f * ZoomLevel)) { DashStyle = DashStyle.Dash };
 			var start = NodePositions[_linkSourceNode.Id];
@@ -128,9 +111,7 @@ public class MindMapViewer : GraphViewer {
 			g.DrawLine(tempPen, startPoint, mousePos);
 		}
 	}
-
 	protected override float GetNodeRadius() => CIRCLE_SIZE / 2;
-
 	protected override ulong? GetNodeAtPosition(Point screenPoint) {
 		foreach (var (nodeId, pos) in NodePositions) {
 			var nodePos = GameToScreen(pos.x, pos.y);
@@ -144,7 +125,6 @@ public class MindMapViewer : GraphViewer {
 	[SuppressMessage("ReSharper", "SwitchStatementMissingSomeEnumCasesNoDefault")]
 	protected override void HandleNodeClick(ulong nodeId, MouseButtons button, Point screenPoint) {
 		var node = _mindMap.Nodes.First(n => n.Id == nodeId);
-		
 		switch (button) {
 			case MouseButtons.Left when _linkSourceNode != null: {
 				if (_linkSourceNode != node) AddLink(_linkSourceNode, node);
@@ -159,16 +139,13 @@ public class MindMapViewer : GraphViewer {
 				ShowNodeContextMenu(node, screenPoint);
 				break;
 		}
-		
 		GraphPanel.Invalidate();
 	}
-
 	protected override void HandleNodeMoved(ulong nodeId, (float x, float y) newPosition) {
 		var node = _mindMap.Nodes.First(n => n.Id == nodeId);
 		node.GameScreenPosX = newPosition.x;
 		node.GameScreenPosY = newPosition.y;
 	}
-
 	private void ShowNodeContextMenu(MindMapNode node, Point location) {
 		var menu = new ContextMenuStrip();
 		menu.Items.Add("Remove Node", null, (_, _) => RemoveNode(node));
@@ -177,7 +154,6 @@ public class MindMapViewer : GraphViewer {
 			GraphPanel.Cursor = Cursors.Cross;
 		});
 		menu.Items.Add(new ToolStripSeparator());
-
 		var linksMenu = new ToolStripMenuItem("Links");
 		menu.Items.Add(linksMenu);
 		var addLinkMenu = new ToolStripMenuItem("Add Link to...");
@@ -190,7 +166,6 @@ public class MindMapViewer : GraphViewer {
 		linksMenu.DropDownItems.Add(removeLinkMenu);
 		menu.Show(GraphPanel.PointToScreen(location));
 	}
-
 	private void AddNewNode((float x, float y) position) {
 		var node = VmElement.CreateDefault<MindMapNode>(_vm, _mindMap);
 		node.GameScreenPosX = position.x;
@@ -198,7 +173,6 @@ public class MindMapViewer : GraphViewer {
 		NodePositions[node.Id] = (node.GameScreenPosX, node.GameScreenPosY);
 		GraphPanel.Invalidate();
 	}
-
 	private void RemoveNode(MindMapNode node) {
 		NodePositions.Remove(node.Id);
 		if (_selectedNode == node) {
@@ -207,7 +181,6 @@ public class MindMapViewer : GraphViewer {
 		}
 		GraphPanel.Invalidate();
 	}
-
 	private void AddLink(MindMapNode source, MindMapNode destination) {
 		var link = VmElement.CreateDefault<MindMapLink>(_vm, _mindMap);
 		link.Source = source;
@@ -216,11 +189,9 @@ public class MindMapViewer : GraphViewer {
 		destination.InputLinks.Add(link);
 		GraphPanel.Invalidate();
 	}
-
 	private void RemoveLink(MindMapLink link) {
 		_vm.RemoveElement(link);
 		GraphPanel.Invalidate();
 	}
-	
 	public void RefreshView() => GraphPanel.Invalidate();
 }

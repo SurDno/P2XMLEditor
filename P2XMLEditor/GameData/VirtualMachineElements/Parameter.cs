@@ -109,10 +109,11 @@ public abstract class ParameterValue {
 		var id = ulong.Parse(value);
 		return new RefValue<T>(type, (nullable || id == 0) ? vm.GetNullableElement<T>(id) : vm.GetElement<T>(id));
 	}
-
+	public static ParameterValue? Create(VirtualMachine vm, VmTypeInfo typeInfo, string value) {
+		return Create(vm, typeInfo.Serialize(), value);
+	}
 	public static ParameterValue? Create(VirtualMachine vm, string type, string value) {
 		if (type == null) return null;
-
 		return type switch {
 			"System.Boolean" => new BasicValue<bool>(type, !string.IsNullOrEmpty(value) && bool.Parse(value)),
 			"System.Int32" => new BasicValue<int>(type, string.IsNullOrEmpty(value) ? 0 : int.Parse(value)),
@@ -157,6 +158,7 @@ public abstract class ParameterValue {
 			"JerboaColorEnum" => new EnumValue<JerboaColor>(type, value.Deserialize<JerboaColor>()),
 			"BoundCharacterGroup" => new EnumValue<BoundCharacterGroupEnum>(type, value.Deserialize<BoundCharacterGroupEnum>()),
 			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)),
+			"IEntity" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)),
 			
 			// Dynamic types
 			_ when type.StartsWith("IObjRef%") => CreateRef<GameObject>(vm, type, value),

@@ -122,6 +122,20 @@ public static class VmElementExtensions {
 		return value;
 	}
 	
+		public static VmEither<T1, T2>? GetNullableElement<T1, T2>(this VirtualMachine vm, ulong id) where T1 : VmElement where T2 : VmElement {
+		vm.ElementsById.TryGetValue(id, out var value);
+		if (value == null) {
+			return null;
+		}
+		return new VmEither<T1, T2>(value);
+	}
+	public static VmEither<T1, T2, T3>? GetNullableElement<T1, T2, T3>(this VirtualMachine vm, ulong id) where T1 : VmElement where T2 : VmElement where T3 : VmElement {
+		vm.ElementsById.TryGetValue(id, out var value);
+		if (value == null) {
+			return null;
+		}
+		return new VmEither<T1, T2, T3>(value);
+	}
 	public static VmEither<T1, T2, T3, T4>? GetNullableElement<T1, T2, T3, T4>(this VirtualMachine vm, ulong id)
 		where T1 : VmElement
 		where T2 : VmElement

@@ -11,7 +11,7 @@ namespace P2XMLEditor.Core;
 public class VirtualMachine {
 	public readonly Dictionary<ulong, VmElement> ElementsById = new();
 	public readonly TemplateManager TemplateManagerInst;
-	public readonly VmType Type;
+	public readonly GameType Type;
 
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new() {
 		[typeof(VmElement)] = [],
@@ -53,7 +53,7 @@ public class VirtualMachine {
 	public HashSet<string> Languages { get; } = [];
 
 
-	public VirtualMachine(int capacity, TemplateManager templateManagerInst, VmType type) {
+	public VirtualMachine(int capacity, TemplateManager templateManagerInst, GameType type) {
 		ElementsById = new Dictionary<ulong, VmElement>(capacity);
 		TemplateManagerInst = templateManagerInst;
 		Type = type;

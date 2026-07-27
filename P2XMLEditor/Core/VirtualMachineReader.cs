@@ -26,7 +26,7 @@ public class VirtualMachineReader {
 		var type = DetectVmType(vmPath);
 		_vm = new VirtualMachine(ReadDataCapacity(vmPath, type), GetTemplateManager(templatesPath), type);
 
-		_executor = type == VmType.Demo ? new DemoXElementParsingExecutor() : mode switch {
+		_executor = type == GameType.Demo ? new DemoXElementParsingExecutor() : mode switch {
 			ParsingMode.Fastest => new FastestParsingExecutor(),
 			ParsingMode.XElement => new XElementParsingExecutor(),
 			_ => new XmlReaderParsingExecutor()
@@ -34,14 +34,14 @@ public class VirtualMachineReader {
 		_executor.UseParallel = parallel;
 	}
 
-	private static VmType DetectVmType(string vmPath) {
+	private static GameType DetectVmType(string vmPath) {
 		if (File.Exists(Path.Combine(vmPath, "Version.xml")))
-			return VmType.Release;
+			return GameType.Release;
 		
 		if (Directory.GetFiles(vmPath, "*.xml.gz").Length > 0)
-			return VmType.Demo;
+			return GameType.Demo;
 			
-		return VmType.Release;
+		return GameType.Release;
 	}
 	
 	public static TemplateManager GetTemplateManager(string templatesPath) {
@@ -50,11 +50,11 @@ public class VirtualMachineReader {
 		return templateManager;
 	}
 
-	private static int ReadDataCapacity(string vmPath, VmType type) {
+	private static int ReadDataCapacity(string vmPath, GameType type) {
 		const int fallbackCapacity = 131072;
 		var versionPath = Path.Combine(vmPath, "Version.xml");
 		if (!File.Exists(versionPath)) {
-			if (type == VmType.Release) {
+			if (type == GameType.Release) {
 				Logger.Log(LogLevel.Error, $"No Version.xml is found, cannot infer data capacity! Loading the " +
 										   $"virtual machine will be significantly slower, and it can't be loaded by the " +
 										   $"game. Please ensure a valid Version.xml file exists in the VM folder.");
@@ -660,6 +660,57 @@ public class VirtualMachineReader {
 	private void FillActions() {
 		foreach (var raw in _executor.Actions)
 			_vm.GetElement<Action>(raw.Id).FillFromRawData(raw, _vm);
+
+		// PRINT TRACKER
+		System.Console.WriteLine("Hit0: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit0);
+		System.Console.WriteLine("Hit1: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit1);
+		System.Console.WriteLine("Hit2: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit2);
+		System.Console.WriteLine("Hit3: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit3);
+		System.Console.WriteLine("Hit4: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit4);
+		System.Console.WriteLine("Hit5: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit5);
+		System.Console.WriteLine("Hit6: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit6);
+		System.Console.WriteLine("Hit7: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit7);
+		System.Console.WriteLine("Hit8: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit8);
+		System.Console.WriteLine("Hit9: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit9);
+		System.Console.WriteLine("Hit10: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit10);
+		System.Console.WriteLine("Hit11: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit11);
+		System.Console.WriteLine("Hit12: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit12);
+		System.Console.WriteLine("Hit13: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit13);
+		System.Console.WriteLine("Hit14: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit14);
+		System.Console.WriteLine("Hit15: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit15);
+		System.Console.WriteLine("Hit16: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit16);
+		System.Console.WriteLine("Hit17: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit17);
+		System.Console.WriteLine("Hit18: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit18);
+		System.Console.WriteLine("Hit19: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit19);
+		System.Console.WriteLine("Hit20: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit20);
+		System.Console.WriteLine("Hit21: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit21);
+		System.Console.WriteLine("Hit22: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit22);
+		System.Console.WriteLine("Hit23: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit23);
+		System.Console.WriteLine("Hit24: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit24);
+		System.Console.WriteLine("Hit25: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit25);
+		System.Console.WriteLine("Hit26: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit26);
+		System.Console.WriteLine("Hit27: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit27);
+		System.Console.WriteLine("Hit28: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit28);
+		System.Console.WriteLine("Hit29: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit29);
+		System.Console.WriteLine("Hit30: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit30);
+		System.Console.WriteLine("Hit31: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit31);
+		System.Console.WriteLine("Hit32: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit32);
+		System.Console.WriteLine("Hit33: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit33);
+		System.Console.WriteLine("Hit34: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit34);
+		System.Console.WriteLine("Hit35: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit35);
+		System.Console.WriteLine("Hit36: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit36);
+		System.Console.WriteLine("Hit37: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit37);
+		System.Console.WriteLine("Hit38: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit38);
+		System.Console.WriteLine("Hit39: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit39);
+		System.Console.WriteLine("Hit40: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit40);
+		System.Console.WriteLine("Hit41: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit41);
+		System.Console.WriteLine("Hit42: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit42);
+		System.Console.WriteLine("Hit43: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit43);
+		System.Console.WriteLine("Hit44: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit44);
+		System.Console.WriteLine("Hit45: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit45);
+		System.Console.WriteLine("Hit46: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit46);
+		System.Console.WriteLine("Hit47: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit47);
+		System.Console.WriteLine("Hit48: " + P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.HitTracker.Hit48);
 	}
 
 	[PerformanceLogHook]
@@ -724,7 +775,10 @@ public class VirtualMachineReader {
 		FillScenes();
 		FillFunctionalComponents();
 		FillGameModes();
+		FillQuests();
 		FillParameters();
+		FillEvents();
+		FillGraphs();
 		FillExpressions();
 		FillPartConditions();
 		FillConditions();
@@ -733,18 +787,15 @@ public class VirtualMachineReader {
 		FillSpeeches();
 		FillStates();
 		FillTalkings();
-		FillEvents();
 		FillActionLines();
 		FillActions();
 		FillEntryPoints();
 		FillGraphLinks();
-		FillGraphs();
 		FillMindMaps();
 		FillMindMapLinks();
 		FillMindMapNodes();
 		FillMindMapNodeContents();
 		FillSamples();
-		FillQuests();
 	}
 
 	[PerformanceLogHook]

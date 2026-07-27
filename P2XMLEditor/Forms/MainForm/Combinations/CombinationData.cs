@@ -57,6 +57,16 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 	}
 
 	
+	private static int ExtractInt(string s) {
+		var val = 0;
+		for (var i = 0; i < s.Length; i++) {
+			var c = s[i];
+			if ((uint)(c - '0') <= 9)
+				val = val * 10 + (c - '0');
+		}
+		return val;
+	}
+
 	public static CombinationEntry? Parse(VirtualMachine vm, string element) {
 		try {
 			var parts = element.Split(["END&PAR"], StringSplitOptions.RemoveEmptyEntries);
@@ -65,10 +75,10 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 			var durMatch = DurabilityRegex().Matches(element);
 			if (durMatch.Count < 2) return null;
 			
-			var minAmount = int.Parse(new string(parts[1].Where(char.IsDigit).ToArray()));
-			var maxAmount = int.Parse(new string(parts[2].Where(char.IsDigit).ToArray()));
-			var weight = int.Parse(new string(parts[3].Where(char.IsDigit).ToArray()));
 			
+			var minAmount = ExtractInt(parts[1]);
+			var maxAmount = ExtractInt(parts[2]);
+			var weight = ExtractInt(parts[3]);
 			var minDurability = int.Parse(durMatch[0].Groups[1].Value);
 			var maxDurability = int.Parse(durMatch[1].Groups[1].Value);
 			

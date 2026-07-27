@@ -17,12 +17,12 @@ public class ReleaseXElementActionLineWriter : IReleaseXElementWriter<ActionLine
 		
 		if (element.LoopInfo != null) {
 			var actionLineInfo = new XElement("ActionLoopInfo",
-				CreateSelfClosingElement("Name", element.LoopInfo.Value.Name),
-				new XElement("Start", element.LoopInfo.Value.Start),
-				new XElement("End", element.LoopInfo.Value.End)
+				CreateSelfClosingElement("Name", element.LoopInfo.Name.Write()),
+				new XElement("Start", element.LoopInfo.Start.Write()),
+				new XElement("End", element.LoopInfo.End.Write())
 			);
-			if (element.LoopInfo.Value.Random != null)
-				actionLineInfo.Add(CreateBoolElement("Random", (bool)element.LoopInfo.Value.Random!));
+			if (element.LoopInfo.Random != null)
+				actionLineInfo.Add(CreateBoolElement("Random", (bool)element.LoopInfo.Random!));
 			xElement.Add(actionLineInfo);
 		}
 		

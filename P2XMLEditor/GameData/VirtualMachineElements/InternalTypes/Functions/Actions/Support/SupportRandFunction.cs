@@ -1,0 +1,14 @@
+using System.Collections.Generic;
+using P2XMLEditor.Core;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
+
+namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Actions.Support;
+
+[Function("Support.Rand")]
+public class SupportRandFunction(VirtualMachine vm, string[] parameters)
+	: VmFunction {
+	public override FunctionReturnType ReturnType => FunctionReturnType.Float;
+	public override int ParamCount => 1;
+	public FunctionSourceParam<float> MaxValue { get; } = FunctionSourceParam<float>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
+	public override List<string>? GetParamStrings() => [MaxValue.Write()];
+}

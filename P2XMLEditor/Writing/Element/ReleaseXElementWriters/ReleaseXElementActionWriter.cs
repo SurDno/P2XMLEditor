@@ -22,8 +22,8 @@ public class ReleaseXElementActionWriter : IReleaseXElementWriter<Action> {
 			new XElement("TargetObject", element.TargetObject),
 			new XElement("TargetParam", element.TargetParam)
 		);
-		if (element.SourceParams?.Count > 0)
-			xElement.Add(CreateListElement("SourceParams", element.SourceParams));
+		if (element.GetParamStrings()?.Count > 0)
+			xElement.Add(CreateListElement("SourceParams", element.GetParamStrings()));
 		xElement.Add(
 			CreateSelfClosingElement("Name", element.Name),
 			new XElement("LocalContext", element.LocalContext.Id),

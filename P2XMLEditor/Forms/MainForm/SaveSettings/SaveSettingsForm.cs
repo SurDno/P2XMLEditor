@@ -36,7 +36,7 @@ public class SaveSettingsForm : Form {
 
 	public WriterSettings Settings { get; private set; }
 
-	public SaveSettingsForm(VmType detectedType = VmType.Release, bool isNewVm = false, TemplateManager? templateManager = null, string? defaultPath = null) {
+	public SaveSettingsForm(GameType detectedType = GameType.Release, bool isNewVm = false, TemplateManager? templateManager = null, string? defaultPath = null) {
 		Text = isNewVm ? "Save as New Virtual Machine" : "Save Virtual Machine";
 		ClientSize = isNewVm ? new Size(1080, 720) : new Size(460, 420);
 		FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -77,8 +77,8 @@ public class SaveSettingsForm : Form {
 		// --- Left Side: Format & Cleanup ---
 		var leftPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown };
 		var formatGroup = new GroupBox { Text = "Output Format", Size = new Size(380, 100), Margin = new Padding(0, 0, 0, 20) };
-		_formatRelease = new RadioButton { Text = "Release (.xml, <Root> wrapper)", Location = new Point(15, 30), AutoSize = true, Checked = detectedType == VmType.Release };
-		_formatDemo = new RadioButton { Text = "Demo (.xml.gz, GZip compressed)", Location = new Point(15, 60), AutoSize = true, Checked = detectedType == VmType.Demo };
+		_formatRelease = new RadioButton { Text = "Release (.xml, <Root> wrapper)", Location = new Point(15, 30), AutoSize = true, Checked = detectedType == GameType.Release };
+		_formatDemo = new RadioButton { Text = "Demo (.xml.gz, GZip compressed)", Location = new Point(15, 60), AutoSize = true, Checked = detectedType == GameType.Demo };
 		formatGroup.Controls.AddRange([_formatRelease, _formatDemo]);
 		leftPanel.Controls.Add(formatGroup);
 

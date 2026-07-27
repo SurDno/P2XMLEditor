@@ -148,8 +148,8 @@ public class DialogGraphViewer : GraphViewer {
 				return;
 			}
 
-			if (!adjacency.ContainsKey(id)) adjacency[id] = new List<ulong>();
-			if (!reverseAdj.ContainsKey(id)) reverseAdj[id] = new List<ulong>();
+			if (!adjacency.ContainsKey(id)) adjacency[id] = [];
+			if (!reverseAdj.ContainsKey(id)) reverseAdj[id] = [];
 			if (!incoming.ContainsKey(id)) incoming[id] = 0;
 			if (!layer.ContainsKey(id)) layer[id] = 0;
 		}
@@ -330,7 +330,7 @@ public class DialogGraphViewer : GraphViewer {
 				}
 
 				if (!groups.TryGetValue(p, out var list)) {
-					list = new List<ulong>();
+					list = [];
 					groups[p] = list;
 				}
 
@@ -354,7 +354,7 @@ public class DialogGraphViewer : GraphViewer {
 					continue;
 				}
 
-				blocks.Add((0UL, new List<ulong> { node }));
+				blocks.Add((0UL, [node]));
 			}
 
 			for (var b = 0; b < blocks.Count; b++) {

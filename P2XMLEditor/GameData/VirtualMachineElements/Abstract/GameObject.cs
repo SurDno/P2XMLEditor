@@ -23,6 +23,10 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
 
 	
 	public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {
+		WorldPositionGuid = data.WorldPositionGuid;
+		EngineTemplateId = data.EngineTemplateId;
+		EngineBaseTemplateId = data.EngineBaseTemplateId;
+		Instantiated = data.Instantiated;
 		Static = data.Static;
 		FunctionalComponents = [];
 		if (data.FunctionalComponentIds != null) {

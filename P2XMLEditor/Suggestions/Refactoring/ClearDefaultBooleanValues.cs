@@ -19,9 +19,7 @@ public class ClearDefaultBooleanValues(VirtualMachine vm) : Suggestion(vm) {
 				gameObject.Instantiated = null;
 		foreach (var actionLine in Vm.GetElementsByType<ActionLine>())
 			if (actionLine.LoopInfo is { Random: false }) {
-				var al = actionLine.LoopInfo.Value;
-				al.Random = null;
-				actionLine.LoopInfo = al;
+				actionLine.LoopInfo.Random = null;
 			}
 		foreach (var graphElement in Vm.GetElementsByType<Branch>().Cast<IGraphElement>().
 					 Concat(Vm.GetElementsByType<Graph>()).Concat(Vm.GetElementsByType<State>())) {

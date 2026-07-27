@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using P2XMLEditor.Attributes;
 
 namespace P2XMLEditor.Helper;
@@ -54,11 +55,17 @@ public static class EnumExtensions {
 			throw new ArgumentException($"Enum type {t.Name} not initialized in cache");
 		
 		if (map.TryGetValue(value, out var raw))
-			return (T)Enum.ToObject(t, raw);
-
+			return Unsafe.As<int, T>(ref raw);
 		return (T)AssignUnknownValue(t, value);
 	}
-	
+	public static T DeserializeNoNewValues<T>(this string value, T defaultValue = default(T)) where T : Enum {
+		var t = typeof(T);
+		if (!DeserializeCache.TryGetValue(t, out var map))
+			throw new ArgumentException($"Enum type {t.Name} not initialized in cache");
+		if (map.TryGetValue(value, out var raw))
+			return Unsafe.As<int, T>(ref raw);
+		return defaultValue;
+	}
 	public static Enum Deserialize(this Type enumType, string value) {
 		if (!DeserializeCache.TryGetValue(enumType, out var map))
 			throw new ArgumentException($"Enum type {enumType.Name} not initialized in cache");

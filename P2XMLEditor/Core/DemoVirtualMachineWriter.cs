@@ -11,6 +11,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Writing.Element.DemoXElementWriters;
+using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
 
@@ -23,7 +24,7 @@ public class DemoVirtualMachineWriter(string vmPath, VirtualMachine virtualMachi
 	};
 
 	private static readonly Dictionary<Type, IDemoXElementWriter> Writers = new() {
-		{ typeof(GameData.VirtualMachineElements.Action),      new DemoXElementActionWriter() },
+		{ typeof(Action),      new DemoXElementActionWriter() },
 		{ typeof(ActionLine),           new DemoXElementActionLineWriter() },
 		{ typeof(Blueprint),            new DemoXElementBlueprintWriter() },
 		{ typeof(Branch),               new DemoXElementBranchWriter() },

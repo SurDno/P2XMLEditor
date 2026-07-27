@@ -10,6 +10,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Writing.Element.ReleaseXElementWriters;
+using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
 
@@ -17,7 +18,7 @@ public class ReleaseVirtualMachineWriter(string vmPath, VirtualMachine virtualMa
 	: VirtualMachineWriterBase(vmPath, virtualMachine) {
 
 	private static readonly Dictionary<Type, IReleaseXElementWriter> Writers = new() {
-		{ typeof(GameData.VirtualMachineElements.Action),      new ReleaseXElementActionWriter() },
+		{ typeof(Action),      new ReleaseXElementActionWriter() },
 		{ typeof(ActionLine),           new ReleaseXElementActionLineWriter() },
 		{ typeof(Blueprint),            new ReleaseXElementBlueprintWriter() },
 		{ typeof(Branch),               new ReleaseXElementBranchWriter() },

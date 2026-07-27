@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
 using P2XMLEditor.Core;
-using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
-using static P2XMLEditor.Helper.XmlParsingHelper;
 
 #pragma warning disable CS8618
 
@@ -21,19 +18,22 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 	public string Name { get; set; }
 	public VmEither<State, Graph, Branch, Talking, Speech> LocalContext { get; set; }
 	public int OrderIndex { get; set; }
-
-	public record struct ActionLoopInfo(string Name, string Start, string End, bool? Random);
-	
 	public void FillFromRawData(RawActionLineData data, VirtualMachine vm) {
 		Actions = [];
 		if (data.ActionIds != null)
 			foreach (var actionId in data.ActionIds)
 				Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
 		ActionLineType = data.ActionLineType;
-		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom.HasValue)
-			LoopInfo = new(data.LoopInfoName ?? "", data.LoopInfoStart ?? "", data.LoopInfoEnd ?? "", data.LoopInfoRandom);
-		else
+		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom.HasValue) {
+			LoopInfo = new P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ActionLoopInfo(
+				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoName ?? "", vm),
+				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoStart ?? "", vm, null, VmTypeInfo.Int32),
+				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoEnd ?? "", vm, null, VmTypeInfo.Int32),
+				data.LoopInfoRandom
+			);
+		} else {
 			LoopInfo = null;
+		}
 		Name = data.Name;
 		LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
 		OrderIndex = data.OrderIndex;

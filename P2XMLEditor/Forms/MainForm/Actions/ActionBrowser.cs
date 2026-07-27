@@ -16,6 +16,7 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 namespace P2XMLEditor.Forms.MainForm.Actions;
 
 public class ActionsBrowser : Panel {
+	/*
 	private readonly VirtualMachine _vm;
 	private TreeView _treeView;
 	private SearchControl _searchControl;
@@ -283,5 +284,5 @@ public class ActionsBrowser : Panel {
 			Action a => a.Id,
 			_ => 0
 		};
-	}
+	}*/
 }

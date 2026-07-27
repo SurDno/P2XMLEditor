@@ -17,14 +17,10 @@ namespace P2XMLEditor.GameData.Templates;
 public class Entity : TemplateObject, IEnableable {
 	public List<ITemplateComponent> Components { get; set; } = [];
 	public bool IsEnabled { get; set; } = true;
-	
 	public static ConcurrentDictionary<string,int> invalidComponent = new();
-
 	public override void LoadFromXml(XElement element) {
 		base.LoadFromXml(element);
-
 		var componentsElement = element.Element("Components");
-
 		if (componentsElement != null) {
 			foreach (var componentElement in componentsElement.Elements("Item")) {
 				var type = componentElement.Attribute("type")!.Value;
@@ -43,10 +39,8 @@ public class Entity : TemplateObject, IEnableable {
 				}
 			}
 		}
-
 		IsEnabled = ParseBool(element.Element("IsEnabled")!);
 	}
-	
 	public static ITemplateComponent? CreateComponent(string? type) => type switch {
 		// CROWDS
 		nameof(IndoorCrowdComponent) => new IndoorCrowdComponent(),
@@ -63,7 +57,6 @@ public class Entity : TemplateObject, IEnableable {
 		nameof(PlayerControllerComponent) => new PlayerControllerComponent(),
 		nameof(PlayerLocationComponent) => new PlayerLocationComponent(),
 		nameof(PlayerInteractableComponent) => new PlayerInteractableComponent(),
-		
 		nameof(StaticModelComponent) => new StaticModelComponent(),
 		nameof(LocationComponent) => new LocationComponent(),
 		nameof(CrowdPointsComponent) => new CrowdPointsComponent(),
@@ -110,17 +103,13 @@ public class Entity : TemplateObject, IEnableable {
 		nameof(ParametersComponent) => new ParametersComponent(),
 		_ => null
 	};
-
 	public override XElement ToXml() {
 		var element = base.ToXml();
-
 		var componentsElement = new XElement("Components");
 		foreach (var component in Components) 
 			componentsElement.Add(component.ToXml(new XElement("Item", new XAttribute("type", GetType().Name))));
-
 		element.Add(componentsElement);
 		element.Add(CreateBoolElement("IsEnabled", IsEnabled));
-
 		return element;
 	}
 }
