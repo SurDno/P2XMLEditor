@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="GameMode">
+  <Item id="9007061816089101">
+    <IsMain>True</IsMain>
+    <StartGameTime>0:7:30:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:7:30:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>5347942954699976</PlayerRef>
+    <Name>common</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061816396201">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>%5347942954699976</PlayerRef>
+    <Name>Prologue</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061816504701">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>%5347942955362876</PlayerRef>
+    <Name>Dream1</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061816632401">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:0:0:0</StartGameTime>
+    <GameTimeSpeed>0</GameTimeSpeed>
+    <StartSolarTime>0:0:0:0</StartSolarTime>
+    <SolarTimeSpeed>0</SolarTimeSpeed>
+    <PlayerRef>%5347942954699976</PlayerRef>
+    <Name>Limbo</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061816784202">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>%5347942955394877</PlayerRef>
+    <Name>Dream2</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817045901">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>%5347942955656976</PlayerRef>
+    <Name>Abbatoir</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817050801">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:7:0:0</StartGameTime>
+    <GameTimeSpeed>0</GameTimeSpeed>
+    <StartSolarTime>0:7:0:0</StartSolarTime>
+    <SolarTimeSpeed>0</SolarTimeSpeed>
+    <PlayerRef>%5347942955657176</PlayerRef>
+    <Name>RatProphetDream</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817200601">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:7:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:7:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>%5347942955811376</PlayerRef>
+    <Name>LodgeTutorialDream</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817559201">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>5347942956170176%5347942956170176</PlayerRef>
+    <Name>SchoolDream</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817799701">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:6:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:6:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>5347942956410876%5347942956410876</PlayerRef>
+    <Name>SteamDemo</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+  <Item id="9007061817890602">
+    <IsMain>False</IsMain>
+    <StartGameTime>0:0:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:0:0:0</StartSolarTime>
+    <SolarTimeSpeed>1</SolarTimeSpeed>
+    <PlayerRef>5347942956501776%5347942956501776</PlayerRef>
+    <Name>SandPestVisitDream</Name>
+    <Parent>281470684498226</Parent>
+  </Item>
+</Root>

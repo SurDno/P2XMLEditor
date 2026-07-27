@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <ProjectVersion>783</ProjectVersion>
+  <XmlDataFormatVersion>14</XmlDataFormatVersion>
+  <DataCapacity>345806</DataCapacity>
+  <GameDataInfo>
+	<GameName>Haruspex</GameName>
+	<Scene>1d70fc8a-a74d-5144-693c-ae5769293269</Scene>
+	<WeatherSnapshot>16de4259-4406-48d7-9244-84a87cbbc369</WeatherSnapshot>
+	<SolarTime>1.07:30:00</SolarTime>
+	<SkyRotation>145</SkyRotation>
+	<LoadingWindowGameDay>-1</LoadingWindowGameDay>
+	<HideLoadingWindow>False</HideLoadingWindow>
+  </GameDataInfo>
+</Root>

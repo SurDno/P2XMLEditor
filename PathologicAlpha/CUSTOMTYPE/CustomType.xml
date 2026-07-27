@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CustomType>
+  <object>
+    <ParentType>System.String%</ParentType>
+    <DefinitionType>CT_DEFINITION_TYPE_ENUM</DefinitionType>
+    <DefinitionData.List>
+      <value>Rare</value>
+      <value>Common</value>
+      <value>Closed Container</value>
+      <value>Open Container</value>
+      <value>Locked Container</value>
+      <value>Diseased Closed Container</value>
+      <value>Diseased Locked Container</value>
+      <value>Normal Hydrant</value>
+      <value>Broken Hydrant</value>
+      <value>Muddy Hydrant</value>
+      <value>Endless Barrel</value>
+      <value>Empty Barrel</value>
+      <value>Limited Barrel</value>
+    </DefinitionData.List>
+    <Name>CustomTag</Name>
+    <Parent>281470684498226</Parent>
+    <ParentFolder>9570003178605857</ParentFolder>
+    <Guid>10414415222589026</Guid>
+  </object>
+</CustomType>
