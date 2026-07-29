@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -6,7 +7,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 
 [Function("Storage.GetItemsCount")]
 public class StorageGetItemsCountFunction : VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Int;
+	public override VmType ReturnType => VmType.Int32;
 	public override int ParamCount => 0;
 	public StorageGetItemsCountFunction() {
 	}

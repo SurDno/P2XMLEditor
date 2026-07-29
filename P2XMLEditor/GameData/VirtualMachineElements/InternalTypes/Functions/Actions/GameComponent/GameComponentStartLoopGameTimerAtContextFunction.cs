@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -9,7 +10,7 @@ public class GameComponentStartLoopGameTimerAtContextFunction(
 	VirtualMachine vm,
 	string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.ULong;
+	public override VmType ReturnType => VmType.UInt64;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<GameTime>? Interval { get; } = FunctionSourceParam<GameTime>.Read(parameters[0], vm);
 	public FunctionSourceParam<GameMode>? GameMode { get; } = FunctionSourceParam<GameMode>.Read(parameters[1], vm);

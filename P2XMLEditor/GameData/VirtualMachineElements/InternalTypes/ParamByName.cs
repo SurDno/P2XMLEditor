@@ -5,7 +5,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
-public class ParamByName(string name) : ICommonVariableParameter {
+public class ParamByName(string name)  {
 	private string Name { get; } = name;
 	public string ParamId => Name;
 

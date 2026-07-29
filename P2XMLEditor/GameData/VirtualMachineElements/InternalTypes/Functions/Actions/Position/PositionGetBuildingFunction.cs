@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -6,7 +7,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 
 [Function("Position.GetBuilding")]
 public class PositionGetBuildingFunction : VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Entity;
+	public override VmType ReturnType => VmType.EntityRef;
 	public override int ParamCount => 0;
 	public PositionGetBuildingFunction() {
 	}

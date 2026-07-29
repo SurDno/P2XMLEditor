@@ -8,7 +8,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 [Function("AttackerPlayer.SetWeapon")]
 public class AttackerPlayerSetWeaponFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 1;
 	public FunctionSourceParam<WeaponKind> Weapon { get; } = FunctionSourceParam<WeaponKind>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [Weapon.Write()];

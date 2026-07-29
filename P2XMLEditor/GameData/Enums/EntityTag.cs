@@ -34,5 +34,13 @@ public enum EntityTag {
 	[SerializationData("Water_Supply_Hydrant")] WaterSupplyHydrant,
 	[SerializationData("Water_Supply_Barrel")] WaterSupplyBarrel,
 	[SerializationData("Event_BadEnding_ObjectsEnabled")] EventBadEndingObjectsEnabled,
-	[SerializationData("Event_BadEnding_ObjectsDisabled")] EventBadEndingObjectsDisabled
+	[SerializationData("Event_BadEnding_ObjectsDisabled")] EventBadEndingObjectsDisabled, 
+	// NOT SURE IF NEEDED, NOT USED:
+	[SerializationData("__QuestsTags")] QuestsTags,
+	[SerializationData("__Event_Phantom")] EventPhantom,
+	[SerializationData("__Event_Marooned")] EventMarooned,
+	[SerializationData("__Event_TheWalk")] EventTheWalk,
+	[SerializationData("__Event_Town_Reflections")] EventTownReflections,
+	[SerializationData("__Water_Supply")] WaterSupply,
+	[SerializationData("__Event_BadEnding")] EventBadEnding
 }

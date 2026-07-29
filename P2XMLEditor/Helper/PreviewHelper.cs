@@ -62,23 +62,7 @@ public static class PreviewHelper {
 		};
 	}
 
-	public static string Preview(CommonVariable? commonVariable) {
-		if (commonVariable == null) return "<null variable>";
-		return $"{Preview(commonVariable.VariableParameter)}%{Preview(commonVariable.ContextParameter)}";
-	}
+	public static string Preview(TargetObject targetObject) => targetObject.Write();
+	public static string Preview(ExpressionParamTarget? targetParam) => targetParam?.Write() ?? "<null>";
 
-	public static string Preview(ICommonVariableParameter? commonVariableParameter) {
-		switch (commonVariableParameter) {
-			case null:
-				return string.Empty;
-			case ParamByName paramByName:
-				return paramByName.ParamId;
-			case ParameterHolder ph:
-				return ph.Name;
-			case Parameter param:
-				return param.Name;
-			default:
-				return commonVariableParameter.ParamId;
-		}
-	}
 }

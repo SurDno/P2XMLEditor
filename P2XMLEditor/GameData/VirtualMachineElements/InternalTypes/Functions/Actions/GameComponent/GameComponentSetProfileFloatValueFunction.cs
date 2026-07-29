@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -9,7 +10,7 @@ public class GameComponentSetProfileFloatValueFunction(
 	VirtualMachine vm,
 	string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<string>? ProfileName { get; } = FunctionSourceParam<string>.Read(parameters[0], vm);
 	public FunctionSourceParam<float>? Value { get; } = FunctionSourceParam<float>.Read(parameters[1], vm);

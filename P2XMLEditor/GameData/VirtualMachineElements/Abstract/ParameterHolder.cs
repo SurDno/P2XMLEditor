@@ -11,7 +11,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
-public abstract class ParameterHolder(ulong id) : VmElement(id), ICommonVariableParameter, INamedElement {
+public abstract class ParameterHolder(ulong id) : VmElement(id), INamedElement {
 	public bool? Static { get; set; }
 	public List<FunctionalComponent> FunctionalComponents { get; set; }
 	public Graph? EventGraph { get; set; }

@@ -54,8 +54,8 @@ public enum VmType {
 	[SerializationData("FastTravelPointEnum")] FastTravelPointEnum,
 	[SerializationData("JerboaColorEnum")] JerboaColorEnum,
 	[SerializationData("BoundCharacterGroup")] BoundCharacterGroup,
-	[SerializationData("PriorityParameterEnum")] PriorityParameterEnum,
-	[SerializationData("NotificationEnum")] NotificationEnum,
+	[SerializationData("PriorityParameter")] PriorityParameterEnum,
+	[SerializationData("Notification")] NotificationEnum,
 	[SerializationData("WeaponKind")] WeaponKind,
 	[SerializationData("GateState")] GateState,
 	[SerializationData("IBlueprintRef")] BlueprintRef,
@@ -63,5 +63,13 @@ public enum VmType {
 	[SerializationData("IBlueprintRef%cf_Storable")] BlueprintRefStorable,
 	[SerializationData("ObjectCombinationDataStruct")] ObjectCombinationDataStruct,
 	[SerializationData("GameLocalizationName")] GameLocalizationName,
-	[SerializationData("CommonList")] List
+	[SerializationData("CommonList")] List,
+	[SerializationData("WeatherLayer")] WeatherLayer,
+	[SerializationData("AttackerAttackType")] AttackerAttackType,
+	[SerializationData("AttackerNPCAttackType")] AttackerNPCAttackType,
+	[SerializationData("AttackerPlayerAttackType")] AttackerPlayerAttackType,
+	[SerializationData("AttackerFinishType")] AttackerFinishType,
+	[SerializationData("AttackerDiseasedPlayerPushKind")] AttackerDiseasedPlayerPushKind,
+	[SerializationData("DialogStringType")] DialogStringType,
+	[SerializationData("MailState")] MailState
 }

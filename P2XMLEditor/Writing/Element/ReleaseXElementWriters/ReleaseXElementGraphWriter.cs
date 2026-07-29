@@ -17,10 +17,10 @@ public class ReleaseXElementGraphWriter : IReleaseXElementWriter<Graph> {
 		if (element.EventLinks.Any())
 			xElement.Add(CreateListElement("EventLinks", element.EventLinks.Select(l => l.Id.ToString())));
 		xElement.Add(new XElement("GraphType", element.GraphType.Serialize()));
-		if (element.InputParamsInfo?.Any() == true) {
+		if (element.InputParams?.Any() == true) {
 			xElement.Add(new XElement("InputParamsInfo",
-				new XAttribute("count", element.InputParamsInfo.Count),
-				element.InputParamsInfo.Select(p => new XElement("Item",
+				new XAttribute("count", element.InputParams.Count),
+				element.InputParams.Select(p => new XElement("Item",
 					new XElement("Name", p.Name),
 					new XElement("Type", p.Type)
 				))

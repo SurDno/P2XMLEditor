@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -9,7 +10,7 @@ public class GlobalStorageManagerSetContainerTagsComplexDistributionFunction(
 	VirtualMachine vm,
 	string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 5;
 	public FunctionSourceParam<string> StoragesRootInfo { get; } = FunctionSourceParam<string>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
 	public FunctionSourceParam<string> StorageTags { get; } = FunctionSourceParam<string>.Read((parameters.Length > 1) ? parameters[1] : "", vm);

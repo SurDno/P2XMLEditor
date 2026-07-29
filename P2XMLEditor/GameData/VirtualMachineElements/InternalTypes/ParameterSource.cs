@@ -17,12 +17,10 @@ public struct ParameterSource {
 	public bool IsConstant { get; set; }
 	public VmTypeInfo TypeInfo { get; set; } = VmTypeInfo.Unknown;
 	public MessageInfo? MessageReference { get; set; }
-	public GraphParamInfo? InputParamReference { get; set; }
-	public VmEither<Graph, GraphPlaceholder>? InputParamGraphOwner { get; set; }
+	public InputParameter? InputParamReference { get; set; }
 	public ParameterHolder? PrefixHolder { get; set; }
 	public HierarchyGuid? PrefixHierarchy { get; set; }
-	public GraphParamInfo? PrefixInputParamReference { get; set; }
-	public Graph? PrefixInputParamGraphOwner { get; set; }
+	public InputParameter? PrefixInputParamReference { get; set; }
 	public string? PrefixString { get; set; }
 	public Parameter? ParameterReference { get; set; }
 	public VmElement? ElementReference { get; set; }
@@ -31,7 +29,6 @@ public struct ParameterSource {
 	public string? DynamicParameterName { get; set; }
 	public BlueprintRef? BlueprintReference { get; set; }
 	public EntityRef? EntityReference { get; set; }
-	public bool IsCommaSeparator { get; set; }
 	public ActionLine? LoopActionLine { get; set; }
 	public bool IsLoopIndex { get; set; }
 	public bool IsLoopElement { get; set; }
@@ -40,472 +37,519 @@ public struct ParameterSource {
 	public ulong? GlobalListTargetId { get; set; }
 	public bool HasLeadingPercent { get; set; }
 
+	
+	// for literal values - sometimes serialized as "0.5", sometimes as "0,5". 
+	// no difference for the editor or the engine, just to ensure it researilizes the same
+	public bool IsCommaSeparator { get; set; }
+	
+	/// <summary>
+	/// True when a single hierarchy reference was serialized as "A%A".
+	/// Set instead of PrefixHierarchy, so the hierarchy is not stored twice.
+	/// </summary>
+	public bool HierarchyWrittenTwice { get; set; }
+
 	public ParameterSource() { }
 
-
-	
-
-
-	public static class HitTracker {
-		public static bool Hit0;
-		public static bool Hit1;
-		public static bool Hit2;
-		public static bool Hit3;
-		public static bool Hit4;
-		public static bool Hit5;
-		public static bool Hit6;
-		public static bool Hit7;
-		public static bool Hit8;
-		public static bool Hit9;
-		public static bool Hit10;
-		public static bool Hit11;
-		public static bool Hit12;
-		public static bool Hit13;
-		public static bool Hit14;
-		public static bool Hit15;
-		public static bool Hit16;
-		public static bool Hit17;
-		public static bool Hit18;
-		public static bool Hit19;
-		public static bool Hit20;
-		public static bool Hit21;
-		public static bool Hit22;
-		public static bool Hit23;
-		public static bool Hit24;
-		public static bool Hit25;
-		public static bool Hit26;
-		public static bool Hit27;
-		public static bool Hit28;
-		public static bool Hit29;
-		public static bool Hit30;
-		public static bool Hit31;
-		public static bool Hit32;
-		public static bool Hit33;
-		public static bool Hit34;
-		public static bool Hit35;
-		public static bool Hit36;
-		public static bool Hit37;
-		public static bool Hit38;
-		public static bool Hit39;
-		public static bool Hit40;
-		public static bool Hit41;
-		public static bool Hit42;
-		public static bool Hit43;
-		public static bool Hit44;
-		public static bool Hit45;
-		public static bool Hit46;
-		public static bool Hit47;
-		public static bool Hit48;
-	}
-public static ParameterSource Create(string data, VirtualMachine vm, CommonVariable? target = null,
+	public static ParameterSource Create(string data, VirtualMachine vm, ParamTarget? target = null,
 		VmTypeInfo? expectedType = null) {
-		var parameterSource = new ParameterSource();
-		parameterSource.IsCommaSeparator = data.Contains(',');
+		var src = new ParameterSource();
+
 		if (data.StartsWith("const_")) {
-			HitTracker.Hit0 = true;
-			var @int = VmTypeInfo.Int32;
-			var text = data;
-			parameterSource.LiteralValue = ParameterValue.Create(vm, @int, text.Substring(6, text.Length - 6));
-			parameterSource.IsConstant = true;
-			return parameterSource;
+			HitTracker.Hit(data);
+			src.LiteralValue = ParameterValue.Create(vm, VmTypeInfo.Int32, data[6..]);
+			src.IsConstant = true;
+			return src;
 		}
 
-		var flag = (parameterSource.HasLeadingPercent = data.StartsWith('%'));
-		var num = data.IndexOf('%', flag ? 1 : 0);
+		HitTracker.Hit(data);
+		src.HasLeadingPercent = data.StartsWith('%');
+		// NOTE: the old code sliced data[..num] while searching from index 1, so the
+		// leading '%' leaked into the prefix for every "%A%B" value.
+		var body = src.HasLeadingPercent ? data[1..] : data;
+
+		// --- (2) hierarchy written twice: "A%A" is one reference, not prefix + value.
+		if (HierarchyGuid.TryParseDoubled(body, vm, out var doubled)) {
+			HitTracker.Hit(data);
+			src.HierarchyReference = doubled;
+			src.HierarchyWrittenTwice = true;
+			src.ElementReference = doubled!.Elements[^1].Element;
+			src.TypeInfo = expectedType ?? VmTypeInfo.GameObject;
+			ApplyRefWrapper(ref src, vm, expectedType);
+			return src;
+		}
+
+		// --- prefix / content split
+		var sep = body.IndexOf('%');
 		string content;
-		string? prefixInputParamRaw = null;
-		if (num != -1) {
-			HitTracker.Hit1 = true;
-			var text2 = data[..num];
-			var num2 = num + 1;
-			content = data.Substring(num2, data.Length - num2);
-			if (ulong.TryParse(text2, out var result)) {
-			HitTracker.Hit2 = true;
-				var nullableElement = vm.GetNullableElement<VmElement>(result);
-				if (nullableElement is Parameter dynamicObjectReference) {
-			HitTracker.Hit3 = true;
-					parameterSource.DynamicObjectReference = dynamicObjectReference;
-					parameterSource.DynamicParameterName = content;
-				} else if (nullableElement is ParameterHolder prefixHolder) {
-			HitTracker.Hit4 = true;
-					parameterSource.PrefixHolder = prefixHolder;
-				} else {
-			HitTracker.Hit5 = true;
-					parameterSource.PrefixString = text2;
-				}
-			} else if (text2.Contains("H") && HierarchyGuid.TryParse(text2, vm, out var result2)) {
-			HitTracker.Hit6 = true;
-				parameterSource.PrefixHierarchy = result2;
+		if (sep != -1) {
+			HitTracker.Hit(data);
+			var prefix = body[..sep];
+			content = body[(sep + 1)..];
+
+			if (ulong.TryParse(prefix, out var prefixId)) {
+				HitTracker.Hit(data);
+				var prefixElement = vm.GetNullableElement<VmElement>(prefixId);
+				if (prefixElement is Parameter dynamicObjectReference) {
+					HitTracker.Hit(data);
+					src.DynamicObjectReference = dynamicObjectReference;
+					src.DynamicParameterName = content;
+				} else if (prefixElement is ParameterHolder prefixHolder) {
+					HitTracker.Hit(data);
+					src.PrefixHolder = prefixHolder;
+				}/* else {
+					HitTracker.Hit(data);
+					src.PrefixString = prefix;
+				}*/
+			} else if (HierarchyGuid.TryParse(prefix, vm, out var prefixHierarchy)) {
+				// --- (1) HierarchyGuid prefix, e.g. "<hier>%<parameterId>"
+				HitTracker.Hit(data);
+				src.PrefixHierarchy = prefixHierarchy;
 			} else {
-			HitTracker.Hit7 = true;
-				parameterSource.PrefixString = text2;
+				HitTracker.Hit(data);
+				src.PrefixString = prefix;
 			}
-		} else if (flag) {
-			HitTracker.Hit8 = true;
-			content = data[1..];
 		} else {
-			HitTracker.Hit9 = true;
-			content = data;
+			HitTracker.Hit(data);
+			content = body;
 		}
 
-		var holder = parameterSource.PrefixHolder;
-		if (parameterSource.PrefixHierarchy != null) {
-			HitTracker.Hit10 = true;
-			var elements = parameterSource.PrefixHierarchy.Elements;
-			holder = elements[elements.Count - 1].Element as ParameterHolder;
+		// --- (1) bare hierarchy value, with or without a prefix.
+		if (HierarchyGuid.TryParse(content, vm, out var hierarchyValue)) {
+			HitTracker.Hit(data);
+			src.HierarchyReference = hierarchyValue;
+			src.ElementReference = hierarchyValue!.Elements[^1].Element;
+			src.TypeInfo = expectedType ?? VmTypeInfo.GameObject;
+			ApplyRefWrapper(ref src, vm, expectedType);
+			return src;
 		}
 
-		if (holder != null && content.Contains("_message_")) {
-			HitTracker.Hit11 = true;
-			var span = content.AsSpan();
-			var percentIdx = span.IndexOf('%');
-			var messageNameSpan = percentIdx >= 0 ? span.Slice(percentIdx + 1) : span;
+		var holder = src.PrefixHolder;
+		if (holder == null && src.PrefixHierarchy != null) {
+			HitTracker.Hit(data);
+			holder = src.PrefixHierarchy.Elements[^1].Element as ParameterHolder;
+		}
 
-			var events = EventAccessibilityUtility.GetAccessibleEvents(holder, vm);
-			foreach (var e in events) {
-				if (e.MessagesInfo != null) {
-			HitTracker.Hit12 = true;
+		if (content.Contains("_message_") && !content.Contains('&')) {
+			HitTracker.Hit(data);
+
+			// 1. Preferred: the exact instance reachable from the holder, so the editor can
+			//    navigate to the owning event.
+			if (holder != null) {
+				HitTracker.Hit(data);
+				foreach (var e in EventAccessibilityUtility.GetAccessibleEvents(holder, vm)) {
+					if (e.MessagesInfo == null) { HitTracker.Hit(data); continue; }
 					foreach (var m in e.MessagesInfo) {
-						if (m.Name.AsSpan().SequenceEqual(messageNameSpan)) {
-			HitTracker.Hit13 = true;
-							parameterSource.MessageReference = m;
-							return parameterSource;
-						}
+						if (!string.Equals(m.Name, content, StringComparison.Ordinal)) continue;
+						HitTracker.Hit(data);
+						src.MessageReference = m;
+						src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(m.Type, vm);
+						return src;
 					}
 				}
 			}
+
+			// 2. Fallback: engine events live on the FunctionalComponent that declares them
+			//    (BeginControllIteractEvent on "Controller", ArrivedRegionEvent on
+			//    "Navigation"), routinely on an object unrelated to the context holder —
+			//    the accessibility walk structurally cannot reach it.
+			if (vm.TryResolveMessage(content, out var indexed)) {
+				HitTracker.Hit(data);
+				src.MessageReference = indexed.Info;
+				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(indexed.Info.Type, vm);
+				return src;
+			}
+
+			HitTracker.Hit(data);
+			Logger.Log(LogLevel.Warning, $"Unknown message '{content}' in '{data}'.");
 		} else if (content.Contains("_inputparam_")) {
-			HitTracker.Hit14 = true;
-			var array = content.Split(["_inputparam_"], StringSplitOptions.None);
-			if (array.Length > 1) {
-			HitTracker.Hit15 = true;
-				GraphParamInfo? evtRef = null;
-				Graph? foundGraph = null;
-
-				foreach (var graph in vm.GetElementsByType<Graph>()) {
-					if (graph.InputParamsInfo != null) {
-			HitTracker.Hit16 = true;
-						foreach (var p in graph.InputParamsInfo) {
-							if (p.Name == content || p.Name == array[1]) {
-			HitTracker.Hit17 = true;
-								evtRef = p;
-								foundGraph = graph;
-								goto FoundGlobalParam;
-							}
-						}
-					}
-				}
-
-			FoundGlobalParam:
-				if (evtRef != null && evtRef.Value.Name != null) {
-			HitTracker.Hit18 = true;
-					parameterSource.InputParamReference = evtRef;
-					parameterSource.InputParamGraphOwner = new(foundGraph!);
-					return parameterSource;
-				} 
+			HitTracker.Hit(data);
+			if (InputParameter.TryParse(content, out var inputParam)) {
+				HitTracker.Hit(data);
+				src.InputParamReference = inputParam;
+				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(inputParam!.Type, vm);
+				return src;
 			}
+			HitTracker.Hit(data);
 		} else if (content.Contains("_Loop_")) {
-			HitTracker.Hit19 = true;
-			ParseLoopVariable(ref parameterSource, content, vm);
+			HitTracker.Hit(data);
+			ParseLoopVariable(ref src, content, vm);
 		} else if (content.StartsWith("global_")) {
-			HitTracker.Hit20 = true;
-			if (content.Contains("_List_")) {
-			HitTracker.Hit21 = true;
-				ParseGlobalList(ref parameterSource, content); // false??
-			} else {
-			HitTracker.Hit22 = true;
-				ParseGlobalVariable(ref parameterSource, content);
-			}
-		} else if (expectedType is { BaseType: VmType.BlueprintRef }) {
-			if (ulong.TryParse(content, out var result4)) {
-			HitTracker.Hit23 = true;
-				var nullableElement2 = vm.GetNullableElement<Item, Other>(result4);
-				if (!nullableElement2.HasValue) {
-			HitTracker.Hit24 = true;
-					Logger.Log(LogLevel.Error,
-						$"BlueprintRef: Object with ID {result4} not found or is neither Item nor Other.");
-				} else {
-			HitTracker.Hit25 = true;
-					parameterSource.BlueprintReference =
-						new() { Element = nullableElement2.Value, SerializeAsGuid = false };
-					parameterSource.ElementReference = nullableElement2.Value.Element;
-				}
-			} else {
-			HitTracker.Hit26 = true;
-				var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
-				switch (gameObject) {
+			HitTracker.Hit(data);
+			ParseGlobalVariable(ref src, content);
+		} else if (ulong.TryParse(content, out var contentId)) {
+			HitTracker.Hit(data);
+			// Resolve WITHOUT a type constraint first.
+			// "<holderId>%<parameterId>" is an indirection: the value is whatever that
+			// Parameter points at, and it is legal in IObjRef / IBlueprintRef / IEntity
+			// slots. The old code called GetNullableElement<GameObject>(id) directly,
+			// which throws when the id resolves to a Parameter.
+			var contentElement = vm.GetNullableElement(contentId);
+
+			if (contentElement is Parameter parameterReference) {
+				HitTracker.Hit(data);
+				src.ParameterReference = parameterReference;
+			} else if (expectedType is { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }) {
+				switch (contentElement) {
 					case Item item:
-						parameterSource.BlueprintReference = new() { Element = new(item), SerializeAsGuid = true };
-						parameterSource.ElementReference = item;
+						HitTracker.Hit(data);
+						src.BlueprintReference = new() { Element = new(item), SerializeAsGuid = false };
+						src.ElementReference = item;
 						break;
 					case Other other:
-						parameterSource.BlueprintReference = new() { Element = new(other), SerializeAsGuid = true };
-						parameterSource.ElementReference = other;
+						HitTracker.Hit(data);
+						src.BlueprintReference = new() { Element = new(other), SerializeAsGuid = false };
+						src.ElementReference = other;
+						break;
+					case Character character:
+						HitTracker.Hit(data);
+						src.BlueprintReference = new() { Element = new(character), SerializeAsGuid = false };
+						src.ElementReference = character;
 						break;
 				}
+			} else if (expectedType is { BaseType: VmType.EntityRef }) {
+				switch (contentElement) {
+					case GameObject gameObject:
+						HitTracker.Hit(data);
+						src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = false };
+						src.ElementReference = gameObject;
+						break;
+					/*case null:
+						HitTracker.Hit(data);
+						Logger.Log(LogLevel.Error, $"EntityRef: Object with ID {contentId} not found.");
+						break;*/
+					default:
+						HitTracker.Hit(data);
+						Logger.Log(LogLevel.Error,
+							$"EntityRef: ID {contentId} is {contentElement.GetType().Name}, not a GameObject. " +
+							$"Falling back to a plain element reference.");
+						src.ElementReference = contentElement;
+						break;
+				}
+			} else if (contentElement != null) {
+				HitTracker.Hit(data);
+				src.ElementReference = contentElement;
+			} else {
+				HitTracker.Hit(data);
+			}
+		} else if (expectedType is { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }) {
+			// Non-numeric: EngineTemplateId lookup.
+			HitTracker.Hit(data);
+			var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
+			switch (gameObject) {
+				case Item item:
+					HitTracker.Hit(data);
+					src.BlueprintReference = new() { Element = new(item), SerializeAsGuid = true };
+					src.ElementReference = item;
+					break;
+				case Other other:
+					HitTracker.Hit(data);
+					src.BlueprintReference = new() { Element = new(other), SerializeAsGuid = true };
+					src.ElementReference = other;
+					break;
+				case Character character:
+					HitTracker.Hit(data);
+					src.BlueprintReference = new() { Element = new(character), SerializeAsGuid = true };
+					src.ElementReference = character;
+					break;
+				/*default:
+					HitTracker.Hit(data);
+					break;*/
 			}
 		} else if (expectedType is { BaseType: VmType.EntityRef }) {
-			if (ulong.TryParse(content, out var result4)) {
-			HitTracker.Hit27 = true;
-				var nullableElement2 = vm.GetNullableElement<GameObject>(result4);
-				if (nullableElement2 == null) {
-			HitTracker.Hit28 = true;
-					Logger.Log(LogLevel.Error, $"EntityRef: Object with ID {result4} not found.");
+			HitTracker.Hit(data);
+			var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
+			src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
+			src.ElementReference = gameObject;
+		} else {
+			HitTracker.Hit(data);
+		}
+
+		src.TypeInfo = expectedType ?? VmTypeInfo.Unknown;
+		// NOTE: the old check was "TypeInfo == VmTypeInfo.Unknown". VmTypeInfo is a class
+		// with no operator==, and Unknown is a property returning a fresh instance, so that
+		// comparison was always false and this whole block was unreachable.
+		if (src.TypeInfo.BaseType == VmType.Unknown) {
+			HitTracker.Hit(data);
+			InferTypeInfo(ref src, vm, target);
+		} else {
+			HitTracker.Hit(data);
+		}
+
+		if (!src.HasResolvedTarget()) {
+			HitTracker.Hit(data);
+			var unresolvedSymbol = content.Contains("_inputparam_") || content.Contains("_message_") ||
+			                       content.Contains("_Loop_");
+
+			// Only fall back to the Unknown marker when the type really is unknown.
+			// Tokens like "_message_" also occur inside opaque payloads (e.g. the
+			// CONTEXT&PARAM operation-path strings the engine hands to OperationPathInfo),
+			// which are ordinary System.String values and must keep their declared type.
+			if (unresolvedSymbol && src.TypeInfo.BaseType == VmType.Unknown) {
+				HitTracker.Hit(data);
+				src.LiteralValue = new BasicValue<string>("Unknown", content);
+			} else {
+				HitTracker.Hit(data);
+				try {
+					src.LiteralValue = ParameterValue.Create(vm, src.TypeInfo, content);
+				} catch (Exception ex) {
+					HitTracker.Hit(data);
+					Logger.Log(LogLevel.Error,
+						$"Failed to parse '{data}' as {src.TypeInfo}: {ex.Message}. Preserving as raw string.");
+					src.LiteralValue = new BasicValue<string>(src.TypeInfo.Serialize(), content);
+				}
+			}
+
+			src.IsCommaSeparator = content.Contains(',') && src.LiteralValue is BasicValue<float>;
+
+			if (src.TypeInfo.BaseType == VmType.Unknown)
+				Logger.Log(LogLevel.Warning,
+					$"Using literal parsing for {data}, guessed type:{src.TypeInfo} {src.LiteralValue?.XmlType}");
+		} else {
+			HitTracker.Hit(data);
+		}
+
+		return src;
+	}
+	
+	private static readonly HashSet<VmType> RefLikeTypes = [
+		VmType.GameObject, VmType.EntityRef, VmType.BlueprintRef, VmType.BlueprintRefStorable
+	];
+
+	/// <summary>
+	/// A hierarchy that lands in an IObjRef / IBlueprintRef / IEntity slot still has to
+	/// populate the matching wrapper so the editor treats it as a reference.
+	/// </summary>
+	private static void ApplyRefWrapper(ref ParameterSource src, VirtualMachine vm, VmTypeInfo? expectedType) {
+		if (src.HierarchyReference == null) {
+			HitTracker.Hit();
+			return;
+		}
+
+		var leaf = src.HierarchyReference.Elements[^1].Element;
+
+		switch (expectedType?.BaseType) {
+			case VmType.BlueprintRef:
+			case VmType.BlueprintRefStorable:
+				HitTracker.Hit();
+				if (leaf is Item item) {
+					HitTracker.Hit();
+					src.BlueprintReference = new() { Element = new(item), SerializeAsGuid = false };
+				} else if (leaf is Other other) {
+					HitTracker.Hit();
+					src.BlueprintReference = new() { Element = new(other), SerializeAsGuid = false };
+				} else if (leaf is Character character) {
+					HitTracker.Hit();
+					src.BlueprintReference = new() { Element = new(character), SerializeAsGuid = false };
 				} else {
-			HitTracker.Hit29 = true;
-					parameterSource.EntityReference = new EntityRef {
-						Element = nullableElement2, SerializeAsGuid = false
-					};
-					parameterSource.ElementReference = nullableElement2;
+					HitTracker.Hit();
+					Logger.Log(LogLevel.Warning,
+						$"Hierarchy {src.HierarchyReference.Write()} resolves to {leaf?.GetType().Name ?? "null"}, " +
+						$"which is neither Item nor Other; BlueprintRef left unset.");
 				}
-			} else {
-			HitTracker.Hit30 = true;
-				var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
-				parameterSource.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
-				parameterSource.ElementReference = gameObject;
-			}
-		} else if (ulong.TryParse(content, out var result6)) {
-			HitTracker.Hit31 = true;
-			var nullableElement3 = vm.GetNullableElement<VmElement>(result6);
-			if (nullableElement3 is Parameter parameterReference) {
-			HitTracker.Hit32 = true;
-				parameterSource.ParameterReference = parameterReference;
-			} else if (nullableElement3 != null) {
-			HitTracker.Hit33 = true;
-				parameterSource.ElementReference = nullableElement3;
-			}
+				break;
+
+			case VmType.EntityRef:
+				HitTracker.Hit();
+				src.EntityReference = new EntityRef { Element = leaf as GameObject, SerializeAsGuid = false };
+				break;
+
+			default:
+				HitTracker.Hit();
+				break;
 		}
+	}
 
-		parameterSource.TypeInfo = expectedType ?? VmTypeInfo.Unknown;
-		if (parameterSource.TypeInfo == VmTypeInfo.Unknown) {
-			HitTracker.Hit34 = true;
-			if (parameterSource.MessageReference != null) {
-			HitTracker.Hit35 = true;
-				parameterSource.TypeInfo = VmTypeHelper.GetVmTypeInfo(parameterSource.MessageReference.Value.Type, vm);
-			} else if (parameterSource.InputParamReference != null) {
-			HitTracker.Hit36 = true;
-				parameterSource.TypeInfo =
-					VmTypeHelper.GetVmTypeInfo(parameterSource.InputParamReference.Value.Type, vm);
-			} else if (parameterSource.ParameterReference != null) {
-			HitTracker.Hit37 = true;
-				parameterSource.TypeInfo = VmTypeHelper.GetVmTypeInfo(parameterSource.ParameterReference.Type, vm);
-			} else if (parameterSource.IsLoopIndex) {
-			HitTracker.Hit38 = true;
-				parameterSource.TypeInfo = VmTypeInfo.Int32;
-			} else {
-			HitTracker.Hit39 = true;
-				if (parameterSource.IsLoopElement) {
-			HitTracker.Hit40 = true;
-					var loopActionLine = parameterSource.LoopActionLine;
-					if (loopActionLine != null && loopActionLine.LoopInfo != null) {
-			HitTracker.Hit41 = true;
-						var name = parameterSource.LoopActionLine.LoopInfo.Name.GetVariableName();
-						parameterSource.TypeInfo = VmTypeInfo.GameObject;
-						goto IL_082f;
-					}
-				}
+	private bool HasResolvedTarget() =>
+		MessageReference != null || InputParamReference != null || ParameterReference != null ||
+		ElementReference != null || IsLoopIndex || IsLoopElement || GlobalListName != null ||
+		HierarchyReference != null || DynamicObjectReference != null;
 
-				if (parameterSource.GlobalListName != null) {
-			HitTracker.Hit42 = true;
-					parameterSource.TypeInfo = new VmTypeInfo(VmType.List) { UnderlyingType = VmTypeInfo.GameObject };
-				} else if (target != null) {
-			HitTracker.Hit43 = true;
-					if (target.VariableParameter is Parameter parameter) {
-			HitTracker.Hit44 = true;
-						parameterSource.TypeInfo = VmTypeHelper.GetVmTypeInfo(parameter.Value.XmlType, vm);
-					} else if (target.ContextParameter is Parameter parameter2) {
-			HitTracker.Hit45 = true;
-						parameterSource.TypeInfo = VmTypeHelper.GetVmTypeInfo(parameter2.Value.XmlType, vm);
-					}
-				}
-			}
+	private static void InferTypeInfo(ref ParameterSource src, VirtualMachine vm, ParamTarget? target) {
+		if (src.MessageReference != null) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(src.MessageReference.Value.Type, vm);
+			return;
 		}
-
-		IL_082f:
-		if (parameterSource.MessageReference == null && parameterSource.InputParamReference == null &&
-		    parameterSource.ParameterReference == null && parameterSource.ElementReference == null &&
-		    !parameterSource.IsLoopIndex && !parameterSource.IsLoopElement && parameterSource.GlobalListName == null &&
-		    parameterSource.HierarchyReference == null && parameterSource.DynamicObjectReference == null) {
-			HitTracker.Hit46 = true;
-			if (content.Contains("_inputparam_") || content.Contains("_message_") || content.Contains("_Loop_")) {
-			HitTracker.Hit47 = true;
-				parameterSource.LiteralValue = new BasicValue<string>("Unknown", content);
-				parameterSource.TypeInfo = VmTypeInfo.Unknown;
-			} else {
-			HitTracker.Hit48 = true;
-			try {
-				parameterSource.LiteralValue = ParameterValue.Create(vm, parameterSource.TypeInfo, content);
-			} catch {
-				Console.WriteLine($"CRASH!!! {data}");
-			}
-			}
-			Logger.Log(LogLevel.Warning, $"Using literal parsing for {data}, guessed type:{parameterSource.TypeInfo} {parameterSource.LiteralValue?.XmlType}");
+		if (src.InputParamReference != null) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(src.InputParamReference.Type, vm);
+			return;
 		}
-
-		return parameterSource;
+		if (src.ParameterReference != null) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(src.ParameterReference.Type, vm);
+			return;
+		}
+		if (src.IsLoopIndex) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeInfo.Int32;
+			return;
+		}
+		if (src.IsLoopElement && src.LoopActionLine?.LoopInfo != null) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeInfo.GameObject;
+			return;
+		}
+		if (src.HierarchyReference != null) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeInfo.GameObject;
+			return;
+		}
+		if (src.GlobalListName != null) {
+			HitTracker.Hit();
+			src.TypeInfo = new VmTypeInfo(VmType.List) { UnderlyingType = VmTypeInfo.GameObject };
+			return;
+		}
+		if (target == null || target.Value.Kind == ParamTargetKind.Empty) {
+			HitTracker.Hit();
+			return;
+		}
+		if (target.Value.Parameter is Parameter variable) {
+			HitTracker.Hit();
+			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(variable.Value.XmlType, vm);
+			return;
+		}
+		HitTracker.Hit();
 	}
 
 	private static void ParseLoopVariable(ref ParameterSource source, string content, VirtualMachine vm) {
 		var array = content.Split('_');
-		if (array.Length < 2 || !ulong.TryParse(array[1], out var result)) {
+		if (array.Length < 2 || !ulong.TryParse(array[1], out var actionLineId)) {
+			HitTracker.Hit(content);
 			return;
 		}
 
-		source.LoopActionLine = vm.GetNullableElement<ActionLine>(result);
+		HitTracker.Hit(content);
+		source.LoopActionLine = vm.GetNullableElement<ActionLine>(actionLineId);
+
 		if (content.EndsWith("_Index")) {
+			HitTracker.Hit(content);
 			source.IsLoopIndex = true;
 		} else if (content.EndsWith("_Element")) {
+			HitTracker.Hit(content);
 			source.IsLoopElement = true;
-			var num = content.IndexOf("_List_");
-			var num2 = content.LastIndexOf("_Element");
-			if (num != -1 && num2 != -1) {
-				source.LoopListName = content.Substring(num + 6, num2 - (num + 6));
+			var listIdx = content.IndexOf("_List_", StringComparison.Ordinal);
+			var elementIdx = content.LastIndexOf("_Element", StringComparison.Ordinal);
+			if (listIdx != -1 && elementIdx != -1 && elementIdx > listIdx + 6) {
+				HitTracker.Hit(content);
+				source.LoopListName = content[(listIdx + 6)..elementIdx];
+			} else {
+				HitTracker.Hit(content);
 			}
+		} else {
+			HitTracker.Hit(content);
 		}
 	}
 
 	private static void ParseGlobalList(ref ParameterSource source, string content) {
-		var num = content.LastIndexOf('_');
-		if (num != -1) {
-			source.GlobalListName = content.Substring(0, num);
-			var num2 = num + 1;
-			if (ulong.TryParse(content.Substring(num2, content.Length - num2), out var result)) {
-				source.GlobalListTargetId = result;
-			}
+		var idx = content.LastIndexOf('_');
+		if (idx == -1) {
+			HitTracker.Hit(content);
+			return;
+		}
+
+		HitTracker.Hit(content);
+		source.GlobalListName = content[..idx];
+		if (ulong.TryParse(content[(idx + 1)..], out var targetId)) {
+			HitTracker.Hit(content);
+			source.GlobalListTargetId = targetId;
+		} else {
+			HitTracker.Hit(content);
+			// No trailing id: the whole string is the list name.
+			source.GlobalListName = content;
 		}
 	}
 
 	private static void ParseGlobalVariable(ref ParameterSource source, string content) {
+		HitTracker.Hit(content);
 		source.GlobalListName = content;
 	}
 
 	public string? GetVariableName() {
-		if (ParameterReference != null) {
-			return ParameterReference.Name;
-		}
-
-		if (ElementReference is INamedElement namedElement) {
-			return namedElement.Name;
-		} else if (DynamicParameterName != null) {
-			return DynamicParameterName;
-		}
-
-		if (GlobalListName != null) {
-			return GlobalListName;
-		}
-
-		if (MessageReference != null) {
-			return MessageReference.Value.Name;
-		}
-
-		if (InputParamReference != null) {
-			return InputParamReference.Value.Name;
-		}
+		if (ParameterReference != null) return ParameterReference.Name;
+		if (ElementReference is INamedElement namedElement) return namedElement.Name;
+		if (DynamicParameterName != null) return DynamicParameterName;
+		if (HierarchyReference != null) return HierarchyReference.Write();
+		if (GlobalListName != null) return GlobalListName;
+		if (MessageReference != null) return MessageReference.Value.Name;
+		if (InputParamReference != null) return InputParamReference.Name;
 
 		if (LiteralValue != null) {
 			var text = LiteralValue.Serialize();
-			return IsConstant ? ("const_" + text) : text;
+			return IsConstant ? "const_" + text : text;
 		}
 
 		return null;
 	}
 
 	public string Write() {
-		if (DynamicObjectReference != null && DynamicParameterName != null) {
+		if (DynamicObjectReference != null && DynamicParameterName != null)
 			return $"{DynamicObjectReference.Id}%{DynamicParameterName}";
-		}
 
-		string text = null;
-		if (PrefixHolder != null) {
-			text = PrefixHolder.Id.ToString();
-		} else if (PrefixHierarchy != null) {
-			text = PrefixHierarchy.Write();
-		} else if (PrefixInputParamReference != null) {
-			text = PrefixInputParamReference.Value.Name;
-		} else if (PrefixString != null) {
-			text = PrefixString;
+		var prefix = PrefixHolder != null                ? PrefixHolder.Id.ToString()
+				   : PrefixHierarchy != null             ? PrefixHierarchy.Write()
+				   : PrefixInputParamReference != null   ? PrefixInputParamReference.Name
+				   : PrefixString;
+
+		// "A%A" round-trips as written, including any leading percent.
+		if (HierarchyWrittenTwice && HierarchyReference != null) {
+			var hierarchy = HierarchyReference.Write();
+			return Compose(prefix, $"{hierarchy}%{hierarchy}");
 		}
 
 		if (LiteralValue != null) {
-			var text2 = LiteralValue.Serialize();
-			if (IsCommaSeparator) {
-				text2 = text2.Replace('.', ',');
+			var literal = LiteralValue.Serialize();
+			if (IsCommaSeparator) literal = literal.Replace('.', ',');
+
+			if (string.Equals(literal, "none", StringComparison.OrdinalIgnoreCase))
+				return Compose(prefix, literal);
+
+			if (IsConstant) {
+				var constant = "const_" + literal;
+				return prefix != null ? $"{prefix}%{constant}" : constant;
 			}
 
-			if (string.Equals(text2, "none", StringComparison.OrdinalIgnoreCase)) {
-				if (text != null) {
-					return text + "%" + text2;
-				}
-
-				if (!HasLeadingPercent) {
-					return text2;
-				}
-
-				return "%" + text2;
-			}
-
-			text2 = (IsConstant ? ("const_" + text2) : (text2 ?? ""));
-			if (text != null) {
-				return text + "%" + text2;
-			}
-
-			if (!IsConstant) {
-				if (!HasLeadingPercent) {
-					return text2;
-				}
-
-				return "%" + text2;
-			}
-
-			return text2;
+			return Compose(prefix, literal);
 		}
 
-		string text3 = null;
+		string? value = null;
 		if (IsLoopIndex) {
-			text3 = $"local_{LoopActionLine.Id}_Loop_Index";
+			value = $"local_{LoopActionLine?.Id}_Loop_Index";
 		} else if (IsLoopElement) {
-			var value = LoopActionLine.LoopInfo?.Name.GetVariableName() ?? LoopListName;
-			text3 = $"local_{LoopActionLine.Id}_Loop_List_{value}_Element";
+			var listName = LoopActionLine?.LoopInfo?.Name.GetVariableName() ?? LoopListName;
+			value = $"local_{LoopActionLine?.Id}_Loop_List_{listName}_Element";
 		} else if (GlobalListName != null) {
-			text3 = (GlobalListTargetId.HasValue ? $"{GlobalListName}_{GlobalListTargetId}" : GlobalListName);
+			value = GlobalListTargetId.HasValue ? $"{GlobalListName}_{GlobalListTargetId}" : GlobalListName;
 		} else if (MessageReference != null) {
-			text3 = MessageReference.Value.Name;
+			value = MessageReference.Value.Name;
 		} else if (InputParamReference != null) {
-			text3 = InputParamReference.Value.Name;
+			value = InputParamReference.Name;
 		} else if (ParameterReference != null) {
-			text3 = ParameterReference.Id.ToString();
-			if (text == null) {
-				text = ParameterReference.Parent.Id.ToString();
-			}
-		} else if (BlueprintReference != null) {
-			text3 = ((!BlueprintReference.SerializeAsGuid)
-				? BlueprintReference.Element.Element?.Id.ToString()
-				: (BlueprintReference.Element.Element as GameObject)?.EngineTemplateId);
-		} else if (EntityReference != null) {
-			text3 = ((!EntityReference.SerializeAsGuid)
-				? EntityReference.Element?.Id.ToString()
-				: EntityReference.Element?.EngineTemplateId);
-		} else if (ElementReference != null) {
-			text3 = ElementReference.Id.ToString();
+			value = ParameterReference.Id.ToString();
+			prefix ??= ParameterReference.Parent.Id.ToString();
 		} else if (HierarchyReference != null) {
-			text3 = HierarchyReference.Write();
+			value = HierarchyReference.Write();
+		} else if (BlueprintReference != null) {
+			value = BlueprintReference.SerializeAsGuid
+				? (BlueprintReference.Element.Element as GameObject)?.EngineTemplateId
+				: BlueprintReference.Element.Element?.Id.ToString();
+		} else if (EntityReference != null) {
+			value = EntityReference.SerializeAsGuid
+				? EntityReference.Element?.EngineTemplateId
+				: EntityReference.Element?.Id.ToString();
+		} else if (ElementReference != null) {
+			value = ElementReference.Id.ToString();
 		}
 
-		if (text != null) {
-			return text + "%" + text3;
-		}
+		return Compose(prefix, value);
+	}
 
-		string text4;
-		if (!HasLeadingPercent) {
-			text4 = text3;
-			if (text4 == null) {
-				return "";
-			}
-		} else {
-			text4 = "%" + text3;
-		}
-
-		return text4;
+	private readonly string Compose(string? prefix, string? value) {
+		if (prefix != null)
+			return HasLeadingPercent ? $"%{prefix}%{value}" : $"{prefix}%{value}";
+		if (value == null)
+			return HasLeadingPercent ? "%" : "";
+		return HasLeadingPercent ? "%" + value : value;
 	}
 
 	public override string ToString() => Write();

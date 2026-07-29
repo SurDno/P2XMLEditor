@@ -10,7 +10,7 @@ public class WeatherSetWeatherLayerWeightFunction(
 	VirtualMachine vm,
 	string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 3;
 	public FunctionSourceParam<WeatherLayer> Layer { get; } = FunctionSourceParam<WeatherLayer>.Read(parameters[0], vm);
 	public FunctionSourceParam<float> Weight { get; } = FunctionSourceParam<float>.Read(parameters[1], vm);

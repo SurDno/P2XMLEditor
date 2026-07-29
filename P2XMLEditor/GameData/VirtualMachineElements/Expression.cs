@@ -18,8 +18,8 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, IVmCreator<Expression> {
 	public ExpressionType ExpressionType { get; set; }
-	public CommonVariable TargetObject;
-	public CommonVariable? TargetParam;
+	public TargetObject TargetObject;
+	public ExpressionParamTarget? TargetParam;
 	
 	public Parameter? Const { get; set; }
 	public VmEither<Branch, Event, MindMapNode, Speech, State> LocalContext { get; set; }
@@ -66,13 +66,14 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 	public void FillFromRawData(RawExpressionData data, VirtualMachine vm) {
 		ExpressionType = data.ExpressionType.Deserialize<ExpressionType>();
 		LocalContext = vm.GetElement<Branch, Event, MindMapNode, Speech, State>(data.LocalContextId);
+		using var scope = VirtualMachine.EnterFillScope(LocalContext.Element);
 		Inversion = data.Inversion;
-		TargetObject = CommonVariable.Read(data.TargetObject, vm);
+		TargetObject = TargetObject.Read(data.TargetObject, vm);
 		Const = data.ConstId.HasValue ? vm.GetElement<Parameter>(data.ConstId.Value) : null;
 		if (data.TargetFunctionName != null)
 			Function = VmFunction.GetFunction(data.TargetFunctionName, vm, data.SourceParams ?? []);
 		if (data.TargetParam != null)
-			TargetParam = CommonVariable.Read(data.TargetParam, vm);
+			TargetParam = ExpressionParamTarget.Read(data.TargetParam, vm);
 		if (data.FormulaChilds != null)
 			FormulaChilds = data.FormulaChilds.Select(vm.GetElement<Expression>).ToList();
 		FormulaOperations = data.FormulaOperations?.Select(e => e.Deserialize<FormulaOperation>()).ToList();

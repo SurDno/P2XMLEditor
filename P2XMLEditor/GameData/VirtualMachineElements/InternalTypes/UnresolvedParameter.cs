@@ -3,7 +3,7 @@ using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
-public class UnresolvedParameter : ICommonVariableParameter {
+public class UnresolvedParameter  {
 	public string RawData { get; }
 	public string ParamId => RawData; 
 

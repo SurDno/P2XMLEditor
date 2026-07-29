@@ -5,18 +5,12 @@ using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
-public class LoopParameter(ActionLine actionLine, bool isIndex, string? listName) : ICommonVariableParameter {
+public class LoopParameter(ActionLine actionLine, bool isIndex, string? listName)  {
 	public ActionLine ActionLine { get; } = actionLine;
 	public bool IsIndex { get; } = isIndex;
 	public string? ListName { get; } = listName;
-	public string ParamId {
-		get {
-			if (!IsIndex) {
-			return $"local_{ActionLine.Id}_Loop_List_{ListName}_Element";
-		}
-			return $"local_{ActionLine.Id}_Loop_Index";
-		}
-	}
+	public string ParamId => IsIndex ? $"local_{ActionLine.Id}_Loop_Index" : $"local_{ActionLine.Id}_Loop_List_{ListName}_Element";
+
 	public static bool TryParse(string input, VirtualMachine vm, out LoopParameter? result) {
 		result = null;
 		if (!input.StartsWith("local_") || !input.Contains("_Loop_")) {

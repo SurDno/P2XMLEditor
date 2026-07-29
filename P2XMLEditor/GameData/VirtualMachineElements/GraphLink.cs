@@ -17,7 +17,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 	public Event? Event { get; set; }
-	public CommonVariable EventObject { get; set; }
+	public EventOwner? EventObject { get; set; }
 	public int SourceExitPointIndex { get; set; }
 	public int DestEntryPointIndex { get; set; }
 	public List<string>? SourceParams { get; set; }
@@ -29,7 +29,7 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 
 	public void FillFromRawData(RawGraphLinkData data, VirtualMachine vm) {
 		Event = data.EventId.HasValue ? vm.GetElement<Event>(data.EventId.Value) : null;
-		EventObject = CommonVariable.Read(data.EventObject, vm);
+		EventObject = EventOwner.Read(data.EventObject, vm);
 		SourceExitPointIndex = data.SourceExitPointIndex;
 		DestEntryPointIndex = data.DestEntryPointIndex;
 		SourceParams = data.SourceParams?.ToList();

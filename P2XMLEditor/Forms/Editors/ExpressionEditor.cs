@@ -337,7 +337,7 @@ public class ExpressionEditorForm : Form {
 			cmbFunction.SelectedItem = _expression.Function.Name;
 
 		txtTargetObject.Text = _expression.TargetObject.Write();
-		txtTargetParam.Text = _expression.TargetParam.Write();
+		txtTargetParam.Text = _expression.TargetParam?.Write() ?? "";
 
 		if (_expression.Const != null) {
 			txtConstType.Text = _expression.Const.Type;
@@ -374,12 +374,12 @@ public class ExpressionEditorForm : Form {
 		if (directMode) return;
 
 		try {
-			var targetObj = CommonVariable.Read(txtTargetObject.Text, _vm);
-			var targetParam = CommonVariable.Read(txtTargetParam.Text, _vm);
-			if (targetObj.ContextParameter is not ParameterHolder ph) return;
+			var targetObj = TargetObject.Read(txtTargetObject.Text, _vm);
+			var targetParam = ExpressionParamTarget.Read(txtTargetParam.Text, _vm);
+			if (targetObj.ResolvedHolder is not ParameterHolder ph) return;
 			cmbCategory.SelectedItem = ph.GetType().Name;
 			cmbHolder.SelectedItem = cmbHolder.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Value == ph);
-			if (targetParam.VariableParameter is not Parameter p) return;
+			if (targetParam.Param?.Parameter is not Parameter p) return;
 			cmbParameter.SelectedItem = cmbParameter.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Value == p);
 		} catch {
 			Logger.Log(LogLevel.Warning, $"Current values of TargetObject and TargetParam were not parsed.");
@@ -428,18 +428,18 @@ public class ExpressionEditorForm : Form {
 		switch (_expression.ExpressionType) {
 			case ExpressionType.Param:
 				if (chkDirectEdit.Checked) {
-					_expression.TargetObject = CommonVariable.Read(txtTargetObject.Text, _vm);
-					_expression.TargetParam = CommonVariable.Read(txtTargetParam.Text, _vm);
+					_expression.TargetObject = TargetObject.Read(txtTargetObject.Text, _vm);
+					_expression.TargetParam = ExpressionParamTarget.Read(txtTargetParam.Text, _vm);
 				} else if (cmbHolder.SelectedItem is ComboBoxItem holderItem &&
 						   cmbParameter.SelectedItem is ComboBoxItem paramItem) {
-					_expression.TargetObject = CommonVariable.Read(((ParameterHolder)holderItem.Value).ParamId, _vm);
-					_expression.TargetParam = CommonVariable.Read($"%{((Parameter)paramItem.Value).Id}", _vm);
+					_expression.TargetObject = TargetObject.Read(((ParameterHolder)holderItem.Value).ParamId, _vm);
+					_expression.TargetParam = ExpressionParamTarget.Read($"%{((Parameter)paramItem.Value).Id}", _vm);
 				}
 
 				break;
 			case ExpressionType.Function:
 				if (cmbFunction.SelectedItem is string funcName) {
-					_expression.TargetObject = CommonVariable.Read(txtFuncTargetObject.Text, _vm);
+					_expression.TargetObject = TargetObject.Read(txtFuncTargetObject.Text, _vm);
 					var parameters = lstFunctionParams.Items.Cast<string>().ToArray();
 					_expression.Function = VmFunction.GetFunction(funcName, _vm, parameters);
 				}

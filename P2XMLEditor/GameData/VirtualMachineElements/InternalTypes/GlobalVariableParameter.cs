@@ -2,7 +2,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
-public class GlobalVariableParameter(string paramName) : ICommonVariableParameter {
+public class GlobalVariableParameter(string paramName)  {
 	public string ParamName { get; } = paramName;
 	public string ParamId => ParamName;
 	public static bool TryParse(string input, out GlobalVariableParameter? result) {

@@ -21,10 +21,10 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 	public Event? EventToRaise { get; set; }
 	public VmFunction? Function { get; set; }
 	public Expression? SourceExpression { get; set; }
-	public CommonVariable TargetObject { get; set; }
-	public CommonVariable? TargetParam { get; set; }
+	public TargetObject TargetObject { get; set; }
+	public ParamTarget TargetParam { get; set; }
 	public ParameterSource? Source { get; set; }
-	public List<CommonVariable>? EventParams { get; set; }
+	public List<ParameterSource>? EventParams { get; set; }
 	public string Name { get; set; }
 	public VmEither<State, Graph, Branch, Talking, Speech> LocalContext { get; set; }
 
@@ -42,10 +42,8 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 	public List<string>? GetParamStrings() {
 		if (Function != null) 
 			return Function.GetParamStrings();
-		
 
-		ActionType actionType = ActionType;
-		if ((uint)(actionType - 1) <= 2u) {
+		if ((uint)(ActionType - 1) <= 2u) {
 			string text = Source?.Write();
 			if (text == null) {
 				return null;
@@ -74,6 +72,7 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 		_rawTargetFuncName = data.TargetFuncName;
 		Name = data.Name;
 		LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
+		using var scope = VirtualMachine.EnterFillScope(LocalContext.Element);
 		OrderIndex = data.OrderIndex;
 		Enabled = data.Enabled;
 		switch (ActionType) {
@@ -89,8 +88,10 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 		SourceExpression = (data.SourceExpressionId.HasValue
 			? vm.GetElement<Expression>(data.SourceExpressionId.Value)
 			: null);
-		TargetObject = CommonVariable.Read(data.TargetObject, vm);
-		TargetParam = ((!string.IsNullOrEmpty(data.TargetParam)) ? CommonVariable.Read(data.TargetParam, vm) : null);
+		TargetObject = TargetObject.Read(data.TargetObject, vm)!;
+		if (ParamTarget.TryRead(data.TargetParam, vm, out var tp))
+			TargetParam = tp;
+
 		try {
 			ActionType actionType = ActionType;
 			if ((uint)(actionType - 1) <= 2u) {
@@ -101,7 +102,7 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 			} else if (ActionType == ActionType.RaiseEvent) {
 				string[]? sourceParams2 = data.SourceParams;
 				if (sourceParams2 != null && sourceParams2.Length != 0) {
-					EventParams = data.SourceParams.Select((string ps) => CommonVariable.Read(ps, vm)).ToList();
+					EventParams = data.SourceParams.Select((string ps) => ParameterSource.Create(ps, vm)).ToList();
 				}
 			}
 		} catch {

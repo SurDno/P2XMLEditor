@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
@@ -6,7 +7,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 
 [Function("GlobalStorageManager.SetAllStorablesDescription")]
 public class GlobalStorageManagerSetAllStorablesDescriptionFunction : VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<EntityRef>? StorageGroup { get; }
 	public FunctionSourceParam<GameString>? Value { get; }

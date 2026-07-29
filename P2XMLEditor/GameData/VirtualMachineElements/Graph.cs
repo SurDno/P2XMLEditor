@@ -19,7 +19,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 	public List<VmEither<State, Graph, Branch, Talking>> States { get; set; }
 	public List<GraphLink> EventLinks { get; set; }
 	public GraphType GraphType { get; set; }
-	public List<GraphParamInfo>? InputParamsInfo { get; set; }
+	public List<InputParameter>? InputParams { get; set; }
 	public VmEither<ParameterHolder, Graph> Parent { get; set; }
 	public VmEither<Graph, Talking>? SubstituteGraph { get; set; }
 	
@@ -38,8 +38,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 		EntryPoints = data.EntryPointIds?.Select(vm.GetElement<EntryPoint>).ToList() ?? [];
 		IgnoreBlock = data.IgnoreBlock;
 		Owner = vm.GetElement<ParameterHolder>(data.OwnerId);
-		InputParamsInfo = data.InputParamsInfo?.Select(t => new GraphParamInfo(t.Item1, t.Item2)).ToList();
-		InputParamsInfo?.ForEach(p => p.ResolveReferences(vm));
+		InputParams = data.InputParamsInfo?.Select(t => new InputParameter(t.Item1, t.Item2, this)).ToList();
 		InputLinks = data.InputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
 		OutputLinks = data.OutputLinkIds?.Select(vm.GetElement<GraphLink>).ToList() ?? [];
 		Initial = data.Initial;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
@@ -52,7 +53,21 @@ public class VirtualMachine {
 	};
 	public HashSet<string> Languages { get; } = [];
 
-
+	// fast access cache
+	private Dictionary<string, MessageLookup>? _messageIndex;
+	public readonly record struct MessageLookup(MessageInfo Info, Event Owner);
+	
+	// TODO: REFACTOR AWAY
+	[field: ThreadStatic]
+	public static VmElement? FillScope { get; private set; }
+	public static FillScopeHandle EnterFillScope(VmElement? scope) => new(scope); 
+	public readonly struct FillScopeHandle : IDisposable {
+		private readonly VmElement? _previous;
+		internal FillScopeHandle(VmElement? scope) { _previous = FillScope; FillScope = scope; }
+		public void Dispose() => FillScope = _previous;
+	}
+	
+	
 	public VirtualMachine(int capacity, TemplateManager templateManagerInst, GameType type) {
 		ElementsById = new Dictionary<ulong, VmElement>(capacity);
 		TemplateManagerInst = templateManagerInst;
@@ -99,9 +114,44 @@ public class VirtualMachine {
 		return ElementsByType.TryGetValue(typeof(T), out var elements) ? elements.Cast<T>() : [];
 	}
 	
+	public T First<T>() where T: VmElement => GetElementsByType<T>().FirstOrDefault() ??
+	                                          throw new Exception("No element found");
+	
 	public T First<T>(Func<T, bool> predicate) where T: VmElement => GetElementsByType<T>().FirstOrDefault(predicate) ??
 																	 throw new Exception("No element found");
 	
 	public bool HasLanguage(string language) => Languages.Contains(language);
 	public void AddLanguage(string language) => Languages.Add(language);
+	
+	/// <summary>
+	/// Resolves "&lt;EventName&gt;_message_&lt;param&gt;" / "&lt;eventId&gt;_message_&lt;param&gt;" to its MessageInfo.
+	///
+	/// Engine events (Manual=False) have their messages regenerated at runtime from
+	/// EngineAPIManager.GetAPIEventInfoByName(component, eventName); the &lt;MessagesInfo&gt; in the
+	/// data mirrors the same [Event(...)] attributes, so reading it here is correct.
+	/// The engine keys on (component, event name) and we only have the name, but that is
+	/// unambiguous: Event.xml holds 16675 message entries over 162 distinct names with zero
+	/// name-to-type conflicts, and manual events key on the event id rather than a name, so
+	/// the two namespaces cannot overlap.
+	///
+	/// Names are matched verbatim. Eight carry a leading space after "_message_"
+	/// (e.g. "OnFurnitureLoaded_message_ Region"), inherited from param specs written
+	/// "Region:Region, level of disease". Do not trim either side.
+	/// </summary>
+	public bool TryResolveMessage(string messageName, out MessageLookup result) {
+		_messageIndex ??= BuildMessageIndex();
+		return _messageIndex.TryGetValue(messageName, out result);
+	}
+
+	/// <summary>Call whenever an Event's MessagesInfo is added, removed or renamed.</summary>
+	public void InvalidateMessageIndex() => _messageIndex = null;
+	
+	private Dictionary<string, MessageLookup> BuildMessageIndex() {
+		var map = new Dictionary<string, MessageLookup>(StringComparer.Ordinal);
+		foreach (var e in GetElementsByType<Event>()) {
+			if (e.MessagesInfo == null) continue;
+			foreach (var m in e.MessagesInfo) map[m.Name] = new MessageLookup(m, e);
+		}
+		return map;
+	}
 }

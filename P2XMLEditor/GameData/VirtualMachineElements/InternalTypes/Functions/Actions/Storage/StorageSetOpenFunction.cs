@@ -8,7 +8,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 [Function("Storage.SetOpen")]
 public class StorageSetOpenFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<EntityRef>? Storage { get; } = FunctionSourceParam<EntityRef>.Read(parameters[0], vm);
 	public FunctionSourceParam<ContainerOpenState>? State { get; } = FunctionSourceParam<ContainerOpenState>.Read(parameters[1], vm);

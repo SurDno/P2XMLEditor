@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -8,7 +9,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 [Function("GameComponent.CreateObjectTo")]
 public class GameComponentCreateObjectToFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.ObjRef;
+	public override VmType ReturnType => VmType.GameObject;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<BlueprintRef> Template { get; } = FunctionSourceParam<BlueprintRef>.Read(parameters[0], vm);
 	public FunctionSourceParam<GameObject> Destination { get; } = FunctionSourceParam<GameObject>.Read(parameters[1], vm);

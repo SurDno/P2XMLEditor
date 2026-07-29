@@ -13,7 +13,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData>, ICommonVariableParameter {
+public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData> {
 	public List<VmEither<Branch, Speech, State>> States { get; set; }
 	public List<GraphLink> EventLinks { get; set; }
 	public List<EntryPoint> EntryPoints { get; set; }

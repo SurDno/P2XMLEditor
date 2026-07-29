@@ -24,10 +24,10 @@ public class DemoXElementGraphWriter : IDemoXElementWriter<Graph> {
 
 		obj.Add(new XElement("Owner", element.Owner.Id));
 
-		if (element.InputParamsInfo?.Any() == true) {
+		if (element.InputParams?.Any() == true) {
 			var list = new XElement("InputParamsInfo.List");
-			for (var i = 0; i < element.InputParamsInfo.Count; i++) {
-				var info = element.InputParamsInfo[i];
+			for (var i = 0; i < element.InputParams.Count; i++) {
+				var info = element.InputParams[i];
 				var itemObj = new XElement("object", new XAttribute("id", i));
 				itemObj.Add(
 					new XElement("Name", info.Name),

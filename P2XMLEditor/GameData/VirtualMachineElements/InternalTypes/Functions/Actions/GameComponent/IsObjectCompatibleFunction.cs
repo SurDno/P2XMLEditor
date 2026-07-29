@@ -13,7 +13,7 @@ public class IsObjectCompatibleFunction : VmFunction {
 	private readonly string message;
 	private readonly VmTypeInfo componentInfo;
 	private readonly Parameter? constParameter;
-	public override FunctionReturnType ReturnType => FunctionReturnType.Bool;
+	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 2;
 	public IsObjectCompatibleFunction(VirtualMachine vm, string[] parameters) {
 		var array = parameters[0].Split('%');

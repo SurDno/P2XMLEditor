@@ -10,7 +10,7 @@ public class GameComponentUnblockNotificationTypeFunction(
 	VirtualMachine vm,
 	string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 1;
 	public FunctionSourceParam<NotificationType> Notification { get; } = FunctionSourceParam<NotificationType>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [Notification.Write()];

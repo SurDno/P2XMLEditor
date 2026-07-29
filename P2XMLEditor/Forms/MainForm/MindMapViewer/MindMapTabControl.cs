@@ -32,7 +32,7 @@ public class MindMapTabControl : TabControl {
 	}
 
 	private void CreateNewMindMap() {
-		var mindMap = VmElement.CreateDefault<MindMap>(_vm, _vm.First<GameRoot>(_ => true));
+		var mindMap = VmElement.CreateDefault<MindMap>(_vm, _vm.First<GameRoot>());
 		AddMindMapTab(mindMap);
 	}
 

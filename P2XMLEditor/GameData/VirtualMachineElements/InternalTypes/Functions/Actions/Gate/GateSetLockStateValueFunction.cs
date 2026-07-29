@@ -8,7 +8,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 [Function("Gate.SetLockStateValue")]
 public class GateSetLockStateValueFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<Priority> Priority { get; } = FunctionSourceParam<Priority>.Read(parameters[0], vm);
 	public FunctionSourceParam<LockState> Value { get; } = FunctionSourceParam<LockState>.Read(parameters[1], vm);

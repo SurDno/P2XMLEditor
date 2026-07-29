@@ -7,7 +7,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 
 [Function("Weather.SetWeatherSampleGT")]
 public class WeatherSetWeatherSampleGTFunction : VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 3;
 	public FunctionSourceParam<WeatherLayer>? Layer { get; }
 	public FunctionSourceParam<Sample>? Sample { get; }

@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.Enums;
 using System;
 using System.Collections.Generic;
 using P2XMLEditor.Core;
@@ -11,7 +12,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 public class GetObjectClassFunction : VmFunction {
 	private readonly ParameterHolder holder;
 	private readonly string? messageParam;
-	public override FunctionReturnType ReturnType => FunctionReturnType.BlueprintRef;
+	public override VmType ReturnType => VmType.BlueprintRef;
 	public override int ParamCount => 1;
 	public GetObjectClassFunction(ParameterHolder holder, string? messageParam = null) {
 		this.holder = holder ?? throw new ArgumentNullException("holder");

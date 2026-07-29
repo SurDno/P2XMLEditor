@@ -11,7 +11,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData>, ICommonVariableParameter {
+public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData> {
 	public bool? IsMain { get; set; }
 	public TimeSpan StartGameTime { get; set; }
 	public float GameTimeSpeed { get; set; }
@@ -33,7 +33,7 @@ public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData>, IComm
 		Parent = vm.GetElement<GameRoot>(data.ParentId);
 	}	
 	public override void OnDestroy(VirtualMachine vm) {
-		vm.First<GameRoot>(_ => true).GameModes.Remove(this);
+		vm.First<GameRoot>().GameModes.Remove(this);
 	}
 
 	public string ParamId => id.ToString();

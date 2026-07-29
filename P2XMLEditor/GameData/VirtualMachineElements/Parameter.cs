@@ -19,7 +19,7 @@ using static P2XMLEditor.Parsing.Helpers.XElementExtensions;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
-public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, ICommonVariableParameter, IVmCreator<Parameter> {
+public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVmCreator<Parameter> {
 	public string Name { get; set; }
 	public FunctionalComponent? OwnerComponent { get; set; }
 	public bool? Implicit { get; set; }
@@ -157,8 +157,22 @@ public abstract class ParameterValue {
 			"FastTravelPointEnum" => new EnumValue<FastTravelPoint>(type, value.Deserialize<FastTravelPoint>()),
 			"JerboaColorEnum" => new EnumValue<JerboaColor>(type, value.Deserialize<JerboaColor>()),
 			"BoundCharacterGroup" => new EnumValue<BoundCharacterGroupEnum>(type, value.Deserialize<BoundCharacterGroupEnum>()),
-			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)),
-			"IEntity" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)),
+			"WeatherLayer" => new EnumValue<WeatherLayer>(type, value.Deserialize<WeatherLayer>()),
+			"GameLocalizationName" => new EnumValue<GameLocalizationName>(type, value.Deserialize<GameLocalizationName>()),
+			"GateState"            => new EnumValue<GateState>(type, value.Deserialize<GateState>()),
+			"Notification"         => new EnumValue<NotificationType>(type, value.Deserialize<NotificationType>()),
+			"PriorityParameter"    => new EnumValue<Priority>(type, value.Deserialize<Priority>()),
+			"WeaponKind"           => new EnumValue<WeaponKind>(type, value.Deserialize<WeaponKind>()),
+			"AttackerAttackType" => new EnumValue<AttackKind>(type, value.Deserialize<AttackKind>()),
+			"AttackerNPCAttackType" => new EnumValue<NpcAttackKind>(type, value.Deserialize<NpcAttackKind>()),
+			"AttackerPlayerAttackType" => new EnumValue<PlayerAttackKind>(type, value.Deserialize<PlayerAttackKind>()),
+			"AttackerFinishType" => new EnumValue<FinishKind>(type, value.Deserialize<FinishKind>()),
+			"AttackerDiseasedPlayerPushKind" => new EnumValue<PlayerPushesDiseasedKind>(type, value.Deserialize<PlayerPushesDiseasedKind>()),
+			"DialogStringType" => new EnumValue<DialogStringEnum>(type, value.Deserialize<DialogStringEnum>()),
+			"MailState" => new EnumValue<MailStateEnum>(type, value.Deserialize<MailStateEnum>()),
+			
+			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
+			"IEntity" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
 			
 			// Dynamic types
 			_ when type.StartsWith("IObjRef%") => CreateRef<GameObject>(vm, type, value),

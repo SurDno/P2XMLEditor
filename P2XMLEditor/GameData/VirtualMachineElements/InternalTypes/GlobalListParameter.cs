@@ -4,7 +4,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
-public class GlobalListParameter(string listName, VmElement? targetElement, ulong targetId) : ICommonVariableParameter {
+public class GlobalListParameter(string listName, VmElement? targetElement, ulong targetId)  {
 	public string ListName { get; } = listName;
 	public VmElement? TargetElement { get; } = targetElement;
 	public ulong TargetId { get; } = targetId;

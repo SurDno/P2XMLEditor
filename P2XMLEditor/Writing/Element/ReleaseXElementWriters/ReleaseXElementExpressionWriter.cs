@@ -17,7 +17,7 @@ public class ReleaseXElementExpressionWriter : IReleaseXElementWriter<Expression
 		xElement.Add( new XElement("TargetObject", element.TargetObject.Write()));
 		
 		if (element.TargetParam != null)
-			xElement.Add(new XElement("TargetParam", element.TargetParam.Write()));
+			xElement.Add(new XElement("TargetParam", element.TargetParam.Value.Write()));
 		if (element.Function?.GetParamStrings() is { Count: > 0 } sourceParams)
 			xElement.Add(CreateListElement("SourceParams", sourceParams));
 		if (element.Const != null)

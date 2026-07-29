@@ -81,7 +81,15 @@ public static class VmTypeHelper {
 			[VmType.NotificationEnum] = typeof(NotificationType),
 			[VmType.WeaponKind] = typeof(WeaponKind),
 			[VmType.GateState] = typeof(GateState),
-			[VmType.GameLocalizationName] = typeof(GameLocalizationName)
+			[VmType.GameLocalizationName] = typeof(GameLocalizationName),
+			[VmType.WeatherLayer] = typeof(WeatherLayer),
+			[VmType.AttackerAttackType] = typeof(AttackKind),
+			[VmType.AttackerNPCAttackType] = typeof(NpcAttackKind),
+			[VmType.AttackerPlayerAttackType] = typeof(PlayerAttackKind),
+			[VmType.AttackerFinishType] = typeof(FinishKind),
+			[VmType.AttackerDiseasedPlayerPushKind] = typeof(PlayerPushesDiseasedKind),
+			[VmType.DialogStringType] = typeof(DialogStringEnum),
+			[VmType.MailState] = typeof(MailStateEnum),
 		};
 		var fields = typeof(VmComponent).GetFields(BindingFlags.Static | BindingFlags.Public);
 		foreach (var obj in fields) {
@@ -237,6 +245,11 @@ public static class VmTypeHelper {
 			return VmType.EntityRef;
 		}
 
+		if (type == typeof(BlueprintRef)) {
+			return VmType.BlueprintRef;
+		}
+
+
 		if (typeof(VmElement).IsAssignableFrom(type)) {
 			if (type == typeof(GameObject)) {
 				return VmType.GameObject;
@@ -245,11 +258,6 @@ public static class VmTypeHelper {
 			if (type == typeof(GameMode)) {
 				return VmType.GameMode;
 			}
-
-			if (type == typeof(BlueprintRef)) {
-				return VmType.BlueprintRef;
-			}
-
 			if (type == typeof(MindMap)) {
 				return VmType.MindMap;
 			}

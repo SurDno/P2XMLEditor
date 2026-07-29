@@ -8,7 +8,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 [Function("Gate.AddPicklock_v1")]
 public class GateAddPicklock_v1Function(VirtualMachine vm, string[] parameters)
 	: VmFunction {
-	public override FunctionReturnType ReturnType => FunctionReturnType.Void;
+	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<Priority> Priority { get; } = FunctionSourceParam<Priority>.Read(parameters[0], vm);
 	public FunctionSourceParam<EntityRef> Storable { get; } = FunctionSourceParam<EntityRef>.Read(parameters[1], vm);
