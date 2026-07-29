@@ -379,7 +379,7 @@ public class ExpressionEditorForm : Form {
 			if (targetObj.ResolvedHolder is not ParameterHolder ph) return;
 			cmbCategory.SelectedItem = ph.GetType().Name;
 			cmbHolder.SelectedItem = cmbHolder.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Value == ph);
-			if (targetParam.Param?.Parameter is not Parameter p) return;
+			if (targetParam.Param?.Parameter?.Element is not Parameter p) return;
 			cmbParameter.SelectedItem = cmbParameter.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Value == p);
 		} catch {
 			Logger.Log(LogLevel.Warning, $"Current values of TargetObject and TargetParam were not parsed.");

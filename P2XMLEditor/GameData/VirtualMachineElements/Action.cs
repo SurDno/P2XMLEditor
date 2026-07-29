@@ -99,11 +99,12 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 				if (sourceParams != null && sourceParams.Length != 0) {
 					Source = ParameterSource.Create(data.SourceParams[0], vm, TargetParam);
 				}
-			} else if (ActionType == ActionType.RaiseEvent) {
-				string[]? sourceParams2 = data.SourceParams;
-				if (sourceParams2 != null && sourceParams2.Length != 0) {
-					EventParams = data.SourceParams.Select((string ps) => ParameterSource.Create(ps, vm)).ToList();
-				}
+			} else if (ActionType == ActionType.RaiseEvent && data.SourceParams?.Length != 0) {
+				EventParams = data.SourceParams!.Select((ps, i) => {
+					var expected = EventToRaise?.MessagesInfo is { } m && i < m.Count
+						? VmTypeHelper.GetVmTypeInfo(m[i].Type, vm) : null;
+					return ParameterSource.Create(ps, vm, null, expected);
+				}).ToList();
 			}
 		} catch {
 			Console.WriteLine(base.Id);

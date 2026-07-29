@@ -113,6 +113,12 @@ public struct ParameterSource {
 			content = body;
 		}
 
+		if (content.Length == 0) {
+			HitTracker.Hit(data);
+			src.TypeInfo = expectedType ?? VmTypeInfo.Unknown;
+			return src;
+		}
+		
 		// --- (1) bare hierarchy value, with or without a prefix.
 		if (HierarchyGuid.TryParse(content, vm, out var hierarchyValue)) {
 			HitTracker.Hit(data);
@@ -258,8 +264,10 @@ public struct ParameterSource {
 		} else if (expectedType is { BaseType: VmType.EntityRef }) {
 			HitTracker.Hit(data);
 			var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
-			src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
-			src.ElementReference = gameObject;
+			if (gameObject != null) {
+				src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
+				src.ElementReference = gameObject;
+			}
 		} else {
 			HitTracker.Hit(data);
 		}
@@ -404,9 +412,15 @@ public struct ParameterSource {
 			HitTracker.Hit();
 			return;
 		}
-		if (target.Value.Parameter is Parameter variable) {
+		if (target.Value.Parameter?.Element is Parameter variable) {
 			HitTracker.Hit();
 			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(variable.Value.XmlType, vm);
+			return;
+		}
+		if (target.Value.ComponentParamName is { } componentParam &&
+		    vm.TryResolveStandartParamType(componentParam, out var componentType)) {
+			HitTracker.Hit();
+			src.TypeInfo = componentType;
 			return;
 		}
 		HitTracker.Hit();

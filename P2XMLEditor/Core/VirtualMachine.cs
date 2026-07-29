@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
+using P2XMLEditor.Helper;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -56,6 +58,25 @@ public class VirtualMachine {
 	// fast access cache
 	private Dictionary<string, MessageLookup>? _messageIndex;
 	public readonly record struct MessageLookup(MessageInfo Info, Event Owner);
+	
+	
+	private Dictionary<string, VmTypeInfo>? _standartParamTypes;
+	public bool TryResolveStandartParamType(string name, out VmTypeInfo type) {
+		_standartParamTypes ??= BuildStandartParamTypes();
+		return _standartParamTypes.TryGetValue(name, out type!);
+	}
+
+	public void InvalidateStandartParamTypes() => _standartParamTypes = null;
+
+	private Dictionary<string, VmTypeInfo> BuildStandartParamTypes() {
+		var map = new Dictionary<string, VmTypeInfo>(StringComparer.Ordinal);
+		foreach (var holder in GetElementsByType<ParameterHolder>()) {
+			if (holder.StandartParams == null) continue;
+			foreach (var (key, parameter) in holder.StandartParams)
+				if (parameter != null) map.TryAdd(key, VmTypeHelper.GetVmTypeInfo(parameter.Type, this));
+		}
+		return map;
+	}
 	
 	// TODO: REFACTOR AWAY
 	[field: ThreadStatic]

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
@@ -14,7 +15,7 @@ public readonly struct ParamTarget {
 
 	public ParameterHolder? ContextHolder { get; init; }
 	public HierarchyGuid? ContextHierarchy { get; init; }
-	public Parameter? Parameter { get; init; }
+	public VmEither<Parameter, ParameterPlaceholder>? Parameter { get; init; }
 	public string? ComponentParamName { get; init; }
 
 	public bool HasLeadingPercent { get; init; }
@@ -46,21 +47,29 @@ public readonly struct ParamTarget {
 			return true;
 		}
 
-		if (ulong.TryParse(body, out var id) && vm.GetNullableElement(id) is Parameter parameter) {
-			result = new() { Kind = ParamTargetKind.Parameter, Parameter = parameter,
-							 HasLeadingPercent = leading };
+		if (ulong.TryParse(body, out var id)) {
+			var element = vm.GetNullableElement(id);
+			VmEither<Parameter, ParameterPlaceholder>? param = element switch {
+				Parameter p => new(p),
+				ParameterPlaceholder ph => new(ph),
+				null => new(vm.Register(new ParameterPlaceholder(id))),
+				_ => null 
+			};
 
-			if (context == null) return true;
+			if (param != null) {
+				result = new() { Kind = ParamTargetKind.Parameter, Parameter = param, HasLeadingPercent = leading };
+				if (context == null) return true;
 
-			if (ulong.TryParse(context, out var contextId) &&
-				vm.GetNullableElement(contextId) is ParameterHolder holder)
-				result = result with { ContextHolder = holder };
-			else if (HierarchyGuid.TryParse(context, vm, out var contextHierarchy))
-				result = result with { ContextHierarchy = contextHierarchy };
-			else
-				Logger.Log(LogLevel.Warning, $"TargetParam '{data}' has an unresolved context '{context}'.");
+				if (ulong.TryParse(context, out var contextId) &&
+				    vm.GetNullableElement(contextId) is ParameterHolder holder)
+					result = result with { ContextHolder = holder };
+				else if (HierarchyGuid.TryParse(context, vm, out var contextHierarchy))
+					result = result with { ContextHierarchy = contextHierarchy };
+				else
+					Logger.Log(LogLevel.Warning, $"TargetParam '{data}' has an unresolved context '{context}'.");
 
-			return true;
+				return true;
+			}
 		}
 
 		result = default;
@@ -78,7 +87,7 @@ public readonly struct ParamTarget {
 
 		var value = Kind switch {
 			ParamTargetKind.Empty          => "",
-			ParamTargetKind.Parameter      => Parameter!.Id.ToString(),
+			ParamTargetKind.Parameter      => Parameter!.Value.Id.ToString(),
 			ParamTargetKind.ComponentParam => ComponentParamName!,
 			_ => throw new InvalidOperationException($"Cannot write an uninitialised {nameof(ParamTarget)}.")
 		};

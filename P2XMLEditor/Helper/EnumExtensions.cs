@@ -77,16 +77,20 @@ public static class EnumExtensions {
 	}
 
 	private static Enum AssignUnknownValue(Type enumType, string value) {
-		var allValues = Enum.GetValues(enumType).Cast<Enum>();
 		var used = SerializeCache[enumType];
-		var free = allValues.Select(Convert.ToInt32).FirstOrDefault(intVal => !used.ContainsKey(intVal));
+		int? free = Enum.GetValues(enumType).Cast<Enum>()
+			.Select(Convert.ToInt32)
+			.Where(intVal => !used.ContainsKey(intVal))
+			.Cast<int?>()
+			.FirstOrDefault();
 
-		if (!Enum.IsDefined(enumType, free))
-			throw new InvalidOperationException($"No free value available in {enumType.Name} to map '{value}'");
+		if (free == null)
+			throw new InvalidOperationException(
+				$"No free value in {enumType.Name} to map '{value}' — every declared member is " +
+				$"already mapped. The enum is missing members present in the data.");
 
-		SerializeCache[enumType][free] = value;
-		DeserializeCache[enumType][value] = free;
-
-		return (Enum)Enum.ToObject(enumType, free);
+		SerializeCache[enumType][free.Value] = value;
+		DeserializeCache[enumType][value] = free.Value;
+		return (Enum)Enum.ToObject(enumType, free.Value);
 	}
 }

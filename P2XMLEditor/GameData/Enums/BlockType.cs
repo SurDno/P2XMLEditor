@@ -10,5 +10,6 @@ public enum BlockType {
 	[SerializationData("Block")] Block,
 	[SerializationData("Dodge")] Dodge,
 	[SerializationData("Stagger")] Stagger,
+	[SerializationData("QuickBlock")] QuickBlock,
 	[SerializationData("Surrender")] Surrender
 }

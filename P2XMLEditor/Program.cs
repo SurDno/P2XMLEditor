@@ -19,6 +19,7 @@ internal static class Program {
 						"and/or the tool in the future. Make frequent backups of virtual machines you're editing " +
 						"to avoid potential data loss.", "Disclaimer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 						*/
+		P2XMLEditor.Core.SettingsManager.Load();
 		Application.Run(new MainForm());
 	}
 }

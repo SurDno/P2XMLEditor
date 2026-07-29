@@ -7,5 +7,8 @@ namespace P2XMLEditor.GameData.Enums;
 [SerializationEnum]
 public enum GameLocalizationName {
 	[SerializationData("english")] english,
-	[SerializationData("russian")] russian
+	[SerializationData("russian")] russian,
+	[SerializationData("german")] german,
+	[SerializationData("japanese")] japanese,
+	[SerializationData("french")] french,
 }

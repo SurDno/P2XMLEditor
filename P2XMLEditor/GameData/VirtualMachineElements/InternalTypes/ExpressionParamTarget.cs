@@ -35,7 +35,7 @@ public readonly struct ExpressionParamTarget {
 			return new() {
 				Kind = ExpressionParamKind.Param,
 				Param = param,
-				ValueType = param.Parameter != null ? VmTypeHelper.GetVmTypeInfo(param.Parameter.Type, vm) : null
+				ValueType = param.Parameter?.Element is Parameter parameter ? VmTypeHelper.GetVmTypeInfo(parameter.Type, vm) : null
 			};
 
 		var leading = data.StartsWith('%');

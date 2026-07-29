@@ -172,7 +172,6 @@ public abstract class ParameterValue {
 			"MailState" => new EnumValue<MailStateEnum>(type, value.Deserialize<MailStateEnum>()),
 			
 			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
-			"IEntity" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
 			
 			// Dynamic types
 			_ when type.StartsWith("IObjRef%") => CreateRef<GameObject>(vm, type, value),

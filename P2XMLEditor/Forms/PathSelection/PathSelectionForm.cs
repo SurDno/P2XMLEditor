@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Abstract;
+using P2XMLEditor.Core;
 using P2XMLEditor.Data;
 using P2XMLEditor.Forms.PathSelection.Validators;
+using System.Text.Json;
 using P2XMLEditor.Parsing;
 
 namespace P2XMLEditor.Forms.PathSelection;
@@ -29,6 +31,31 @@ public sealed class PathSelectionForm : Form {
         _validators = [new VmPathValidator(), new TemplatesPathValidator(), new AssetDbPathValidator()];
         InitializeLayout();
         UpdateParsingModes();
+        LoadSettings();
+    }
+
+    private void LoadSettings() {
+        var paths = SettingsManager.Settings.LastPaths;
+        if (paths != null) {
+            _validators[0].PathBox.Text = paths.VmPath;
+            _validators[1].PathBox.Text = paths.TemplatesPath;
+            _validators[2].PathBox.Text = paths.AssetDbPath;
+            var modeString = paths.Mode switch {
+                ParsingMode.XmlReader => "XML Reader",
+                ParsingMode.XElement => _parsingModeCombo.Items.Contains("Demo XElement (native)") ? "Demo XElement (native)" : "XElement (legacy)",
+                _ => "Fastest"
+            };
+
+            if (_parsingModeCombo.Items.Contains(modeString)) {
+                _parsingModeCombo.SelectedItem = modeString;
+            }
+            _parallelCheckBox.Checked = paths.Parallel;
+        }
+    }
+
+    private void SaveSettings(Paths paths) {
+        SettingsManager.Settings.LastPaths = paths;
+        SettingsManager.Save();
     }
 
     private void InitializeLayout() {
@@ -120,6 +147,8 @@ public sealed class PathSelectionForm : Form {
                 mode,
                 _parallelCheckBox.Checked
             );
+
+            SaveSettings(SelectedPaths);
 
             DialogResult = DialogResult.OK;
             Close();
