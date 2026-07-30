@@ -136,7 +136,7 @@ public struct ParameterSource {
 		} else if (content.StartsWith("global_")) {
 			HitTracker.Hit(data);
 			ParseGlobalVariable(ref src, content);
-		} else if (ulong.TryParse(content, out var contentId)) {
+		} else if (ulong.TryParse(content, out var contentId) && contentId >= IdGenerator.MIN_ID) {
 			HitTracker.Hit(data);
 			// Resolve WITHOUT a type constraint first.
 			// "<holderId>%<parameterId>" is an indirection: the value is whatever that
@@ -161,10 +161,10 @@ public struct ParameterSource {
 					break;
 				case { BaseType: VmType.EntityRef }:
 					src.EntityReference = new() { Element = contentElement as GameObject, SerializeAsGuid = false };
-					src.ElementReference = contentElement;
+					if (contentElement != null) 
+						src.ElementReference = contentElement;
 					break;
 				default: {
-					Logger.Log(LogLevel.Warning, $"Using weird element reference for: {data}");
 					if (contentElement != null) 
 						src.ElementReference = contentElement;
 					break;

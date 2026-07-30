@@ -44,9 +44,10 @@ public static class IdGenerator {
 		{ typeof(MindMapNodeContent), 44}
 	};
 
+	public const ulong MIN_ID = 281470681677825UL; 
+
 	private static ulong GetMinIdForType(Type type) => 
-		OffsetMultiplierByType.TryGetValue(type, out var v) ? v * 281470681677825UL : 
-		throw new Exception($"Type not supported: {type}");
+		OffsetMultiplierByType.TryGetValue(type, out var v) ? v * MIN_ID : throw new($"Type not supported: {type}");
 
 	public static ulong GetNewId<T>(VirtualMachine vm) {  
 		var firstFreeId = GetMinIdForType(typeof(T));
