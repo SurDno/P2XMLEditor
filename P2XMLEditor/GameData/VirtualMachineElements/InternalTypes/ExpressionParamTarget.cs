@@ -18,8 +18,7 @@ public readonly struct ExpressionParamTarget {
 	public ExpressionParamKind Kind { get; init; }
 
 	public ParamTarget? Param { get; init; }
-	public MessageInfo? Message { get; init; }
-	public Event? MessageOwner { get; init; }
+	public Message? Message { get; init; }
 	public InputParameter? InputParam { get; init; }
 	public VmElement? ObjectLiteral { get; init; }
 	public HierarchyGuid? LiteralHierarchy { get; init; }
@@ -41,11 +40,11 @@ public readonly struct ExpressionParamTarget {
 		var leading = data.StartsWith('%');
 		var body = leading ? data[1..] : data;
 
-		if (body.Contains("_message_") && vm.TryResolveMessage(body, out var msg))
+		if (body.Contains("_message_") && InternalTypes.Message.TryParse(body, vm, out var msg))
 			return new() {
 				Kind = ExpressionParamKind.Message,
-				Message = msg.Info, MessageOwner = msg.Owner,
-				ValueType = VmTypeHelper.GetVmTypeInfo(msg.Info.Type, vm),
+				Message = msg,
+				ValueType = VmTypeHelper.GetVmTypeInfo(msg!.Type, vm),
 				HasLeadingPercent = leading
 			};
 
@@ -92,7 +91,7 @@ public readonly struct ExpressionParamTarget {
 		if (Kind == ExpressionParamKind.Param) return Param!.Value.Write();
 
 		var value = Kind switch {
-			ExpressionParamKind.Message      => Message!.Value.Name,
+			ExpressionParamKind.Message      => Message!.Name,
 			ExpressionParamKind.InputParam   => InputParam!.Name,
 			ExpressionParamKind.ObjectLiteral => LiteralHierarchy != null ? LiteralHierarchy.Write()
 				: ByEngineGuid ? (ObjectLiteral as GameObject)!.EngineTemplateId

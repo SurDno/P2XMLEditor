@@ -35,6 +35,9 @@ public class XElementTalkingLoader : IParser<RawTalkingData> {
 					? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)
 					: null,
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
+				InputLinkIds = element.Element(XNameCache.InputLinks) != null
+					? ReadULongList(element.Element(XNameCache.InputLinks)!).ToArray()
+					: [],
 				Initial = element.Element(XNameCache.Initial) != null
 					? bool.Parse(element.Element(XNameCache.Initial)!.Value)
 					: null,

@@ -34,8 +34,8 @@ public class DemoXElementEventWriter : IDemoXElementWriter<Event> {
 		if (element.Condition != null)
 			obj.Add(new XElement("Condition", element.Condition.Id));
 
-		if (element.MessagesInfo?.Count > 0) {
-			var serialized = string.Join("MESS&PARAM", element.MessagesInfo.Select(info => {
+		if (element.MessagesToWrite.Count > 0) {
+			var serialized = string.Join("MESS&PARAM", element.MessagesToWrite.Select(info => {
 				var typeWithSuffix = info.Type.Contains('%') ? info.Type : info.Type + "%";
 				return $"{info.Name}M&P&PM{typeWithSuffix}M&P&PM{info.Name}";
 			}));

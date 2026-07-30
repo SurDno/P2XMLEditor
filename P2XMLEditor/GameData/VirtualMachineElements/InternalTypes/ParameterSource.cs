@@ -16,7 +16,7 @@ public struct ParameterSource {
 	public ParameterValue? LiteralValue { get; set; }
 	public bool IsConstant { get; set; }
 	public VmTypeInfo TypeInfo { get; set; } = VmTypeInfo.Unknown;
-	public MessageInfo? MessageReference { get; set; }
+	public Message? MessageReference { get; set; }
 	public InputParameter? InputParamReference { get; set; }
 	public ParameterHolder? PrefixHolder { get; set; }
 	public HierarchyGuid? PrefixHierarchy { get; set; }
@@ -137,31 +137,10 @@ public struct ParameterSource {
 
 		if (content.Contains("_message_") && !content.Contains('&')) {
 			HitTracker.Hit(data);
-
-			// 1. Preferred: the exact instance reachable from the holder, so the editor can
-			//    navigate to the owning event.
-			if (holder != null) {
+			if (vm.TryResolveMessage(content, out var message)) {
 				HitTracker.Hit(data);
-				foreach (var e in EventAccessibilityUtility.GetAccessibleEvents(holder, vm)) {
-					if (e.MessagesInfo == null) { HitTracker.Hit(data); continue; }
-					foreach (var m in e.MessagesInfo) {
-						if (!string.Equals(m.Name, content, StringComparison.Ordinal)) continue;
-						HitTracker.Hit(data);
-						src.MessageReference = m;
-						src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(m.Type, vm);
-						return src;
-					}
-				}
-			}
-
-			// 2. Fallback: engine events live on the FunctionalComponent that declares them
-			//    (BeginControllIteractEvent on "Controller", ArrivedRegionEvent on
-			//    "Navigation"), routinely on an object unrelated to the context holder —
-			//    the accessibility walk structurally cannot reach it.
-			if (vm.TryResolveMessage(content, out var indexed)) {
-				HitTracker.Hit(data);
-				src.MessageReference = indexed.Info;
-				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(indexed.Info.Type, vm);
+				src.MessageReference = message;
+				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(message!.Type, vm);
 				return src;
 			}
 
@@ -375,7 +354,7 @@ public struct ParameterSource {
 	private static void InferTypeInfo(ref ParameterSource src, VirtualMachine vm, ParamTarget? target) {
 		if (src.MessageReference != null) {
 			HitTracker.Hit();
-			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(src.MessageReference.Value.Type, vm);
+			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(src.MessageReference.Type, vm);
 			return;
 		}
 		if (src.InputParamReference != null) {
@@ -485,7 +464,7 @@ public struct ParameterSource {
 		if (DynamicParameterName != null) return DynamicParameterName;
 		if (HierarchyReference != null) return HierarchyReference.Write();
 		if (GlobalListName != null) return GlobalListName;
-		if (MessageReference != null) return MessageReference.Value.Name;
+		if (MessageReference != null) return MessageReference.Name;
 		if (InputParamReference != null) return InputParamReference.Name;
 
 		if (LiteralValue != null) {
@@ -535,7 +514,7 @@ public struct ParameterSource {
 		} else if (GlobalListName != null) {
 			value = GlobalListTargetId.HasValue ? $"{GlobalListName}_{GlobalListTargetId}" : GlobalListName;
 		} else if (MessageReference != null) {
-			value = MessageReference.Value.Name;
+			value = MessageReference.Name;
 		} else if (InputParamReference != null) {
 			value = InputParamReference.Name;
 		} else if (ParameterReference != null) {

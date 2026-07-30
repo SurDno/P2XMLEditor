@@ -25,10 +25,10 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 				Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
 		ActionLineType = data.ActionLineType;
 		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom.HasValue) {
-			LoopInfo = new P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ActionLoopInfo(
-				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoName ?? "", vm),
-				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoStart ?? "", vm, null, VmTypeInfo.Int32),
-				P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.ParameterSource.Create(data.LoopInfoEnd ?? "", vm, null, VmTypeInfo.Int32),
+			LoopInfo = new ActionLoopInfo(
+				ParameterSource.Create(data.LoopInfoName ?? "", vm),
+				ParameterSource.Create(data.LoopInfoStart ?? "", vm, null, VmTypeInfo.Int32),
+				ParameterSource.Create(data.LoopInfoEnd ?? "", vm, null, VmTypeInfo.Int32),
 				data.LoopInfoRandom
 			);
 		} else {

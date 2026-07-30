@@ -24,10 +24,10 @@ public class ReleaseXElementEventWriter : IReleaseXElementWriter<Event> {
 			xElement.Add(CreateBoolElement("ChangeTo", (bool)element.ChangeTo));
 		if (element.Repeated != null)
 			xElement.Add(CreateBoolElement("Repeated", (bool)element.Repeated));
-		if (element.MessagesInfo?.Count > 0) {
+		if (element.MessagesToWrite.Count > 0) {
 			xElement.Add(new XElement("MessagesInfo",
-				new XAttribute("count", element.MessagesInfo.Count),
-				element.MessagesInfo.Select(m => new XElement("Item",
+				new XAttribute("count", element.MessagesToWrite.Count),
+				element.MessagesToWrite.Select(m => new XElement("Item",
 					new XElement("Name", m.Name),
 					new XElement("Type", m.Type)
 				))

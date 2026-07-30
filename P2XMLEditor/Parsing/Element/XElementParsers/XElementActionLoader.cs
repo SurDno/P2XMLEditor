@@ -32,6 +32,9 @@ public class XElementActionLoader : IParser<RawActionData> {
 				SourceExpressionId = element.Element(XNameCache.SourceExpression) != null
 					? ulong.Parse(element.Element(XNameCache.SourceExpression)!.Value)
 					: null,
+				SourceConstId = element.Element(XNameCache.SourceConst) != null
+					? ulong.Parse(element.Element(XNameCache.SourceConst)!.Value)
+					: null,
 				TargetObject = element.Element(XNameCache.TargetObject)!.Value,
 				TargetParam = element.Element(XNameCache.TargetParam)!.Value,
 				SourceParams = ParseListElement(element, XNameCache.SourceParams).ToArray(),

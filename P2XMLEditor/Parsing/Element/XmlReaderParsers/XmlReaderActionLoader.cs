@@ -23,6 +23,7 @@ public class XmlReaderActionLoader : IParser<RawActionData> {
 				MathOperationType = xr.GetStringValueAndAdvance().Deserialize<MathOperationType>(),
 				TargetFuncName = xr.GetOptionalStringValueAndAdvance(),
 				SourceExpressionId = xr.Name == "SourceExpression" ? xr.GetULongValueAndAdvance() : null,
+				SourceConstId = xr.Name == "SourceConst" ? xr.GetULongValueAndAdvance() : null,
 				TargetObject = xr.GetStringValueAndAdvance(),
 				TargetParam = xr.GetStringValueAndAdvance(),
 				SourceParams = xr.Name == "SourceParams" ? xr.GetStringListAndAdvance() : null,

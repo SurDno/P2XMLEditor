@@ -5,6 +5,7 @@ public struct RawTalkingData {
 	public ulong[] StateIds;
 	public ulong[] EventLinkIds;
 	public ulong[] EntryPointIds;
+	public ulong[] InputLinkIds;
 	public bool? IgnoreBlock;
 	public ulong OwnerId;
 	public bool? Initial;

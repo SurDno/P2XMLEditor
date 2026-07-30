@@ -56,9 +56,7 @@ public class VirtualMachine {
 	public HashSet<string> Languages { get; } = [];
 
 	// fast access cache
-	private Dictionary<string, MessageLookup>? _messageIndex;
-	public readonly record struct MessageLookup(MessageInfo Info, Event Owner);
-	
+	private Dictionary<string, Message>? _messageIndex;
 	
 	private Dictionary<string, VmTypeInfo>? _standartParamTypes;
 	public bool TryResolveStandartParamType(string name, out VmTypeInfo type) {
@@ -159,20 +157,15 @@ public class VirtualMachine {
 	/// (e.g. "OnFurnitureLoaded_message_ Region"), inherited from param specs written
 	/// "Region:Region, level of disease". Do not trim either side.
 	/// </summary>
-	public bool TryResolveMessage(string messageName, out MessageLookup result) {
+	public bool TryResolveMessage(string name, out Message? result) {
 		_messageIndex ??= BuildMessageIndex();
-		return _messageIndex.TryGetValue(messageName, out result);
+		return _messageIndex.TryGetValue(name, out result);
 	}
 
-	/// <summary>Call whenever an Event's MessagesInfo is added, removed or renamed.</summary>
-	public void InvalidateMessageIndex() => _messageIndex = null;
-	
-	private Dictionary<string, MessageLookup> BuildMessageIndex() {
-		var map = new Dictionary<string, MessageLookup>(StringComparer.Ordinal);
-		foreach (var e in GetElementsByType<Event>()) {
-			if (e.MessagesInfo == null) continue;
-			foreach (var m in e.MessagesInfo) map[m.Name] = new MessageLookup(m, e);
-		}
+	private Dictionary<string, Message> BuildMessageIndex() {
+		var map = new Dictionary<string, Message>(StringComparer.Ordinal);
+		foreach (var e in GetElementsByType<Event>())
+			foreach (var m in e.Messages) map[m.Name] = m;
 		return map;
 	}
 }

@@ -57,6 +57,7 @@ public static class XNameCache {
 	public static readonly XName MathOperationType = "MathOperationType";
 	public static readonly XName TargetFuncName = "TargetFuncName";
 	public static readonly XName SourceExpression = "SourceExpression";
+	public static readonly XName SourceConst = "SourceConst";
 	
 	// ACTION LINE
 	public static readonly XName Actions = "Actions";

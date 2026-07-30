@@ -24,6 +24,7 @@ public class XmlReaderTalkingLoader : IParser<RawTalkingData> {
 			raw.EntryPointIds = xr.GetULongListAndAdvance();
 			raw.IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : null;
 			raw.OwnerId = xr.GetULongValueAndAdvance();
+			raw.InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : [];
 			raw.Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : null;
 			raw.Name = xr.GetOptionalStringValueAndAdvance();
 			raw.ParentId = xr.GetULongValueAndAdvance();

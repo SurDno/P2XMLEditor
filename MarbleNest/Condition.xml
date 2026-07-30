@@ -1,0 +1,5773 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Condition">
+  <Item id="1688824094859510">
+    <Predicates count="1">
+      <Item>1407353413183685</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859512">
+    <Predicates count="1">
+      <Item>1407353413183687</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>InfectionLarger30</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859513">
+    <Predicates count="1">
+      <Item>1407353413183688</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859514">
+    <Predicates count="1">
+      <Item>1407353413183689</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859549">
+    <Predicates count="1">
+      <Item>1407353413183727</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerKnowAboutCarrier</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859550">
+    <Predicates count="1">
+      <Item>1407353413183728</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859582">
+    <Predicates count="1">
+      <Item>1407353413263027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfAfterPlague</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859584">
+    <Predicates count="1">
+      <Item>1407353413208029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerDontMetGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859586">
+    <Predicates count="1">
+      <Item>1407353413183766</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerDontMetGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859587">
+    <Predicates count="1">
+      <Item>1407353413183767</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859590">
+    <Predicates count="1">
+      <Item>1407353413183770</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetHelper3</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859594">
+    <Predicates count="1">
+      <Item>1407353413183774</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHealedTheOdongHusband</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859595">
+    <Predicates count="1">
+      <Item>1688824094859596</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerHasntDrugs</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859596">
+    <Predicates count="2">
+      <Item>1407353413183775</Item>
+      <Item>1407353413183776</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859597">
+    <Predicates count="1">
+      <Item>1688824094859598</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasDrugs</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859598">
+    <Predicates count="2">
+      <Item>1407353413183777</Item>
+      <Item>1407353413183778</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859610">
+    <Predicates count="1">
+      <Item>1407353413330332</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerKnowAboutGeorgyAction</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859611">
+    <Predicates count="1">
+      <Item>1407353413183791</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerDontKnowAboutGeorgyActions</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859612">
+    <Predicates count="1">
+      <Item>1688824095005953</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerKnowAboutGeorgyAction</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859836">
+    <Predicates count="1">
+      <Item>1407353413184037</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859843">
+    <Predicates count="1">
+      <Item>1407353413184044</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859913">
+    <Predicates count="1">
+      <Item>1407353413184117</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerKnowAboutAspityExistence</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859914">
+    <Predicates count="1">
+      <Item>1407353413184118</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasPocketWatch</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859923">
+    <Predicates count="1">
+      <Item>1407353413184127</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DeafultTrue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859924">
+    <Predicates count="1">
+      <Item>1688824094859925</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasHeart</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094859925">
+    <Predicates count="1">
+      <Item>1407353413184128</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094859941">
+    <Predicates count="1">
+      <Item>1407353413184145</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860232">
+    <Predicates count="1">
+      <Item>1688824094939654</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerNotMetMorthuses</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860235">
+    <Predicates count="1">
+      <Item>1688824094860236</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerNotMetMain</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860236">
+    <Predicates count="2">
+      <Item>1407353413184466</Item>
+      <Item>1407353413253131</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860238">
+    <Predicates count="1">
+      <Item>1688824094860239</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetStickyOrPigtails</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860239">
+    <Predicates count="2">
+      <Item>1407353413184470</Item>
+      <Item>1407353413281437</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860240">
+    <Predicates count="1">
+      <Item>1688824094860241</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasAnwerAspityOrGeorgyOrTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860241">
+    <Predicates count="3">
+      <Item>1407353413184471</Item>
+      <Item>1407353413184472</Item>
+      <Item>1407353413184473</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860242">
+    <Predicates count="1">
+      <Item>1407353413184474</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasAnswerFromGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860243">
+    <Predicates count="1">
+      <Item>1407353413184475</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifOspinaDied</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860244">
+    <Predicates count="1">
+      <Item>1407353413184476</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerHasImpudentAnswerFromTragedian</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860245">
+    <Predicates count="1">
+      <Item>1688824094860246</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasAnwerAspityOrGeorgyOrTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860246">
+    <Predicates count="3">
+      <Item>1407353413184477</Item>
+      <Item>1407353413184478</Item>
+      <Item>1407353413184479</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860250">
+    <Predicates count="1">
+      <Item>1407353413263844</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DefaultTrue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860251">
+    <Predicates count="1">
+      <Item>1407353413184484</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerNotMetClerksTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860252">
+    <Predicates count="1">
+      <Item>1407353413184485</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetClerks</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860253">
+    <Predicates count="1">
+      <Item>1688824094860254</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfMaratAndDoraGetFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860254">
+    <Predicates count="2">
+      <Item>1407353413184486</Item>
+      <Item>1407353413184487</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860255">
+    <Predicates count="1">
+      <Item>1407353413184488</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860256">
+    <Predicates count="1">
+      <Item>1407353413184489</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860259">
+    <Predicates count="1">
+      <Item>1407353413184492</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHealTheOdongh</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860260">
+    <Predicates count="1">
+      <Item>1407353413184493</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OdonghDeath</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860263">
+    <Predicates count="1">
+      <Item>1407353413184496</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHeardAboutRecources</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860264">
+    <Predicates count="1">
+      <Item>1407353413184497</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>вечная отбойка</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860600">
+    <Predicates count="1">
+      <Item>1688824094881653</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ReadyToRemoveAndHibernation</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860603">
+    <Predicates count="1">
+      <Item>1407353413184848</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860611">
+    <Predicates count="1">
+      <Item>1407353413184856</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860612">
+    <Predicates count="1">
+      <Item>1407353413184857</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860620">
+    <Predicates count="1">
+      <Item>1407353413184865</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860621">
+    <Predicates count="1">
+      <Item>1407353413184866</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860628">
+    <Predicates count="1">
+      <Item>1407353413184873</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860629">
+    <Predicates count="1">
+      <Item>1407353413184874</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860640">
+    <Predicates count="1">
+      <Item>1407353413184885</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860658">
+    <Predicates count="1">
+      <Item>1407353413184903</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860659">
+    <Predicates count="1">
+      <Item>1407353413184904</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860660">
+    <Predicates count="1">
+      <Item>1407353413184905</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860661">
+    <Predicates count="1">
+      <Item>1407353413184906</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Время облаков</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860662">
+    <Predicates count="1">
+      <Item>1407353413184907</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860663">
+    <Predicates count="1">
+      <Item>1407353413184908</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860664">
+    <Predicates count="1">
+      <Item>1407353413184909</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Larger16pm</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860665">
+    <Predicates count="1">
+      <Item>1407353413184910</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860666">
+    <Predicates count="1">
+      <Item>1407353413184911</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094860667">
+    <Predicates count="1">
+      <Item>1407353413184912</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868651">
+    <Predicates count="1">
+      <Item>1407353413192826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868652">
+    <Predicates count="1">
+      <Item>1407353413192827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868653">
+    <Predicates count="1">
+      <Item>1407353413192828</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868658">
+    <Predicates count="1">
+      <Item>1407353413192833</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868659">
+    <Predicates count="1">
+      <Item>1688824094939659</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MortiiParty</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868661">
+    <Predicates count="1">
+      <Item>1688824094996254</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868662">
+    <Predicates count="1">
+      <Item>1407353413192837</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868663">
+    <Predicates count="1">
+      <Item>1688824094939657</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868664">
+    <Predicates count="1">
+      <Item>1407353413192839</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868665">
+    <Predicates count="1">
+      <Item>1407353413192840</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868666">
+    <Predicates count="1">
+      <Item>1407353413192841</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094868667">
+    <Predicates count="1">
+      <Item>1688824095006551</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875151">
+    <Predicates count="1">
+      <Item>1407353413199326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875152">
+    <Predicates count="1">
+      <Item>1407353413199327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875153">
+    <Predicates count="1">
+      <Item>1407353413199328</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875154">
+    <Predicates count="1">
+      <Item>1407353413199329</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875155">
+    <Predicates count="1">
+      <Item>1407353413199330</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875551">
+    <Predicates count="1">
+      <Item>1407353413199726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875552">
+    <Predicates count="1">
+      <Item>1407353413199727</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875951">
+    <Predicates count="1">
+      <Item>1407353413262745</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TragedianAnswer</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875952">
+    <Predicates count="1">
+      <Item>1688824094938564</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CompletedChildQuest</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875953">
+    <Predicates count="1">
+      <Item>1688824094938566</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Closed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875954">
+    <Predicates count="1">
+      <Item>1688824094938565</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Opened</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875955">
+    <Predicates count="1">
+      <Item>1407353413200130</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094875956">
+    <Predicates count="1">
+      <Item>1407353413262748</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GeorgiyAnswer</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094877051">
+    <Predicates count="1">
+      <Item>1407353413201226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878051">
+    <Predicates count="1">
+      <Item>1407353413202226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878052">
+    <Predicates count="1">
+      <Item>1407353413202227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878053">
+    <Predicates count="1">
+      <Item>1407353413202228</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878251">
+    <Predicates count="1">
+      <Item>1407353413202426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878252">
+    <Predicates count="1">
+      <Item>1407353413202427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878451">
+    <Predicates count="1">
+      <Item>1407353413202626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878452">
+    <Predicates count="1">
+      <Item>1407353413202627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878454">
+    <Predicates count="1">
+      <Item>1407353413202629</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878651">
+    <Predicates count="1">
+      <Item>1407353413202826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878851">
+    <Predicates count="1">
+      <Item>1407353413203026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>StillPlaying</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878852">
+    <Predicates count="1">
+      <Item>1688824094938559</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>LessThanTwo</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878853">
+    <Predicates count="1">
+      <Item>1688824094938560</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TwoToFour</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878854">
+    <Predicates count="1">
+      <Item>1407353413203029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>FourOrMore</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878855">
+    <Predicates count="1">
+      <Item>1407353413203030</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsAboutHelersMorthuses</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878857">
+    <Predicates count="1">
+      <Item>1407353413203032</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedMainMortusFire</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878859">
+    <Predicates count="1">
+      <Item>1407353413203034</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>KnowsGeorgiyLiftedQuarantine</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878860">
+    <Predicates count="1">
+      <Item>1407353413203035</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedGeorgiyButler</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878861">
+    <Predicates count="1">
+      <Item>1407353413203036</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedGeorgiyHorns</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878862">
+    <Predicates count="1">
+      <Item>1407353413203037</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedHelper2</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878865">
+    <Predicates count="1">
+      <Item>1688824094904071</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedAspitySecondOpenedDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878866">
+    <Predicates count="1">
+      <Item>1688824094904072</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedAspitySecondNotOpenedDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878867">
+    <Predicates count="1">
+      <Item>1688824094914291</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedStickySquirrel</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878869">
+    <Predicates count="1">
+      <Item>1407353413203044</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878871">
+    <Predicates count="1">
+      <Item>1407353413203046</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToSticky</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878872">
+    <Predicates count="1">
+      <Item>1407353413203047</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToShrew</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878873">
+    <Predicates count="1">
+      <Item>1407353413203048</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SpokeToShrewAfter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878874">
+    <Predicates count="1">
+      <Item>1407353413203049</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>StickyAfter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878875">
+    <Predicates count="1">
+      <Item>1407353413253137</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsHeIsHeartless</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878878">
+    <Predicates count="1">
+      <Item>1407353413203053</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerGotTragedianAnswer</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878879">
+    <Predicates count="1">
+      <Item>1407353413203054</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerTalkedStickyNeighbor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878881">
+    <Predicates count="1">
+      <Item>1407353413203056</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsIsolator</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878883">
+    <Predicates count="1">
+      <Item>1407353413203058</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsAboutVillage</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878887">
+    <Predicates count="1">
+      <Item>1688824094936253</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SpokeToSleepyFaceOrWasUpstairs</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878890">
+    <Predicates count="1">
+      <Item>1688824094940451</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsTownIsDoomed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878892">
+    <Predicates count="1">
+      <Item>1407353413203067</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedHelper2</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878893">
+    <Predicates count="1">
+      <Item>1407353413203068</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedStickyNeighbor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878896">
+    <Predicates count="1">
+      <Item>1688824094928958</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHasAHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878900">
+    <Predicates count="1">
+      <Item>1407353413203075</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveHeartToTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878902">
+    <Predicates count="1">
+      <Item>1407353413203077</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedZealot</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878906">
+    <Predicates count="1">
+      <Item>1407353413203081</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedAspityFirst</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878908">
+    <Predicates count="1">
+      <Item>1688824094914290</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ToldByStickyOrSawPersonally</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878910">
+    <Predicates count="1">
+      <Item>1688824094914292</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ToldByShrewOrSawPersonally</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878912">
+    <Predicates count="1">
+      <Item>1688824095004451</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerExaminedNeighbor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878914">
+    <Predicates count="1">
+      <Item>1688824094938561</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SpokeToBoth</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878916">
+    <Predicates count="1">
+      <Item>1407353413203091</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsHeNeedsSupplies</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878921">
+    <Predicates count="1">
+      <Item>1407353413203096</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OdonghLives</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878922">
+    <Predicates count="1">
+      <Item>1407353413203097</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OdonghDied</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878924">
+    <Predicates count="1">
+      <Item>1407353413203099</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>FoundEm</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094878929">
+    <Predicates count="1">
+      <Item>1407353413203104</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsTownIsDoomed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094880051">
+    <Predicates count="1">
+      <Item>1407353413204226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094880056">
+    <Predicates count="1">
+      <Item>1407353413204231</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>KnowsAboutResources</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094880057">
+    <Predicates count="1">
+      <Item>1407353413204232</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowGeorgiyLiftedQuarantine</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094880058">
+    <Predicates count="1">
+      <Item>1407353413204233</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsAboutHQExistence</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881651">
+    <Predicates count="1">
+      <Item>1407353413205826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881653">
+    <Predicates count="2">
+      <Item>1407353413205829</Item>
+      <Item>1407353413205830</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881654">
+    <Predicates count="1">
+      <Item>1407353413205831</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotTooLate</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881657">
+    <Predicates count="1">
+      <Item>1407353413306226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDoesntKnowAboutIsolator</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881659">
+    <Predicates count="1">
+      <Item>1407353413205836</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881666">
+    <Predicates count="1">
+      <Item>1407353413205843</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Health &lt;= 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881667">
+    <Predicates count="1">
+      <Item>1407353413205844</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881668">
+    <Predicates count="1">
+      <Item>1407353413205845</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094881669">
+    <Predicates count="1">
+      <Item>1407353413205846</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094883251">
+    <Predicates count="1">
+      <Item>1407353413207426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094883451">
+    <Predicates count="1">
+      <Item>1407353413207626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884252">
+    <Predicates count="1">
+      <Item>1407353413208427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Key</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884253">
+    <Predicates count="1">
+      <Item>1407353413208428</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Key</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884254">
+    <Predicates count="1">
+      <Item>1407353413208429</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OpenDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884255">
+    <Predicates count="1">
+      <Item>1407353413208430</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Player</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884256">
+    <Predicates count="1">
+      <Item>1407353413208431</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerAcceptedDeathInDream</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094884257">
+    <Predicates count="1">
+      <Item>1407353413208432</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Left</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094886051">
+    <Predicates count="1">
+      <Item>1407353413210226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094886351">
+    <Predicates count="1">
+      <Item>1407353413210526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>hot_twyrine</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094886852">
+    <Predicates count="1">
+      <Item>1407353413211027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Health &lt;= 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094887951">
+    <Predicates count="1">
+      <Item>1407353413212126</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GameLoadComplete</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889351">
+    <Predicates count="1">
+      <Item>1407353413213526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889352">
+    <Predicates count="1">
+      <Item>1407353413213527</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerReceivedMasterKey</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889353">
+    <Predicates count="1">
+      <Item>1688824094889354</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OpenOneOfTheHouseDoors</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889354">
+    <Predicates count="2">
+      <Item>1407353413213529</Item>
+      <Item>1407353413213530</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889355">
+    <Predicates count="1">
+      <Item>1407353413213531</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Bullets&lt;=0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889356">
+    <Predicates count="1">
+      <Item>1407353413213533</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MasterKey</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094889357">
+    <Predicates count="1">
+      <Item>1407353413213534</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MasterKey</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891051">
+    <Predicates count="1">
+      <Item>1688824094972653</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotMetSoldierMainAndNotKnowAboutCathedral</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891052">
+    <Predicates count="1">
+      <Item>1407353413215227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerKnowAboutCathedral</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891053">
+    <Predicates count="1">
+      <Item>1688824094892351</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OneOfDecisionsTrue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891054">
+    <Predicates count="1">
+      <Item>1407353413215229</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeDecision</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891055">
+    <Predicates count="1">
+      <Item>1407353413215230</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>True</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891058">
+    <Predicates count="1">
+      <Item>1407353413215233</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNOTmetDora</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891059">
+    <Predicates count="1">
+      <Item>1688824094968951</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetDoraANDDoraStay</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891060">
+    <Predicates count="1">
+      <Item>1688824094891061</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetDoraANDDoraGetFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891061">
+    <Predicates count="2">
+      <Item>1407353413215235</Item>
+      <Item>1407353413215236</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891062">
+    <Predicates count="1">
+      <Item>1688824094891063</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetDoraANDDoraStayHere</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891063">
+    <Predicates count="2">
+      <Item>1407353413215237</Item>
+      <Item>1407353413215238</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891064">
+    <Predicates count="1">
+      <Item>1407353413215239</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891651">
+    <Predicates count="1">
+      <Item>1407353413215826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891652">
+    <Predicates count="1">
+      <Item>1407353413215827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891653">
+    <Predicates count="1">
+      <Item>1407353413215829</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotUnlockedYet</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891654">
+    <Predicates count="1">
+      <Item>1407353413215830</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891851">
+    <Predicates count="1">
+      <Item>1407353413216026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891852">
+    <Predicates count="1">
+      <Item>1407353413216027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891853">
+    <Predicates count="1">
+      <Item>1407353413216028</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891854">
+    <Predicates count="1">
+      <Item>1407353413216029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeDecision</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891855">
+    <Predicates count="1">
+      <Item>1407353413216030</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DefaultTrue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891857">
+    <Predicates count="1">
+      <Item>1407353413216032</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetMarat</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891858">
+    <Predicates count="1">
+      <Item>1407353413216033</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNOTmetMarat</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891859">
+    <Predicates count="1">
+      <Item>1407353413216034</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNOTMetMarat</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891860">
+    <Predicates count="1">
+      <Item>1688824094891861</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetMaratANDMaratGetFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891861">
+    <Predicates count="2">
+      <Item>1407353413216035</Item>
+      <Item>1407353413216036</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891862">
+    <Predicates count="1">
+      <Item>1688824094891863</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetMaratANDMaratNOTgetFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094891863">
+    <Predicates count="2">
+      <Item>1407353413216037</Item>
+      <Item>1407353413216038</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094892351">
+    <Predicates count="2">
+      <Item>1407353413216526</Item>
+      <Item>1407353413216527</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094892352">
+    <Predicates count="1">
+      <Item>1688824094892353</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DoraAndMaratGetFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094892353">
+    <Predicates count="2">
+      <Item>1407353413216529</Item>
+      <Item>1407353413216530</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094892354">
+    <Predicates count="1">
+      <Item>1407353413216531</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893051">
+    <Predicates count="1">
+      <Item>1407353413217226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>LeftToBurn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893052">
+    <Predicates count="1">
+      <Item>1407353413217227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayermetOdongh</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893451">
+    <Predicates count="1">
+      <Item>1407353413217626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893453">
+    <Predicates count="1">
+      <Item>1688824094893457</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BothStay</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893457">
+    <Predicates count="2">
+      <Item>1407353413293326</Item>
+      <Item>1407353413293327</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893459">
+    <Predicates count="1">
+      <Item>1407353413217640</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>give_food</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094893460">
+    <Predicates count="1">
+      <Item>1407353413217644</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>give_money</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094893462">
+    <Predicates count="1">
+      <Item>1407353413217648</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>clear_inventory</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094894451">
+    <Predicates count="1">
+      <Item>1407353413218626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894452">
+    <Predicates count="1">
+      <Item>1407353413218627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894454">
+    <Predicates count="1">
+      <Item>1688824095000252</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerKnowAboutAspityExistence</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894455">
+    <Predicates count="1">
+      <Item>1407353413218630</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerKnowAboutAspityExistence</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894456">
+    <Predicates count="1">
+      <Item>1688824094894457</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerDontKnowAspityAndNOTMetZealot</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894457">
+    <Predicates count="2">
+      <Item>1407353413218631</Item>
+      <Item>1407353413218632</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894458">
+    <Predicates count="1">
+      <Item>1407353413218633</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetZealot</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894459">
+    <Predicates count="1">
+      <Item>1407353413218634</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerKnowAboutAspity</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894460">
+    <Predicates count="1">
+      <Item>1407353413218635</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894461">
+    <Predicates count="1">
+      <Item>1407353413218636</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094894463">
+    <Predicates count="1">
+      <Item>1407353413218638</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094895251">
+    <Predicates count="1">
+      <Item>1407353413219426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ReadyToDisable</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094895252">
+    <Predicates count="1">
+      <Item>1688824094895253</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ReadyToDisable</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094895253">
+    <Predicates count="2">
+      <Item>1407353413219429</Item>
+      <Item>1407353413219430</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094896051">
+    <Predicates count="1">
+      <Item>1407353413220226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094896052">
+    <Predicates count="1">
+      <Item>1407353413220227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094896053">
+    <Predicates count="1">
+      <Item>1407353413220228</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094898451">
+    <Predicates count="1">
+      <Item>1407353413222626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094898452">
+    <Predicates count="1">
+      <Item>1407353413222627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901451">
+    <Predicates count="1">
+      <Item>1407353413225626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Man_Izek</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901452">
+    <Predicates count="1">
+      <Item>1407353413225627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Man_Marat</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094901453">
+    <Predicates count="1">
+      <Item>1407353413225628</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Man_Pankrat_Babyface</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094901454">
+    <Predicates count="1">
+      <Item>1407353413225629</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Man_Pankrat</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094901455">
+    <Predicates count="1">
+      <Item>1407353413225630</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Woman_Charlotte</Name>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1688824094901456">
+    <Predicates count="1">
+      <Item>1407353413225631</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Woman_Klava</Name>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1688824094901457">
+    <Predicates count="1">
+      <Item>1407353413225632</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Woman_Martha</Name>
+    <OrderIndex>6</OrderIndex>
+  </Item>
+  <Item id="1688824094901653">
+    <Predicates count="1">
+      <Item>1407353413225828</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Meeting</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901654">
+    <Predicates count="1">
+      <Item>1407353413225829</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DefaultTrue</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094901655">
+    <Predicates count="1">
+      <Item>1407353413225830</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDidntHealOdongh</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901656">
+    <Predicates count="1">
+      <Item>1407353413225831</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHealHusband</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901657">
+    <Predicates count="1">
+      <Item>1688824094901658</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfShopClose</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901658">
+    <Predicates count="2">
+      <Item>1407353413225832</Item>
+      <Item>1407353413225833</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901659">
+    <Predicates count="1">
+      <Item>1688824094901660</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifShopCloseNotRepressed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901660">
+    <Predicates count="3">
+      <Item>1407353413225834</Item>
+      <Item>1407353413225835</Item>
+      <Item>1407353413230528</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901661">
+    <Predicates count="1">
+      <Item>1407353413225836</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotCreateHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901662">
+    <Predicates count="1">
+      <Item>1407353413225837</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerMetClerk2False</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901663">
+    <Predicates count="1">
+      <Item>1407353413225838</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Meeting</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901664">
+    <Predicates count="1">
+      <Item>1407353413225839</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DefaultTrue</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094901665">
+    <Predicates count="1">
+      <Item>1688824094901666</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfKnowsShopClosed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901666">
+    <Predicates count="2">
+      <Item>1407353413225840</Item>
+      <Item>1407353413225841</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901667">
+    <Predicates count="1">
+      <Item>1688824094901668</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifKnowsShopClosedNotRepressed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901668">
+    <Predicates count="3">
+      <Item>1407353413225842</Item>
+      <Item>1407353413225843</Item>
+      <Item>1407353413230527</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901669">
+    <Predicates count="1">
+      <Item>1407353413225844</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotCreateHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901670">
+    <Predicates count="1">
+      <Item>1407353413225845</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerMetClerk1False</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901671">
+    <Predicates count="1">
+      <Item>1407353413225846</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Meeting</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901672">
+    <Predicates count="1">
+      <Item>1407353413225847</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DefaultTrue</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094901673">
+    <Predicates count="1">
+      <Item>1688824094901674</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfShopClose</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901674">
+    <Predicates count="2">
+      <Item>1407353413225848</Item>
+      <Item>1407353413225849</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901675">
+    <Predicates count="1">
+      <Item>1688824094901676</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifShopCloseNotRepressed</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901676">
+    <Predicates count="3">
+      <Item>1407353413225850</Item>
+      <Item>1407353413225851</Item>
+      <Item>1407353413230529</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901677">
+    <Predicates count="1">
+      <Item>1407353413225852</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotCreateHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901678">
+    <Predicates count="1">
+      <Item>1407353413225853</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerMetClerk3False</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901679">
+    <Predicates count="1">
+      <Item>1407353413225854</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifShopOpen</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901680">
+    <Predicates count="1">
+      <Item>1407353413225855</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerCreateHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094901751">
+    <Predicates count="1">
+      <Item>1688824094901752</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>StreetWalker</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094901752">
+    <Predicates count="4">
+      <Item>1407353413225927</Item>
+      <Item>1407353413225928</Item>
+      <Item>1407353413225929</Item>
+      <Item>1407353413225930</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094902061">
+    <Predicates count="1">
+      <Item>1407353413226236</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094902152">
+    <Predicates count="1">
+      <Item>1407353413226327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094902158">
+    <Predicates count="1">
+      <Item>1407353413226333</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDontDropPanacea</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904051">
+    <Predicates count="1">
+      <Item>1407353413228226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ThrewSomethingOut</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904052">
+    <Predicates count="1">
+      <Item>1407353413228227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904053">
+    <Predicates count="1">
+      <Item>1407353413228228</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemCount &gt; 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904054">
+    <Predicates count="1">
+      <Item>1407353413228229</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemIndex &lt; ItemsCount</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904055">
+    <Predicates count="1">
+      <Item>1407353413228230</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OutOfValuableItems</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904056">
+    <Predicates count="1">
+      <Item>1407353413228231</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemCount &gt; 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904057">
+    <Predicates count="1">
+      <Item>1407353413228232</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemIndex &lt; ItemsCount</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904058">
+    <Predicates count="1">
+      <Item>1407353413228233</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OutOfValuableItems</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904059">
+    <Predicates count="1">
+      <Item>1407353413228234</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904064">
+    <Predicates count="1">
+      <Item>1407353413228239</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotDropped</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904065">
+    <Predicates count="1">
+      <Item>1407353413228241</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Dropped</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904069">
+    <Predicates count="1">
+      <Item>1407353413228245</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904070">
+    <Predicates count="1">
+      <Item>1407353413228246</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904071">
+    <Predicates count="2">
+      <Item>1407353413228247</Item>
+      <Item>1407353413228248</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904072">
+    <Predicates count="2">
+      <Item>1407353413228250</Item>
+      <Item>1407353413228251</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904073">
+    <Predicates count="1">
+      <Item>1407353413228252</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094904074">
+    <Predicates count="1">
+      <Item>1407353413228253</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveYourPocketWatchToZealot</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094905852">
+    <Predicates count="1">
+      <Item>1407353413230027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094905853">
+    <Predicates count="1">
+      <Item>1407353413230028</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Infection &gt; 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094905854">
+    <Predicates count="1">
+      <Item>1407353413230029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094905855">
+    <Predicates count="1">
+      <Item>1407353413230030</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PocketWatch</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094905856">
+    <Predicates count="1">
+      <Item>1407353413230031</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912152">
+    <Predicates count="1">
+      <Item>1407353413236327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912153">
+    <Predicates count="1">
+      <Item>1407353413236328</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerLeft</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912154">
+    <Predicates count="1">
+      <Item>1407353413236329</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerGaveNutsToSticky</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912155">
+    <Predicates count="1">
+      <Item>1407353413236330</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerGaveNutsToShrew</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912951">
+    <Predicates count="1">
+      <Item>1407353413237131</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Diseased</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094912953">
+    <Predicates count="1">
+      <Item>1407353413237139</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Sign_Male_Marat_Gypsy</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094912954">
+    <Predicates count="1">
+      <Item>1407353413237142</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Sign_Woman_Charlotte_Gypsy</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094912955">
+    <Predicates count="1">
+      <Item>1407353413237145</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Woman_Klava_Gypsy</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094912956">
+    <Predicates count="1">
+      <Item>1407353413237148</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Woman_Martha_Gypsy</Name>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1688824094912957">
+    <Predicates count="1">
+      <Item>1407353413237151</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Worker_Izek_Gypsy</Name>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1688824094913568">
+    <Predicates count="1">
+      <Item>1407353413237749</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerMetHelper2</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094913569">
+    <Predicates count="1">
+      <Item>1407353413238427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNuts</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094913575">
+    <Predicates count="1">
+      <Item>1407353413237763</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>FinishedNeighbor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094913851">
+    <Predicates count="1">
+      <Item>1407353413238030</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Plague_Cloud_Ambush</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094913852">
+    <Predicates count="1">
+      <Item>1407353413238033</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Plague_Cloud_Bullet</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094914283">
+    <Predicates count="1">
+      <Item>1688824094914284</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNut</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914284">
+    <Predicates count="2">
+      <Item>1407353413238468</Item>
+      <Item>1407353413238484</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914286">
+    <Predicates count="1">
+      <Item>1407353413238486</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerGiveNutToSticky</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914287">
+    <Predicates count="1">
+      <Item>1688824094914288</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToShrewFirst</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914288">
+    <Predicates count="2">
+      <Item>1407353413238474</Item>
+      <Item>1407353413238475</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914289">
+    <Predicates count="1">
+      <Item>1407353413238476</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToShrewSecond</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094914290">
+    <Predicates count="2">
+      <Item>1407353413238477</Item>
+      <Item>1407353413238478</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914291">
+    <Predicates count="2">
+      <Item>1407353413238479</Item>
+      <Item>1407353413238480</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914292">
+    <Predicates count="2">
+      <Item>1407353413238481</Item>
+      <Item>1407353413238482</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914293">
+    <Predicates count="1">
+      <Item>1407353413238483</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerSentKidsAway</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914295">
+    <Predicates count="1">
+      <Item>1407353413238487</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094914296">
+    <Predicates count="1">
+      <Item>1407353413238488</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Chesnut</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094914297">
+    <Predicates count="1">
+      <Item>1407353413238493</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Walnut</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094914298">
+    <Predicates count="1">
+      <Item>1407353413238495</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Hazelnut</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094914301">
+    <Predicates count="1">
+      <Item>1407353413238499</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Arahis</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094916951">
+    <Predicates count="1">
+      <Item>1407353413241126</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Default True</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094916952">
+    <Predicates count="1">
+      <Item>1407353413241127</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlayerMetPigtail</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094916953">
+    <Predicates count="1">
+      <Item>1688824094916954</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerGiveNutToStickyOrPigtail</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094916954">
+    <Predicates count="2">
+      <Item>1407353413241128</Item>
+      <Item>1407353413241129</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094917351">
+    <Predicates count="1">
+      <Item>1407353413241526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Dead</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094917352">
+    <Predicates count="1">
+      <Item>1407353413241527</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DiedImproperly</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094917353">
+    <Predicates count="1">
+      <Item>1407353413241528</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094917354">
+    <Predicates count="1">
+      <Item>1407353413241529</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094917356">
+    <Predicates count="1">
+      <Item>1407353413241531</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>death</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918251">
+    <Predicates count="1">
+      <Item>1407353413242426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918252">
+    <Predicates count="1">
+      <Item>1407353413242427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918253">
+    <Predicates count="1">
+      <Item>1407353413242428</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918254">
+    <Predicates count="1">
+      <Item>1407353413242429</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918257">
+    <Predicates count="1">
+      <Item>1407353413242432</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918258">
+    <Predicates count="1">
+      <Item>1407353413242510</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>FirstMeetingDefaultTrue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918263">
+    <Predicates count="1">
+      <Item>1407353413242438</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotMetSpiteFace</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918264">
+    <Predicates count="1">
+      <Item>1407353413242507</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNuts</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918266">
+    <Predicates count="1">
+      <Item>1407353413242442</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918267">
+    <Predicates count="1">
+      <Item>1407353413242509</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNuts</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918269">
+    <Predicates count="1">
+      <Item>1407353413242446</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerNotMetSpiteFace</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918270">
+    <Predicates count="1">
+      <Item>1407353413242447</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetSpiteFace</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918271">
+    <Predicates count="1">
+      <Item>1688824094918272</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNut</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918272">
+    <Predicates count="2">
+      <Item>1407353413242448</Item>
+      <Item>1407353413242505</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918274">
+    <Predicates count="1">
+      <Item>1407353413242452</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerGiveNutToPigtail</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918280">
+    <Predicates count="1">
+      <Item>1688824094918281</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToStickyFirst</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918281">
+    <Predicates count="2">
+      <Item>1407353413242458</Item>
+      <Item>1407353413242459</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918282">
+    <Predicates count="1">
+      <Item>1407353413242460</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveNutsToStickySecond</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094918291">
+    <Predicates count="1">
+      <Item>1688824094918292</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasNut</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918292">
+    <Predicates count="2">
+      <Item>1407353413242471</Item>
+      <Item>1407353413242479</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918294">
+    <Predicates count="1">
+      <Item>1688824094918298</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerGiveNutToPigtail</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918295">
+    <Predicates count="1">
+      <Item>1407353413242476</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918296">
+    <Predicates count="1">
+      <Item>1407353413242477</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918297">
+    <Predicates count="1">
+      <Item>1407353413242478</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094918298">
+    <Predicates count="1">
+      <Item>1407353413242481</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922651">
+    <Predicates count="1">
+      <Item>1407353413246826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922655">
+    <Predicates count="1">
+      <Item>1407353413246832</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDoesntHaveHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922657">
+    <Predicates count="1">
+      <Item>1407353413246836</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHasHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922659">
+    <Predicates count="1">
+      <Item>1407353413246837</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922660">
+    <Predicates count="1">
+      <Item>1407353413246838</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922661">
+    <Predicates count="1">
+      <Item>1407353413246839</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922662">
+    <Predicates count="1">
+      <Item>1407353413246840</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDoesntHaveHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922663">
+    <Predicates count="1">
+      <Item>1407353413246841</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Heart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922664">
+    <Predicates count="1">
+      <Item>1407353413246842</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Heart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922667">
+    <Predicates count="1">
+      <Item>1407353413246845</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922668">
+    <Predicates count="1">
+      <Item>1407353413246846</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922669">
+    <Predicates count="1">
+      <Item>1407353413246847</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHealTheOdongh</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922670">
+    <Predicates count="1">
+      <Item>1688824094922671</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OdonghDead</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922671">
+    <Predicates count="2">
+      <Item>1407353413246849</Item>
+      <Item>1407353413246850</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922672">
+    <Predicates count="1">
+      <Item>1407353413246851</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094922752">
+    <Predicates count="1">
+      <Item>1407353413253130</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094923851">
+    <Predicates count="1">
+      <Item>1688824094923852</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OdonghDied</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094923852">
+    <Predicates count="2">
+      <Item>1407353413248027</Item>
+      <Item>1407353413248028</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094926351">
+    <Predicates count="1">
+      <Item>1407353413250526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeakFirst</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094928951">
+    <Predicates count="1">
+      <Item>1407353413253126</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerHadHeartAllAlong</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094928952">
+    <Predicates count="1">
+      <Item>1407353413253127</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>give_pills</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094928954">
+    <Predicates count="1">
+      <Item>1407353413253132</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerGotHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094928955">
+    <Predicates count="1">
+      <Item>1688824094928956</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerGotHeartAndHasIt</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094928956">
+    <Predicates count="2">
+      <Item>1407353413253134</Item>
+      <Item>1407353413253135</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094928958">
+    <Predicates count="2">
+      <Item>1407353413253138</Item>
+      <Item>1407353413253139</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094935151">
+    <Predicates count="1">
+      <Item>1407353413259326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094935155">
+    <Predicates count="1">
+      <Item>1407353413259330</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlague</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094935156">
+    <Predicates count="1">
+      <Item>1407353413259331</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ifPlague</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094935157">
+    <Predicates count="1">
+      <Item>1407353413259332</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotEveningYet</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094936253">
+    <Predicates count="2">
+      <Item>1407353413260429</Item>
+      <Item>1407353413260430</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094936254">
+    <Predicates count="1">
+      <Item>1688824094936255</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Player</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094936255">
+    <Predicates count="2">
+      <Item>1407353413260432</Item>
+      <Item>1407353413260433</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094936256">
+    <Predicates count="1">
+      <Item>1407353413260434</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094937354">
+    <Predicates count="1">
+      <Item>1407353413261530</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094937355">
+    <Predicates count="1">
+      <Item>1407353413261531</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094937358">
+    <Predicates count="1">
+      <Item>1407353413261534</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094937359">
+    <Predicates count="1">
+      <Item>1407353413261535</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094937360">
+    <Predicates count="1">
+      <Item>1407353413261536</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938551">
+    <Predicates count="1">
+      <Item>1688824094938552</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938552">
+    <Predicates count="2">
+      <Item>1407353413262727</Item>
+      <Item>1407353413262728</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938553">
+    <Predicates count="1">
+      <Item>1407353413262729</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938554">
+    <Predicates count="1">
+      <Item>1407353413262730</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938555">
+    <Predicates count="1">
+      <Item>1407353413262731</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938556">
+    <Predicates count="1">
+      <Item>1407353413262732</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938559">
+    <Predicates count="2">
+      <Item>1407353413262738</Item>
+      <Item>1407353413262739</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938560">
+    <Predicates count="2">
+      <Item>1407353413262740</Item>
+      <Item>1407353413262741</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938561">
+    <Predicates count="2">
+      <Item>1407353413262742</Item>
+      <Item>1407353413262743</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938564">
+    <Predicates count="2">
+      <Item>1407353413262749</Item>
+      <Item>1407353413262750</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938565">
+    <Predicates count="2">
+      <Item>1407353413262751</Item>
+      <Item>1407353413262752</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938566">
+    <Predicates count="2">
+      <Item>1407353413262754</Item>
+      <Item>1407353413262755</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938851">
+    <Predicates count="1">
+      <Item>1407353413263026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDoesntHaveWatch</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938852">
+    <Predicates count="1">
+      <Item>1688824094938853</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeakToBoth</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094938853">
+    <Predicates count="2">
+      <Item>1407353413263029</Item>
+      <Item>1407353413263030</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939151">
+    <Predicates count="1">
+      <Item>1407353413263326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfplyaerdontmetIzek</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939152">
+    <Predicates count="1">
+      <Item>1407353413263327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerHasAnswerFromKids</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939651">
+    <Predicates count="1">
+      <Item>1407353413263826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939653">
+    <Predicates count="1">
+      <Item>1688824095013151</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939654">
+    <Predicates count="2">
+      <Item>1407353413263830</Item>
+      <Item>1407353413263831</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939657">
+    <Predicates count="2">
+      <Item>1407353413263837</Item>
+      <Item>1688824095012155</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939658">
+    <Predicates count="1">
+      <Item>1688824095012154</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>QuestOver</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939659">
+    <Predicates count="2">
+      <Item>1407353413263839</Item>
+      <Item>1407353413263840</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939662">
+    <Predicates count="1">
+      <Item>1407353413263845</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939663">
+    <Predicates count="1">
+      <Item>1407353413263846</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094939665">
+    <Predicates count="1">
+      <Item>1407353413263848</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094940451">
+    <Predicates count="2">
+      <Item>1407353413264626</Item>
+      <Item>1407353413264627</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094949452">
+    <Predicates count="1">
+      <Item>1407353413273627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094952753">
+    <Predicates count="1">
+      <Item>1407353413276928</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Key</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094952754">
+    <Predicates count="1">
+      <Item>1407353413276929</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Key</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094952755">
+    <Predicates count="1">
+      <Item>1407353413276930</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OpenDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094954051">
+    <Predicates count="1">
+      <Item>1407353413278226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094957257">
+    <Predicates count="1">
+      <Item>1407353413281434</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>EstablishedHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094957258">
+    <Predicates count="1">
+      <Item>1407353413281435</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GaveHeartToTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094957639">
+    <Predicates count="1">
+      <Item>1407353413281822</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfMetLeperExecutor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958318">
+    <Predicates count="1">
+      <Item>1407353413282509</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfPlayerMetExecutorLeper</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958499">
+    <Predicates count="1">
+      <Item>1407353413282697</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958501">
+    <Predicates count="1">
+      <Item>1407353413282700</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958502">
+    <Predicates count="1">
+      <Item>1407353413282701</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958503">
+    <Predicates count="1">
+      <Item>1407353413282702</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958505">
+    <Predicates count="1">
+      <Item>1407353413282704</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958506">
+    <Predicates count="1">
+      <Item>1407353413282705</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958507">
+    <Predicates count="1">
+      <Item>1407353413282706</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958508">
+    <Predicates count="1">
+      <Item>1407353413282707</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958509">
+    <Predicates count="1">
+      <Item>1407353413282708</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958510">
+    <Predicates count="1">
+      <Item>1407353413282709</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958511">
+    <Predicates count="1">
+      <Item>1407353413282710</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958512">
+    <Predicates count="1">
+      <Item>1407353413282711</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958513">
+    <Predicates count="1">
+      <Item>1407353413282712</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958514">
+    <Predicates count="1">
+      <Item>1407353413282713</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958515">
+    <Predicates count="1">
+      <Item>1407353413282714</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958516">
+    <Predicates count="1">
+      <Item>1407353413282715</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958517">
+    <Predicates count="1">
+      <Item>1407353413282716</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958518">
+    <Predicates count="1">
+      <Item>1407353413282717</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958519">
+    <Predicates count="1">
+      <Item>1407353413282718</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958520">
+    <Predicates count="1">
+      <Item>1407353413282719</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958521">
+    <Predicates count="1">
+      <Item>1407353413282720</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958522">
+    <Predicates count="1">
+      <Item>1407353413282721</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958523">
+    <Predicates count="1">
+      <Item>1407353413282722</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958524">
+    <Predicates count="1">
+      <Item>1407353413282723</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958525">
+    <Predicates count="1">
+      <Item>1407353413282724</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958526">
+    <Predicates count="1">
+      <Item>1407353413282725</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958528">
+    <Predicates count="1">
+      <Item>1407353413284427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958529">
+    <Predicates count="1">
+      <Item>1407353413284428</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958530">
+    <Predicates count="1">
+      <Item>1407353413284429</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958531">
+    <Predicates count="1">
+      <Item>1407353413284430</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958532">
+    <Predicates count="1">
+      <Item>1407353413284431</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958533">
+    <Predicates count="1">
+      <Item>1407353413284432</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958534">
+    <Predicates count="1">
+      <Item>1407353413284433</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094958535">
+    <Predicates count="1">
+      <Item>1407353413284434</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964051">
+    <Predicates count="1">
+      <Item>1407353413288326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BlueprintMessage</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964052">
+    <Predicates count="1">
+      <Item>1407353413288327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BlueprintMessage</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964452">
+    <Predicates count="1">
+      <Item>1407353413288727</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>LeftToBurn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964453">
+    <Predicates count="1">
+      <Item>1407353413288728</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntInviteNeighborKid</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964455">
+    <Predicates count="1">
+      <Item>1407353413288730</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Hunger &gt; 0.7</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964456">
+    <Predicates count="1">
+      <Item>1407353413288731</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Hunger &lt; 0.7</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964458">
+    <Predicates count="1">
+      <Item>1407353413288733</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BachelorEstablishedHospital</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964752">
+    <Predicates count="1">
+      <Item>1407353413289027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerDidntOpenTheDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964753">
+    <Predicates count="1">
+      <Item>1407353413289028</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MovedAspity</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094964754">
+    <Predicates count="1">
+      <Item>1407353413289029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ConvincedNumberTwelve</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965451">
+    <Predicates count="1">
+      <Item>1407353413289826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965851">
+    <Predicates count="1">
+      <Item>1407353413290229</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Diseased</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965853">
+    <Predicates count="1">
+      <Item>1407353413290230</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfFalse</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965854">
+    <Predicates count="1">
+      <Item>1407353413290231</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IsStarted</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965855">
+    <Predicates count="1">
+      <Item>1407353413290232</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IsStarted</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094965856">
+    <Predicates count="1">
+      <Item>1407353413290233</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GameLoadComplete</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966151">
+    <Predicates count="1">
+      <Item>1407353413290527</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966152">
+    <Predicates count="1">
+      <Item>1407353413290528</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966153">
+    <Predicates count="1">
+      <Item>1407353413290529</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ark</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966154">
+    <Predicates count="1">
+      <Item>1407353413290530</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ikea</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094966351">
+    <Predicates count="1">
+      <Item>1407353413290726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966553">
+    <Predicates count="1">
+      <Item>1407353413290928</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Entering</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094966554">
+    <Predicates count="1">
+      <Item>1407353413290929</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>AlreadyIn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967051">
+    <Predicates count="1">
+      <Item>1688824094967052</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>AllQuestsFinished</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967052">
+    <Predicates count="13">
+      <Item>1407353413291427</Item>
+      <Item>1407353413291428</Item>
+      <Item>1407353413291429</Item>
+      <Item>1407353413291430</Item>
+      <Item>1407353413291431</Item>
+      <Item>1407353413291432</Item>
+      <Item>1407353413291433</Item>
+      <Item>1407353413291434</Item>
+      <Item>1407353413291435</Item>
+      <Item>1407353413291436</Item>
+      <Item>1407353413291437</Item>
+      <Item>1407353413291438</Item>
+      <Item>1407353413291439</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967053">
+    <Predicates count="1">
+      <Item>1407353413291440</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>QuestFinished</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967055">
+    <Predicates count="1">
+      <Item>1407353413291442</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>AlreadyLate</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967751">
+    <Predicates count="1">
+      <Item>1688824094967752</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>UseInCommon</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967752">
+    <Predicates count="2">
+      <Item>1407353413292127</Item>
+      <Item>1407353413292128</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967754">
+    <Predicates count="1">
+      <Item>1407353413292130</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Water</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967755">
+    <Predicates count="1">
+      <Item>1688824094967756</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BandageAtLessThan50Health</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094967756">
+    <Predicates count="2">
+      <Item>1407353413292132</Item>
+      <Item>1407353413292133</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094967757">
+    <Predicates count="1">
+      <Item>1407353413292134</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Ampoule</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094968951">
+    <Predicates count="2">
+      <Item>1407353413293329</Item>
+      <Item>1407353413293330</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094969151">
+    <Predicates count="1">
+      <Item>1407353413293528</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ThreeChargesLeft</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094969153">
+    <Predicates count="1">
+      <Item>1407353413293532</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TwoChargesLeft</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094969155">
+    <Predicates count="1">
+      <Item>1407353413293536</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OneChargeLeft</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094969158">
+    <Predicates count="1">
+      <Item>1407353413293538</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerNotInside</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094969159">
+    <Predicates count="1">
+      <Item>1407353413293539</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094971951">
+    <Predicates count="1">
+      <Item>1688824094986653</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnows</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972351">
+    <Predicates count="1">
+      <Item>1688824094972354</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerAndDoesntKnowYet</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972353">
+    <Predicates count="1">
+      <Item>1407353413296728</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972354">
+    <Predicates count="2">
+      <Item>1407353413296729</Item>
+      <Item>1407353413296730</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972355">
+    <Predicates count="1">
+      <Item>1407353413296731</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972356">
+    <Predicates count="1">
+      <Item>1407353413296732</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>HidesCarrier</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972357">
+    <Predicates count="1">
+      <Item>1407353413296733</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972358">
+    <Predicates count="1">
+      <Item>1407353413296734</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972359">
+    <Predicates count="1">
+      <Item>1407353413296735</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Package</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094972360">
+    <Predicates count="1">
+      <Item>1407353413296736</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Before18</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972361">
+    <Predicates count="1">
+      <Item>1407353413296737</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SkipNoonAnnouncement</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972362">
+    <Predicates count="1">
+      <Item>1407353413296738</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeakToLepers</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972364">
+    <Predicates count="1">
+      <Item>1407353413296740</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972365">
+    <Predicates count="1">
+      <Item>1407353413296741</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlagueNotStarted</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972652">
+    <Predicates count="1">
+      <Item>1407353413297029</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntTalkOfficer</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094972653">
+    <Predicates count="2">
+      <Item>1407353413297030</Item>
+      <Item>1407353413297031</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973251">
+    <Predicates count="1">
+      <Item>1407353413297626</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DreamPlayer</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973252">
+    <Predicates count="1">
+      <Item>1407353413297627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ReceivedHeartFromBride</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973351">
+    <Predicates count="1">
+      <Item>1688824094973352</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973352">
+    <Predicates count="3">
+      <Item>1407353413297727</Item>
+      <Item>1407353413297728</Item>
+      <Item>1407353413297730</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973353">
+    <Predicates count="1">
+      <Item>1688824095044953</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094973354">
+    <Predicates count="1">
+      <Item>1688824095044952</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094974251">
+    <Predicates count="1">
+      <Item>1407353413298627</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ReceivedHeart</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094974651">
+    <Predicates count="1">
+      <Item>1407353413299026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>InsideCathedral</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094975851">
+    <Predicates count="1">
+      <Item>1407353413300226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094975852">
+    <Predicates count="1">
+      <Item>1407353413300227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094975853">
+    <Predicates count="1">
+      <Item>1407353413300228</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094975951">
+    <Predicates count="1">
+      <Item>1407353413300326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094975952">
+    <Predicates count="1">
+      <Item>1407353413300327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Player</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094976051">
+    <Predicates count="1">
+      <Item>1407353413300426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfSteppe</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094976052">
+    <Predicates count="1">
+      <Item>1407353413300439</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfStvorki</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094976053">
+    <Predicates count="1">
+      <Item>1407353413300446</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfDiseased</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094976056">
+    <Predicates count="1">
+      <Item>1407353413300431</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094976057">
+    <Predicates count="1">
+      <Item>1407353413300432</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094976058">
+    <Predicates count="1">
+      <Item>1407353413300433</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094977451">
+    <Predicates count="1">
+      <Item>1407353413301826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Enter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094977452">
+    <Predicates count="1">
+      <Item>1407353413301827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Player</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094977453">
+    <Predicates count="1">
+      <Item>1407353413301828</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094980151">
+    <Predicates count="1">
+      <Item>1407353413304526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntTalkTragedians</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094981351">
+    <Predicates count="1">
+      <Item>1407353413305726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TheodorBastard</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094981352">
+    <Predicates count="1">
+      <Item>1407353413305727</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>FinalBell</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094981551">
+    <Predicates count="1">
+      <Item>1407353413305926</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Player</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094981552">
+    <Predicates count="1">
+      <Item>1407353413305927</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094981553">
+    <Predicates count="1">
+      <Item>1407353413305928</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094982951">
+    <Predicates count="1">
+      <Item>1407353413307326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094982952">
+    <Predicates count="1">
+      <Item>1688824094984951</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedSonyaOrSentAway</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983851">
+    <Predicates count="1">
+      <Item>1688824094983859</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>HandledSobor OrSteppe</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983856">
+    <Predicates count="2">
+      <Item>1688824094983857</Item>
+      <Item>1688824094983858</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983857">
+    <Predicates count="2">
+      <Item>1407353413308237</Item>
+      <Item>1407353413308238</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983858">
+    <Predicates count="2">
+      <Item>1407353413308239</Item>
+      <Item>1407353413308240</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983859">
+    <Predicates count="2">
+      <Item>1407353413308241</Item>
+      <Item>1688824094983856</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983860">
+    <Predicates count="1">
+      <Item>1688824094983861</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983861">
+    <Predicates count="2">
+      <Item>1407353413308243</Item>
+      <Item>1407353413308244</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983862">
+    <Predicates count="1">
+      <Item>1688824094983863</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PourOutInCommon</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094983863">
+    <Predicates count="2">
+      <Item>1407353413308247</Item>
+      <Item>1407353413308248</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983864">
+    <Predicates count="1">
+      <Item>1407353413308249</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Water</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094983869">
+    <Predicates count="1">
+      <Item>1688824094984654</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>EndingLessThanTwo</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984051">
+    <Predicates count="1">
+      <Item>1407353413308426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Enter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984551">
+    <Predicates count="1">
+      <Item>1407353413308926</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984552">
+    <Predicates count="1">
+      <Item>1407353413308927</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984553">
+    <Predicates count="1">
+      <Item>1688824094990751</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MadeBothDecisions</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984652">
+    <Predicates count="1">
+      <Item>1407353413309027</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SkipNoonFadeIn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984653">
+    <Predicates count="1">
+      <Item>1407353413309028</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SkipEveningFadeIn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984654">
+    <Predicates count="2">
+      <Item>1407353413309029</Item>
+      <Item>1688824094984655</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984655">
+    <Predicates count="2">
+      <Item>1407353413309032</Item>
+      <Item>1407353413309033</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984656">
+    <Predicates count="1">
+      <Item>1688824094984660</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>EndingTwoToFour</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984660">
+    <Predicates count="2">
+      <Item>1407353413309037</Item>
+      <Item>1688824094984661</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984661">
+    <Predicates count="2">
+      <Item>1407353413309040</Item>
+      <Item>1407353413309041</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984662">
+    <Predicates count="1">
+      <Item>1688824094984663</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>EndingAndFourOrMore</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984663">
+    <Predicates count="2">
+      <Item>1407353413309043</Item>
+      <Item>1407353413309048</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984951">
+    <Predicates count="2">
+      <Item>1407353413309326</Item>
+      <Item>1407353413309327</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984952">
+    <Predicates count="1">
+      <Item>1688824094984953</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TalkedMaratOrDora</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984953">
+    <Predicates count="2">
+      <Item>1407353413309329</Item>
+      <Item>1407353413309330</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094984954">
+    <Predicates count="1">
+      <Item>1407353413309334</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MadeDecision</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094985053">
+    <Predicates count="1">
+      <Item>1688824094985054</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>IfOdonghDeadOrLeaved</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094985054">
+    <Predicates count="2">
+      <Item>1407353413309428</Item>
+      <Item>1407353413309429</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094985055">
+    <Predicates count="1">
+      <Item>1407353413309430</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094985452">
+    <Predicates count="1">
+      <Item>1407353413309827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094985453">
+    <Predicates count="1">
+      <Item>1407353413309828</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SoldierGaveLockpicks</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094986653">
+    <Predicates count="2">
+      <Item>1407353413311031</Item>
+      <Item>1407353413311032</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094987452">
+    <Predicates count="1">
+      <Item>1407353413311827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerCarriesMasterKey</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988451">
+    <Predicates count="1">
+      <Item>1407353413312826</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988452">
+    <Predicates count="1">
+      <Item>1407353413312827</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988454">
+    <Predicates count="1">
+      <Item>1407353413312829</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MassacreHappened</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988851">
+    <Predicates count="1">
+      <Item>1688824094988855</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988854">
+    <Predicates count="2">
+      <Item>1407353413313231</Item>
+      <Item>1407353413313232</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988855">
+    <Predicates count="2">
+      <Item>1407353413313233</Item>
+      <Item>1688824094988854</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988856">
+    <Predicates count="1">
+      <Item>1407353413313234</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeEvening</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094988857">
+    <Predicates count="1">
+      <Item>1407353413313235</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeFuneral</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094988858">
+    <Predicates count="1">
+      <Item>1407353413313236</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Open</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094989351">
+    <Predicates count="1">
+      <Item>1407353413313726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer1_max_opacity</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094989352">
+    <Predicates count="1">
+      <Item>1407353413313730</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer1_min_opacity</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094989354">
+    <Predicates count="1">
+      <Item>1407353413313737</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer2_max_opacity</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094989355">
+    <Predicates count="1">
+      <Item>1407353413313740</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer2_min_opacity</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824094989356">
+    <Predicates count="1">
+      <Item>1407353413313743</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer3_max_opacity</Name>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1688824094989357">
+    <Predicates count="1">
+      <Item>1407353413313746</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>layer3_min_opacity</Name>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1688824094990751">
+    <Predicates count="2">
+      <Item>1407353413315126</Item>
+      <Item>1688824095026151</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094990752">
+    <Predicates count="1">
+      <Item>1407353413315128</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>LeftToBurn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094991551">
+    <Predicates count="1">
+      <Item>1407353413315926</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OpenDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094991952">
+    <Predicates count="1">
+      <Item>1407353413316327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeEvening</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094991953">
+    <Predicates count="1">
+      <Item>1407353413316328</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BeforeFuneral</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094991954">
+    <Predicates count="1">
+      <Item>1407353413316329</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094991956">
+    <Predicates count="1">
+      <Item>1407353413316331</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094991957">
+    <Predicates count="1">
+      <Item>1407353413316332</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094992552">
+    <Predicates count="1">
+      <Item>1407353413316927</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TimeskipDay</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094992553">
+    <Predicates count="1">
+      <Item>1407353413316931</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TimeskipEvening</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824094992555">
+    <Predicates count="1">
+      <Item>1407353413316935</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>TimeskipFuneral</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824094994851">
+    <Predicates count="1">
+      <Item>1407353413319226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094994852">
+    <Predicates count="1">
+      <Item>1407353413319227</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094995351">
+    <Predicates count="1">
+      <Item>1407353413319726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>combination_test</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094995353">
+    <Predicates count="1">
+      <Item>1407353413319728</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Before18</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094995354">
+    <Predicates count="1">
+      <Item>1407353413319729</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>loop_test</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094995751">
+    <Predicates count="1">
+      <Item>1407353413320126</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094995752">
+    <Predicates count="1">
+      <Item>1407353413320127</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996252">
+    <Predicates count="1">
+      <Item>1688824094996253</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996253">
+    <Predicates count="2">
+      <Item>1407353413320632</Item>
+      <Item>1407353413320634</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996254">
+    <Predicates count="2">
+      <Item>1407353413320635</Item>
+      <Item>1688824094996255</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996255">
+    <Predicates count="2">
+      <Item>1407353413320638</Item>
+      <Item>1407353413320639</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996651">
+    <Predicates count="1">
+      <Item>1407353413321026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996652">
+    <Predicates count="1">
+      <Item>1688824095000277</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SpokeToBothAndFoundLeper</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824094996653">
+    <Predicates count="1">
+      <Item>1688824095000278</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>HealedOdonghAndDiscoveredLepers</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000252">
+    <Predicates count="2">
+      <Item>1407353413324627</Item>
+      <Item>1407353413324628</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000253">
+    <Predicates count="1">
+      <Item>1407353413324639</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlagueStarted</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000254">
+    <Predicates count="1">
+      <Item>1688824095000255</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntTalkToGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000255">
+    <Predicates count="2">
+      <Item>1407353413324631</Item>
+      <Item>1407353413324632</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000256">
+    <Predicates count="1">
+      <Item>1407353413324636</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeakToJuddge</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000260">
+    <Predicates count="1">
+      <Item>1407353413324643</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotStartedYet</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000262">
+    <Predicates count="1">
+      <Item>1407353413324647</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotStartedYet</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000264">
+    <Predicates count="1">
+      <Item>1407353413324650</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeak</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000266">
+    <Predicates count="1">
+      <Item>1407353413324654</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeak</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000268">
+    <Predicates count="1">
+      <Item>1407353413324658</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeaj</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000270">
+    <Predicates count="1">
+      <Item>1688824095000271</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DoesntKnowQuarantineLift</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000271">
+    <Predicates count="2">
+      <Item>1407353413324660</Item>
+      <Item>1407353413324661</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000272">
+    <Predicates count="1">
+      <Item>1407353413324667</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntSpeak</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000275">
+    <Predicates count="1">
+      <Item>1407353413324671</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>SpokeToGeorgy</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000277">
+    <Predicates count="3">
+      <Item>1407353413324673</Item>
+      <Item>1407353413324674</Item>
+      <Item>1407353413324675</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000278">
+    <Predicates count="2">
+      <Item>1407353413324677</Item>
+      <Item>1688824095000279</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000279">
+    <Predicates count="2">
+      <Item>1407353413324679</Item>
+      <Item>1407353413324680</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095000951">
+    <Predicates count="1">
+      <Item>1407353413325326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerInside</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003451">
+    <Predicates count="1">
+      <Item>1407353413327829</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DoraFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003453">
+    <Predicates count="1">
+      <Item>1407353413327833</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DoraNotFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003455">
+    <Predicates count="1">
+      <Item>1407353413327837</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MaratFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003457">
+    <Predicates count="1">
+      <Item>1407353413327841</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MaratNotFree</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003459">
+    <Predicates count="1">
+      <Item>1407353413327842</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Enter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003460">
+    <Predicates count="1">
+      <Item>1407353413327843</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemIndex &lt; ItemsCount</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003461">
+    <Predicates count="1">
+      <Item>1407353413327844</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemCount &gt; 0</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095003462">
+    <Predicates count="1">
+      <Item>1407353413327845</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>CurItemIndex &lt; ItemsCount</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095004451">
+    <Predicates count="2">
+      <Item>1407353413328826</Item>
+      <Item>1407353413328828</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095004951">
+    <Predicates count="1">
+      <Item>1407353413329326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095004952">
+    <Predicates count="1">
+      <Item>1407353413329327</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Panacea</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095004968">
+    <Predicates count="1">
+      <Item>1407353413329343</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GrammophoneOn</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095005951">
+    <Predicates count="1">
+      <Item>1407353413330326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Awake</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095005953">
+    <Predicates count="2">
+      <Item>1407353413330329</Item>
+      <Item>1407353413330330</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095006551">
+    <Predicates count="2">
+      <Item>1407353413330926</Item>
+      <Item>1407353413330927</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095006552">
+    <Predicates count="1">
+      <Item>1407353413330928</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>feel_good</Name>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1688824095006553">
+    <Predicates count="1">
+      <Item>1407353413330929</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095006555">
+    <Predicates count="1">
+      <Item>1407353413330934</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Suspects</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095006557">
+    <Predicates count="1">
+      <Item>1688824095006558</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095006558">
+    <Predicates count="2">
+      <Item>1407353413330936</Item>
+      <Item>1407353413330937</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095010651">
+    <Predicates count="1">
+      <Item>1407353413335026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Me</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095010653">
+    <Predicates count="1">
+      <Item>1407353413335028</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095012151">
+    <Predicates count="1">
+      <Item>1407353413336526</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>PlayerKnowsAboutWound</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095012152">
+    <Predicates count="1">
+      <Item>1688824095012153</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>QuestOver</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095012153">
+    <Predicates count="3">
+      <Item>1407353413336528</Item>
+      <Item>1407353413336529</Item>
+      <Item>1407353413336530</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095012154">
+    <Predicates count="4">
+      <Item>1407353413336531</Item>
+      <Item>1407353413336532</Item>
+      <Item>1407353413336533</Item>
+      <Item>1407353413336534</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095012155">
+    <Predicates count="2">
+      <Item>1407353413336538</Item>
+      <Item>1407353413336539</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095013052">
+    <Predicates count="1">
+      <Item>1407353413337427</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>OpenDoor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095013053">
+    <Predicates count="1">
+      <Item>1407353413337428</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095013151">
+    <Predicates count="2">
+      <Item>1407353413337526</Item>
+      <Item>1407353413337527</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095020351">
+    <Predicates count="1">
+      <Item>1407353413344726</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095020851">
+    <Predicates count="1">
+      <Item>1407353413345226</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>MovedKids</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095020951">
+    <Predicates count="1">
+      <Item>1407353413345326</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Enter</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095020953">
+    <Predicates count="1">
+      <Item>1407353413345328</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>NotInside</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095024651">
+    <Predicates count="1">
+      <Item>1407353413349026</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>Interact</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026051">
+    <Predicates count="1">
+      <Item>1688824095026052</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>InTheMiddle</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026052">
+    <Predicates count="3">
+      <Item>1407353413350427</Item>
+      <Item>1407353413350428</Item>
+      <Item>1407353413350429</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026053">
+    <Predicates count="1">
+      <Item>1407353413350430</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ThrewSomethingOut</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026054">
+    <Predicates count="1">
+      <Item>1688824095026055</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>InTheMiddle</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026055">
+    <Predicates count="3">
+      <Item>1407353413350431</Item>
+      <Item>1407353413350432</Item>
+      <Item>1407353413350433</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026151">
+    <Predicates count="2">
+      <Item>1407353413350527</Item>
+      <Item>1407353413350528</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026152">
+    <Predicates count="1">
+      <Item>1407353413350529</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>HouseCleared</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026153">
+    <Predicates count="1">
+      <Item>1407353413350530</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>morning</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026154">
+    <Predicates count="1">
+      <Item>1407353413350531</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>day</Name>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1688824095026155">
+    <Predicates count="1">
+      <Item>1407353413350532</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>evening</Name>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1688824095026156">
+    <Predicates count="1">
+      <Item>1407353413350533</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>funeral</Name>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1688824095026157">
+    <Predicates count="1">
+      <Item>1407353413350534</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntMeetAspity</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026158">
+    <Predicates count="1">
+      <Item>1688824095026159</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>DidntMeetKids</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095026159">
+    <Predicates count="3">
+      <Item>1407353413350536</Item>
+      <Item>1407353413350537</Item>
+      <Item>1407353413350538</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095027751">
+    <Predicates count="1">
+      <Item>1407353413352126</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>StartTheodor</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095033051">
+    <Predicates count="1">
+      <Item>1407353413357426</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>sample_models_test</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095036251">
+    <Predicates count="1">
+      <Item>1688824095036252</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>ExaminedCorpse</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095036252">
+    <Predicates count="2">
+      <Item>1407353413360627</Item>
+      <Item>1407353413360628</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095044952">
+    <Predicates count="2">
+      <Item>1407353413369328</Item>
+      <Item>1407353413369329</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095044953">
+    <Predicates count="2">
+      <Item>1407353413369330</Item>
+      <Item>1407353413369331</Item>
+    </Predicates>
+    <Operation>COP_OR</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095048053">
+    <Predicates count="1">
+      <Item>1407353413372433</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>GameLoadedInPrologue</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095048055">
+    <Predicates count="1">
+      <Item>1688824095048056</Item>
+    </Predicates>
+    <Operation>COP_ROOT</Operation>
+    <Name>BlueprintRemovable</Name>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1688824095048056">
+    <Predicates count="2">
+      <Item>1407353413372435</Item>
+      <Item>1407353413372436</Item>
+    </Predicates>
+    <Operation>COP_AND</Operation>
+    <Name />
+    <OrderIndex>0</OrderIndex>
+  </Item>
+</Root>

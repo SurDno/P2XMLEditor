@@ -7,6 +7,7 @@ public struct RawActionData {
 	public ActionType ActionType;
 	public MathOperationType MathOperationType;
 	public string TargetFuncName;
+	public ulong? SourceConstId;
 	public ulong? SourceExpressionId;
 	public string TargetObject;
 	public string TargetParam;

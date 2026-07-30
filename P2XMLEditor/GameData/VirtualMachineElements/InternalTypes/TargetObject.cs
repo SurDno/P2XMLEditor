@@ -17,7 +17,7 @@ public readonly struct TargetObject {
 	public HierarchyGuid? Hierarchy { get; init; }
 	public LoopParameter? Loop { get; init; }
 	public InputParameter? InputParam { get; init; }
-	public MessageInfo? Message { get; init; }
+	public Message? Message { get; init; }
 
 	public Event? MessageOwner { get; init; }
 
@@ -48,8 +48,7 @@ public readonly struct TargetObject {
 						   IsSelf = isSelf, HasLeadingPercent = leading };
 
 		if (body.Contains("_message_") && vm.TryResolveMessage(body, out var msg))
-			return new() { Kind = TargetObjectKind.Message, Message = msg.Info, MessageOwner = msg.Owner,
-						   HasLeadingPercent = leading };
+			return new() { Kind = TargetObjectKind.Message, Message = msg, HasLeadingPercent = leading };
 
 		if (body.Contains("_inputparam_") && InputParameter.TryParse(body, out var ip, scope))
 			return new() { Kind = TargetObjectKind.InputParam, InputParam = ip, HasLeadingPercent = leading };
@@ -87,7 +86,7 @@ public readonly struct TargetObject {
 			TargetObjectKind.Hierarchy    => Hierarchy!.Write(),
 			TargetObjectKind.Loop         => Loop!.ParamId,
 			TargetObjectKind.InputParam   => InputParam!.Name,
-			TargetObjectKind.Message      => Message!.Value.Name,
+			TargetObjectKind.Message      => Message!.Name,
 			_ => throw new InvalidOperationException($"Cannot write an uninitialised {nameof(TargetObject)}.")
 		};
 

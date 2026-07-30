@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="GameMode">
+  <Item id="9007061818076001">
+    <IsMain>True</IsMain>
+    <StartGameTime>10:9:0:0</StartGameTime>
+    <GameTimeSpeed>12</GameTimeSpeed>
+    <StartSolarTime>10:9:0:0</StartSolarTime>
+    <SolarTimeSpeed>12</SolarTimeSpeed>
+    <PlayerRef>5347942956685276%5347942956685276</PlayerRef>
+    <Name>common</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9007061818076002">
+    <IsMain>False</IsMain>
+    <StartGameTime>10:23:42:0</StartGameTime>
+    <GameTimeSpeed>0</GameTimeSpeed>
+    <StartSolarTime>10:23:42:0</StartSolarTime>
+    <SolarTimeSpeed>0</SolarTimeSpeed>
+    <PlayerRef>5347942956666576%5347942956666576</PlayerRef>
+    <Name>dream_prologue</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+</Root>

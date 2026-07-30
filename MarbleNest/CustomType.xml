@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="CustomType">
+  <Item id="10414415224547726">
+    <Name>StorableTag</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="10414415224547727">
+    <Name>NutProblem</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="10414415224581126">
+    <Name>CustomTag</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+</Root>

@@ -23,16 +23,16 @@ public class XElementActionLineLoader : IParser<RawActionLineData> {
 			var element = (XElement)XNode.ReadFrom(xr);
 			var id = ulong.Parse(element.Attribute(XNameCache.IdAttribute)!.Value);
 			
-			var loopInfoElement = element.Element(XNameCache.ActionLoopInfo)!;
+			var loopInfoElement = element.Element(XNameCache.ActionLoopInfo);
 			
 			var raw = new RawActionLineData {
 				Id = id,
 				ActionIds = ParseListElementAsUlong(element, XNameCache.Actions).ToArray(),
 				ActionLineType = element.Element(XNameCache.ActionLineType)!.Value.Deserialize<ActionLineType>(),
 
-				LoopInfoName = loopInfoElement.Element(XNameCache.Name)!.Value,
-				LoopInfoStart = loopInfoElement.Element(XNameCache.Start)!.Value,
-				LoopInfoEnd = loopInfoElement.Element(XNameCache.End)!.Value,
+				LoopInfoName = loopInfoElement?.Element(XNameCache.Name)?.Value ?? null,
+				LoopInfoStart = loopInfoElement?.Element(XNameCache.Start)?.Value ?? null,
+				LoopInfoEnd = loopInfoElement?.Element(XNameCache.End)?.Value ?? null,
 				LoopInfoRandom = loopInfoElement?.Element(XNameCache.Random)?.Let(ParseBool),
 
 				Name = element.Element(XNameCache.Name)!.Value,

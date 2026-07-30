@@ -6,6 +6,7 @@ using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
@@ -43,7 +44,9 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 				BranchConditions.Add(vm.GetElement<Condition, PartCondition>(branchConditionId));
 		}
 		BranchType = data.BranchType;
-		BranchVariantInfo = data.BranchVariantInfo?.Select(t => new BranchVariantInfo(t.Item1, t.Item2)).ToList();
+		BranchVariantInfo = data.BranchVariantInfo?
+			.Select(t => InternalTypes.BranchVariantInfo.Read(t.Item1, t.Item2, vm, this))
+			.ToList();
 		EntryPoints = [];
 		foreach (var entryPointId in data.EntryPointIds)
 			EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
@@ -70,9 +73,4 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 		foreach (var entryPoint in EntryPoints) 
 			vm.RemoveElement(entryPoint);
 	}
-}
-
-public struct BranchVariantInfo(string name, string type) {
-	public string Name { get; set; } = name;
-	public string Type { get; set; } = type;
 }

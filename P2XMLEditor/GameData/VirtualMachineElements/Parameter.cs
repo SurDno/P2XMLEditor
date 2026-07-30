@@ -123,7 +123,7 @@ public abstract class ParameterValue {
 			"GameTime" => new GameTimeValue(type, string.IsNullOrEmpty(value) ? TimeSpan.Zero : ParseTimeSpanString(value)),
 			"ObjectCombinationDataStruct" => new CombinationDataValue(CombinationHelper.Parse(vm, value)),
 			"ITextRef" => CreateRef<GameString>(vm, type, value),
-			"IObjRef" => CreateRef<GameObject>(vm, type, value),
+			"IObjRef" => CreateRef<ParameterHolder>(vm, type, value),
 			"IStateRef" => CreateRef<State>(vm, type, value),
 			"ISampleRef" => CreateRef<Sample>(vm, type, value),
 			"IBehaviorObject" => CreateRef<Sample>(vm, type, value),
@@ -174,7 +174,7 @@ public abstract class ParameterValue {
 			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
 			
 			// Dynamic types
-			_ when type.StartsWith("IObjRef%") => CreateRef<GameObject>(vm, type, value),
+			_ when type.StartsWith("IObjRef%") => CreateRef<ParameterHolder>(vm, type, value),
 			_ when type.StartsWith("CommonList%") => new CommonListValue(type, ParseCommonList(vm, value)),
 			
 			_ => new UnknownValue(type, value)

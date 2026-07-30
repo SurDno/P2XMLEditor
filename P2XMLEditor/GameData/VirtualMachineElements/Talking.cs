@@ -17,6 +17,7 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData> {
 	public List<VmEither<Branch, Speech, State>> States { get; set; }
 	public List<GraphLink> EventLinks { get; set; }
 	public List<EntryPoint> EntryPoints { get; set; }
+	public List<GraphLink> InputLinks { get; set; }
 	public bool? IgnoreBlock { get; set; }
 	public VmEither<Blueprint, Character> Owner { get; set; }
 	public bool? Initial { get; set; }
@@ -33,6 +34,11 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData> {
 			EntryPoints.Add(vm.GetElement<EntryPoint>(entryPointId));
 		IgnoreBlock = data.IgnoreBlock;
 		Owner = vm.GetElement<Blueprint, Character>(data.OwnerId);
+		InputLinks = [];
+		if (data.InputLinkIds != null) {
+			foreach (var inputLinkId in data.InputLinkIds) 
+				InputLinks.Add(vm.GetElement<GraphLink>(inputLinkId));
+		}
 		Initial = data.Initial;
 		Name = data.Name;
 		Parent = vm.GetElement<Graph>(data.ParentId);

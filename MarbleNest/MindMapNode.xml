@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="MindMapNode">
+  <Item id="11821768632565651">
+    <LogicMapNodeType>LM_NODE_TYPE_INITIAL</LogicMapNodeType>
+    <NodeContent count="6">
+      <Item>12384709995932201</Item>
+      <Item>12384709995932202</Item>
+      <Item>12384709995932203</Item>
+      <Item>12384709996036701</Item>
+      <Item>12384709996037501</Item>
+      <Item>12384709996037502</Item>
+    </NodeContent>
+    <GameScreenPosX>0</GameScreenPosX>
+    <GameScreenPosY>0</GameScreenPosY>
+    <Name>Mission Marble Nest</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576551">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932204</Item>
+    </NodeContent>
+    <GameScreenPosX>0.005</GameScreenPosX>
+    <GameScreenPosY>1.2325</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254376</Item>
+    </OutputLinks>
+    <Name>Mortii</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576552">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932206</Item>
+    </NodeContent>
+    <GameScreenPosX>0</GameScreenPosX>
+    <GameScreenPosY>0.515</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254385</Item>
+      <Item>12103239314254403</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254404</Item>
+    </OutputLinks>
+    <Name>Mortii Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576553">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932208</Item>
+      <Item>12384709996025201</Item>
+    </NodeContent>
+    <GameScreenPosX>0.7875</GameScreenPosX>
+    <GameScreenPosY>0.215</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254386</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254377</Item>
+    </OutputLinks>
+    <Name>Lifted Quarantine</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576554">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932209</Item>
+    </NodeContent>
+    <GameScreenPosX>0.635</GameScreenPosX>
+    <GameScreenPosY>0.55</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254378</Item>
+    </OutputLinks>
+    <Name>Butler</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576555">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932210</Item>
+    </NodeContent>
+    <GameScreenPosX>0.4125</GameScreenPosX>
+    <GameScreenPosY>0.2575</GameScreenPosY>
+    <InputLinks count="3">
+      <Item>12103239314254377</Item>
+      <Item>12103239314254378</Item>
+      <Item>12103239314254402</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254403</Item>
+    </OutputLinks>
+    <Name>Georgiy Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576556">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932211</Item>
+    </NodeContent>
+    <GameScreenPosX>-1.395</GameScreenPosX>
+    <GameScreenPosY>0.6225</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254379</Item>
+    </OutputLinks>
+    <Name>Aspity Line</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576557">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932214</Item>
+      <Item>12384709995932215</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.41</GameScreenPosX>
+    <GameScreenPosY>0.265</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254390</Item>
+      <Item>12103239314254404</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254405</Item>
+    </OutputLinks>
+    <Name>Aspity Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576559">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932216</Item>
+    </NodeContent>
+    <GameScreenPosX>-1.47</GameScreenPosX>
+    <GameScreenPosY>-0.4725</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254380</Item>
+    </OutputLinks>
+    <Name>Sticky</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576560">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932219</Item>
+    </NodeContent>
+    <GameScreenPosX>-1.0925</GameScreenPosX>
+    <GameScreenPosY>-1.04</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254381</Item>
+    </OutputLinks>
+    <Name>Shrew</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576561">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932221</Item>
+      <Item>12384709995932222</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.8025</GameScreenPosX>
+    <GameScreenPosY>-0.4</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254391</Item>
+      <Item>12103239314254392</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254382</Item>
+    </OutputLinks>
+    <Name>Nuts</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576562">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932223</Item>
+      <Item>12384709995932224</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.4125</GameScreenPosX>
+    <GameScreenPosY>-0.255</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254382</Item>
+      <Item>12103239314254405</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254406</Item>
+    </OutputLinks>
+    <Name>Kids Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576563">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709996024801</Item>
+      <Item>12384709995932225</Item>
+    </NodeContent>
+    <GameScreenPosX>1.3875</GameScreenPosX>
+    <GameScreenPosY>-0.5825</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254383</Item>
+    </OutputLinks>
+    <Name>Heartless</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576564">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932228</Item>
+    </NodeContent>
+    <GameScreenPosX>0.4125</GameScreenPosX>
+    <GameScreenPosY>-0.2375</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254388</Item>
+      <Item>12103239314254401</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254402</Item>
+    </OutputLinks>
+    <Name>Tragedian Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576566">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932229</Item>
+    </NodeContent>
+    <GameScreenPosX>0.695</GameScreenPosX>
+    <GameScreenPosY>-0.7275</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254393</Item>
+    </OutputLinks>
+    <Name>Neighbor</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576567">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932231</Item>
+    </NodeContent>
+    <GameScreenPosX>0.4475</GameScreenPosX>
+    <GameScreenPosY>-1.095</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254394</Item>
+    </OutputLinks>
+    <Name>Cathedral</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576568">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932233</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.065</GameScreenPosX>
+    <GameScreenPosY>-1.5275</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254395</Item>
+    </OutputLinks>
+    <Name>Odong Village</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576569">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932237</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.665</GameScreenPosX>
+    <GameScreenPosY>-1.2025</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254397</Item>
+    </OutputLinks>
+    <Name>Lepers</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576570">
+    <LogicMapNodeType>LM_NODE_TYPE_CONCLUSION</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932240</Item>
+    </NodeContent>
+    <GameScreenPosX>0.0175</GameScreenPosX>
+    <GameScreenPosY>-0.5</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254400</Item>
+      <Item>12103239314254406</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254401</Item>
+    </OutputLinks>
+    <Name>Lepers Conclusion</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576571">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932242</Item>
+    </NodeContent>
+    <GameScreenPosX>0.0025</GameScreenPosX>
+    <GameScreenPosY>0.8925</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254376</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254385</Item>
+    </OutputLinks>
+    <Name>Not Dead Yet</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576572">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932243</Item>
+    </NodeContent>
+    <GameScreenPosX>1.1025</GameScreenPosX>
+    <GameScreenPosY>0.1875</GameScreenPosY>
+    <OutputLinks count="1">
+      <Item>12103239314254386</Item>
+    </OutputLinks>
+    <Name>Georgiy</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576573">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932246</Item>
+    </NodeContent>
+    <GameScreenPosX>1.0975</GameScreenPosX>
+    <GameScreenPosY>-0.475</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254383</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254387</Item>
+    </OutputLinks>
+    <Name>Heartful</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576574">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932250</Item>
+    </NodeContent>
+    <GameScreenPosX>0.7825</GameScreenPosX>
+    <GameScreenPosY>-0.3575</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254387</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254388</Item>
+    </OutputLinks>
+    <Name>Oops</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576575">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932252</Item>
+    </NodeContent>
+    <GameScreenPosX>-1.1025</GameScreenPosX>
+    <GameScreenPosY>0.5025</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254379</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254389</Item>
+    </OutputLinks>
+    <Name>Aspity</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576576">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932256</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.795</GameScreenPosX>
+    <GameScreenPosY>0.4</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254389</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254390</Item>
+    </OutputLinks>
+    <Name>Lesson</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576577">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932258</Item>
+    </NodeContent>
+    <GameScreenPosX>-1.125</GameScreenPosX>
+    <GameScreenPosY>-0.4325</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254380</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254391</Item>
+    </OutputLinks>
+    <Name>Supplier</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576578">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932260</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.935</GameScreenPosX>
+    <GameScreenPosY>-0.745</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254381</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>12103239314254392</Item>
+      <Item>12103239314254399</Item>
+    </OutputLinks>
+    <Name>Locksmith</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576579">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932262</Item>
+      <Item>12384709996049501</Item>
+    </NodeContent>
+    <GameScreenPosX>0.395</GameScreenPosX>
+    <GameScreenPosY>-0.58</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254393</Item>
+    </InputLinks>
+    <Name>Not Pest</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576580">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995932264</Item>
+      <Item>12384709996049502</Item>
+    </NodeContent>
+    <GameScreenPosX>0.2725</GameScreenPosX>
+    <GameScreenPosY>-0.81</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254394</Item>
+    </InputLinks>
+    <Name>Inconclusive</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576581">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932266</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.025</GameScreenPosX>
+    <GameScreenPosY>-1.2</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254395</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254396</Item>
+    </OutputLinks>
+    <Name>Operate</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576582">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="3">
+      <Item>12384709995932271</Item>
+      <Item>12384709995932272</Item>
+      <Item>12384709996049503</Item>
+    </NodeContent>
+    <GameScreenPosX>0</GameScreenPosX>
+    <GameScreenPosY>-0.875</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254396</Item>
+    </InputLinks>
+    <Name>Its Over</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576583">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932274</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.61</GameScreenPosX>
+    <GameScreenPosY>-0.845</GameScreenPosY>
+    <InputLinks count="2">
+      <Item>12103239314254397</Item>
+      <Item>12103239314254399</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254398</Item>
+    </OutputLinks>
+    <Name>Found It</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+  <Item id="11821768632576585">
+    <LogicMapNodeType>LM_NODE_TYPE_COMMON</LogicMapNodeType>
+    <NodeContent count="1">
+      <Item>12384709995932279</Item>
+    </NodeContent>
+    <GameScreenPosX>-0.275</GameScreenPosX>
+    <GameScreenPosY>-0.755</GameScreenPosY>
+    <InputLinks count="1">
+      <Item>12103239314254398</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>12103239314254400</Item>
+    </OutputLinks>
+    <Name>Futile</Name>
+    <Parent>11540297950887926</Parent>
+  </Item>
+</Root>

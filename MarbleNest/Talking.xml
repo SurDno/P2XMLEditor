@@ -1,0 +1,4100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Talking">
+  <Item id="4785001593311127">
+    <States count="9">
+      <Item>3377648184922615</Item>
+      <Item>3940589548283360</Item>
+      <Item>3940589548283361</Item>
+      <Item>3940589548283362</Item>
+      <Item>3940589548283363</Item>
+      <Item>3940589548283364</Item>
+      <Item>3940589548283365</Item>
+      <Item>3940589548283366</Item>
+      <Item>3940589548283367</Item>
+    </States>
+    <EventLinks count="20">
+      <Item>4222060230077450</Item>
+      <Item>4222060230077451</Item>
+      <Item>4222060230077452</Item>
+      <Item>4222060230077453</Item>
+      <Item>4222060230077454</Item>
+      <Item>4222060230077455</Item>
+      <Item>4222060230077456</Item>
+      <Item>4222060230077457</Item>
+      <Item>4222060230077458</Item>
+      <Item>4222060230077459</Item>
+      <Item>4222060230077460</Item>
+      <Item>4222060230077461</Item>
+      <Item>4222060230077462</Item>
+      <Item>4222060230077463</Item>
+      <Item>4222060230077464</Item>
+      <Item>4222060230077465</Item>
+      <Item>4222060230077466</Item>
+      <Item>4222060230077467</Item>
+      <Item>4222060230077468</Item>
+      <Item>4222060230077469</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062458</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666578</Owner>
+    <Initial>False</Initial>
+    <Name>DreamOspina_НОВЫЙ экспериментальный</Name>
+    <Parent>4503530911705718</Parent>
+  </Item>
+  <Item id="4785001593311135">
+    <States count="6">
+      <Item>3377648184922628</Item>
+      <Item>3940589548283413</Item>
+      <Item>3940589548283414</Item>
+      <Item>3940589548283415</Item>
+      <Item>3940589548283416</Item>
+      <Item>3940589548283417</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060230077606</Item>
+      <Item>4222060230077607</Item>
+      <Item>4222060230077608</Item>
+      <Item>4222060230077609</Item>
+      <Item>4222060230077610</Item>
+      <Item>4222060230077611</Item>
+      <Item>4222060230077612</Item>
+      <Item>4222060230077613</Item>
+      <Item>4222060230077614</Item>
+      <Item>4222060230077615</Item>
+      <Item>4222060230077616</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062566</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666584</Owner>
+    <Initial>False</Initial>
+    <Name>Shop_Angry_Aigul_НОВЫЙ</Name>
+    <Parent>4503530911705730</Parent>
+  </Item>
+  <Item id="4785001593311136">
+    <States count="15">
+      <Item>3377648184922630</Item>
+      <Item>3940589548283418</Item>
+      <Item>3940589548283419</Item>
+      <Item>3940589548283420</Item>
+      <Item>3940589548283421</Item>
+      <Item>3940589548283422</Item>
+      <Item>3940589548283423</Item>
+      <Item>3940589548283424</Item>
+      <Item>3940589548283425</Item>
+      <Item>3940589548283426</Item>
+      <Item>3940589548283427</Item>
+      <Item>3940589548283428</Item>
+      <Item>3940589548283429</Item>
+      <Item>3940589548283430</Item>
+      <Item>3940589548283431</Item>
+    </States>
+    <EventLinks count="27">
+      <Item>4222060230077629</Item>
+      <Item>4222060230077630</Item>
+      <Item>4222060230077631</Item>
+      <Item>4222060230077632</Item>
+      <Item>4222060230077633</Item>
+      <Item>4222060230077634</Item>
+      <Item>4222060230077635</Item>
+      <Item>4222060230077636</Item>
+      <Item>4222060230077637</Item>
+      <Item>4222060230077638</Item>
+      <Item>4222060230077639</Item>
+      <Item>4222060230077640</Item>
+      <Item>4222060230077641</Item>
+      <Item>4222060230077642</Item>
+      <Item>4222060230077643</Item>
+      <Item>4222060230077644</Item>
+      <Item>4222060230077645</Item>
+      <Item>4222060230077646</Item>
+      <Item>4222060230077647</Item>
+      <Item>4222060230077648</Item>
+      <Item>4222060230077649</Item>
+      <Item>4222060230077650</Item>
+      <Item>4222060230077651</Item>
+      <Item>4222060230077652</Item>
+      <Item>4222060230077653</Item>
+      <Item>4222060230077654</Item>
+      <Item>4222060230077655</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062588</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666585</Owner>
+    <Initial>False</Initial>
+    <Name>Georgy Kain_НОВЫЙ</Name>
+    <Parent>4503530911705731</Parent>
+  </Item>
+  <Item id="4785001593311144">
+    <States count="9">
+      <Item>3377648184922649</Item>
+      <Item>3940589548283468</Item>
+      <Item>3940589548283469</Item>
+      <Item>3940589548283470</Item>
+      <Item>3940589548283471</Item>
+      <Item>3940589548283472</Item>
+      <Item>3940589548283473</Item>
+      <Item>3940589548283474</Item>
+      <Item>3940589548283475</Item>
+    </States>
+    <EventLinks count="18">
+      <Item>4222060230077796</Item>
+      <Item>4222060230077797</Item>
+      <Item>4222060230077798</Item>
+      <Item>4222060230077799</Item>
+      <Item>4222060230077800</Item>
+      <Item>4222060230077801</Item>
+      <Item>4222060230077802</Item>
+      <Item>4222060230077803</Item>
+      <Item>4222060230077804</Item>
+      <Item>4222060230077805</Item>
+      <Item>4222060230077806</Item>
+      <Item>4222060230077807</Item>
+      <Item>4222060230077808</Item>
+      <Item>4222060230077809</Item>
+      <Item>4222060230077810</Item>
+      <Item>4222060230077811</Item>
+      <Item>4222060230077812</Item>
+      <Item>4222060230077813</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062692</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666590</Owner>
+    <Initial>False</Initial>
+    <Name>Morthus_Main_НОВЫЙ</Name>
+    <Parent>4503530911705742</Parent>
+  </Item>
+  <Item id="4785001593311146">
+    <States count="6">
+      <Item>3377648184922652</Item>
+      <Item>3940589548283483</Item>
+      <Item>3940589548283484</Item>
+      <Item>3940589548283485</Item>
+      <Item>3940589548283486</Item>
+      <Item>3940589548283487</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060230077842</Item>
+      <Item>4222060230077843</Item>
+      <Item>4222060230077844</Item>
+      <Item>4222060230077845</Item>
+      <Item>4222060230077846</Item>
+      <Item>4222060230077847</Item>
+      <Item>4222060230077848</Item>
+      <Item>4222060230077849</Item>
+      <Item>4222060230077850</Item>
+      <Item>4222060230077851</Item>
+      <Item>4222060230077852</Item>
+      <Item>4222060230077853</Item>
+      <Item>4222060230077854</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062715</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666591</Owner>
+    <Initial>False</Initial>
+    <Name>Bride_Wife_SaveMyHusband</Name>
+    <Parent>4503530911705743</Parent>
+  </Item>
+  <Item id="4785001593311147">
+    <States count="10">
+      <Item>3377648184922654</Item>
+      <Item>3940589548283488</Item>
+      <Item>3940589548283489</Item>
+      <Item>3940589548283490</Item>
+      <Item>3940589548283491</Item>
+      <Item>3940589548283492</Item>
+      <Item>3940589548283493</Item>
+      <Item>3940589548283494</Item>
+      <Item>3940589548283495</Item>
+      <Item>3940589548283496</Item>
+    </States>
+    <EventLinks count="21">
+      <Item>4222060230077859</Item>
+      <Item>4222060230077860</Item>
+      <Item>4222060230077861</Item>
+      <Item>4222060230077862</Item>
+      <Item>4222060230077863</Item>
+      <Item>4222060230077864</Item>
+      <Item>4222060230077865</Item>
+      <Item>4222060230077866</Item>
+      <Item>4222060230077867</Item>
+      <Item>4222060230077868</Item>
+      <Item>4222060230077869</Item>
+      <Item>4222060230077870</Item>
+      <Item>4222060230077871</Item>
+      <Item>4222060230077872</Item>
+      <Item>4222060230077873</Item>
+      <Item>4222060230077874</Item>
+      <Item>4222060230077875</Item>
+      <Item>4222060230077876</Item>
+      <Item>4222060230077877</Item>
+      <Item>4222060230077878</Item>
+      <Item>4222060230077879</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062729</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666592</Owner>
+    <Initial>False</Initial>
+    <Name>Odongh_Wounded_Husband_LetMeDie</Name>
+    <Parent>4503530911705745</Parent>
+  </Item>
+  <Item id="4785001593311149">
+    <States count="2">
+      <Item>3377648184922656</Item>
+      <Item>3940589548283498</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060230077896</Item>
+      <Item>4222060230077897</Item>
+      <Item>4222060230077898</Item>
+      <Item>4222060230077899</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062750</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666598</Owner>
+    <Initial>False</Initial>
+    <Name>Zakir_2_Outsider_talking_81</Name>
+    <Parent>4503530911705751</Parent>
+  </Item>
+  <Item id="4785001593311150">
+    <States count="2">
+      <Item>3377648184922657</Item>
+      <Item>3940589548283499</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230077902</Item>
+      <Item>4222060230077903</Item>
+      <Item>4222060230077904</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062755</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666599</Owner>
+    <Initial>False</Initial>
+    <Name>Zakir_1_Snakeman_talking_82</Name>
+    <Parent>4503530911705752</Parent>
+  </Item>
+  <Item id="4785001593311155">
+    <States count="4">
+      <Item>3377648184922663</Item>
+      <Item>3940589548283525</Item>
+      <Item>3940589548283526</Item>
+      <Item>3940589548283527</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230077990</Item>
+      <Item>4222060230077991</Item>
+      <Item>4222060230077992</Item>
+      <Item>4222060230077994</Item>
+      <Item>4222060230077995</Item>
+      <Item>4222060230077996</Item>
+      <Item>4222060230077997</Item>
+      <Item>4222060230220976</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140062811</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666604</Owner>
+    <Initial>False</Initial>
+    <Name>TragedianGeorgiyButler_НОВЫЙ</Name>
+    <Parent>4503530911705758</Parent>
+  </Item>
+  <Item id="4785001593311165">
+    <States count="7">
+      <Item>3377648184922761</Item>
+      <Item>3940589548283693</Item>
+      <Item>3940589548283694</Item>
+      <Item>3940589548283695</Item>
+      <Item>3940589548283696</Item>
+      <Item>3940589548283697</Item>
+      <Item>3940589548283698</Item>
+    </States>
+    <EventLinks count="14">
+      <Item>4222060230078649</Item>
+      <Item>4222060230078650</Item>
+      <Item>4222060230078651</Item>
+      <Item>4222060230078652</Item>
+      <Item>4222060230078653</Item>
+      <Item>4222060230078654</Item>
+      <Item>4222060230078655</Item>
+      <Item>4222060230078656</Item>
+      <Item>4222060230078657</Item>
+      <Item>4222060230078658</Item>
+      <Item>4222060230078659</Item>
+      <Item>4222060230078660</Item>
+      <Item>4222060230078661</Item>
+      <Item>4222060230078662</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063149</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666614</Owner>
+    <Initial>False</Initial>
+    <Name>SoldierForPharmacy_talking_61</Name>
+    <Parent>4503530911705777</Parent>
+  </Item>
+  <Item id="4785001593311166">
+    <States count="3">
+      <Item>3377648184922762</Item>
+      <Item>3940589548283699</Item>
+      <Item>3940589548283700</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230078663</Item>
+      <Item>4222060230078664</Item>
+      <Item>4222060230078665</Item>
+      <Item>4222060230078666</Item>
+      <Item>4222060230078667</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063153</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666614</Owner>
+    <Initial>False</Initial>
+    <Name>SoldierForPharmacy_talking_99</Name>
+    <Parent>4503530911705777</Parent>
+  </Item>
+  <Item id="4785001593311167">
+    <States count="9">
+      <Item>3377648184922764</Item>
+      <Item>3940589548283701</Item>
+      <Item>3940589548283705</Item>
+      <Item>3940589548283706</Item>
+      <Item>3940589548283707</Item>
+      <Item>3940589548283708</Item>
+      <Item>3940589548283709</Item>
+      <Item>3940589548283710</Item>
+      <Item>3940589548283715</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230078682</Item>
+      <Item>4222060230078683</Item>
+      <Item>4222060230078691</Item>
+      <Item>4222060230078692</Item>
+      <Item>4222060230078693</Item>
+      <Item>4222060230078694</Item>
+      <Item>4222060230078695</Item>
+      <Item>4222060230078696</Item>
+      <Item>4222060230078697</Item>
+      <Item>4222060230078698</Item>
+      <Item>4222060230078699</Item>
+      <Item>4222060230078700</Item>
+      <Item>4222060230078701</Item>
+      <Item>4222060230078702</Item>
+      <Item>4222060230078703</Item>
+      <Item>4222060230078716</Item>
+      <Item>4222060230078717</Item>
+      <Item>4222060230078718</Item>
+      <Item>4222060230078719</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063181</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666615</Owner>
+    <Initial>False</Initial>
+    <Name>BoyForPharmacy_talking_Before</Name>
+    <Parent>4503530911705779</Parent>
+  </Item>
+  <Item id="4785001593311168">
+    <States count="5">
+      <Item>3377648184922767</Item>
+      <Item>3940589548283716</Item>
+      <Item>3940589548283717</Item>
+      <Item>3940589548283718</Item>
+      <Item>3940589548283719</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060230078727</Item>
+      <Item>4222060230078728</Item>
+      <Item>4222060230078729</Item>
+      <Item>4222060230078730</Item>
+      <Item>4222060230078731</Item>
+      <Item>4222060230078732</Item>
+      <Item>4222060230078733</Item>
+      <Item>4222060230078734</Item>
+      <Item>4222060230078735</Item>
+      <Item>4222060230078736</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063191</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666616</Owner>
+    <Initial>False</Initial>
+    <Name>Leper_1_НОВЫЙ</Name>
+    <Parent>4503530911705781</Parent>
+  </Item>
+  <Item id="4785001593311170">
+    <States count="7">
+      <Item>3377648184922769</Item>
+      <Item>3940589548283725</Item>
+      <Item>3940589548283726</Item>
+      <Item>3940589548283727</Item>
+      <Item>3940589548283728</Item>
+      <Item>3940589548283729</Item>
+      <Item>3940589548283730</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060230078759</Item>
+      <Item>4222060230078760</Item>
+      <Item>4222060230078761</Item>
+      <Item>4222060230078762</Item>
+      <Item>4222060230078763</Item>
+      <Item>4222060230078764</Item>
+      <Item>4222060230078765</Item>
+      <Item>4222060230078766</Item>
+      <Item>4222060230078767</Item>
+      <Item>4222060230078768</Item>
+      <Item>4222060230078769</Item>
+      <Item>4222060230078770</Item>
+      <Item>4222060230078771</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063215</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666619</Owner>
+    <Initial>False</Initial>
+    <Name>Bonfire_Soldier_talking_85</Name>
+    <Parent>4503530911705784</Parent>
+  </Item>
+  <Item id="4785001593311178">
+    <States count="8">
+      <Item>3377648184922784</Item>
+      <Item>3940589548283779</Item>
+      <Item>3940589548283780</Item>
+      <Item>3940589548283781</Item>
+      <Item>3940589548283782</Item>
+      <Item>3940589548283783</Item>
+      <Item>3940589548283784</Item>
+      <Item>3940589548283785</Item>
+    </States>
+    <EventLinks count="16">
+      <Item>4222060230078936</Item>
+      <Item>4222060230078937</Item>
+      <Item>4222060230078938</Item>
+      <Item>4222060230078939</Item>
+      <Item>4222060230078940</Item>
+      <Item>4222060230078941</Item>
+      <Item>4222060230078942</Item>
+      <Item>4222060230078943</Item>
+      <Item>4222060230078944</Item>
+      <Item>4222060230078956</Item>
+      <Item>4222060230078957</Item>
+      <Item>4222060230078958</Item>
+      <Item>4222060230078963</Item>
+      <Item>4222060230078964</Item>
+      <Item>4222060230103112</Item>
+      <Item>4222060230220979</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063331</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666624</Owner>
+    <Initial>False</Initial>
+    <Name>Sticky_УТРО_1_Сосед</Name>
+    <Parent>4503530911705791</Parent>
+  </Item>
+  <Item id="4785001593311179">
+    <States count="6">
+      <Item>3377648184922787</Item>
+      <Item>3940589548283793</Item>
+      <Item>3940589548283794</Item>
+      <Item>3940589548283795</Item>
+      <Item>3940589548283796</Item>
+      <Item>3940589548283797</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060230078974</Item>
+      <Item>4222060230078975</Item>
+      <Item>4222060230078976</Item>
+      <Item>4222060230078977</Item>
+      <Item>4222060230078978</Item>
+      <Item>4222060230078979</Item>
+      <Item>4222060230078980</Item>
+      <Item>4222060230078981</Item>
+      <Item>4222060230078982</Item>
+      <Item>4222060230078983</Item>
+      <Item>4222060230078984</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063345</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666625</Owner>
+    <Initial>False</Initial>
+    <Name>NeighbourKid_talking_НОВЫЙ</Name>
+    <Parent>4503530911705795</Parent>
+  </Item>
+  <Item id="4785001593311189">
+    <States count="5">
+      <Item>3377648184922805</Item>
+      <Item>3940589548283856</Item>
+      <Item>3940589548283857</Item>
+      <Item>3940589548283858</Item>
+      <Item>3940589548283859</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230079162</Item>
+      <Item>4222060230079163</Item>
+      <Item>4222060230079164</Item>
+      <Item>4222060230079165</Item>
+      <Item>4222060230079166</Item>
+      <Item>4222060230079167</Item>
+      <Item>4222060230079168</Item>
+      <Item>4222060230079169</Item>
+      <Item>4222060230079170</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063463</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666631</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Barricade_Pochka_talking_430</Name>
+    <Parent>4503530911705807</Parent>
+  </Item>
+  <Item id="4785001593311190">
+    <States count="5">
+      <Item>3377648184922807</Item>
+      <Item>3940589548283860</Item>
+      <Item>3940589548283861</Item>
+      <Item>3940589548283862</Item>
+      <Item>3940589548283863</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060230079176</Item>
+      <Item>4222060230079177</Item>
+      <Item>4222060230079178</Item>
+      <Item>4222060230079179</Item>
+      <Item>4222060230079180</Item>
+      <Item>4222060230079181</Item>
+      <Item>4222060230079182</Item>
+      <Item>4222060230079183</Item>
+      <Item>4222060230079184</Item>
+      <Item>4222060230079185</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063473</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666632</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Barricade_Polyhedron_talking_129</Name>
+    <Parent>4503530911705808</Parent>
+  </Item>
+  <Item id="4785001593311193">
+    <States count="3">
+      <Item>3377648184922813</Item>
+      <Item>3940589548283870</Item>
+      <Item>3940589548283871</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230079212</Item>
+      <Item>4222060230079213</Item>
+      <Item>4222060230079214</Item>
+      <Item>4222060230079215</Item>
+      <Item>4222060230079216</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063501</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666634</Owner>
+    <Initial>False</Initial>
+    <Name>Shop_Angry_Izek_talking_112</Name>
+    <Parent>4503530911705811</Parent>
+  </Item>
+  <Item id="4785001593311194">
+    <States count="10">
+      <Item>3377648184922815</Item>
+      <Item>3940589548283872</Item>
+      <Item>3940589548283873</Item>
+      <Item>3940589548283874</Item>
+      <Item>3940589548283875</Item>
+      <Item>3940589548283876</Item>
+      <Item>3940589548283877</Item>
+      <Item>3940589548283878</Item>
+      <Item>3940589548283879</Item>
+      <Item>3940589548283880</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230079229</Item>
+      <Item>4222060230079230</Item>
+      <Item>4222060230079231</Item>
+      <Item>4222060230079232</Item>
+      <Item>4222060230079233</Item>
+      <Item>4222060230079234</Item>
+      <Item>4222060230079235</Item>
+      <Item>4222060230079236</Item>
+      <Item>4222060230079237</Item>
+      <Item>4222060230079238</Item>
+      <Item>4222060230079239</Item>
+      <Item>4222060230079240</Item>
+      <Item>4222060230079241</Item>
+      <Item>4222060230079242</Item>
+      <Item>4222060230079243</Item>
+      <Item>4222060230079244</Item>
+      <Item>4222060230079245</Item>
+      <Item>4222060230079246</Item>
+      <Item>4222060230079247</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063516</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666635</Owner>
+    <Initial>False</Initial>
+    <Name>Zealot_НОВЫЙ</Name>
+    <Parent>4503530911705812</Parent>
+  </Item>
+  <Item id="4785001593311195">
+    <States count="2">
+      <Item>3377648184922818</Item>
+      <Item>3940589548283881</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230079254</Item>
+      <Item>4222060230079255</Item>
+      <Item>4222060230079256</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063529</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666637</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Shop_Massacre_talking_201</Name>
+    <Parent>4503530911705814</Parent>
+  </Item>
+  <Item id="4785001593311198">
+    <States count="21">
+      <Item>3377648184922823</Item>
+      <Item>3940589548283888</Item>
+      <Item>3940589548283889</Item>
+      <Item>3940589548283890</Item>
+      <Item>3940589548283891</Item>
+      <Item>3940589548283892</Item>
+      <Item>3940589548283893</Item>
+      <Item>3940589548283894</Item>
+      <Item>3940589548283895</Item>
+      <Item>3940589548283896</Item>
+      <Item>3940589548283897</Item>
+      <Item>3940589548283898</Item>
+      <Item>3940589548283899</Item>
+      <Item>3940589548283900</Item>
+      <Item>3940589548283901</Item>
+      <Item>3940589548283902</Item>
+      <Item>3940589548283903</Item>
+      <Item>3940589548283904</Item>
+      <Item>3940589548283905</Item>
+      <Item>3940589548283906</Item>
+      <Item>3940589548283907</Item>
+    </States>
+    <EventLinks count="39">
+      <Item>4222060230079295</Item>
+      <Item>4222060230079296</Item>
+      <Item>4222060230079297</Item>
+      <Item>4222060230079298</Item>
+      <Item>4222060230079299</Item>
+      <Item>4222060230079300</Item>
+      <Item>4222060230079301</Item>
+      <Item>4222060230079302</Item>
+      <Item>4222060230079303</Item>
+      <Item>4222060230079304</Item>
+      <Item>4222060230079305</Item>
+      <Item>4222060230079306</Item>
+      <Item>4222060230079307</Item>
+      <Item>4222060230079308</Item>
+      <Item>4222060230079309</Item>
+      <Item>4222060230079310</Item>
+      <Item>4222060230079311</Item>
+      <Item>4222060230079312</Item>
+      <Item>4222060230079313</Item>
+      <Item>4222060230079314</Item>
+      <Item>4222060230079315</Item>
+      <Item>4222060230079316</Item>
+      <Item>4222060230079317</Item>
+      <Item>4222060230079318</Item>
+      <Item>4222060230079319</Item>
+      <Item>4222060230079320</Item>
+      <Item>4222060230079321</Item>
+      <Item>4222060230079322</Item>
+      <Item>4222060230079323</Item>
+      <Item>4222060230079324</Item>
+      <Item>4222060230079325</Item>
+      <Item>4222060230079326</Item>
+      <Item>4222060230079327</Item>
+      <Item>4222060230079328</Item>
+      <Item>4222060230079329</Item>
+      <Item>4222060230079330</Item>
+      <Item>4222060230079331</Item>
+      <Item>4222060230079332</Item>
+      <Item>4222060230145011</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063569</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666640</Owner>
+    <Initial>False</Initial>
+    <Name>Tragedian_Talker_Excellency</Name>
+    <Parent>4503530911705817</Parent>
+  </Item>
+  <Item id="4785001593311204">
+    <States count="2">
+      <Item>3377648184922831</Item>
+      <Item>3940589548283924</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230079396</Item>
+      <Item>4222060230079397</Item>
+      <Item>4222060230079398</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063625</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666646</Owner>
+    <InputLinks count="1">
+      <Item>4222060230079400</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Trader_talking_119</Name>
+    <Parent>4503530911705827</Parent>
+  </Item>
+  <Item id="4785001593311205">
+    <States count="6">
+      <Item>3377648184922833</Item>
+      <Item>3940589548283925</Item>
+      <Item>3940589548283926</Item>
+      <Item>3940589548283927</Item>
+      <Item>3940589548283928</Item>
+      <Item>3940589548283929</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060230079401</Item>
+      <Item>4222060230079402</Item>
+      <Item>4222060230079403</Item>
+      <Item>4222060230079404</Item>
+      <Item>4222060230079405</Item>
+      <Item>4222060230079406</Item>
+      <Item>4222060230079407</Item>
+      <Item>4222060230079408</Item>
+      <Item>4222060230079409</Item>
+      <Item>4222060230079410</Item>
+      <Item>4222060230079411</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063636</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666647</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Barricade_Serdechnik_talking_НОВЫЙ</Name>
+    <Parent>4503530911705828</Parent>
+  </Item>
+  <Item id="4785001593311206">
+    <States count="11">
+      <Item>3377648184922835</Item>
+      <Item>3940589548283930</Item>
+      <Item>3940589548283931</Item>
+      <Item>3940589548283932</Item>
+      <Item>3940589548283933</Item>
+      <Item>3940589548283934</Item>
+      <Item>3940589548283935</Item>
+      <Item>3940589548283936</Item>
+      <Item>3940589548283937</Item>
+      <Item>3940589548283938</Item>
+      <Item>3940589548283939</Item>
+    </States>
+    <EventLinks count="23">
+      <Item>4222060230079417</Item>
+      <Item>4222060230079418</Item>
+      <Item>4222060230079419</Item>
+      <Item>4222060230079420</Item>
+      <Item>4222060230079421</Item>
+      <Item>4222060230079422</Item>
+      <Item>4222060230079423</Item>
+      <Item>4222060230079424</Item>
+      <Item>4222060230079425</Item>
+      <Item>4222060230079426</Item>
+      <Item>4222060230079427</Item>
+      <Item>4222060230079428</Item>
+      <Item>4222060230079429</Item>
+      <Item>4222060230079430</Item>
+      <Item>4222060230079431</Item>
+      <Item>4222060230079432</Item>
+      <Item>4222060230079433</Item>
+      <Item>4222060230079434</Item>
+      <Item>4222060230079435</Item>
+      <Item>4222060230079436</Item>
+      <Item>4222060230079437</Item>
+      <Item>4222060230079438</Item>
+      <Item>4222060230079439</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063652</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666648</Owner>
+    <Initial>False</Initial>
+    <Name>TragedianForIsolator_НОВЫЙ</Name>
+    <Parent>4503530911705829</Parent>
+  </Item>
+  <Item id="4785001593311207">
+    <States count="4">
+      <Item>3377648184922847</Item>
+      <Item>3940589548283940</Item>
+      <Item>3940589548283941</Item>
+      <Item>3940589548283942</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230079490</Item>
+      <Item>4222060230079491</Item>
+      <Item>4222060230079492</Item>
+      <Item>4222060230079493</Item>
+      <Item>4222060230079494</Item>
+      <Item>4222060230079495</Item>
+      <Item>4222060230079496</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063695</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666654</Owner>
+    <Initial>False</Initial>
+    <Name>Mourner_Martha_talking_НОВЫЙ</Name>
+    <Parent>4503530911705835</Parent>
+  </Item>
+  <Item id="4785001593311211">
+    <States count="6">
+      <Item>3377648184922882</Item>
+      <Item>3940589548284003</Item>
+      <Item>3940589548284004</Item>
+      <Item>3940589548284005</Item>
+      <Item>3940589548284006</Item>
+      <Item>3940589548284007</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060230079731</Item>
+      <Item>4222060230079732</Item>
+      <Item>4222060230079733</Item>
+      <Item>4222060230079734</Item>
+      <Item>4222060230079735</Item>
+      <Item>4222060230079736</Item>
+      <Item>4222060230079737</Item>
+      <Item>4222060230079738</Item>
+      <Item>4222060230079739</Item>
+      <Item>4222060230079740</Item>
+      <Item>4222060230079741</Item>
+      <Item>4222060230079742</Item>
+      <Item>4222060230079743</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063823</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666658</Owner>
+    <Initial>False</Initial>
+    <Name>DreamDora_talking_125</Name>
+    <Parent>4503530911705848</Parent>
+  </Item>
+  <Item id="4785001593311212">
+    <States count="5">
+      <Item>3377648184922883</Item>
+      <Item>3940589548284008</Item>
+      <Item>3940589548284009</Item>
+      <Item>3940589548284010</Item>
+      <Item>3940589548284011</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060230079749</Item>
+      <Item>4222060230079750</Item>
+      <Item>4222060230079751</Item>
+      <Item>4222060230079752</Item>
+      <Item>4222060230079753</Item>
+      <Item>4222060230079754</Item>
+      <Item>4222060230079755</Item>
+      <Item>4222060230079756</Item>
+      <Item>4222060230079757</Item>
+      <Item>4222060230079758</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063833</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666659</Owner>
+    <Initial>False</Initial>
+    <Name>DreamMaratForFight_talking_124</Name>
+    <Parent>4503530911705849</Parent>
+  </Item>
+  <Item id="4785001593311213">
+    <States count="6">
+      <Item>3377648184922885</Item>
+      <Item>3940589548284012</Item>
+      <Item>3940589548284013</Item>
+      <Item>3940589548284014</Item>
+      <Item>3940589548284015</Item>
+      <Item>3940589548284016</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060230079763</Item>
+      <Item>4222060230079764</Item>
+      <Item>4222060230079765</Item>
+      <Item>4222060230079766</Item>
+      <Item>4222060230079767</Item>
+      <Item>4222060230079768</Item>
+      <Item>4222060230079769</Item>
+      <Item>4222060230079770</Item>
+      <Item>4222060230079771</Item>
+      <Item>4222060230079772</Item>
+      <Item>4222060230079773</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140063844</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666660</Owner>
+    <Initial>False</Initial>
+    <Name>DreamIzekMortus_talking_126</Name>
+    <Parent>4503530911705850</Parent>
+  </Item>
+  <Item id="4785001593311223">
+    <States count="9">
+      <Item>3377648184922977</Item>
+      <Item>3940589548284182</Item>
+      <Item>3940589548284183</Item>
+      <Item>3940589548284184</Item>
+      <Item>3940589548284185</Item>
+      <Item>3940589548284186</Item>
+      <Item>3940589548284187</Item>
+      <Item>3940589548284188</Item>
+      <Item>3940589548284189</Item>
+    </States>
+    <EventLinks count="17">
+      <Item>4222060230080402</Item>
+      <Item>4222060230080403</Item>
+      <Item>4222060230080404</Item>
+      <Item>4222060230080405</Item>
+      <Item>4222060230080406</Item>
+      <Item>4222060230080407</Item>
+      <Item>4222060230080408</Item>
+      <Item>4222060230080409</Item>
+      <Item>4222060230080410</Item>
+      <Item>4222060230080411</Item>
+      <Item>4222060230080412</Item>
+      <Item>4222060230080413</Item>
+      <Item>4222060230080414</Item>
+      <Item>4222060230080416</Item>
+      <Item>4222060230080418</Item>
+      <Item>4222060230080419</Item>
+      <Item>4222060230080420</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064176</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666673</Owner>
+    <Initial>False</Initial>
+    <Name>Helper_1_House_НОВЫЙ</Name>
+    <Parent>4503530911705873</Parent>
+  </Item>
+  <Item id="4785001593311224">
+    <States count="10">
+      <Item>3377648184922979</Item>
+      <Item>3940589548284190</Item>
+      <Item>3940589548284191</Item>
+      <Item>3940589548284192</Item>
+      <Item>3940589548284193</Item>
+      <Item>3940589548284194</Item>
+      <Item>3940589548284195</Item>
+      <Item>3940589548284196</Item>
+      <Item>3940589548284197</Item>
+      <Item>3940589548284198</Item>
+    </States>
+    <EventLinks count="17">
+      <Item>4222060230080425</Item>
+      <Item>4222060230080426</Item>
+      <Item>4222060230080427</Item>
+      <Item>4222060230080428</Item>
+      <Item>4222060230080429</Item>
+      <Item>4222060230080430</Item>
+      <Item>4222060230080432</Item>
+      <Item>4222060230080433</Item>
+      <Item>4222060230080434</Item>
+      <Item>4222060230080435</Item>
+      <Item>4222060230080436</Item>
+      <Item>4222060230080437</Item>
+      <Item>4222060230080438</Item>
+      <Item>4222060230080439</Item>
+      <Item>4222060230080440</Item>
+      <Item>4222060230080441</Item>
+      <Item>4222060230080442</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064193</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666674</Owner>
+    <Initial>False</Initial>
+    <Name>Helper_2_Stvorki_НОВЫЙ</Name>
+    <Parent>4503530911705874</Parent>
+  </Item>
+  <Item id="4785001593311225">
+    <States count="7">
+      <Item>3377648184922981</Item>
+      <Item>3940589548284199</Item>
+      <Item>3940589548284200</Item>
+      <Item>3940589548284201</Item>
+      <Item>3940589548284202</Item>
+      <Item>3940589548284203</Item>
+      <Item>3940589548284204</Item>
+    </States>
+    <EventLinks count="14">
+      <Item>4222060230080451</Item>
+      <Item>4222060230080452</Item>
+      <Item>4222060230080453</Item>
+      <Item>4222060230080454</Item>
+      <Item>4222060230080455</Item>
+      <Item>4222060230080456</Item>
+      <Item>4222060230080457</Item>
+      <Item>4222060230080458</Item>
+      <Item>4222060230080459</Item>
+      <Item>4222060230080460</Item>
+      <Item>4222060230080461</Item>
+      <Item>4222060230080462</Item>
+      <Item>4222060230080463</Item>
+      <Item>4222060230224578</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064207</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666675</Owner>
+    <Initial>False</Initial>
+    <Name>Helper_3_Most_НОВЫЙ</Name>
+    <Parent>4503530911705875</Parent>
+  </Item>
+  <Item id="4785001593311226">
+    <States count="16">
+      <Item>3377648184922983</Item>
+      <Item>3940589548284205</Item>
+      <Item>3940589548284206</Item>
+      <Item>3940589548284207</Item>
+      <Item>3940589548284208</Item>
+      <Item>3940589548284209</Item>
+      <Item>3940589548284210</Item>
+      <Item>3940589548284211</Item>
+      <Item>3940589548284212</Item>
+      <Item>3940589548284213</Item>
+      <Item>3940589548284214</Item>
+      <Item>3940589548284215</Item>
+      <Item>3940589548284216</Item>
+      <Item>3940589548284217</Item>
+      <Item>3940589548284218</Item>
+      <Item>3940589548284219</Item>
+    </States>
+    <EventLinks count="29">
+      <Item>4222060230080474</Item>
+      <Item>4222060230080475</Item>
+      <Item>4222060230080476</Item>
+      <Item>4222060230080477</Item>
+      <Item>4222060230080478</Item>
+      <Item>4222060230080479</Item>
+      <Item>4222060230080480</Item>
+      <Item>4222060230080481</Item>
+      <Item>4222060230080482</Item>
+      <Item>4222060230080483</Item>
+      <Item>4222060230080484</Item>
+      <Item>4222060230080485</Item>
+      <Item>4222060230080486</Item>
+      <Item>4222060230080487</Item>
+      <Item>4222060230080488</Item>
+      <Item>4222060230080489</Item>
+      <Item>4222060230080490</Item>
+      <Item>4222060230080491</Item>
+      <Item>4222060230080492</Item>
+      <Item>4222060230080493</Item>
+      <Item>4222060230080494</Item>
+      <Item>4222060230080495</Item>
+      <Item>4222060230080496</Item>
+      <Item>4222060230080497</Item>
+      <Item>4222060230080498</Item>
+      <Item>4222060230080499</Item>
+      <Item>4222060230080500</Item>
+      <Item>4222060230080501</Item>
+      <Item>4222060230080502</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064232</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666677</Owner>
+    <Initial>False</Initial>
+    <Name>FinalExecutor_Exam</Name>
+    <Parent>4503530911705877</Parent>
+  </Item>
+  <Item id="4785001593311227">
+    <States count="3">
+      <Item>3377648184922984</Item>
+      <Item>3940589548284220</Item>
+      <Item>3940589548284221</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230080503</Item>
+      <Item>4222060230080504</Item>
+      <Item>4222060230080505</Item>
+      <Item>4222060230080506</Item>
+      <Item>4222060230080507</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064236</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666677</Owner>
+    <Initial>False</Initial>
+    <Name>FinalExecutor_ImproperDeath</Name>
+    <Parent>4503530911705877</Parent>
+  </Item>
+  <Item id="4785001593311228">
+    <States count="12">
+      <Item>3377648184922986</Item>
+      <Item>3940589548284222</Item>
+      <Item>3940589548284223</Item>
+      <Item>3940589548284224</Item>
+      <Item>3940589548284225</Item>
+      <Item>3940589548284226</Item>
+      <Item>3940589548284227</Item>
+      <Item>3940589548284228</Item>
+      <Item>3940589548284229</Item>
+      <Item>3940589548284230</Item>
+      <Item>3940589548284231</Item>
+      <Item>3940589548284232</Item>
+    </States>
+    <EventLinks count="23">
+      <Item>4222060230080517</Item>
+      <Item>4222060230080518</Item>
+      <Item>4222060230080519</Item>
+      <Item>4222060230080520</Item>
+      <Item>4222060230080521</Item>
+      <Item>4222060230080522</Item>
+      <Item>4222060230080523</Item>
+      <Item>4222060230080524</Item>
+      <Item>4222060230080525</Item>
+      <Item>4222060230080526</Item>
+      <Item>4222060230080527</Item>
+      <Item>4222060230080528</Item>
+      <Item>4222060230080529</Item>
+      <Item>4222060230080530</Item>
+      <Item>4222060230080531</Item>
+      <Item>4222060230080532</Item>
+      <Item>4222060230080533</Item>
+      <Item>4222060230080534</Item>
+      <Item>4222060230080535</Item>
+      <Item>4222060230080536</Item>
+      <Item>4222060230080537</Item>
+      <Item>4222060230080538</Item>
+      <Item>4222060230080539</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064256</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666679</Owner>
+    <Initial>False</Initial>
+    <Name>Helper_4_Plague_Briefing</Name>
+    <Parent>4503530911705880</Parent>
+  </Item>
+  <Item id="4785001593311229">
+    <States count="5">
+      <Item>3377648184922987</Item>
+      <Item>3940589548284233</Item>
+      <Item>3940589548284234</Item>
+      <Item>3940589548284235</Item>
+      <Item>3940589548284236</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060230080540</Item>
+      <Item>4222060230080541</Item>
+      <Item>4222060230080542</Item>
+      <Item>4222060230080543</Item>
+      <Item>4222060230080544</Item>
+      <Item>4222060230080545</Item>
+      <Item>4222060230080546</Item>
+      <Item>4222060230080547</Item>
+      <Item>4222060230080548</Item>
+      <Item>4222060230080549</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064262</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666679</Owner>
+    <Initial>False</Initial>
+    <Name>Helper_4_Plague_Finally</Name>
+    <Parent>4503530911705880</Parent>
+  </Item>
+  <Item id="4785001593311230">
+    <States count="5">
+      <Item>3377648184922988</Item>
+      <Item>3940589548284237</Item>
+      <Item>3940589548284238</Item>
+      <Item>3940589548284239</Item>
+      <Item>3940589548284240</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060230080555</Item>
+      <Item>4222060230080556</Item>
+      <Item>4222060230080557</Item>
+      <Item>4222060230080558</Item>
+      <Item>4222060230080559</Item>
+      <Item>4222060230080560</Item>
+      <Item>4222060230080561</Item>
+      <Item>4222060230080562</Item>
+      <Item>4222060230080563</Item>
+      <Item>4222060230080564</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064271</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666680</Owner>
+    <Initial>False</Initial>
+    <Name>Leper_2_talking_389</Name>
+    <Parent>4503530911705881</Parent>
+  </Item>
+  <Item id="4785001593311232">
+    <States count="3">
+      <Item>3377648184922990</Item>
+      <Item>3940589548284246</Item>
+      <Item>3940589548284247</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230080582</Item>
+      <Item>4222060230080583</Item>
+      <Item>4222060230080584</Item>
+      <Item>4222060230080585</Item>
+      <Item>4222060230080586</Item>
+      <Item>4222060230080587</Item>
+      <Item>4222060230080588</Item>
+      <Item>4222060230080589</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064292</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666683</Owner>
+    <Initial>False</Initial>
+    <Name>TragedianForHandRail_talking_398</Name>
+    <Parent>4503530911705884</Parent>
+  </Item>
+  <Item id="4785001593311233">
+    <States count="13">
+      <Item>3377648184922991</Item>
+      <Item>3940589548284248</Item>
+      <Item>3940589548284249</Item>
+      <Item>3940589548284250</Item>
+      <Item>3940589548284251</Item>
+      <Item>3940589548284252</Item>
+      <Item>3940589548284253</Item>
+      <Item>3940589548284254</Item>
+      <Item>3940589548284255</Item>
+      <Item>3940589548284256</Item>
+      <Item>3940589548284257</Item>
+      <Item>3940589548284258</Item>
+      <Item>3940589548358751</Item>
+    </States>
+    <EventLinks count="27">
+      <Item>4222060230080594</Item>
+      <Item>4222060230080596</Item>
+      <Item>4222060230080597</Item>
+      <Item>4222060230080598</Item>
+      <Item>4222060230080599</Item>
+      <Item>4222060230080600</Item>
+      <Item>4222060230080601</Item>
+      <Item>4222060230080602</Item>
+      <Item>4222060230080603</Item>
+      <Item>4222060230080604</Item>
+      <Item>4222060230080605</Item>
+      <Item>4222060230080607</Item>
+      <Item>4222060230080608</Item>
+      <Item>4222060230080609</Item>
+      <Item>4222060230080610</Item>
+      <Item>4222060230080611</Item>
+      <Item>4222060230080612</Item>
+      <Item>4222060230080613</Item>
+      <Item>4222060230080614</Item>
+      <Item>4222060230080615</Item>
+      <Item>4222060230080616</Item>
+      <Item>4222060230080617</Item>
+      <Item>4222060230080618</Item>
+      <Item>4222060230080619</Item>
+      <Item>4222060230157582</Item>
+      <Item>4222060230157583</Item>
+      <Item>4222060230157584</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064308</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666684</Owner>
+    <Initial>False</Initial>
+    <Name>Lereps_Executor_talking_399</Name>
+    <Parent>4503530911705885</Parent>
+  </Item>
+  <Item id="4785001593311236">
+    <States count="9">
+      <Item>3377648184922994</Item>
+      <Item>3377648184922995</Item>
+      <Item>3940589548284261</Item>
+      <Item>3940589548284262</Item>
+      <Item>3940589548284263</Item>
+      <Item>3940589548284264</Item>
+      <Item>3940589548284265</Item>
+      <Item>3940589548284266</Item>
+      <Item>3940589548284267</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230080634</Item>
+      <Item>4222060230080635</Item>
+      <Item>4222060230080636</Item>
+      <Item>4222060230080637</Item>
+      <Item>4222060230080638</Item>
+      <Item>4222060230080639</Item>
+      <Item>4222060230080640</Item>
+      <Item>4222060230080641</Item>
+      <Item>4222060230080642</Item>
+      <Item>4222060230080643</Item>
+      <Item>4222060230080644</Item>
+      <Item>4222060230080645</Item>
+      <Item>4222060230080646</Item>
+      <Item>4222060230080647</Item>
+      <Item>4222060230080648</Item>
+      <Item>4222060230080649</Item>
+      <Item>4222060230080650</Item>
+      <Item>4222060230080651</Item>
+      <Item>4222060230080652</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064334</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666688</Owner>
+    <InputLinks count="1">
+      <Item>4222060230080653</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Bride_Wife_FinalQuest_DEPRECATED_talking_400</Name>
+    <Parent>4503530911705890</Parent>
+  </Item>
+  <Item id="4785001593311237">
+    <States count="5">
+      <Item>3377648184922998</Item>
+      <Item>3940589548284268</Item>
+      <Item>3940589548284269</Item>
+      <Item>3940589548284270</Item>
+      <Item>3940589548284271</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230080657</Item>
+      <Item>4222060230080658</Item>
+      <Item>4222060230080659</Item>
+      <Item>4222060230080660</Item>
+      <Item>4222060230080661</Item>
+      <Item>4222060230080662</Item>
+      <Item>4222060230080663</Item>
+      <Item>4222060230080664</Item>
+      <Item>4222060230080665</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064349</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666689</Owner>
+    <Initial>False</Initial>
+    <Name>Shop_Angry_Marta_НОВЫЙ</Name>
+    <Parent>4503530911705891</Parent>
+  </Item>
+  <Item id="4785001593311238">
+    <States count="5">
+      <Item>3377648184922999</Item>
+      <Item>3940589548284272</Item>
+      <Item>3940589548284273</Item>
+      <Item>3940589548284274</Item>
+      <Item>3940589548284275</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230080679</Item>
+      <Item>4222060230080680</Item>
+      <Item>4222060230080681</Item>
+      <Item>4222060230080682</Item>
+      <Item>4222060230080683</Item>
+      <Item>4222060230080684</Item>
+      <Item>4222060230080685</Item>
+      <Item>4222060230080686</Item>
+      <Item>4222060230080687</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064358</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666690</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Frontdoor_talking_407</Name>
+    <Parent>4503530911705892</Parent>
+  </Item>
+  <Item id="4785001593311239">
+    <States count="10">
+      <Item>3377648184923000</Item>
+      <Item>3940589548284276</Item>
+      <Item>3940589548284277</Item>
+      <Item>3940589548284278</Item>
+      <Item>3940589548284279</Item>
+      <Item>3940589548284280</Item>
+      <Item>3940589548284281</Item>
+      <Item>3940589548284282</Item>
+      <Item>3940589548284283</Item>
+      <Item>3940589548284284</Item>
+    </States>
+    <EventLinks count="20">
+      <Item>4222060230080691</Item>
+      <Item>4222060230080692</Item>
+      <Item>4222060230080693</Item>
+      <Item>4222060230080694</Item>
+      <Item>4222060230080695</Item>
+      <Item>4222060230080696</Item>
+      <Item>4222060230080697</Item>
+      <Item>4222060230080698</Item>
+      <Item>4222060230080699</Item>
+      <Item>4222060230080700</Item>
+      <Item>4222060230080701</Item>
+      <Item>4222060230080702</Item>
+      <Item>4222060230080703</Item>
+      <Item>4222060230080704</Item>
+      <Item>4222060230080705</Item>
+      <Item>4222060230080706</Item>
+      <Item>4222060230080707</Item>
+      <Item>4222060230080708</Item>
+      <Item>4222060230080709</Item>
+      <Item>4222060230080710</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064372</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666691</Owner>
+    <Initial>False</Initial>
+    <Name>RuleExplainer_talking_408</Name>
+    <Parent>4503530911705893</Parent>
+  </Item>
+  <Item id="4785001593311240">
+    <States count="4">
+      <Item>3377648184923001</Item>
+      <Item>3940589548284285</Item>
+      <Item>3940589548284286</Item>
+      <Item>3940589548284287</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230080714</Item>
+      <Item>4222060230080715</Item>
+      <Item>4222060230080716</Item>
+      <Item>4222060230080717</Item>
+      <Item>4222060230080718</Item>
+      <Item>4222060230080719</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064380</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666692</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Backdoor_talking_409</Name>
+    <Parent>4503530911705894</Parent>
+  </Item>
+  <Item id="4785001593311242">
+    <States count="4">
+      <Item>3377648184923003</Item>
+      <Item>3940589548284293</Item>
+      <Item>3940589548284294</Item>
+      <Item>3940589548284295</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230080740</Item>
+      <Item>4222060230080741</Item>
+      <Item>4222060230080742</Item>
+      <Item>4222060230080743</Item>
+      <Item>4222060230080744</Item>
+      <Item>4222060230080745</Item>
+      <Item>4222060230080746</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140064401</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666695</Owner>
+    <Initial>False</Initial>
+    <Name>LootHouseSoldier_talking_428</Name>
+    <Parent>4503530911705897</Parent>
+  </Item>
+  <Item id="4785001593327626">
+    <States count="3">
+      <Item>3377648184939501</Item>
+      <Item>3940589548300651</Item>
+      <Item>3940589548300652</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230098483</Item>
+      <Item>4222060230098484</Item>
+      <Item>4222060230098485</Item>
+      <Item>4222060230098486</Item>
+      <Item>4222060230098487</Item>
+      <Item>4222060230098488</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140082044</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666636</Owner>
+    <Initial>False</Initial>
+    <Name>Corpse_talking_НОВЫЙ</Name>
+    <Parent>4503530911705813</Parent>
+  </Item>
+  <Item id="4785001593329026">
+    <States count="10">
+      <Item>3377648184940901</Item>
+      <Item>3940589548302051</Item>
+      <Item>3940589548302052</Item>
+      <Item>3940589548302054</Item>
+      <Item>3940589548302055</Item>
+      <Item>3940589548302056</Item>
+      <Item>3940589548302057</Item>
+      <Item>3940589548302058</Item>
+      <Item>3940589548302059</Item>
+      <Item>3940589548407251</Item>
+    </States>
+    <EventLinks count="18">
+      <Item>4222060230099876</Item>
+      <Item>4222060230099877</Item>
+      <Item>4222060230099880</Item>
+      <Item>4222060230099881</Item>
+      <Item>4222060230099882</Item>
+      <Item>4222060230099883</Item>
+      <Item>4222060230099884</Item>
+      <Item>4222060230099885</Item>
+      <Item>4222060230099886</Item>
+      <Item>4222060230099887</Item>
+      <Item>4222060230099888</Item>
+      <Item>4222060230099889</Item>
+      <Item>4222060230099890</Item>
+      <Item>4222060230099891</Item>
+      <Item>4222060230099892</Item>
+      <Item>4222060230207677</Item>
+      <Item>4222060230207681</Item>
+      <Item>4222060230207683</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140083426</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666577</Owner>
+    <Initial>False</Initial>
+    <Name>DreamMainExecutor_Dream_НОВЫЙ</Name>
+    <Parent>4503530911705716</Parent>
+  </Item>
+  <Item id="4785001593332226">
+    <States count="7">
+      <Item>3377648184944101</Item>
+      <Item>3940589548305259</Item>
+      <Item>3940589548305260</Item>
+      <Item>3940589548305261</Item>
+      <Item>3940589548305262</Item>
+      <Item>3940589548305263</Item>
+      <Item>3940589548305264</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060230103081</Item>
+      <Item>4222060230103095</Item>
+      <Item>4222060230103096</Item>
+      <Item>4222060230103097</Item>
+      <Item>4222060230103098</Item>
+      <Item>4222060230103099</Item>
+      <Item>4222060230103100</Item>
+      <Item>4222060230103101</Item>
+      <Item>4222060230103105</Item>
+      <Item>4222060230103106</Item>
+      <Item>4222060230103107</Item>
+      <Item>4222060230103108</Item>
+      <Item>4222060230103111</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140086630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666624</Owner>
+    <Initial>False</Initial>
+    <Name>Sticky_УТРО_2</Name>
+    <Parent>4503530911705791</Parent>
+  </Item>
+  <Item id="4785001593332227">
+    <States count="13">
+      <Item>3377648184944102</Item>
+      <Item>3377648184944103</Item>
+      <Item>3377648184944106</Item>
+      <Item>3940589548305265</Item>
+      <Item>3940589548305266</Item>
+      <Item>3940589548305267</Item>
+      <Item>3940589548305268</Item>
+      <Item>3940589548305269</Item>
+      <Item>3940589548305270</Item>
+      <Item>3940589548305271</Item>
+      <Item>3940589548305272</Item>
+      <Item>3940589548305273</Item>
+      <Item>3940589548305279</Item>
+    </States>
+    <EventLinks count="28">
+      <Item>4222060230103121</Item>
+      <Item>4222060230103122</Item>
+      <Item>4222060230103123</Item>
+      <Item>4222060230103124</Item>
+      <Item>4222060230103125</Item>
+      <Item>4222060230103126</Item>
+      <Item>4222060230103127</Item>
+      <Item>4222060230103128</Item>
+      <Item>4222060230103129</Item>
+      <Item>4222060230103130</Item>
+      <Item>4222060230103131</Item>
+      <Item>4222060230103132</Item>
+      <Item>4222060230103133</Item>
+      <Item>4222060230103134</Item>
+      <Item>4222060230103135</Item>
+      <Item>4222060230103136</Item>
+      <Item>4222060230103137</Item>
+      <Item>4222060230103138</Item>
+      <Item>4222060230103139</Item>
+      <Item>4222060230103140</Item>
+      <Item>4222060230103154</Item>
+      <Item>4222060230103155</Item>
+      <Item>4222060230103156</Item>
+      <Item>4222060230103157</Item>
+      <Item>4222060230103160</Item>
+      <Item>4222060230103161</Item>
+      <Item>4222060230103162</Item>
+      <Item>4222060230207685</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140086656</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666625</Owner>
+    <Initial>False</Initial>
+    <Name>Executor_talking_Plague</Name>
+    <Parent>4503530911705795</Parent>
+  </Item>
+  <Item id="4785001593332228">
+    <States count="7">
+      <Item>3377648184944107</Item>
+      <Item>3940589548305290</Item>
+      <Item>3940589548305291</Item>
+      <Item>3940589548305292</Item>
+      <Item>3940589548305293</Item>
+      <Item>3940589548305294</Item>
+      <Item>3940589548305296</Item>
+    </States>
+    <EventLinks count="14">
+      <Item>4222060230103165</Item>
+      <Item>4222060230103989</Item>
+      <Item>4222060230103990</Item>
+      <Item>4222060230103991</Item>
+      <Item>4222060230103992</Item>
+      <Item>4222060230103993</Item>
+      <Item>4222060230103994</Item>
+      <Item>4222060230103995</Item>
+      <Item>4222060230103996</Item>
+      <Item>4222060230103997</Item>
+      <Item>4222060230104002</Item>
+      <Item>4222060230104003</Item>
+      <Item>4222060230104007</Item>
+      <Item>4222060230104008</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140086678</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666625</Owner>
+    <Initial>False</Initial>
+    <Name>Executor_talking_Mortus</Name>
+    <Parent>4503530911705795</Parent>
+  </Item>
+  <Item id="4785001593336626">
+    <States count="7">
+      <Item>3377648184948501</Item>
+      <Item>3940589548309651</Item>
+      <Item>3940589548309652</Item>
+      <Item>3940589548309653</Item>
+      <Item>3940589548309654</Item>
+      <Item>3940589548309655</Item>
+      <Item>3940589548309656</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060230107576</Item>
+      <Item>4222060230107577</Item>
+      <Item>4222060230107578</Item>
+      <Item>4222060230107579</Item>
+      <Item>4222060230107580</Item>
+      <Item>4222060230107581</Item>
+      <Item>4222060230107582</Item>
+      <Item>4222060230107583</Item>
+      <Item>4222060230107584</Item>
+      <Item>4222060230107585</Item>
+      <Item>4222060230107586</Item>
+      <Item>4222060230107587</Item>
+      <Item>4222060230107588</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140091126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666644</Owner>
+    <Initial>False</Initial>
+    <Name>Bride_Slough_talking_Morning</Name>
+    <Parent>4503530911705823</Parent>
+  </Item>
+  <Item id="4785001593336627">
+    <States count="2">
+      <Item>3377648184948502</Item>
+      <Item>3940589548309657</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230107589</Item>
+      <Item>4222060230107590</Item>
+      <Item>4222060230107591</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140091134</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666644</Owner>
+    <Initial>False</Initial>
+    <Name>Bride_Slough_talking_Evening</Name>
+    <Parent>4503530911705823</Parent>
+  </Item>
+  <Item id="4785001593337827">
+    <States count="4">
+      <Item>3377648184949702</Item>
+      <Item>3940589548310872</Item>
+      <Item>3940589548310873</Item>
+      <Item>3940589548310874</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230108823</Item>
+      <Item>4222060230108824</Item>
+      <Item>4222060230108825</Item>
+      <Item>4222060230108826</Item>
+      <Item>4222060230108827</Item>
+      <Item>4222060230108828</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140092350</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666624</Owner>
+    <Initial>False</Initial>
+    <Name>Sticky_Финал_ НОВЫЙ</Name>
+    <Parent>4503530911705791</Parent>
+  </Item>
+  <Item id="4785001593341626">
+    <States count="7">
+      <Item>3377648184953501</Item>
+      <Item>3940589548314651</Item>
+      <Item>3940589548314652</Item>
+      <Item>3940589548314653</Item>
+      <Item>3940589548314654</Item>
+      <Item>3940589548314655</Item>
+      <Item>3940589548314656</Item>
+    </States>
+    <EventLinks count="12">
+      <Item>4222060230112576</Item>
+      <Item>4222060230112577</Item>
+      <Item>4222060230112578</Item>
+      <Item>4222060230112579</Item>
+      <Item>4222060230112580</Item>
+      <Item>4222060230112581</Item>
+      <Item>4222060230112582</Item>
+      <Item>4222060230112583</Item>
+      <Item>4222060230112584</Item>
+      <Item>4222060230112585</Item>
+      <Item>4222060230112586</Item>
+      <Item>4222060230112587</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666602</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Main_НОВЫЙ</Name>
+    <Parent>4503530911705755</Parent>
+  </Item>
+  <Item id="4785001593341627">
+    <States count="3">
+      <Item>3377648184953502</Item>
+      <Item>3940589548314659</Item>
+      <Item>3940589548314660</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230112594</Item>
+      <Item>4222060230112595</Item>
+      <Item>4222060230112596</Item>
+      <Item>4222060230112597</Item>
+      <Item>4222060230112598</Item>
+      <Item>4222060230112599</Item>
+      <Item>4222060230112600</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096136</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666602</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_Main_talking_400_After_Decision</Name>
+    <Parent>4503530911705755</Parent>
+  </Item>
+  <Item id="4785001593341628">
+    <States count="6">
+      <Item>3377648184953503</Item>
+      <Item>3940589548314661</Item>
+      <Item>3940589548314662</Item>
+      <Item>3940589548314663</Item>
+      <Item>3940589548314664</Item>
+      <Item>3940589548314665</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060230112606</Item>
+      <Item>4222060230112607</Item>
+      <Item>4222060230112608</Item>
+      <Item>4222060230112609</Item>
+      <Item>4222060230112610</Item>
+      <Item>4222060230112611</Item>
+      <Item>4222060230112612</Item>
+      <Item>4222060230112613</Item>
+      <Item>4222060230112614</Item>
+      <Item>4222060230112615</Item>
+      <Item>4222060230112616</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096147</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666586</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier_НОВЫЙ</Name>
+    <Parent>4503530911705732</Parent>
+  </Item>
+  <Item id="4785001593341629">
+    <States count="14">
+      <Item>3377648184953504</Item>
+      <Item>3377648184953505</Item>
+      <Item>3377648184953506</Item>
+      <Item>3940589548314666</Item>
+      <Item>3940589548314667</Item>
+      <Item>3940589548314668</Item>
+      <Item>3940589548314669</Item>
+      <Item>3940589548314670</Item>
+      <Item>3940589548314671</Item>
+      <Item>3940589548314672</Item>
+      <Item>3940589548314673</Item>
+      <Item>3940589548314674</Item>
+      <Item>3940589548314675</Item>
+      <Item>3940589548314676</Item>
+    </States>
+    <EventLinks count="30">
+      <Item>4222060230112631</Item>
+      <Item>4222060230112632</Item>
+      <Item>4222060230112633</Item>
+      <Item>4222060230112634</Item>
+      <Item>4222060230112635</Item>
+      <Item>4222060230112636</Item>
+      <Item>4222060230112637</Item>
+      <Item>4222060230112638</Item>
+      <Item>4222060230112639</Item>
+      <Item>4222060230112640</Item>
+      <Item>4222060230112641</Item>
+      <Item>4222060230112642</Item>
+      <Item>4222060230112643</Item>
+      <Item>4222060230112644</Item>
+      <Item>4222060230112645</Item>
+      <Item>4222060230112646</Item>
+      <Item>4222060230112647</Item>
+      <Item>4222060230112648</Item>
+      <Item>4222060230112649</Item>
+      <Item>4222060230112650</Item>
+      <Item>4222060230112652</Item>
+      <Item>4222060230112653</Item>
+      <Item>4222060230112655</Item>
+      <Item>4222060230112656</Item>
+      <Item>4222060230112657</Item>
+      <Item>4222060230112658</Item>
+      <Item>4222060230112659</Item>
+      <Item>4222060230112660</Item>
+      <Item>4222060230112661</Item>
+      <Item>4222060230227776</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096174</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666587</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_НОВЫЙ</Name>
+    <Parent>4503530911705735</Parent>
+  </Item>
+  <Item id="4785001593341630">
+    <States count="3">
+      <Item>3377648184953508</Item>
+      <Item>3940589548314677</Item>
+      <Item>3940589548314678</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230112662</Item>
+      <Item>4222060230112663</Item>
+      <Item>4222060230112664</Item>
+      <Item>4222060230112665</Item>
+      <Item>4222060230112666</Item>
+      <Item>4222060230112667</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096190</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666587</Owner>
+    <Initial>False</Initial>
+    <Name>Марат НОВЫЙ Похороны</Name>
+    <Parent>4503530911705735</Parent>
+  </Item>
+  <Item id="4785001593341631">
+    <States count="4">
+      <Item>3377648184953509</Item>
+      <Item>3940589548314679</Item>
+      <Item>3940589548314680</Item>
+      <Item>3940589548314681</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230112668</Item>
+      <Item>4222060230112669</Item>
+      <Item>4222060230112670</Item>
+      <Item>4222060230112671</Item>
+      <Item>4222060230112672</Item>
+      <Item>4222060230112673</Item>
+      <Item>4222060230112674</Item>
+      <Item>4222060230112675</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096194</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666587</Owner>
+    <Initial>False</Initial>
+    <Name>Марат НОВЫЙ До похорон</Name>
+    <Parent>4503530911705735</Parent>
+  </Item>
+  <Item id="4785001593342426">
+    <States count="13">
+      <Item>3377648184954301</Item>
+      <Item>3377648184954302</Item>
+      <Item>3377648184954303</Item>
+      <Item>3940589548315451</Item>
+      <Item>3940589548315452</Item>
+      <Item>3940589548315453</Item>
+      <Item>3940589548315454</Item>
+      <Item>3940589548315455</Item>
+      <Item>3940589548315456</Item>
+      <Item>3940589548315457</Item>
+      <Item>3940589548315458</Item>
+      <Item>3940589548315459</Item>
+      <Item>3940589548315460</Item>
+    </States>
+    <EventLinks count="28">
+      <Item>4222060230113485</Item>
+      <Item>4222060230113486</Item>
+      <Item>4222060230113487</Item>
+      <Item>4222060230113488</Item>
+      <Item>4222060230113489</Item>
+      <Item>4222060230113490</Item>
+      <Item>4222060230113491</Item>
+      <Item>4222060230113492</Item>
+      <Item>4222060230113493</Item>
+      <Item>4222060230113494</Item>
+      <Item>4222060230113495</Item>
+      <Item>4222060230113496</Item>
+      <Item>4222060230113497</Item>
+      <Item>4222060230113499</Item>
+      <Item>4222060230113500</Item>
+      <Item>4222060230113501</Item>
+      <Item>4222060230113502</Item>
+      <Item>4222060230113503</Item>
+      <Item>4222060230113504</Item>
+      <Item>4222060230113505</Item>
+      <Item>4222060230113506</Item>
+      <Item>4222060230113508</Item>
+      <Item>4222060230113509</Item>
+      <Item>4222060230113510</Item>
+      <Item>4222060230113511</Item>
+      <Item>4222060230113512</Item>
+      <Item>4222060230113513</Item>
+      <Item>4222060230227777</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096936</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666588</Owner>
+    <Initial>False</Initial>
+    <Name>Dora_НОВЫЙ</Name>
+    <Parent>4503530911705738</Parent>
+  </Item>
+  <Item id="4785001593342427">
+    <States count="3">
+      <Item>3377648184954305</Item>
+      <Item>3940589548315461</Item>
+      <Item>3940589548315462</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230113514</Item>
+      <Item>4222060230113515</Item>
+      <Item>4222060230113516</Item>
+      <Item>4222060230113517</Item>
+      <Item>4222060230113518</Item>
+      <Item>4222060230113519</Item>
+      <Item>4222060230113520</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096951</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666588</Owner>
+    <Initial>False</Initial>
+    <Name>Дора НОВЫЙ Похороны</Name>
+    <Parent>4503530911705738</Parent>
+  </Item>
+  <Item id="4785001593342428">
+    <States count="4">
+      <Item>3377648184954306</Item>
+      <Item>3940589548315463</Item>
+      <Item>3940589548315464</Item>
+      <Item>3940589548315465</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230113521</Item>
+      <Item>4222060230113522</Item>
+      <Item>4222060230113523</Item>
+      <Item>4222060230113524</Item>
+      <Item>4222060230113525</Item>
+      <Item>4222060230113526</Item>
+      <Item>4222060230113527</Item>
+      <Item>4222060230113528</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140096955</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666588</Owner>
+    <Initial>False</Initial>
+    <Name>Дора НОВЫЙ До похорон</Name>
+    <Parent>4503530911705738</Parent>
+  </Item>
+  <Item id="4785001593343626">
+    <States count="3">
+      <Item>3377648184955502</Item>
+      <Item>3940589548316651</Item>
+      <Item>3940589548316652</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230114678</Item>
+      <Item>4222060230114679</Item>
+      <Item>4222060230114680</Item>
+      <Item>4222060230114681</Item>
+      <Item>4222060230114682</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140098128</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666627</Owner>
+    <Initial>False</Initial>
+    <Name>PensiveOdongh_talking_104_Morning</Name>
+    <Parent>4503530911705797</Parent>
+  </Item>
+  <Item id="4785001593343627">
+    <States count="3">
+      <Item>3377648184955503</Item>
+      <Item>3940589548316653</Item>
+      <Item>3940589548316654</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230114683</Item>
+      <Item>4222060230114684</Item>
+      <Item>4222060230114685</Item>
+      <Item>4222060230114686</Item>
+      <Item>4222060230114687</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140098132</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666627</Owner>
+    <Initial>False</Initial>
+    <Name>PensiveOdongh_talking_107_Day</Name>
+    <Parent>4503530911705797</Parent>
+  </Item>
+  <Item id="4785001593345026">
+    <States count="19">
+      <Item>3377648184956902</Item>
+      <Item>3940589548318051</Item>
+      <Item>3940589548318052</Item>
+      <Item>3940589548318053</Item>
+      <Item>3940589548318054</Item>
+      <Item>3940589548318055</Item>
+      <Item>3940589548318056</Item>
+      <Item>3940589548318057</Item>
+      <Item>3940589548318058</Item>
+      <Item>3940589548318059</Item>
+      <Item>3940589548318060</Item>
+      <Item>3940589548318061</Item>
+      <Item>3940589548318062</Item>
+      <Item>3940589548318063</Item>
+      <Item>3940589548318064</Item>
+      <Item>3940589548318065</Item>
+      <Item>3940589548318066</Item>
+      <Item>3940589548318067</Item>
+      <Item>3940589548318068</Item>
+    </States>
+    <EventLinks count="38">
+      <Item>4222060230116088</Item>
+      <Item>4222060230116089</Item>
+      <Item>4222060230116090</Item>
+      <Item>4222060230116091</Item>
+      <Item>4222060230116092</Item>
+      <Item>4222060230116093</Item>
+      <Item>4222060230116094</Item>
+      <Item>4222060230116095</Item>
+      <Item>4222060230116096</Item>
+      <Item>4222060230116097</Item>
+      <Item>4222060230116098</Item>
+      <Item>4222060230116099</Item>
+      <Item>4222060230116100</Item>
+      <Item>4222060230116101</Item>
+      <Item>4222060230116102</Item>
+      <Item>4222060230116103</Item>
+      <Item>4222060230116104</Item>
+      <Item>4222060230116105</Item>
+      <Item>4222060230116106</Item>
+      <Item>4222060230116107</Item>
+      <Item>4222060230116108</Item>
+      <Item>4222060230116109</Item>
+      <Item>4222060230116110</Item>
+      <Item>4222060230116111</Item>
+      <Item>4222060230116112</Item>
+      <Item>4222060230116113</Item>
+      <Item>4222060230116114</Item>
+      <Item>4222060230116115</Item>
+      <Item>4222060230116116</Item>
+      <Item>4222060230116117</Item>
+      <Item>4222060230116118</Item>
+      <Item>4222060230116119</Item>
+      <Item>4222060230116120</Item>
+      <Item>4222060230116121</Item>
+      <Item>4222060230116122</Item>
+      <Item>4222060230116123</Item>
+      <Item>4222060230116124</Item>
+      <Item>4222060230116125</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140099541</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666630</Owner>
+    <Initial>False</Initial>
+    <Name>Ospina_Soothsayer</Name>
+    <Parent>4503530911705804</Parent>
+  </Item>
+  <Item id="4785001593345027">
+    <States count="9">
+      <Item>3377648184956903</Item>
+      <Item>3940589548318069</Item>
+      <Item>3940589548318070</Item>
+      <Item>3940589548318071</Item>
+      <Item>3940589548318072</Item>
+      <Item>3940589548318073</Item>
+      <Item>3940589548318074</Item>
+      <Item>3940589548318075</Item>
+      <Item>3940589548318076</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230116126</Item>
+      <Item>4222060230116127</Item>
+      <Item>4222060230116128</Item>
+      <Item>4222060230116129</Item>
+      <Item>4222060230116130</Item>
+      <Item>4222060230116131</Item>
+      <Item>4222060230116132</Item>
+      <Item>4222060230116133</Item>
+      <Item>4222060230116134</Item>
+      <Item>4222060230116135</Item>
+      <Item>4222060230116136</Item>
+      <Item>4222060230116137</Item>
+      <Item>4222060230116138</Item>
+      <Item>4222060230116139</Item>
+      <Item>4222060230116140</Item>
+      <Item>4222060230116141</Item>
+      <Item>4222060230116142</Item>
+      <Item>4222060230116143</Item>
+      <Item>4222060230116144</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140099561</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666630</Owner>
+    <Initial>False</Initial>
+    <Name>Ospina_DidntOpen</Name>
+    <Parent>4503530911705804</Parent>
+  </Item>
+  <Item id="4785001593345028">
+    <States count="6">
+      <Item>3377648184956905</Item>
+      <Item>3940589548318077</Item>
+      <Item>3940589548318078</Item>
+      <Item>3940589548318079</Item>
+      <Item>3940589548318080</Item>
+      <Item>3940589548318081</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230116172</Item>
+      <Item>4222060230116173</Item>
+      <Item>4222060230116174</Item>
+      <Item>4222060230116175</Item>
+      <Item>4222060230116676</Item>
+      <Item>4222060230116677</Item>
+      <Item>4222060230116678</Item>
+      <Item>4222060230116679</Item>
+      <Item>4222060230116680</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140099604</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666630</Owner>
+    <Initial>False</Initial>
+    <Name>OspinaSecond_GuessIAmDead</Name>
+    <Parent>4503530911705804</Parent>
+  </Item>
+  <Item id="4785001593352227">
+    <States count="12">
+      <Item>3377648184964102</Item>
+      <Item>3377648184964103</Item>
+      <Item>3940589548325254</Item>
+      <Item>3940589548325255</Item>
+      <Item>3940589548325256</Item>
+      <Item>3940589548325257</Item>
+      <Item>3940589548325258</Item>
+      <Item>3940589548325259</Item>
+      <Item>3940589548325260</Item>
+      <Item>3940589548325261</Item>
+      <Item>3940589548325262</Item>
+      <Item>3940589548325263</Item>
+    </States>
+    <EventLinks count="31">
+      <Item>4222060230123391</Item>
+      <Item>4222060230123392</Item>
+      <Item>4222060230123393</Item>
+      <Item>4222060230123394</Item>
+      <Item>4222060230123395</Item>
+      <Item>4222060230123396</Item>
+      <Item>4222060230123397</Item>
+      <Item>4222060230123398</Item>
+      <Item>4222060230123399</Item>
+      <Item>4222060230123400</Item>
+      <Item>4222060230123401</Item>
+      <Item>4222060230123402</Item>
+      <Item>4222060230123403</Item>
+      <Item>4222060230123404</Item>
+      <Item>4222060230123405</Item>
+      <Item>4222060230123406</Item>
+      <Item>4222060230123407</Item>
+      <Item>4222060230123408</Item>
+      <Item>4222060230123409</Item>
+      <Item>4222060230123410</Item>
+      <Item>4222060230123411</Item>
+      <Item>4222060230123412</Item>
+      <Item>4222060230123413</Item>
+      <Item>4222060230123414</Item>
+      <Item>4222060230123415</Item>
+      <Item>4222060230123416</Item>
+      <Item>4222060230123417</Item>
+      <Item>4222060230123418</Item>
+      <Item>4222060230123419</Item>
+      <Item>4222060230123420</Item>
+      <Item>4222060230123421</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140106743</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094777</Owner>
+    <Initial>False</Initial>
+    <Name>Clerk_2_НОВЫЙ</Name>
+    <Parent>4503530911747206</Parent>
+  </Item>
+  <Item id="4785001593352228">
+    <States count="11">
+      <Item>3377648184964104</Item>
+      <Item>3940589548325264</Item>
+      <Item>3940589548325265</Item>
+      <Item>3940589548325266</Item>
+      <Item>3940589548325267</Item>
+      <Item>3940589548325268</Item>
+      <Item>3940589548325269</Item>
+      <Item>3940589548325270</Item>
+      <Item>3940589548325271</Item>
+      <Item>3940589548325272</Item>
+      <Item>3940589548325273</Item>
+    </States>
+    <EventLinks count="29">
+      <Item>4222060230123422</Item>
+      <Item>4222060230123423</Item>
+      <Item>4222060230123424</Item>
+      <Item>4222060230123425</Item>
+      <Item>4222060230123426</Item>
+      <Item>4222060230123427</Item>
+      <Item>4222060230123428</Item>
+      <Item>4222060230123429</Item>
+      <Item>4222060230123430</Item>
+      <Item>4222060230123431</Item>
+      <Item>4222060230123432</Item>
+      <Item>4222060230123433</Item>
+      <Item>4222060230123434</Item>
+      <Item>4222060230123435</Item>
+      <Item>4222060230123436</Item>
+      <Item>4222060230123437</Item>
+      <Item>4222060230123438</Item>
+      <Item>4222060230123439</Item>
+      <Item>4222060230123440</Item>
+      <Item>4222060230123441</Item>
+      <Item>4222060230123442</Item>
+      <Item>4222060230123443</Item>
+      <Item>4222060230123444</Item>
+      <Item>4222060230123445</Item>
+      <Item>4222060230123446</Item>
+      <Item>4222060230123447</Item>
+      <Item>4222060230123448</Item>
+      <Item>4222060230123449</Item>
+      <Item>4222060230123450</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140106756</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094777</Owner>
+    <Initial>False</Initial>
+    <Name>Clerk_1_НОВЫЙ</Name>
+    <Parent>4503530911747206</Parent>
+  </Item>
+  <Item id="4785001593352229">
+    <States count="10">
+      <Item>3377648184964105</Item>
+      <Item>3377648184964106</Item>
+      <Item>3940589548325274</Item>
+      <Item>3940589548325275</Item>
+      <Item>3940589548325276</Item>
+      <Item>3940589548325277</Item>
+      <Item>3940589548325278</Item>
+      <Item>3940589548325279</Item>
+      <Item>3940589548325280</Item>
+      <Item>3940589548325281</Item>
+    </States>
+    <EventLinks count="25">
+      <Item>4222060230123451</Item>
+      <Item>4222060230123452</Item>
+      <Item>4222060230123453</Item>
+      <Item>4222060230123454</Item>
+      <Item>4222060230123455</Item>
+      <Item>4222060230123456</Item>
+      <Item>4222060230123457</Item>
+      <Item>4222060230123458</Item>
+      <Item>4222060230123459</Item>
+      <Item>4222060230123460</Item>
+      <Item>4222060230123461</Item>
+      <Item>4222060230123462</Item>
+      <Item>4222060230123463</Item>
+      <Item>4222060230123464</Item>
+      <Item>4222060230123465</Item>
+      <Item>4222060230123466</Item>
+      <Item>4222060230123467</Item>
+      <Item>4222060230123468</Item>
+      <Item>4222060230123469</Item>
+      <Item>4222060230123470</Item>
+      <Item>4222060230123471</Item>
+      <Item>4222060230123472</Item>
+      <Item>4222060230123473</Item>
+      <Item>4222060230123474</Item>
+      <Item>4222060230123475</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140106768</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094777</Owner>
+    <Initial>False</Initial>
+    <Name>Clerk_3_НОВЫЙ</Name>
+    <Parent>4503530911747206</Parent>
+  </Item>
+  <Item id="4785001593352230">
+    <States count="4">
+      <Item>3377648184964107</Item>
+      <Item>3940589548325282</Item>
+      <Item>3940589548325283</Item>
+      <Item>3940589548325284</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230123576</Item>
+      <Item>4222060230123577</Item>
+      <Item>4222060230123578</Item>
+      <Item>4222060230123579</Item>
+      <Item>4222060230123580</Item>
+      <Item>4222060230123581</Item>
+      <Item>4222060230123582</Item>
+      <Item>4222060230123583</Item>
+      <Item>4222060230123584</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140106779</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094777</Owner>
+    <Initial>False</Initial>
+    <Name>TragedianClerk_1_НОВЫЙ</Name>
+    <Parent>4503530911747206</Parent>
+  </Item>
+  <Item id="4785001593352726">
+    <States count="4">
+      <Item>3377648184964601</Item>
+      <Item>3940589548325751</Item>
+      <Item>3940589548325752</Item>
+      <Item>3940589548325753</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230123976</Item>
+      <Item>4222060230123977</Item>
+      <Item>4222060230123978</Item>
+      <Item>4222060230123979</Item>
+      <Item>4222060230123980</Item>
+      <Item>4222060230123981</Item>
+      <Item>4222060230123982</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140107227</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666628</Owner>
+    <Initial>False</Initial>
+    <Name>Odong_Slayer_1_talking_105</Name>
+    <Parent>4503530911705800</Parent>
+  </Item>
+  <Item id="4785001593352727">
+    <States count="3">
+      <Item>3377648184964602</Item>
+      <Item>3940589548325754</Item>
+      <Item>3940589548325755</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230123984</Item>
+      <Item>4222060230123985</Item>
+      <Item>4222060230123986</Item>
+      <Item>4222060230123987</Item>
+      <Item>4222060230123988</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140107234</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666629</Owner>
+    <Initial>False</Initial>
+    <Name>Odong_Slayer_2_talking_106</Name>
+    <Parent>4503530911705802</Parent>
+  </Item>
+  <Item id="4785001593352728">
+    <States count="8">
+      <Item>3377648184964603</Item>
+      <Item>3377648184964605</Item>
+      <Item>3940589548325758</Item>
+      <Item>3940589548325759</Item>
+      <Item>3940589548325766</Item>
+      <Item>3940589548325767</Item>
+      <Item>3940589548325768</Item>
+      <Item>3940589548325769</Item>
+    </States>
+    <EventLinks count="14">
+      <Item>4222060230123996</Item>
+      <Item>4222060230124001</Item>
+      <Item>4222060230124002</Item>
+      <Item>4222060230124003</Item>
+      <Item>4222060230124004</Item>
+      <Item>4222060230124019</Item>
+      <Item>4222060230124020</Item>
+      <Item>4222060230124021</Item>
+      <Item>4222060230124022</Item>
+      <Item>4222060230124023</Item>
+      <Item>4222060230124024</Item>
+      <Item>4222060230124025</Item>
+      <Item>4222060230124026</Item>
+      <Item>4222060230124027</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140107244</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666615</Owner>
+    <Initial>False</Initial>
+    <Name>BoyForPharmacy_talking_After</Name>
+    <Parent>4503530911705779</Parent>
+  </Item>
+  <Item id="4785001593354626">
+    <States count="2">
+      <Item>3377648184966513</Item>
+      <Item>3940589548327651</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230125956</Item>
+      <Item>4222060230125959</Item>
+      <Item>4222060230125964</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140109208</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666615</Owner>
+    <Initial>False</Initial>
+    <Name>BoyForPharmacy_talking_Waiting</Name>
+    <Parent>4503530911705779</Parent>
+  </Item>
+  <Item id="4785001593364126">
+    <States count="10">
+      <Item>3377648184976001</Item>
+      <Item>3940589548337173</Item>
+      <Item>3940589548337174</Item>
+      <Item>3940589548337175</Item>
+      <Item>3940589548337176</Item>
+      <Item>3940589548337177</Item>
+      <Item>3940589548337178</Item>
+      <Item>3940589548337179</Item>
+      <Item>3940589548337180</Item>
+      <Item>3940589548337181</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230135476</Item>
+      <Item>4222060230135509</Item>
+      <Item>4222060230135510</Item>
+      <Item>4222060230135511</Item>
+      <Item>4222060230135512</Item>
+      <Item>4222060230135513</Item>
+      <Item>4222060230135514</Item>
+      <Item>4222060230135515</Item>
+      <Item>4222060230135516</Item>
+      <Item>4222060230135517</Item>
+      <Item>4222060230135518</Item>
+      <Item>4222060230135519</Item>
+      <Item>4222060230135520</Item>
+      <Item>4222060230135521</Item>
+      <Item>4222060230135522</Item>
+      <Item>4222060230135538</Item>
+      <Item>4222060230135539</Item>
+      <Item>4222060230135540</Item>
+      <Item>4222060230220978</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140118727</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666624</Owner>
+    <Initial>False</Initial>
+    <Name>Sticky_NaughtyChildren_Meeting</Name>
+    <Parent>4503530911705791</Parent>
+  </Item>
+  <Item id="4785001593364826">
+    <States count="11">
+      <Item>3377648184976701</Item>
+      <Item>3940589548337903</Item>
+      <Item>3940589548337904</Item>
+      <Item>3940589548337905</Item>
+      <Item>3940589548337906</Item>
+      <Item>3940589548337907</Item>
+      <Item>3940589548337908</Item>
+      <Item>3940589548337909</Item>
+      <Item>3940589548337910</Item>
+      <Item>3940589548337911</Item>
+      <Item>3940589548337912</Item>
+    </States>
+    <EventLinks count="26">
+      <Item>4222060230136177</Item>
+      <Item>4222060230136256</Item>
+      <Item>4222060230136257</Item>
+      <Item>4222060230136258</Item>
+      <Item>4222060230136259</Item>
+      <Item>4222060230136260</Item>
+      <Item>4222060230136261</Item>
+      <Item>4222060230136262</Item>
+      <Item>4222060230136263</Item>
+      <Item>4222060230136264</Item>
+      <Item>4222060230136266</Item>
+      <Item>4222060230136267</Item>
+      <Item>4222060230136268</Item>
+      <Item>4222060230136269</Item>
+      <Item>4222060230136270</Item>
+      <Item>4222060230136271</Item>
+      <Item>4222060230136272</Item>
+      <Item>4222060230136273</Item>
+      <Item>4222060230136274</Item>
+      <Item>4222060230136275</Item>
+      <Item>4222060230136476</Item>
+      <Item>4222060230136477</Item>
+      <Item>4222060230136478</Item>
+      <Item>4222060230136479</Item>
+      <Item>4222060230136480</Item>
+      <Item>4222060230136481</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140119429</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666624</Owner>
+    <Initial>False</Initial>
+    <Name>Sticky_NaughtyChildren_Secondary</Name>
+    <Parent>4503530911705791</Parent>
+  </Item>
+  <Item id="4785001593367526">
+    <States count="13">
+      <Item>3377648184979401</Item>
+      <Item>3940589548340551</Item>
+      <Item>3940589548340552</Item>
+      <Item>3940589548340553</Item>
+      <Item>3940589548340554</Item>
+      <Item>3940589548340555</Item>
+      <Item>3940589548340556</Item>
+      <Item>3940589548340557</Item>
+      <Item>3940589548340558</Item>
+      <Item>3940589548340559</Item>
+      <Item>3940589548340560</Item>
+      <Item>3940589548340561</Item>
+      <Item>3940589548340562</Item>
+    </States>
+    <EventLinks count="24">
+      <Item>4222060230139076</Item>
+      <Item>4222060230139077</Item>
+      <Item>4222060230139078</Item>
+      <Item>4222060230139079</Item>
+      <Item>4222060230139080</Item>
+      <Item>4222060230139081</Item>
+      <Item>4222060230139082</Item>
+      <Item>4222060230139083</Item>
+      <Item>4222060230139084</Item>
+      <Item>4222060230139085</Item>
+      <Item>4222060230139086</Item>
+      <Item>4222060230139087</Item>
+      <Item>4222060230139088</Item>
+      <Item>4222060230139089</Item>
+      <Item>4222060230139090</Item>
+      <Item>4222060230139091</Item>
+      <Item>4222060230139092</Item>
+      <Item>4222060230139093</Item>
+      <Item>4222060230139094</Item>
+      <Item>4222060230139095</Item>
+      <Item>4222060230139096</Item>
+      <Item>4222060230139097</Item>
+      <Item>4222060230139098</Item>
+      <Item>4222060230139099</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140122226</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666580</Owner>
+    <Initial>False</Initial>
+    <Name>NazloSleepyHead_НОВЫЙ</Name>
+    <Parent>4503530911705723</Parent>
+  </Item>
+  <Item id="4785001593368826">
+    <States count="16">
+      <Item>3377648184980702</Item>
+      <Item>3940589548341851</Item>
+      <Item>3940589548341852</Item>
+      <Item>3940589548341853</Item>
+      <Item>3940589548341854</Item>
+      <Item>3940589548341855</Item>
+      <Item>3940589548341856</Item>
+      <Item>3940589548341857</Item>
+      <Item>3940589548341858</Item>
+      <Item>3940589548341859</Item>
+      <Item>3940589548341860</Item>
+      <Item>3940589548341861</Item>
+      <Item>3940589548341862</Item>
+      <Item>3940589548341863</Item>
+      <Item>3940589548341864</Item>
+      <Item>3940589548341865</Item>
+    </States>
+    <EventLinks count="35">
+      <Item>4222060230140397</Item>
+      <Item>4222060230140398</Item>
+      <Item>4222060230140399</Item>
+      <Item>4222060230140400</Item>
+      <Item>4222060230140401</Item>
+      <Item>4222060230140402</Item>
+      <Item>4222060230140403</Item>
+      <Item>4222060230140404</Item>
+      <Item>4222060230140405</Item>
+      <Item>4222060230140406</Item>
+      <Item>4222060230140407</Item>
+      <Item>4222060230140408</Item>
+      <Item>4222060230140409</Item>
+      <Item>4222060230140410</Item>
+      <Item>4222060230140411</Item>
+      <Item>4222060230140412</Item>
+      <Item>4222060230140413</Item>
+      <Item>4222060230140414</Item>
+      <Item>4222060230140415</Item>
+      <Item>4222060230140416</Item>
+      <Item>4222060230140417</Item>
+      <Item>4222060230140418</Item>
+      <Item>4222060230140419</Item>
+      <Item>4222060230140420</Item>
+      <Item>4222060230140421</Item>
+      <Item>4222060230140422</Item>
+      <Item>4222060230140423</Item>
+      <Item>4222060230140424</Item>
+      <Item>4222060230140425</Item>
+      <Item>4222060230140426</Item>
+      <Item>4222060230140427</Item>
+      <Item>4222060230140428</Item>
+      <Item>4222060230140429</Item>
+      <Item>4222060230140447</Item>
+      <Item>4222060230140451</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140123560</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666579</Owner>
+    <Initial>False</Initial>
+    <Name>Белка_Meeting</Name>
+    <Parent>4503530911705719</Parent>
+  </Item>
+  <Item id="4785001593368827">
+    <States count="11">
+      <Item>3377648184980703</Item>
+      <Item>3940589548341892</Item>
+      <Item>3940589548341893</Item>
+      <Item>3940589548341894</Item>
+      <Item>3940589548341895</Item>
+      <Item>3940589548341896</Item>
+      <Item>3940589548341897</Item>
+      <Item>3940589548341898</Item>
+      <Item>3940589548341899</Item>
+      <Item>3940589548341900</Item>
+      <Item>3940589548341901</Item>
+    </States>
+    <EventLinks count="21">
+      <Item>4222060230140452</Item>
+      <Item>4222060230141082</Item>
+      <Item>4222060230141084</Item>
+      <Item>4222060230141085</Item>
+      <Item>4222060230141086</Item>
+      <Item>4222060230141087</Item>
+      <Item>4222060230141088</Item>
+      <Item>4222060230141089</Item>
+      <Item>4222060230141090</Item>
+      <Item>4222060230141091</Item>
+      <Item>4222060230141092</Item>
+      <Item>4222060230141093</Item>
+      <Item>4222060230141094</Item>
+      <Item>4222060230141095</Item>
+      <Item>4222060230141096</Item>
+      <Item>4222060230141097</Item>
+      <Item>4222060230141098</Item>
+      <Item>4222060230141099</Item>
+      <Item>4222060230141100</Item>
+      <Item>4222060230141101</Item>
+      <Item>4222060230141106</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140123589</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666579</Owner>
+    <Initial>False</Initial>
+    <Name>Белка_Secondary</Name>
+    <Parent>4503530911705719</Parent>
+  </Item>
+  <Item id="4785001593373227">
+    <States count="9">
+      <Item>3377648184985107</Item>
+      <Item>3377648184985108</Item>
+      <Item>3940589548346261</Item>
+      <Item>3940589548346262</Item>
+      <Item>3940589548346263</Item>
+      <Item>3940589548346264</Item>
+      <Item>3940589548346265</Item>
+      <Item>3940589548346266</Item>
+      <Item>3940589548346267</Item>
+    </States>
+    <EventLinks count="19">
+      <Item>4222060230145059</Item>
+      <Item>4222060230145060</Item>
+      <Item>4222060230145061</Item>
+      <Item>4222060230145062</Item>
+      <Item>4222060230145063</Item>
+      <Item>4222060230145064</Item>
+      <Item>4222060230145065</Item>
+      <Item>4222060230145066</Item>
+      <Item>4222060230145067</Item>
+      <Item>4222060230145068</Item>
+      <Item>4222060230145069</Item>
+      <Item>4222060230145070</Item>
+      <Item>4222060230145071</Item>
+      <Item>4222060230145072</Item>
+      <Item>4222060230145073</Item>
+      <Item>4222060230145074</Item>
+      <Item>4222060230145075</Item>
+      <Item>4222060230145976</Item>
+      <Item>4222060230145977</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140128115</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666591</Owner>
+    <Initial>False</Initial>
+    <Name>Bride_Wife_Aftermath</Name>
+    <Parent>4503530911705743</Parent>
+  </Item>
+  <Item id="4785001593374426">
+    <States count="3">
+      <Item>3377648184986301</Item>
+      <Item>3940589548347451</Item>
+      <Item>3940589548347452</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230146310</Item>
+      <Item>4222060230146311</Item>
+      <Item>4222060230146312</Item>
+      <Item>4222060230146313</Item>
+      <Item>4222060230146314</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140129362</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666579</Owner>
+    <Initial>False</Initial>
+    <Name>Shrew_Финал_ НОВЫЙ</Name>
+    <Parent>4503530911705719</Parent>
+  </Item>
+  <Item id="4785001593374427">
+    <States count="2">
+      <Item>3377648184986302</Item>
+      <Item>3940589548347453</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230146319</Item>
+      <Item>4222060230146320</Item>
+      <Item>4222060230146321</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140129370</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666580</Owner>
+    <Initial>False</Initial>
+    <Name>NazloSleepyHead_Финал</Name>
+    <Parent>4503530911705723</Parent>
+  </Item>
+  <Item id="4785001593379526">
+    <States count="2">
+      <Item>3377648184991403</Item>
+      <Item>3940589548352551</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230151412</Item>
+      <Item>4222060230151413</Item>
+      <Item>4222060230151414</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140134463</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666596</Owner>
+    <Initial>False</Initial>
+    <Name>Bride_1_talking_304_Backup2410</Name>
+    <Parent>4503530911705749</Parent>
+  </Item>
+  <Item id="4785001593387926">
+    <States count="7">
+      <Item>3377648184999802</Item>
+      <Item>3940589548360951</Item>
+      <Item>3940589548360952</Item>
+      <Item>3940589548360953</Item>
+      <Item>3940589548360954</Item>
+      <Item>3940589548360955</Item>
+      <Item>3940589548396251</Item>
+    </States>
+    <EventLinks count="16">
+      <Item>4222060230159819</Item>
+      <Item>4222060230159820</Item>
+      <Item>4222060230159821</Item>
+      <Item>4222060230159822</Item>
+      <Item>4222060230159823</Item>
+      <Item>4222060230159824</Item>
+      <Item>4222060230159825</Item>
+      <Item>4222060230159826</Item>
+      <Item>4222060230159827</Item>
+      <Item>4222060230159828</Item>
+      <Item>4222060230159829</Item>
+      <Item>4222060230159830</Item>
+      <Item>4222060230196712</Item>
+      <Item>4222060230196713</Item>
+      <Item>4222060230220980</Item>
+      <Item>4222060230220981</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140142883</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956743977</Owner>
+    <Initial>False</Initial>
+    <Name>GraveMan_Changes</Name>
+    <Parent>4503530911782815</Parent>
+  </Item>
+  <Item id="4785001593389726">
+    <States count="4">
+      <Item>3377648185001601</Item>
+      <Item>3940589548362751</Item>
+      <Item>3940589548362752</Item>
+      <Item>3940589548362753</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230161577</Item>
+      <Item>4222060230161578</Item>
+      <Item>4222060230161579</Item>
+      <Item>4222060230161580</Item>
+      <Item>4222060230161581</Item>
+      <Item>4222060230161582</Item>
+      <Item>4222060230161583</Item>
+      <Item>4222060230161584</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140144628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666633</Owner>
+    <Initial>False</Initial>
+    <Name>NumberTwelve_До финала_НОВЫЙ</Name>
+    <Parent>4503530911705809</Parent>
+  </Item>
+  <Item id="4785001593389727">
+    <States count="4">
+      <Item>3377648185001602</Item>
+      <Item>3940589548362754</Item>
+      <Item>3940589548362755</Item>
+      <Item>3940589548362756</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230161585</Item>
+      <Item>4222060230161586</Item>
+      <Item>4222060230161587</Item>
+      <Item>4222060230161588</Item>
+      <Item>4222060230161589</Item>
+      <Item>4222060230161590</Item>
+      <Item>4222060230161591</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140144633</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666633</Owner>
+    <Initial>False</Initial>
+    <Name>NumberTwelve_Финал_НОВЫЙ</Name>
+    <Parent>4503530911705809</Parent>
+  </Item>
+  <Item id="4785001593389728">
+    <States count="5">
+      <Item>3377648185001603</Item>
+      <Item>3940589548362757</Item>
+      <Item>3940589548362758</Item>
+      <Item>3940589548362759</Item>
+      <Item>3940589548362760</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230161597</Item>
+      <Item>4222060230161598</Item>
+      <Item>4222060230161599</Item>
+      <Item>4222060230161600</Item>
+      <Item>4222060230161601</Item>
+      <Item>4222060230161602</Item>
+      <Item>4222060230161603</Item>
+      <Item>4222060230161604</Item>
+      <Item>4222060230161605</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140144643</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666643</Owner>
+    <Initial>False</Initial>
+    <Name>SignalBonfire_Patrolman_Disassembly</Name>
+    <Parent>4503530911705820</Parent>
+  </Item>
+  <Item id="4785001593389729">
+    <States count="3">
+      <Item>3377648185001604</Item>
+      <Item>3940589548362761</Item>
+      <Item>3940589548362762</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230161606</Item>
+      <Item>4222060230161607</Item>
+      <Item>4222060230161608</Item>
+      <Item>4222060230161609</Item>
+      <Item>4222060230161610</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140144649</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666643</Owner>
+    <Initial>False</Initial>
+    <Name>SignalBonfire_Patrolman_Assembly</Name>
+    <Parent>4503530911705820</Parent>
+  </Item>
+  <Item id="4785001593408126">
+    <States count="4">
+      <Item>3377648185020002</Item>
+      <Item>3940589548381160</Item>
+      <Item>3940589548381161</Item>
+      <Item>3940589548381162</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230180095</Item>
+      <Item>4222060230180096</Item>
+      <Item>4222060230180097</Item>
+      <Item>4222060230180098</Item>
+      <Item>4222060230180127</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163133</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Lepers</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408130">
+    <States count="4">
+      <Item>3377648185020038</Item>
+      <Item>3940589548381243</Item>
+      <Item>3940589548381244</Item>
+      <Item>3940589548381245</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230180433</Item>
+      <Item>4222060230180435</Item>
+      <Item>4222060230180436</Item>
+      <Item>4222060230180437</Item>
+      <Item>4222060230180438</Item>
+      <Item>4222060230180448</Item>
+      <Item>4222060230180449</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163353</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Hospital</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408131">
+    <States count="2">
+      <Item>3377648185020039</Item>
+      <Item>3940589548381351</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230180457</Item>
+      <Item>4222060230180458</Item>
+      <Item>4222060230180487</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163375</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Hunger</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408132">
+    <States count="4">
+      <Item>3377648185020040</Item>
+      <Item>3940589548381376</Item>
+      <Item>3940589548381377</Item>
+      <Item>3940589548381379</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230180503</Item>
+      <Item>4222060230180504</Item>
+      <Item>4222060230180505</Item>
+      <Item>4222060230180506</Item>
+      <Item>4222060230180526</Item>
+      <Item>4222060230180531</Item>
+      <Item>4222060230180532</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163397</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Cathedral</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408133">
+    <States count="3">
+      <Item>3377648185020041</Item>
+      <Item>3940589548381392</Item>
+      <Item>3940589548381393</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230180537</Item>
+      <Item>4222060230180538</Item>
+      <Item>4222060230180539</Item>
+      <Item>4222060230180540</Item>
+      <Item>4222060230180565</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163419</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Quarantine</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408134">
+    <States count="4">
+      <Item>3377648185020042</Item>
+      <Item>3940589548381414</Item>
+      <Item>3940589548381415</Item>
+      <Item>3940589548381429</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230180580</Item>
+      <Item>4222060230180590</Item>
+      <Item>4222060230180604</Item>
+      <Item>4222060230180606</Item>
+      <Item>4222060230180607</Item>
+      <Item>4222060230180608</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163441</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_BeforePlague_Default</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408135">
+    <States count="4">
+      <Item>3377648185020043</Item>
+      <Item>3940589548381446</Item>
+      <Item>3940589548381447</Item>
+      <Item>3940589548381448</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230180634</Item>
+      <Item>4222060230180635</Item>
+      <Item>4222060230180636</Item>
+      <Item>4222060230180637</Item>
+      <Item>4222060230180638</Item>
+      <Item>4222060230180639</Item>
+      <Item>4222060230180640</Item>
+      <Item>4222060230180643</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163463</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Pharmacy</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408136">
+    <States count="3">
+      <Item>3377648185020044</Item>
+      <Item>3940589548381458</Item>
+      <Item>3940589548381470</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230180680</Item>
+      <Item>4222060230180681</Item>
+      <Item>4222060230180682</Item>
+      <Item>4222060230180689</Item>
+      <Item>4222060230180690</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163485</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Izek_Plague</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408139">
+    <States count="2">
+      <Item>3377648185020065</Item>
+      <Item>3940589548381505</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230180813</Item>
+      <Item>4222060230180815</Item>
+      <Item>4222060230180828</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163563</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Hunger</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408140">
+    <States count="3">
+      <Item>3377648185020067</Item>
+      <Item>3940589548381523</Item>
+      <Item>3940589548381524</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230180858</Item>
+      <Item>4222060230180860</Item>
+      <Item>4222060230180861</Item>
+      <Item>4222060230180862</Item>
+      <Item>4222060230180870</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163583</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Quarantine</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408141">
+    <States count="5">
+      <Item>3377648185020069</Item>
+      <Item>3940589548381552</Item>
+      <Item>3940589548381553</Item>
+      <Item>3940589548381554</Item>
+      <Item>3940589548381555</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230180912</Item>
+      <Item>4222060230180930</Item>
+      <Item>4222060230180931</Item>
+      <Item>4222060230180932</Item>
+      <Item>4222060230180933</Item>
+      <Item>4222060230180934</Item>
+      <Item>4222060230180935</Item>
+      <Item>4222060230180936</Item>
+      <Item>4222060230180937</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163603</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Resources</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408142">
+    <States count="4">
+      <Item>3377648185020071</Item>
+      <Item>3940589548381559</Item>
+      <Item>3940589548381560</Item>
+      <Item>3940589548381561</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230180945</Item>
+      <Item>4222060230180946</Item>
+      <Item>4222060230180947</Item>
+      <Item>4222060230180948</Item>
+      <Item>4222060230180949</Item>
+      <Item>4222060230180950</Item>
+      <Item>4222060230180951</Item>
+      <Item>4222060230180952</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163623</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Carrier</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408143">
+    <States count="3">
+      <Item>3377648185020072</Item>
+      <Item>3940589548381584</Item>
+      <Item>3940589548381585</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230180991</Item>
+      <Item>4222060230180998</Item>
+      <Item>4222060230180999</Item>
+      <Item>4222060230181000</Item>
+      <Item>4222060230181001</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163642</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Slough</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408144">
+    <States count="4">
+      <Item>3377648185020073</Item>
+      <Item>3940589548381597</Item>
+      <Item>3940589548381598</Item>
+      <Item>3940589548381599</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230181030</Item>
+      <Item>4222060230181031</Item>
+      <Item>4222060230181032</Item>
+      <Item>4222060230181033</Item>
+      <Item>4222060230181034</Item>
+      <Item>4222060230181043</Item>
+      <Item>4222060230181045</Item>
+      <Item>4222060230181046</Item>
+      <Item>4222060230181047</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163661</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_DiceTragedians</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408145">
+    <States count="2">
+      <Item>3377648185020074</Item>
+      <Item>3940589548381613</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060230181069</Item>
+      <Item>4222060230181280</Item>
+      <Item>4222060230181281</Item>
+      <Item>4222060230181283</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163680</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_BeforePlague_Default</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408146">
+    <States count="2">
+      <Item>3377648185020075</Item>
+      <Item>3940589548381634</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230181308</Item>
+      <Item>4222060230181313</Item>
+      <Item>4222060230181314</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140163699</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Lady_Plague</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408149">
+    <States count="4">
+      <Item>3377648185020092</Item>
+      <Item>3940589548382101</Item>
+      <Item>3940589548382102</Item>
+      <Item>3940589548382103</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230181684</Item>
+      <Item>4222060230181697</Item>
+      <Item>4222060230181699</Item>
+      <Item>4222060230181700</Item>
+      <Item>4222060230181701</Item>
+      <Item>4222060230181702</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164182</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Neighbor</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408150">
+    <States count="6">
+      <Item>3377648185020094</Item>
+      <Item>3940589548382118</Item>
+      <Item>3940589548382119</Item>
+      <Item>3940589548382120</Item>
+      <Item>3940589548382121</Item>
+      <Item>3940589548382131</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230181737</Item>
+      <Item>4222060230181739</Item>
+      <Item>4222060230181740</Item>
+      <Item>4222060230181741</Item>
+      <Item>4222060230181742</Item>
+      <Item>4222060230181743</Item>
+      <Item>4222060230181744</Item>
+      <Item>4222060230181768</Item>
+      <Item>4222060230181769</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164208</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Cathedral_After</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408151">
+    <States count="4">
+      <Item>3377648185020096</Item>
+      <Item>3940589548382150</Item>
+      <Item>3940589548382151</Item>
+      <Item>3940589548382152</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060230181790</Item>
+      <Item>4222060230181809</Item>
+      <Item>4222060230181810</Item>
+      <Item>4222060230181811</Item>
+      <Item>4222060230181812</Item>
+      <Item>4222060230181813</Item>
+      <Item>4222060230181814</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164234</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Hospital</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408152">
+    <States count="2">
+      <Item>3377648185020098</Item>
+      <Item>3940589548382156</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230181829</Item>
+      <Item>4222060230181830</Item>
+      <Item>4222060230181843</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164260</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Hunger</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408153">
+    <States count="3">
+      <Item>3377648185020100</Item>
+      <Item>3940589548382180</Item>
+      <Item>3940589548382181</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230181884</Item>
+      <Item>4222060230181886</Item>
+      <Item>4222060230181887</Item>
+      <Item>4222060230181896</Item>
+      <Item>4222060230181934</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164286</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Quarantine</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408154">
+    <States count="2">
+      <Item>3377648185020602</Item>
+      <Item>3940589548382215</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060230181949</Item>
+      <Item>4222060230181960</Item>
+      <Item>4222060230181961</Item>
+      <Item>4222060230181986</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164312</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_BeforePlague_Default</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408155">
+    <States count="4">
+      <Item>3377648185020604</Item>
+      <Item>3940589548382232</Item>
+      <Item>3940589548382237</Item>
+      <Item>3940589548382247</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230182002</Item>
+      <Item>4222060230182003</Item>
+      <Item>4222060230182010</Item>
+      <Item>4222060230182011</Item>
+      <Item>4222060230182012</Item>
+      <Item>4222060230182035</Item>
+      <Item>4222060230182036</Item>
+      <Item>4222060230182037</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164338</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Cathedral_Before</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408156">
+    <States count="3">
+      <Item>3377648185020606</Item>
+      <Item>3940589548382354</Item>
+      <Item>3940589548382368</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230182055</Item>
+      <Item>4222060230182180</Item>
+      <Item>4222060230182181</Item>
+      <Item>4222060230182182</Item>
+      <Item>4222060230182191</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164364</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Plague</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408157">
+    <States count="4">
+      <Item>3377648185020608</Item>
+      <Item>3940589548382374</Item>
+      <Item>3940589548382375</Item>
+      <Item>3940589548382376</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230182200</Item>
+      <Item>4222060230182201</Item>
+      <Item>4222060230182202</Item>
+      <Item>4222060230182203</Item>
+      <Item>4222060230182204</Item>
+      <Item>4222060230182205</Item>
+      <Item>4222060230182206</Item>
+      <Item>4222060230182207</Item>
+      <Item>4222060230182208</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164390</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Marat_Carrier</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408161">
+    <States count="2">
+      <Item>3377648185020638</Item>
+      <Item>3940589548382441</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230182416</Item>
+      <Item>4222060230182417</Item>
+      <Item>4222060230182422</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164594</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Hunger</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408162">
+    <States count="5">
+      <Item>3377648185020639</Item>
+      <Item>3940589548382465</Item>
+      <Item>3940589548382467</Item>
+      <Item>3940589548382468</Item>
+      <Item>3940589548382469</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230182454</Item>
+      <Item>4222060230182474</Item>
+      <Item>4222060230182475</Item>
+      <Item>4222060230182476</Item>
+      <Item>4222060230182477</Item>
+      <Item>4222060230182478</Item>
+      <Item>4222060230182479</Item>
+      <Item>4222060230182480</Item>
+      <Item>4222060230182481</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164611</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Resources</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408163">
+    <States count="3">
+      <Item>3377648185020640</Item>
+      <Item>3940589548382470</Item>
+      <Item>3940589548382471</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230182482</Item>
+      <Item>4222060230182483</Item>
+      <Item>4222060230182484</Item>
+      <Item>4222060230182485</Item>
+      <Item>4222060230182486</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164627</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Quarantine</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408164">
+    <States count="3">
+      <Item>3377648185020641</Item>
+      <Item>3940589548382481</Item>
+      <Item>3940589548382482</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060230182506</Item>
+      <Item>4222060230182507</Item>
+      <Item>4222060230182508</Item>
+      <Item>4222060230182514</Item>
+      <Item>4222060230182515</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164639</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Cathedral</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408165">
+    <States count="3">
+      <Item>3377648185020642</Item>
+      <Item>3940589548382492</Item>
+      <Item>3940589548382493</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230182526</Item>
+      <Item>4222060230182531</Item>
+      <Item>4222060230182532</Item>
+      <Item>4222060230182533</Item>
+      <Item>4222060230182534</Item>
+      <Item>4222060230182535</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164649</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_DiceTragedians</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408166">
+    <States count="2">
+      <Item>3377648185020643</Item>
+      <Item>3940589548382494</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060230182542</Item>
+      <Item>4222060230182543</Item>
+      <Item>4222060230182544</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164657</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_BeforePlague_Default</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408167">
+    <States count="3">
+      <Item>3377648185020644</Item>
+      <Item>3940589548382499</Item>
+      <Item>3940589548382500</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060230182553</Item>
+      <Item>4222060230182554</Item>
+      <Item>4222060230182555</Item>
+      <Item>4222060230182556</Item>
+      <Item>4222060230182557</Item>
+      <Item>4222060230182558</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164663</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Pharmacy</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593408168">
+    <States count="2">
+      <Item>3377648185020645</Item>
+      <Item>3940589548382501</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060230182562</Item>
+      <Item>4222060230182563</Item>
+      <Item>4222060230182564</Item>
+      <Item>4222060230182565</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140164668</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Martha_Plague</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593415026">
+    <States count="4">
+      <Item>3377648185027003</Item>
+      <Item>3940589548388651</Item>
+      <Item>3940589548388652</Item>
+      <Item>3940589548388653</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060230188855</Item>
+      <Item>4222060230188856</Item>
+      <Item>4222060230188857</Item>
+      <Item>4222060230188858</Item>
+      <Item>4222060230188859</Item>
+      <Item>4222060230188860</Item>
+      <Item>4222060230188861</Item>
+      <Item>4222060230188862</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140171121</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666630</Owner>
+    <Initial>False</Initial>
+    <Name>Ospina_Final_НОВЫЙ</Name>
+    <Parent>4503530911705804</Parent>
+  </Item>
+  <Item id="4785001593415027">
+    <States count="5">
+      <Item>3377648185027004</Item>
+      <Item>3940589548388654</Item>
+      <Item>3940589548388655</Item>
+      <Item>3940589548388656</Item>
+      <Item>3940589548388657</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060230188863</Item>
+      <Item>4222060230188864</Item>
+      <Item>4222060230188865</Item>
+      <Item>4222060230188866</Item>
+      <Item>4222060230188867</Item>
+      <Item>4222060230188868</Item>
+      <Item>4222060230188869</Item>
+      <Item>4222060230188870</Item>
+      <Item>4222060230188871</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140171726</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666630</Owner>
+    <Initial>False</Initial>
+    <Name>Ospina_Before Final_НОВЫЙ</Name>
+    <Parent>4503530911705804</Parent>
+  </Item>
+  <Item id="4785001593422926">
+    <States count="5">
+      <Item>3377648185034901</Item>
+      <Item>3940589548396551</Item>
+      <Item>3940589548396552</Item>
+      <Item>3940589548396553</Item>
+      <Item>3940589548396554</Item>
+    </States>
+    <EventLinks count="12">
+      <Item>4222060230196987</Item>
+      <Item>4222060230196988</Item>
+      <Item>4222060230196989</Item>
+      <Item>4222060230196990</Item>
+      <Item>4222060230196991</Item>
+      <Item>4222060230196992</Item>
+      <Item>4222060230196993</Item>
+      <Item>4222060230196994</Item>
+      <Item>4222060230196995</Item>
+      <Item>4222060230196996</Item>
+      <Item>4222060230196997</Item>
+      <Item>4222060230196998</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140179238</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708410094776</Owner>
+    <Initial>False</Initial>
+    <Name>Everyone_Funeral</Name>
+    <Parent>4503530911747201</Parent>
+  </Item>
+  <Item id="4785001593435327">
+    <States count="6">
+      <Item>3377648185047302</Item>
+      <Item>3940589548408956</Item>
+      <Item>3940589548408957</Item>
+      <Item>3940589548408958</Item>
+      <Item>3940589548408959</Item>
+      <Item>3940589548408960</Item>
+    </States>
+    <EventLinks count="14">
+      <Item>4222060230209400</Item>
+      <Item>4222060230209401</Item>
+      <Item>4222060230209402</Item>
+      <Item>4222060230209403</Item>
+      <Item>4222060230209404</Item>
+      <Item>4222060230209405</Item>
+      <Item>4222060230209406</Item>
+      <Item>4222060230209407</Item>
+      <Item>4222060230209408</Item>
+      <Item>4222060230209409</Item>
+      <Item>4222060230209410</Item>
+      <Item>4222060230209411</Item>
+      <Item>4222060230209412</Item>
+      <Item>4222060230209413</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236140191643</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956666599</Owner>
+    <Initial>False</Initial>
+    <Name>Odong_3_Heart</Name>
+    <Parent>4503530911705752</Parent>
+  </Item>
+</Root>

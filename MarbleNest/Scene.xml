@@ -1,0 +1,4506 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Scene">
+  <Item id="9851473861695886">
+    <WorldPositionGuid>18446744073709551615</WorldPositionGuid>
+    <EngineTemplateID>f07a62d36c614e82b5be713051f73f3f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>True</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093404479</Item>
+      <Item>7881179093404480</Item>
+      <Item>7881179093404481</Item>
+    </FunctionalComponents>
+    <CustomParams count="2">
+      <Item key="Pathologic_Self">562941397740911</Item>
+      <Item key="Pathologic_state">562941397740912</Item>
+    </CustomParams>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941397749042</Item>
+      <Item key="Location.IsHibernation">562941397749043</Item>
+      <Item key="Location.Player">562941397749044</Item>
+    </StandartParams>
+    <Name>Pathologic</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696233">
+    <WorldPositionGuid />
+    <EngineTemplateID>ffa2f5b46bfc4599b4ea24b3c9a2abd9</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093408321</Item>
+      <Item>7881179093853491</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320050607</Item>
+    </ChildObjects>
+    <CustomParams count="2">
+      <Item key="Milestones_Self">562941397744722</Item>
+      <Item key="Milestones_state">562941397744723</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397753805</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696235">
+    <WorldPositionGuid />
+    <EngineTemplateID>52c445a7276641fd9fc04548b3754afd</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093408346</Item>
+      <Item>7881179093857101</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543799101</Item>
+    </ChildObjects>
+    <CustomParams count="2">
+      <Item key="Room_Ospina_Self">562941397744741</Item>
+      <Item key="Room_Ospina_state">562941397744742</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397753833</Item>
+    </StandartParams>
+    <Name>Room_Ospina</Name>
+    <Parent>10132944543791003</Parent>
+  </Item>
+  <Item id="9851473861696236">
+    <WorldPositionGuid />
+    <EngineTemplateID>be7abe1a723949cfb68b3bc5cbb20f85</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093408353</Item>
+      <Item>7881179093853489</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861696237</Item>
+    </ChildObjects>
+    <CustomParams count="2">
+      <Item key="Sounds_Self">562941397744735</Item>
+      <Item key="Sounds_state">562941397744736</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397753841</Item>
+    </StandartParams>
+    <Name>Sounds</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696237">
+    <WorldPositionGuid />
+    <EngineTemplateID>cb82cc233cb7404480622749f8bf156e</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093408356</Item>
+      <Item>7881179093853490</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543652425</Item>
+    </ChildObjects>
+    <CustomParams count="2">
+      <Item key="Plague_Self">562941397744731</Item>
+      <Item key="Plague_state">562941397744732</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397753845</Item>
+    </StandartParams>
+    <Name>Plague</Name>
+    <Parent>9851473861696236</Parent>
+  </Item>
+  <Item id="9851473861696258">
+    <WorldPositionGuid />
+    <EngineTemplateID>c1e406056e824da5a8fde8206bf4be6b</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="1">
+      <Item>7881179093408559</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911705975</EventGraph>
+    <CustomParams count="2">
+      <Item key="Plague_Clouds_Self">562941397744932</Item>
+      <Item key="Plague_Clouds_state">562941397744933</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397754087</Item>
+    </StandartParams>
+    <Name>Plague_Clouds</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696259">
+    <WorldPositionGuid />
+    <EngineTemplateID>265facb6f88e43fabc22c1b25c7619b6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="1">
+      <Item>7881179093408577</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911705976</EventGraph>
+    <CustomParams count="2">
+      <Item key="Sounds_Self">562941397744982</Item>
+      <Item key="Sounds_state">562941397744983</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397754111</Item>
+    </StandartParams>
+    <Name>Sounds</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696260">
+    <WorldPositionGuid />
+    <EngineTemplateID>e0a801fa81c84966abbc60c162ddfbcc</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="1">
+      <Item>7881179093408580</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911705977</EventGraph>
+    <CustomParams count="2">
+      <Item key="Graves_Cowbells_Self">562941397744978</Item>
+      <Item key="Graves_Cowbells_state">562941397744979</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397754115</Item>
+    </StandartParams>
+    <Name>Graves_Cowbells</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861696281">
+    <WorldPositionGuid />
+    <EngineTemplateID>713f3fdf59ba469d95dd1f9b9dcaec43</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093408798</Item>
+      <Item>7881179093853488</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911706019</EventGraph>
+    <ChildObjects count="2">
+      <Item>5629413638409695</Item>
+      <Item>10132944543799102</Item>
+    </ChildObjects>
+    <CustomParams count="2">
+      <Item key="Hallway_Self">562941397745166</Item>
+      <Item key="Hallway_state">562941397745167</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397754398</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>10132944543791003</Parent>
+  </Item>
+  <Item id="9851473861708076">
+    <WorldPositionGuid />
+    <EngineTemplateID>47a89431e26f4889906090271ce0bd2a</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093546101</Item>
+      <Item>7881179093546102</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543694002</Item>
+      <Item>10132944543694018</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398023751</Item>
+    </StandartParams>
+    <Name>OutdoorCrowds</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708078">
+    <WorldPositionGuid />
+    <EngineTemplateID>5fbfbad7358649168d6d225de3d069eb</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093546183</Item>
+      <Item>7881179093546184</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543694036</Item>
+      <Item>10132944543694039</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398023889</Item>
+    </StandartParams>
+    <Name>CharacterQuestSoundEffects</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708079">
+    <WorldPositionGuid />
+    <EngineTemplateID>99b2d9d77f574ceba5e10b630e151a09</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093546209</Item>
+      <Item>7881179093546210</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543694044</Item>
+      <Item>10132944543694047</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398023938</Item>
+    </StandartParams>
+    <Name>ServiceBlueprints</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708081">
+    <WorldPositionGuid />
+    <EngineTemplateID>c3a3b7a02f9b47109cbe107541d7fadd</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093546245</Item>
+      <Item>7881179093546246</Item>
+    </FunctionalComponents>
+    <ChildObjects count="6">
+      <Item>10132944543694059</Item>
+      <Item>10132944543694060</Item>
+      <Item>10132944543694061</Item>
+      <Item>10132944543694063</Item>
+      <Item>10132944543694064</Item>
+      <Item>10132944543694066</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398024004</Item>
+    </StandartParams>
+    <Name>CharacterEffects</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708083">
+    <WorldPositionGuid />
+    <EngineTemplateID>eb33a0d44efd4b06bde0afc536a52fef</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093546295</Item>
+      <Item>7881179093546296</Item>
+    </FunctionalComponents>
+    <ChildObjects count="22">
+      <Item>9851473861708084</Item>
+      <Item>9851473861708129</Item>
+      <Item>9851473861708143</Item>
+      <Item>9851473861709111</Item>
+      <Item>9851473861793576</Item>
+      <Item>9851473861793589</Item>
+      <Item>9851473861794176</Item>
+      <Item>9851473861806676</Item>
+      <Item>9851473861806677</Item>
+      <Item>9851473861806679</Item>
+      <Item>9851473861806681</Item>
+      <Item>9851473861806683</Item>
+      <Item>9851473861806706</Item>
+      <Item>9851473861806708</Item>
+      <Item>9851473861806710</Item>
+      <Item>9851473861806712</Item>
+      <Item>9851473861806714</Item>
+      <Item>9851473861806724</Item>
+      <Item>9851473861806726</Item>
+      <Item>9851473861806728</Item>
+      <Item>10132944543865276</Item>
+      <Item>10132944543865327</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398024098</Item>
+    </StandartParams>
+    <Name>Regions</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708084">
+    <WorldPositionGuid />
+    <EngineTemplateID>13ea6062c4e9411788e9188a7c53be18</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093546297</Item>
+      <Item>7881179093546298</Item>
+      <Item>7881179093546299</Item>
+      <Item>7881179093546300</Item>
+      <Item>7881179093546301</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398024099</Item>
+      <Item key="Location.IsHibernation">562941398024100</Item>
+      <Item key="Location.Player">562941398024101</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398024118</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398024111</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398024115</Item>
+      <Item key="MapItemComponent.Discovered">562941398024112</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398024110</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398024117</Item>
+      <Item key="MapItemComponent.Placeholder">562941398024108</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398024113</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398024114</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398024116</Item>
+      <Item key="MapItemComponent.Text">562941398024106</Item>
+      <Item key="MapItemComponent.Title">562941398024105</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398024109</Item>
+      <Item key="MapItemComponent.TooltipText">562941398024107</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398024102</Item>
+      <Item key="Region.RegionIndex">562941398024104</Item>
+      <Item key="Region.Reputation">562941398024103</Item>
+    </StandartParams>
+    <Name>Steppe_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861708124">
+    <WorldPositionGuid />
+    <EngineTemplateID>c5e8ced3402043c891d8a92ecb28e603</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093546856</Item>
+      <Item>7881179093546857</Item>
+      <Item>7881179093992670</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398024831</Item>
+      <Item key="Location.IsHibernation">562941398024832</Item>
+      <Item key="Location.Player">562941398024833</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398819851</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398819844</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398819848</Item>
+      <Item key="MapItemComponent.Discovered">562941398819845</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398819843</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398819850</Item>
+      <Item key="MapItemComponent.Placeholder">562941398819841</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398819846</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398819847</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398819849</Item>
+      <Item key="MapItemComponent.Text">562941398819839</Item>
+      <Item key="MapItemComponent.Title">562941398819838</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398819842</Item>
+      <Item key="MapItemComponent.TooltipText">562941398819840</Item>
+    </StandartParams>
+    <Name>Odong_Village_MN</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708129">
+    <WorldPositionGuid />
+    <EngineTemplateID>75502ed7a7e04b29a571a315231b72a0</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093546882</Item>
+      <Item>7881179093546883</Item>
+      <Item>7881179093546884</Item>
+      <Item>7881179093546885</Item>
+      <Item>7881179093546886</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398024870</Item>
+      <Item key="Location.IsHibernation">562941398024871</Item>
+      <Item key="Location.Player">562941398024872</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398024889</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398024882</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398024886</Item>
+      <Item key="MapItemComponent.Discovered">562941398024883</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398024881</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398024888</Item>
+      <Item key="MapItemComponent.Placeholder">562941398024879</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398024884</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398024885</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398024887</Item>
+      <Item key="MapItemComponent.Text">562941398024877</Item>
+      <Item key="MapItemComponent.Title">562941398024876</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398024880</Item>
+      <Item key="MapItemComponent.TooltipText">562941398024878</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398024873</Item>
+      <Item key="Region.RegionIndex">562941398024875</Item>
+      <Item key="Region.Reputation">562941398024874</Item>
+    </StandartParams>
+    <Name>Mys_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861708143">
+    <WorldPositionGuid />
+    <EngineTemplateID>900f734bb1f74904a4f177c6f5b8bef5</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093547013</Item>
+      <Item>7881179093547014</Item>
+      <Item>7881179093547015</Item>
+      <Item>7881179093547016</Item>
+      <Item>7881179093547017</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398025122</Item>
+      <Item key="Location.IsHibernation">562941398025123</Item>
+      <Item key="Location.Player">562941398025124</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398025141</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398025134</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398025138</Item>
+      <Item key="MapItemComponent.Discovered">562941398025135</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398025133</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398025140</Item>
+      <Item key="MapItemComponent.Placeholder">562941398025131</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398025136</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398025137</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398025139</Item>
+      <Item key="MapItemComponent.Text">562941398025129</Item>
+      <Item key="MapItemComponent.Title">562941398025128</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398025132</Item>
+      <Item key="MapItemComponent.TooltipText">562941398025130</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398025125</Item>
+      <Item key="Region.RegionIndex">562941398025127</Item>
+      <Item key="Region.Reputation">562941398025126</Item>
+    </StandartParams>
+    <Name>Stvorki_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861708161">
+    <WorldPositionGuid />
+    <EngineTemplateID>0d4d284cf70b40adb474c0e3b47c306c</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093547249</Item>
+      <Item>7881179093547250</Item>
+    </FunctionalComponents>
+    <ChildObjects count="5">
+      <Item>9851473861708671</Item>
+      <Item>9851473861708783</Item>
+      <Item>9851473861708838</Item>
+      <Item>9851473861709016</Item>
+      <Item>9851473861709037</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398025480</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861708671">
+    <WorldPositionGuid />
+    <EngineTemplateID>6bee7eb5a87d4a09af43a1929fa73436</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093551408</Item>
+      <Item>7881179093551409</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861708672</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398032001</Item>
+    </StandartParams>
+    <Name>Stvorki_N15_House_3</Name>
+    <Parent>9851473861708161</Parent>
+  </Item>
+  <Item id="9851473861708672">
+    <WorldPositionGuid />
+    <EngineTemplateID>6e12a42dc0d8474da9c2e76ac2205ed9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093551410</Item>
+      <Item>7881179093551411</Item>
+      <Item>7881179093551412</Item>
+      <Item>7881179093551413</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398032002</Item>
+      <Item key="Location.IsHibernation">562941398032003</Item>
+      <Item key="Location.Player">562941398032004</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398032018</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398032011</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398032015</Item>
+      <Item key="MapItemComponent.Discovered">562941398032012</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398032010</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398032017</Item>
+      <Item key="MapItemComponent.Placeholder">562941398032008</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398032013</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398032014</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398032016</Item>
+      <Item key="MapItemComponent.Text">562941398032006</Item>
+      <Item key="MapItemComponent.Title">562941398032005</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398032009</Item>
+      <Item key="MapItemComponent.TooltipText">562941398032007</Item>
+    </StandartParams>
+    <Name>Stvorki_N15_House_3_Loader</Name>
+    <Parent>9851473861708671</Parent>
+  </Item>
+  <Item id="9851473861708783">
+    <WorldPositionGuid />
+    <EngineTemplateID>87eda558ff3d4ce0b9e1cedfa585bc32</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093552225</Item>
+      <Item>7881179093552226</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861708784</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398033409</Item>
+    </StandartParams>
+    <Name>Stvorki_N16_House_6</Name>
+    <Parent>9851473861708161</Parent>
+  </Item>
+  <Item id="9851473861708784">
+    <WorldPositionGuid />
+    <EngineTemplateID>923373685b1e45dba5edf8e5d48c3984</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093552227</Item>
+      <Item>7881179093552228</Item>
+      <Item>7881179093552229</Item>
+      <Item>7881179093552230</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398033410</Item>
+      <Item key="Location.IsHibernation">562941398033411</Item>
+      <Item key="Location.Player">562941398033412</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398033426</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398033419</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398033423</Item>
+      <Item key="MapItemComponent.Discovered">562941398033420</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398033418</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398033425</Item>
+      <Item key="MapItemComponent.Placeholder">562941398033416</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398033421</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398033422</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398033424</Item>
+      <Item key="MapItemComponent.Text">562941398033414</Item>
+      <Item key="MapItemComponent.Title">562941398033413</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398033417</Item>
+      <Item key="MapItemComponent.TooltipText">562941398033415</Item>
+    </StandartParams>
+    <Name>Stvorki_N16_House_6_Loader</Name>
+    <Parent>9851473861708783</Parent>
+  </Item>
+  <Item id="9851473861708838">
+    <WorldPositionGuid />
+    <EngineTemplateID>8f944dbf857841f3ac8f310b7dd405fe</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093552701</Item>
+      <Item>7881179093552702</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543694538</Item>
+      <Item>10132944543694592</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398034170</Item>
+    </StandartParams>
+    <Name>Stvorki_N13_House_3</Name>
+    <Parent>9851473861708161</Parent>
+  </Item>
+  <Item id="9851473861709016">
+    <WorldPositionGuid />
+    <EngineTemplateID>da078b4d1a8f40049b96526d053797f8</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093553904</Item>
+      <Item>7881179093553905</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861709017</Item>
+      <Item>10132944543694741</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398036365</Item>
+    </StandartParams>
+    <Name>Stvorki_N1_House_7</Name>
+    <Parent>9851473861708161</Parent>
+  </Item>
+  <Item id="9851473861709017">
+    <WorldPositionGuid />
+    <EngineTemplateID>f7b131f9c0084bb2adac37cb25bbd4fe</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093553908</Item>
+      <Item>7881179093553909</Item>
+      <Item>7881179093553910</Item>
+      <Item>7881179093553911</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398036368</Item>
+      <Item key="Location.IsHibernation">562941398036369</Item>
+      <Item key="Location.Player">562941398036370</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398036384</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398036377</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398036381</Item>
+      <Item key="MapItemComponent.Discovered">562941398036378</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398036376</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398036383</Item>
+      <Item key="MapItemComponent.Placeholder">562941398036374</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398036379</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398036380</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398036382</Item>
+      <Item key="MapItemComponent.Text">562941398036372</Item>
+      <Item key="MapItemComponent.Title">562941398036371</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398036375</Item>
+      <Item key="MapItemComponent.TooltipText">562941398036373</Item>
+    </StandartParams>
+    <Name>Stvorki_N1_House_7_Loader</Name>
+    <Parent>9851473861709016</Parent>
+  </Item>
+  <Item id="9851473861709037">
+    <WorldPositionGuid />
+    <EngineTemplateID>f7ff37e431964f37bd95f4a6f56fd99c</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093554032</Item>
+      <Item>7881179093554033</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861709038</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398036656</Item>
+    </StandartParams>
+    <Name>Stvorki_N8_House_6</Name>
+    <Parent>9851473861708161</Parent>
+  </Item>
+  <Item id="9851473861709038">
+    <WorldPositionGuid />
+    <EngineTemplateID>415b4ffcdd72496d840722ee4f24df5c</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093554034</Item>
+      <Item>7881179093554035</Item>
+      <Item>7881179093554036</Item>
+      <Item>7881179093554037</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398036657</Item>
+      <Item key="Location.IsHibernation">562941398036658</Item>
+      <Item key="Location.Player">562941398036659</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398036673</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398036666</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398036670</Item>
+      <Item key="MapItemComponent.Discovered">562941398036667</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398036665</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398036672</Item>
+      <Item key="MapItemComponent.Placeholder">562941398036663</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398036668</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398036669</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398036671</Item>
+      <Item key="MapItemComponent.Text">562941398036661</Item>
+      <Item key="MapItemComponent.Title">562941398036660</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398036664</Item>
+      <Item key="MapItemComponent.TooltipText">562941398036662</Item>
+    </StandartParams>
+    <Name>Stvorki_N8_House_6_Loader</Name>
+    <Parent>9851473861709037</Parent>
+  </Item>
+  <Item id="9851473861709111">
+    <WorldPositionGuid />
+    <EngineTemplateID>bd0de77b9f6d40f2976da697a6de0175</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093554551</Item>
+      <Item>7881179093554552</Item>
+      <Item>7881179093554553</Item>
+      <Item>7881179093554554</Item>
+      <Item>7881179093554555</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398037556</Item>
+      <Item key="Location.IsHibernation">562941398037557</Item>
+      <Item key="Location.Player">562941398037558</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398037575</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398037568</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398037572</Item>
+      <Item key="MapItemComponent.Discovered">562941398037569</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398037567</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398037574</Item>
+      <Item key="MapItemComponent.Placeholder">562941398037565</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398037570</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398037571</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398037573</Item>
+      <Item key="MapItemComponent.Text">562941398037563</Item>
+      <Item key="MapItemComponent.Title">562941398037562</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398037566</Item>
+      <Item key="MapItemComponent.TooltipText">562941398037564</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398037559</Item>
+      <Item key="Region.RegionIndex">562941398037561</Item>
+      <Item key="Region.Reputation">562941398037560</Item>
+    </StandartParams>
+    <Name>Most_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861709168">
+    <WorldPositionGuid />
+    <EngineTemplateID>b8cc1d3b7ad449008f495093533fcaea</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093555243</Item>
+      <Item>7881179093555244</Item>
+    </FunctionalComponents>
+    <ChildObjects count="4">
+      <Item>9851473861709169</Item>
+      <Item>9851473861709288</Item>
+      <Item>9851473861709307</Item>
+      <Item>9851473861709458</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398038391</Item>
+    </StandartParams>
+    <Name>Buldings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861709169">
+    <WorldPositionGuid />
+    <EngineTemplateID>0057fe73bc024b9693a49dd938e17dc9</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093555245</Item>
+      <Item>7881179093555246</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861709170</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398038392</Item>
+    </StandartParams>
+    <Name>Var_House_6</Name>
+    <Parent>9851473861709168</Parent>
+  </Item>
+  <Item id="9851473861709170">
+    <WorldPositionGuid />
+    <EngineTemplateID>67e9ae77859f41e7b8bae5fa38294dc3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093555247</Item>
+      <Item>7881179093555248</Item>
+      <Item>7881179093555249</Item>
+      <Item>7881179093555250</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398038393</Item>
+      <Item key="Location.IsHibernation">562941398038394</Item>
+      <Item key="Location.Player">562941398038395</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398038409</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398038402</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398038406</Item>
+      <Item key="MapItemComponent.Discovered">562941398038403</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398038401</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398038408</Item>
+      <Item key="MapItemComponent.Placeholder">562941398038399</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398038404</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398038405</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398038407</Item>
+      <Item key="MapItemComponent.Text">562941398038397</Item>
+      <Item key="MapItemComponent.Title">562941398038396</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398038400</Item>
+      <Item key="MapItemComponent.TooltipText">562941398038398</Item>
+    </StandartParams>
+    <Name>Var_House_6_Loader</Name>
+    <Parent>9851473861709169</Parent>
+  </Item>
+  <Item id="9851473861709288">
+    <WorldPositionGuid />
+    <EngineTemplateID>3cc3506065c344fd8535306e0c0bcf73</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093556007</Item>
+      <Item>7881179093556008</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861709291</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398039865</Item>
+    </StandartParams>
+    <Name>Square</Name>
+    <Parent>9851473861709168</Parent>
+  </Item>
+  <Item id="9851473861709291">
+    <WorldPositionGuid />
+    <EngineTemplateID>eb817248ef2943ae828de38370c17270</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093556017</Item>
+      <Item>7881179093556018</Item>
+      <Item>7881179093556019</Item>
+      <Item>7881179093556020</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398039872</Item>
+      <Item key="Location.IsHibernation">562941398039873</Item>
+      <Item key="Location.Player">562941398039874</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398039888</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398039881</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398039885</Item>
+      <Item key="MapItemComponent.Discovered">562941398039882</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398039880</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398039887</Item>
+      <Item key="MapItemComponent.Placeholder">562941398039878</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398039883</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398039884</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398039886</Item>
+      <Item key="MapItemComponent.Text">562941398039876</Item>
+      <Item key="MapItemComponent.Title">562941398039875</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398039879</Item>
+      <Item key="MapItemComponent.TooltipText">562941398039877</Item>
+    </StandartParams>
+    <Name>Cathedral</Name>
+    <Parent>9851473861709288</Parent>
+  </Item>
+  <Item id="9851473861709307">
+    <WorldPositionGuid />
+    <EngineTemplateID>4376eda873e743a799fbbbc1e8f1af8a</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093556140</Item>
+      <Item>7881179093556141</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>10132944543695144</Item>
+      <Item>10132944543695145</Item>
+      <Item>10132944543695146</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398040046</Item>
+    </StandartParams>
+    <Name>MapItems</Name>
+    <Parent>9851473861709168</Parent>
+  </Item>
+  <Item id="9851473861709458">
+    <WorldPositionGuid />
+    <EngineTemplateID>f12dfa52f64249c9b21cffd2cabc7fd9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093557041</Item>
+      <Item>7881179093557042</Item>
+      <Item>7881179093557043</Item>
+      <Item>7881179093557044</Item>
+    </FunctionalComponents>
+    <StandartParams count="17">
+      <Item key="Common.ObjectEnabled">562941398042010</Item>
+      <Item key="Location.IsHibernation">562941398042011</Item>
+      <Item key="Location.Player">562941398042012</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398042026</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398042019</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398042023</Item>
+      <Item key="MapItemComponent.Discovered">562941398042020</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398042018</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398042025</Item>
+      <Item key="MapItemComponent.Placeholder">562941398042016</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398042021</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398042022</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398042024</Item>
+      <Item key="MapItemComponent.Text">562941398042014</Item>
+      <Item key="MapItemComponent.Title">562941398042013</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398042017</Item>
+      <Item key="MapItemComponent.TooltipText">562941398042015</Item>
+    </StandartParams>
+    <Name>Slough_Eva</Name>
+    <Parent>9851473861709168</Parent>
+  </Item>
+  <Item id="9851473861709473">
+    <WorldPositionGuid />
+    <EngineTemplateID>8fa2f2094f574a8199db4d84c2273c64</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093557137</Item>
+      <Item>7881179093557138</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861709474</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398042156</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861709474">
+    <WorldPositionGuid />
+    <EngineTemplateID>25e0d2162b0b40208d2f2aa1b7bdd39b</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093557139</Item>
+      <Item>7881179093557140</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543695329</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398042157</Item>
+    </StandartParams>
+    <Name>Horns_Georgy</Name>
+    <Parent>9851473861709473</Parent>
+  </Item>
+  <Item id="9851473861723576">
+    <WorldPositionGuid />
+    <EngineTemplateID>4cd9f0009b964726b8e4291f47b2c963</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812601</Item>
+      <Item>7881179093812602</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>9851473861723580</Item>
+      <Item>9851473861757176</Item>
+      <Item>9851473861857676</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398555951</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723580">
+    <WorldPositionGuid />
+    <EngineTemplateID>fb25f5475182482f8c4815f2effc410e</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812614</Item>
+      <Item>7881179093812615</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>9851473861781176</Item>
+      <Item>9851473861781177</Item>
+      <Item>9851473861781178</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398555960</Item>
+    </StandartParams>
+    <Name>Odongh_Village</Name>
+    <Parent>9851473861723576</Parent>
+  </Item>
+  <Item id="9851473861723581">
+    <WorldPositionGuid />
+    <EngineTemplateID>f2e01cd3079342f280b280aac8db563a</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812643</Item>
+      <Item>7881179093812644</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543775206</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398555997</Item>
+    </StandartParams>
+    <Name>Map_Items</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723584">
+    <WorldPositionGuid />
+    <EngineTemplateID>f1a36b2f982c4d8dab7c84627f539811</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812654</Item>
+      <Item>7881179093812655</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861723585</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556031</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723585">
+    <WorldPositionGuid />
+    <EngineTemplateID>fca6d2a861a1418496802810308e6518</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812656</Item>
+      <Item>7881179093812657</Item>
+    </FunctionalComponents>
+    <ChildObjects count="5">
+      <Item>5910884320077835</Item>
+      <Item>5910884320077836</Item>
+      <Item>5910884320077837</Item>
+      <Item>5910884320077838</Item>
+      <Item>5910884320077839</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556032</Item>
+    </StandartParams>
+    <Name>Mortii_Party</Name>
+    <Parent>9851473861723584</Parent>
+  </Item>
+  <Item id="9851473861723586">
+    <WorldPositionGuid />
+    <EngineTemplateID>42a6d34e126d4d1b9e468980fc92bad2</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812674</Item>
+      <Item>7881179093812675</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861723588</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556054</Item>
+    </StandartParams>
+    <Name>Water_Sources</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723588">
+    <WorldPositionGuid />
+    <EngineTemplateID>9436fb4beb9644178b0a003b0c6d4c15</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812713</Item>
+      <Item>7881179093812714</Item>
+    </FunctionalComponents>
+    <ChildObjects count="4">
+      <Item>10132944543775217</Item>
+      <Item>10132944543775218</Item>
+      <Item>10132944543775219</Item>
+      <Item>10132944543775220</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556112</Item>
+    </StandartParams>
+    <Name>Hydrants</Name>
+    <Parent>9851473861723586</Parent>
+  </Item>
+  <Item id="9851473861723589">
+    <WorldPositionGuid />
+    <EngineTemplateID>828c2333ed614ff4a2aa2dedf3b4a0ce</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812739</Item>
+      <Item>7881179093812740</Item>
+    </FunctionalComponents>
+    <ChildObjects count="10">
+      <Item>9851473861723590</Item>
+      <Item>9851473861723591</Item>
+      <Item>9851473861723592</Item>
+      <Item>9851473861723595</Item>
+      <Item>9851473861723596</Item>
+      <Item>9851473861723597</Item>
+      <Item>9851473861723598</Item>
+      <Item>9851473861757177</Item>
+      <Item>9851473861794976</Item>
+      <Item>9851473861825376</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556149</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723590">
+    <WorldPositionGuid />
+    <EngineTemplateID>0ea37a5991844e449aa6cf07473aab46</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812741</Item>
+      <Item>7881179093812742</Item>
+    </FunctionalComponents>
+    <ChildObjects count="6">
+      <Item>5910884320077840</Item>
+      <Item>5910884320077841</Item>
+      <Item>5910884320077842</Item>
+      <Item>5910884320077843</Item>
+      <Item>5910884320115126</Item>
+      <Item>10132944543905201</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556150</Item>
+    </StandartParams>
+    <Name>Naughty_Kids</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723591">
+    <WorldPositionGuid />
+    <EngineTemplateID>49af67635c04424792fbd6c0b2801338</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812755</Item>
+      <Item>7881179093812756</Item>
+    </FunctionalComponents>
+    <ChildObjects count="4">
+      <Item>5910884320077844</Item>
+      <Item>5910884320077845</Item>
+      <Item>5910884320077846</Item>
+      <Item>5910884320077847</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556167</Item>
+    </StandartParams>
+    <Name>Sahba_Line</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723592">
+    <WorldPositionGuid />
+    <EngineTemplateID>57580b9a6a4c4d29bc09cba5d68885dc</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812769</Item>
+      <Item>7881179093812770</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861723593</Item>
+      <Item>9851473861723594</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556184</Item>
+    </StandartParams>
+    <Name>Soldiers_Barricades</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723593">
+    <WorldPositionGuid />
+    <EngineTemplateID>0c251d501d5f4811977ca38bc90c0822</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812771</Item>
+      <Item>7881179093812772</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077848</Item>
+      <Item>5910884320077849</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556185</Item>
+    </StandartParams>
+    <Name>Barricade_Pochka</Name>
+    <Parent>9851473861723592</Parent>
+  </Item>
+  <Item id="9851473861723594">
+    <WorldPositionGuid />
+    <EngineTemplateID>0c367508e065470ea6fd8a4ccb2bc6c2</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812779</Item>
+      <Item>7881179093812780</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077850</Item>
+      <Item>5910884320077851</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556194</Item>
+    </StandartParams>
+    <Name>Barricade_Serdechnik</Name>
+    <Parent>9851473861723592</Parent>
+  </Item>
+  <Item id="9851473861723595">
+    <WorldPositionGuid />
+    <EngineTemplateID>b55e326a86924ff18cce903aea22b4b1</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812787</Item>
+      <Item>7881179093812788</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077852</Item>
+      <Item>5910884320077853</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556203</Item>
+    </StandartParams>
+    <Name>Mortii_Stvorki</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723596">
+    <WorldPositionGuid />
+    <EngineTemplateID>c8a6baf073eb4b84aa73dec4e360c947</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812795</Item>
+      <Item>7881179093812796</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077854</Item>
+      <Item>5910884320143826</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556212</Item>
+    </StandartParams>
+    <Name>Signal_Fire</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723597">
+    <WorldPositionGuid />
+    <EngineTemplateID>de4ea80fe62b4f0abc7626fd1b92fe15</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812800</Item>
+      <Item>7881179093812801</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5910884320077855</Item>
+      <Item>5910884320080626</Item>
+      <Item>5910884320080627</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556217</Item>
+    </StandartParams>
+    <Name>Worried_Odong</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723598">
+    <WorldPositionGuid />
+    <EngineTemplateID>f4a300d93a554cd7b4626878012451fa</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812805</Item>
+      <Item>7881179093812806</Item>
+    </FunctionalComponents>
+    <ChildObjects count="6">
+      <Item>5910884320077856</Item>
+      <Item>5910884320077857</Item>
+      <Item>5910884320077858</Item>
+      <Item>5910884320077859</Item>
+      <Item>5910884320077860</Item>
+      <Item>10132944543780601</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556222</Item>
+    </StandartParams>
+    <Name>Shop_Turmoil</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861723599">
+    <WorldPositionGuid />
+    <EngineTemplateID>b644958767954ebabbebbe8b4aa1d385</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812822</Item>
+      <Item>7881179093812823</Item>
+    </FunctionalComponents>
+    <ChildObjects count="8">
+      <Item>9851473861726376</Item>
+      <Item>9851473861728876</Item>
+      <Item>9851473861807676</Item>
+      <Item>9851473861885476</Item>
+      <Item>10132944543775221</Item>
+      <Item>10132944543775222</Item>
+      <Item>10132944543775223</Item>
+      <Item>10132944543930501</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556243</Item>
+    </StandartParams>
+    <Name>Quest_Props</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723603">
+    <WorldPositionGuid />
+    <EngineTemplateID>75b9eb113d19403390c33bd379afc053</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812844</Item>
+      <Item>7881179093812845</Item>
+    </FunctionalComponents>
+    <ChildObjects count="9">
+      <Item>9851473861723604</Item>
+      <Item>9851473861723605</Item>
+      <Item>9851473861723606</Item>
+      <Item>9851473861723607</Item>
+      <Item>9851473861723608</Item>
+      <Item>9851473861723609</Item>
+      <Item>9851473861723610</Item>
+      <Item>9851473861723611</Item>
+      <Item>9851473861723612</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556267</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723604">
+    <WorldPositionGuid />
+    <EngineTemplateID>013d30c9044d4f8690cdbd5737ff14d7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812846</Item>
+      <Item>7881179093812847</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5910884320077862</Item>
+      <Item>5910884320115127</Item>
+      <Item>5910884320115128</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556268</Item>
+    </StandartParams>
+    <Name>Tragedians_Dice</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723605">
+    <WorldPositionGuid />
+    <EngineTemplateID>0ce9d721245f4e2d80f693ef1eb5125a</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812854</Item>
+      <Item>7881179093812855</Item>
+    </FunctionalComponents>
+    <ChildObjects count="5">
+      <Item>5910884320077863</Item>
+      <Item>5910884320077864</Item>
+      <Item>5910884320077865</Item>
+      <Item>5910884320077866</Item>
+      <Item>5910884320077868</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556277</Item>
+    </StandartParams>
+    <Name>Clerk_HQ_Points</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723606">
+    <WorldPositionGuid />
+    <EngineTemplateID>6c7fb7b5b7a441b4a76700813d3f02b6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812874</Item>
+      <Item>7881179093812875</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320077869</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556302</Item>
+    </StandartParams>
+    <Name>Slough</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723607">
+    <WorldPositionGuid />
+    <EngineTemplateID>966e9ba2df4d4dc59feb6b85a09dfe2f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812879</Item>
+      <Item>7881179093812880</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077870</Item>
+      <Item>5910884320077871</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556307</Item>
+    </StandartParams>
+    <Name>Soldiers_Polyhedron</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723608">
+    <WorldPositionGuid />
+    <EngineTemplateID>9f7edeb7859a4c8e8721617bc95be6b7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812887</Item>
+      <Item>7881179093812888</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320077872</Item>
+      <Item>5910884320077873</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556316</Item>
+    </StandartParams>
+    <Name>Judge</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723609">
+    <WorldPositionGuid />
+    <EngineTemplateID>aa310cba765942f588639cba4b26c342</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812895</Item>
+      <Item>7881179093812896</Item>
+    </FunctionalComponents>
+    <ChildObjects count="6">
+      <Item>5910884320077874</Item>
+      <Item>5910884320077875</Item>
+      <Item>5910884320077876</Item>
+      <Item>5910884320077877</Item>
+      <Item>5910884320077878</Item>
+      <Item>5910884320077879</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556325</Item>
+    </StandartParams>
+    <Name>Soldiers_Quarantine</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723610">
+    <WorldPositionGuid />
+    <EngineTemplateID>c0f60004bcf84d6d9e83248a6455f004</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812915</Item>
+      <Item>7881179093812916</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320077880</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556350</Item>
+    </StandartParams>
+    <Name>Soldiers_DoraAndMarat_Burned</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723611">
+    <WorldPositionGuid />
+    <EngineTemplateID>f0872304b5d746aab302bd8c2e93c794</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812923</Item>
+      <Item>7881179093812924</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5910884320077882</Item>
+      <Item>5910884320077883</Item>
+      <Item>5910884320190126</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556359</Item>
+    </StandartParams>
+    <Name>Soldier_Varmacy</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723612">
+    <WorldPositionGuid />
+    <EngineTemplateID>fb8b3e86e38a4098909f101a1591cdf9</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812931</Item>
+      <Item>7881179093812932</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320077884</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556368</Item>
+    </StandartParams>
+    <Name>Soldier_WitchHouse</Name>
+    <Parent>9851473861723603</Parent>
+  </Item>
+  <Item id="9851473861723613">
+    <WorldPositionGuid />
+    <EngineTemplateID>967426ae31fe49c888b0322563f61cd7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812936</Item>
+      <Item>7881179093812937</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543893501</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556373</Item>
+    </StandartParams>
+    <Name>Map_Items</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861723614">
+    <WorldPositionGuid />
+    <EngineTemplateID>b703b3e2f9524b74bc7c2379528bcba4</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093812940</Item>
+      <Item>7881179093812941</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>10132944543775228</Item>
+      <Item>10132944543775229</Item>
+      <Item>10132944543775230</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398556389</Item>
+    </StandartParams>
+    <Name>Quest_Props</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861726376">
+    <WorldPositionGuid />
+    <EngineTemplateID>ae5e2710369441febbdc7600709b1426</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093817007</Item>
+      <Item>7881179093817008</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5629413638445701</Item>
+      <Item>10132944543778001</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398561659</Item>
+    </StandartParams>
+    <Name>Dead_Odong</Name>
+    <Parent>9851473861723599</Parent>
+  </Item>
+  <Item id="9851473861726377">
+    <WorldPositionGuid />
+    <EngineTemplateID>f5bdde10f51545a2ba0c32c7bc74f2c7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093817014</Item>
+      <Item>7881179093817015</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543778002</Item>
+      <Item>10132944543778003</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398561667</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861726378">
+    <WorldPositionGuid />
+    <EngineTemplateID>f67af57e0cfd42c0bc92fc79b9502bfe</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093817024</Item>
+      <Item>7881179093817025</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861726379</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398561702</Item>
+    </StandartParams>
+    <Name>Indoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861726379">
+    <WorldPositionGuid />
+    <EngineTemplateID>917e3f6f008f409ea7ada7c0c2a1acf2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093817026</Item>
+      <Item>7881179093817027</Item>
+      <Item>7881179093817028</Item>
+      <Item>7881179093817029</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Building.Building">562941398561706</Item>
+      <Item key="Common.ObjectEnabled">562941398561703</Item>
+      <Item key="Location.IsHibernation">562941398561704</Item>
+      <Item key="Location.Player">562941398561705</Item>
+    </StandartParams>
+    <Name>Common</Name>
+    <Parent>9851473861726378</Parent>
+  </Item>
+  <Item id="9851473861726381">
+    <WorldPositionGuid />
+    <EngineTemplateID>1fbd7b94b4c9438e90c280f62c1b8faa</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093817035</Item>
+      <Item>7881179093817037</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861726382</Item>
+      <Item>10132944543778005</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398561711</Item>
+    </StandartParams>
+    <Name>Furniture</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861726382">
+    <WorldPositionGuid />
+    <EngineTemplateID>8d51ca5d2c9242a48227e1295579d9e1</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093817039</Item>
+      <Item>7881179093817040</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543876307</Item>
+      <Item>10132944543906901</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398561716</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861726381</Parent>
+  </Item>
+  <Item id="9851473861726387">
+    <WorldPositionGuid />
+    <EngineTemplateID>aed74f6399af402c92700a4ec1a87146</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093817077</Item>
+      <Item>7881179093817078</Item>
+      <Item>7881179093817080</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398561751</Item>
+      <Item key="Location.IsHibernation">562941398561752</Item>
+      <Item key="Location.Player">562941398561753</Item>
+    </StandartParams>
+    <Name>Furniture_Dream</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861727076">
+    <WorldPositionGuid />
+    <EngineTemplateID>24eb80d17e184913b2f1ba902e6c56ed</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093818323</Item>
+      <Item>7881179093818324</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543778804</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398563632</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861727077">
+    <WorldPositionGuid />
+    <EngineTemplateID>a47270ca2f9543e2a76636d32f3492f7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093818331</Item>
+      <Item>7881179093818332</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861727078</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398563751</Item>
+    </StandartParams>
+    <Name>Indoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861727078">
+    <WorldPositionGuid />
+    <EngineTemplateID>91259b04e9294eb3994e6205c96967ff</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093818333</Item>
+      <Item>7881179093818334</Item>
+      <Item>7881179093818335</Item>
+      <Item>7881179093818336</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Building.Building">562941398563755</Item>
+      <Item key="Common.ObjectEnabled">562941398563752</Item>
+      <Item key="Location.IsHibernation">562941398563753</Item>
+      <Item key="Location.Player">562941398563754</Item>
+    </StandartParams>
+    <Name>Common</Name>
+    <Parent>9851473861727077</Parent>
+  </Item>
+  <Item id="9851473861727079">
+    <WorldPositionGuid />
+    <EngineTemplateID>1e79f13acc51404cb16e298e31abf766</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093818337</Item>
+      <Item>7881179093818338</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861727083</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398563756</Item>
+    </StandartParams>
+    <Name>Doors</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861727083">
+    <WorldPositionGuid />
+    <EngineTemplateID>a3e4988577ba4f60936c0fb1a8e36eda</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093818353</Item>
+      <Item>7881179093818354</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861727084</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398563794</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861727079</Parent>
+  </Item>
+  <Item id="9851473861727084">
+    <WorldPositionGuid />
+    <EngineTemplateID>6f8727de45b44b14918dd9651cd47b65</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093818355</Item>
+      <Item>7881179093818356</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543778808</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398563795</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861727083</Parent>
+  </Item>
+  <Item id="9851473861728876">
+    <WorldPositionGuid />
+    <EngineTemplateID>5397a0011ad0490ebd21bcf9c01dbcb8</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093820302</Item>
+      <Item>7881179093820303</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543780602</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398565852</Item>
+    </StandartParams>
+    <Name>Shop_Turmoil</Name>
+    <Parent>9851473861723599</Parent>
+  </Item>
+  <Item id="9851473861729579">
+    <WorldPositionGuid />
+    <EngineTemplateID>aef0b74861e44cc6a1fc3215b591524c</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821125</Item>
+      <Item>7881179093821126</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861729582</Item>
+      <Item>9851473861729585</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566872</Item>
+    </StandartParams>
+    <Name>Doors</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861729582">
+    <WorldPositionGuid />
+    <EngineTemplateID>67c47f1b3d0448368a421e75467ff722</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821135</Item>
+      <Item>7881179093821136</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861729583</Item>
+      <Item>9851473861729584</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566892</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861729579</Parent>
+  </Item>
+  <Item id="9851473861729583">
+    <WorldPositionGuid />
+    <EngineTemplateID>30da0e74ae3b468293c7206e3b3d4076</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821137</Item>
+      <Item>7881179093821138</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543781311</Item>
+      <Item>10132944543781312</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566893</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861729582</Parent>
+  </Item>
+  <Item id="9851473861729584">
+    <WorldPositionGuid />
+    <EngineTemplateID>356c5d23b1b544ee9cf00e85e100750a</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821147</Item>
+      <Item>7881179093821148</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543781313</Item>
+      <Item>10132944543781314</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566928</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861729582</Parent>
+  </Item>
+  <Item id="9851473861729585">
+    <WorldPositionGuid />
+    <EngineTemplateID>7bd98cd51d7c4f23b89f556ea6f2c4e6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821161</Item>
+      <Item>7881179093821162</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>9851473861729586</Item>
+      <Item>9851473861729587</Item>
+      <Item>9851473861729588</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566980</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861729579</Parent>
+  </Item>
+  <Item id="9851473861729586">
+    <WorldPositionGuid />
+    <EngineTemplateID>4e936eb83a584d27ae50cffeb032cca6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821163</Item>
+      <Item>7881179093821164</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543781316</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566981</Item>
+    </StandartParams>
+    <Name>Room_03</Name>
+    <Parent>9851473861729585</Parent>
+  </Item>
+  <Item id="9851473861729587">
+    <WorldPositionGuid />
+    <EngineTemplateID>627517823ef04a89af2d12ed2e2de0fc</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821169</Item>
+      <Item>7881179093821170</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543781317</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398566999</Item>
+    </StandartParams>
+    <Name>Room_06</Name>
+    <Parent>9851473861729585</Parent>
+  </Item>
+  <Item id="9851473861729588">
+    <WorldPositionGuid />
+    <EngineTemplateID>edb1c1734a2b48e0904b1ab08af4b224</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093821175</Item>
+      <Item>7881179093821176</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543781318</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398567017</Item>
+    </StandartParams>
+    <Name>Room_07</Name>
+    <Parent>9851473861729585</Parent>
+  </Item>
+  <Item id="9851473861732676">
+    <WorldPositionGuid />
+    <EngineTemplateID>caf869c6b32140beae66a65bfcf353c1</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824201</Item>
+      <Item>7881179093824202</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861732677</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570151</Item>
+    </StandartParams>
+    <Name>Milestones_DEPRECATED</Name>
+    <Parent>10132944543778004</Parent>
+  </Item>
+  <Item id="9851473861732677">
+    <WorldPositionGuid />
+    <EngineTemplateID>d43745f3906749d6a790c60ec3ad7137</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824203</Item>
+      <Item>7881179093824204</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543784409</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570152</Item>
+    </StandartParams>
+    <Name>Demo</Name>
+    <Parent>9851473861732676</Parent>
+  </Item>
+  <Item id="9851473861732682">
+    <WorldPositionGuid />
+    <EngineTemplateID>b37d8b311e9c43f6aa0954325a680240</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824258</Item>
+      <Item>7881179093824259</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570217</Item>
+    </StandartParams>
+    <Name>Room_08</Name>
+    <Parent>10132944543778005</Parent>
+  </Item>
+  <Item id="9851473861732686">
+    <WorldPositionGuid />
+    <EngineTemplateID>331af219f7c14cb3a5db49d9b63269c2</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824313</Item>
+      <Item>7881179093824314</Item>
+    </FunctionalComponents>
+    <ChildObjects count="4">
+      <Item>9851473861732687</Item>
+      <Item>9851473861732693</Item>
+      <Item>9851473861732696</Item>
+      <Item>10132944543876312</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570289</Item>
+    </StandartParams>
+    <Name>Furniture</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861732687">
+    <WorldPositionGuid />
+    <EngineTemplateID>21091860167c426b8225758dc5984bb3</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824315</Item>
+      <Item>7881179093824316</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861732690</Item>
+      <Item>9851473861732691</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570290</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861732686</Parent>
+  </Item>
+  <Item id="9851473861732690">
+    <WorldPositionGuid />
+    <EngineTemplateID>9e1a051958994b16acf60a98e7bbf890</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824323</Item>
+      <Item>7881179093824324</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543927901</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570295</Item>
+    </StandartParams>
+    <Name>Room_08</Name>
+    <Parent>9851473861732687</Parent>
+  </Item>
+  <Item id="9851473861732691">
+    <WorldPositionGuid />
+    <EngineTemplateID>bd39023c87f8406dabb8f993ad0538e3</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824327</Item>
+      <Item>7881179093824328</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320175926</Item>
+      <Item>10132944543784419</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570298</Item>
+    </StandartParams>
+    <Name>Room_05</Name>
+    <Parent>9851473861732687</Parent>
+  </Item>
+  <Item id="9851473861732693">
+    <WorldPositionGuid />
+    <EngineTemplateID>49566ea204024110890858c808f3b998</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824335</Item>
+      <Item>7881179093824336</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861732694</Item>
+      <Item>9851473861732695</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570304</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861732686</Parent>
+  </Item>
+  <Item id="9851473861732694">
+    <WorldPositionGuid />
+    <EngineTemplateID>2aa3b2c24df640be878fb93066b2eb66</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824337</Item>
+      <Item>7881179093824338</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543784424</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570305</Item>
+    </StandartParams>
+    <Name>Room_03_Corps</Name>
+    <Parent>9851473861732693</Parent>
+  </Item>
+  <Item id="9851473861732695">
+    <WorldPositionGuid />
+    <EngineTemplateID>b3155d9235104336bbd56b7665ffa6bb</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824341</Item>
+      <Item>7881179093824342</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543784430</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570308</Item>
+    </StandartParams>
+    <Name>Room_02</Name>
+    <Parent>9851473861732693</Parent>
+  </Item>
+  <Item id="9851473861732696">
+    <WorldPositionGuid />
+    <EngineTemplateID>82f1c4cb125c43528afffc2bf88be10f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093824349</Item>
+      <Item>7881179093824350</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543784431</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398570315</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861732686</Parent>
+  </Item>
+  <Item id="9851473861737076">
+    <WorldPositionGuid />
+    <EngineTemplateID>5028683076bf46488fd446fad0cb266d</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093833411</Item>
+      <Item>7881179093833412</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543789501</Item>
+      <Item>10132944543789502</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398582464</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737080">
+    <WorldPositionGuid />
+    <EngineTemplateID>0003c78738954230b9a39bd174530b6f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093833431</Item>
+      <Item>7881179093833432</Item>
+      <Item>7881179093833434</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398582507</Item>
+      <Item key="Location.IsHibernation">562941398582508</Item>
+      <Item key="Location.Player">562941398582509</Item>
+    </StandartParams>
+    <Name>Furniture</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737081">
+    <WorldPositionGuid />
+    <EngineTemplateID>326d4264653f4785874412da99addbad</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093833436</Item>
+      <Item>7881179093833437</Item>
+      <Item>7881179093833439</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398582510</Item>
+      <Item key="Location.IsHibernation">562941398582511</Item>
+      <Item key="Location.Player">562941398582512</Item>
+    </StandartParams>
+    <Name>Furniture_Diseased</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737082">
+    <WorldPositionGuid />
+    <EngineTemplateID>b16907ba04154003a0e91bbe43ccadf7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093833441</Item>
+      <Item>7881179093833442</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861737083</Item>
+      <Item>9851473861737088</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398582514</Item>
+    </StandartParams>
+    <Name>Furniture</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737083">
+    <WorldPositionGuid />
+    <EngineTemplateID>69c3df27eb5a4c2aa293efdd37a7b5b2</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093833444</Item>
+      <Item>7881179093833445</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737087</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398582516</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861737082</Parent>
+  </Item>
+  <Item id="9851473861737087">
+    <WorldPositionGuid />
+    <EngineTemplateID>f717d704872c404fa5a17421e03775b8</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093833473</Item>
+      <Item>7881179093833474</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5629413638528801</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583551</Item>
+    </StandartParams>
+    <Name>Room_04</Name>
+    <Parent>9851473861737083</Parent>
+  </Item>
+  <Item id="9851473861737088">
+    <WorldPositionGuid />
+    <EngineTemplateID>8788385b781840dfb8eed284df3ca763</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093833490</Item>
+      <Item>7881179093833491</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737091</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583573</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861737082</Parent>
+  </Item>
+  <Item id="9851473861737091">
+    <WorldPositionGuid />
+    <EngineTemplateID>f49296e1b3e4446f95a1c2675f08e176</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834509</Item>
+      <Item>7881179093834510</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543789511</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583595</Item>
+    </StandartParams>
+    <Name>Room_03</Name>
+    <Parent>9851473861737088</Parent>
+  </Item>
+  <Item id="9851473861737092">
+    <WorldPositionGuid />
+    <EngineTemplateID>eadfab7492bb4758870a0352717b4e8f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834517</Item>
+      <Item>7881179093834518</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320104726</Item>
+      <Item>10132944543789515</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583604</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737093">
+    <WorldPositionGuid />
+    <EngineTemplateID>5a61b58505a448efa01e845ead4763da</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834525</Item>
+      <Item>7881179093834526</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861737094</Item>
+      <Item>9851473861737099</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583611</Item>
+    </StandartParams>
+    <Name>Doors_MN</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737094">
+    <WorldPositionGuid />
+    <EngineTemplateID>32aecfaf255d48c6966e1cff4334bc03</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834527</Item>
+      <Item>7881179093834528</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737095</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583612</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861737093</Parent>
+  </Item>
+  <Item id="9851473861737095">
+    <WorldPositionGuid />
+    <EngineTemplateID>e684cf4bf0fe48ce9f6dc42bfcf4cfc6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834529</Item>
+      <Item>7881179093834530</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543789519</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583613</Item>
+    </StandartParams>
+    <Name>Room_04</Name>
+    <Parent>9851473861737094</Parent>
+  </Item>
+  <Item id="9851473861737099">
+    <WorldPositionGuid />
+    <EngineTemplateID>a7eb8d130062488ba31a3b26639f08db</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834561</Item>
+      <Item>7881179093834562</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737100</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583719</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861737093</Parent>
+  </Item>
+  <Item id="9851473861737100">
+    <WorldPositionGuid />
+    <EngineTemplateID>722b4fc4f17243a683bf7e46f3294402</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834563</Item>
+      <Item>7881179093834564</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543789526</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583720</Item>
+    </StandartParams>
+    <Name>Room_08</Name>
+    <Parent>9851473861737099</Parent>
+  </Item>
+  <Item id="9851473861737104">
+    <WorldPositionGuid />
+    <EngineTemplateID>5cdbf7d76b834ecfa8e82e3421d6adff</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834597</Item>
+      <Item>7881179093834598</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543789536</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583776</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737108">
+    <WorldPositionGuid />
+    <EngineTemplateID>1c0d41f1d09240beb634abb3ea6d215b</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834634</Item>
+      <Item>7881179093834635</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737111</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583819</Item>
+    </StandartParams>
+    <Name>Doors_Hallway_2</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861737111">
+    <WorldPositionGuid />
+    <EngineTemplateID>d9f9c9fce555438c90d862b767411145</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834644</Item>
+      <Item>7881179093834645</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861737113</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583839</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861737108</Parent>
+  </Item>
+  <Item id="9851473861737113">
+    <WorldPositionGuid />
+    <EngineTemplateID>337f9391fee945aeacb225f244ea237c</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093834660</Item>
+      <Item>7881179093834661</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543789542</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398583892</Item>
+    </StandartParams>
+    <Name>Floor_3</Name>
+    <Parent>9851473861737111</Parent>
+  </Item>
+  <Item id="9851473861739576">
+    <WorldPositionGuid />
+    <EngineTemplateID>6efbbf3419314d8bb0cc51f76dff1383</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093838501</Item>
+      <Item>7881179093838502</Item>
+      <Item>7881179093838503</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398589551</Item>
+      <Item key="Location.IsHibernation">562941398589552</Item>
+      <Item key="Location.Player">562941398589553</Item>
+    </StandartParams>
+    <Name>Stvorki_N1_House_7_MN_Kids</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861739581">
+    <WorldPositionGuid />
+    <EngineTemplateID>f316d167ea2b4d6ab78c41a40b2b5577</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838532</Item>
+      <Item>7881179093838533</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861739582</Item>
+      <Item>9851473861739585</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398589578</Item>
+    </StandartParams>
+    <Name>Doors</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861739582">
+    <WorldPositionGuid />
+    <EngineTemplateID>7b072f9afda24988a657df87a32683e8</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838534</Item>
+      <Item>7881179093838535</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861739583</Item>
+      <Item>9851473861739584</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398589579</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861739581</Parent>
+  </Item>
+  <Item id="9851473861739583">
+    <WorldPositionGuid />
+    <EngineTemplateID>7f2902e8b2a54f8191856e3fe00d48a4</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838536</Item>
+      <Item>7881179093838537</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543792210</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398589580</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861739582</Parent>
+  </Item>
+  <Item id="9851473861739584">
+    <WorldPositionGuid />
+    <EngineTemplateID>db942a567f5647758e0715b8480d16f3</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838546</Item>
+      <Item>7881179093838547</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543792213</Item>
+      <Item>10132944543792214</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398589615</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861739582</Parent>
+  </Item>
+  <Item id="9851473861739585">
+    <WorldPositionGuid />
+    <EngineTemplateID>b20961c6fdea49d1a33506025d901011</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838560</Item>
+      <Item>7881179093838561</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861739586</Item>
+      <Item>9851473861739587</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398595967</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861739581</Parent>
+  </Item>
+  <Item id="9851473861739586">
+    <WorldPositionGuid />
+    <EngineTemplateID>1dc8c1252329431f8d61a507635416c4</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838562</Item>
+      <Item>7881179093838563</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543792215</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398595968</Item>
+    </StandartParams>
+    <Name>Room_06</Name>
+    <Parent>9851473861739585</Parent>
+  </Item>
+  <Item id="9851473861739587">
+    <WorldPositionGuid />
+    <EngineTemplateID>7987e0f0e53d44b4a47a3f5782fe983b</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093838568</Item>
+      <Item>7881179093838569</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543792216</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398595986</Item>
+    </StandartParams>
+    <Name>Room_07</Name>
+    <Parent>9851473861739585</Parent>
+  </Item>
+  <Item id="9851473861739591">
+    <WorldPositionGuid />
+    <EngineTemplateID>754eda0c32b04b21a3aaee82de5758f5</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093838588</Item>
+      <Item>7881179093838589</Item>
+      <Item>7881179093838590</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398596041</Item>
+      <Item key="Location.IsHibernation">562941398596042</Item>
+      <Item key="Location.Player">562941398596043</Item>
+    </StandartParams>
+    <Name>Stvorki_N1_House_7_MN_Dream</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861743276">
+    <WorldPositionGuid />
+    <EngineTemplateID>b139c0c0379c4deb8866396834928fa3</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852901</Item>
+      <Item>7881179093852902</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543796801</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398611951</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861743280">
+    <WorldPositionGuid />
+    <EngineTemplateID>9fd0f37fdbba498daf3ef94288e31b82</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852931</Item>
+      <Item>7881179093852932</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>9851473861743281</Item>
+      <Item>9851473861743284</Item>
+      <Item>9851473861743286</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398611977</Item>
+    </StandartParams>
+    <Name>Doors_WH</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861743281">
+    <WorldPositionGuid />
+    <EngineTemplateID>38061cb344e44b7fa8a4faca6cf3bf46</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852933</Item>
+      <Item>7881179093852934</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861743282</Item>
+      <Item>9851473861743283</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398611978</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861743280</Parent>
+  </Item>
+  <Item id="9851473861743282">
+    <WorldPositionGuid />
+    <EngineTemplateID>4e902e76da9e44d1843a76cad1c217f7</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852935</Item>
+      <Item>7881179093852936</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543796803</Item>
+      <Item>10132944543796805</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398611979</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861743281</Parent>
+  </Item>
+  <Item id="9851473861743283">
+    <WorldPositionGuid />
+    <EngineTemplateID>e080992bce6b4b569ecfc87b4344b53f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852953</Item>
+      <Item>7881179093852954</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543796808</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612048</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861743281</Parent>
+  </Item>
+  <Item id="9851473861743284">
+    <WorldPositionGuid />
+    <EngineTemplateID>abe78de3d760497e9cfd25588db4b4ce</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852967</Item>
+      <Item>7881179093852968</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861743285</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612100</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861743280</Parent>
+  </Item>
+  <Item id="9851473861743285">
+    <WorldPositionGuid />
+    <EngineTemplateID>06c80e8073e34db79b8c4a7fb3cc310f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852969</Item>
+      <Item>7881179093852970</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543796809</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612101</Item>
+    </StandartParams>
+    <Name>Room_08</Name>
+    <Parent>9851473861743284</Parent>
+  </Item>
+  <Item id="9851473861743286">
+    <WorldPositionGuid />
+    <EngineTemplateID>c47ef6fc1bbf44b29b69ad3380fd650f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852975</Item>
+      <Item>7881179093852976</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861743287</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612119</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861743280</Parent>
+  </Item>
+  <Item id="9851473861743287">
+    <WorldPositionGuid />
+    <EngineTemplateID>063c6716bc9e4b03975fe4df7cf879d3</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093852977</Item>
+      <Item>7881179093852978</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543796810</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612120</Item>
+    </StandartParams>
+    <Name>Room_02</Name>
+    <Parent>9851473861743286</Parent>
+  </Item>
+  <Item id="9851473861743676">
+    <WorldPositionGuid />
+    <EngineTemplateID>2625dcd74bc14e84b7a85adb077f2a81</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093853409</Item>
+      <Item>7881179093853410</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861743677</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612583</Item>
+    </StandartParams>
+    <Name>Indoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861743677">
+    <WorldPositionGuid />
+    <EngineTemplateID>cc97ef397bde48e4a539e3fb80f445d4</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093853411</Item>
+      <Item>7881179093853412</Item>
+      <Item>7881179093853413</Item>
+      <Item>7881179093853414</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Building.Building">562941398612587</Item>
+      <Item key="Common.ObjectEnabled">562941398612584</Item>
+      <Item key="Location.IsHibernation">562941398612585</Item>
+      <Item key="Location.Player">562941398612586</Item>
+    </StandartParams>
+    <Name>Common</Name>
+    <Parent>9851473861743676</Parent>
+  </Item>
+  <Item id="9851473861743681">
+    <WorldPositionGuid />
+    <EngineTemplateID>8ea2f72853514e16a3fb61cc13a70716</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093853443</Item>
+      <Item>7881179093853444</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861743682</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612613</Item>
+    </StandartParams>
+    <Name>Doors_Ospina_MN</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861743682">
+    <WorldPositionGuid />
+    <EngineTemplateID>224b1945f1c8414d9c2174ebc032d795</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093853445</Item>
+      <Item>7881179093853446</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861743683</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612614</Item>
+    </StandartParams>
+    <Name>Hallway</Name>
+    <Parent>9851473861743681</Parent>
+  </Item>
+  <Item id="9851473861743683">
+    <WorldPositionGuid />
+    <EngineTemplateID>12331f58db7f4a19b4c516c056b42091</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093853447</Item>
+      <Item>7881179093853448</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543797213</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612615</Item>
+    </StandartParams>
+    <Name>Floor_2</Name>
+    <Parent>9851473861743682</Parent>
+  </Item>
+  <Item id="9851473861743691">
+    <WorldPositionGuid />
+    <EngineTemplateID>9931611e93d6472ca79cb169bb4152f0</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093853492</Item>
+      <Item>7881179093853493</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543797223</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398612860</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861753279">
+    <WorldPositionGuid />
+    <EngineTemplateID>fbd321d3a63542fba6f222d58f98c9dd</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093873310</Item>
+      <Item>7881179093873311</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5629413638513303</Item>
+      <Item>5629413638567901</Item>
+      <Item>9851473861757791</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398641159</Item>
+    </StandartParams>
+    <Name>Futniture</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861753290">
+    <WorldPositionGuid />
+    <EngineTemplateID>c4455f2cfd3a47daa2af78bd96ae05ae</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093873390</Item>
+      <Item>7881179093873391</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543807911</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398641294</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861753291">
+    <WorldPositionGuid />
+    <EngineTemplateID>0ee279767797499191be80f7820f7e11</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093873397</Item>
+      <Item>7881179093873398</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543807913</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398641313</Item>
+    </StandartParams>
+    <Name>Outdoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861753292">
+    <WorldPositionGuid />
+    <EngineTemplateID>d89902672a51439e843a405c7b389c1f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093873403</Item>
+      <Item>7881179093873404</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861753293</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398641331</Item>
+    </StandartParams>
+    <Name>Indoor</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861753293">
+    <WorldPositionGuid />
+    <EngineTemplateID>b14d518205ec42daa449aa646bbf5acf</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="4">
+      <Item>7881179093873405</Item>
+      <Item>7881179093873406</Item>
+      <Item>7881179093873407</Item>
+      <Item>7881179093873408</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Building.Building">562941398641335</Item>
+      <Item key="Common.ObjectEnabled">562941398641332</Item>
+      <Item key="Location.IsHibernation">562941398641333</Item>
+      <Item key="Location.Player">562941398641334</Item>
+    </StandartParams>
+    <Name>Common</Name>
+    <Parent>9851473861753292</Parent>
+  </Item>
+  <Item id="9851473861753294">
+    <WorldPositionGuid />
+    <EngineTemplateID>060b27fc91f240a5ba4d8890536ede88</EngineTemplateID>
+    <EngineBaseTemplateID>6a75f04e944944bc8866a241f1fd4fab</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093873409</Item>
+      <Item>7881179093873410</Item>
+      <Item>7881179093873411</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543807914</Item>
+    </ChildObjects>
+    <StandartParams count="2">
+      <Item key="Common.ObjectEnabled">562941398641336</Item>
+      <Item key="Interactive.ObjectName">562941398641337</Item>
+    </StandartParams>
+    <Name>Hourglass_Flask</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861757176">
+    <WorldPositionGuid />
+    <EngineTemplateID>e3cee349e74c456a84297ae2dcc25ed6</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093879201</Item>
+      <Item>7881179093879202</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320108926</Item>
+      <Item>5910884320141626</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398648651</Item>
+    </StandartParams>
+    <Name>RocksHelixGraveyard</Name>
+    <Parent>9851473861723576</Parent>
+  </Item>
+  <Item id="9851473861757177">
+    <WorldPositionGuid />
+    <EngineTemplateID>1a39ab5fa8354560985773cc5c9da90c</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093879206</Item>
+      <Item>7881179093879207</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>5910884320108927</Item>
+      <Item>5910884320108928</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398648656</Item>
+    </StandartParams>
+    <Name>PlagueFaceHouse</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861757791">
+    <WorldPositionGuid />
+    <EngineTemplateID>026a4ab00ed641be98943aa9817645a1</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093881760</Item>
+      <Item>7881179093881761</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>9851473861757792</Item>
+      <Item>10132944543812630</Item>
+      <Item>10132944543812633</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398652695</Item>
+    </StandartParams>
+    <Name>Floor_1</Name>
+    <Parent>9851473861753279</Parent>
+  </Item>
+  <Item id="9851473861757792">
+    <WorldPositionGuid />
+    <EngineTemplateID>f8d09670190b4d3b8f988e00c15a7478</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093881766</Item>
+      <Item>7881179093881767</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543812634</Item>
+      <Item>10132944543812635</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398652700</Item>
+    </StandartParams>
+    <Name>Room_01</Name>
+    <Parent>9851473861757791</Parent>
+  </Item>
+  <Item id="9851473861757793">
+    <WorldPositionGuid />
+    <EngineTemplateID>92f81d8648034c8a8c6c02750c793d22</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093881770</Item>
+      <Item>7881179093881771</Item>
+    </FunctionalComponents>
+    <ChildObjects count="4">
+      <Item>5910884320109326</Item>
+      <Item>5910884320109327</Item>
+      <Item>5910884320152326</Item>
+      <Item>5910884320152327</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398652703</Item>
+    </StandartParams>
+    <Name>Points</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861781176">
+    <WorldPositionGuid />
+    <EngineTemplateID>4f95d652cef34dd48afd77d22f68b429</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093919801</Item>
+      <Item>7881179093919802</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320077833</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398701351</Item>
+    </StandartParams>
+    <Name>Patient</Name>
+    <Parent>9851473861723580</Parent>
+  </Item>
+  <Item id="9851473861781177">
+    <WorldPositionGuid />
+    <EngineTemplateID>507ee1d33dc24655b38b07f078d827db</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093919803</Item>
+      <Item>7881179093919804</Item>
+    </FunctionalComponents>
+    <ChildObjects count="8">
+      <Item>5910884320077829</Item>
+      <Item>5910884320077831</Item>
+      <Item>5910884320177526</Item>
+      <Item>5910884320188126</Item>
+      <Item>10132944543836701</Item>
+      <Item>10132944543836702</Item>
+      <Item>10132944543836703</Item>
+      <Item>10132944543836704</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398701352</Item>
+    </StandartParams>
+    <Name>BeforeCeremony</Name>
+    <Parent>9851473861723580</Parent>
+  </Item>
+  <Item id="9851473861781178">
+    <WorldPositionGuid />
+    <EngineTemplateID>babdfd4666704b799cd1453734e5ef42</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093919809</Item>
+      <Item>7881179093919810</Item>
+    </FunctionalComponents>
+    <ChildObjects count="6">
+      <Item>5910884320077827</Item>
+      <Item>5910884320077828</Item>
+      <Item>5910884320077830</Item>
+      <Item>5910884320077834</Item>
+      <Item>10132944543836707</Item>
+      <Item>10132944543836708</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398701357</Item>
+    </StandartParams>
+    <Name>AfterCeremony</Name>
+    <Parent>9851473861723580</Parent>
+  </Item>
+  <Item id="9851473861781179">
+    <WorldPositionGuid />
+    <EngineTemplateID>7a68bac0dac146a78fa69faa48c8ca1d</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093919815</Item>
+      <Item>7881179093919816</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861893476</Item>
+      <Item>10132944543836710</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398701362</Item>
+    </StandartParams>
+    <Name>Quest_Props</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861790677">
+    <WorldPositionGuid />
+    <EngineTemplateID>bf655df5a3f04707887e9dcd48cb5cd9</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093946104</Item>
+      <Item>7881179093946105</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320139326</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398739653</Item>
+    </StandartParams>
+    <Name>Triggers</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861793576">
+    <WorldPositionGuid />
+    <EngineTemplateID>5fd3c3522ce747ffb6517fd079666916</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093955905</Item>
+      <Item>7881179093955906</Item>
+      <Item>7881179093955907</Item>
+      <Item>7881179093955908</Item>
+      <Item>7881179093955909</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398754256</Item>
+      <Item key="Location.IsHibernation">562941398754257</Item>
+      <Item key="Location.Player">562941398754258</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398754275</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398754268</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398754272</Item>
+      <Item key="MapItemComponent.Discovered">562941398754269</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398754267</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398754274</Item>
+      <Item key="MapItemComponent.Placeholder">562941398754265</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398754270</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398754271</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398754273</Item>
+      <Item key="MapItemComponent.Text">562941398754263</Item>
+      <Item key="MapItemComponent.Title">562941398754262</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398754266</Item>
+      <Item key="MapItemComponent.TooltipText">562941398754264</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398754259</Item>
+      <Item key="Region.RegionIndex">562941398754261</Item>
+      <Item key="Region.Reputation">562941398754260</Item>
+    </StandartParams>
+    <Name>Pochka_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861793577">
+    <WorldPositionGuid />
+    <EngineTemplateID>c735fb68da1f4ee093badfb970d99ade</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093955922</Item>
+      <Item>7881179093955923</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>9851473861793582</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398754294</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861793582">
+    <WorldPositionGuid />
+    <EngineTemplateID>9053154b342e4af9bc06711ebc1f56fa</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093955940</Item>
+      <Item>7881179093955941</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543850211</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398754360</Item>
+    </StandartParams>
+    <Name>Pochka_N3_House_6</Name>
+    <Parent>9851473861793577</Parent>
+  </Item>
+  <Item id="9851473861793589">
+    <WorldPositionGuid />
+    <EngineTemplateID>feb6ab5a93f74cbe801eb8276a0c5523</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093955973</Item>
+      <Item>7881179093955974</Item>
+      <Item>7881179093955975</Item>
+      <Item>7881179093955976</Item>
+      <Item>7881179093955977</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398754492</Item>
+      <Item key="Location.IsHibernation">562941398754493</Item>
+      <Item key="Location.Player">562941398754494</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398754511</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398754504</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398754508</Item>
+      <Item key="MapItemComponent.Discovered">562941398754505</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398754503</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398754510</Item>
+      <Item key="MapItemComponent.Placeholder">562941398754501</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398754506</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398754507</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398754509</Item>
+      <Item key="MapItemComponent.Text">562941398754499</Item>
+      <Item key="MapItemComponent.Title">562941398754498</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398754502</Item>
+      <Item key="MapItemComponent.TooltipText">562941398754500</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398754495</Item>
+      <Item key="Region.RegionIndex">562941398754497</Item>
+      <Item key="Region.Reputation">562941398754496</Item>
+    </StandartParams>
+    <Name>Mnogogrannik_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861794176">
+    <WorldPositionGuid />
+    <EngineTemplateID>30436e252e594efd8212026edfdf66e5</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093956503</Item>
+      <Item>7881179093956504</Item>
+      <Item>7881179093956505</Item>
+      <Item>7881179093956506</Item>
+      <Item>7881179093956507</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398755154</Item>
+      <Item key="Location.IsHibernation">562941398755155</Item>
+      <Item key="Location.Player">562941398755156</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398755173</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398755166</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398755170</Item>
+      <Item key="MapItemComponent.Discovered">562941398755167</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398755165</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398755172</Item>
+      <Item key="MapItemComponent.Placeholder">562941398755163</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398755168</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398755169</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398755171</Item>
+      <Item key="MapItemComponent.Text">562941398755161</Item>
+      <Item key="MapItemComponent.Title">562941398755160</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398755164</Item>
+      <Item key="MapItemComponent.TooltipText">562941398755162</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398755157</Item>
+      <Item key="Region.RegionIndex">562941398755159</Item>
+      <Item key="Region.Reputation">562941398755158</Item>
+    </StandartParams>
+    <Name>Railroad_Station_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861794976">
+    <WorldPositionGuid />
+    <EngineTemplateID>06b41e3201a94b47b455f78f2c751305</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093957317</Item>
+      <Item>7881179093957318</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5910884320143026</Item>
+      <Item>5910884320143027</Item>
+      <Item>5910884320143028</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398756075</Item>
+    </StandartParams>
+    <Name>Mortii_Plague</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861806676">
+    <WorldPositionGuid />
+    <EngineTemplateID>038d434ba44c459788b7bf37275efc74</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992501</Item>
+      <Item>7881179093992502</Item>
+      <Item>7881179093992503</Item>
+      <Item>7881179093992504</Item>
+      <Item>7881179093992505</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398818651</Item>
+      <Item key="Location.IsHibernation">562941398818652</Item>
+      <Item key="Location.Player">562941398818653</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398818670</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398818663</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398818667</Item>
+      <Item key="MapItemComponent.Discovered">562941398818664</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398818662</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398818669</Item>
+      <Item key="MapItemComponent.Placeholder">562941398818660</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398818665</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398818666</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398818668</Item>
+      <Item key="MapItemComponent.Text">562941398818658</Item>
+      <Item key="MapItemComponent.Title">562941398818657</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398818661</Item>
+      <Item key="MapItemComponent.TooltipText">562941398818659</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398818654</Item>
+      <Item key="Region.RegionIndex">562941398818656</Item>
+      <Item key="Region.Reputation">562941398818655</Item>
+    </StandartParams>
+    <Name>Skladi_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806677">
+    <WorldPositionGuid />
+    <EngineTemplateID>0e08f4418b844a8e8490f2316a3855ac</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992588</Item>
+      <Item>7881179093992589</Item>
+      <Item>7881179093992590</Item>
+      <Item>7881179093992591</Item>
+      <Item>7881179093992592</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398819286</Item>
+      <Item key="Location.IsHibernation">562941398819287</Item>
+      <Item key="Location.Player">562941398819288</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398819305</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398819298</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398819302</Item>
+      <Item key="MapItemComponent.Discovered">562941398819299</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398819297</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398819304</Item>
+      <Item key="MapItemComponent.Placeholder">562941398819295</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398819300</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398819301</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398819303</Item>
+      <Item key="MapItemComponent.Text">562941398819293</Item>
+      <Item key="MapItemComponent.Title">562941398819292</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398819296</Item>
+      <Item key="MapItemComponent.TooltipText">562941398819294</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398819289</Item>
+      <Item key="Region.RegionIndex">562941398819291</Item>
+      <Item key="Region.Reputation">562941398819290</Item>
+    </StandartParams>
+    <Name>Kozevenniy_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806678">
+    <WorldPositionGuid />
+    <EngineTemplateID>b03aa52a0f664eb7bd920d81e248adef</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992593</Item>
+      <Item>7881179093992594</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>10132944543865258</Item>
+      <Item>10132944543865259</Item>
+      <Item>10132944543865260</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398819306</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806679">
+    <WorldPositionGuid />
+    <EngineTemplateID>13b7df777438459f89e49b3a62bc565b</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992653</Item>
+      <Item>7881179093992654</Item>
+      <Item>7881179093992655</Item>
+      <Item>7881179093992656</Item>
+      <Item>7881179093992657</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398819742</Item>
+      <Item key="Location.IsHibernation">562941398819743</Item>
+      <Item key="Location.Player">562941398819744</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398819761</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398819754</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398819758</Item>
+      <Item key="MapItemComponent.Discovered">562941398819755</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398819753</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398819760</Item>
+      <Item key="MapItemComponent.Placeholder">562941398819751</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398819756</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398819757</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398819759</Item>
+      <Item key="MapItemComponent.Text">562941398819749</Item>
+      <Item key="MapItemComponent.Title">562941398819748</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398819752</Item>
+      <Item key="MapItemComponent.TooltipText">562941398819750</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398819745</Item>
+      <Item key="Region.RegionIndex">562941398819747</Item>
+      <Item key="Region.Reputation">562941398819746</Item>
+    </StandartParams>
+    <Name>Zavodi_Regions</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806680">
+    <WorldPositionGuid />
+    <EngineTemplateID>e3cd627055b045e9a7db137dbf641123</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992658</Item>
+      <Item>7881179093992659</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543865274</Item>
+      <Item>10132944543865275</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398819762</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806681">
+    <WorldPositionGuid />
+    <EngineTemplateID>4f7a1523ecab419a9507a0ffc4cde7f3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992675</Item>
+      <Item>7881179093992676</Item>
+      <Item>7881179093992677</Item>
+      <Item>7881179093992678</Item>
+      <Item>7881179093992679</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398819872</Item>
+      <Item key="Location.IsHibernation">562941398819873</Item>
+      <Item key="Location.Player">562941398819874</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398819891</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398819884</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398819888</Item>
+      <Item key="MapItemComponent.Discovered">562941398819885</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398819883</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398819890</Item>
+      <Item key="MapItemComponent.Placeholder">562941398819881</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398819886</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398819887</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398819889</Item>
+      <Item key="MapItemComponent.Text">562941398819879</Item>
+      <Item key="MapItemComponent.Title">562941398819878</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398819882</Item>
+      <Item key="MapItemComponent.TooltipText">562941398819880</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398819875</Item>
+      <Item key="Region.RegionIndex">562941398819877</Item>
+      <Item key="Region.Reputation">562941398819876</Item>
+    </StandartParams>
+    <Name>Rebro_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806682">
+    <WorldPositionGuid />
+    <EngineTemplateID>b08cae53113d47629bce0bdb280a9fed</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992680</Item>
+      <Item>7881179093992681</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543865281</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398819892</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806683">
+    <WorldPositionGuid />
+    <EngineTemplateID>54fca1569a4448329185f3792bb38cfa</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992706</Item>
+      <Item>7881179093992707</Item>
+      <Item>7881179093992708</Item>
+      <Item>7881179093992709</Item>
+      <Item>7881179093992710</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398820073</Item>
+      <Item key="Location.IsHibernation">562941398820074</Item>
+      <Item key="Location.Player">562941398820075</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398820092</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398820085</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398820089</Item>
+      <Item key="MapItemComponent.Discovered">562941398820086</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398820084</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398820091</Item>
+      <Item key="MapItemComponent.Placeholder">562941398820082</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398820087</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398820088</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398820090</Item>
+      <Item key="MapItemComponent.Text">562941398820080</Item>
+      <Item key="MapItemComponent.Title">562941398820079</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398820083</Item>
+      <Item key="MapItemComponent.TooltipText">562941398820081</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398820076</Item>
+      <Item key="Region.RegionIndex">562941398820078</Item>
+      <Item key="Region.Reputation">562941398820077</Item>
+    </StandartParams>
+    <Name>Serdechnik_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806684">
+    <WorldPositionGuid />
+    <EngineTemplateID>2c9ce37e171a4708a9807b8db9d8fae8</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992711</Item>
+      <Item>7881179093992712</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543865306</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398820093</Item>
+    </StandartParams>
+    <Name>Building</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806706">
+    <WorldPositionGuid />
+    <EngineTemplateID>60792afef1804754beda04a898859e44</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992799</Item>
+      <Item>7881179093992800</Item>
+      <Item>7881179093992801</Item>
+      <Item>7881179093992802</Item>
+      <Item>7881179093992803</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398820445</Item>
+      <Item key="Location.IsHibernation">562941398820446</Item>
+      <Item key="Location.Player">562941398820447</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398820464</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398820457</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398820461</Item>
+      <Item key="MapItemComponent.Discovered">562941398820458</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398820456</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398820463</Item>
+      <Item key="MapItemComponent.Placeholder">562941398820454</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398820459</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398820460</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398820462</Item>
+      <Item key="MapItemComponent.Text">562941398820452</Item>
+      <Item key="MapItemComponent.Title">562941398820451</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398820455</Item>
+      <Item key="MapItemComponent.TooltipText">562941398820453</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398820448</Item>
+      <Item key="Region.RegionIndex">562941398820450</Item>
+      <Item key="Region.Reputation">562941398820449</Item>
+    </StandartParams>
+    <Name>Utroba_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806707">
+    <WorldPositionGuid />
+    <EngineTemplateID>62efd2b010074da282a457f4a994056d</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992804</Item>
+      <Item>7881179093992805</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543865320</Item>
+      <Item>10132944543865322</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398820465</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806708">
+    <WorldPositionGuid />
+    <EngineTemplateID>70496e7321414d5a8a390b95c238536c</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992842</Item>
+      <Item>7881179093992843</Item>
+      <Item>7881179093992844</Item>
+      <Item>7881179093992845</Item>
+      <Item>7881179093992846</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398820726</Item>
+      <Item key="Location.IsHibernation">562941398820727</Item>
+      <Item key="Location.Player">562941398820728</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398820745</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398820738</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398820742</Item>
+      <Item key="MapItemComponent.Discovered">562941398820739</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398820737</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398820744</Item>
+      <Item key="MapItemComponent.Placeholder">562941398820735</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398820740</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398820741</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398820743</Item>
+      <Item key="MapItemComponent.Text">562941398820733</Item>
+      <Item key="MapItemComponent.Title">562941398820732</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398820736</Item>
+      <Item key="MapItemComponent.TooltipText">562941398820734</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398820729</Item>
+      <Item key="Region.RegionIndex">562941398820731</Item>
+      <Item key="Region.Reputation">562941398820730</Item>
+    </StandartParams>
+    <Name>Jerlo_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806709">
+    <WorldPositionGuid />
+    <EngineTemplateID>2b70b3e8b7f546f1a08f8af8360b5cec</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992847</Item>
+      <Item>7881179093992848</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543865333</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398820746</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806710">
+    <WorldPositionGuid />
+    <EngineTemplateID>73d5258c9b124926a540d798d46c7789</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992865</Item>
+      <Item>7881179093992866</Item>
+      <Item>7881179093992867</Item>
+      <Item>7881179093992868</Item>
+      <Item>7881179093992869</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398820867</Item>
+      <Item key="Location.IsHibernation">562941398820868</Item>
+      <Item key="Location.Player">562941398820869</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398820886</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398820879</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398820883</Item>
+      <Item key="MapItemComponent.Discovered">562941398820880</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398820878</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398820885</Item>
+      <Item key="MapItemComponent.Placeholder">562941398820876</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398820881</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398820882</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398820884</Item>
+      <Item key="MapItemComponent.Text">562941398820874</Item>
+      <Item key="MapItemComponent.Title">562941398820873</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398820877</Item>
+      <Item key="MapItemComponent.TooltipText">562941398820875</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398820870</Item>
+      <Item key="Region.RegionIndex">562941398820872</Item>
+      <Item key="Region.Reputation">562941398820871</Item>
+    </StandartParams>
+    <Name>Dubilshikov_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806711">
+    <WorldPositionGuid />
+    <EngineTemplateID>de905b2dcd714371bdefd2362eba6aa0</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992870</Item>
+      <Item>7881179093992871</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543865350</Item>
+      <Item>10132944543865355</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398820887</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806712">
+    <WorldPositionGuid />
+    <EngineTemplateID>95bebf0e2b29495ab93bbd3683e80bec</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992924</Item>
+      <Item>7881179093992925</Item>
+      <Item>7881179093992926</Item>
+      <Item>7881179093992927</Item>
+      <Item>7881179093992928</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398821278</Item>
+      <Item key="Location.IsHibernation">562941398821279</Item>
+      <Item key="Location.Player">562941398821280</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398821297</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398821290</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398821294</Item>
+      <Item key="MapItemComponent.Discovered">562941398821291</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398821289</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398821296</Item>
+      <Item key="MapItemComponent.Placeholder">562941398821287</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398821292</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398821293</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398821295</Item>
+      <Item key="MapItemComponent.Text">562941398821285</Item>
+      <Item key="MapItemComponent.Title">562941398821284</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398821288</Item>
+      <Item key="MapItemComponent.TooltipText">562941398821286</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398821281</Item>
+      <Item key="Region.RegionIndex">562941398821283</Item>
+      <Item key="Region.Reputation">562941398821282</Item>
+    </StandartParams>
+    <Name>Sirie_Zastroiki_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806714">
+    <WorldPositionGuid />
+    <EngineTemplateID>a9fdf7154a0648869cee856f2a925a41</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093992959</Item>
+      <Item>7881179093992960</Item>
+      <Item>7881179093992961</Item>
+      <Item>7881179093992962</Item>
+      <Item>7881179093992963</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398821509</Item>
+      <Item key="Location.IsHibernation">562941398821510</Item>
+      <Item key="Location.Player">562941398821511</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398821528</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398821521</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398821525</Item>
+      <Item key="MapItemComponent.Discovered">562941398821522</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398821520</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398821527</Item>
+      <Item key="MapItemComponent.Placeholder">562941398821518</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398821523</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398821524</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398821526</Item>
+      <Item key="MapItemComponent.Text">562941398821516</Item>
+      <Item key="MapItemComponent.Title">562941398821515</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398821519</Item>
+      <Item key="MapItemComponent.TooltipText">562941398821517</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398821512</Item>
+      <Item key="Region.RegionIndex">562941398821514</Item>
+      <Item key="Region.Reputation">562941398821513</Item>
+    </StandartParams>
+    <Name>Sedlo_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806716">
+    <WorldPositionGuid />
+    <EngineTemplateID>c4314ae7c5dc4619a859b4036f95bc59</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093992978</Item>
+      <Item>7881179093992979</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543865389</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398821548</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806724">
+    <WorldPositionGuid />
+    <EngineTemplateID>ba83ed7406c94a70b76b803909266731</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093993010</Item>
+      <Item>7881179093993011</Item>
+      <Item>7881179093993012</Item>
+      <Item>7881179093993013</Item>
+      <Item>7881179093993014</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398821676</Item>
+      <Item key="Location.IsHibernation">562941398821677</Item>
+      <Item key="Location.Player">562941398821678</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398821695</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398821688</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398821692</Item>
+      <Item key="MapItemComponent.Discovered">562941398821689</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398821687</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398821694</Item>
+      <Item key="MapItemComponent.Placeholder">562941398821685</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398821690</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398821691</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398821693</Item>
+      <Item key="MapItemComponent.Text">562941398821683</Item>
+      <Item key="MapItemComponent.Title">562941398821682</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398821686</Item>
+      <Item key="MapItemComponent.TooltipText">562941398821684</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398821679</Item>
+      <Item key="Region.RegionIndex">562941398821681</Item>
+      <Item key="Region.Reputation">562941398821680</Item>
+    </StandartParams>
+    <Name>Hrebtovka_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806725">
+    <WorldPositionGuid />
+    <EngineTemplateID>ece974da4a7442f6a58a88b867d66a10</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093993015</Item>
+      <Item>7881179093993016</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543865401</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398821696</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806726">
+    <WorldPositionGuid />
+    <EngineTemplateID>ba8b0211a7b4488cb4cc3f0f25073bac</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093993053</Item>
+      <Item>7881179093993054</Item>
+      <Item>7881179093993055</Item>
+      <Item>7881179093993056</Item>
+      <Item>7881179093993057</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398821967</Item>
+      <Item key="Location.IsHibernation">562941398821968</Item>
+      <Item key="Location.Player">562941398821969</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398821986</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398821979</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398821983</Item>
+      <Item key="MapItemComponent.Discovered">562941398821980</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398821978</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398821985</Item>
+      <Item key="MapItemComponent.Placeholder">562941398821976</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398821981</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398821982</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398821984</Item>
+      <Item key="MapItemComponent.Text">562941398821974</Item>
+      <Item key="MapItemComponent.Title">562941398821973</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398821977</Item>
+      <Item key="MapItemComponent.TooltipText">562941398821975</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398821970</Item>
+      <Item key="Region.RegionIndex">562941398821972</Item>
+      <Item key="Region.Reputation">562941398821971</Item>
+    </StandartParams>
+    <Name>Jilniki_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861806727">
+    <WorldPositionGuid />
+    <EngineTemplateID>97cfc95438534cefb3b2c9976d620ace</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093993058</Item>
+      <Item>7881179093993059</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>10132944543865409</Item>
+      <Item>10132944543865410</Item>
+      <Item>10132944543865436</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398821987</Item>
+    </StandartParams>
+    <Name>Buildings</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861806728">
+    <WorldPositionGuid />
+    <EngineTemplateID>e0f2993f0b1d4d0cacfc2340240ab577</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="5">
+      <Item>7881179093993124</Item>
+      <Item>7881179093993125</Item>
+      <Item>7881179093993126</Item>
+      <Item>7881179093993127</Item>
+      <Item>7881179093993128</Item>
+    </FunctionalComponents>
+    <StandartParams count="20">
+      <Item key="Common.ObjectEnabled">562941398822431</Item>
+      <Item key="Location.IsHibernation">562941398822432</Item>
+      <Item key="Location.Player">562941398822433</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941398822450</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941398822443</Item>
+      <Item key="MapItemComponent.CraftIcon">562941398822447</Item>
+      <Item key="MapItemComponent.Discovered">562941398822444</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941398822442</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941398822449</Item>
+      <Item key="MapItemComponent.Placeholder">562941398822440</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941398822445</Item>
+      <Item key="MapItemComponent.SleepIcon">562941398822446</Item>
+      <Item key="MapItemComponent.StorageIcon">562941398822448</Item>
+      <Item key="MapItemComponent.Text">562941398822438</Item>
+      <Item key="MapItemComponent.Title">562941398822437</Item>
+      <Item key="MapItemComponent.TooltipResource">562941398822441</Item>
+      <Item key="MapItemComponent.TooltipText">562941398822439</Item>
+      <Item key="Region.RegionDiseaseLevel">562941398822434</Item>
+      <Item key="Region.RegionIndex">562941398822436</Item>
+      <Item key="Region.Reputation">562941398822435</Item>
+    </StandartParams>
+    <Name>Kladbishe_Region</Name>
+    <Parent>9851473861708083</Parent>
+  </Item>
+  <Item id="9851473861807676">
+    <WorldPositionGuid />
+    <EngineTemplateID>97c6314bcd4c4a67a988c96a7a4c790d</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093996901</Item>
+      <Item>7881179093996902</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543886001</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398831151</Item>
+    </StandartParams>
+    <Name>Bachelor_Funeral</Name>
+    <Parent>9851473861723599</Parent>
+  </Item>
+  <Item id="9851473861807677">
+    <WorldPositionGuid />
+    <EngineTemplateID>60333da08df746f8990ce29ad902e0db</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179093996904</Item>
+      <Item>7881179093996905</Item>
+      <Item>7881179093996907</Item>
+    </FunctionalComponents>
+    <StandartParams count="3">
+      <Item key="Common.ObjectEnabled">562941398831153</Item>
+      <Item key="Location.IsHibernation">562941398831154</Item>
+      <Item key="Location.Player">562941398831155</Item>
+    </StandartParams>
+    <Name>Furniture_Kids</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861816077">
+    <WorldPositionGuid />
+    <EngineTemplateID>8f7ec1368d5641358f3bc9ba603ebefd</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094016919</Item>
+      <Item>7881179094016920</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543876308</Item>
+      <Item>10132944543876309</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398870895</Item>
+    </StandartParams>
+    <Name>QuestProps</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861825376">
+    <WorldPositionGuid />
+    <EngineTemplateID>36cc6de729ae46d0babcab0512fcf958</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094029401</Item>
+      <Item>7881179094029402</Item>
+    </FunctionalComponents>
+    <ChildObjects count="8">
+      <Item>5910884320169226</Item>
+      <Item>5910884320169227</Item>
+      <Item>5910884320169228</Item>
+      <Item>5910884320169229</Item>
+      <Item>5910884320169230</Item>
+      <Item>5910884320169231</Item>
+      <Item>5910884320169232</Item>
+      <Item>5910884320169233</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398888951</Item>
+    </StandartParams>
+    <Name>Bachelor_Funeral</Name>
+    <Parent>9851473861723589</Parent>
+  </Item>
+  <Item id="9851473861832076">
+    <WorldPositionGuid />
+    <EngineTemplateID>b901263dae4b4dee945458cf76714e66</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094045401</Item>
+      <Item>7881179094045402</Item>
+    </FunctionalComponents>
+    <ChildObjects count="3">
+      <Item>5910884320175026</Item>
+      <Item>5910884320177528</Item>
+      <Item>5910884320183826</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398920051</Item>
+    </StandartParams>
+    <Name>Triggers</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861833076">
+    <WorldPositionGuid />
+    <EngineTemplateID>608d2c24fde94579854c4746d88892aa</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094046402</Item>
+      <Item>7881179094046403</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543894902</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398921052</Item>
+    </StandartParams>
+    <Name>QuestProps</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861834576">
+    <WorldPositionGuid />
+    <EngineTemplateID>5080e20a0cef4d959e2d5f385161fd4f</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094047904</Item>
+      <Item>7881179094047905</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>5910884320177527</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398922555</Item>
+    </StandartParams>
+    <Name>Triggers</Name>
+    <Parent>281470686466727</Parent>
+  </Item>
+  <Item id="9851473861857676">
+    <WorldPositionGuid />
+    <EngineTemplateID>92a6efaa54ac4e2099b05b47d5137044</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094077401</Item>
+      <Item>7881179094077402</Item>
+    </FunctionalComponents>
+    <ChildObjects count="1">
+      <Item>10132944543920301</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941398962251</Item>
+    </StandartParams>
+    <Name>Crows</Name>
+    <Parent>9851473861723576</Parent>
+  </Item>
+  <Item id="9851473861885476">
+    <WorldPositionGuid />
+    <EngineTemplateID>20efe584cb0d4266a7c10971102daa82</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094117401</Item>
+      <Item>7881179094117402</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>9851473861885477</Item>
+      <Item>10132944543950703</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941399024551</Item>
+    </StandartParams>
+    <Name>EasterEgg</Name>
+    <Parent>9851473861723599</Parent>
+  </Item>
+  <Item id="9851473861885477">
+    <WorldPositionGuid />
+    <EngineTemplateID>47e39986f3a242df9b161c6e37fee048</EngineTemplateID>
+    <EngineBaseTemplateID>c79027aa9daa426b8ac646b179127b04</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179094117403</Item>
+      <Item>7881179094117404</Item>
+      <Item>7881179094117405</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543950701</Item>
+      <Item>10132944543950702</Item>
+    </ChildObjects>
+    <StandartParams count="2">
+      <Item key="Common.ObjectEnabled">562941399024552</Item>
+      <Item key="Interactive.ObjectName">562941399024553</Item>
+    </StandartParams>
+    <Name>Candles</Name>
+    <Parent>9851473861885476</Parent>
+  </Item>
+  <Item id="9851473861893476">
+    <WorldPositionGuid />
+    <EngineTemplateID>7c99ae705ad9406a9b366a15fb4b8b98</EngineTemplateID>
+    <EngineBaseTemplateID>9b6da243de7b47c996bc797816e6937b</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179094133601</Item>
+      <Item>7881179094133602</Item>
+    </FunctionalComponents>
+    <ChildObjects count="2">
+      <Item>10132944543961101</Item>
+      <Item>10132944543961102</Item>
+    </ChildObjects>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941399053151</Item>
+    </StandartParams>
+    <Name>Bachelor_Funeral</Name>
+    <Parent>9851473861781179</Parent>
+  </Item>
+</Root>

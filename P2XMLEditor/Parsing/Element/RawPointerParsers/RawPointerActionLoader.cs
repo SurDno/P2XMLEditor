@@ -83,16 +83,21 @@ public class RawPointerActionLoader : IParser<RawActionData>  {
 					targetFuncName = ParseStringAsciiNoSpecialSymbols(ref p);
 					p += 14;
 				}
-				p += 10;
+				p += 16;
 
 				ulong? sourceExpressionId = null;
-				if (*p == (byte)'S') {
-					p += 17;
+				ulong? sourceConstId = null;
+				if (*p == (byte)'E') {
+					p += 11;
 					sourceExpressionId = ParseUlong16(p);
-					p += 16 + 26;
+					p += 16 + 32;
+				} else if (*p == (byte)'C') {
+					p += 6;
+					sourceConstId = ParseUlong16(p);
+					p += 16 + 27;
 				}
 				
-				p += 13;
+				p += 7;
 				var targetObject = ParseStringUtf8NoSpecialSymbols(ref p);
 				
 				p += 34;
@@ -126,14 +131,14 @@ public class RawPointerActionLoader : IParser<RawActionData>  {
 				var localContenxtId = ParseUlong16(p);
 				p += 49;
 				
-				var orderIndex = ParseInt3(p, out var digitCount);
+				var index = ParseInt3(p, out var digitCount);
 				p += digitCount + 26;
 
 				raws.Add(new RawActionData {
-					Id = id, ActionType = actionType, MathOperationType = mathOperationType,
-					TargetFuncName = targetFuncName, SourceExpressionId = sourceExpressionId, 
-					TargetObject = targetObject, TargetParam = targetParam, SourceParams = sourceParams, Name = name,
-					LocalContextId = localContenxtId, OrderIndex = orderIndex });
+					Id = id, ActionType = actionType, MathOperationType = mathOperationType, 
+					TargetFuncName = targetFuncName, SourceExpressionId = sourceExpressionId,
+					SourceConstId = sourceConstId, TargetObject = targetObject, TargetParam = targetParam, 
+					SourceParams = sourceParams, Name = name, LocalContextId = localContenxtId, OrderIndex = index });
 			}
 		}
 	}
