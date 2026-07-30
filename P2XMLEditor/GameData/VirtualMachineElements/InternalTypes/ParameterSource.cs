@@ -55,21 +55,16 @@ public struct ParameterSource {
 		var src = new ParameterSource();
 
 		if (data.StartsWith("const_")) {
-			HitTracker.Hit(data);
 			src.LiteralValue = ParameterValue.Create(vm, VmTypeInfo.Int32, data[6..]);
 			src.IsConstant = true;
 			return src;
 		}
 
-		HitTracker.Hit(data);
 		src.HasLeadingPercent = data.StartsWith('%');
-		// NOTE: the old code sliced data[..num] while searching from index 1, so the
-		// leading '%' leaked into the prefix for every "%A%B" value.
 		var body = src.HasLeadingPercent ? data[1..] : data;
 
 		// --- (2) hierarchy written twice: "A%A" is one reference, not prefix + value.
 		if (HierarchyGuid.TryParseDoubled(body, vm, out var doubled)) {
-			HitTracker.Hit(data);
 			src.HierarchyReference = doubled;
 			src.HierarchyWrittenTwice = true;
 			src.ElementReference = doubled!.Elements[^1].Element;
@@ -82,39 +77,28 @@ public struct ParameterSource {
 		var sep = body.IndexOf('%');
 		string content;
 		if (sep != -1) {
-			HitTracker.Hit(data);
 			var prefix = body[..sep];
 			content = body[(sep + 1)..];
 
 			if (ulong.TryParse(prefix, out var prefixId)) {
-				HitTracker.Hit(data);
 				var prefixElement = vm.GetNullableElement<VmElement>(prefixId);
 				if (prefixElement is Parameter dynamicObjectReference) {
-					HitTracker.Hit(data);
 					src.DynamicObjectReference = dynamicObjectReference;
 					src.DynamicParameterName = content;
 				} else if (prefixElement is ParameterHolder prefixHolder) {
-					HitTracker.Hit(data);
 					src.PrefixHolder = prefixHolder;
-				}/* else {
-					HitTracker.Hit(data);
-					src.PrefixString = prefix;
-				}*/
+				}
 			} else if (HierarchyGuid.TryParse(prefix, vm, out var prefixHierarchy)) {
-				// --- (1) HierarchyGuid prefix, e.g. "<hier>%<parameterId>"
-				HitTracker.Hit(data);
 				src.PrefixHierarchy = prefixHierarchy;
 			} else {
-				HitTracker.Hit(data);
 				src.PrefixString = prefix;
+				Logger.Log(LogLevel.Warning, $"Using string prefix for: {data}");
 			}
 		} else {
-			HitTracker.Hit(data);
 			content = body;
 		}
 
 		if (content.Length == 0) {
-			HitTracker.Hit(data);
 			src.TypeInfo = expectedType ?? VmTypeInfo.Unknown;
 			return src;
 		}
@@ -131,30 +115,21 @@ public struct ParameterSource {
 
 		var holder = src.PrefixHolder;
 		if (holder == null && src.PrefixHierarchy != null) {
-			HitTracker.Hit(data);
 			holder = src.PrefixHierarchy.Elements[^1].Element as ParameterHolder;
 		}
 
 		if (content.Contains("_message_") && !content.Contains('&')) {
-			HitTracker.Hit(data);
 			if (vm.TryResolveMessage(content, out var message)) {
-				HitTracker.Hit(data);
 				src.MessageReference = message;
 				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(message!.Type, vm);
 				return src;
-			}/*
-
-			HitTracker.Hit(data);
-			Logger.Log(LogLevel.Warning, $"Unknown message '{content}' in '{data}'.");*/
+			}
 		} else if (content.Contains("_inputparam_")) {
-			HitTracker.Hit(data);
 			if (InputParameter.TryParse(content, out var inputParam)) {
-				HitTracker.Hit(data);
 				src.InputParamReference = inputParam;
 				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(inputParam!.Type, vm);
 				return src;
 			}
-			//HitTracker.Hit(data);
 		} else if (content.Contains("_Loop_")) {
 			HitTracker.Hit(data);
 			ParseLoopVariable(ref src, content, vm);
@@ -173,126 +148,78 @@ public struct ParameterSource {
 			if (contentElement is Parameter parameterReference) {
 				HitTracker.Hit(data);
 				src.ParameterReference = parameterReference;
-			} else if (expectedType is { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }) {
-				switch (contentElement) {
-					case Item item:
-						HitTracker.Hit(data);
-						src.BlueprintReference = new() { Element = new(item), SerializeAsGuid = false };
-						src.ElementReference = item;
-						break;
-					case Other other:
-						HitTracker.Hit(data);
-						src.BlueprintReference = new() { Element = new(other), SerializeAsGuid = false };
-						src.ElementReference = other;
-						break;
-					case Character character:
-						HitTracker.Hit(data);
-						src.BlueprintReference = new() { Element = new(character), SerializeAsGuid = false };
-						src.ElementReference = character;
-						break;
-				}
-			} else if (expectedType is { BaseType: VmType.EntityRef }) {
-				switch (contentElement) {
-					case GameObject gameObject:
-						HitTracker.Hit(data);
-						src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = false };
-						src.ElementReference = gameObject;
-						break;
-					/*case null:
-						HitTracker.Hit(data);
-						Logger.Log(LogLevel.Error, $"EntityRef: Object with ID {contentId} not found.");
-						break;*/
-					default:
-						HitTracker.Hit(data);
-						Logger.Log(LogLevel.Error,
-							$"EntityRef: ID {contentId} is {contentElement.GetType().Name}, not a GameObject. " +
-							$"Falling back to a plain element reference.");
+			} else switch (expectedType) {
+				case { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }:
+					src.BlueprintReference = contentElement switch {
+						Item item => new() { Element = new(item), SerializeAsGuid = false },
+						Other other => new() { Element = new(other), SerializeAsGuid = false },
+						Character character => new() { Element = new(character), SerializeAsGuid = false },
+						_ => src.BlueprintReference
+					};
+					if (contentElement != null) 
 						src.ElementReference = contentElement;
-						break;
+					break;
+				case { BaseType: VmType.EntityRef }:
+					src.EntityReference = new() { Element = contentElement as GameObject, SerializeAsGuid = false };
+					src.ElementReference = contentElement;
+					break;
+				default: {
+					Logger.Log(LogLevel.Warning, $"Using weird element reference for: {data}");
+					if (contentElement != null) 
+						src.ElementReference = contentElement;
+					break;
 				}
-			} else if (contentElement != null) {
-				HitTracker.Hit(data);
-				src.ElementReference = contentElement;
-			} else {
-				HitTracker.Hit(data);
 			}
-		} else if (expectedType is { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }) {
-			// Non-numeric: EngineTemplateId lookup.
-			HitTracker.Hit(data);
-			var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
-			switch (gameObject) {
-				case Item item:
-					HitTracker.Hit(data);
-					src.BlueprintReference = new() { Element = new(item), SerializeAsGuid = true };
-					src.ElementReference = item;
-					break;
-				case Other other:
-					HitTracker.Hit(data);
-					src.BlueprintReference = new() { Element = new(other), SerializeAsGuid = true };
-					src.ElementReference = other;
-					break;
-				case Character character:
-					HitTracker.Hit(data);
-					src.BlueprintReference = new() { Element = new(character), SerializeAsGuid = true };
-					src.ElementReference = character;
-					break;
-				/*default:
-					HitTracker.Hit(data);
-					break;*/
-			}
-		} else if (expectedType is { BaseType: VmType.EntityRef }) {
-			HitTracker.Hit(data);
-			var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
-			if (gameObject != null) {
-				src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
+		} else switch (expectedType) {
+			case { BaseType: VmType.BlueprintRef or VmType.BlueprintRefStorable }: {
+				var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
+				src.BlueprintReference = gameObject switch {
+					Item item => new() { Element = new(item), SerializeAsGuid = true },
+					Other other => new() { Element = new(other), SerializeAsGuid = true },
+					Character character => new() { Element = new(character), SerializeAsGuid = true },
+					_ => src.BlueprintReference
+				};
 				src.ElementReference = gameObject;
+				break;
 			}
-		} else {
-			HitTracker.Hit(data);
+			case { BaseType: VmType.EntityRef }: {
+				var gameObject = vm.GetElementsByType<GameObject>().FirstOrDefault(x => x.EngineTemplateId == content);
+				if (gameObject != null) {
+					src.EntityReference = new EntityRef { Element = gameObject, SerializeAsGuid = true };
+					src.ElementReference = gameObject;
+				}
+
+				break;
+			}
 		}
 
 		src.TypeInfo = expectedType ?? VmTypeInfo.Unknown;
-		// NOTE: the old check was "TypeInfo == VmTypeInfo.Unknown". VmTypeInfo is a class
-		// with no operator==, and Unknown is a property returning a fresh instance, so that
-		// comparison was always false and this whole block was unreachable.
-		if (src.TypeInfo.BaseType == VmType.Unknown) {
-			HitTracker.Hit(data);
+		if (src.TypeInfo.BaseType == VmType.Unknown)
 			InferTypeInfo(ref src, vm, target);
-		} else {
-			HitTracker.Hit(data);
-		}
 
 		if (!src.HasResolvedTarget()) {
 			HitTracker.Hit(data);
-			var unresolvedSymbol = content.Contains("_inputparam_") || content.Contains("_message_") ||
-			                       content.Contains("_Loop_");
 
 			// Only fall back to the Unknown marker when the type really is unknown.
 			// Tokens like "_message_" also occur inside opaque payloads (e.g. the
 			// CONTEXT&PARAM operation-path strings the engine hands to OperationPathInfo),
 			// which are ordinary System.String values and must keep their declared type.
-			if (unresolvedSymbol && src.TypeInfo.BaseType == VmType.Unknown) {
+
+			try {
+				src.LiteralValue = ParameterValue.Create(vm, src.TypeInfo, content);
+			} catch (Exception ex) {
 				HitTracker.Hit(data);
-				src.LiteralValue = new BasicValue<string>("Unknown", content); // possibly unused
-			} else {
-				HitTracker.Hit(data);
-				try {
-					src.LiteralValue = ParameterValue.Create(vm, src.TypeInfo, content);
-				} catch (Exception ex) {
-					HitTracker.Hit(data);
-					Logger.Log(LogLevel.Error,
-						$"Failed to parse '{data}' as {src.TypeInfo}: {ex.Message}. Preserving as raw string.");
-					src.LiteralValue = new BasicValue<string>(src.TypeInfo.Serialize(), content);
-				}
+				Logger.Log(LogLevel.Error,
+					$"Failed to parse '{data}' as {src.TypeInfo}: {ex.Message} in {VirtualMachine.FillScope.Id}. Preserving as raw string.");
+				src.LiteralValue = new BasicValue<string>(src.TypeInfo.Serialize(), content);
 			}
+
 
 			src.IsCommaSeparator = content.Contains(',') && src.LiteralValue is BasicValue<float>;
 
 			if (src.TypeInfo.BaseType == VmType.Unknown)
 				Logger.Log(LogLevel.Warning,
 					$"Using literal parsing for {data}, guessed type:{src.TypeInfo} {src.LiteralValue?.XmlType}");
-		} else {
-			HitTracker.Hit(data);
 		}
 
 		return src;
@@ -307,14 +234,9 @@ public struct ParameterSource {
 	/// populate the matching wrapper so the editor treats it as a reference.
 	/// </summary>
 	private static void ApplyRefWrapper(ref ParameterSource src, VirtualMachine vm, VmTypeInfo? expectedType) {
-		//if (src.HierarchyReference == null) {
-			//HitTracker.Hit();
-			//return;
-		//}
-
 		var leaf = src.HierarchyReference!.Elements[^1].Element;
 
-		switch (expectedType?.BaseType) {/*
+		switch (expectedType?.BaseType) {
 			case VmType.BlueprintRef:
 			case VmType.BlueprintRefStorable:
 				HitTracker.Hit();
@@ -334,14 +256,10 @@ public struct ParameterSource {
 						$"which is neither Item nor Other; BlueprintRef left unset.");
 				}
 				break;
-*/
+
 			case VmType.EntityRef:
 				HitTracker.Hit();
 				src.EntityReference = new EntityRef { Element = leaf as GameObject, SerializeAsGuid = false };
-				break;
-
-			default:
-				HitTracker.Hit();
 				break;
 		}
 	}
@@ -528,7 +446,7 @@ public struct ParameterSource {
 				: BlueprintReference.Element.Element?.Id.ToString();
 		} else if (EntityReference != null) {
 			value = EntityReference.SerializeAsGuid
-				? EntityReference.Element?.EngineTemplateId
+				? ((GameObject)EntityReference.Element!).EngineTemplateId
 				: EntityReference.Element?.Id.ToString();
 		} else if (ElementReference != null) {
 			value = ElementReference.Id.ToString();

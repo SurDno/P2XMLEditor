@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
@@ -36,7 +37,8 @@ public readonly struct ExpressionParamTarget {
 			return new() {
 				Kind = ExpressionParamKind.Param,
 				Param = param,
-				ValueType = param.Parameter?.Element is Parameter parameter ? VmTypeHelper.GetVmTypeInfo(parameter.Type, vm) : null
+				ValueType = param.Parameter?.Element is Parameter parameter and not ParameterPlaceholder 
+					? VmTypeHelper.GetVmTypeInfo(parameter.Type, vm) : null
 			};
 
 		var leading = data.StartsWith('%');
