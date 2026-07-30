@@ -13,6 +13,6 @@ public class GlobalDoorsManagerIsDoorUnlockedFunction(
 	: VmFunction {
 	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<GameObject> GateObj { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef> GateObj { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [GateObj.Write()];
 }

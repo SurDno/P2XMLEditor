@@ -10,8 +10,8 @@ public class SupportMinMaxIntNextRandFunction(VirtualMachine vm, string[] parame
 	: VmFunction {
 	public override VmType ReturnType => VmType.Int32;
 	public override int ParamCount => 3;
-	public FunctionSourceParam<int> MinValue { get; } = FunctionSourceParam<int>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
-	public FunctionSourceParam<int> MaxValue { get; } = FunctionSourceParam<int>.Read((parameters.Length > 1) ? parameters[1] : "", vm);
-	public FunctionSourceParam<int> PrevValue { get; } = FunctionSourceParam<int>.Read((parameters.Length > 2) ? parameters[2] : "", vm);
+	public FunctionSourceParam<int> MinValue { get; } = FunctionSourceParam<int>.Read(parameters[0], vm);
+	public FunctionSourceParam<int> MaxValue { get; } = FunctionSourceParam<int>.Read(parameters[1], vm);
+	public FunctionSourceParam<int> PrevValue { get; } = FunctionSourceParam<int>.Read(parameters[2], vm);
 	public override List<string>? GetParamStrings() => [MinValue.Write(), MaxValue.Write(), PrevValue.Write()];
 }

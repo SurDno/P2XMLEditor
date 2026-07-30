@@ -12,7 +12,7 @@ public class GlobalMarketManagerSetItemStackCountFunction(
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
-	public FunctionSourceParam<string> ItemTemplatesNames { get; } = FunctionSourceParam<string>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
-	public FunctionSourceParam<string> ItemTemplatesStackCountValues { get; } = FunctionSourceParam<string>.Read((parameters.Length > 1) ? parameters[1] : "", vm);
+	public FunctionSourceParam<string> ItemTemplatesNames { get; } = FunctionSourceParam<string>.Read(parameters[0], vm);
+	public FunctionSourceParam<string> ItemTemplatesStackCountValues { get; } = FunctionSourceParam<string>.Read(parameters[1], vm);
 	public override List<string>? GetParamStrings() => [ItemTemplatesNames.Write(), ItemTemplatesStackCountValues.Write()];
 }

@@ -11,7 +11,7 @@ public class GameComponentEnableObjectFunction(VirtualMachine vm, string[] param
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
-	public FunctionSourceParam<GameObject> Obj { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef> Obj { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public FunctionSourceParam<bool> Enable { get; } = FunctionSourceParam<bool>.Read(parameters[1], vm);
 	public override List<string>? GetParamStrings() => [Obj.Write(), Enable.Write()];
 }

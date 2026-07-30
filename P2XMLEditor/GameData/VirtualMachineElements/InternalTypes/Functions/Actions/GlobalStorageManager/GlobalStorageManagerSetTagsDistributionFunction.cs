@@ -12,8 +12,8 @@ public class GlobalStorageManagerSetTagsDistributionFunction(
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 3;
-	public FunctionSourceParam<string> StoragesRootInfo { get; } = FunctionSourceParam<string>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
-	public FunctionSourceParam<string> StoragTagDistributionInfo { get; } = FunctionSourceParam<string>.Read((parameters.Length > 1) ? parameters[1] : "", vm);
-	public FunctionSourceParam<string> StorageTypes { get; } = FunctionSourceParam<string>.Read((parameters.Length > 2) ? parameters[2] : "", vm);
+	public FunctionSourceParam<string> StoragesRootInfo { get; } = FunctionSourceParam<string>.Read(parameters[0], vm);
+	public FunctionSourceParam<string> StoragTagDistributionInfo { get; } = FunctionSourceParam<string>.Read(parameters[1], vm);
+	public FunctionSourceParam<string> StorageTypes { get; } = FunctionSourceParam<string>.Read(parameters[2], vm);
 	public override List<string>? GetParamStrings() => [StoragesRootInfo.Write(), StoragTagDistributionInfo.Write(), StorageTypes.Write()];
 }

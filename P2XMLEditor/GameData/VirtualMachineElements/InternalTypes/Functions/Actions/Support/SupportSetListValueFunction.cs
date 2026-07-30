@@ -15,10 +15,9 @@ public class SupportSetListValueFunction : VmFunction {
 	public FunctionSourceParam<int>? Index { get; }
 
 	public SupportSetListValueFunction(VirtualMachine vm, string[] parameters) {
-		ObjList = FunctionSourceParam<CommonList>.Read(parameters.Length != 0 ? parameters[0] : "", vm);
-		Val = FunctionSourceParam<object>.Read(
-			parameters[1], vm, CommonList.GetElementType(ObjList, vm));
-		Index = FunctionSourceParam<int>.Read(parameters.Length > 2 ? parameters[2] : "", vm);
+		ObjList = FunctionSourceParam<CommonList>.Read(parameters[0], vm);
+		Val = FunctionSourceParam<object>.Read(parameters[1], vm, CommonList.GetElementType(ObjList, vm));
+		Index = FunctionSourceParam<int>.Read(parameters[2], vm);
 	}
 
 	public override List<string>? GetParamStrings() => [ObjList.Write(), Val?.Write() ?? "", Index.Write()];

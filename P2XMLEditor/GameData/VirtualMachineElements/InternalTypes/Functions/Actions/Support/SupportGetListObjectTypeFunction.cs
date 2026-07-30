@@ -10,7 +10,7 @@ public class SupportGetListObjectTypeFunction(VirtualMachine vm, string[] parame
 	: VmFunction {
 	public override VmType ReturnType => VmType.GameObject;
 	public override int ParamCount => 2;
-	public FunctionSourceParam<CommonList>? ObjList { get; } = FunctionSourceParam<CommonList>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
-	public FunctionSourceParam<int>? Index { get; } = FunctionSourceParam<int>.Read((parameters.Length > 1) ? parameters[1] : "", vm);
+	public FunctionSourceParam<CommonList>? ObjList { get; } = FunctionSourceParam<CommonList>.Read(parameters[0], vm);
+	public FunctionSourceParam<int>? Index { get; } = FunctionSourceParam<int>.Read(parameters[1], vm);
 	public override List<string>? GetParamStrings() => [ObjList.Write(), Index.Write()];
 }

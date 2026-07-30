@@ -10,6 +10,6 @@ public class SupportPoissonHourRandTimeFunction(VirtualMachine vm, string[] para
 	: VmFunction {
 	public override VmType ReturnType => VmType.GameTime;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<float> FlowPerHour { get; } = FunctionSourceParam<float>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
+	public FunctionSourceParam<float> FlowPerHour { get; } = FunctionSourceParam<float>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [FlowPerHour.Write()];
 }

@@ -11,6 +11,6 @@ public class GameComponentRemoveObjectFunction(VirtualMachine vm, string[] param
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<GameObject> Entity { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef> Entity { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [Entity.Write()];
 }

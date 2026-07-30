@@ -12,6 +12,6 @@ public class BehaviorComponentSetBehaviorForcedFunction(
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<Sample>? Behavior { get; } = FunctionSourceParam<Sample>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
+	public FunctionSourceParam<Sample>? Behavior { get; } = FunctionSourceParam<Sample>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [Behavior?.Write() ?? ""];
 }

@@ -11,6 +11,6 @@ public class StorageReceiveAllItemsFunction(VirtualMachine vm, string[] paramete
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<GameObject>? SourceStorage { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef>? SourceStorage { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [SourceStorage.Write()];
 }

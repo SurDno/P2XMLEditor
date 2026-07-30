@@ -13,7 +13,7 @@ public class GameComponentIsObjectDerivedFromTemplateFunction(
 	: VmFunction {
 	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 2;
-	public FunctionSourceParam<GameObject> ObjRef { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef> ObjRef { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public FunctionSourceParam<BlueprintRef> ClassRef { get; } = FunctionSourceParam<BlueprintRef>.Read(parameters[1], vm);
 	public override List<string>? GetParamStrings() => [ObjRef.Write(), ClassRef.Write()];
 }

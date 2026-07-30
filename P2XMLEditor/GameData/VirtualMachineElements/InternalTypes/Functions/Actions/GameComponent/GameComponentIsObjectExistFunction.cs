@@ -11,6 +11,6 @@ public class GameComponentIsObjectExistFunction(VirtualMachine vm, string[] para
 	: VmFunction {
 	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<GameObject> RemObj { get; } = FunctionSourceParam<GameObject>.Read(parameters[0], vm);
+	public FunctionSourceParam<ObjRef> RemObj { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [RemObj.Write()];
 }

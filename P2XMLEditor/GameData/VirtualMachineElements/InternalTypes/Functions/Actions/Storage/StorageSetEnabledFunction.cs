@@ -10,7 +10,7 @@ public class StorageSetEnabledFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 2;
-	public FunctionSourceParam<EntityRef> Storage { get; } = FunctionSourceParam<EntityRef>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
-	public FunctionSourceParam<bool> Enabled { get; } = FunctionSourceParam<bool>.Read((parameters.Length > 1) ? parameters[1] : "", vm);
+	public FunctionSourceParam<EntityRef> Storage { get; } = FunctionSourceParam<EntityRef>.Read(parameters[0], vm);
+	public FunctionSourceParam<bool> Enabled { get; } = FunctionSourceParam<bool>.Read(parameters[1], vm);
 	public override List<string>? GetParamStrings() => [Storage.Write(), Enabled.Write()];
 }

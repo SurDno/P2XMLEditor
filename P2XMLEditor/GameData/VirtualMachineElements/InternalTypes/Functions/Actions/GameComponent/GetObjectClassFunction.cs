@@ -10,18 +10,12 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 
 [Function("GameComponent.GetObjectClass")]
 public class GetObjectClassFunction : VmFunction {
-	private readonly ParameterHolder holder;
-	private readonly string? messageParam;
 	public override VmType ReturnType => VmType.BlueprintRef;
 	public override int ParamCount => 1;
-	public GetObjectClassFunction(ParameterHolder holder, string? messageParam = null) {
-		this.holder = holder ?? throw new ArgumentNullException("holder");
-		this.messageParam = messageParam;
-	}
+	public FunctionSourceParam<ObjRef> Object { get; }
+
 	public GetObjectClassFunction(VirtualMachine vm, string[] parameters) {
-		var array = parameters[0].Split('%', 2);
-		holder = vm.GetElement<ParameterHolder>(ulong.Parse(array[0]));
-		messageParam = ((array.Length > 1) ? array[1] : null);
+		Object = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
 	}
-	public override List<string>? GetParamStrings() => [((messageParam != null) ? $"{holder.Id}%{messageParam}" : holder.Id.ToString())];
+	public override List<string>? GetParamStrings() => [Object.Write()];
 }

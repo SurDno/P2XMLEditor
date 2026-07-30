@@ -10,6 +10,6 @@ public class StorageGetEnabledFunction(VirtualMachine vm, string[] parameters)
 	: VmFunction {
 	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 1;
-	public FunctionSourceParam<EntityRef> ContainerTemplate { get; } = FunctionSourceParam<EntityRef>.Read((parameters.Length != 0) ? parameters[0] : "", vm);
+	public FunctionSourceParam<EntityRef> ContainerTemplate { get; } = FunctionSourceParam<EntityRef>.Read(parameters[0], vm);
 	public override List<string>? GetParamStrings() => [ContainerTemplate.Write()];
 }
