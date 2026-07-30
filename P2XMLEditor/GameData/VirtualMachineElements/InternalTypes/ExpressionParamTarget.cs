@@ -11,7 +11,8 @@ public enum ExpressionParamKind {
 	Param,
 	Message,
 	InputParam,
-	ObjectLiteral
+	ObjectLiteral,
+	Unresolved
 }
 
 public readonly struct ExpressionParamTarget {
@@ -21,6 +22,7 @@ public readonly struct ExpressionParamTarget {
 	public Message? Message { get; init; }
 	public InputParameter? InputParam { get; init; }
 	public VmElement? ObjectLiteral { get; init; }
+	public string? UnresolvedRawString{ get; init; }
 	public HierarchyGuid? LiteralHierarchy { get; init; }
 	public bool ByEngineGuid { get; init; }
 
@@ -83,8 +85,8 @@ public readonly struct ExpressionParamTarget {
 				};
 		}
 
-		Logger.Log(LogLevel.Error, $"Unresolved Expression TargetParam '{data}'.");
-		return new() { Kind = ExpressionParamKind.Param, Param = ParamTarget.Empty() };
+		Logger.Log(LogLevel.Warning, $"Unresolved Expression TargetParam '{body}'.");
+		return new() { Kind = ExpressionParamKind.Unresolved, UnresolvedRawString = data} ;
 	}
 
 	public string Write() {
@@ -96,6 +98,7 @@ public readonly struct ExpressionParamTarget {
 			ExpressionParamKind.ObjectLiteral => LiteralHierarchy != null ? LiteralHierarchy.Write()
 				: ByEngineGuid ? (ObjectLiteral as GameObject)!.EngineTemplateId
 				: ObjectLiteral!.Id.ToString(),
+			ExpressionParamKind.Unresolved => UnresolvedRawString,
 			_ => throw new InvalidOperationException($"Unhandled {nameof(ExpressionParamKind)} {Kind}")
 		};
 
