@@ -2,7 +2,9 @@ using System;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
+using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
@@ -81,8 +83,10 @@ public readonly struct EventOwner {
 			return new() { Kind = EventOwnerKind.Hierarchy, Hierarchy = hierarchy,
 						   IsSelf = isSelf, HasLeadingPercent = leading };
 
-		if (ulong.TryParse(body, out var id))
-			switch (vm.GetNullableElement(id)) {
+		if (ulong.TryParse(body, out var id)) {
+			var element = vm.GetNullableElement(id) ?? vm.Register(new ParameterPlaceholder(id));
+
+			switch (element) {
 				case Parameter p:
 					return new() { Kind = EventOwnerKind.ParameterRef, ParameterRef = p,
 								   IsSelf = isSelf, HasLeadingPercent = leading };
@@ -90,6 +94,7 @@ public readonly struct EventOwner {
 					return new() { Kind = EventOwnerKind.Holder, Holder = h,
 								   IsSelf = isSelf, HasLeadingPercent = leading };
 			}
+		}
 
 		// Everything else is one of the dynamic forms above: it would parse, then fail to
 		// subscribe at runtime. Refuse it here rather than store something unusable.

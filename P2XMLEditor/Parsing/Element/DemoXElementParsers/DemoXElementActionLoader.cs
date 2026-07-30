@@ -32,6 +32,9 @@ public class DemoXElementActionLoader : IParser<RawActionData> {
 				SourceExpressionId = element.Element("SourceExpression") != null
 					? ulong.Parse(element.Element("SourceExpression")!.Value)
 					: null,
+				SourceConstId = element.Element("SourceConst") != null
+					? ulong.Parse(element.Element("SourceConst")!.Value)
+					: null,
 				TargetObject = element.Element("TargetObject")!.Value,
 				TargetParam = element.Element("TargetParam")!.Value,
 				SourceParams = ParseDemoList(element, "SourceParams").ToArray(),

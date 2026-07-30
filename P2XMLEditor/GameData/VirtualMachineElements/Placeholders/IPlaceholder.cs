@@ -1,0 +1,3 @@
+namespace P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
+
+public interface IPlaceholder;

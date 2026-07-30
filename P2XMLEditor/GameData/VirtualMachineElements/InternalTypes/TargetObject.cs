@@ -4,6 +4,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 
@@ -56,8 +57,10 @@ public readonly struct TargetObject {
 		if (body.Contains("_Loop_") && LoopParameter.TryParse(body, vm, out var loop))
 			return new() { Kind = TargetObjectKind.Loop, Loop = loop, HasLeadingPercent = leading };
 
-		if (ulong.TryParse(body, out var id))
-			switch (vm.GetNullableElement(id)) {
+		if (ulong.TryParse(body, out var id)) {
+			var element = vm.GetNullableElement(id) ?? vm.Register(new ParameterPlaceholder(id));
+
+			switch (element) {
 				case Parameter p:
 					return new() { Kind = TargetObjectKind.ParameterRef, ParameterRef = p,
 								   IsSelf = isSelf, HasLeadingPercent = leading };
@@ -65,6 +68,7 @@ public readonly struct TargetObject {
 					return new() { Kind = TargetObjectKind.Holder, Holder = h,
 								   IsSelf = isSelf, HasLeadingPercent = leading };
 			}
+		}
 
 		if (Guid.TryParse(body, out _)) {
 			var byGuid = vm.GetElementsByType<GameObject>().FirstOrDefault(o => o.EngineTemplateId == body);

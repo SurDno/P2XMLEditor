@@ -11,7 +11,7 @@ public class ReleaseXElementGraphLinkWriter : IReleaseXElementWriter<GraphLink> 
 		if (element.Event != null)
 			xElement.Add(new XElement("Event", element.Event.Id));
 		xElement.Add(
-			new XElement("EventObject", element.EventObject?.Write() ?? ""),
+			new XElement("EventObject", element.EventObject?.Write() ?? "%"),
 			new XElement("SourceExitPointIndex", element.SourceExitPointIndex),
 			new XElement("DestEntryPointIndex", element.DestEntryPointIndex)
 		);

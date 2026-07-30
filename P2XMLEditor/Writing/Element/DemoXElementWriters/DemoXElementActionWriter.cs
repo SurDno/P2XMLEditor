@@ -20,6 +20,9 @@ public class DemoXElementActionWriter : IDemoXElementWriter<Action> {
 		if (element.SourceExpression != null)
 			obj.Add(new XElement("SourceExpression", element.SourceExpression.Id));
 
+		if (element.SourceConst != null)
+			obj.Add(new XElement("SourceConst", element.SourceConst));
+
 		obj.Add(
 			new XElement("TargetObject", element.TargetObject),
 			new XElement("TargetParam", element.TargetParam)

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 
@@ -14,38 +16,18 @@ public interface ICombinationPart {
 }
 
 public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICombinationPart {
-	private int _minAmount = 1;
-	private int _maxAmount = 1;
-	private int _minDurability = 100;
-	private int _maxDurability = 100;
 	private int? _probability = 100;
 
 	public VmEither<Item, Other> Target { get; set; } = target;
 
 	public ulong ItemId => Target.Element.Id;
 
-	public int MinAmount {
-		get => _minAmount;
-		set => _minAmount = value;
-	}
-
-	public int MaxAmount {
-		get => _maxAmount;
-		set => _maxAmount = value;
-	}
-
+	public int MinAmount { get; set; } = 1;
+	public int MaxAmount { get; set; } = 1;
 	public int Weight { get; set; } = 1;
+	public int MinDurability { get; set; } = 100;
+	public int MaxDurability { get; set; } = 100;
 
-	public int MinDurability {
-		get => _minDurability;
-		set => _minDurability = value;
-	}
-
-	public int MaxDurability {
-		get => _maxDurability;
-		set => _maxDurability = value;
-	}
-	
 	public int? Probability {
 		get => _probability;
 		set => _probability = value.HasValue ? Math.Max(1, Math.Min(100, value.Value)) : null;
@@ -55,12 +37,11 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 		return $"{ItemId}END&PAR{MinAmount}END&PAR{MaxAmount}END&PAR{Weight}END&PAR" +
 			   $"&CI&PARAMS&{MinDurability}&CI&PARAMS&{MaxDurability}&CI&PARAMS&END&PAR";
 	}
-
 	
+	[SuppressMessage("ReSharper", "ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator")]
 	private static int ExtractInt(string s) {
 		var val = 0;
-		for (var i = 0; i < s.Length; i++) {
-			var c = s[i];
+		foreach (var c in s) {
 			if ((uint)(c - '0') <= 9)
 				val = val * 10 + (c - '0');
 		}
@@ -82,7 +63,11 @@ public sealed partial class CombinationEntry(VmEither<Item, Other> target) : ICo
 			var minDurability = int.Parse(durMatch[0].Groups[1].Value);
 			var maxDurability = int.Parse(durMatch[1].Groups[1].Value);
 			
-			return new CombinationEntry(vm.GetElement<Item, Other>(ulong.Parse(parts[0]))) {
+			var id = ulong.Parse(parts[0]);
+			var target = vm.GetNullableElement<Item, Other>(id)
+			             ?? new VmEither<Item, Other>(vm.Register(new ItemPlaceholder(id)));
+
+			return new CombinationEntry(target) {
 				MinAmount = minAmount,
 				MaxAmount = maxAmount,
 				Weight = weight,

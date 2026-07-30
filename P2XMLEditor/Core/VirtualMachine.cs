@@ -57,6 +57,7 @@ public class VirtualMachine {
 
 	// fast access cache
 	private Dictionary<string, Message>? _messageIndex;
+	private Dictionary<string, GameObject>? _byEngineTemplateId;
 	
 	private Dictionary<string, VmTypeInfo>? _standartParamTypes;
 	public bool TryResolveStandartParamType(string name, out VmTypeInfo type) {
@@ -74,6 +75,14 @@ public class VirtualMachine {
 				if (parameter != null) map.TryAdd(key, VmTypeHelper.GetVmTypeInfo(parameter.Type, this));
 		}
 		return map;
+	}
+
+	public GameObject? GetByEngineTemplateId(string guid) {
+		_byEngineTemplateId ??= GetElementsByType<GameObject>()
+			.Where(o => !string.IsNullOrEmpty(o.EngineTemplateId) && o.EngineTemplateId != new string('0', 32))
+			.GroupBy(o => o.EngineTemplateId!)
+			.ToDictionary(g => g.Key, g => g.First());
+		return _byEngineTemplateId.GetValueOrDefault(guid);
 	}
 	
 	// TODO: REFACTOR AWAY
@@ -95,6 +104,7 @@ public class VirtualMachine {
 	
 	public T AddElement<T>(T element, Type elementType) where T : VmElement {
 		ElementsById[element.Id] = element;
+		if (element is IPlaceholder) return element;
 		while (elementType != typeof(VmElement) && elementType != typeof(object)) {
 			if (!ElementsByType.TryGetValue(elementType, out var list))
 				ElementsByType[elementType] = list = [];

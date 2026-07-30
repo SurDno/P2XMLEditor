@@ -13,7 +13,7 @@ public class DemoXElementGraphLinkWriter : IDemoXElementWriter<GraphLink> {
 
 		obj.Add(
 			new XElement("Event", element.Event?.Id ?? 0),
-			new XElement("EventObject", element.EventObject?.Write() ?? ""),
+			new XElement("EventObject", element.EventObject?.Write() ?? "%"),
 			new XElement("Source", element.Source?.Id ?? 0),
 			new XElement("Destination", element.Destination?.Id ?? 0),
 			new XElement("SourceExitPointIndex", element.SourceExitPointIndex),

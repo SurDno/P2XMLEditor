@@ -20,6 +20,8 @@ public class ReleaseXElementTalkingWriter : IReleaseXElementWriter<Talking> {
 		if (element.IgnoreBlock != null)
 			xElement.Add(CreateBoolElement("IgnoreBlock", (bool)element.IgnoreBlock));
 		xElement.Add(new XElement("Owner", element.Owner.Id));
+		if (element.InputLinks?.Any() == true)
+			xElement.Add(CreateListElement("InputLinks", element.InputLinks.Select(l => l.Id.ToString())));
 		if (element.Initial != null)
 			xElement.Add(CreateBoolElement("Initial", (bool)element.Initial));
 		xElement.Add(

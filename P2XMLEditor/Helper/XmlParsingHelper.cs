@@ -76,6 +76,7 @@ public static class XmlParsingHelper {
 		}
 
 		private static int GetWeight(char c) {
+			if (c == '.') return 0;
 			if (c == '_') return 1;
 			if (char.IsDigit(c)) return 10;
 			if (c == '-') return 100;

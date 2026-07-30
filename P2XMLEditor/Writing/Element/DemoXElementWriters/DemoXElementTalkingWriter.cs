@@ -23,6 +23,9 @@ public class DemoXElementTalkingWriter : IDemoXElementWriter<Talking> {
 
 		obj.Add(new XElement("Owner", element.Owner.Id));
 
+		if (element.InputLinks?.Any() == true)
+			obj.Add(CreateDemoListElementAsLong("InputLinks", element.InputLinks.Select(l => l.Id)));
+
 		if (element.Initial.HasValue)
 			obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
 

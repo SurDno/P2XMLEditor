@@ -44,6 +44,7 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 				BranchConditions.Add(vm.GetElement<Condition, PartCondition>(branchConditionId));
 		}
 		BranchType = data.BranchType;
+		Parent = vm.GetElement<Graph, Talking>(data.ParentId);
 		BranchVariantInfo = data.BranchVariantInfo?
 			.Select(t => InternalTypes.BranchVariantInfo.Read(t.Item1, t.Item2, vm, this))
 			.ToList();
@@ -64,7 +65,6 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 		}
 		Initial = data.Initial;
 		Name = data.Name;
-		Parent = vm.GetElement<Graph, Talking>(data.ParentId);
 	}
 	
 	public override void OnDestroy(VirtualMachine vm) {

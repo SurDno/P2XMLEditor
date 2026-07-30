@@ -18,6 +18,8 @@ public class ReleaseXElementActionWriter : IReleaseXElementWriter<Action> {
 		);
 		if (element.SourceExpression != null) 
 			xElement.Add(new XElement("SourceExpression", element.SourceExpression.Id));
+		if (element.SourceConst != null)
+			xElement.Add(new XElement("SourceConst", element.SourceConst));
 		xElement.Add(
 			new XElement("TargetObject", element.TargetObject),
 			new XElement("TargetParam", element.TargetParam)

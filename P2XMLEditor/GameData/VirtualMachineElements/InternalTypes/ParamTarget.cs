@@ -50,8 +50,8 @@ public readonly struct ParamTarget {
 		if (ulong.TryParse(body, out var id)) {
 			var element = vm.GetNullableElement(id);
 			VmEither<Parameter, ParameterPlaceholder>? param = element switch {
-				Parameter p => new(p),
 				ParameterPlaceholder ph => new(ph),
+				Parameter p => new(p),
 				null => new(vm.Register(new ParameterPlaceholder(id))),
 				_ => null 
 			};

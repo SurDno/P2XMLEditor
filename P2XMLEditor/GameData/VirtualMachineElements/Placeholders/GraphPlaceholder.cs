@@ -1,11 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using P2XMLEditor.Data;
-using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
-
 namespace P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 // For cases where Source property in GraphLink point to a non-existing Graph.
-public class GraphPlaceholder(ulong id) : VmElement(id) {
-}
+public class GraphPlaceholder(ulong id) : Graph(id), IPlaceholder;
