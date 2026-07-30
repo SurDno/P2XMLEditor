@@ -142,10 +142,10 @@ public struct ParameterSource {
 				src.MessageReference = message;
 				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(message!.Type, vm);
 				return src;
-			}
+			}/*
 
 			HitTracker.Hit(data);
-			Logger.Log(LogLevel.Warning, $"Unknown message '{content}' in '{data}'.");
+			Logger.Log(LogLevel.Warning, $"Unknown message '{content}' in '{data}'.");*/
 		} else if (content.Contains("_inputparam_")) {
 			HitTracker.Hit(data);
 			if (InputParameter.TryParse(content, out var inputParam)) {
@@ -154,7 +154,7 @@ public struct ParameterSource {
 				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(inputParam!.Type, vm);
 				return src;
 			}
-			HitTracker.Hit(data);
+			//HitTracker.Hit(data);
 		} else if (content.Contains("_Loop_")) {
 			HitTracker.Hit(data);
 			ParseLoopVariable(ref src, content, vm);
@@ -273,7 +273,7 @@ public struct ParameterSource {
 			// which are ordinary System.String values and must keep their declared type.
 			if (unresolvedSymbol && src.TypeInfo.BaseType == VmType.Unknown) {
 				HitTracker.Hit(data);
-				src.LiteralValue = new BasicValue<string>("Unknown", content);
+				src.LiteralValue = new BasicValue<string>("Unknown", content); // possibly unused
 			} else {
 				HitTracker.Hit(data);
 				try {
@@ -307,14 +307,14 @@ public struct ParameterSource {
 	/// populate the matching wrapper so the editor treats it as a reference.
 	/// </summary>
 	private static void ApplyRefWrapper(ref ParameterSource src, VirtualMachine vm, VmTypeInfo? expectedType) {
-		if (src.HierarchyReference == null) {
-			HitTracker.Hit();
-			return;
-		}
+		//if (src.HierarchyReference == null) {
+			//HitTracker.Hit();
+			//return;
+		//}
 
-		var leaf = src.HierarchyReference.Elements[^1].Element;
+		var leaf = src.HierarchyReference!.Elements[^1].Element;
 
-		switch (expectedType?.BaseType) {
+		switch (expectedType?.BaseType) {/*
 			case VmType.BlueprintRef:
 			case VmType.BlueprintRefStorable:
 				HitTracker.Hit();
@@ -334,7 +334,7 @@ public struct ParameterSource {
 						$"which is neither Item nor Other; BlueprintRef left unset.");
 				}
 				break;
-
+*/
 			case VmType.EntityRef:
 				HitTracker.Hit();
 				src.EntityReference = new EntityRef { Element = leaf as GameObject, SerializeAsGuid = false };
@@ -372,7 +372,7 @@ public struct ParameterSource {
 			src.TypeInfo = VmTypeInfo.Int32;
 			return;
 		}
-		if (src.IsLoopElement && src.LoopActionLine?.LoopInfo != null) {
+		if (src is { IsLoopElement: true, LoopActionLine.LoopInfo: not null }) {
 			HitTracker.Hit();
 			src.TypeInfo = VmTypeInfo.GameObject;
 			return;
@@ -402,15 +402,15 @@ public struct ParameterSource {
 			src.TypeInfo = componentType;
 			return;
 		}
-		HitTracker.Hit();
+		//HitTracker.Hit();
 	}
 
 	private static void ParseLoopVariable(ref ParameterSource source, string content, VirtualMachine vm) {
 		var array = content.Split('_');
-		if (array.Length < 2 || !ulong.TryParse(array[1], out var actionLineId)) {
-			HitTracker.Hit(content);
-			return;
-		}
+		ulong.TryParse(array[1], out var actionLineId);
+		
+		
+		
 
 		HitTracker.Hit(content);
 		source.LoopActionLine = vm.GetNullableElement<ActionLine>(actionLineId);
@@ -426,11 +426,11 @@ public struct ParameterSource {
 			if (listIdx != -1 && elementIdx != -1 && elementIdx > listIdx + 6) {
 				HitTracker.Hit(content);
 				source.LoopListName = content[(listIdx + 6)..elementIdx];
-			} else {
+			}/* else {
 				HitTracker.Hit(content);
 			}
 		} else {
-			HitTracker.Hit(content);
+			HitTracker.Hit(content);*/
 		}
 	}
 
