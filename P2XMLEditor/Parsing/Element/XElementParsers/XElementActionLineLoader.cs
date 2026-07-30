@@ -33,7 +33,7 @@ public class XElementActionLineLoader : IParser<RawActionLineData> {
 				LoopInfoName = loopInfoElement?.Element(XNameCache.Name)?.Value ?? null,
 				LoopInfoStart = loopInfoElement?.Element(XNameCache.Start)?.Value ?? null,
 				LoopInfoEnd = loopInfoElement?.Element(XNameCache.End)?.Value ?? null,
-				LoopInfoRandom = loopInfoElement?.Element(XNameCache.Random)?.Let(ParseBool),
+				LoopInfoRandom = loopInfoElement?.Element(XNameCache.Random)?.Let(ParseBool) ?? false,
 
 				Name = element.Element(XNameCache.Name)!.Value,
 				LocalContextId = ulong.Parse(element.Element(XNameCache.LocalContext)!.Value),

@@ -33,7 +33,7 @@ public class DemoXElementGraphLinkLoader : IParser<RawGraphLinkData> {
 				SourceExitPointIndex = int.Parse(element.Element("SourceExitPointIndex")!.Value),
 				DestEntryPointIndex = int.Parse(element.Element("DestEntryPointIndex")!.Value),
 				SourceParams = ParseDemoList(element, "SourceParams").ToArray(),
-				Enabled = element.Element("Enabled")?.Let(ParseBool),
+				Enabled = element.Element("Enabled")?.Let(ParseBool) ?? false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value)
 			};

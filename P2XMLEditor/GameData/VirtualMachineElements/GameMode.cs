@@ -12,7 +12,7 @@ using static P2XMLEditor.Helper.XmlParsingHelper;
 namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class GameMode(ulong id) : VmElement(id), IFiller<RawGameModeData> {
-	public bool? IsMain { get; set; }
+	public bool IsMain { get; set; }
 	public TimeSpan StartGameTime { get; set; }
 	public float GameTimeSpeed { get; set; }
 	public TimeSpan StartSolarTime { get; set; }

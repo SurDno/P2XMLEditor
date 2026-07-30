@@ -26,7 +26,7 @@ public class GameRoot(ulong id) : ParameterHolder(id), IFiller<RawGameRootData> 
 	public Dictionary<string, string> BaseToEngineGuidsTable { get; set; }
 	public Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>> HierarchyScenesStructure { get; set; }
 	public List<string> HierarchyEngineGuidsTable { get; set; }
-	public bool? WorldObjectSaveOptimizeMode { get; set; }
+	public bool WorldObjectSaveOptimizeMode { get; set; }
 
 
 	public void FillFromRawData(RawGameRootData data, VirtualMachine vm) {

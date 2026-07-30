@@ -18,19 +18,17 @@ public class DemoXElementTalkingWriter : IDemoXElementWriter<Talking> {
 			CreateDemoListElementAsLong("EntryPoints", element.EntryPoints.Select(e => e.Id))
 		);
 
-		if (element.IgnoreBlock.HasValue)
-			obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock.Value));
+		if (!settings.RemoveDefaultValueTypes || element.IgnoreBlock) obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock));
 
 		obj.Add(new XElement("Owner", element.Owner.Id));
 
 		if (element.InputLinks?.Any() == true)
 			obj.Add(CreateDemoListElementAsLong("InputLinks", element.InputLinks.Select(l => l.Id)));
 
-		if (element.Initial.HasValue)
-			obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Initial) obj.Add(CreateDemoBoolElement("Initial", element.Initial));
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			CreateGuidElement(element.Id)
 		);

@@ -23,7 +23,7 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 	public List<string>? SourceParams { get; set; }
 	public VmEither<Graph, Branch, Speech, State, GraphPlaceholder>? Source { get; set; }
 	public VmEither<Graph, Branch, Speech, State, Talking>? Destination { get; set; }
-	public bool? Enabled { get; set; } = true;
+	public bool Enabled { get; set; } = true;
 	public string Name { get; set; }
 	public VmEither<Graph, Talking> Parent { get; set; }
 

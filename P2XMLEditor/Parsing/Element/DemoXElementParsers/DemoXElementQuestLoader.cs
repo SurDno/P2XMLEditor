@@ -25,7 +25,7 @@ public class DemoXElementQuestLoader : IParser<RawQuestData> {
 				Id = id,
 				Static = element.Element("Static") != null
 					? bool.Parse(element.Element("Static")!.Value)
-					: null,
+					: false,
 				FunctionalComponentIds = ParseDemoListAsUlong(element, "FunctionalComponents").ToArray(),
 				EventGraphId = ulong.Parse(element.Element("EventGraph")!.Value),
 				StandartParamIds = ParseDemoDictAsUlong(element, "StandartParams"),

@@ -6,9 +6,9 @@ public struct RawParameterData {
 	public ulong? OwnerComponentId;
 	public string Type;
 	public string Value;
-	public bool? Implicit;
+	public bool Implicit;
 	public ulong ParentId;
-	public bool? Custom;
+	public bool Custom;
 
 	public override int GetHashCode() => Id.GetHashCode();
 }

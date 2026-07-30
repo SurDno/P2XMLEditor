@@ -22,17 +22,17 @@ public class DemoXElementActionLineWriter : IDemoXElementWriter<ActionLine> {
 
 		if (element.LoopInfo != null) {
 			var loop = new XElement("ActionLoopInfo",
-				CreateDemoStringElement("Name", element.LoopInfo.Name.Write()),
+				settings.StripNames ? null : CreateDemoStringElement("Name", element.LoopInfo.Name.Write()),
 				new XElement("Start", element.LoopInfo.Start.Write()),
 				new XElement("End", element.LoopInfo.End.Write())
 			);
-			if (element.LoopInfo.Random.HasValue)
-				loop.Add(CreateDemoBoolElement("Random", element.LoopInfo.Random.Value));
+			if (!settings.RemoveDefaultValueTypes || element.LoopInfo.Random != false)
+				if (!settings.RemoveDefaultValueTypes || element.LoopInfo.Random) loop.Add(CreateDemoBoolElement("Random", element.LoopInfo.Random));
 			obj.Add(loop);
 		}
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("LocalContext", element.LocalContext.Id),
 			new XElement("OrderIndex", element.OrderIndex),
 			// Always present per Demo format

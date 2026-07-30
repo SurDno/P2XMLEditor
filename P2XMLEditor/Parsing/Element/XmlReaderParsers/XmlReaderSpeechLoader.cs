@@ -20,14 +20,14 @@ public class XmlReaderSpeechLoader : IParser<RawSpeechData> {
 				ReplyIds = xr.GetULongListAndAdvance(),
 				TextId = xr.GetULongValueAndAdvance(),
 				AuthorGuidId = xr.GetULongValueAndAdvance(),
-				OnlyOnce = xr.Name == "OnlyOnce" ? xr.GetBoolValueAndAdvance() : null,
-				IsTrade = xr.Name == "IsTrade" ? xr.GetBoolValueAndAdvance() : null,
+				OnlyOnce = xr.Name == "OnlyOnce" ? xr.GetBoolValueAndAdvance() : false,
+				IsTrade = xr.Name == "IsTrade" ? xr.GetBoolValueAndAdvance() : false,
 				EntryPointIds = xr.GetULongListAndAdvance(),
-				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : null,
+				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : false,
 				OwnerId = xr.GetULongValueAndAdvance(),
 				InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : null,
 				OutputLinkIds = xr.Name == "OutputLinks" ? xr.GetULongListAndAdvance() : null,
-				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : null,
+				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : false,
 				Name = xr.GetOptionalStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()
 			};

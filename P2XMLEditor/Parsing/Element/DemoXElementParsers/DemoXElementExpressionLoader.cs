@@ -33,7 +33,7 @@ public class DemoXElementExpressionLoader : IParser<RawExpressionData> {
 					ulong.Parse(element.Element("Const")!.Value) : null,
 				SourceParams = ParseDemoList(element, "SourceParams").ToArray(),
 				LocalContextId = ulong.Parse(element.Element("LocalContext")!.Value),
-				Inversion = element.Element("Inversion")?.Let(ParseBool),
+				Inversion = element.Element("Inversion")?.Let(ParseBool) ?? false,
 				FormulaChilds = ParseDemoListAsUlong(element, "FormulaChilds").ToArray(),
 				FormulaOperations = ParseDemoList(element, "FormulaOperations").ToArray()
 			};

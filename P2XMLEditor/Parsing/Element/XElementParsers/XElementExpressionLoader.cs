@@ -31,7 +31,7 @@ public class XElementExpressionLoader : IParser<RawExpressionData> {
 					ulong.Parse(element.Element(XNameCache.Const)!.Value) : null,
 				SourceParams = ParseListElement(element, XNameCache.SourceParams).ToArray(),
 				LocalContextId = ulong.Parse(element.Element(XNameCache.LocalContext)!.Value),
-				Inversion = element.Element(XNameCache.Inversion)?.Let(ParseBool),
+				Inversion = element.Element(XNameCache.Inversion)?.Let(ParseBool) ?? false,
 				FormulaChilds = ParseListElementAsUlong(element, XNameCache.FormulaChilds).ToArray(),
 				FormulaOperations = ParseListElement(element, XNameCache.FormulaOperations).ToArray()
 			};

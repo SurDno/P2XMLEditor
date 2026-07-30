@@ -18,8 +18,8 @@ public class XmlReaderFunctionalComponentLoader : IParser<RawFunctionalComponent
 			var raw = new RawFunctionalComponentData {
 				Id = xr.GetIdAndEnter(),
 				EventIds = xr.Name == "Events" ? xr.GetULongListAndAdvance() : null,
-				Main = xr.Name == "Main" ? xr.GetBoolValueAndAdvance() : null,
-				LoadPriority = xr.GetLongValueAndAdvance(),
+				Main = xr.Name == "Main" ? xr.GetBoolValueAndAdvance() : false,
+				LoadPriority = xr.Name == "LoadPriority" ? xr.GetLongValueAndAdvance() : long.MaxValue,
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()
 			};

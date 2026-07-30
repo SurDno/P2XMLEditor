@@ -71,5 +71,6 @@ public enum VmType {
 	[SerializationData("AttackerFinishType")] AttackerFinishType,
 	[SerializationData("AttackerDiseasedPlayerPushKind")] AttackerDiseasedPlayerPushKind,
 	[SerializationData("DialogStringType")] DialogStringType,
-	[SerializationData("MailState")] MailState
+	[SerializationData("MailState")] MailState,
+	[SerializationData("VMType")] TypeValue, // recursive af
 }

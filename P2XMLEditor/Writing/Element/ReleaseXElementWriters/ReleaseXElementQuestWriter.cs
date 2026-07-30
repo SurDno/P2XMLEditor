@@ -1,6 +1,7 @@
 using System.Xml.Linq;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using static P2XMLEditor.Helper.XmlParsingHelper;
 
 namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 
@@ -9,6 +10,6 @@ public class ReleaseXElementQuestWriter : ReleaseXElementParameterHolderWriter<Q
 		var xElement = base.ToXml(element, settings);
 		if (element.StartEvent != null)
 			xElement.AddFirst(new XElement("StartEvent", element.StartEvent.Id));
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

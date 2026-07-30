@@ -23,7 +23,7 @@ public class DemoXElementGameObjectLoader : IParser<RawGameObjectData> {
 
 			var raw = new RawGameObjectData {
 				Id = id,
-				Static = element.Element("Static")?.Let(ParseBool),
+				Static = element.Element("Static")?.Let(ParseBool) ?? false,
 				FunctionalComponentIds = ParseDemoListAsUlong(element, "FunctionalComponents").ToArray(),
 				EventGraphId = element.Element("EventGraph") != null ?
 					ulong.Parse(element.Element("EventGraph")!.Value) : null,
@@ -38,7 +38,7 @@ public class DemoXElementGameObjectLoader : IParser<RawGameObjectData> {
 				WorldPositionGuid = element.Element("WorldPositionGuid")?.Value,
 				EngineTemplateId = element.Element("EngineTemplateID")?.Value,
 				EngineBaseTemplateId = element.Element("EngineBaseTemplateID")?.Value,
-				Instantiated = element.Element("Instantiated")?.Let(ParseBool)
+				Instantiated = element.Element("Instantiated")?.Let(ParseBool) ?? false
 			};
 
 			raws.Add(raw);

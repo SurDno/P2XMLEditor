@@ -19,12 +19,12 @@ public class XmlReaderGraphLinkLoader : IParser<RawGraphLinkData> {
 				Id = xr.GetIdAndEnter(),
 				EventId = xr.Name == "Event" ? xr.GetULongValueAndAdvance() : null,
 				EventObject = xr.GetStringValueAndAdvance(),
-				SourceExitPointIndex = xr.GetIntValueAndAdvance(),
-				DestEntryPointIndex = xr.GetIntValueAndAdvance(),
+				SourceExitPointIndex = xr.Name == "SourceExitPointIndex" ? xr.GetIntValueAndAdvance() : -1,
+				DestEntryPointIndex = xr.Name == "DestEntryPointIndex" ? xr.GetIntValueAndAdvance() : -1,
 				SourceParams = xr.Name == "SourceParams" ? xr.GetStringListAndAdvance() : null,
 				SourceId = xr.Name == "Source" ? xr.GetULongValueAndAdvance() : null,
 				DestinationId = xr.Name == "Destination" ? xr.GetULongValueAndAdvance() : null,
-				Enabled = xr.Name == "Enabled" ? xr.GetBoolValueAndAdvance() : null,
+				Enabled = xr.Name == "Enabled" ? xr.GetBoolValueAndAdvance() : false,
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()
 			};

@@ -33,8 +33,7 @@ public class DemoXElementBranchWriter : IDemoXElementWriter<Branch> {
 
 		obj.Add(CreateDemoListElementAsLong("EntryPoints", element.EntryPoints.Select(e => e.Id)));
 
-		if (element.IgnoreBlock.HasValue)
-			obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock.Value));
+		if (!settings.RemoveDefaultValueTypes || element.IgnoreBlock) obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock));
 
 		obj.Add(new XElement("Owner", element.Owner.Id));
 
@@ -43,13 +42,12 @@ public class DemoXElementBranchWriter : IDemoXElementWriter<Branch> {
 			CreateDemoListElementAsLong("OutputLinks", element.OutputLinks?.Select(l => l.Id) ?? [])
 		);
 
-		if (element.Initial.HasValue)
-			obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Initial) obj.Add(CreateDemoBoolElement("Initial", element.Initial));
 
 		obj.Add(new XElement("Comments.List"));
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			CreateGuidElement(element.Id)
 		);

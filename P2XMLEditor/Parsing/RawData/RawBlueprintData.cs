@@ -2,7 +2,7 @@ namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawBlueprintData {
 	public ulong Id;
-	public bool? Static;
+	public bool Static;
 	public ulong[] FunctionalComponentIds;
 	public ulong? EventGraphId;
 	public (string, ulong)[] StandartParamIds;

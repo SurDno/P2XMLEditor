@@ -25,11 +25,11 @@ public class XmlReaderBranchLoader : IParser<RawBranchData> {
 				BranchType = xr.GetStringValueAndAdvance().Deserialize<BranchType>(),
 				BranchVariantInfo = xr.Name == "BranchVariantInfo" ? ReadBranchVariantInfo(xr) : null,
 				EntryPointIds = xr.GetULongListAndAdvance(),
-				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : null,
+				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : false,
 				OwnerId = xr.GetULongValueAndAdvance(),
 				InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : null,
 				OutputLinkIds = xr.Name == "OutputLinks" ? xr.GetULongListAndAdvance() : null,
-				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : null,
+				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : false,
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()
 			};

@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Data;
@@ -15,15 +16,18 @@ public class ReleaseXElementEventWriter : IReleaseXElementWriter<Event> {
 		xElement.Add(new XElement("EventTime",
 			$"{element.EventTime.Days}:{element.EventTime.Hours}:{element.EventTime.Minutes}:{element.EventTime.Seconds}"));
 		
-		if (element.Manual != null)
-			xElement.Add(CreateBoolElement("Manual", (bool)element.Manual));
-		xElement.Add(new XElement("EventRaisingType", element.EventRaisingType.Serialize()));
+		if (!settings.RemoveDefaultValueTypes || !element.Manual)
+			xElement.Add(CreateBoolElement("Manual", element.Manual));
+			
+		if (!settings.RemoveDefaultValueTypes || element.EventRaisingType != EventRaisingType.Condition)
+			xElement.Add(new XElement("EventRaisingType", element.EventRaisingType.Serialize()));
+
 		if (element.Condition != null)
 			xElement.Add(new XElement("Condition", element.Condition.Id));
-		if (element.ChangeTo != null)
-			xElement.Add(CreateBoolElement("ChangeTo", (bool)element.ChangeTo));
-		if (element.Repeated != null)
-			xElement.Add(CreateBoolElement("Repeated", (bool)element.Repeated));
+		if (!settings.RemoveDefaultValueTypes || !element.ChangeTo)
+			xElement.Add(CreateBoolElement("ChangeTo", element.ChangeTo));
+		if (!settings.RemoveDefaultValueTypes || !element.Repeated)
+			xElement.Add(CreateBoolElement("Repeated", element.Repeated));
 		if (element.MessagesToWrite.Count > 0) {
 			xElement.Add(new XElement("MessagesInfo",
 				new XAttribute("count", element.MessagesToWrite.Count),
@@ -37,6 +41,6 @@ public class ReleaseXElementEventWriter : IReleaseXElementWriter<Event> {
 			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

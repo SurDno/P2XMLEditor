@@ -12,7 +12,7 @@ public class DemoXElementPartConditionWriter : IDemoXElementWriter<PartCondition
 		var obj = CreateDemoBaseElement(element.Id);
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("ConditionType", element.ConditionType)
 		);
 

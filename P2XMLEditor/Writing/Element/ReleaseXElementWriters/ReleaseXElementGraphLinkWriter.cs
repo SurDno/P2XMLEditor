@@ -11,22 +11,27 @@ public class ReleaseXElementGraphLinkWriter : IReleaseXElementWriter<GraphLink> 
 		if (element.Event != null)
 			xElement.Add(new XElement("Event", element.Event.Id));
 		xElement.Add(
-			new XElement("EventObject", element.EventObject?.Write() ?? "%"),
-			new XElement("SourceExitPointIndex", element.SourceExitPointIndex),
-			new XElement("DestEntryPointIndex", element.DestEntryPointIndex)
+			new XElement("EventObject", element.EventObject?.Write() ?? "%")
 		);
+		
+		if (!settings.RemoveDefaultValueTypes || element.SourceExitPointIndex != -1)
+			xElement.Add(new XElement("SourceExitPointIndex", element.SourceExitPointIndex));
+		if (!settings.RemoveDefaultValueTypes || element.DestEntryPointIndex != -1)
+			xElement.Add(new XElement("DestEntryPointIndex", element.DestEntryPointIndex));
+
 		if (element.SourceParams?.Count > 0)
 			xElement.Add(CreateListElement("SourceParams", element.SourceParams));
 		if (element.Source != null)
 			xElement.Add(new XElement("Source", element.Source.Value.Id));
 		if (element.Destination != null)
 			xElement.Add(new XElement("Destination", element.Destination.Value.Id));
-		if (element.Enabled != null)
-			xElement.Add(CreateBoolElement("Enabled", (bool)element.Enabled));
+		if (!settings.RemoveDefaultValueTypes || !element.Enabled)
+			xElement.Add(CreateBoolElement("Enabled", element.Enabled));
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name", element.Name));
 		xElement.Add(
-			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

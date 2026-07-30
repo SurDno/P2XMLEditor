@@ -13,6 +13,6 @@ public class ReleaseXElementSampleWriter : IReleaseXElementWriter<Sample> {
 			new XElement("SampleType", element.SampleType.Serialize()),
 			new XElement("EngineID", element.EngineId)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

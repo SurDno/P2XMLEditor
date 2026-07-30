@@ -29,16 +29,16 @@ public class XElementSpeechLoader : IParser<RawSpeechData> {
 				AuthorGuidId = ulong.Parse(element.Element(XNameCache.AuthorGuid)!.Value),
 				OnlyOnce = element.Element(XNameCache.OnlyOnce) != null
 					? bool.Parse(element.Element(XNameCache.OnlyOnce)!.Value)
-					: null,
+					: false,
 				IsTrade = element.Element(XNameCache.IsTrade) != null
 					? bool.Parse(element.Element(XNameCache.IsTrade)!.Value)
-					: null,
+					: false,
 				EntryPointIds = element.Element(XNameCache.EntryPoints) != null
 					? ReadULongList(element.Element(XNameCache.EntryPoints)!).ToArray()
 					: [],
 				IgnoreBlock = element.Element(XNameCache.IgnoreBlock) != null
 					? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)
-					: null,
+					: false,
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
 				InputLinkIds = element.Element(XNameCache.InputLinks) != null
 					? ReadULongList(element.Element(XNameCache.InputLinks)!).ToArray()
@@ -48,7 +48,7 @@ public class XElementSpeechLoader : IParser<RawSpeechData> {
 					: null,
 				Initial = element.Element(XNameCache.Initial) != null
 					? bool.Parse(element.Element(XNameCache.Initial)!.Value)
-					: null,
+					: false,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)
 			};

@@ -23,7 +23,7 @@ public class DemoXElementMindMapNodeContentWriter : IDemoXElementWriter<MindMapN
 
 		obj.Add(
 			new XElement("ContentCondition", element.ContentCondition.Id),
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			CreateGuidElement(element.Id)
 		);
 

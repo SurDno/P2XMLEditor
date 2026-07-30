@@ -23,7 +23,7 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 	
 	public Parameter? Const { get; set; }
 	public VmEither<Branch, Event, MindMapNode, Speech, State> LocalContext { get; set; }
-	public bool? Inversion { get; set; }
+	public bool Inversion { get; set; }
 	public List<Expression>? FormulaChilds { get; set; } 
 	public List<FormulaOperation>? FormulaOperations { get; set; }
 

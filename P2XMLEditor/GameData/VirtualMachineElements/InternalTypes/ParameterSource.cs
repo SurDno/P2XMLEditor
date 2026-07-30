@@ -160,7 +160,7 @@ public struct ParameterSource {
 						src.ElementReference = contentElement;
 					break;
 				case { BaseType: VmType.EntityRef }:
-					src.EntityReference = new() { Element = contentElement as GameObject, SerializeAsGuid = false };
+					src.EntityReference = new() { Element = contentElement as ParameterHolder, SerializeAsGuid = false };
 					if (contentElement != null) 
 						src.ElementReference = contentElement;
 					break;

@@ -10,19 +10,20 @@ namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 public class ReleaseXElementPartConditionWriter : IReleaseXElementWriter<PartCondition> {
 	public XElement ToXml(PartCondition element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
-		if (!settings.CleanUpNames) 
+		if (!settings.StripNames) 
 			xElement.Add(CreateSelfClosingElement("Name", element.Name));
-		xElement.Add(new XElement("ConditionType", element.ConditionType.Serialize()));
-		if (element.ConditionType is not (ConditionType.ConstTrue or ConditionType.ConstFalse) ||
-			 !settings.CleanUpUnusedProperties) {
-			if (element.FirstExpression != null)
-				xElement.Add(new XElement("FirstExpression", element.FirstExpression.Id));
-			if (element.SecondExpression != null && (element.ConditionType != ConditionType.ValueExpression || 
-											 !settings.CleanUpUnusedProperties))
-				xElement.Add(new XElement("SecondExpression", element.SecondExpression.Id));
-		}
+		
+		if (!settings.RemoveDefaultValueTypes || element.ConditionType != ConditionType.ConstFalse)
+			xElement.Add(new XElement("ConditionType", element.ConditionType.Serialize()));
 
-		xElement.Add(new XElement("OrderIndex", element.OrderIndex));
-		return xElement;
+		if (element.FirstExpression != null)
+			xElement.Add(new XElement("FirstExpression", element.FirstExpression.Id));
+		if (element.SecondExpression != null)
+			xElement.Add(new XElement("SecondExpression", element.SecondExpression.Id));
+		
+		if (!settings.RemoveDefaultValueTypes || element.OrderIndex != 0)
+			xElement.Add(new XElement("OrderIndex", element.OrderIndex));
+		
+		return EnsureFullClosingTag(xElement);
 	}
 }

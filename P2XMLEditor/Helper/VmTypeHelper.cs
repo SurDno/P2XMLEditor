@@ -90,6 +90,7 @@ public static class VmTypeHelper {
 			[VmType.AttackerDiseasedPlayerPushKind] = typeof(PlayerPushesDiseasedKind),
 			[VmType.DialogStringType] = typeof(DialogStringEnum),
 			[VmType.MailState] = typeof(MailStateEnum),
+			[VmType.TypeValue] = typeof(VmTypeInfo),
 		};
 		var fields = typeof(VmComponent).GetFields(BindingFlags.Static | BindingFlags.Public);
 		foreach (var obj in fields) {

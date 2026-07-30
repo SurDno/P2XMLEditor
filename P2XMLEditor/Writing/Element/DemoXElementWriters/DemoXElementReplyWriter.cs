@@ -12,18 +12,15 @@ public class DemoXElementReplyWriter : IDemoXElementWriter<Reply> {
 		var obj = CreateDemoBaseElement(element.Id);
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Text", element.Text.Id)
 		);
 
-		if (element.OnlyOnce.HasValue)
-			obj.Add(CreateDemoBoolElement("OnlyOnce", element.OnlyOnce.Value));
+		if (!settings.RemoveDefaultValueTypes || element.OnlyOnce) obj.Add(CreateDemoBoolElement("OnlyOnce", element.OnlyOnce));
 
-		if (element.OnlyOneReply.HasValue)
-			obj.Add(CreateDemoBoolElement("OnlyOneReply", element.OnlyOneReply.Value));
+		if (!settings.RemoveDefaultValueTypes || element.OnlyOneReply) obj.Add(CreateDemoBoolElement("OnlyOneReply", element.OnlyOneReply));
 
-		if (element.Default.HasValue)
-			obj.Add(CreateDemoBoolElement("Default", element.Default.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Default) obj.Add(CreateDemoBoolElement("Default", element.Default));
 
 		if (element.EnableCondition != null)
 			obj.Add(new XElement("EnableCondition", element.EnableCondition.Id));

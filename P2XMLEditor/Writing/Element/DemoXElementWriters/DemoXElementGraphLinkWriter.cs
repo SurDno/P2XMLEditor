@@ -20,11 +20,10 @@ public class DemoXElementGraphLinkWriter : IDemoXElementWriter<GraphLink> {
 			new XElement("DestEntryPointIndex", element.DestEntryPointIndex)
 		);
 
-		if (element.Enabled.HasValue)
-			obj.Add(CreateDemoBoolElement("Enabled", element.Enabled.Value));
+		if (!settings.RemoveDefaultValueTypes || !element.Enabled) obj.Add(CreateDemoBoolElement("Enabled", element.Enabled));
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			CreateGuidElement(element.Id)
 		);

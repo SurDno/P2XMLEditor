@@ -23,7 +23,7 @@ public class DemoXElementGameModeLoader : IParser<RawGameModeData> {
 
 			var raw = new RawGameModeData {
 				Id = id,
-				IsMain = element.Element("IsMain")?.Let(ParseBool),
+				IsMain = element.Element("IsMain")?.Let(ParseBool) ?? false,
 				StartGameTime = ParseTimeSpanString(element.Element("StartGameTime")!.Value),
 				GameTimeSpeed = float.Parse(element.Element("GameTimeSpeed")!.Value),
 				StartSolarTime = ParseTimeSpanString(element.Element("StartSolarTime")!.Value),

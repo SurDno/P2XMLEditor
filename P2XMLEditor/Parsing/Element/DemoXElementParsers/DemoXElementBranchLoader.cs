@@ -34,11 +34,11 @@ public class DemoXElementBranchLoader : IParser<RawBranchData> {
 				BranchType = element.Element("BranchType")!.Value.Deserialize<BranchType>(),
 				BranchVariantInfo = branchVariantInfo?.ToArray(),
 				EntryPointIds = ParseDemoListAsUlong(element, "EntryPoints").ToArray(),
-				IgnoreBlock = element.Element("IgnoreBlock")?.Let(ParseBool),
+				IgnoreBlock = element.Element("IgnoreBlock")?.Let(ParseBool) ?? false,
 				OwnerId = ulong.Parse(element.Element("Owner")!.Value),
 				InputLinkIds = ParseDemoListAsUlong(element, "InputLinks").ToArray(),
 				OutputLinkIds = ParseDemoListAsUlong(element, "OutputLinks").ToArray(),
-				Initial = element.Element("Initial")?.Let(ParseBool),
+				Initial = element.Element("Initial")?.Let(ParseBool) ?? false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value)
 			};

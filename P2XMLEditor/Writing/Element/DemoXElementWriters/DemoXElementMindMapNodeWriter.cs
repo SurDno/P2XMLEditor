@@ -13,7 +13,7 @@ public class DemoXElementMindMapNodeWriter : IDemoXElementWriter<MindMapNode> {
 		var obj = CreateDemoBaseElement(element.Id);
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			new XElement("LogicMapNodeType", element.LogicMapNodeType.Serialize()),
 			CreateDemoListElementAsLong("Content", element.Content.Select(c => c.Id)),
@@ -33,8 +33,7 @@ public class DemoXElementMindMapNodeWriter : IDemoXElementWriter<MindMapNode> {
 		if (element.GraphPosition.HasValue) {
 			obj.Add(new XElement("GraphPosition", $"{element.GraphPosition.Value.X} {element.GraphPosition.Value.Y}"));
 		}
-		if (element.Initial.HasValue)
-			obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
+		if (element.Initial.HasValue) obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
 
 		obj.Add(CreateGuidElement(element.Id));
 		return obj;

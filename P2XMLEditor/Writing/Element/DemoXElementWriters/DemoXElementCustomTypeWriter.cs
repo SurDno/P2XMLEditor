@@ -12,7 +12,7 @@ public class DemoXElementCustomTypeWriter : IDemoXElementWriter<CustomType> {
 		var obj = CreateDemoBaseElement(element.Id);
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			CreateGuidElement(element.Id)
 		);

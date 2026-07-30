@@ -53,8 +53,7 @@ public class DemoXElementGameRootWriter : IDemoXElementWriter<GameRoot> {
 
 		obj.Add(CreateDemoListElement("HierarchyEngineGuidsTable", element.HierarchyEngineGuidsTable ?? []));
 
-		if (element.WorldObjectSaveOptimizeMode.HasValue)
-			obj.Add(CreateDemoBoolElement("WorldObjectSaveOptimizeMode", element.WorldObjectSaveOptimizeMode.Value));
+		if (!settings.RemoveDefaultValueTypes || element.WorldObjectSaveOptimizeMode) obj.Add(CreateDemoBoolElement("WorldObjectSaveOptimizeMode", element.WorldObjectSaveOptimizeMode));
 
 		obj.Add(CreateGuidElement(element.Id));
 		return obj;

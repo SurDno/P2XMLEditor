@@ -18,8 +18,8 @@ public class XmlReaderMindMapNodeContentLoader : IParser<RawMindMapNodeContentDa
 
 			var raw = new RawMindMapNodeContentData {
 				Id = xr.GetIdAndEnter(),
-				ContentType = xr.GetStringValueAndAdvance().Deserialize<NodeContentType>(),
-				Number = xr.GetIntValueAndAdvance(),
+				ContentType = xr.Name == "ContentType" ? xr.GetStringValueAndAdvance().Deserialize<NodeContentType>() : NodeContentType.Info,
+				Number = xr.Name == "Number" ? xr.GetIntValueAndAdvance() : 0,
 				ContentDescriptionTextId = xr.GetULongValueAndAdvance(),
 				ContentPictureId = xr.Name == "ContentPicture" ? xr.GetULongValueAndAdvance() : null,
 				ContentConditionId = xr.GetULongValueAndAdvance(),

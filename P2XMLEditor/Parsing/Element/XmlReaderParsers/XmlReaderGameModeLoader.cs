@@ -17,11 +17,11 @@ public class XmlReaderGameModeLoader : IParser<RawGameModeData> {
 
 			var raw = new RawGameModeData {
 				Id = xr.GetIdAndEnter(),
-				IsMain = xr.Name == "IsMain" ? xr.GetBoolValueAndAdvance() : null,
+				IsMain = xr.Name == "IsMain" ? xr.GetBoolValueAndAdvance() : false,
 				StartGameTime = ParseTimeSpanString(xr.GetStringValueAndAdvance()),
-				GameTimeSpeed = xr.GetFloatValueAndAdvance(),
+				GameTimeSpeed = xr.Name == "GameTimeSpeed" ? xr.GetFloatValueAndAdvance() : 0f,
 				StartSolarTime = ParseTimeSpanString(xr.GetStringValueAndAdvance()),
-				SolarTimeSpeed = xr.GetFloatValueAndAdvance(),
+				SolarTimeSpeed = xr.Name == "SolarTimeSpeed" ? xr.GetFloatValueAndAdvance() : 0f,
 				PlayerRef = xr.GetStringValueAndAdvance(),
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()

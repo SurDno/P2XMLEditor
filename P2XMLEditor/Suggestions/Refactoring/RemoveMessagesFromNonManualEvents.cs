@@ -12,7 +12,7 @@ public class RemoveMessagesFromNonManualEvents(VirtualMachine vm) : Suggestion(v
 		var events = Vm.GetElementsByType<Event>();
 		
 		foreach (var ev in events) {
-			if (ev.Manual == null || ev.Manual.Value) continue;
+			if (ev.Manual == null || ev.Manual) continue;
 
 			ev.RawMessagesInfo = [];
 		}

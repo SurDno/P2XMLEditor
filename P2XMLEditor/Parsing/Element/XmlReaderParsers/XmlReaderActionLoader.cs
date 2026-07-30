@@ -19,8 +19,8 @@ public class XmlReaderActionLoader : IParser<RawActionData> {
 
 			var raw = new RawActionData {
 				Id = xr.GetIdAndEnter(),
-				ActionType = xr.GetStringValueAndAdvance().Deserialize<ActionType>(),
-				MathOperationType = xr.GetStringValueAndAdvance().Deserialize<MathOperationType>(),
+				ActionType = xr.Name == "ActionType" ? xr.GetStringValueAndAdvance().Deserialize<ActionType>() : ActionType.None,
+				MathOperationType = xr.Name == "MathOperationType" ? xr.GetStringValueAndAdvance().Deserialize<MathOperationType>() : MathOperationType.None,
 				TargetFuncName = xr.GetOptionalStringValueAndAdvance(),
 				SourceExpressionId = xr.Name == "SourceExpression" ? xr.GetULongValueAndAdvance() : null,
 				SourceConstId = xr.Name == "SourceConst" ? xr.GetULongValueAndAdvance() : null,
@@ -29,7 +29,7 @@ public class XmlReaderActionLoader : IParser<RawActionData> {
 				SourceParams = xr.Name == "SourceParams" ? xr.GetStringListAndAdvance() : null,
 				Name = xr.GetOptionalStringValueAndAdvance(),
 				LocalContextId = xr.GetULongValueAndAdvance(),
-				OrderIndex = xr.GetIntValueAndAdvance()
+				OrderIndex = xr.Name == "OrderIndex" ? xr.GetIntValueAndAdvance() : 0
 			};
 			raws.Add(raw);
 			

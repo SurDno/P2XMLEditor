@@ -23,7 +23,7 @@ public class DemoXElementFunctionalComponentLoader : IParser<RawFunctionalCompon
 
 			var raw = new RawFunctionalComponentData {
 				Id = id,
-				Main = element.Element("Main")?.Let(ParseBool),
+				Main = element.Element("Main")?.Let(ParseBool) ?? false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value),
 				LoadPriority = long.Parse(element.Element("LoadPriority")!.Value)

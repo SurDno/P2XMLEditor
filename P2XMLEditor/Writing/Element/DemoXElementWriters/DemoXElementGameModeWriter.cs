@@ -11,8 +11,7 @@ public class DemoXElementGameModeWriter : IDemoXElementWriter<GameMode> {
 	public XElement ToXml(GameMode element, WriterSettings settings) {
 		var obj = CreateDemoBaseElement(element.Id);
 
-		if (element.IsMain.HasValue)
-			obj.Add(CreateDemoBoolElement("IsMain", element.IsMain.Value));
+		if (!settings.RemoveDefaultValueTypes || element.IsMain) obj.Add(CreateDemoBoolElement("IsMain", element.IsMain));
 
 		obj.Add(new XElement("StartGameTime", element.StartGameTime.ToString("d\\.hh\\:mm\\:ss")));
 		obj.Add(new XElement("GameTimeSpeed", element.GameTimeSpeed));

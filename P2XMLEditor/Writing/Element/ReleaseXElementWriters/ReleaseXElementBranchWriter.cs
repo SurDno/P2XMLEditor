@@ -26,19 +26,20 @@ public class ReleaseXElementBranchWriter : IReleaseXElementWriter<Branch> {
 			xElement.Add(variantInfo);
 		}
 		xElement.Add(CreateListElement("EntryPoints", element.EntryPoints.Select(e => e.Id.ToString())));
-		if (element.IgnoreBlock != null)
-			xElement.Add(CreateBoolElement("IgnoreBlock", (bool)element.IgnoreBlock));
+		if (!settings.RemoveDefaultValueTypes || element.IgnoreBlock)
+			xElement.Add(CreateBoolElement("IgnoreBlock", element.IgnoreBlock));
 		xElement.Add(new XElement("Owner", element.Owner.Id));
 		if (element.InputLinks?.Any() == true)
 			xElement.Add(CreateListElement("InputLinks", element.InputLinks.Select(l => l.Id.ToString())));
 		if (element.OutputLinks?.Any() == true)
 			xElement.Add(CreateListElement("OutputLinks", element.OutputLinks.Select(l => l.Id.ToString())));
-		if (element.Initial != null)
-			xElement.Add(CreateBoolElement("Initial", (bool)element.Initial));
+		if (!settings.RemoveDefaultValueTypes || element.Initial)
+			xElement.Add(CreateBoolElement("Initial", element.Initial));
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name", element.Name));
 		xElement.Add(
-			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

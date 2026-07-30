@@ -13,7 +13,7 @@ public class DemoXElementMindMapWriter : IDemoXElementWriter<MindMap> {
 		var obj = CreateDemoBaseElement(element.Id);
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("LogicMapType", element.LogicMapType.Serialize()),
 			new XElement("Title", element.Title.Id),
 			new XElement("Parent", element.Parent.Id),

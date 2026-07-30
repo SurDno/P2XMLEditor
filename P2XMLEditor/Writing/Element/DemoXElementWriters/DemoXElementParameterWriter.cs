@@ -18,8 +18,7 @@ public class DemoXElementParameterWriter : IDemoXElementWriter<Parameter> {
 		obj.Add(CreateDemoStringElement("Type", styledType));
 		obj.Add(CreateDemoStringElement("Value", element.SerializedValue));
 
-		if (element.Implicit.HasValue)
-			obj.Add(CreateDemoBoolElement("Implicit", element.Implicit.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Implicit) obj.Add(CreateDemoBoolElement("Implicit", element.Implicit));
 		
 		obj.Add(
 			CreateDemoStringElement("Name", element.Name),

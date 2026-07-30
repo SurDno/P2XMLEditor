@@ -36,6 +36,6 @@ public class ReleaseXElementParameterHolderWriter<T> : IReleaseXElementWriter<T>
 		else if (element is not GameRoot)
 			throw new InvalidOperationException($"Parent is missing for {element.GetType().Name} {element.ParamId}");
 		
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

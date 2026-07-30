@@ -30,7 +30,7 @@ public class DemoXElementParameterLoader : IParser<RawParameterData> {
 			if (raw.Type.EndsWith('%'))
 				raw.Type = raw.Type[..^1];
 			raw.Value = element.Element("Value") != null ? element.Element("Value")!.Value : string.Empty;
-			raw.Implicit = element.Element("Implicit")?.Let(ParseBool);
+			raw.Implicit = element.Element("Implicit")?.Let(ParseBool) ?? false;
 			raw.Name = element.Element("Name") != null ? element.Element("Name")!.Value : string.Empty;
 			raw.ParentId = ulong.Parse(element.Element("Parent")!.Value);
 

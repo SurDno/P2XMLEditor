@@ -23,7 +23,7 @@ public class XElementFunctionalComponentLoader : IParser<RawFunctionalComponentD
 			var raw = new RawFunctionalComponentData {
 				Id = id,
 				EventIds = ParseListElementAsUlong(element, XNameCache.Events).ToArray(),
-				Main = element.Element(XNameCache.Main)?.Let(ParseBool),
+				Main = element.Element(XNameCache.Main)?.Let(ParseBool) ?? false,
 				LoadPriority = long.Parse(element.Element(XNameCache.LoadPriority)!.Value),
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)

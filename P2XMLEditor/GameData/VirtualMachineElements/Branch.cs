@@ -26,8 +26,8 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 	public List<GraphLink>? OutputLinks { get; set; }
 	public ParameterHolder Owner { get; set; }
 	public string Name { get; set; }
-	public bool? IgnoreBlock { get; set; }
-	public bool? Initial { get; set; }
+	public bool IgnoreBlock { get; set; }
+	public bool Initial { get; set; }
 	
 	public override bool IsOrphaned() {
 		return Parent.Element switch {

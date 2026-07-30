@@ -20,9 +20,9 @@ public class XmlReaderConditionLoader : IParser<RawConditionData> {
 			var raw = new RawConditionData {
 				Id = xr.GetIdAndEnter(),
 				PredicateIds = xr.GetULongListAndAdvance(),
-				Operation = xr.GetStringValueAndAdvance().Deserialize<ConditionOperation>(),
+				Operation = xr.Name == "Operation" ? xr.GetStringValueAndAdvance().Deserialize<ConditionOperation>() : ConditionOperation.And,
 				Name = xr.GetOptionalStringValueAndAdvance(),
-				OrderIndex = xr.GetIntValueAndAdvance()
+				OrderIndex = xr.Name == "OrderIndex" ? xr.GetIntValueAndAdvance() : 0
 			};
 
 			raws.Add(raw);

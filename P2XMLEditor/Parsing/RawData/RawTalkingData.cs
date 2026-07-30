@@ -6,9 +6,9 @@ public struct RawTalkingData {
 	public ulong[] EventLinkIds;
 	public ulong[] EntryPointIds;
 	public ulong[] InputLinkIds;
-	public bool? IgnoreBlock;
+	public bool IgnoreBlock;
 	public ulong OwnerId;
-	public bool? Initial;
+	public bool Initial;
 	public string Name;
 	public ulong ParentId;
 

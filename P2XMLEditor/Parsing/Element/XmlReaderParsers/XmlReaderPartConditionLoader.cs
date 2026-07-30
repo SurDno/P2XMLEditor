@@ -21,7 +21,7 @@ public class XmlReaderPartConditionLoader : IParser<RawPartConditionData> {
 				ConditionType = xr.GetStringValueAndAdvance(),
 				FirstExpressionId = xr.Name == "FirstExpression" ? xr.GetULongValueAndAdvance() : null,
 				SecondExpressionId = xr.Name == "SecondExpression" ? xr.GetULongValueAndAdvance() : null,
-				OrderIndex = xr.GetIntValueAndAdvance()
+				OrderIndex = xr.Name == "OrderIndex" ? xr.GetIntValueAndAdvance() : 0
 			};
 
 			raws.Add(raw);

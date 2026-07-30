@@ -21,14 +21,14 @@ public class XmlReaderGraphLoader : IParser<RawGraphData> {
 				StateIds = xr.Name == "States" ? xr.GetULongListAndAdvance() : null,
 				EventLinkIds = xr.Name == "EventLinks" ? xr.GetULongListAndAdvance() : null,
 				SubstituteGraphId = xr.Name == "SubstituteGraph" ? xr.GetULongValueAndAdvance() : null,
-				GraphType = xr.GetStringValueAndAdvance(),
+				GraphType = xr.Name == "GraphType" ? xr.GetStringValueAndAdvance() : "GRAPH_TYPE_EVENTGRAPH",
 				InputParamsInfo = xr.Name == "InputParamsInfo" ? ReadInputParamsInfo(xr) : null,
 				EntryPointIds = xr.Name == "EntryPoints" ? xr.GetULongListAndAdvance() : null,
-				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : null,
+				IgnoreBlock = xr.Name == "IgnoreBlock" ? xr.GetBoolValueAndAdvance() : false,
 				OwnerId = xr.GetULongValueAndAdvance(),
 				InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : null,
 				OutputLinkIds = xr.Name == "OutputLinks" ?  xr.GetULongListAndAdvance() : null,
-				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : null,
+				Initial = xr.Name == "Initial" ? xr.GetBoolValueAndAdvance() : false,
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()
 			};

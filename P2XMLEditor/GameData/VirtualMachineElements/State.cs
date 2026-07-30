@@ -21,8 +21,8 @@ public class State(ulong id) : VmElement(id), IFiller<RawStateData>, IGraphEleme
 	public List<GraphLink>? OutputLinks { get; set; }
 	public ParameterHolder Owner { get; set; }
 	public string Name { get; set; }
-	public bool? IgnoreBlock { get; set; }
-	public bool? Initial { get; set; }
+	public bool IgnoreBlock { get; set; }
+	public bool Initial { get; set; }
 	
 	public void FillFromRawData(RawStateData data, VirtualMachine vm) {
 		EntryPoints = [];

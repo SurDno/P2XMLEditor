@@ -86,8 +86,8 @@ public class FSMGraphViewer : GraphViewer {
 	}
 
 private bool IsInitialState(VmElement element) {
-	if (element is IGraphElement graphElement) return graphElement.Initial ?? false;
-	if (element is Talking talking) return talking.Initial ?? false;
+	if (element is IGraphElement graphElement) return graphElement.Initial;
+	if (element is Talking talking) return talking.Initial;
 	return false;
 }
 

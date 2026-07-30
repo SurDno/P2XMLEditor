@@ -21,9 +21,9 @@ public class XmlReaderParameterLoader : IParser<RawParameterData> {
 				OwnerComponentId = xr.Name == "OwnerComponent" ? xr.GetULongValueAndAdvance() : null,
 				Type = xr.GetStringValueAndAdvance(),
 				Value = xr.GetOptionalStringValueAndAdvance(),
-				Implicit = xr.Name == "Implicit" ? xr.GetBoolValueAndAdvance() : null,
+				Implicit = xr.Name == "Implicit" ? xr.GetBoolValueAndAdvance() : false,
 				ParentId = xr.GetULongValueAndAdvance(),
-				Custom = xr.Name == "Custom" ? xr.GetBoolValueAndAdvance() : null
+				Custom = xr.Name == "Custom" ? xr.GetBoolValueAndAdvance() : false
 			};
 
 			raws.Add(raw);

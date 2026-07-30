@@ -38,7 +38,7 @@ public class DemoXElementActionLineLoader : IParser<RawActionLineData> {
 				raw.LoopInfoName = loopInfo.Element("Name")?.Value;
 				raw.LoopInfoStart = loopInfo.Element("Start")?.Value;
 				raw.LoopInfoEnd = loopInfo.Element("End")?.Value;
-				raw.LoopInfoRandom = loopInfo.Element("Random")?.Let(ParseBool);
+				raw.LoopInfoRandom = loopInfo.Element("Random")?.Let(ParseBool) ?? false;
 			}
 
 			raws.Add(raw);

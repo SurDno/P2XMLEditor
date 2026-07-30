@@ -623,7 +623,7 @@ public class DialogGraphViewer : GraphViewer {
 		g.DrawString(text, font, Brushes.Black, textBounds, format);
 
 		
-		if (reply.OnlyOnce ?? false) {
+		if (reply.OnlyOnce) {
 			using var flagBrush = new SolidBrush(Color.Orange);
 			g.FillEllipse(flagBrush, bounds.Right - 15, bounds.Y + 5, 10, 10);
 		}

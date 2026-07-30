@@ -9,7 +9,7 @@ public struct RawExpressionData {
 	public ulong? ConstId;
 	public string[]? SourceParams;
 	public ulong LocalContextId;
-	public bool? Inversion;
+	public bool Inversion;
 	public ulong[]? FormulaChilds;
 	public string[]? FormulaOperations;
 

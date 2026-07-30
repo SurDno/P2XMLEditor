@@ -34,11 +34,11 @@ public class XElementBranchLoader : IParser<RawBranchData> {
 				BranchType = element.Element(XNameCache.BranchType)!.Value.Deserialize<BranchType>(),
 				BranchVariantInfo = branchVariantInfo?.ToArray(),
 				EntryPointIds = ParseListElementAsUlong(element, XNameCache.EntryPoints).ToArray(),
-				IgnoreBlock = element.Element(XNameCache.IgnoreBlock)?.Let(ParseBool),
+				IgnoreBlock = element.Element(XNameCache.IgnoreBlock)?.Let(ParseBool) ?? false,
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
 				InputLinkIds = ParseListElementAsUlong(element, XNameCache.InputLinks).ToArray(),
 				OutputLinkIds = ParseListElementAsUlong(element, XNameCache.OutputLinks).ToArray(),
-				Initial = element.Element(XNameCache.Initial)?.Let(ParseBool),
+				Initial = element.Element(XNameCache.Initial)?.Let(ParseBool) ?? false,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)
 			};

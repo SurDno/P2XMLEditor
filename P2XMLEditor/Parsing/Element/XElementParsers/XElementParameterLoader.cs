@@ -29,11 +29,11 @@ public class XElementParameterLoader : IParser<RawParameterData> {
 				Value = element.Element(XNameCache.Value)!.Value,
 				Implicit = element.Element(XNameCache.Implicit) != null
 					? bool.Parse(element.Element(XNameCache.Implicit)!.Value)
-					: null,
+					: false,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
 				Custom = element.Element(XNameCache.Custom) != null
 					? bool.Parse(element.Element(XNameCache.Custom)!.Value)
-					: null
+					: false
 			};
 
 			raws.Add(raw);

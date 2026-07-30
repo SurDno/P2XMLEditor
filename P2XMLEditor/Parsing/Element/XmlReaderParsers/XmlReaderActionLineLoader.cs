@@ -27,7 +27,7 @@ public class XmlReaderActionLineLoader : IParser<RawActionLineData> {
 			}
 			raw.Name = xr.GetOptionalStringValueAndAdvance();
 			raw.LocalContextId = xr.GetULongValueAndAdvance();
-			raw.OrderIndex = xr.GetIntValueAndAdvance();
+			raw.OrderIndex = xr.Name == "OrderIndex" ? xr.GetIntValueAndAdvance() : 0;
 
 			raws.Add(raw);
 		}
@@ -39,7 +39,7 @@ public class XmlReaderActionLineLoader : IParser<RawActionLineData> {
 		raw.LoopInfoName = xr.GetStringValueAndAdvance();
 		raw.LoopInfoStart = xr.GetStringValueAndAdvance();
 		raw.LoopInfoEnd = xr.GetStringValueAndAdvance();
-		raw.LoopInfoRandom = xr.Name == "Random" ? bool.Parse(xr.GetStringValueAndAdvance()) : null;
+		raw.LoopInfoRandom = xr.Name == "Random" ? bool.Parse(xr.GetStringValueAndAdvance()) : false;
 		xr.Read();
 	}
 }

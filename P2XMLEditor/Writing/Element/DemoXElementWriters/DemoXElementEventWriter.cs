@@ -15,16 +15,13 @@ public class DemoXElementEventWriter : IDemoXElementWriter<Event> {
 
 		obj.Add(new XElement("EventTime", element.EventTime.ToString("d\\.hh\\:mm\\:ss")));
 
-		if (element.Manual.HasValue)
-			obj.Add(CreateDemoBoolElement("Manual", element.Manual.Value));
+		if (!settings.RemoveDefaultValueTypes || !element.Manual) obj.Add(CreateDemoBoolElement("Manual", element.Manual));
 
 		obj.Add(new XElement("EventRaisingType", element.EventRaisingType.Serialize()));
 
-		if (element.ChangeTo.HasValue)
-			obj.Add(CreateDemoBoolElement("ChangeTo", element.ChangeTo.Value));
+		if (!settings.RemoveDefaultValueTypes || !element.ChangeTo) obj.Add(CreateDemoBoolElement("ChangeTo", element.ChangeTo));
 
-		if (element.Repeated.HasValue)
-			obj.Add(CreateDemoBoolElement("Repeated", element.Repeated.Value));
+		if (!settings.RemoveDefaultValueTypes || !element.Repeated) obj.Add(CreateDemoBoolElement("Repeated", element.Repeated));
 
 		obj.Add(CreateDemoStringElement("Name", element.Name));
 		obj.Add(new XElement("Parent", element.Parent.Id));

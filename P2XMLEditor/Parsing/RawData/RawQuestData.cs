@@ -3,7 +3,7 @@ namespace P2XMLEditor.Parsing.RawData;
 public struct RawQuestData {
 	public ulong Id;
 	public ulong? StartEventId;
-	public bool? Static;
+	public bool Static;
 	public string[]? InheritanceInfo;
 	public ulong[] FunctionalComponentIds;
 	public ulong EventGraphId;

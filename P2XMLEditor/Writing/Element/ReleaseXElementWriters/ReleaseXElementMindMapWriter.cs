@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Data;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
@@ -14,12 +15,18 @@ public class ReleaseXElementMindMapWriter : IReleaseXElementWriter<MindMap> {
 			xElement.Add(CreateListElement("Nodes", element.Nodes.Select(n => n.Id.ToString())));
 		if (element.Links.Count != 0)
 			xElement.Add(CreateListElement("Links", element.Links.Select(l => l.Id.ToString())));
+		
+		if (!settings.RemoveDefaultValueTypes || element.LogicMapType != LogicMapType.Global)
+			xElement.Add(new XElement("LogicMapType", element.LogicMapType.Serialize()));
+
 		xElement.Add(
-			new XElement("LogicMapType", element.LogicMapType.Serialize()),
-			new XElement("Title", element.Title.Id),
-			new XElement("Name", element.Name),
+			new XElement("Title", element.Title.Id)
+		);
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name", element.Name));
+		xElement.Add(
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

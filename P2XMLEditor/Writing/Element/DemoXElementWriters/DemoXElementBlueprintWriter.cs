@@ -13,8 +13,7 @@ public class DemoXElementBlueprintWriter : IDemoXElementWriter<Blueprint> {
 	public XElement ToXml(Blueprint element, WriterSettings settings) {
 		var obj = CreateDemoBaseElement(element.Id);
 
-		if (element.Static.HasValue)
-			obj.Add(CreateDemoBoolElement("Static", element.Static.Value));
+		if (element.Static.HasValue && (!settings.RemoveDefaultValueTypes || element.Static.Value)) obj.Add(CreateDemoBoolElement("Static", element.Static.Value));
 
 		obj.Add(CreateDemoListElementAsLong("FunctionalComponents", element.FunctionalComponents?.Select(c => c.Id) ?? []));
 		

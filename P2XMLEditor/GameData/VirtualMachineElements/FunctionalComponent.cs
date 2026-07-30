@@ -15,7 +15,7 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctionalComponentData> {
 	public List<Event> Events { get; set; }
-	public bool? Main { get; set; }
+	public bool Main { get; set; }
 	public long LoadPriority { get; set; }
 	public string Name { get; set; }
 	public ParameterHolder Parent { get; set; }

@@ -38,7 +38,7 @@ public class DemoXElementMindMapNodeLoader : IParser<RawMindMapNodeData> {
 				NodeNameTextId = element.Element("NodeNameText") != null ? ulong.Parse(element.Element("NodeNameText")!.Value) : null,
 				NodeDescriptionTextId = element.Element("NodeDescriptionText") != null ? ulong.Parse(element.Element("NodeDescriptionText")!.Value) : null,
 				GraphPosition = ParseGraphPosition(element.Element("GraphPosition")?.Value),
-				Initial = element.Element("Initial")?.Let(ParseBool)
+				Initial = element.Element("Initial")?.Let(ParseBool) ?? false
 			};
 
 			raws.Add(raw);

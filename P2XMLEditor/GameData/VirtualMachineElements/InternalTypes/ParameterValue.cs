@@ -103,6 +103,8 @@ public abstract class ParameterValue {
 			
 			"IBlueprintRef" => new BasicValue<Guid>(type, string.IsNullOrEmpty(value) ? Guid.Empty : Guid.Parse(value)), // todo: POSSIBLY store the wrapper?
 			
+			"VMType" => new TypeInfoValue(type, VmTypeHelper.GetVmTypeInfo(value, vm)),
+			
 			// Dynamic types
 			_ when type.StartsWith("IObjRef%") => CreateRef<ParameterHolder>(vm, type, value),
 			_ when type.StartsWith("CommonList%") => new CommonListValue(type, ParseCommonList(vm, value)),
@@ -202,6 +204,14 @@ public class CommonListValue(string type, List<ParameterValue> elements) : Param
 	public override string XmlType => type;
 	public List<ParameterValue> TypedValue { get; set; } = elements;
 	public override string Serialize() => string.Join("LIST&ELEM", TypedValue.Select(e => $"value_{e.Serialize()}_type_{e.XmlType}"));
+	public override bool Is<TVal>() => TypedValue is TVal;
+	public override TVal As<TVal>() => TypedValue is TVal v ? v : default!;
+}
+
+public class TypeInfoValue(string type, VmTypeInfo value) : ParameterValue {
+	public override string XmlType => type;
+	public VmTypeInfo TypedValue { get; set; } = value;
+	public override string Serialize() => VmTypeHelper.ToXmlType(TypedValue);
 	public override bool Is<TVal>() => TypedValue is TVal;
 	public override TVal As<TVal>() => TypedValue is TVal v ? v : default!;
 }

@@ -22,7 +22,7 @@ public class XElementGameObjectLoader : IParser<RawGameObjectData> {
 
 			var raw = new RawGameObjectData {
 				Id = id,
-				Static = element.Element(XNameCache.Static)?.Let(ParseBool),
+				Static = element.Element(XNameCache.Static)?.Let(ParseBool) ?? false,
 				FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents).ToArray(),
 				EventGraphId = element.Element(XNameCache.EventGraph) != null ?
 					ulong.Parse(element.Element(XNameCache.EventGraph)!.Value) : null,
@@ -37,7 +37,7 @@ public class XElementGameObjectLoader : IParser<RawGameObjectData> {
 				WorldPositionGuid = element.Element(XNameCache.WorldPositionGuid)?.Value,
 				EngineTemplateId = element.Element(XNameCache.EngineTemplateId)?.Value,
 				EngineBaseTemplateId = element.Element(XNameCache.EngineBaseTemplateId)?.Value,
-				Instantiated = element.Element(XNameCache.Instantiated)?.Let(ParseBool)
+				Instantiated = element.Element(XNameCache.Instantiated)?.Let(ParseBool) ?? false
 			};
 
 			raws.Add(raw);

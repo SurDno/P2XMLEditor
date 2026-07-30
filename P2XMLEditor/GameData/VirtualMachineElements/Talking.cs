@@ -18,9 +18,9 @@ public class Talking(ulong id) : VmElement(id), IFiller<RawTalkingData> {
 	public List<GraphLink> EventLinks { get; set; }
 	public List<EntryPoint> EntryPoints { get; set; }
 	public List<GraphLink> InputLinks { get; set; }
-	public bool? IgnoreBlock { get; set; }
+	public bool IgnoreBlock { get; set; }
 	public VmEither<Blueprint, Character> Owner { get; set; }
-	public bool? Initial { get; set; }
+	public bool Initial { get; set; }
 	public string Name { get; set; }
 	public Graph Parent { get; set; }
 	

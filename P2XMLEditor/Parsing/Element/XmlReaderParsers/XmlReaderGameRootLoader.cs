@@ -26,7 +26,7 @@ public class XmlReaderGameRootLoader : IParser<RawGameRootData> {
 				BaseToEngineGuidsTable = xr.GetStringDictAndAdvance(),
 				HierarchyScenesStructure = ReadHierarchyScenesStructure(xr),
 				HierarchyEngineGuidsTable = xr.GetStringListAndAdvance(),
-				WorldObjectSaveOptimizeMode = xr.Name == "WorldObjectSaveOptimizeMode" ? xr.GetBoolValueAndAdvance() : null,
+				WorldObjectSaveOptimizeMode = xr.Name == "WorldObjectSaveOptimizeMode" ? xr.GetBoolValueAndAdvance() : false,
 				FunctionalComponentIds = xr.GetULongListAndAdvance(),
 				EventGraphId = xr.GetULongValueAndAdvance(),
 				ChildObjectIds = xr.GetULongListAndAdvance(),

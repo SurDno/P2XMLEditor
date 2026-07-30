@@ -10,14 +10,14 @@ public class ReleaseXElementGameObjectWriter : ReleaseXElementParameterHolderWri
 		var xElement = base.ToXml(element, settings);
 		
 		// Reverse order here since we're using AddFirst.
-		if (element.Instantiated != null)
-		   xElement.AddFirst(CreateBoolElement("Instantiated", (bool)element.Instantiated));
+		if (!settings.RemoveDefaultValueTypes || element.Instantiated)
+			xElement.AddFirst(CreateBoolElement("Instantiated", element.Instantiated));
 		if (element.EngineBaseTemplateId != null)
 			xElement.AddFirst(CreateSelfClosingElement("EngineBaseTemplateID", element.EngineBaseTemplateId));
 		if (element.EngineTemplateId != null)
 			xElement.AddFirst(CreateSelfClosingElement("EngineTemplateID", element.EngineTemplateId));
 		if (element.WorldPositionGuid != null)
 			xElement.AddFirst(CreateSelfClosingElement("WorldPositionGuid", element.WorldPositionGuid));
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

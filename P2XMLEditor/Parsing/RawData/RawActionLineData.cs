@@ -9,7 +9,7 @@ public struct RawActionLineData {
 	public string? LoopInfoName;
 	public string? LoopInfoStart;
 	public string? LoopInfoEnd;
-	public bool? LoopInfoRandom;
+	public bool LoopInfoRandom;
 	public string Name;
 	public ulong LocalContextId;
 	public int OrderIndex;

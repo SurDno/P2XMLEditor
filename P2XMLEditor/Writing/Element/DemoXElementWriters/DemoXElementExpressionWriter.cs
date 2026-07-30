@@ -26,8 +26,7 @@ public class DemoXElementExpressionWriter : IDemoXElementWriter<Expression> {
 		obj.Add(CreateDemoListElement("SourceParams", element.Function?.GetParamStrings() ?? []));
 		obj.Add(new XElement("LocalContext", element.LocalContext.Id));
 
-		if (element.Inversion.HasValue)
-			obj.Add(CreateDemoBoolElement("Inversion", element.Inversion.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Inversion) obj.Add(CreateDemoBoolElement("Inversion", element.Inversion));
 
 		obj.Add(
 			CreateDemoListElementAsLong("FormulaChilds", element.FormulaChilds?.Select(c => c.Id) ?? []),

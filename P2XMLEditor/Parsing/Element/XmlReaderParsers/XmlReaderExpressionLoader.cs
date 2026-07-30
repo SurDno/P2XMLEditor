@@ -17,7 +17,7 @@ public class XmlReaderExpressionLoader : IParser<RawExpressionData> {
 
 			var raw = new RawExpressionData {
 				Id = xr.GetIdAndEnter(),
-				ExpressionType = xr.GetStringValueAndAdvance(),
+				ExpressionType = xr.Name == "ExpressionType" ? xr.GetStringValueAndAdvance() : "EXPRESSION_SRC_CONST",
 				TargetFunctionName = xr.GetOptionalStringValueAndAdvance(),
 				TargetObject = xr.GetStringValueAndAdvance(),
 				TargetParam = xr.Name == "TargetParam" ? xr.GetStringValueAndAdvance() : null,
@@ -26,7 +26,7 @@ public class XmlReaderExpressionLoader : IParser<RawExpressionData> {
 				LocalContextId = xr.GetULongValueAndAdvance(),
 				FormulaChilds = xr.Name == "FormulaChilds" ? xr.GetULongListAndAdvance() : null,
 				FormulaOperations = xr.Name == "FormulaOperations" ? xr.GetStringListAndAdvance() : null,
-				Inversion = xr.Name == "Inversion" ? xr.GetBoolValueAndAdvance() : null
+				Inversion = xr.Name == "Inversion" ? xr.GetBoolValueAndAdvance() : false
 			};
 			raws.Add(raw);
 		}

@@ -11,7 +11,7 @@ public struct RawGameRootData {
 	public Dictionary<string, string> BaseToEngineGuidsTable;
 	public Dictionary<ulong, Dictionary<ChildContainerType, ulong[]>> HierarchyScenesStructure;
 	public string[] HierarchyEngineGuidsTable;
-	public bool? WorldObjectSaveOptimizeMode;
+	public bool WorldObjectSaveOptimizeMode;
 	public ulong[] FunctionalComponentIds;
 	public ulong? EventGraphId;
 	public ulong[]? ChildObjectIds;

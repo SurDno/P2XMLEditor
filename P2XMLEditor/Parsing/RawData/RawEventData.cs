@@ -7,10 +7,10 @@ public struct RawEventData {
 	public ulong Id;
 	public ulong? EventParameterId;
 	public TimeSpan EventTime;
-	public bool? Manual;
+	public bool Manual;
 	public EventRaisingType EventRaisingType;
-	public bool? ChangeTo;
-	public bool? Repeated;
+	public bool ChangeTo;
+	public bool Repeated;
 	public (string, string)[]? MessagesInfo;
 	public string Name;
 	public ulong ParentId;

@@ -22,9 +22,9 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVmCreator<Parameter> {
 	public string Name { get; set; }
 	public FunctionalComponent? OwnerComponent { get; set; }
-	public bool? Implicit { get; set; }
+	public bool Implicit { get; set; }
 	public VmEither<ParameterHolder, Expression> Parent { get; set; }
-	public bool? Custom { get; set; }
+	public bool Custom { get; set; }
 	public ParameterValue Value { get; set; }
 
 	public string Type => Value?.XmlType ?? string.Empty;
@@ -78,7 +78,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 	public string ParamId => Id.ToString();
 
 	public bool IsCustom() {
-		if (Custom.HasValue) return Custom.Value;
+		return Custom;
 		if (Parent.Element is not ParameterHolder ph) return true;
 		return ph.CustomParams != null && ph.CustomParams.Any(kvp => kvp.Value == this);
 	}

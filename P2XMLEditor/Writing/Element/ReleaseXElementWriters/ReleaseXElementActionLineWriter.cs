@@ -21,16 +21,19 @@ public class ReleaseXElementActionLineWriter : IReleaseXElementWriter<ActionLine
 				new XElement("Start", element.LoopInfo.Start.Write()),
 				new XElement("End", element.LoopInfo.End.Write())
 			);
-			if (element.LoopInfo.Random != null)
-				actionLineInfo.Add(CreateBoolElement("Random", (bool)element.LoopInfo.Random!));
+			if (!settings.RemoveDefaultValueTypes || element.LoopInfo.Random)
+				actionLineInfo.Add(CreateBoolElement("Random", element.LoopInfo.Random));
 			xElement.Add(actionLineInfo);
 		}
 		
+		if (!settings.StripNames)
+			xElement.Add(CreateSelfClosingElement("Name", element.Name));
 		xElement.Add(
-			CreateSelfClosingElement("Name", element.Name),
-			new XElement("LocalContext", element.LocalContext.Id),
-			new XElement("OrderIndex", element.OrderIndex)
+			new XElement("LocalContext", element.LocalContext.Id)
 		);
-		return xElement;
+		
+		if (!settings.RemoveDefaultValueTypes || element.OrderIndex != 0)
+			xElement.Add(new XElement("OrderIndex", element.OrderIndex));
+		return EnsureFullClosingTag(xElement);
 	}
 }

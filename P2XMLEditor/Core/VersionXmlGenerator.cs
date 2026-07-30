@@ -11,6 +11,8 @@ public static class VersionXmlGenerator {
 
 		var root = new XElement("Root",
 			new XElement("DataCapacity", dataCapacity),
+			new XElement("ProjectVersion", "1337"),
+			new XElement("XmlDataFormatVersion", "14"),
 			new XElement("GameDataInfo",
 				new XElement("GameName", settings.GameName),
 				new XElement("Scene", settings.Scene),

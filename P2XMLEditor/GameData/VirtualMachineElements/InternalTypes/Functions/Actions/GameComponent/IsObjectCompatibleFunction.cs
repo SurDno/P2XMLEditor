@@ -8,20 +8,10 @@ using P2XMLEditor.Helper;
 namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Actions.GameComponent;
 
 [Function("GameComponent.IsObjectCompatible")]
-public class IsObjectCompatibleFunction : VmFunction {
-	private readonly ParameterHolder holder;
-	private readonly string message;
-	private readonly VmTypeInfo componentInfo;
-	private readonly Parameter? constParameter;
+public class GameComponentIsObjectCompatibleFunction(VirtualMachine vm, string[] parameters) : VmFunction {
 	public override VmType ReturnType => VmType.Boolean;
 	public override int ParamCount => 2;
-	public IsObjectCompatibleFunction(VirtualMachine vm, string[] parameters) {
-		var array = parameters[0].Split('%');
-		holder = vm.GetElement<ParameterHolder>(ulong.Parse(array[0]));
-		message = array[1];
-		var text = parameters[1];
-		var text2 = text;
-		componentInfo = VmTypeHelper.GetVmTypeInfo(text2.Substring(1, text2.Length - 1), vm);
-	}
-	public override List<string>? GetParamStrings() => [$"{holder.Id}%{message}", "%" + componentInfo.Serialize()];
+	public FunctionSourceParam<ObjRef>? Object { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
+	public FunctionSourceParam<VmTypeInfo>? Type { get; } = FunctionSourceParam<VmTypeInfo>.Read(parameters[1], vm, VmType.TypeValue);
+	public override List<string>? GetParamStrings() => [Object.Write(), Type.Write()];
 }

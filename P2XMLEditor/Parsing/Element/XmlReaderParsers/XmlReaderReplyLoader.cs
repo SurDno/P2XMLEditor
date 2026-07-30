@@ -19,12 +19,12 @@ public class XmlReaderReplyLoader : IParser<RawReplyData> {
 				Id = xr.GetIdAndEnter(),
 				Name = xr.GetStringValueAndAdvance(),
 				TextId = xr.GetULongValueAndAdvance(),
-				OnlyOnce = xr.Name == "OnlyOnce" ? xr.GetBoolValueAndAdvance() : null,
-				OnlyOneReply = xr.Name == "OnlyOneReply" ? xr.GetBoolValueAndAdvance() : null,
-				Default = xr.Name == "Default" ? xr.GetBoolValueAndAdvance() : null,
+				OnlyOnce = xr.Name == "OnlyOnce" ? xr.GetBoolValueAndAdvance() : false,
+				OnlyOneReply = xr.Name == "OnlyOneReply" ? xr.GetBoolValueAndAdvance() : false,
+				Default = xr.Name == "Default" ? xr.GetBoolValueAndAdvance() : false,
 				EnableConditionId = xr.Name == "EnableCondition" ? xr.GetULongValueAndAdvance() : null,
 				ActionLineId = xr.Name == "ActionLine" ? xr.GetULongValueAndAdvance() : null,
-				OrderIndex = xr.GetIntValueAndAdvance(),
+				OrderIndex = xr.Name == "OrderIndex" ? xr.GetIntValueAndAdvance() : 0,
 				ParentId = xr.GetULongValueAndAdvance()
 			};
 

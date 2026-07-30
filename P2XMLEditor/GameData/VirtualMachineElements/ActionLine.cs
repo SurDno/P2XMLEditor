@@ -24,7 +24,7 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 			foreach (var actionId in data.ActionIds)
 				Actions.Add(vm.GetElement<Action,ActionLine>(actionId));
 		ActionLineType = data.ActionLineType;
-		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom.HasValue) {
+		if (!string.IsNullOrEmpty(data.LoopInfoName) || !string.IsNullOrEmpty(data.LoopInfoStart) || !string.IsNullOrEmpty(data.LoopInfoEnd) || data.LoopInfoRandom) {
 			LoopInfo = new ActionLoopInfo(
 				ParameterSource.Create(data.LoopInfoName ?? "", vm),
 				ParameterSource.Create(data.LoopInfoStart ?? "", vm, null, VmTypeInfo.Int32),

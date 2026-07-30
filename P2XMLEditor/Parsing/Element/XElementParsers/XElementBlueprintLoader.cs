@@ -23,7 +23,7 @@ public class XElementBlueprintLoader : IParser<RawBlueprintData> {
 
 			var raw = new RawBlueprintData {
 				Id = id,
-				Static = element.Element(XNameCache.Static)?.Let(ParseBool),
+				Static = element.Element(XNameCache.Static)?.Let(ParseBool) ?? false,
 				FunctionalComponentIds = ParseListElementAsUlong(element, XNameCache.FunctionalComponents).ToArray(),
 				EventGraphId = element.Element(XNameCache.EventGraph) != null ?
 					ulong.Parse(element.Element(XNameCache.EventGraph)!.Value) : null,

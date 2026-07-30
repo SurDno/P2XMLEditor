@@ -5,8 +5,8 @@ public struct RawGameObjectData {
 	public string? WorldPositionGuid;
 	public string? EngineTemplateId;
 	public string? EngineBaseTemplateId;
-	public bool? Instantiated;
-	public bool? Static;
+	public bool Instantiated;
+	public bool Static;
 	public string[]? InheritanceInfo;
 	public ulong[]? FunctionalComponentIds;
 	public ulong? EventGraphId;

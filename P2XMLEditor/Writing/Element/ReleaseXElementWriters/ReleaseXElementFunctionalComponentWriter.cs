@@ -10,13 +10,15 @@ public class ReleaseXElementFunctionalComponentWriter : IReleaseXElementWriter<F
 	public XElement ToXml(FunctionalComponent element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		xElement.Add(CreateListElement("Events", element.Events.Select(e => e.Id.ToString())));
-		if (element.Main != null)
-			xElement.Add(CreateBoolElement("Main", (bool)element.Main));
+		if (!settings.RemoveDefaultValueTypes || element.Main)
+			xElement.Add(CreateBoolElement("Main", element.Main));
+		if (!settings.RemoveDefaultValueTypes || element.LoadPriority != long.MaxValue)
+			xElement.Add(new XElement("LoadPriority", element.LoadPriority));
+
 		xElement.Add(
-			new XElement("LoadPriority", element.LoadPriority),
 			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

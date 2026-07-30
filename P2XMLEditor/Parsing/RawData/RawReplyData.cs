@@ -4,9 +4,9 @@ public struct RawReplyData {
 	public ulong Id;
 	public string Name;
 	public ulong TextId;
-	public bool? OnlyOnce;
-	public bool? OnlyOneReply;
-	public bool? Default;
+	public bool OnlyOnce;
+	public bool OnlyOneReply;
+	public bool Default;
 	public ulong? EnableConditionId;
 	public ulong? ActionLineId;
 	public int OrderIndex;

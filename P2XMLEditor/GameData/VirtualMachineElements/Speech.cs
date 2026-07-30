@@ -17,14 +17,14 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
 	public List<Reply> Replies { get; set; }
 	public GameString Text { get; set; }
 	public VmEither<Blueprint, Character> AuthorGuid { get; set; }
-	public bool? OnlyOnce { get; set; }
-	public bool? IsTrade { get; set; }
+	public bool OnlyOnce { get; set; }
+	public bool IsTrade { get; set; }
 	public List<EntryPoint> EntryPoints { get; set; }
-	public bool? IgnoreBlock { get; set; }
+	public bool IgnoreBlock { get; set; }
 	public VmEither<Blueprint, Character> Owner { get; set; }
 	public List<GraphLink>? InputLinks { get; set; }
 	public List<GraphLink>? OutputLinks { get; set; }
-	public bool? Initial { get; set; }
+	public bool Initial { get; set; }
 	public string Name { get; set; }
 	public Talking Parent { get; set; }
 

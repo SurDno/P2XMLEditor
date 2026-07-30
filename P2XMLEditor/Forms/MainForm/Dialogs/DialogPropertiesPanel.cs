@@ -113,11 +113,11 @@ public class DialogPropertiesPanel : Panel {
 		_propertiesTable.Controls.Add(textPanel, 1, _propertiesTable.RowCount++);
 
 		// Flags
-		AddCheckbox("Only Once", speech.OnlyOnce ?? false, 
+		AddCheckbox("Only Once", speech.OnlyOnce, 
 			value => speech.OnlyOnce = value);
-		AddCheckbox("Is Trade", speech.IsTrade ?? false, 
+		AddCheckbox("Is Trade", speech.IsTrade, 
 			value => speech.IsTrade = value);
-		AddCheckbox("Initial", speech.Initial ?? false, 
+		AddCheckbox("Initial", speech.Initial, 
 			value => speech.Initial = value);
 
 		// Reply count
@@ -162,11 +162,11 @@ public class DialogPropertiesPanel : Panel {
 		_propertiesTable.Controls.Add(textPanel, 1, _propertiesTable.RowCount++);
 
 		// Flags
-		AddCheckbox("Only Once", reply.OnlyOnce ?? false, 
+		AddCheckbox("Only Once", reply.OnlyOnce, 
 			value => reply.OnlyOnce = value);
-		AddCheckbox("Only One Reply", reply.OnlyOneReply ?? false, 
+		AddCheckbox("Only One Reply", reply.OnlyOneReply, 
 			value => reply.OnlyOneReply = value);
-		AddCheckbox("Default", reply.Default ?? false, 
+		AddCheckbox("Default", reply.Default, 
 			value => reply.Default = value);
 
 		// Condition

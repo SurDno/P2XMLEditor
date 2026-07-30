@@ -3,11 +3,11 @@ namespace P2XMLEditor.Parsing.RawData;
 public struct RawStateData {
 	public ulong Id;
 	public ulong[] EntryPointIds;
-	public bool? IgnoreBlock;
+	public bool IgnoreBlock;
 	public ulong OwnerId;
 	public ulong[]? InputLinkIds;
 	public ulong[]? OutputLinkIds;
-	public bool? Initial;
+	public bool Initial;
 	public string Name;
 	public ulong ParentId;
 

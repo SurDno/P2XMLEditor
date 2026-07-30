@@ -1,3 +1,4 @@
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Data;
@@ -11,7 +12,9 @@ public class ReleaseXElementExpressionWriter : IReleaseXElementWriter<Expression
 	public XElement ToXml(Expression element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 
-		xElement.Add(new XElement("ExpressionType", element.ExpressionType.Serialize()));
+		if (!settings.RemoveDefaultValueTypes || element.ExpressionType != ExpressionType.Const)
+			xElement.Add(new XElement("ExpressionType", element.ExpressionType.Serialize()));
+
 		if (element.Function != null)
 			xElement.Add(CreateSelfClosingElement("TargetFunctionName", element.Function.Name));
 		xElement.Add( new XElement("TargetObject", element.TargetObject.Write()));
@@ -29,8 +32,8 @@ public class ReleaseXElementExpressionWriter : IReleaseXElementWriter<Expression
 			xElement.Add(CreateListElement("FormulaOperations", element.FormulaOperations!.Select(o => o.Serialize())));
 		}
 
-		if (element.Inversion != null)
-			xElement.Add(CreateBoolElement("Inversion", (bool)element.Inversion));
-		return xElement;
+		if (!settings.RemoveDefaultValueTypes || element.Inversion)
+			xElement.Add(CreateBoolElement("Inversion", element.Inversion));
+		return EnsureFullClosingTag(xElement);
 	}
 }

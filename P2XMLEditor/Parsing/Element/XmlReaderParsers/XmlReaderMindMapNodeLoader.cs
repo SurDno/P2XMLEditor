@@ -18,10 +18,10 @@ public class XmlReaderMindMapNodeLoader : IParser<RawMindMapNodeData> {
 
 			var raw = new RawMindMapNodeData {
 				Id = xr.GetIdAndEnter(),
-				LogicMapNodeType = xr.GetStringValueAndAdvance().Deserialize<LogicMapNodeType>(),
+				LogicMapNodeType = xr.Name == "LogicMapNodeType" ? xr.GetStringValueAndAdvance().Deserialize<LogicMapNodeType>() : LogicMapNodeType.Initial,
 				ContentIds = xr.Name == "NodeContent" ? xr.GetULongListAndAdvance() : null,
-				GameScreenPosX = xr.GetFloatValueAndAdvance(),
-				GameScreenPosY = xr.GetFloatValueAndAdvance(),
+				GameScreenPosX = xr.Name == "GameScreenPosX" ? xr.GetFloatValueAndAdvance() : 0f,
+				GameScreenPosY = xr.Name == "GameScreenPosY" ? xr.GetFloatValueAndAdvance() : 0f,
 				InputLinkIds = xr.Name == "InputLinks" ? xr.GetULongListAndAdvance() : null,
 				OutputLinkIds = xr.Name == "OutputLinks" ? xr.GetULongListAndAdvance() : null,
 				Name = xr.GetStringValueAndAdvance(),

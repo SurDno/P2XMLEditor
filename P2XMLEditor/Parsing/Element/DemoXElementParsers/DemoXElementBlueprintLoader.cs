@@ -23,7 +23,7 @@ public class DemoXElementBlueprintLoader : IParser<RawBlueprintData> {
 
 			var raw = new RawBlueprintData {
 				Id = id,
-				Static = element.Element("Static")?.Let(ParseBool),
+				Static = element.Element("Static")?.Let(ParseBool) ?? false,
 				FunctionalComponentIds = ParseDemoListAsUlong(element, "FunctionalComponents").ToArray(),
 				EventGraphId = element.Element("EventGraph") != null ?
 					ulong.Parse(element.Element("EventGraph")!.Value) : null,

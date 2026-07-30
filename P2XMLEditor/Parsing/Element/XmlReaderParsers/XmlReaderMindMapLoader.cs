@@ -20,7 +20,7 @@ public class XmlReaderMindMapLoader : IParser<RawMindMapData> {
 				Id = xr.GetIdAndEnter(),
 				NodeIds = xr.GetULongListAndAdvance(),
 				LinkIds = xr.Name == "Links" ? xr.GetULongListAndAdvance() : null,
-				LogicMapType = xr.GetStringValueAndAdvance().Deserialize<LogicMapType>(),
+				LogicMapType = xr.Name == "LogicMapType" ? xr.GetStringValueAndAdvance().Deserialize<LogicMapType>() : LogicMapType.Global,
 				TitleId = xr.GetULongValueAndAdvance(),
 				Name = xr.GetStringValueAndAdvance(),
 				ParentId = xr.GetULongValueAndAdvance()

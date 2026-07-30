@@ -41,7 +41,7 @@ public class RawPointerActionLineLoader : IParser<RawActionLineData> {
 				string? loopInfoName = null;
 				string? loopInfoStart = null; 
 				string? loopInfoEnd = null;
-				bool? loopInfoRandom = null;
+				bool loopInfoRandom = false;
 				
 				switch (*p) {
 					case (byte)'M':

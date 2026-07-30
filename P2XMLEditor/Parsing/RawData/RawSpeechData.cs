@@ -5,14 +5,14 @@ public struct RawSpeechData {
 	public ulong[] ReplyIds;
 	public ulong TextId;
 	public ulong AuthorGuidId;
-	public bool? OnlyOnce;
-	public bool? IsTrade;
+	public bool OnlyOnce;
+	public bool IsTrade;
 	public ulong[] EntryPointIds;
-	public bool? IgnoreBlock;
+	public bool IgnoreBlock;
 	public ulong OwnerId;
 	public ulong[]? InputLinkIds;
 	public ulong[]? OutputLinkIds;
-	public bool? Initial;
+	public bool Initial;
 	public string Name;
 	public ulong ParentId;
 

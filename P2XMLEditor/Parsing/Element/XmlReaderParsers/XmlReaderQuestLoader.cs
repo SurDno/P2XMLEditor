@@ -18,7 +18,7 @@ public class XmlReaderQuestLoader : IParser<RawQuestData> {
 			var raw = new RawQuestData {
 				Id = xr.GetIdAndEnter(),
 				StartEventId = xr.GetULongValueAndAdvance(),
-				Static = xr.Name == "Static" ? xr.GetBoolValueAndAdvance() : null,
+				Static = xr.Name == "Static" ? xr.GetBoolValueAndAdvance() : false,
 				InheritanceInfo = xr.Name == "InheritanceInfo" ? xr.GetStringListAndAdvance() : null,
 				FunctionalComponentIds = xr.GetULongListAndAdvance(),
 				EventGraphId = xr.GetULongValueAndAdvance(),

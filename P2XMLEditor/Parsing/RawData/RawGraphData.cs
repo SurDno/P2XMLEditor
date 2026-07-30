@@ -8,11 +8,11 @@ public struct RawGraphData {
 	public string GraphType;
 	public (string, string)[]? InputParamsInfo;
 	public ulong[]? EntryPointIds;
-	public bool? IgnoreBlock;
+	public bool IgnoreBlock;
 	public ulong OwnerId;
 	public ulong[]? InputLinkIds;
 	public ulong[]? OutputLinkIds;
-	public bool? Initial;
+	public bool Initial;
 	public string Name;
 	public ulong ParentId;
 

@@ -11,8 +11,7 @@ public class DemoXElementFunctionalComponentWriter : IDemoXElementWriter<Functio
 	public XElement ToXml(FunctionalComponent element, WriterSettings settings) {
 		var obj = CreateDemoBaseElement(element.Id);
 
-		if (element.Main.HasValue)
-			obj.Add(CreateDemoBoolElement("Main", element.Main.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Main) obj.Add(CreateDemoBoolElement("Main", element.Main));
 
 		obj.Add(
 			CreateDemoStringElement("Name", element.Name),

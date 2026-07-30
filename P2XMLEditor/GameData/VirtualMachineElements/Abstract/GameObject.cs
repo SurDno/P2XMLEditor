@@ -19,7 +19,7 @@ public abstract class GameObject(ulong id) : ParameterHolder(id), IFiller<RawGam
 	public string? WorldPositionGuid { get; set; }
 	public string? EngineTemplateId { get; set; }
 	public string? EngineBaseTemplateId { get; set; }
-	public bool? Instantiated { get; set; }
+	public bool Instantiated { get; set; }
 
 	
 	public void FillFromRawData(RawGameObjectData data, VirtualMachine vm) {

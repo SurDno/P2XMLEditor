@@ -1,7 +1,7 @@
 using System.Xml.Linq;
 using P2XMLEditor.Data;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
-using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 using static P2XMLEditor.Helper.XmlParsingHelper;
 
@@ -11,9 +11,12 @@ public class ReleaseXElementActionWriter : IReleaseXElementWriter<Action> {
 	public XElement ToXml(Action element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		
+		if (!settings.RemoveDefaultValueTypes || element.ActionType != ActionType.None)
+			xElement.Add(new XElement("ActionType", element.ActionType.Serialize()));
+		if (!settings.RemoveDefaultValueTypes || element.MathOperationType != MathOperationType.None)
+			xElement.Add(new XElement("MathOperationType", element.MathOperationType.Serialize()));
+
 		xElement.Add(
-			new XElement("ActionType", element.ActionType.Serialize()),
-			new XElement("MathOperationType", element.MathOperationType.Serialize()),
 			CreateSelfClosingElement("TargetFuncName", element.TargetFuncName)
 		);
 		if (element.SourceExpression != null) 
@@ -26,11 +29,14 @@ public class ReleaseXElementActionWriter : IReleaseXElementWriter<Action> {
 		);
 		if (element.GetParamStrings()?.Count > 0)
 			xElement.Add(CreateListElement("SourceParams", element.GetParamStrings()));
+		if (!settings.StripNames)
+			xElement.Add(CreateSelfClosingElement("Name", element.Name));
 		xElement.Add(
-			CreateSelfClosingElement("Name", element.Name),
-			new XElement("LocalContext", element.LocalContext.Id),
-			new XElement("OrderIndex", element.OrderIndex)
+			new XElement("LocalContext", element.LocalContext.Id)
 		);
-		return xElement;
+		
+		if (!settings.RemoveDefaultValueTypes || element.OrderIndex != 0)
+			xElement.Add(new XElement("OrderIndex", element.OrderIndex));
+		return EnsureFullClosingTag(xElement);
 	}
 }

@@ -26,13 +26,13 @@ public class DemoXElementReplyLoader : IParser<RawReplyData> {
 				TextId = ulong.Parse(element.Element("Text")!.Value),
 				OnlyOnce = element.Element("OnlyOnce") != null
 					? bool.Parse(element.Element("OnlyOnce")!.Value)
-					: null,
+					: false,
 				OnlyOneReply = element.Element("OnlyOneReply") != null
 					? bool.Parse(element.Element("OnlyOneReply")!.Value)
-					: null,
+					: false,
 				Default = element.Element("Default") != null
 					? bool.Parse(element.Element("Default")!.Value)
-					: null,
+					: false,
 				EnableConditionId = element.Element("EnableCondition") != null
 					? ulong.Parse(element.Element("EnableCondition")!.Value)
 					: null,

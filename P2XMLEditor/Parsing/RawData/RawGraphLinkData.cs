@@ -9,7 +9,7 @@ public struct RawGraphLinkData {
 	public string[]? SourceParams;
 	public ulong? SourceId;
 	public ulong? DestinationId;
-	public bool? Enabled;
+	public bool Enabled;
 	public string Name;
 	public ulong ParentId;
 

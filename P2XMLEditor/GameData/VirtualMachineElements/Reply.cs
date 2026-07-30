@@ -16,9 +16,9 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 public class Reply(ulong id) : VmElement(id), IFiller<RawReplyData> {
 	public string Name { get; set; }
 	public GameString Text { get; set; }
-	public bool? OnlyOnce { get; set; }
-	public bool? OnlyOneReply { get; set; }
-	public bool? Default { get; set; }
+	public bool OnlyOnce { get; set; }
+	public bool OnlyOneReply { get; set; }
+	public bool Default { get; set; }
 	public Condition? EnableCondition { get; set; }
 	public ActionLine? ActionLine { get; set; }
 	public int OrderIndex { get; set; }

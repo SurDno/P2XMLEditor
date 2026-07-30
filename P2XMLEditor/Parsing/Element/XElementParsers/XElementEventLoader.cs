@@ -34,10 +34,10 @@ public class XElementEventLoader : IParser<RawEventData> {
 			var raw = new RawEventData {
 				Id = id,
 				EventTime = ParseTimeSpanString(element.Element(XNameCache.EventTime)!.Value),
-				Manual = element.Element(XNameCache.Manual)?.Let(ParseBool),
+				Manual = element.Element(XNameCache.Manual)?.Let(ParseBool) ?? false,
 				EventRaisingType = element.Element(XNameCache.EventRaisingType)!.Value.Deserialize<EventRaisingType>(),
-				ChangeTo = element.Element(XNameCache.ChangeTo)?.Let(ParseBool),
-				Repeated = element.Element(XNameCache.Repeated)?.Let(ParseBool),
+				ChangeTo = element.Element(XNameCache.ChangeTo)?.Let(ParseBool) ?? false,
+				Repeated = element.Element(XNameCache.Repeated)?.Let(ParseBool) ?? false,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
 				EventParameterId = element.Element(XNameCache.EventParameter) != null ?

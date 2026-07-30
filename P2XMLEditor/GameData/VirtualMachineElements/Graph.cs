@@ -28,8 +28,8 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 	public List<GraphLink>? OutputLinks { get; set; }
 	public ParameterHolder Owner { get; set; }
 	public string Name { get; set; }
-	public bool? IgnoreBlock { get; set; }
-	public bool? Initial { get; set; }
+	public bool IgnoreBlock { get; set; }
+	public bool Initial { get; set; }
 	
 	public void FillFromRawData(RawGraphData data, VirtualMachine vm) {
 		States = data.StateIds?.Select(vm.GetElement<State, Graph, Branch, Talking>).ToList() ?? [];

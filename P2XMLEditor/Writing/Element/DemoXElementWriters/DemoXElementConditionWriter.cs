@@ -17,7 +17,7 @@ public class DemoXElementConditionWriter : IDemoXElementWriter<Condition> {
 		
 		obj.Add(
 			new XElement("Operation", element.Operation.Serialize()),
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("OrderIndex", element.OrderIndex),
 			CreateGuidElement(element.Id)
 		);

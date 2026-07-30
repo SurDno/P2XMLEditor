@@ -4,7 +4,7 @@ namespace P2XMLEditor.Parsing.RawData;
 
 public struct RawGameModeData {
 	public ulong Id;
-	public bool? IsMain;
+	public bool IsMain;
 	public TimeSpan StartGameTime;
 	public float GameTimeSpeed;
 	public TimeSpan StartSolarTime;

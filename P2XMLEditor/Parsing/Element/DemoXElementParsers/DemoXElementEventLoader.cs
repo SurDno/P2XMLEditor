@@ -37,10 +37,10 @@ public class DemoXElementEventLoader : IParser<RawEventData> {
 			var raw = new RawEventData {
 				Id = id,
 				EventTime = ParseTimeSpanString(element.Element("EventTime")!.Value),
-				Manual = element.Element("Procedural")?.Let(ParseBool),
+				Manual = element.Element("Procedural")?.Let(ParseBool) ?? false,
 				EventRaisingType = element.Element("EventRaisingType")!.Value.Deserialize<EventRaisingType>(),
-				ChangeTo = element.Element("ChangeTo")?.Let(ParseBool),
-				Repeated = element.Element("Repeated")?.Let(ParseBool),
+				ChangeTo = element.Element("ChangeTo")?.Let(ParseBool) ?? false,
+				Repeated = element.Element("Repeated")?.Let(ParseBool) ?? false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value),
 				EventParameterId = element.Element("EventParameter") != null ?

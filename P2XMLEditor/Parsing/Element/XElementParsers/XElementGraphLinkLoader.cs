@@ -32,7 +32,7 @@ public class XElementGraphLinkLoader : IParser<RawGraphLinkData> {
 					ulong.Parse(element.Element(XNameCache.Source)!.Value) : null,
 				DestinationId = element.Element(XNameCache.Destination) != null ?
 					ulong.Parse(element.Element(XNameCache.Destination)!.Value) : null,
-				Enabled = element.Element(XNameCache.Enabled)?.Let(ParseBool),
+				Enabled = element.Element(XNameCache.Enabled)?.Let(ParseBool) ?? false,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)
 			};

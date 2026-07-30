@@ -28,12 +28,12 @@ public class DemoXElementTalkingLoader : IParser<RawTalkingData> {
 				EntryPointIds = ParseDemoListAsUlong(element, "EntryPoints").ToArray(),
 				IgnoreBlock = element.Element("IgnoreBlock") != null
 					? bool.Parse(element.Element("IgnoreBlock")!.Value)
-					: null,
+					: false,
 				OwnerId = ulong.Parse(element.Element("Owner")!.Value),
 				InputLinkIds = ParseDemoListAsUlong(element, "InputLinks").ToArray(),
 				Initial = element.Element("Initial") != null
 					? bool.Parse(element.Element("Initial")!.Value)
-					: null,
+					: false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value)
 			};

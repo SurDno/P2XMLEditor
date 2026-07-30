@@ -15,7 +15,7 @@ public class XmlReaderBlueprintLoader : IParser<RawBlueprintData> {
 			if (xr.EndOfContainerReached()) break;
 			var raw = new RawBlueprintData {
 				Id = xr.GetIdAndEnter(),
-				Static = xr.Name == "Static" ? xr.GetBoolValueAndAdvance() : null,
+				Static = xr.Name == "Static" ? xr.GetBoolValueAndAdvance() : false,
 				InheritanceInfo = xr.Name == "InheritanceInfo" ? xr.GetStringListAndAdvance() : null,
 				FunctionalComponentIds = xr.GetULongListAndAdvance(),
 				EventGraphId = xr.Name == "EventGraph" ? xr.GetULongValueAndAdvance() : null,

@@ -12,8 +12,8 @@ public class ReleaseXElementGameRootWriter : ReleaseXElementParameterHolderWrite
 		var xElement = base.ToXml(element, settings);
 		
 		// Reverse order here since we're using AddFirst.
-		if (element.WorldObjectSaveOptimizeMode != null)
-			xElement.AddFirst(CreateBoolElement("WorldObjectSaveOptimizeMode", (bool)element.WorldObjectSaveOptimizeMode));
+		if (!settings.RemoveDefaultValueTypes || element.WorldObjectSaveOptimizeMode)
+			xElement.AddFirst(CreateBoolElement("WorldObjectSaveOptimizeMode", element.WorldObjectSaveOptimizeMode));
 		xElement.AddFirst(
 			CreateListElement("Samples", element.Samples.Select(s => s.Id.ToString())),
 			CreateListElement("LogicMaps", element.LogicMaps.Select(m => m.Id.ToString())),
@@ -23,7 +23,7 @@ public class ReleaseXElementGameRootWriter : ReleaseXElementParameterHolderWrite
 			CreateListElement("HierarchyEngineGuidsTable", element.HierarchyEngineGuidsTable)
 		);
 
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 
 	private XElement CreateHierachyScenesStructure(GameRoot element) {

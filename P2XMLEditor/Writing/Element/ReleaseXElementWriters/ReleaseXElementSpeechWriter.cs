@@ -15,25 +15,26 @@ public class ReleaseXElementSpeechWriter : IReleaseXElementWriter<Speech> {
 			new XElement("Text", element.Text.Id),
 			new XElement("AuthorGuid", element.AuthorGuid.Id)
 		);
-		if (element.OnlyOnce != null)
-			xElement.Add(CreateBoolElement("OnlyOnce", (bool)element.OnlyOnce));
-		if (element.IsTrade != null)
-			xElement.Add(CreateBoolElement("IsTrade", (bool)element.IsTrade));
+		if (!settings.RemoveDefaultValueTypes || element.OnlyOnce)
+			xElement.Add(CreateBoolElement("OnlyOnce", element.OnlyOnce));
+		if (!settings.RemoveDefaultValueTypes || element.IsTrade)
+			xElement.Add(CreateBoolElement("IsTrade", element.IsTrade));
 		if (element.EntryPoints.Any())
 			xElement.Add(CreateListElement("EntryPoints", element.EntryPoints.Select(e => e.Id.ToString())) );
-		if (element.IgnoreBlock != null)
-			xElement.Add(CreateBoolElement("IgnoreBlock", (bool)element.IgnoreBlock));
+		if (!settings.RemoveDefaultValueTypes || element.IgnoreBlock)
+			xElement.Add(CreateBoolElement("IgnoreBlock", element.IgnoreBlock));
 		xElement.Add(new XElement("Owner", element.Owner.Id));
 		if (element.InputLinks?.Any() == true)
 			xElement.Add(CreateListElement("InputLinks", element.InputLinks.Select(i => i.Id.ToString())));
 		if (element.OutputLinks?.Any() == true)
 			xElement.Add(CreateListElement("OutputLinks", element.OutputLinks.Select(o => o.Id.ToString())));
-		if (element.Initial != null)
-			xElement.Add(CreateBoolElement("Initial", (bool)element.Initial));
+		if (!settings.RemoveDefaultValueTypes || element.Initial)
+			xElement.Add(CreateBoolElement("Initial", element.Initial));
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name", element.Name));
 		xElement.Add(
-			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

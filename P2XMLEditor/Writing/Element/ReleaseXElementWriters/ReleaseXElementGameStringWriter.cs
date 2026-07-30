@@ -9,6 +9,6 @@ public class ReleaseXElementGameStringWriter : IReleaseXElementWriter<GameString
 	public XElement ToXml(GameString element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
 		xElement.Add(new XElement("Parent", element.Parent.Id));
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

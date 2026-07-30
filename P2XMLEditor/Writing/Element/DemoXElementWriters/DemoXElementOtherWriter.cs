@@ -13,8 +13,7 @@ public class DemoXElementOtherWriter : IDemoXElementWriter<Other> {
 	public XElement ToXml(Other element, WriterSettings settings) {
 		var obj = CreateDemoBaseElement(element.Id);
 
-		if (element.Static.HasValue)
-			obj.Add(CreateDemoBoolElement("Static", element.Static.Value));
+		if (element.Static.HasValue && (!settings.RemoveDefaultValueTypes || element.Static.Value)) obj.Add(CreateDemoBoolElement("Static", element.Static.Value));
 
 		obj.Add(CreateDemoListElementAsLong("FunctionalComponents", element.FunctionalComponents?.Select(c => c.Id) ?? []));
 		
@@ -40,8 +39,7 @@ public class DemoXElementOtherWriter : IDemoXElementWriter<Other> {
 			CreateDemoStringElement("EngineBaseTemplateID", element.EngineBaseTemplateId)
 		);
 
-		if (element.Instantiated.HasValue)
-			obj.Add(CreateDemoBoolElement("Instantiated", element.Instantiated.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Instantiated) obj.Add(CreateDemoBoolElement("Instantiated", element.Instantiated));
 
 		obj.Add(CreateGuidElement(element.Id));
 		return obj;

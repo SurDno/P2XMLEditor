@@ -18,7 +18,7 @@ public class XmlReaderSampleLoader : IParser<RawSampleData> {
 			if (xr.EndOfContainerReached()) break;
 			var raw = new RawSampleData {
 				Id = xr.GetIdAndEnter(),
-				SampleType = xr.GetStringValueAndAdvance().Deserialize<SampleType>(),
+				SampleType = xr.Name == "SampleType" ? xr.GetStringValueAndAdvance().Deserialize<SampleType>() : SampleType.IModel,
 				EngineId = xr.GetStringValueAndAdvance()
 			};
 			raws.Add(raw);

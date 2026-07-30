@@ -14,8 +14,8 @@ public class SaveSettingsForm : Form {
 	private readonly RadioButton _formatRelease;
 	private readonly RadioButton _formatDemo;
 	private readonly CheckBox _cleanUpOrphanedElements;
-	private readonly CheckBox _cleanUpUnusedProperties;
-	private readonly CheckBox _cleanUpNames;
+	private readonly CheckBox _removeDefaultValueTypes;
+	private readonly CheckBox _stripNames;
 	private readonly CheckBox _cleanUpEmptyStrings;
 	private readonly Button _okButton;
 	private readonly Button _cancelButton;
@@ -82,12 +82,12 @@ public class SaveSettingsForm : Form {
 		formatGroup.Controls.AddRange([_formatRelease, _formatDemo]);
 		leftPanel.Controls.Add(formatGroup);
 
-		var cleanupGroup = new GroupBox { Text = "Cleanup Options", Size = new Size(380, 160) };
+		var cleanupGroup = new GroupBox { Text = "Minification Options", Size = new Size(380, 160) };
 		_cleanUpOrphanedElements = new CheckBox { Text = "Clean up orphaned elements", Location = new Point(15, 30), AutoSize = true };
-		_cleanUpUnusedProperties = new CheckBox { Text = "Clean up unused properties", Location = new Point(15, 50), AutoSize = true };
-		_cleanUpNames = new CheckBox { Text = "Clean up names", Location = new Point(15, 75), AutoSize = true };
-		_cleanUpEmptyStrings = new CheckBox { Text = "Clean up empty strings", Location = new Point(15, 100), AutoSize = true };
-		cleanupGroup.Controls.AddRange([_cleanUpOrphanedElements, _cleanUpUnusedProperties, _cleanUpNames, _cleanUpEmptyStrings]);
+		_removeDefaultValueTypes = new CheckBox { Text = "Remove tags with default values", Location = new Point(15, 60), AutoSize = true };
+		_stripNames = new CheckBox { Text = "Strip names", Location = new Point(15, 90), AutoSize = true };
+		_cleanUpEmptyStrings = new CheckBox { Text = "Clean up empty strings", Location = new Point(15, 120), AutoSize = true };
+		cleanupGroup.Controls.AddRange([_cleanUpOrphanedElements, _removeDefaultValueTypes, _stripNames, _cleanUpEmptyStrings]);
 		leftPanel.Controls.Add(cleanupGroup);
 		mainLayout.Controls.Add(leftPanel, 0, 1);
 
@@ -201,8 +201,8 @@ public class SaveSettingsForm : Form {
 		Settings = new WriterSettings {
 			Format = _formatDemo.Checked ? WriterFormat.Demo : WriterFormat.Release,
 			CleanUpOrphanedElements = _cleanUpOrphanedElements.Checked,
-			CleanUpUnusedProperties = _cleanUpUnusedProperties.Checked,
-			CleanUpNames = _cleanUpNames.Checked,
+			RemoveDefaultValueTypes = _removeDefaultValueTypes.Checked,
+			StripNames = _stripNames.Checked,
 			CleanUpEmptyStrings = _cleanUpEmptyStrings.Checked,
 			VmMetadata = metadata
 		};

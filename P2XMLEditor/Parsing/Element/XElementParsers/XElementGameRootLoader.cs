@@ -70,7 +70,7 @@ public class XElementGameRootLoader : IParser<RawGameRootData> {
 				BaseToEngineGuidsTable = ParseDictionaryElement(element, XNameCache.BaseToEngineGuidsTable),
 				HierarchyScenesStructure = scenesStructure,
 				HierarchyEngineGuidsTable = ParseListElement(element, XNameCache.HierarchyEngineGuidsTable).ToArray(),
-				WorldObjectSaveOptimizeMode = element.Element(XNameCache.WorldObjectSaveOptimizeMode)?.Let(ParseBool)
+				WorldObjectSaveOptimizeMode = element.Element(XNameCache.WorldObjectSaveOptimizeMode)?.Let(ParseBool) ?? false
 			};
 
 			raws.Add(raw);

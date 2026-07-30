@@ -15,6 +15,6 @@ public class GameComponentGetNearestOwnerByFunctionalFunction(
 	public override VmType ReturnType => VmType.GameObject;
 	public override int ParamCount => 2;
 	public FunctionSourceParam<ObjRef>? Obj { get; } = FunctionSourceParam<ObjRef>.Read(parameters[0], vm);
-	public FunctionSourceParam<string>? FunctionalName { get; } = FunctionSourceParam<string>.Read(parameters[1], vm);
+	public FunctionSourceParam<VmTypeInfo>? FunctionalName { get; } = FunctionSourceParam<VmTypeInfo>.Read(parameters[1], vm, VmType.TypeValue);
 	public override List<string>? GetParamStrings() => [Obj?.Write() ?? "", FunctionalName?.Write() ?? ""];
 }

@@ -25,13 +25,13 @@ public class XElementReplyLoader : IParser<RawReplyData> {
 				TextId = ulong.Parse(element.Element(XNameCache.Text)!.Value),
 				OnlyOnce = element.Element(XNameCache.OnlyOnce) != null
 					? bool.Parse(element.Element(XNameCache.OnlyOnce)!.Value)
-					: null,
+					: false,
 				OnlyOneReply = element.Element(XNameCache.OnlyOneReply) != null
 					? bool.Parse(element.Element(XNameCache.OnlyOneReply)!.Value)
-					: null,
+					: false,
 				Default = element.Element(XNameCache.Default) != null
 					? bool.Parse(element.Element(XNameCache.Default)!.Value)
-					: null,
+					: false,
 				EnableConditionId = element.Element(XNameCache.EnableCondition) != null
 					? ulong.Parse(element.Element(XNameCache.EnableCondition)!.Value)
 					: null,

@@ -15,6 +15,18 @@ public static class XmlParsingHelper {
 	public static XElement CreateBaseElement(ulong id) =>
 		new("Item", new XAttribute("id", id));
 
+	/// <summary>
+	/// Ensures the element is serialized with an explicit closing tag rather than self-closing form.
+	/// Self-closing elements (e.g. &lt;Item id="..." /&gt;) break the engine's XmlReader: when
+	/// EditorDataRead calls xml.Read() expecting child elements, it instead advances past the
+	/// element and reads the next sibling as a child.
+	/// </summary>
+	public static XElement EnsureFullClosingTag(XElement xElement) {
+		if (!xElement.HasElements)
+			xElement.Add(new XText(""));
+		return xElement;
+	}
+
 	public static XElement CreateSelfClosingElement(string name, string? value) =>
 		string.IsNullOrEmpty(value) ? new(name) : new(name, value);
 

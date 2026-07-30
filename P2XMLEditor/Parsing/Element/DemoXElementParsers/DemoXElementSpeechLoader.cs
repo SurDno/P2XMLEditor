@@ -28,14 +28,14 @@ public class DemoXElementSpeechLoader : IParser<RawSpeechData> {
 				AuthorGuidId = ulong.Parse(element.Element("AuthorGuid")!.Value),
 				OnlyOnce = element.Element("OnlyOnce") != null
 					? bool.Parse(element.Element("OnlyOnce")!.Value)
-					: null,
+					: false,
 				IsTrade = element.Element("IsTrade") != null
 					? bool.Parse(element.Element("IsTrade")!.Value)
-					: null,
+					: false,
 				EntryPointIds = ParseDemoListAsUlong(element, "EntryPoints").ToArray(),
 				IgnoreBlock = element.Element("IgnoreBlock") != null
 					? bool.Parse(element.Element("IgnoreBlock")!.Value)
-					: null,
+					: false,
 				OwnerId = ulong.Parse(element.Element("Owner")!.Value),
 				InputLinkIds = element.Element("InputLinks.List") != null
 					? ParseDemoListAsUlong(element, "InputLinks").ToArray()
@@ -45,7 +45,7 @@ public class DemoXElementSpeechLoader : IParser<RawSpeechData> {
 					: null,
 				Initial = element.Element("Initial") != null
 					? bool.Parse(element.Element("Initial")!.Value)
-					: null,
+					: false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value)
 			};

@@ -10,10 +10,13 @@ public class ReleaseXElementMindMapLinkWriter : IReleaseXElementWriter<MindMapLi
 		var xElement = CreateBaseElement(element.Id);
 		xElement.Add(
 			new XElement("Source", element.Source.Id),
-			new XElement("Destination", element.Destination.Id),
-			new XElement("Name"),
+			new XElement("Destination", element.Destination.Id)
+		);
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name"));
+		xElement.Add(
 			new XElement("Parent", element.Parent.Id)
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

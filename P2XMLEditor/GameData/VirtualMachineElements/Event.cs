@@ -20,10 +20,10 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 
 public class Event(ulong id) : VmElement(id), IFiller<RawEventData> {
 	public TimeSpan EventTime { get; set; }
-	public bool? Manual { get; set; } = true;
+	public bool Manual { get; set; } = true;
 	public EventRaisingType EventRaisingType { get; set; }
-	public bool? ChangeTo { get; set; } = true;
-	public bool? Repeated { get; set; } = true;
+	public bool ChangeTo { get; set; } = true;
+	public bool Repeated { get; set; } = true;
 	public string Name { get; set; }
 	public VmEither<Blueprint, Quest, FunctionalComponent, Character, GameRoot> Parent { get; set; }
 	public Parameter? EventParameter { get; set; }

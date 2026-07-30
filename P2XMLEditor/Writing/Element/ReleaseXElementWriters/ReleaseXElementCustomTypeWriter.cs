@@ -8,10 +8,11 @@ namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 public class ReleaseXElementCustomTypeWriter : IReleaseXElementWriter<CustomType> {
 	public XElement ToXml(CustomType element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
+		if (!settings.StripNames)
+			xElement.Add(new XElement("Name", element.Name));
 		xElement.Add(
-			new XElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id.ToString())
 		);
-		return xElement;
+		return EnsureFullClosingTag(xElement);
 	}
 }

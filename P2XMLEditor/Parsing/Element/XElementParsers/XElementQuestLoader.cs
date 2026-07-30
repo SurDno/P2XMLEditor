@@ -24,7 +24,7 @@ public class XElementQuestLoader : IParser<RawQuestData> {
 				Id = id,
 				Static = element.Element(XNameCache.Static) != null
 					? bool.Parse(element.Element(XNameCache.Static)!.Value)
-					: null,
+					: false,
 				FunctionalComponentIds = ReadULongList(element.Element(XNameCache.FunctionalComponents)!).ToArray(),
 				EventGraphId = ulong.Parse(element.Element(XNameCache.EventGraph)!.Value),
 				StandartParamIds = ReadDictULong(element.Element(XNameCache.StandartParams)!),

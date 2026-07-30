@@ -17,16 +17,13 @@ public class DemoXElementSpeechWriter : IDemoXElementWriter<Speech> {
 		obj.Add(new XElement("Text", element.Text.Id));
 		obj.Add(new XElement("AuthorGuid", element.AuthorGuid.Id));
 
-		if (element.OnlyOnce.HasValue)
-			obj.Add(CreateDemoBoolElement("OnlyOnce", element.OnlyOnce.Value));
+		if (!settings.RemoveDefaultValueTypes || element.OnlyOnce) obj.Add(CreateDemoBoolElement("OnlyOnce", element.OnlyOnce));
 
-		if (element.IsTrade.HasValue)
-			obj.Add(CreateDemoBoolElement("IsTrade", element.IsTrade.Value));
+		if (!settings.RemoveDefaultValueTypes || element.IsTrade) obj.Add(CreateDemoBoolElement("IsTrade", element.IsTrade));
 
 		obj.Add(CreateDemoListElementAsLong("EntryPoints", element.EntryPoints.Select(e => e.Id)));
 
-		if (element.IgnoreBlock.HasValue)
-			obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock.Value));
+		if (!settings.RemoveDefaultValueTypes || element.IgnoreBlock) obj.Add(CreateDemoBoolElement("IgnoreBlock", element.IgnoreBlock));
 
 		obj.Add(new XElement("Owner", element.Owner.Id));
 
@@ -35,11 +32,10 @@ public class DemoXElementSpeechWriter : IDemoXElementWriter<Speech> {
 			CreateDemoListElementAsLong("OutputLinks", element.OutputLinks?.Select(l => l.Id) ?? [])
 		);
 
-		if (element.Initial.HasValue)
-			obj.Add(CreateDemoBoolElement("Initial", element.Initial.Value));
+		if (!settings.RemoveDefaultValueTypes || element.Initial) obj.Add(CreateDemoBoolElement("Initial", element.Initial));
 
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			CreateGuidElement(element.Id)
 		);

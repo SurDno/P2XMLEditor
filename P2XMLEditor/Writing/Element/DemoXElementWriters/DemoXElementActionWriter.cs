@@ -31,13 +31,13 @@ public class DemoXElementActionWriter : IDemoXElementWriter<Action> {
 
 		obj.Add(CreateDemoListElement("SourceParams", element.GetParamStrings()));
 		obj.Add(
-			CreateDemoStringElement("Name", element.Name),
+			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("LocalContext", element.LocalContext.Id),
 			new XElement("OrderIndex", element.OrderIndex)
 		);
 
-		if (element.Enabled.HasValue)
-			obj.Add(CreateDemoBoolElement("Enabled", element.Enabled.Value));
+		// TODO: figure out what the default is (likely true) and strip that check to just output "true" when null
+		if (element.Enabled.HasValue) obj.Add(CreateDemoBoolElement("Enabled", element.Enabled.Value));
 
 		obj.Add(CreateGuidElement(element.Id));
 		return obj;

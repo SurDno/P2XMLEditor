@@ -33,14 +33,14 @@ public class XElementTalkingLoader : IParser<RawTalkingData> {
 					: [],
 				IgnoreBlock = element.Element(XNameCache.IgnoreBlock) != null
 					? bool.Parse(element.Element(XNameCache.IgnoreBlock)!.Value)
-					: null,
+					: false,
 				OwnerId = ulong.Parse(element.Element(XNameCache.Owner)!.Value),
 				InputLinkIds = element.Element(XNameCache.InputLinks) != null
 					? ReadULongList(element.Element(XNameCache.InputLinks)!).ToArray()
 					: [],
 				Initial = element.Element(XNameCache.Initial) != null
 					? bool.Parse(element.Element(XNameCache.Initial)!.Value)
-					: null,
+					: false,
 				Name = element.Element(XNameCache.Name)!.Value,
 				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)
 			};

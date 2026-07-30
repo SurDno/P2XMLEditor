@@ -60,7 +60,7 @@ public class DemoXElementGameRootLoader : IParser<RawGameRootData> {
 				BaseToEngineGuidsTable = ParseDemoDict(element, "BaseToEngineGuidsTable"),
 				HierarchyScenesStructure = scenesStructure,
 				HierarchyEngineGuidsTable = ParseDemoList(element, "HierarchyEngineGuidsTable").ToArray(),
-				WorldObjectSaveOptimizeMode = element.Element("WorldObjectSaveOptimizeMode")?.Let(ParseBool)
+				WorldObjectSaveOptimizeMode = element.Element("WorldObjectSaveOptimizeMode")?.Let(ParseBool) ?? false
 			};
 
 			raws.Add(raw);
