@@ -98,6 +98,25 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	/// <summary>
+	/// The object whose parameters can be listed for this target: the concrete one where there
+	/// is one, otherwise the single blueprint an indirect target is pinned to by its declared
+	/// type. <see cref="IsConcreteTarget"/> tells the two apart.
+	/// </summary>
+	public ParameterHolder? EffectiveHolder {
+		get {
+			try {
+				var value = Value;
+				return value.ResolvedHolder ?? ActionScope.PinnedBlueprint(value, _vm);
+			} catch {
+				return null;
+			}
+		}
+	}
+
+	/// <summary>True when the target names an object outright rather than resolving to one.</summary>
+	public bool IsConcreteTarget => ResolvedHolder != null;
+
+	/// <summary>
 	/// Components callable on the current target, or null when nothing constrains it.
 	/// </summary>
 	public IReadOnlySet<string>? ResolvedComponents {

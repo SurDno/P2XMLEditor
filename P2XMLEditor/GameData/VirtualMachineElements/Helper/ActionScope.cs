@@ -259,6 +259,32 @@ public sealed class ActionScope {
 		};
 	}
 
+	/// <summary>
+	/// The single object a runtime-decided target is nonetheless pinned to.
+	///
+	/// A parameter, message or input param declared "IObjRef%cf_&lt;blueprintId&gt;" can only ever
+	/// hold that one object, so its parameters are known while authoring even though the
+	/// reference is indirect. The data draws exactly this line: a parameter-ref target whose
+	/// type pins a blueprint writes a concrete parameter id 703 times, and one whose type does
+	/// not never writes an id at all — all 50 of those use a dynamic name.
+	/// </summary>
+	public static ParameterHolder? PinnedBlueprint(TargetObject target, VirtualMachine vm) {
+		var declared = target.Kind switch {
+			TargetObjectKind.ParameterRef => target.ParameterRef?.Type,
+			TargetObjectKind.Message => target.Message?.Type,
+			TargetObjectKind.InputParam => target.InputParam?.Type,
+			_ => null
+		};
+		if (string.IsNullOrEmpty(declared)) return null;
+
+		try {
+			var info = VmTypeHelper.GetVmTypeInfo(declared, vm);
+			return info.BaseType == VmType.GameObject ? info.ObjBlueprint : null;
+		} catch {
+			return null;
+		}
+	}
+
 	private static IReadOnlySet<string>? ComponentsOfDeclaredType(string? xmlType, VirtualMachine vm) {
 		if (string.IsNullOrEmpty(xmlType)) return null;
 

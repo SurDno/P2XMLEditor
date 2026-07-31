@@ -104,7 +104,8 @@ public sealed class ActionEditorForm : Form {
 		_mathOperation.SelectedIndexChanged += (_, _) => RefreshPreview();
 
 		_targetObject = Row(new TargetObjectEditor(_vm, _scope));
-		_targetParam = Row(new ParamTargetEditor(_vm, () => _targetObject.ResolvedHolder));
+		_targetParam = Row(new ParamTargetEditor(_vm,
+			() => new TargetObjectBinding(_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget)));
 		_result = Row(new ResultTargetEditor(_vm, _scope));
 
 		_targetObject.ValueChanged += (_, _) => OnTargetObjectChanged();

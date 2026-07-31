@@ -15,10 +15,9 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// Picks the parameter an action writes to — either a concrete <see cref="Parameter"/> or a
 /// dynamic name resolved on whatever the target object turns out to be.
 ///
-/// Which of the two is on offer follows the target object, and normally the parameters are a
-/// dropdown of what that object declares rather than a hunt through the 59500 the data holds.
-/// The exception is a target decided at runtime, where there is no object to list and the full
-/// picker comes back.
+/// Which of the two is on offer follows the target object, and the parameters are a dropdown of
+/// what that object declares rather than a hunt through the 59500 the data holds — an id is
+/// only offered where there is an object to list it from in the first place.
 ///
 /// <see cref="ResolvedType"/> is the reason this control matters beyond its own value: it is
 /// the declared type of the destination, and the source editor next to it takes that as its
@@ -28,14 +27,13 @@ public sealed class ParamTargetEditor : UserControl {
 	public const int PreferredHeight = 30;
 
 	private readonly VirtualMachine _vm;
-	private readonly Func<ParameterHolder?> _targetHolder;
+	private readonly Func<TargetObjectBinding> _target;
 
 	private readonly ComboBox _kind;
 	private readonly Panel _valueHost;
 	private readonly ComboBox _componentParam;
 	private readonly ComboBox _parameter;
 	private readonly Label _hint;
-	private readonly Button _pick;
 
 	private ParameterHolder? _context;
 	private ParamTargetKind? _storedKind;
@@ -47,13 +45,13 @@ public sealed class ParamTargetEditor : UserControl {
 
 	public event EventHandler? ValueChanged;
 
-	/// <param name="targetHolder">
-	/// Supplies the action's current target object, so both lists can be what that object
-	/// actually declares rather than everything in the game.
+	/// <param name="target">
+	/// Supplies what the action's target object resolves to, so the lists can be what that
+	/// object actually declares rather than everything in the game.
 	/// </param>
-	public ParamTargetEditor(VirtualMachine vm, Func<ParameterHolder?> targetHolder) {
+	public ParamTargetEditor(VirtualMachine vm, Func<TargetObjectBinding> target) {
 		_vm = vm;
-		_targetHolder = targetHolder;
+		_target = target;
 
 		Height = PreferredHeight;
 		Margin = new Padding(0, 2, 0, 2);
@@ -85,20 +83,15 @@ public sealed class ParamTargetEditor : UserControl {
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_parameter, _componentParam, _hint]);
 
-		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
-		_pick.Click += (_, _) => PickParameter();
-
 		var layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1,
+			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
-		layout.Controls.Add(_pick, 2, 0);
 
 		Controls.Add(layout);
 		PopulateKinds();
@@ -116,9 +109,9 @@ public sealed class ParamTargetEditor : UserControl {
 				_kind.Items.Add(new KindItem(kind));
 
 			// Whatever the action already says stays selectable, so merely opening and saving
-			// cannot move the target. That covers the empty spelling too: 53 actions across the
-			// two corpora write a bare "%" here, which is not something to author but is
-			// something to preserve.
+			// cannot move the target — including spellings that are not on offer, such as the
+			// empty one. No SetParam, Math or SetExpression action in either corpus actually
+			// writes an empty TargetParam, but nothing here depends on that staying true.
 			if (_storedKind is { } stored && !offered.Contains(stored))
 				_kind.Items.Insert(0, new KindItem(stored));
 
@@ -132,47 +125,22 @@ public sealed class ParamTargetEditor : UserControl {
 	/// <summary>
 	/// Which kinds of target make sense for the object currently selected.
 	///
-	/// A concrete object has known parameters, so the target is one of them by id — across
-	/// both corpora a holder or hierarchy target never once uses a dynamic name.
-	///
-	/// When the object is decided at runtime a name resolved on it is the form that is
-	/// obviously safe, so it leads. An id is still offered because the data leans on it
-	/// heavily: a parameter-ref target writes one 703 times against 66 dynamic names, so
-	/// refusing it would make those actions uneditable in the shape they are already in.
+	/// A parameter id only resolves against an object known while authoring, and the data is
+	/// unambiguous about where that holds. A holder or hierarchy target never once uses a
+	/// dynamic name, so it gets ids alone. A target that merely resolves to an object — a
+	/// parameter whose declared type pins one blueprint — uses an id 703 times and a dynamic
+	/// name 16, so both belong. And a target pinned to nothing never uses an id at all: all 50
+	/// such actions use a dynamic name, which is then the only thing offered.
 	/// </summary>
 	private IEnumerable<ParamTargetKind> OfferedKinds() {
-		if (_targetHolder() != null) {
-			yield return ParamTargetKind.Parameter;
+		var target = _target();
+		if (target.Holder == null) {
+			yield return ParamTargetKind.ComponentParam;
 			yield break;
 		}
 
-		yield return ParamTargetKind.ComponentParam;
 		yield return ParamTargetKind.Parameter;
-	}
-
-	/// <summary>
-	/// Full parameter picker, for the one case the dropdown cannot serve: the target object is
-	/// decided at runtime, so there is no object whose parameters could be listed.
-	/// </summary>
-	private void PickParameter() {
-		if (!VmElementPicker.TryPick(FindForm(), "Select parameter", _vm.GetElementsByType<Parameter>(),
-				VmElementPicker.Describe, _storedParameter, out var picked))
-			return;
-
-		_storedParameter = picked as Parameter;
-		_storedParameterId = _storedParameter?.Id.ToString();
-
-		// PopulateParameters prefers the current selection over the stored id when deciding what
-		// to restore, so the stale one has to go or the pick is ignored.
-		var previouslySuppressed = _suppressEvents;
-		_suppressEvents = true;
-		try {
-			_parameter.SelectedIndex = -1;
-		} finally {
-			_suppressEvents = previouslySuppressed;
-		}
-
-		OnUserEdit(UpdateVisibleControls);
+		if (!target.IsConcrete) yield return ParamTargetKind.ComponentParam;
 	}
 
 	public string SerializedValue => _dirty ? Compose() : _originalText;
@@ -195,7 +163,7 @@ public sealed class ParamTargetEditor : UserControl {
 					if (string.IsNullOrEmpty(name)) return null;
 					// The holder's own declaration is authoritative; the game-wide index is a
 					// fallback for targets that are only known at runtime.
-					var holder = _targetHolder();
+					var holder = _target().Holder;
 					if (holder?.StandartParams != null && holder.StandartParams.TryGetValue(name, out var declared))
 						return SafeTypeInfo(declared.Type);
 					return _vm.TryResolveStandartParamType(name, out var resolved) ? resolved : null;
@@ -294,14 +262,13 @@ public sealed class ParamTargetEditor : UserControl {
 
 	private void UpdateVisibleControls() {
 		var kind = SelectedKind;
-		var holder = _targetHolder();
+		var holder = _target().Holder;
 
 		var wantsParameter = kind == ParamTargetKind.Parameter;
 		var wantsComponent = kind == ParamTargetKind.ComponentParam;
 
 		if (wantsParameter) PopulateParameters(holder);
 		if (wantsComponent) PopulateComponentParams(holder);
-		_pick.Visible = wantsParameter && holder == null;
 
 		// Derived from local state, never read back off Control.Visible, which reports false
 		// for anything whose parent chain is not shown yet — reading it during construction
@@ -310,8 +277,8 @@ public sealed class ParamTargetEditor : UserControl {
 		_parameter.Visible = hasParameters;
 		_componentParam.Visible = wantsComponent;
 		_hint.Visible = wantsParameter && !hasParameters;
-		_hint.Text = _targetHolder() == null
-			? "Target object is only known at runtime — pick the parameter directly."
+		_hint.Text = _target().Holder == null
+			? "Target object is only known at runtime — use a dynamic parameter."
 			: "Target object has no parameters.";
 	}
 
