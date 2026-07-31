@@ -21,8 +21,9 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// storing into the owner's own parameter is written bare as "%&lt;paramId&gt;", and storing
 /// anywhere else has to name the object explicitly as "&lt;objectId&gt;%&lt;paramId&gt;".
 ///
-/// The parameter list is filtered to the function's declared return type — an IObjRef result
-/// cannot be put in a System.Int32 slot.
+/// The parameter list is filtered to the function's declared return type, and is rebuilt from
+/// scratch whenever the destination object changes — a parameter left selected from the
+/// previous object would resolve to nothing at runtime.
 /// </summary>
 public sealed class ResultTargetEditor : UserControl {
 	public const int PreferredHeight = 30;
@@ -30,7 +31,7 @@ public sealed class ResultTargetEditor : UserControl {
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
 
-	private readonly ComboBox _kind;
+	private readonly CheckBox _store;
 	private readonly TextBox _objectDisplay;
 	private readonly Button _pickObject;
 	private readonly ComboBox _parameter;
@@ -38,9 +39,8 @@ public sealed class ResultTargetEditor : UserControl {
 	private readonly Panel _parameterHost;
 
 	private ParameterHolder? _object;
-	private Parameter? _storedParameter;
-	private string? _storedParameterId;
 	private VmTypeInfo? _expectedType;
+	private string? _pendingParameterId;
 	private string _originalText = "%";
 	private bool _dirty;
 	private bool _suppressEvents;
@@ -55,14 +55,10 @@ public sealed class ResultTargetEditor : UserControl {
 		Height = PreferredHeight;
 		Margin = new Padding(0, 2, 0, 2);
 
-		_kind = new ComboBox {
-			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, IntegralHeight = false,
-			Margin = new Padding(0, 0, 6, 0)
+		_store = new CheckBox {
+			Dock = DockStyle.Fill, Text = "Store result", AutoSize = false, Margin = new Padding(0, 0, 6, 0)
 		};
-		_kind.Items.Add("Discard result");
-		_kind.Items.Add("Store in parameter");
-		_kind.SelectedIndex = 0;
-		_kind.SelectedIndexChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
+		_store.CheckedChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
 
 		_objectDisplay = new TextBox { Dock = DockStyle.Fill, ReadOnly = true, Margin = new Padding(0, 0, 6, 0) };
 
@@ -86,12 +82,12 @@ public sealed class ResultTargetEditor : UserControl {
 			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-		layout.Controls.Add(_kind, 0, 0);
+		layout.Controls.Add(_store, 0, 0);
 		layout.Controls.Add(_objectDisplay, 1, 0);
 		layout.Controls.Add(_pickObject, 2, 0);
 		layout.Controls.Add(_parameterHost, 3, 0);
@@ -100,11 +96,17 @@ public sealed class ResultTargetEditor : UserControl {
 		UpdateVisibleControls();
 	}
 
+	/// <summary>Raised when the store checkbox is toggled, so the row label can grey out with it.</summary>
+	public bool StoresResult => _store.Checked;
+
 	/// <summary>The function's return type. Setting it refilters the parameter list.</summary>
 	public VmTypeInfo? ExpectedType {
 		get => _expectedType;
 		set {
+			if (Equals(Describe(_expectedType), Describe(value))) return;
 			_expectedType = value;
+			// A destination chosen for the previous return type is not a destination for this
+			// one, so the list is rebuilt and only a still-valid selection survives.
 			UpdateVisibleControls();
 		}
 	}
@@ -113,6 +115,22 @@ public sealed class ResultTargetEditor : UserControl {
 
 	public ParamTarget Value =>
 		ParamTarget.TryRead(SerializedValue, _vm, out var target) ? target : ParamTarget.Empty();
+
+	/// <summary>
+	/// Why the current destination cannot be saved, or null when it is fine. Storing nowhere
+	/// is always fine; storing into nothing is not.
+	/// </summary>
+	public string? ValidationError {
+		get {
+			if (!_store.Checked) return null;
+			if (_object == null) return "There is no object to store the function result on.";
+			if (SelectedParameterId == null)
+				return $"Choose a parameter on {_object.Name} to store the result in, or clear \"Store result\".";
+			return null;
+		}
+	}
+
+	private string? SelectedParameterId => (_parameter.SelectedItem as ParameterItem)?.Id;
 
 	public void Load(ParamTarget target, string? rawText = null) {
 		var previouslySuppressed = _suppressEvents;
@@ -123,23 +141,18 @@ public sealed class ResultTargetEditor : UserControl {
 
 			// An absent context means the owner, which is what the engine assumes.
 			_object = target.ContextHolder ?? _scope.Owner;
-			_storedParameter = target.Parameter?.Element as Parameter;
-			_storedParameterId = target.Parameter?.Id.ToString();
+			_pendingParameterId = target.Parameter?.Id.ToString();
+			_store.Checked = target.Kind == ParamTargetKind.Parameter;
 
-			_kind.SelectedIndex = target.Kind == ParamTargetKind.Parameter ? 1 : 0;
 			UpdateVisibleControls();
-
-			if (_storedParameterId != null) SelectParameterId(_storedParameterId);
 		} finally {
 			_suppressEvents = previouslySuppressed;
 		}
 	}
 
-	private bool StoresResult => _kind.SelectedIndex == 1;
-
 	private string Compose() {
-		if (!StoresResult) return "%";
-		var id = (_parameter.SelectedItem as ParameterItem)?.Id;
+		if (!_store.Checked) return "%";
+		var id = SelectedParameterId;
 		if (string.IsNullOrEmpty(id)) return "%";
 
 		// Bare "%<id>" already means "on the local context's owner"; naming the object is only
@@ -156,13 +169,18 @@ public sealed class ResultTargetEditor : UserControl {
 	}
 
 	private void UpdateVisibleControls() {
-		var storing = StoresResult;
+		var storing = _store.Checked;
 		if (storing) PopulateParameters();
 
 		var hasParameters = storing && _parameter.Items.Count > 0;
-		_objectDisplay.Visible = storing;
-		_pickObject.Visible = storing;
-		_parameter.Visible = hasParameters;
+
+		// Everything but the checkbox greys out rather than disappearing, so the row keeps its
+		// shape and it stays obvious what turning the checkbox on would let you set.
+		_objectDisplay.Enabled = storing;
+		_pickObject.Enabled = storing;
+		_parameter.Enabled = storing;
+
+		_parameter.Visible = !storing || hasParameters;
 		_hint.Visible = storing && !hasParameters;
 		_hint.Text = _object == null
 			? "No local context owner to store on."
@@ -176,27 +194,19 @@ public sealed class ResultTargetEditor : UserControl {
 	}
 
 	private void PopulateParameters() {
-		var selected = (_parameter.SelectedItem as ParameterItem)?.Id ?? _storedParameterId;
+		var wanted = SelectedParameterId ?? _pendingParameterId;
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;
 		try {
 			_parameter.Items.Clear();
-			var listed = false;
-			foreach (var parameter in CompatibleParameters()) {
-				_parameter.Items.Add(new ParameterItem(parameter, $"{parameter.Name}   [{parameter.Type}]"));
-				listed |= _storedParameterId == parameter.Id.ToString();
-			}
+			foreach (var parameter in CompatibleParameters())
+				_parameter.Items.Add(new ParameterItem(parameter));
 
-			// A stored destination stays selectable even when it no longer matches the return
-			// type, so simply opening the form cannot silently drop it.
-			if (_storedParameterId != null && !listed)
-				_parameter.Items.Insert(0, new ParameterItem(_storedParameter,
-					_storedParameter != null
-						? $"{_storedParameter.Name}   [{_storedParameter.Type}]   (type mismatch)"
-						: $"(missing parameter {_storedParameterId})",
-					_storedParameterId));
-
-			if (selected != null) SelectParameterId(selected);
+			// Only a destination that is genuinely in the new list is restored. Anything else
+			// — a parameter of the old object, or one the return type does not fit — is left
+			// unselected so it has to be chosen again rather than saved as a runtime error.
+			if (wanted != null) SelectParameterId(wanted);
+			_pendingParameterId = null;
 		} finally {
 			_suppressEvents = previouslySuppressed;
 		}
@@ -226,7 +236,15 @@ public sealed class ResultTargetEditor : UserControl {
 		if (!VmElementPicker.TryPick(FindForm(), "Select the object holding the result parameter",
 				_vm.GetElementsByType<ParameterHolder>(), VmElementPicker.Describe, _object, out var picked))
 			return;
-		_object = picked as ParameterHolder ?? _scope.Owner;
+
+		var chosen = picked as ParameterHolder ?? _scope.Owner;
+		if (ReferenceEquals(chosen, _object)) return;
+
+		// The parameter belonged to the previous object; keeping it selected would write a
+		// reference that cannot resolve.
+		_object = chosen;
+		_pendingParameterId = null;
+		_parameter.SelectedIndex = -1;
 		OnUserEdit(UpdateVisibleControls);
 	}
 
@@ -245,15 +263,8 @@ public sealed class ResultTargetEditor : UserControl {
 		ValueChanged?.Invoke(this, EventArgs.Empty);
 	}
 
-	private sealed class ParameterItem {
-		public string Id { get; }
-		private readonly string _label;
-
-		public ParameterItem(Parameter? parameter, string label, string? id = null) {
-			Id = id ?? parameter?.Id.ToString() ?? "";
-			_label = label;
-		}
-
-		public override string ToString() => _label;
+	private sealed class ParameterItem(Parameter parameter) {
+		public string Id { get; } = parameter.Id.ToString();
+		public override string ToString() => $"{parameter.Name}   [{parameter.Type}]";
 	}
 }

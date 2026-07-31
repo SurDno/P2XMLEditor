@@ -30,7 +30,6 @@ public sealed class TargetObjectEditor : UserControl {
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
 	private readonly CheckBox _byEngineGuid;
-	private readonly CheckBox _self;
 	private readonly Button _pick;
 
 	private VmElement? _pickedElement;
@@ -67,13 +66,8 @@ public sealed class TargetObjectEditor : UserControl {
 		_byEngineGuid = new CheckBox { Dock = DockStyle.Left, Text = "GUID", AutoSize = true };
 		_byEngineGuid.CheckedChanged += (_, _) => OnUserEdit(null);
 
-		// "<id>%<id>" in the data. Kept as a switch rather than normalised away because it is
-		// how the original editor wrote a self-target and round-tripping it avoids churn.
-		_self = new CheckBox { Dock = DockStyle.Left, Text = "self", AutoSize = true };
-		_self.CheckedChanged += (_, _) => OnUserEdit(null);
-
 		var flags = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
-		flags.Controls.AddRange([_self, _byEngineGuid]);
+		flags.Controls.Add(_byEngineGuid);
 
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
 		_pick.Click += (_, _) => Pick();
@@ -127,7 +121,6 @@ public sealed class TargetObjectEditor : UserControl {
 		try {
 			_originalText = rawText ?? SafeWrite(target);
 			_dirty = false;
-			_self.Checked = target.IsSelf;
 			_byEngineGuid.Checked = target.ByEngineGuid;
 
 			SelectKind(target.Kind);
@@ -177,12 +170,10 @@ public sealed class TargetObjectEditor : UserControl {
 			_ => ""
 		};
 
-		if (value.Length == 0) return "";
-		// Only holders and hierarchies are ever written doubled; a message or loop variable
-		// has no "self" spelling.
-		var doubling = _self.Checked && SelectedKind is TargetObjectKind.Holder
-			or TargetObjectKind.ParameterRef or TargetObjectKind.Hierarchy;
-		return doubling ? $"{value}%{value}" : value;
+		// The data sometimes spells a target "<id>%<id>". TargetObject.Read understands it and
+		// an untouched value still round-trips through _originalText, but it makes no
+		// difference to the engine, so nothing the user edits is written that way again.
+		return value;
 	}
 
 	private string ComposeHolder() {
@@ -247,7 +238,6 @@ public sealed class TargetObjectEditor : UserControl {
 		_reference.Visible = !showChoice;
 		_pick.Visible = !showChoice;
 		_byEngineGuid.Visible = kind == TargetObjectKind.Holder;
-		_self.Visible = kind is TargetObjectKind.Holder or TargetObjectKind.ParameterRef or TargetObjectKind.Hierarchy;
 
 		if (showChoice) PopulateChoices(kind);
 	}
