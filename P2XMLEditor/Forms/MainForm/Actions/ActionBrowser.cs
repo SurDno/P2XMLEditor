@@ -3,11 +3,12 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
+using P2XMLEditor.Forms.Editors.Actions;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
-using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
 using P2XMLEditor.WindowsFormsExtensions;
@@ -16,7 +17,6 @@ using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 namespace P2XMLEditor.Forms.MainForm.Actions;
 
 public class ActionsBrowser : Panel {
-	/*
 	private readonly VirtualMachine _vm;
 	private TreeView _treeView;
 	private SearchControl _searchControl;
@@ -36,9 +36,7 @@ public class ActionsBrowser : Panel {
 		_searchControl.SearchChanged += (_, _) => LoadActionLines();
 
 		_treeView = new TreeView {
-			Location = new Point(10, 45),
-			Size = new Size(Width - 20, Height - 55),
-			Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
+			Dock = DockStyle.Fill,
 			FullRowSelect = true,
 			HideSelection = false,
 			ShowLines = true,
@@ -47,29 +45,35 @@ public class ActionsBrowser : Panel {
 		};
 
 		_treeView.NodeMouseDoubleClick += OnNodeDoubleClick;
-		_treeView.KeyDown += (s, e) => {
+		_treeView.KeyDown += (_, e) => {
 			if (e.KeyCode == Keys.Delete) DeleteSelectedActionLine();
+			if (e.KeyCode == Keys.Enter) EditSelected();
 		};
 
 		SetupContextMenu();
 		_treeView.ContextMenuStrip = _contextMenu;
 
-		Controls.AddRange([_searchControl, _treeView]);
+		Controls.Add(_treeView);
+		Controls.Add(_searchControl);
 	}
 
 	private void SetupContextMenu() {
 		_contextMenu = new ContextMenuStrip();
-		
+
+		var editItem = new ToolStripMenuItem("Edit");
+		editItem.Click += (_, _) => EditSelected();
+
 		var expandAllItem = new ToolStripMenuItem("Expand All");
 		expandAllItem.Click += (_, _) => _treeView.ExpandAll();
-		
+
 		var collapseAllItem = new ToolStripMenuItem("Collapse All");
 		collapseAllItem.Click += (_, _) => _treeView.CollapseAll();
-		
+
 		var deleteItem = new ToolStripMenuItem("Delete");
 		deleteItem.Click += (_, _) => DeleteSelectedActionLine();
 
-		_contextMenu.Items.AddRange([expandAllItem, collapseAllItem, new ToolStripSeparator(), deleteItem]);
+		_contextMenu.Items.AddRange([editItem, new ToolStripSeparator(), expandAllItem, collapseAllItem,
+			new ToolStripSeparator(), deleteItem]);
 	}
 
 	private void LoadActionLines() {
@@ -77,15 +81,8 @@ public class ActionsBrowser : Panel {
 		_treeView.Nodes.Clear();
 
 		var actionLines = _vm.GetElementsByType<ActionLine>()
-			.OrderBy(al => al.LocalContext.Element switch {
-				State s => s.Name,
-				Graph g => g.Name,
-				Branch b => b.Name,
-				Talking t => t.Name,
-				Speech sp => sp.Name,
-				_ => "Unknown"
-			})
-			.ThenBy(al => al.Name)
+			.OrderBy(GetContextName, StringComparer.Ordinal)
+			.ThenBy(al => al.Name, StringComparer.Ordinal)
 			.ToList();
 
 		var displayedCount = 0;
@@ -93,9 +90,8 @@ public class ActionsBrowser : Panel {
 		foreach (var actionLine in actionLines) {
 			var contextName = GetContextName(actionLine);
 			var nodeName = $"{actionLine.Name} [{actionLine.ActionLineType.Serialize()}]";
-			var searchText = $"{nodeName} {contextName}";
 
-			if (!_searchControl.IsMatchAny(searchText, actionLine.Id.ToString()))
+			if (!_searchControl.IsMatchAny(nodeName, contextName, actionLine.Id.ToString()))
 				continue;
 
 			var node = new TreeNode(nodeName) {
@@ -103,108 +99,43 @@ public class ActionsBrowser : Panel {
 				ToolTipText = $"ID: {actionLine.Id}\nContext: {contextName}"
 			};
 
-			if (actionLine.Actions != null && actionLine.Actions.Any()) {
-				foreach (var action in actionLine.Actions) {
-					var childNode = action.Element switch {
-						Action a => CreateActionNode(a),
-						ActionLine al => CreateActionLineNode(al),
-						_ => null
-					};
-
-					if (childNode != null)
-						node.Nodes.Add(childNode);
-				}
-			}
+			AddChildren(node, actionLine);
 
 			_treeView.Nodes.Add(node);
 			displayedCount++;
 		}
 
-		_treeView.ExpandAll();
 		_treeView.EndUpdate();
 		_searchControl.StatusText = $"Displaying {displayedCount}/{actionLines.Count} action lines.";
 	}
 
-	private TreeNode CreateActionNode(Action action) {
-		var actionText = $"[Action] {action.Name} ";
-		
-		var targetObject = action.TargetObject;
-		if (ulong.TryParse(targetObject, out var targetObjectId)) {
-			var targetObjectElement = _vm.GetNullableElement<VmElement>(targetObjectId);
-			var name = targetObjectElement switch {
-				ParameterHolder ph => ph.Name,
-				Parameter p => p.Name,
-				_ => ""
+	private void AddChildren(TreeNode node, ActionLine actionLine) {
+		foreach (var child in actionLine.Actions ?? []) {
+			var childNode = child.Element switch {
+				Action a => CreateActionNode(a),
+				ActionLine al => CreateActionLineNode(al),
+				_ => null
 			};
-			if (targetObjectElement != null)
-				targetObject = name;
-		} else if (HierarchyGuid.TryParse(targetObject, _vm, out var targetObjectHierarchyGuid)) {
-			targetObject = "";
-			foreach (VmEither<Scene, Geom, Other, Item, ScenePlaceholder> element in targetObjectHierarchyGuid.Elements) {
-				var name = element.Element switch {
-					ParameterHolder ph => ph.Name,
-					ScenePlaceholder sp => sp.Id.ToString(),
-					_ => ""
-				};
-				targetObject += $"{name}H";
-			}
+			if (childNode != null) node.Nodes.Add(childNode);
 		}
-		
-		var targetParam = action.TargetParam.Replace("%", "");
-		if (ulong.TryParse(targetParam, out var targetParamId)) {
-			var targetParamElement = _vm.GetNullableElement<Parameter>(targetParamId);
-			if (targetParamElement != null) 
-				targetParam = targetParamElement.Name;
-		}
+	}
 
-		var targetFuncName = action.TargetFuncName;
-		if (ulong.TryParse(targetFuncName, out var targetFuncNameId)) {
-			var targetEvent = _vm.GetNullableElement<Event>(targetFuncNameId);
-			if (targetEvent != null) 
-				targetFuncName = targetEvent.Name;
-		}
-		
-		
-		switch (action.ActionType) {
-			case ActionType.SetParam:
-				actionText += $" SetParam → {targetObject} {targetParam} = " +
-							  $"({string.Join(",", action.SourceParams ?? [])})";
-				break;
-			case ActionType.SetExpression:
-				actionText += $" SetExpression → {targetObject} {targetParam} = " +
-							  $"{PreviewHelper.Preview(action.SourceExpression)}";
-				break;
-			case ActionType.Math:
-				switch (action.MathOperationType) {
-					case MathOperationType.Addition:
-						actionText += $" Add {targetObject} {targetParam} + " +
-									  $"{string.Join(",", action.SourceParams ?? [])}";
-						break;
-					case MathOperationType.Subtraction:
-						actionText += $" Subtract {targetObject} {targetParam} - " +
-									  $"{string.Join(",", action.SourceParams ?? [])}";
-						break;
-					case MathOperationType.Multiply:
-						actionText += $" Multiply {targetObject} {targetParam} * " +
-									  $"{string.Join(",", action.SourceParams ?? [])}";
-						break;
-					case MathOperationType.Division:
-						actionText += $" Divide {targetObject} {targetParam} / " +
-									  $"{string.Join(",", action.SourceParams ?? [])}";
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
-				break;
-			case ActionType.DoFunction:
-				actionText += $" DoFunction → {targetObject} {targetParam} " +
-							  $"{action.TargetFuncName}({string.Join(",", action.SourceParams ?? [])})";
-				break;
-			case ActionType.RaiseEvent:
-				actionText += $" RaiseEvent → {targetObject} {targetParam} " +
-							  $"{targetFuncName}({string.Join(",", action.SourceParams ?? [])})";
-				break;
-		}
+	private TreeNode CreateActionNode(Action action) {
+		var targetObject = Describe(action.TargetObject);
+		var targetParam = Describe(action.TargetParam);
+		var sourceParams = string.Join(", ", action.GetParamStrings() ?? []);
+
+		var actionText = action.ActionType switch {
+			ActionType.SetParam => $"{targetObject}.{targetParam} = {sourceParams}",
+			ActionType.SetExpression =>
+				$"{targetObject}.{targetParam} = {PreviewHelper.Preview(action.SourceExpression)}",
+			ActionType.Math => $"{targetObject}.{targetParam} {MathSymbol(action.MathOperationType)}= {sourceParams}",
+			ActionType.DoFunction => $"{targetObject}.{action.Function?.Name ?? action.TargetFuncName}({sourceParams})",
+			ActionType.RaiseEvent => $"{targetObject} ⇒ {action.EventToRaise?.Name ?? action.TargetFuncName}({sourceParams})",
+			_ => $"{action.ActionType.Serialize()} {targetObject}"
+		};
+
+		if (!string.IsNullOrEmpty(action.Name)) actionText = $"{action.Name}:  {actionText}";
 
 		return new TreeNode(actionText) {
 			Tag = action,
@@ -213,6 +144,39 @@ public class ActionsBrowser : Panel {
 		};
 	}
 
+	private static string MathSymbol(MathOperationType operation) => operation switch {
+		MathOperationType.Addition => "+",
+		MathOperationType.Subtraction => "-",
+		MathOperationType.Multiply => "*",
+		MathOperationType.Division => "/",
+		_ => "?"
+	};
+
+	/// <summary>Resolves the ids in a target to names, falling back to the raw text.</summary>
+	private string Describe(TargetObject target) {
+		try {
+			return target.Kind switch {
+				TargetObjectKind.Holder => target.Holder?.Name ?? target.Write(),
+				TargetObjectKind.ParameterRef => target.ParameterRef?.Name ?? target.Write(),
+				TargetObjectKind.Hierarchy => string.Join("/",
+					target.Hierarchy!.Elements.Select(e => (e.Element as INamedElement)?.Name ?? e.Id.ToString())),
+				TargetObjectKind.Message => target.Message?.ParamName ?? target.Write(),
+				TargetObjectKind.InputParam => target.InputParam?.ParamName ?? target.Write(),
+				TargetObjectKind.Loop => target.Loop?.ParamId ?? target.Write(),
+				_ => "?"
+			};
+		} catch {
+			return "?";
+		}
+	}
+
+	private string Describe(ParamTarget target) => target.Kind switch {
+		ParamTargetKind.Empty => "",
+		ParamTargetKind.Parameter => (target.Parameter?.Element as Parameter)?.Name ?? target.Parameter?.Id.ToString() ?? "",
+		ParamTargetKind.ComponentParam => target.ComponentParamName ?? "",
+		_ => ""
+	};
+
 	private TreeNode CreateActionLineNode(ActionLine actionLine) {
 		var node = new TreeNode($"[ActionLine] {actionLine.Name} [{actionLine.ActionLineType.Serialize()}]") {
 			Tag = actionLine,
@@ -220,44 +184,36 @@ public class ActionsBrowser : Panel {
 			ForeColor = Color.DarkGreen
 		};
 
-		if (actionLine.Actions != null && actionLine.Actions.Any()) {
-			foreach (var action in actionLine.Actions) {
-				var childNode = action.Element switch {
-					Action a => CreateActionNode(a),
-					ActionLine al => CreateActionLineNode(al),
-					_ => null
-				};
-
-				if (childNode != null)
-					node.Nodes.Add(childNode);
-			}
-		}
-
+		AddChildren(node, actionLine);
 		return node;
 	}
 
-	private string GetContextName(ActionLine actionLine) {
-		return actionLine.LocalContext.Element switch {
-			State s => $"State: {s.Name}",
-			Graph g => $"Graph: {g.Name}",
-			Branch b => $"Branch: {b.Name}",
-			Talking t => $"Talking: {t.Name}",
-			Speech sp => $"Speech: {sp.Name}",
-			_ => "Unknown Context"
-		};
-	}
+	private static string GetContextName(ActionLine actionLine) => actionLine.LocalContext.Element switch {
+		State s => $"State: {s.Name}",
+		Graph g => $"Graph: {g.Name}",
+		Branch b => $"Branch: {b.Name}",
+		Talking t => $"Talking: {t.Name}",
+		Speech sp => $"Speech: {sp.Name}",
+		_ => "Unknown Context"
+	};
 
 	private void OnNodeDoubleClick(object? sender, TreeNodeMouseClickEventArgs e) {
-		if (e.Node?.Tag == null)
-			return;
+		if (e.Node?.Tag is Action) EditSelected(e.Node);
+	}
 
-		// TODO: Implement action/actionline editor dialog
-		MessageBox.Show(
-			$"Editing not yet implemented.\n\nSelected: {e.Node.Text}\nID: {GetElementId(e.Node.Tag)}",
-			"Not Implemented",
-			MessageBoxButtons.OK,
-			MessageBoxIcon.Information
-		);
+	private void EditSelected() => EditSelected(_treeView.SelectedNode);
+
+	private void EditSelected(TreeNode? node) {
+		if (node?.Tag is not Action action) return;
+
+		using var editor = new ActionEditorForm(_vm, action);
+		if (editor.ShowDialog(FindForm()) != DialogResult.OK) return;
+
+		// Only the edited node changed, so it is refreshed in place rather than rebuilding
+		// the whole tree and losing the user's expansion state.
+		var refreshed = CreateActionNode(action);
+		node.Text = refreshed.Text;
+		node.ToolTipText = refreshed.ToolTipText;
 	}
 
 	private void DeleteSelectedActionLine() {
@@ -277,12 +233,4 @@ public class ActionsBrowser : Panel {
 		_vm.RemoveElement(actionLine);
 		LoadActionLines();
 	}
-
-	private static ulong GetElementId(object tag) {
-		return tag switch {
-			ActionLine al => al.Id,
-			Action a => a.Id,
-			_ => 0
-		};
-	}*/
 }

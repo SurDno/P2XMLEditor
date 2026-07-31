@@ -37,6 +37,14 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 		_ => _rawTargetFuncName,
 	};
 
+	/// <summary>
+	/// Drops the raw function name carried over from the data. RaiseEvent and DoFunction
+	/// derive <see cref="TargetFuncName"/> from EventToRaise/Function, but every other type
+	/// echoes whatever was loaded — and those all have an empty TargetFuncName in the data —
+	/// so retyping an action has to clear it or the writer emits a stale name.
+	/// </summary>
+	public void ClearRawTargetFuncName() => _rawTargetFuncName = "";
+
 	public bool? Enabled { get; set; }
 
 

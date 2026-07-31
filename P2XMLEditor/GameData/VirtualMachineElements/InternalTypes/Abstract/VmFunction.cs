@@ -29,7 +29,14 @@ public abstract class VmFunction {
 	}
 
 	public static IEnumerable<string> GetAvailableFunctions() => _functionTypes.Keys;
-	
+
+	/// <summary>
+	/// The implementing type behind a function name, so callers can inspect a signature
+	/// without first having to construct an instance from parameter strings they do not
+	/// yet know the shape of.
+	/// </summary>
+	public static Type? GetFunctionType(string name) => _functionTypes.GetValueOrDefault(name);
+
 	public static VmFunction GetFunction(string name, VirtualMachine vm, string[] parameters) {
 		if (!_functionTypes.TryGetValue(name, out var type))
 			throw new ArgumentException($"Unknown function name: {name}");
