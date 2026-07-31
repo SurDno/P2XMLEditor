@@ -30,7 +30,6 @@ public sealed class TargetObjectEditor : UserControl {
 	private readonly Panel _valueHost;
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
-	private readonly CheckBox _byEngineGuid;
 	private readonly Button _pick;
 
 	private VmElement? _pickedElement;
@@ -64,28 +63,20 @@ public sealed class TargetObjectEditor : UserControl {
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_choice, _reference]);
 
-		_byEngineGuid = new CheckBox { Dock = DockStyle.Left, Text = "GUID", AutoSize = true };
-		_byEngineGuid.CheckedChanged += (_, _) => OnUserEdit(null);
-
-		var flags = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
-		flags.Controls.Add(_byEngineGuid);
-
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
 		_pick.Click += (_, _) => Pick();
 
 		var layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
+			Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
-		layout.Controls.Add(flags, 2, 0);
-		layout.Controls.Add(_pick, 3, 0);
+		layout.Controls.Add(_pick, 2, 0);
 
 		Controls.Add(layout);
 
@@ -135,7 +126,6 @@ public sealed class TargetObjectEditor : UserControl {
 		try {
 			_originalText = rawText ?? SafeWrite(target);
 			_dirty = false;
-			_byEngineGuid.Checked = target.ByEngineGuid;
 
 			SelectKind(target.Kind);
 			UpdateVisibleControls();
@@ -190,13 +180,12 @@ public sealed class TargetObjectEditor : UserControl {
 		return value;
 	}
 
-	private string ComposeHolder() {
-		if (_pickedElement is not ParameterHolder holder) return "";
-		if (_byEngineGuid.Checked && holder is GameObject gameObject &&
-			!string.IsNullOrEmpty(gameObject.EngineTemplateId))
-			return gameObject.EngineTemplateId;
-		return holder.Id.ToString();
-	}
+	/// <summary>
+	/// Always by id. An engine GUID names the same object and the data uses it in places, so
+	/// an untouched value still round-trips through _originalText, but there is no reason to
+	/// author a new one that way.
+	/// </summary>
+	private string ComposeHolder() => _pickedElement is ParameterHolder holder ? holder.Id.ToString() : "";
 
 	private static string SafeWrite(TargetObject target) {
 		try {
@@ -251,7 +240,6 @@ public sealed class TargetObjectEditor : UserControl {
 		_choice.Visible = showChoice;
 		_reference.Visible = !showChoice;
 		_pick.Visible = !showChoice;
-		_byEngineGuid.Visible = kind == TargetObjectKind.Holder;
 
 		if (showChoice) PopulateChoices(kind);
 	}

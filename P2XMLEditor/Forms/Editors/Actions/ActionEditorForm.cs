@@ -27,13 +27,10 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// flow into the child controls, so retargeting the action reshapes the whole form beneath it.
 /// </summary>
 public sealed class ActionEditorForm : Form {
-	private const int RowHeight = 34;
+	private const int RowHeight = 38;
+	private const int ContentHeight = 30;
 	private const int LabelColumn = 200;
 	private const int TypeColumn = 190;
-
-	/// <summary>Shared by every row control and label, so the two line up on the same baseline.</summary>
-	private static Padding ContentMargin => new(0, 2, 0, 2);
-	private static Padding LabelMargin => new(0, 2, 8, 2);
 
 	/// <summary>ACTION_TYPE_NONE never occurs in the data and is not something to author.</summary>
 	private static readonly ActionType[] EditableTypes = [
@@ -53,8 +50,9 @@ public sealed class ActionEditorForm : Form {
 	private readonly Label _calleeLabel;
 	private readonly ComboBox _callee;
 	private readonly Label _returnType;
+	private readonly GroupBox _slotsGroup;
 	private readonly TableLayoutPanel _slots;
-	private readonly Panel _expressionPanel;
+	private readonly TextBox _expressionPreview;
 	private readonly Label _resultLabel;
 	private readonly ResultTargetEditor _result;
 	private readonly TextBox _preview;
@@ -66,12 +64,12 @@ public sealed class ActionEditorForm : Form {
 	private bool _suppressCalleeEvents;
 
 	private const int RowName = 0;
-	private const int RowOperation = 1;
-	private const int RowTargetObject = 2;
-	private const int RowTargetParam = 3;
+	private const int RowTargetObject = 1;
+	private const int RowTargetParam = 2;
+	private const int RowOperation = 3;
 	private const int RowCallee = 4;
-	private const int RowSlots = 5;
-	private const int RowExpression = 6;
+	private const int RowExpression = 5;
+	private const int RowSlots = 6;
 	private const int RowResult = 7;
 	private const int RowPreview = 8;
 	private const int TotalRows = 9;
@@ -82,8 +80,8 @@ public sealed class ActionEditorForm : Form {
 		_scope = ActionScope.For(action, vm);
 
 		Text = $"Action {action.Id}   —   {ContextDescription()}";
-		Size = new Size(1120, 780);
-		MinimumSize = new Size(880, 580);
+		Size = new Size(1140, 800);
+		MinimumSize = new Size(900, 600);
 		StartPosition = FormStartPosition.CenterParent;
 
 		_root = new TableLayoutPanel {
@@ -94,19 +92,18 @@ public sealed class ActionEditorForm : Form {
 		for (var i = 0; i < TotalRows; i++)
 			_root.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
 		_root.RowStyles[RowSlots] = new RowStyle(SizeType.Percent, 100);
-		_root.RowStyles[RowPreview] = new RowStyle(SizeType.Absolute, 84);
+		_root.RowStyles[RowPreview] = new RowStyle(SizeType.Absolute, 88);
 
-		_name = new TextBox { Dock = DockStyle.Fill, Margin = ContentMargin };
+		_name = Row(new TextBox());
 
-		_mathOperation = NewCombo(ComboBoxStyle.DropDownList);
+		_mathOperation = Row(NewCombo(ComboBoxStyle.DropDownList));
 		foreach (var operation in Enum.GetValues<MathOperationType>())
 			_mathOperation.Items.Add(operation);
 		_mathOperation.SelectedIndexChanged += (_, _) => RefreshPreview();
 
-		_targetObject = new TargetObjectEditor(_vm, _scope) { Dock = DockStyle.Fill, Margin = ContentMargin };
-		_targetParam = new ParamTargetEditor(_vm, () => _targetObject.ResolvedHolder)
-			{ Dock = DockStyle.Fill, Margin = ContentMargin };
-		_result = new ResultTargetEditor(_vm, _scope) { Dock = DockStyle.Fill, Margin = ContentMargin };
+		_targetObject = Row(new TargetObjectEditor(_vm, _scope));
+		_targetParam = Row(new ParamTargetEditor(_vm, () => _targetObject.ResolvedHolder));
+		_result = Row(new ResultTargetEditor(_vm, _scope));
 
 		_targetObject.ValueChanged += (_, _) => OnTargetObjectChanged();
 		_targetParam.ValueChanged += (_, _) => {
@@ -119,37 +116,43 @@ public sealed class ActionEditorForm : Form {
 		};
 
 		_calleeLabel = NewLabel("Function");
-		_callee = NewCombo(ComboBoxStyle.DropDown);
+		_callee = Row(NewCombo(ComboBoxStyle.DropDown));
 		_callee.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 		_callee.AutoCompleteSource = AutoCompleteSource.ListItems;
 		_callee.SelectedIndexChanged += (_, _) => OnCalleeChanged();
 
 		// The return type is what decides where the result may be stored, so it is stated next
 		// to the function rather than left for the user to infer from the parameter list.
-		_returnType = new Label {
-			Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, AutoSize = false, AutoEllipsis = true,
-			ForeColor = SystemColors.GrayText, Margin = new Padding(8, 2, 0, 2)
-		};
+		_returnType = NewLabel("");
+		_returnType.ForeColor = SystemColors.GrayText;
+		_returnType.Margin = new Padding(8, 4, 0, 4);
 
-		var calleeRow = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = Padding.Empty, Padding = Padding.Empty
-		};
+		var calleeRow = NewRowPanel(2);
 		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 230));
 		calleeRow.Controls.Add(_callee, 0, 0);
 		calleeRow.Controls.Add(_returnType, 1, 0);
 
 		_slots = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 2, AutoScroll = true, Margin = new Padding(0, 6, 0, 6),
-			Padding = Padding.Empty
+			Dock = DockStyle.Fill, ColumnCount = 2, AutoScroll = true, Margin = Padding.Empty,
+			Padding = new Padding(6, 4, 6, 4)
 		};
-		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LabelColumn));
+		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LabelColumn - 12));
 		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		_slotsGroup = new GroupBox {
+			Text = "Parameters", Dock = DockStyle.Fill, Margin = new Padding(0, 6, 0, 6)
+		};
+		_slotsGroup.Controls.Add(_slots);
 
-		var editExpression = new Button { Text = "Edit expression…", Size = new Size(180, 28), Anchor = AnchorStyles.Left };
+		_expressionPreview = Row(new TextBox { ReadOnly = true });
+		var editExpression = new Button { Text = "Edit expression…", Size = new Size(170, ContentHeight) };
 		editExpression.Click += (_, _) => EditExpression();
-		_expressionPanel = new Panel { Dock = DockStyle.Fill, Margin = ContentMargin };
-		_expressionPanel.Controls.Add(editExpression);
+
+		var expressionRow = NewRowPanel(2);
+		expressionRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		expressionRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 180));
+		expressionRow.Controls.Add(_expressionPreview, 0, 0);
+		expressionRow.Controls.Add(Row(editExpression), 1, 0);
 
 		_resultLabel = NewLabel("Save result in");
 
@@ -159,12 +162,12 @@ public sealed class ActionEditorForm : Form {
 		};
 
 		AddRow(RowName, "Name", _name);
-		AddRow(RowOperation, "Operation", _mathOperation);
 		AddRow(RowTargetObject, "Target object", _targetObject);
 		AddRow(RowTargetParam, "Target param", _targetParam);
+		AddRow(RowOperation, "Operation", _mathOperation);
 		AddRow(RowCallee, _calleeLabel, calleeRow);
-		AddSpanningRow(RowSlots, _slots);
-		AddSpanningRow(RowExpression, _expressionPanel);
+		AddRow(RowExpression, "Expression", expressionRow);
+		AddSpanningRow(RowSlots, _slotsGroup);
 		AddRow(RowResult, _resultLabel, _result);
 		AddSpanningRow(RowPreview, _preview);
 
@@ -190,6 +193,45 @@ public sealed class ActionEditorForm : Form {
 		Controls.Add(buttons);
 
 		LoadAction();
+	}
+
+	// ---------------------------------------------------------------- control factory
+
+	/// <summary>
+	/// Prepares a control to sit in one form row. It anchors sideways only and keeps a fixed
+	/// height, so it stretches across the column but is never stretched down the cell: a row
+	/// that shares a table with the tall parameters area would otherwise pull buttons and
+	/// checkboxes to full height while the combo boxes stayed at the top, and squeeze combos
+	/// short enough to clip in the rows that do fit.
+	/// </summary>
+	private static T Row<T>(T control) where T : Control {
+		control.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+		control.Height = ContentHeight;
+		control.Margin = new Padding(0, 4, 0, 4);
+		return control;
+	}
+
+	private static ComboBox NewCombo(ComboBoxStyle style) =>
+		new() { DropDownStyle = style, IntegralHeight = false };
+
+	private static TableLayoutPanel NewRowPanel(int columns) {
+		var panel = new TableLayoutPanel {
+			ColumnCount = columns, RowCount = 1, Margin = Padding.Empty, Padding = Padding.Empty,
+			Anchor = AnchorStyles.Left | AnchorStyles.Right, Height = ContentHeight + 8
+		};
+		panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+		return panel;
+	}
+
+	private Label NewLabel(string text) {
+		var label = Row(new Label {
+			Text = text, TextAlign = ContentAlignment.MiddleLeft, AutoSize = false, AutoEllipsis = true
+		});
+		label.Margin = new Padding(0, 4, 8, 4);
+		// Slot labels carry the declared type and can outrun the column; the full text stays
+		// reachable rather than being silently clipped.
+		_toolTip.SetToolTip(label, text);
+		return label;
 	}
 
 	private GroupBox BuildTypeSelector() {
@@ -224,21 +266,6 @@ public sealed class ActionEditorForm : Form {
 		_ => type.ToString()
 	};
 
-	private static ComboBox NewCombo(ComboBoxStyle style) => new() {
-		Dock = DockStyle.Fill, DropDownStyle = style, IntegralHeight = false, Margin = ContentMargin
-	};
-
-	private Label NewLabel(string text) {
-		var label = new Label {
-			Text = text, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft,
-			AutoSize = false, AutoEllipsis = true, Margin = LabelMargin
-		};
-		// Slot labels carry the declared type and can outrun the column; the full text stays
-		// reachable rather than being silently clipped.
-		_toolTip.SetToolTip(label, text);
-		return label;
-	}
-
 	// ---------------------------------------------------------------- loading
 
 	private void LoadAction() {
@@ -258,7 +285,7 @@ public sealed class ActionEditorForm : Form {
 			else
 				_targetParam.Load(_action.TargetParam);
 
-			RefreshCallee();
+			RefreshCallee(preserveSelection: false);
 			BuildSlots(_action.GetParamStrings());
 			UpdateRowVisibility();
 		} finally {
@@ -288,7 +315,7 @@ public sealed class ActionEditorForm : Form {
 		_targetParam.RefreshForTarget();
 
 		var before = SelectedCallee?.Id ?? _callee.Text;
-		RefreshCallee();
+		RefreshCallee(preserveSelection: true);
 		var after = SelectedCallee?.Id ?? _callee.Text;
 
 		// Retargeting only invalidates the slot values if it changed what is being called;
@@ -304,20 +331,27 @@ public sealed class ActionEditorForm : Form {
 
 	/// <summary>
 	/// Rebuilds the function/event list and puts the selection back. Clearing a ComboBox
-	/// raises SelectedIndexChanged, so the whole thing runs under suppression — otherwise
-	/// merely retargeting the action would rebuild the slots twice.
+	/// raises SelectedIndexChanged, so the whole thing runs under suppression.
 	/// </summary>
-	private void RefreshCallee() {
-		var wanted = SelectedCallee?.Id ?? StoredCalleeId();
+	/// <param name="preserveSelection">
+	/// False across an action-type change. A function name and an event id are not the same
+	/// namespace, and carrying "Storage.PickUpByTemplate" into the event list only invites the
+	/// code that resolves an event id to be handed something that is not one.
+	/// </param>
+	private void RefreshCallee(bool preserveSelection) {
+		var wanted = preserveSelection ? SelectedCallee?.Id ?? StoredCalleeId() : StoredCalleeId();
 		_suppressCalleeEvents = true;
 		try {
 			PopulateCallee();
+			_callee.SelectedIndex = -1;
+			_callee.Text = "";
 			SelectCallee(wanted);
 		} finally {
 			_suppressCalleeEvents = false;
 		}
 	}
 
+	/// <summary>The callee stored on the action, but only for the type that actually owns it.</summary>
 	private string? StoredCalleeId() => SelectedActionType switch {
 		ActionType.DoFunction => _action.Function?.Name,
 		ActionType.RaiseEvent => _action.EventToRaise?.Id.ToString(),
@@ -379,10 +413,13 @@ public sealed class ActionEditorForm : Form {
 
 		// The stored callee is outside the offered list — a function whose component the
 		// target no longer has, say. Show it rather than silently dropping it on save.
-		if (SelectedActionType == ActionType.RaiseEvent &&
-			_vm.GetNullableElement<Event>(ulong.TryParse(id, out var eventId) ? eventId : 0) is { } missing) {
-			_callee.Items.Insert(0, new CalleeItem(id, $"{missing.Name}   (not visible from target)", missing));
-			_callee.SelectedIndex = 0;
+		if (SelectedActionType == ActionType.RaiseEvent) {
+			// Resolved without a type constraint: the generic overload throws when an id
+			// belongs to some other kind of element, which is exactly the case being handled.
+			if (ulong.TryParse(id, out var eventId) && _vm.GetNullableElement(eventId) is Event missing) {
+				_callee.Items.Insert(0, new CalleeItem(id, $"{missing.Name}   (not visible from target)", missing));
+				_callee.SelectedIndex = 0;
+			}
 		} else if (SelectedActionType == ActionType.DoFunction) {
 			_callee.Items.Insert(0, new CalleeItem(id, $"{id}   (not on target object)", null));
 			_callee.SelectedIndex = 0;
@@ -403,7 +440,7 @@ public sealed class ActionEditorForm : Form {
 	private void OnActionTypeChanged(ActionType type) {
 		_selectedType = type;
 		if (_loading) return;
-		RefreshCallee();
+		RefreshCallee(preserveSelection: false);
 		BuildSlots(null);
 		UpdateRowVisibility();
 		RefreshPreview();
@@ -432,15 +469,25 @@ public sealed class ActionEditorForm : Form {
 		switch (SelectedActionType) {
 			case ActionType.SetParam:
 			case ActionType.Math:
+				_slotsGroup.Text = "Source value";
 				AddSlot("Source", _targetParam.ResolvedType, ValueAt(existing, 0), _targetParam.Value);
 				break;
 			case ActionType.DoFunction:
+				_slotsGroup.Text = "Function parameters";
 				BuildFunctionSlots(existing);
 				break;
 			case ActionType.RaiseEvent:
+				_slotsGroup.Text = "Event messages";
 				BuildEventSlots(existing);
 				break;
+			default:
+				_slotsGroup.Text = "Parameters";
+				break;
 		}
+
+		// Leftover height goes to a spacer rather than inflating the last real row.
+		_slots.RowCount += 1;
+		_slots.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
 		_slots.ResumeLayout();
 	}
@@ -485,8 +532,7 @@ public sealed class ActionEditorForm : Form {
 	}
 
 	private void AddSlot(string label, VmTypeInfo? expectedType, string value, ParamTarget? target) {
-		var editor = new ParameterSourceEditor(_vm, _scope, expectedType, target)
-			{ Dock = DockStyle.Fill, Margin = ContentMargin };
+		var editor = Row(new ParameterSourceEditor(_vm, _scope, expectedType, target));
 		editor.ValueChanged += (_, _) => RefreshPreview();
 		if (!string.IsNullOrEmpty(value)) {
 			try {
@@ -572,10 +618,12 @@ public sealed class ActionEditorForm : Form {
 			type is ActionType.SetParam or ActionType.Math or ActionType.SetExpression);
 		SetRowVisible(RowCallee, type is ActionType.DoFunction or ActionType.RaiseEvent);
 		SetRowVisible(RowExpression, type == ActionType.SetExpression);
+		SetRowVisible(RowSlots, type != ActionType.SetExpression);
 		SetRowVisible(RowResult, storesResult);
 
 		if (storesResult) _result.ExpectedType = signature!.ReturnTypeInfo;
 		UpdateResultLabel();
+		UpdateExpressionPreview();
 
 		_returnType.Text = type == ActionType.DoFunction && signature != null
 			? signature.IsVoid ? "returns nothing" : $"returns {Describe(signature.ReturnTypeInfo)}"
@@ -591,7 +639,10 @@ public sealed class ActionEditorForm : Form {
 	/// inapplicable field leaves no gap behind.
 	/// </summary>
 	private void SetRowVisible(int row, bool visible) {
-		_root.RowStyles[row] = new RowStyle(SizeType.Absolute, visible ? RowHeight : 0);
+		_root.RowStyles[row] = row == RowSlots
+			? new RowStyle(visible ? SizeType.Percent : SizeType.Absolute, visible ? 100 : 0)
+			: new RowStyle(SizeType.Absolute, visible ? RowHeight : 0);
+
 		foreach (Control control in _root.Controls)
 			if (_root.GetCellPosition(control).Row == row)
 				control.Visible = visible;
@@ -599,12 +650,29 @@ public sealed class ActionEditorForm : Form {
 
 	// ---------------------------------------------------------------- expression
 
-	private void EditExpression() {
+	/// <summary>
+	/// A SetExpression action is meaningless without one, so it is created on demand — when
+	/// the user opens the expression editor, and on save. Every other type discards it, which
+	/// is what keeps a retyped action from carrying a SourceExpression the engine never reads.
+	/// </summary>
+	private void EnsureExpression() {
+		if (SelectedActionType != ActionType.SetExpression) return;
 		_action.SourceExpression ??= VmElement.CreateDefault<Expression>(_vm, _action);
+	}
+
+	private void EditExpression() {
+		EnsureExpression();
+		if (_action.SourceExpression == null) return;
 		using var editor = new ExpressionEditorForm(_vm, _action.SourceExpression);
 		editor.ShowDialog(this);
+		UpdateExpressionPreview();
 		RefreshPreview();
 	}
+
+	private void UpdateExpressionPreview() =>
+		_expressionPreview.Text = _action.SourceExpression == null
+			? "(none)"
+			: $"{PreviewHelper.Preview(_action.SourceExpression)}   [id {_action.SourceExpression.Id}]";
 
 	// ---------------------------------------------------------------- preview
 
@@ -615,6 +683,8 @@ public sealed class ActionEditorForm : Form {
 			$"TargetObject    {_targetObject.SerializedValue}",
 			$"TargetParam     {TargetParamText()}"
 		};
+		if (SelectedActionType == ActionType.SetExpression)
+			lines.Add($"SourceExpression  {_action.SourceExpression?.Id.ToString() ?? "(none)"}");
 		for (var i = 0; i < _slotEditors.Count; i++)
 			lines.Add($"SourceParams[{i}]  {_slotEditors[i].SerializedValue}");
 		_preview.Text = string.Join(Environment.NewLine, lines);
@@ -687,6 +757,9 @@ public sealed class ActionEditorForm : Form {
 				_action.ClearRawTargetFuncName();
 				break;
 			case ActionType.SetExpression:
+				// Created here rather than when the radio is picked, so opening the form,
+				// looking at SetExpression and cancelling does not leave an orphan behind.
+				EnsureExpression();
 				_action.Source = null;
 				_action.Function = null;
 				_action.EventToRaise = null;

@@ -58,9 +58,7 @@ public sealed class ParameterSourceEditor : UserControl {
 	private readonly TextBox _literal;
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
-	private readonly Panel _extraHost;
 	private readonly TextBox _extra;
-	private readonly CheckBox _byEngineGuid;
 	private readonly Button _pick;
 
 	private VmTypeInfo? _expectedType;
@@ -104,14 +102,10 @@ public sealed class ParameterSourceEditor : UserControl {
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_literal, _choice, _reference]);
 
-		_extra = new TextBox { Dock = DockStyle.Fill, PlaceholderText = "parameter name" };
+		_extra = new TextBox {
+			Dock = DockStyle.Fill, PlaceholderText = "parameter name", Margin = new Padding(0, 0, 6, 0)
+		};
 		_extra.TextChanged += (_, _) => OnUserEdit(null);
-
-		_byEngineGuid = new CheckBox { Dock = DockStyle.Fill, Text = "engine GUID", AutoSize = false };
-		_byEngineGuid.CheckedChanged += (_, _) => OnUserEdit(null);
-
-		_extraHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
-		_extraHost.Controls.AddRange([_extra, _byEngineGuid]);
 
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
 		_pick.Click += (_, _) => Pick();
@@ -127,7 +121,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
-		layout.Controls.Add(_extraHost, 2, 0);
+		layout.Controls.Add(_extra, 2, 0);
 		layout.Controls.Add(_pick, 3, 0);
 
 		Controls.Add(layout);
@@ -229,8 +223,6 @@ public sealed class ParameterSourceEditor : UserControl {
 				case ParameterSourceKind.ObjectRef:
 					_pickedElement = ReferencedElement(source);
 					_reference.Text = VmElementPicker.Describe(_pickedElement);
-					_byEngineGuid.Checked = source.BlueprintReference?.SerializeAsGuid == true ||
-											source.EntityReference?.SerializeAsGuid == true;
 					break;
 				case ParameterSourceKind.Hierarchy:
 					_reference.Text = DescribeHierarchy(source.HierarchyReference);
@@ -295,11 +287,10 @@ public sealed class ParameterSourceEditor : UserControl {
 					? $"{_pickedElement.Id}%{_extra.Text}"
 					: "";
 			case ParameterSourceKind.ObjectRef:
-				if (_pickedElement == null) return "";
-				if (_byEngineGuid.Checked && _pickedElement is GameObject gameObject &&
-					!string.IsNullOrEmpty(gameObject.EngineTemplateId))
-					return gameObject.EngineTemplateId;
-				return _pickedElement.Id.ToString();
+				// Always by id. An engine GUID names the same object and the data uses it in
+				// places, so an untouched value still round-trips, but nothing is authored
+				// that way.
+				return _pickedElement?.Id.ToString() ?? "";
 			case ParameterSourceKind.Hierarchy:
 				return _pickedHierarchy?.Write() ?? "";
 			case ParameterSourceKind.GlobalList:
@@ -390,7 +381,9 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 
 		yield return ParameterSourceKind.Empty;
-		yield return ParameterSourceKind.Raw;
+		// Raw is deliberately absent: it exists only so a value the parser rejects stays
+		// visible and editable, and EnsureKindOffered adds it for exactly those. Authoring a
+		// new unresolvable value is not something to offer.
 	}
 
 	/// <summary>
@@ -443,14 +436,11 @@ public sealed class ParameterSourceEditor : UserControl {
 		var showReference = kind is ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
 			or ParameterSourceKind.ObjectRef or ParameterSourceKind.Hierarchy;
 		var showExtra = kind == ParameterSourceKind.DynamicParameter;
-		var showGuid = kind == ParameterSourceKind.ObjectRef && SupportsEngineGuid(_expectedType);
 
 		_literal.Visible = showLiteral;
 		_choice.Visible = showChoice;
 		_reference.Visible = showReference;
 		_extra.Visible = showExtra;
-		_byEngineGuid.Visible = showGuid;
-		_extraHost.Visible = showExtra || showGuid;
 		_pick.Visible = showReference;
 
 		if (showChoice) PopulateChoices(kind, literalIsChosen);
@@ -629,9 +619,6 @@ public sealed class ParameterSourceEditor : UserControl {
 		_vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
 
 	// ---------------------------------------------------------------- helpers
-
-	private static bool SupportsEngineGuid(VmTypeInfo? type) =>
-		type?.BaseType is VmType.BlueprintRef or VmType.BlueprintRefStorable or VmType.EntityRef;
 
 	private static void SelectById(ComboBox box, string id) {
 		if (string.IsNullOrEmpty(id)) return;
