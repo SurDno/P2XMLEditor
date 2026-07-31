@@ -29,6 +29,16 @@ public sealed class FunctionSignature {
 
 	public int ParamCount => Slots.Count;
 
+	/// <summary>
+	/// True when the call produces nothing to store. 187 of the 246 functions are void, and in
+	/// the corpus a void call binds TargetParam 20 times out of 11391 — the engine ignores it
+	/// there, so the editor treats a result destination as meaningless for these.
+	/// </summary>
+	public bool IsVoid => ReturnType is VmType.Void or VmType.Unknown;
+
+	/// <summary>The return type as a slot type, for filtering result destinations.</summary>
+	public VmTypeInfo ReturnTypeInfo => new(ReturnType);
+
 	private FunctionSignature(string name, VmType returnType, IReadOnlyList<Slot> slots) {
 		Name = name;
 		ReturnType = returnType;
@@ -52,14 +62,36 @@ public sealed class FunctionSignature {
 		var properties = SlotProperties(type);
 		var instance = TryCreate(name, vm, Pad(currentParams, properties.Length));
 
+		// The return type has to be known even when the stored values do not construct, since
+		// it decides whether a result destination is offered at all; an all-empty instance is
+		// enough to read it off.
+		var returnType = instance?.ReturnType
+						 ?? TryCreate(name, vm, Pad(null, properties.Length))?.ReturnType
+						 ?? VmType.Unknown;
+
 		if (instance != null && instance.ParamCount != properties.Length)
-			return Untyped(name, instance.ReturnType, instance.ParamCount);
+			return Untyped(name, returnType, instance.ParamCount);
 
 		var slots = new List<Slot>(properties.Length);
 		for (var i = 0; i < properties.Length; i++)
 			slots.Add(new Slot(i, properties[i].Name, SlotType(properties[i], instance)));
 
-		return new FunctionSignature(name, instance?.ReturnType ?? VmType.Unknown, slots);
+		return new FunctionSignature(name, returnType, slots);
+	}
+
+	/// <summary>
+	/// Function names whose component prefix appears on <paramref name="components"/>.
+	/// A function lives on a FunctionalComponent, and calling one the target object does not
+	/// have is not a thing the engine can do — verified across PathologicSandbox, where
+	/// 10631 of 10632 DoFunction calls with a resolvable target name a component on that
+	/// object's own inheritance chain.
+	/// </summary>
+	public static IEnumerable<string> NamesForComponents(IReadOnlySet<string> components) =>
+		AvailableNames.Where(n => components.Contains(ComponentOf(n)));
+
+	public static string ComponentOf(string functionName) {
+		var dot = functionName.IndexOf('.');
+		return dot <= 0 ? functionName : functionName[..dot];
 	}
 
 	/// <summary>

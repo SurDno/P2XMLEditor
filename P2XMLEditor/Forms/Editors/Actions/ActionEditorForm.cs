@@ -8,8 +8,8 @@ using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
-using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using VmAction = P2XMLEditor.GameData.VirtualMachineElements.Action;
@@ -19,15 +19,16 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// <summary>
 /// Edits a single <see cref="VmAction"/>.
 ///
-/// The form is driven by two things it works out up front: the action's
+/// The form is driven by three things it works out from the action itself: its
 /// <see cref="ActionScope"/>, which decides which messages, input parameters and loop
-/// variables can be referenced here at all, and the declared type of whatever the action is
-/// writing to or calling, which decides what each value slot will accept. Both flow into the
-/// child editors, so selecting a function or an event reshapes the slots beneath it, and
-/// changing the target parameter re-types the source next to it.
+/// variables can be referenced here at all; the target object's functional components, which
+/// decide which functions and events can be called on it; and the declared type of whatever
+/// is being written to or called, which decides what each value slot will accept. All three
+/// flow into the child controls, so retargeting the action reshapes the whole form beneath it.
 /// </summary>
 public sealed class ActionEditorForm : Form {
-	private const int RowHeight = 30;
+	private const int RowHeight = 34;
+	private const int LabelColumn = 150;
 
 	private readonly VirtualMachine _vm;
 	private readonly VmAction _action;
@@ -35,17 +36,16 @@ public sealed class ActionEditorForm : Form {
 
 	private readonly TableLayoutPanel _root;
 	private readonly TextBox _name;
-	private readonly CheckBox _enabled;
 	private readonly ComboBox _actionType;
 	private readonly ComboBox _mathOperation;
 	private readonly TargetObjectEditor _targetObject;
 	private readonly ParamTargetEditor _targetParam;
 	private readonly Label _calleeLabel;
 	private readonly ComboBox _callee;
-	private readonly CheckBox _allEvents;
+	private readonly CheckBox _allCallees;
 	private readonly TableLayoutPanel _slots;
 	private readonly Panel _expressionPanel;
-	private readonly Button _editExpression;
+	private readonly ResultTargetEditor _result;
 	private readonly TextBox _preview;
 
 	private readonly List<ParameterSourceEditor> _slotEditors = [];
@@ -53,15 +53,16 @@ public sealed class ActionEditorForm : Form {
 	private bool _suppressCalleeEvents;
 
 	private const int RowName = 0;
-	private const int RowEnabled = 1;
-	private const int RowType = 2;
-	private const int RowOperation = 3;
-	private const int RowTargetObject = 4;
-	private const int RowTargetParam = 5;
-	private const int RowCallee = 6;
-	private const int RowSlots = 7;
-	private const int RowExpression = 8;
+	private const int RowType = 1;
+	private const int RowOperation = 2;
+	private const int RowTargetObject = 3;
+	private const int RowTargetParam = 4;
+	private const int RowCallee = 5;
+	private const int RowSlots = 6;
+	private const int RowExpression = 7;
+	private const int RowResult = 8;
 	private const int RowPreview = 9;
+	private const int TotalRows = 10;
 
 	public ActionEditorForm(VirtualMachine vm, VmAction action) {
 		_vm = vm;
@@ -69,87 +70,80 @@ public sealed class ActionEditorForm : Form {
 		_scope = ActionScope.For(action, vm);
 
 		Text = $"Action {action.Id}   —   {ContextDescription()}";
-		Size = new Size(960, 680);
-		MinimumSize = new Size(720, 480);
+		Size = new Size(1080, 760);
+		MinimumSize = new Size(820, 560);
 		StartPosition = FormStartPosition.CenterParent;
 
 		_root = new TableLayoutPanel {
 			Dock = DockStyle.Fill,
 			ColumnCount = 2,
-			RowCount = 10,
-			Padding = new Padding(10)
+			RowCount = TotalRows,
+			Padding = new Padding(12, 12, 12, 6)
 		};
-		_root.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
+		_root.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LabelColumn));
 		_root.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		for (var i = 0; i < _root.RowCount; i++)
+		for (var i = 0; i < TotalRows; i++)
 			_root.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
 		_root.RowStyles[RowSlots] = new RowStyle(SizeType.Percent, 100);
-		_root.RowStyles[RowPreview] = new RowStyle(SizeType.Absolute, 54);
+		_root.RowStyles[RowPreview] = new RowStyle(SizeType.Absolute, 84);
 
-		_name = new TextBox { Dock = DockStyle.Fill };
-		_enabled = new CheckBox { Dock = DockStyle.Fill, ThreeState = true, Text = "(indeterminate = unset; demo builds only)" };
+		_name = NewTextBox();
 
-		_actionType = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
+		_actionType = NewCombo(ComboBoxStyle.DropDownList);
 		foreach (var type in Enum.GetValues<ActionType>())
 			_actionType.Items.Add(type);
 		_actionType.SelectedIndexChanged += (_, _) => OnActionTypeChanged();
 
-		_mathOperation = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
+		_mathOperation = NewCombo(ComboBoxStyle.DropDownList);
 		foreach (var operation in Enum.GetValues<MathOperationType>())
 			_mathOperation.Items.Add(operation);
 		_mathOperation.SelectedIndexChanged += (_, _) => RefreshPreview();
 
 		_targetObject = new TargetObjectEditor(_vm, _scope) { Dock = DockStyle.Fill };
 		_targetParam = new ParamTargetEditor(_vm, () => _targetObject.ResolvedHolder) { Dock = DockStyle.Fill };
+		_result = new ResultTargetEditor(_vm, _scope) { Dock = DockStyle.Fill };
 
-		_targetObject.ValueChanged += (_, _) => {
-			// The target decides which parameters and which raisable events are on offer,
-			// so both dependent lists are rebuilt whenever it moves.
-			_targetParam.RefreshComponentParams();
-			if (SelectedActionType == ActionType.RaiseEvent) RefreshCallee();
-			RefreshPreview();
-		};
+		_targetObject.ValueChanged += (_, _) => OnTargetObjectChanged();
 		_targetParam.ValueChanged += (_, _) => {
 			PushExpectedTypeToSource();
 			RefreshPreview();
 		};
+		_result.ValueChanged += (_, _) => RefreshPreview();
 
-		_calleeLabel = new Label { Text = "Function", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft };
-		_callee = new ComboBox {
-			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDown,
-			AutoCompleteMode = AutoCompleteMode.SuggestAppend, AutoCompleteSource = AutoCompleteSource.ListItems
-		};
+		_calleeLabel = NewLabel("Function");
+		_callee = NewCombo(ComboBoxStyle.DropDown);
+		_callee.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+		_callee.AutoCompleteSource = AutoCompleteSource.ListItems;
 		_callee.SelectedIndexChanged += (_, _) => OnCalleeChanged();
 
-		_allEvents = new CheckBox { Text = "all events", AutoSize = true, Dock = DockStyle.Right };
-		_allEvents.CheckedChanged += (_, _) => RefreshCallee();
+		_allCallees = new CheckBox { Text = "show all", AutoSize = true, Dock = DockStyle.Left, Margin = new Padding(8, 6, 0, 0) };
+		_allCallees.CheckedChanged += (_, _) => RefreshCallee();
 
 		var calleeRow = new TableLayoutPanel {
 			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
 		calleeRow.Controls.Add(_callee, 0, 0);
-		calleeRow.Controls.Add(_allEvents, 1, 0);
+		calleeRow.Controls.Add(_allCallees, 1, 0);
 
 		_slots = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 2, AutoScroll = true, Margin = new Padding(0, 4, 0, 4)
+			Dock = DockStyle.Fill, ColumnCount = 2, AutoScroll = true, Margin = new Padding(0, 6, 0, 6)
 		};
-		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 220));
+		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 260));
 		_slots.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
-		_editExpression = new Button { Text = "Edit expression…", Width = 160, Height = 24 };
-		_editExpression.Click += (_, _) => EditExpression();
+		var editExpression = new Button { Text = "Edit expression…", Width = 180, Height = 28, Anchor = AnchorStyles.Left };
+		editExpression.Click += (_, _) => EditExpression();
 		_expressionPanel = new Panel { Dock = DockStyle.Fill };
-		_expressionPanel.Controls.Add(_editExpression);
+		_expressionPanel.Controls.Add(editExpression);
 
 		_preview = new TextBox {
 			Dock = DockStyle.Fill, ReadOnly = true, Multiline = true, ScrollBars = ScrollBars.Vertical,
-			Font = new Font(FontFamily.GenericMonospace, 8.25f)
+			Font = new Font(FontFamily.GenericMonospace, 8.5f), Margin = new Padding(0, 6, 0, 0)
 		};
 
 		AddRow(RowName, "Name", _name);
-		AddRow(RowEnabled, "Enabled", _enabled);
 		AddRow(RowType, "Action type", _actionType);
 		AddRow(RowOperation, "Operation", _mathOperation);
 		AddRow(RowTargetObject, "Target object", _targetObject);
@@ -157,13 +151,15 @@ public sealed class ActionEditorForm : Form {
 		AddRow(RowCallee, _calleeLabel, calleeRow);
 		AddSpanningRow(RowSlots, _slots);
 		AddSpanningRow(RowExpression, _expressionPanel);
+		AddRow(RowResult, "Save result in", _result);
 		AddSpanningRow(RowPreview, _preview);
 
 		var buttons = new FlowLayoutPanel {
-			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 42, Padding = new Padding(6)
+			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 52,
+			Padding = new Padding(12, 8, 12, 8)
 		};
-		var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel };
-		var save = new Button { Text = "Save" };
+		var cancel = new Button { Text = "Cancel", Size = new Size(110, 34), DialogResult = DialogResult.Cancel };
+		var save = new Button { Text = "Save", Size = new Size(110, 34), Margin = new Padding(8, 0, 0, 0) };
 		save.Click += (_, _) => Save();
 		buttons.Controls.AddRange([cancel, save]);
 		AcceptButton = save;
@@ -175,25 +171,36 @@ public sealed class ActionEditorForm : Form {
 		LoadAction();
 	}
 
+	private static ComboBox NewCombo(ComboBoxStyle style) => new() {
+		Dock = DockStyle.Fill, DropDownStyle = style, IntegralHeight = false, Margin = new Padding(0, 3, 0, 3)
+	};
+
+	private static TextBox NewTextBox() => new() { Dock = DockStyle.Fill, Margin = new Padding(0, 3, 0, 3) };
+
+	private static Label NewLabel(string text) => new() {
+		Text = text, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, Margin = new Padding(0, 3, 6, 3)
+	};
+
 	// ---------------------------------------------------------------- loading
 
 	private void LoadAction() {
 		_loading = true;
 		try {
 			_name.Text = _action.Name ?? "";
-			_enabled.CheckState = _action.Enabled switch {
-				true => CheckState.Checked,
-				false => CheckState.Unchecked,
-				null => CheckState.Indeterminate
-			};
 			_actionType.SelectedItem = _action.ActionType;
 			_mathOperation.SelectedItem = _action.MathOperationType;
 
 			_targetObject.Load(_action.TargetObject);
-			_targetParam.Load(_action.TargetParam);
+
+			// TargetParam is one field with two meanings: for a function call it is where the
+			// result goes, resolved against the local context's owner rather than the target.
+			if (_action.ActionType == ActionType.DoFunction)
+				_result.Load(_action.TargetParam);
+			else
+				_targetParam.Load(_action.TargetParam);
 
 			RefreshCallee();
-			BuildSlots();
+			BuildSlots(_action.GetParamStrings());
 			UpdateRowVisibility();
 		} finally {
 			_loading = false;
@@ -217,12 +224,30 @@ public sealed class ActionEditorForm : Form {
 	private ActionType SelectedActionType =>
 		_actionType.SelectedItem is ActionType type ? type : ActionType.None;
 
+	private void OnTargetObjectChanged() {
+		// The target decides which parameters it has and which functions and events can be
+		// called on it, so every dependent list is rebuilt whenever it moves.
+		_targetParam.RefreshForTarget();
+
+		var before = SelectedCallee?.Id ?? _callee.Text;
+		RefreshCallee();
+		var after = SelectedCallee?.Id ?? _callee.Text;
+
+		// Retargeting only invalidates the slot values if it changed what is being called;
+		// otherwise the arguments are still the same arguments and are left alone.
+		if (before != after) BuildSlots(null);
+		else PushExpectedTypeToSource();
+
+		UpdateRowVisibility();
+		RefreshPreview();
+	}
+
 	// ---------------------------------------------------------------- callee (function / event)
 
 	/// <summary>
 	/// Rebuilds the function/event list and puts the selection back. Clearing a ComboBox
-	/// raises SelectedIndexChanged, so the whole thing is done under suppression — otherwise
-	/// merely retargeting the action would wipe the slot values through OnCalleeChanged.
+	/// raises SelectedIndexChanged, so the whole thing runs under suppression — otherwise
+	/// merely retargeting the action would rebuild the slots twice.
 	/// </summary>
 	private void RefreshCallee() {
 		var wanted = SelectedCallee?.Id ?? StoredCalleeId();
@@ -247,7 +272,7 @@ public sealed class ActionEditorForm : Form {
 		switch (SelectedActionType) {
 			case ActionType.DoFunction:
 				_calleeLabel.Text = "Function";
-				foreach (var name in FunctionSignature.AvailableNames)
+				foreach (var name in CallableFunctions())
 					_callee.Items.Add(new CalleeItem(name, name, null));
 				break;
 			case ActionType.RaiseEvent:
@@ -260,13 +285,22 @@ public sealed class ActionEditorForm : Form {
 	}
 
 	/// <summary>
-	/// Raising is a call against a specific object, so the offered events are the ones that
-	/// object can see. When the target is only known at runtime — a parameter, a message —
-	/// there is no object to ask, and the full list is the only honest answer.
+	/// Functions the target object can actually run. A function belongs to a functional
+	/// component, so only the components on the target — its inherited ones included — are
+	/// callable. When the target is only known at runtime there is no object to ask, and the
+	/// full list is the only honest answer.
 	/// </summary>
+	private IEnumerable<string> CallableFunctions() {
+		if (_allCallees.Checked) return FunctionSignature.AvailableNames;
+
+		var components = ActionScope.ComponentsOf(_targetObject.ResolvedHolder);
+		if (components.Count == 0) return FunctionSignature.AvailableNames;
+		return FunctionSignature.NamesForComponents(components);
+	}
+
 	private IEnumerable<Event> RaisableEvents() {
 		var holder = _targetObject.ResolvedHolder;
-		if (_allEvents.Checked || holder == null)
+		if (_allCallees.Checked || holder == null)
 			return _vm.GetElementsByType<Event>().OrderBy(e => e.Name, StringComparer.Ordinal);
 		return ActionScope.RaisableEvents(holder, _vm).OrderBy(e => e.Name, StringComparer.Ordinal);
 	}
@@ -284,14 +318,15 @@ public sealed class ActionEditorForm : Form {
 			}
 		}
 
-		// The stored callee is outside the offered list — an event on an object the target no
-		// longer sees, say. Show it rather than silently dropping it on save.
+		// The stored callee is outside the offered list — a function whose component the
+		// target no longer has, say. Show it rather than silently dropping it on save.
 		if (SelectedActionType == ActionType.RaiseEvent &&
 			_vm.GetNullableElement<Event>(ulong.TryParse(id, out var eventId) ? eventId : 0) is { } missing) {
 			_callee.Items.Insert(0, new CalleeItem(id, $"{missing.Name}   (not visible from target)", missing));
 			_callee.SelectedIndex = 0;
-		} else {
-			_callee.Text = id;
+		} else if (SelectedActionType == ActionType.DoFunction) {
+			_callee.Items.Insert(0, new CalleeItem(id, $"{id}   (not on target object)", null));
+			_callee.SelectedIndex = 0;
 		}
 	}
 
@@ -299,14 +334,17 @@ public sealed class ActionEditorForm : Form {
 
 	private void OnCalleeChanged() {
 		if (_loading || _suppressCalleeEvents) return;
-		BuildSlots();
+		// A different function or event means different parameters; carrying the old values
+		// across positionally would silently produce nonsense, so the slots start empty.
+		BuildSlots(null);
+		UpdateRowVisibility();
 		RefreshPreview();
 	}
 
 	private void OnActionTypeChanged() {
 		if (_loading) return;
 		RefreshCallee();
-		BuildSlots();
+		BuildSlots(null);
 		UpdateRowVisibility();
 		RefreshPreview();
 	}
@@ -316,10 +354,11 @@ public sealed class ActionEditorForm : Form {
 	/// <summary>
 	/// Rebuilds the value rows for the current action type: one per declared function
 	/// parameter, one per message the selected event carries, or the single source of a
-	/// SetParam or Math action.
+	/// SetParam or Math action. <paramref name="existing"/> is the stored values when loading
+	/// and null whenever the shape changed, since values do not carry across a new signature.
 	/// </summary>
-	private void BuildSlots() {
-		var existing = CurrentSlotTexts();
+	private void BuildSlots(IReadOnlyList<string>? existing) {
+		existing ??= [];
 
 		_slots.SuspendLayout();
 		foreach (var control in _slots.Controls.Cast<Control>().ToList()) {
@@ -347,9 +386,9 @@ public sealed class ActionEditorForm : Form {
 	}
 
 	private void BuildFunctionSlots(IReadOnlyList<string> existing) {
-		var name = SelectedCallee?.Id ?? _callee.Text;
-		var signature = FunctionSignature.Of(name, _vm, existing);
+		var signature = CurrentSignature(existing);
 		if (signature == null) {
+			var name = SelectedCallee?.Id ?? _callee.Text;
 			AddNote(string.IsNullOrEmpty(name) ? "Select a function." : $"Unknown function '{name}'.");
 			return;
 		}
@@ -362,13 +401,19 @@ public sealed class ActionEditorForm : Form {
 			AddSlot($"{slot.Name}   [{Describe(slot.Type)}]", slot.Type, ValueAt(existing, slot.Index), null);
 	}
 
+	private FunctionSignature? CurrentSignature(IReadOnlyList<string>? existing = null) {
+		if (SelectedActionType != ActionType.DoFunction) return null;
+		var name = SelectedCallee?.Id ?? _callee.Text;
+		return string.IsNullOrEmpty(name) ? null : FunctionSignature.Of(name, _vm, existing);
+	}
+
 	private void BuildEventSlots(IReadOnlyList<string> existing) {
 		var raisable = SelectedCallee?.Event;
 		if (raisable == null) {
 			AddNote("Select an event.");
 			return;
 		}
-		if (raisable.Messages.Count == 0 && existing.Count == 0) {
+		if (raisable.Messages.Count == 0) {
 			AddNote($"{raisable.Name} carries no messages.");
 			return;
 		}
@@ -377,12 +422,6 @@ public sealed class ActionEditorForm : Form {
 			var message = raisable.Messages[i];
 			AddSlot($"{message.ParamName}   [{message.Type}]", SafeTypeInfo(message.Type), ValueAt(existing, i), null);
 		}
-
-		// Two actions in the corpus carry more parameters than their event declares messages.
-		// EventParams is a free list, so the surplus is shown and kept rather than dropped on
-		// save the way a mismatched function argument would have to be.
-		for (var i = raisable.Messages.Count; i < existing.Count; i++)
-			AddSlot($"(surplus {i + 1})   — not declared by {raisable.Name}", null, ValueAt(existing, i), null);
 	}
 
 	private void AddSlot(string label, VmTypeInfo? expectedType, string value, ParamTarget? target) {
@@ -402,33 +441,24 @@ public sealed class ActionEditorForm : Form {
 	}
 
 	private void AddSlotRow(string label, Control editor) {
-		var row = _slots.RowCount;
-		_slots.RowCount = row + 1;
-		_slots.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
-		_slots.Controls.Add(new Label { Text = label, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft },
-			0, row);
+		var row = NewSlotRow();
+		_slots.Controls.Add(NewLabel(label), 0, row);
 		_slots.Controls.Add(editor, 1, row);
 	}
 
 	private void AddNote(string text) {
-		var row = _slots.RowCount;
-		_slots.RowCount = row + 1;
-		_slots.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
-		var note = new Label {
-			Text = text, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, ForeColor = SystemColors.GrayText
-		};
+		var row = NewSlotRow();
+		var note = NewLabel(text);
+		note.ForeColor = SystemColors.GrayText;
 		_slots.Controls.Add(note, 0, row);
 		_slots.SetColumnSpan(note, 2);
 	}
 
-	/// <summary>
-	/// Slot values as they stand, so rebuilding after a function or event change keeps what
-	/// the user already filled in wherever the arity still allows it.
-	/// </summary>
-	private IReadOnlyList<string> CurrentSlotTexts() {
-		if (_slotEditors.Count > 0)
-			return _slotEditors.Select(e => e.SerializedValue).ToList();
-		return _action.GetParamStrings() ?? [];
+	private int NewSlotRow() {
+		var row = _slots.RowCount;
+		_slots.RowCount = row + 1;
+		_slots.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
+		return row;
 	}
 
 	private static string ValueAt(IReadOnlyList<string> values, int index) =>
@@ -459,8 +489,7 @@ public sealed class ActionEditorForm : Form {
 
 	// ---------------------------------------------------------------- layout
 
-	private void AddRow(int row, string label, Control control) =>
-		AddRow(row, new Label { Text = label, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft }, control);
+	private void AddRow(int row, string label, Control control) => AddRow(row, NewLabel(label), control);
 
 	private void AddRow(int row, Label label, Control control) {
 		_root.Controls.Add(label, 0, row);
@@ -474,24 +503,31 @@ public sealed class ActionEditorForm : Form {
 
 	private void UpdateRowVisibility() {
 		var type = SelectedActionType;
-		SetRowVisible(RowOperation, type == ActionType.Math, RowHeight);
-		SetRowVisible(RowTargetParam, type is ActionType.SetParam or ActionType.Math or ActionType.SetExpression,
-			RowHeight);
-		SetRowVisible(RowCallee, type is ActionType.DoFunction or ActionType.RaiseEvent, RowHeight);
-		SetRowVisible(RowExpression, type == ActionType.SetExpression, RowHeight);
-		_allEvents.Visible = type == ActionType.RaiseEvent;
+		var signature = CurrentSignature();
+
+		SetRowVisible(RowOperation, type == ActionType.Math);
+		// A function call writes TargetParam too, but as a result destination bound against
+		// the local context rather than the target object — that is the "Save result in" row,
+		// and showing both would be two controls fighting over one field.
+		SetRowVisible(RowTargetParam,
+			type is ActionType.SetParam or ActionType.Math or ActionType.SetExpression);
+		SetRowVisible(RowCallee, type is ActionType.DoFunction or ActionType.RaiseEvent);
+		SetRowVisible(RowExpression, type == ActionType.SetExpression);
+		SetRowVisible(RowResult, type == ActionType.DoFunction && signature is { IsVoid: false });
+
+		if (signature is { IsVoid: false }) _result.ExpectedType = signature.ReturnTypeInfo;
+		_allCallees.Visible = type is ActionType.DoFunction or ActionType.RaiseEvent;
 	}
 
 	/// <summary>
 	/// Collapses a row to zero height rather than merely hiding its controls, so an
 	/// inapplicable field leaves no gap behind.
 	/// </summary>
-	private void SetRowVisible(int row, bool visible, int height) {
-		_root.RowStyles[row] = new RowStyle(SizeType.Absolute, visible ? height : 0);
-		foreach (Control control in _root.Controls) {
-			var position = _root.GetCellPosition(control);
-			if (position.Row == row) control.Visible = visible;
-		}
+	private void SetRowVisible(int row, bool visible) {
+		_root.RowStyles[row] = new RowStyle(SizeType.Absolute, visible ? RowHeight : 0);
+		foreach (Control control in _root.Controls)
+			if (_root.GetCellPosition(control).Row == row)
+				control.Visible = visible;
 	}
 
 	// ---------------------------------------------------------------- expression
@@ -510,7 +546,7 @@ public sealed class ActionEditorForm : Form {
 		var lines = new List<string> {
 			$"TargetFuncName  {CalleeText()}",
 			$"TargetObject    {_targetObject.SerializedValue}",
-			$"TargetParam     {_targetParam.SerializedValue}"
+			$"TargetParam     {TargetParamText()}"
 		};
 		for (var i = 0; i < _slotEditors.Count; i++)
 			lines.Add($"SourceParams[{i}]  {_slotEditors[i].SerializedValue}");
@@ -523,23 +559,30 @@ public sealed class ActionEditorForm : Form {
 		_ => ""
 	};
 
+	/// <summary>
+	/// TargetParam comes from whichever control owns it for this action type — the result
+	/// destination for a function call, the plain target otherwise. A void call has no
+	/// destination, and the engine ignores one, so it is written empty.
+	/// </summary>
+	private string TargetParamText() {
+		if (SelectedActionType != ActionType.DoFunction) return _targetParam.SerializedValue;
+		return CurrentSignature() is { IsVoid: false } ? _result.SerializedValue : "%";
+	}
+
 	// ---------------------------------------------------------------- saving
 
 	private void Save() {
 		var type = SelectedActionType;
+		FunctionSignature? signature = null;
 
 		if (type == ActionType.DoFunction) {
 			var name = SelectedCallee?.Id ?? _callee.Text;
-			// The empty name is the placeholder function, which exists only to round-trip a
-			// self-closing TargetFuncName, and is not something to save a DoFunction as.
-			if (string.IsNullOrEmpty(name) ||
-				FunctionSignature.Create(name, _vm, _slotEditors.Select(e => e.SerializedValue).ToList())
-					is not { } function) {
+			signature = string.IsNullOrEmpty(name) ? null : FunctionSignature.Of(name, _vm);
+			if (signature == null) {
 				MessageBox.Show(this, $"'{name}' is not a known function.", "Cannot save", MessageBoxButtons.OK,
 					MessageBoxIcon.Warning);
 				return;
 			}
-			_action.Function = function;
 		}
 
 		if (type == ActionType.RaiseEvent && SelectedCallee?.Event == null) {
@@ -549,18 +592,15 @@ public sealed class ActionEditorForm : Form {
 		}
 
 		_action.Name = _name.Text;
-		_action.Enabled = _enabled.CheckState switch {
-			CheckState.Checked => true,
-			CheckState.Unchecked => false,
-			_ => null
-		};
 		_action.ActionType = type;
 		_action.MathOperationType = type == ActionType.Math
 			? (_mathOperation.SelectedItem as MathOperationType?) ?? MathOperationType.None
 			: MathOperationType.None;
 
 		_action.TargetObject = _targetObject.Value;
-		_action.TargetParam = _targetParam.Value;
+		_action.TargetParam = ParamTarget.TryRead(TargetParamText(), _vm, out var targetParam)
+			? targetParam
+			: ParamTarget.Empty();
 
 		// Every type owns a different subset of the payload fields, and the writer emits
 		// whatever is non-null, so the ones this type does not own are cleared rather than
@@ -583,6 +623,8 @@ public sealed class ActionEditorForm : Form {
 				_action.ClearRawTargetFuncName();
 				break;
 			case ActionType.DoFunction:
+				_action.Function = FunctionSignature.Create(signature!.Name, _vm,
+					_slotEditors.Select(e => e.SerializedValue).ToList());
 				_action.Source = null;
 				_action.EventToRaise = null;
 				_action.EventParams = null;
@@ -591,8 +633,8 @@ public sealed class ActionEditorForm : Form {
 			case ActionType.RaiseEvent:
 				_action.Source = null;
 				_action.Function = null;
-				_action.EventToRaise = SelectedCallee?.Event;
-				_action.EventParams = CollectEventParams(SelectedCallee!.Event!);
+				_action.EventToRaise = SelectedCallee!.Event;
+				_action.EventParams = _slotEditors.Select(e => e.Value).ToList();
 				DiscardExpression();
 				break;
 			default:
@@ -602,26 +644,6 @@ public sealed class ActionEditorForm : Form {
 
 		DialogResult = DialogResult.OK;
 		Close();
-	}
-
-	/// <summary>
-	/// One entry per declared message, plus any surplus the action was carrying — but with
-	/// empty surplus entries dropped, so switching to an event with fewer messages does not
-	/// leave a tail of blank parameters behind.
-	/// </summary>
-	private List<ParameterSource> CollectEventParams(Event raisable) {
-		var values = _slotEditors.Select(e => e.Value).ToList();
-		while (values.Count > raisable.Messages.Count && SafeWrite(values[^1]).Length == 0)
-			values.RemoveAt(values.Count - 1);
-		return values;
-	}
-
-	private static string SafeWrite(ParameterSource source) {
-		try {
-			return source.Write();
-		} catch {
-			return "";
-		}
 	}
 
 	/// <summary>
@@ -639,5 +661,4 @@ public sealed class ActionEditorForm : Form {
 		public Event? Event { get; } = raisable;
 		public override string ToString() => label;
 	}
-
 }

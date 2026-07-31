@@ -20,6 +20,8 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// input-param entries again come from <see cref="ActionScope"/> so they resolve.
 /// </summary>
 public sealed class TargetObjectEditor : UserControl {
+	public const int PreferredHeight = 30;
+
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
 
@@ -43,18 +45,23 @@ public sealed class TargetObjectEditor : UserControl {
 		_vm = vm;
 		_scope = scope;
 
-		Height = 26;
-		Margin = new Padding(0, 1, 0, 1);
+		Height = PreferredHeight;
+		Margin = new Padding(0, 2, 0, 2);
 
-		_kind = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, Margin = new Padding(0, 0, 4, 0) };
+		_kind = new ComboBox {
+			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, IntegralHeight = false,
+			Margin = new Padding(0, 0, 6, 0)
+		};
 		_kind.SelectedIndexChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
 
-		_choice = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
+		_choice = new ComboBox {
+			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, IntegralHeight = false
+		};
 		_choice.SelectedIndexChanged += (_, _) => OnUserEdit(null);
 
 		_reference = new TextBox { Dock = DockStyle.Fill, ReadOnly = true };
 
-		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 4, 0) };
+		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_choice, _reference]);
 
 		_byEngineGuid = new CheckBox { Dock = DockStyle.Left, Text = "GUID", AutoSize = true };
@@ -65,20 +72,20 @@ public sealed class TargetObjectEditor : UserControl {
 		_self = new CheckBox { Dock = DockStyle.Left, Text = "self", AutoSize = true };
 		_self.CheckedChanged += (_, _) => OnUserEdit(null);
 
-		var flags = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 4, 0) };
+		var flags = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		flags.Controls.AddRange([_self, _byEngineGuid]);
 
-		_pick = new Button { Dock = DockStyle.Fill, Text = "…" };
+		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
 		_pick.Click += (_, _) => Pick();
 
 		var layout = new TableLayoutPanel {
 			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
@@ -230,13 +237,19 @@ public sealed class TargetObjectEditor : UserControl {
 
 	private void UpdateVisibleControls() {
 		var kind = SelectedKind;
-		_choice.Visible = kind is TargetObjectKind.Message or TargetObjectKind.InputParam or TargetObjectKind.Loop;
-		_reference.Visible = !_choice.Visible;
-		_pick.Visible = _reference.Visible;
+
+		// Derived from a local boolean, never read back off Control.Visible, which reports
+		// false for anything whose parent chain is not shown yet — reading it during
+		// construction would leave the picker hidden until the user changed the dropdown.
+		var showChoice = kind is TargetObjectKind.Message or TargetObjectKind.InputParam or TargetObjectKind.Loop;
+
+		_choice.Visible = showChoice;
+		_reference.Visible = !showChoice;
+		_pick.Visible = !showChoice;
 		_byEngineGuid.Visible = kind == TargetObjectKind.Holder;
 		_self.Visible = kind is TargetObjectKind.Holder or TargetObjectKind.ParameterRef or TargetObjectKind.Hierarchy;
 
-		if (_choice.Visible) PopulateChoices(kind);
+		if (showChoice) PopulateChoices(kind);
 	}
 
 	private void PopulateChoices(TargetObjectKind kind) {

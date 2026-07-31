@@ -34,19 +34,20 @@ public enum ParameterSourceKind {
 /// Edits one <see cref="ParameterSource"/> — the slot behind a function argument, an event
 /// message or a SetParam source.
 ///
-/// Two rules shape it. Which kinds are offered comes from the slot's declared
-/// <see cref="VmTypeInfo"/>: a string slot takes a literal or anything that evaluates to one,
-/// an IObjRef slot takes an element, a hierarchy or an engine GUID, a list slot takes a list.
-/// Which *references* are offered comes from <see cref="ActionScope"/>, so the messages and
-/// input parameters in the dropdown are only the ones that actually resolve at this action.
+/// Two rules shape it. The slot's declared <see cref="VmTypeInfo"/> decides which kinds are
+/// offered at all and filters every reference list by
+/// <see cref="VmTypeCompatibility"/>, so a System.Boolean slot never offers an object and a
+/// parameter of the wrong type is not in the list to pick. <see cref="ActionScope"/> decides
+/// which messages, input parameters and loop variables exist here, so everything offered
+/// actually resolves at this action.
 ///
 /// Values are composed back into the wire string and re-parsed through
 /// <see cref="ParameterSource.Create"/> rather than assembled field by field, so what the
-/// editor produces is by construction what the loader accepts. A slot the user never touches
-/// re-emits its original text verbatim, which keeps quirks like a doubled hierarchy or a
-/// comma decimal separator from churning on save.
+/// editor produces is by construction what the loader accepts.
 /// </summary>
 public sealed class ParameterSourceEditor : UserControl {
+	public const int PreferredHeight = 30;
+
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
 	private ParamTarget? _target;
@@ -54,7 +55,6 @@ public sealed class ParameterSourceEditor : UserControl {
 	private readonly ComboBox _kind;
 	private readonly Panel _valueHost;
 	private readonly TextBox _literal;
-	private readonly ComboBox _enum;
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
 	private readonly Panel _extraHost;
@@ -71,56 +71,58 @@ public sealed class ParameterSourceEditor : UserControl {
 
 	public event EventHandler? ValueChanged;
 
+	/// <summary>
+	/// Whether "const_" values are offered. They are only meaningful in an action line's loop
+	/// bounds, never in a function argument or an event message, so this is off by default.
+	/// </summary>
+	public bool AllowConstant { get; }
+
 	public ParameterSourceEditor(VirtualMachine vm, ActionScope scope, VmTypeInfo? expectedType = null,
-		ParamTarget? target = null) {
+		ParamTarget? target = null, bool allowConstant = false) {
 		_vm = vm;
 		_scope = scope;
 		_expectedType = expectedType;
 		_target = target;
+		AllowConstant = allowConstant;
 
-		Height = 26;
-		Margin = new Padding(0, 1, 0, 1);
+		Height = PreferredHeight;
+		Margin = new Padding(0, 2, 0, 2);
 
-		_kind = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, Margin = new Padding(0, 0, 4, 0) };
+		_kind = NewCombo(ComboBoxStyle.DropDownList);
+		_kind.Margin = new Padding(0, 0, 6, 0);
 		_kind.SelectedIndexChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
 
 		_literal = new TextBox { Dock = DockStyle.Fill };
 		_literal.TextChanged += (_, _) => OnUserEdit(null);
 
-		_enum = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
-		_enum.SelectedIndexChanged += (_, _) => OnUserEdit(null);
-
-		_choice = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
+		_choice = NewCombo(ComboBoxStyle.DropDownList);
 		_choice.SelectedIndexChanged += (_, _) => OnUserEdit(null);
 
 		_reference = new TextBox { Dock = DockStyle.Fill, ReadOnly = true };
 
-		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 4, 0) };
-		_valueHost.Controls.AddRange([_literal, _enum, _choice, _reference]);
+		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
+		_valueHost.Controls.AddRange([_literal, _choice, _reference]);
 
-		_extra = new TextBox { Dock = DockStyle.Fill };
+		_extra = new TextBox { Dock = DockStyle.Fill, PlaceholderText = "parameter name" };
 		_extra.TextChanged += (_, _) => OnUserEdit(null);
 
 		_byEngineGuid = new CheckBox { Dock = DockStyle.Fill, Text = "engine GUID", AutoSize = false };
 		_byEngineGuid.CheckedChanged += (_, _) => OnUserEdit(null);
 
-		_extraHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 4, 0) };
+		_extraHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_extraHost.Controls.AddRange([_extra, _byEngineGuid]);
 
-		_pick = new Button { Dock = DockStyle.Fill, Text = "…" };
+		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
 		_pick.Click += (_, _) => Pick();
 
 		var layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill,
-			ColumnCount = 4,
-			RowCount = 1,
-			Margin = Padding.Empty,
-			Padding = Padding.Empty
+			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
+			Margin = Padding.Empty, Padding = Padding.Empty
 		};
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
@@ -133,21 +135,29 @@ public sealed class ParameterSourceEditor : UserControl {
 		UpdateVisibleControls();
 	}
 
+	private static ComboBox NewCombo(ComboBoxStyle style) =>
+		new() { Dock = DockStyle.Fill, DropDownStyle = style, IntegralHeight = false };
+
 	/// <summary>
-	/// The slot's declared type. Setting it re-derives which kinds are on offer, which is how
-	/// a DoFunction slot list reshapes itself when the selected function changes.
+	/// The slot's declared type. Setting it re-derives which kinds are on offer and rebuilds
+	/// every filtered list, which is how a DoFunction slot reshapes itself when the selected
+	/// function changes.
 	/// </summary>
 	public VmTypeInfo? ExpectedType {
 		get => _expectedType;
 		set {
+			var before = SerializedValue;
 			_expectedType = value;
 			var current = SelectedKind;
-			// The enum list is rebuilt lazily and keyed off the type, so it has to go now or
-			// a re-typed slot would keep offering the previous enum's members.
-			_enum.Items.Clear();
 			PopulateKinds();
 			SelectKind(current);
 			UpdateVisibleControls();
+
+			// Retyping can take the value away — the kind may no longer be offered, or the
+			// message that was selected may no longer be type-compatible. When that happens
+			// the control no longer holds what it was loaded with, so it stops claiming to:
+			// otherwise an untouched slot would keep emitting a value the new type rejects.
+			if (Compose() != before) _dirty = true;
 		}
 	}
 
@@ -172,11 +182,6 @@ public sealed class ParameterSourceEditor : UserControl {
 		set => Load(value);
 	}
 
-	/// <summary>
-	/// Loads a source. <paramref name="rawText"/> preserves the exact original spelling when
-	/// the caller has it — <see cref="ParameterSource.Write"/> is faithful, so passing it is
-	/// only an optimisation, but it also covers sources that failed to parse at load.
-	/// </summary>
 	public void Load(ParameterSource source, string? rawText = null) {
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;
@@ -189,8 +194,8 @@ public sealed class ParameterSourceEditor : UserControl {
 			var kind = KindOf(source);
 			EnsureKindOffered(kind);
 			SelectKind(kind);
-			// Before filling anything in: the enum and scope dropdowns are populated here,
-			// and a selection cannot be restored into a list that does not exist yet.
+			// Before filling anything in: the choice lists are populated here, and a selection
+			// cannot be restored into a list that does not exist yet.
 			UpdateVisibleControls();
 
 			switch (kind) {
@@ -199,13 +204,13 @@ public sealed class ParameterSourceEditor : UserControl {
 					var literal = source.LiteralValue?.Serialize() ?? "";
 					if (source.IsCommaSeparator) literal = literal.Replace('.', ',');
 					_literal.Text = literal;
-					SelectById(_enum, literal);
+					SelectById(_choice, literal);
 					break;
 				case ParameterSourceKind.Message:
-					SelectByTag(_choice, source.MessageReference);
+					SelectById(_choice, source.MessageReference?.Name ?? "");
 					break;
 				case ParameterSourceKind.InputParam:
-					SelectByTag(_choice, source.InputParamReference);
+					SelectById(_choice, source.InputParamReference?.Name ?? "");
 					break;
 				case ParameterSourceKind.LoopIndex:
 				case ParameterSourceKind.LoopElement:
@@ -244,8 +249,8 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Shows a value the parser could not make sense of, verbatim and editable. The slot still
-	/// round-trips unchanged, and switching to any other kind replaces it outright.
+	/// Shows a value the parser could not make sense of, verbatim and editable. Switching to
+	/// any other kind replaces it outright.
 	/// </summary>
 	public void LoadRaw(string text) {
 		var previouslySuppressed = _suppressEvents;
@@ -276,9 +281,7 @@ public sealed class ParameterSourceEditor : UserControl {
 			case ParameterSourceKind.Constant:
 				return "const_" + CurrentLiteral();
 			case ParameterSourceKind.Message:
-				return (_choice.SelectedItem as ChoiceItem)?.Id ?? "";
 			case ParameterSourceKind.InputParam:
-				return (_choice.SelectedItem as ChoiceItem)?.Id ?? "";
 			case ParameterSourceKind.LoopIndex:
 			case ParameterSourceKind.LoopElement:
 				return (_choice.SelectedItem as ChoiceItem)?.Id ?? "";
@@ -299,7 +302,6 @@ public sealed class ParameterSourceEditor : UserControl {
 			case ParameterSourceKind.Hierarchy:
 				return _pickedHierarchy?.Write() ?? "";
 			case ParameterSourceKind.GlobalList:
-				return _literal.Text;
 			case ParameterSourceKind.Raw:
 				return _literal.Text;
 			default:
@@ -307,8 +309,12 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 	}
 
+	/// <summary>Enum and boolean literals are chosen, not typed; everything else is free text.</summary>
 	private string CurrentLiteral() =>
-		_enum.Visible ? (_enum.SelectedItem as ChoiceItem)?.Id ?? "" : _literal.Text;
+		LiteralIsChosen ? (_choice.SelectedItem as ChoiceItem)?.Id ?? "" : _literal.Text;
+
+	private bool LiteralIsChosen =>
+		VmTypeCompatibility.EnumTypeOf(_expectedType) != null || _expectedType?.BaseType == VmType.Boolean;
 
 	private static string SafeWrite(ParameterSource source) {
 		try {
@@ -345,39 +351,39 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	/// <summary>
-	/// The kinds worth offering for the slot's declared type, most apt first. Local variables
-	/// come before literals because a slot that can be filled from scope usually should be,
-	/// and Raw stays last as the escape hatch for values the editor cannot model.
+	/// The kinds that can legally fill this slot, most apt first. A kind is offered only when
+	/// the declared type admits it and — for the scope-backed kinds — only when something of a
+	/// compatible type is actually in scope, so an empty dropdown is never presented.
 	/// </summary>
 	private IEnumerable<ParameterSourceKind> OfferedKinds() {
 		var type = _expectedType;
-		var isRef = IsElementLike(type);
-		var isNumeric = type?.BaseType is VmType.Int32 or VmType.Single or VmType.UInt64;
+		var isRef = VmTypeCompatibility.IsElementLike(type);
+		var isList = type?.BaseType == VmType.List;
+		var isLiteral = VmTypeCompatibility.IsLiteralLike(type);
 		var isUntyped = type == null || type.BaseType == VmType.Unknown;
 
-		// The type-appropriate way to fill the slot leads.
 		if (isRef) {
 			yield return ParameterSourceKind.ObjectRef;
 			yield return ParameterSourceKind.Hierarchy;
-		} else {
-			yield return ParameterSourceKind.Literal;
 		}
+		if (isLiteral) yield return ParameterSourceKind.Literal;
+		if (isList) yield return ParameterSourceKind.GlobalList;
 
-		// Then whatever the action can actually reach, which is usually the right answer and
-		// is offered only where the scope walk found something.
-		if (_scope.Messages.Count > 0) yield return ParameterSourceKind.Message;
-		if (_scope.InputParams.Count > 0) yield return ParameterSourceKind.InputParam;
-		if (_scope.LoopVariables.Any(l => l.IsIndex)) yield return ParameterSourceKind.LoopIndex;
-		if (_scope.LoopVariables.Any(l => !l.IsIndex)) yield return ParameterSourceKind.LoopElement;
+		if (CompatibleMessages().Any()) yield return ParameterSourceKind.Message;
+		if (CompatibleInputParams().Any()) yield return ParameterSourceKind.InputParam;
+		if (CompatibleLoops(true).Any()) yield return ParameterSourceKind.LoopIndex;
+		if (CompatibleLoops(false).Any()) yield return ParameterSourceKind.LoopElement;
 
-		// Parameters can stand in for any slot, so they are always available.
-		yield return ParameterSourceKind.ParameterRef;
+		// A parameter can back any slot as long as its own declared type fits.
+		if (CompatibleParameters().Any()) yield return ParameterSourceKind.ParameterRef;
+		// Resolved by name at runtime, so nothing can be checked here and it always applies.
 		yield return ParameterSourceKind.DynamicParameter;
 
-		if (isRef) yield return ParameterSourceKind.Literal;
-		if (type?.BaseType == VmType.List) yield return ParameterSourceKind.GlobalList;
-		if (isNumeric || isUntyped) yield return ParameterSourceKind.Constant;
-		if (!isRef) {
+		// const_ is an Int32 literal the engine reads only for loop bounds.
+		if (AllowConstant && (isUntyped || type!.BaseType == VmType.Int32))
+			yield return ParameterSourceKind.Constant;
+
+		if (isUntyped && !isRef) {
 			yield return ParameterSourceKind.ObjectRef;
 			yield return ParameterSourceKind.Hierarchy;
 		}
@@ -423,44 +429,93 @@ public sealed class ParameterSourceEditor : UserControl {
 
 	private void UpdateVisibleControls() {
 		var kind = SelectedKind;
-		var enumType = EnumTypeOf(_expectedType);
-		var literalIsEnum = enumType != null && kind == ParameterSourceKind.Literal;
+		var literalIsChosen = LiteralIsChosen && kind == ParameterSourceKind.Literal;
 
-		_literal.Visible = !literalIsEnum && kind is ParameterSourceKind.Literal or ParameterSourceKind.Constant
-			or ParameterSourceKind.GlobalList or ParameterSourceKind.Raw;
-		_enum.Visible = literalIsEnum;
-		_choice.Visible = kind is ParameterSourceKind.Message or ParameterSourceKind.InputParam
+		// Visibility is derived from local booleans rather than read back off the controls:
+		// Control.Visible reports false for anything whose parent chain is not yet shown, so
+		// reading it during construction would leave the dependent controls hidden until the
+		// user happened to change a dropdown.
+		var showLiteral = !literalIsChosen && kind is ParameterSourceKind.Literal
+			or ParameterSourceKind.Constant or ParameterSourceKind.GlobalList or ParameterSourceKind.Raw;
+		var showChoice = literalIsChosen || kind is ParameterSourceKind.Message or ParameterSourceKind.InputParam
 			or ParameterSourceKind.LoopIndex or ParameterSourceKind.LoopElement;
-		_reference.Visible = kind is ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
+		var showReference = kind is ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
 			or ParameterSourceKind.ObjectRef or ParameterSourceKind.Hierarchy;
+		var showExtra = kind == ParameterSourceKind.DynamicParameter;
+		var showGuid = kind == ParameterSourceKind.ObjectRef && SupportsEngineGuid(_expectedType);
 
-		_extra.Visible = kind == ParameterSourceKind.DynamicParameter;
-		_byEngineGuid.Visible = kind == ParameterSourceKind.ObjectRef && SupportsEngineGuid(_expectedType);
-		_extraHost.Visible = _extra.Visible || _byEngineGuid.Visible;
+		_literal.Visible = showLiteral;
+		_choice.Visible = showChoice;
+		_reference.Visible = showReference;
+		_extra.Visible = showExtra;
+		_byEngineGuid.Visible = showGuid;
+		_extraHost.Visible = showExtra || showGuid;
+		_pick.Visible = showReference;
 
-		_pick.Visible = _reference.Visible;
-
-		if (_enum.Visible && _enum.Items.Count == 0) PopulateEnum(enumType!);
-		if (_choice.Visible) PopulateChoices(kind);
+		if (showChoice) PopulateChoices(kind, literalIsChosen);
 
 		_literal.PlaceholderText = kind switch {
 			ParameterSourceKind.GlobalList => "global list name",
 			ParameterSourceKind.Raw => "verbatim value",
 			ParameterSourceKind.Constant => "integer",
-			_ => _expectedType?.Serialize() ?? ""
+			_ => Describe(_expectedType)
 		};
 	}
 
-	private void PopulateEnum(Type enumType) {
+	private static string Describe(VmTypeInfo? type) {
+		try {
+			return type?.Serialize() ?? "";
+		} catch {
+			return "";
+		}
+	}
+
+	private void PopulateChoices(ParameterSourceKind kind, bool literalIsChosen) {
+		var selected = (_choice.SelectedItem as ChoiceItem)?.Id;
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;
 		try {
-			_enum.Items.Clear();
-			foreach (var value in Enum.GetValues(enumType).Cast<Enum>())
-				_enum.Items.Add(new ChoiceItem(SerializeEnum(value), value.ToString()));
+			_choice.Items.Clear();
+
+			if (literalIsChosen) {
+				foreach (var (id, label) in LiteralChoices())
+					_choice.Items.Add(new ChoiceItem(id, label));
+			} else {
+				switch (kind) {
+					case ParameterSourceKind.Message:
+						foreach (var message in CompatibleMessages())
+							_choice.Items.Add(new ChoiceItem(message.Name,
+								$"{message.ParamName}   [{message.Type}]   ← {message.Event.Name}"));
+						break;
+					case ParameterSourceKind.InputParam:
+						foreach (var inputParam in CompatibleInputParams())
+							_choice.Items.Add(new ChoiceItem(inputParam.Name,
+								$"{inputParam.ParamName}   [{inputParam.Type}]   ← {inputParam.Graph.Name}"));
+						break;
+					case ParameterSourceKind.LoopIndex:
+						foreach (var loop in CompatibleLoops(true))
+							_choice.Items.Add(new ChoiceItem(loop.ParamId, $"index of {loop.ActionLine.Name}"));
+						break;
+					case ParameterSourceKind.LoopElement:
+						foreach (var loop in CompatibleLoops(false))
+							_choice.Items.Add(new ChoiceItem(loop.ParamId,
+								$"element of {loop.ListName} in {loop.ActionLine.Name}"));
+						break;
+				}
+			}
+
+			if (selected != null) SelectById(_choice, selected);
+			if (_choice.SelectedIndex < 0 && _choice.Items.Count > 0) _choice.SelectedIndex = 0;
 		} finally {
 			_suppressEvents = previouslySuppressed;
 		}
+	}
+
+	private IEnumerable<(string Id, string Label)> LiteralChoices() {
+		var enumType = VmTypeCompatibility.EnumTypeOf(_expectedType);
+		if (enumType != null)
+			return Enum.GetValues(enumType).Cast<Enum>().Select(v => (SerializeEnum(v), v.ToString()));
+		return [("True", "True"), ("False", "False")];
 	}
 
 	private static string SerializeEnum(Enum value) {
@@ -471,71 +526,38 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 	}
 
-	private void PopulateChoices(ParameterSourceKind kind) {
-		var selected = (_choice.SelectedItem as ChoiceItem)?.Id;
-		var previouslySuppressed = _suppressEvents;
-		_suppressEvents = true;
-		try {
-			_choice.Items.Clear();
-			switch (kind) {
-				case ParameterSourceKind.Message:
-					foreach (var message in OrderByTypeFit(_scope.Messages, m => m.Type))
-						_choice.Items.Add(new ChoiceItem(message.Name,
-							$"{message.ParamName}   [{message.Type}]   ← {message.Event.Name}", message));
-					break;
-				case ParameterSourceKind.InputParam:
-					foreach (var inputParam in OrderByTypeFit(_scope.InputParams, p => p.Type))
-						_choice.Items.Add(new ChoiceItem(inputParam.Name,
-							$"{inputParam.ParamName}   [{inputParam.Type}]   ← {inputParam.Graph.Name}", inputParam));
-					break;
-				case ParameterSourceKind.LoopIndex:
-					foreach (var loop in _scope.LoopVariables.Where(l => l.IsIndex))
-						_choice.Items.Add(new ChoiceItem(loop.ParamId, $"index of {loop.ActionLine.Name}", loop));
-					break;
-				case ParameterSourceKind.LoopElement:
-					foreach (var loop in _scope.LoopVariables.Where(l => !l.IsIndex))
-						_choice.Items.Add(new ChoiceItem(loop.ParamId,
-							$"element of {loop.ListName} in {loop.ActionLine.Name}", loop));
-					break;
-			}
+	// ---------------------------------------------------------------- filtered candidates
 
-			if (selected != null) SelectById(_choice, selected);
-			if (_choice.SelectedIndex < 0 && _choice.Items.Count > 0) _choice.SelectedIndex = 0;
-		} finally {
-			_suppressEvents = previouslySuppressed;
-		}
-	}
+	private IEnumerable<Message> CompatibleMessages() =>
+		_scope.Messages.Where(m => VmTypeCompatibility.Accepts(_expectedType, m.Type, _vm));
+
+	private IEnumerable<InputParameter> CompatibleInputParams() =>
+		_scope.InputParams.Where(p => VmTypeCompatibility.Accepts(_expectedType, p.Type, _vm));
 
 	/// <summary>
-	/// Everything in scope stays selectable; the ones whose declared type matches the slot
-	/// simply come first. Type agreement here is a hint — the engine coerces freely — so it
-	/// orders the list rather than censoring it.
+	/// A loop index is an Int32 and a loop element is an object; both are fixed by the loop
+	/// construct rather than declared anywhere, so they are typed here.
 	/// </summary>
-	private IEnumerable<T> OrderByTypeFit<T>(IEnumerable<T> items, Func<T, string> typeOf) {
-		var expected = _expectedType;
-		if (expected == null || expected.BaseType == VmType.Unknown) return items;
-		return items.OrderByDescending(i => Fits(typeOf(i), expected)).ToList();
-	}
+	private IEnumerable<LoopParameter> CompatibleLoops(bool index) =>
+		_scope.LoopVariables.Where(l => l.IsIndex == index &&
+			VmTypeCompatibility.Accepts(_expectedType, index ? VmTypeInfo.Int32 : VmTypeInfo.GameObject));
 
-	private bool Fits(string xmlType, VmTypeInfo expected) {
-		try {
-			return VmTypeHelper.GetVmTypeInfo(xmlType, _vm).BaseType == expected.BaseType;
-		} catch {
-			return false;
-		}
-	}
+	private IEnumerable<Parameter> CompatibleParameters() =>
+		_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.Accepts(_expectedType, p.Type, _vm));
 
 	// ---------------------------------------------------------------- picking
 
 	private void Pick() {
 		switch (SelectedKind) {
 			case ParameterSourceKind.ParameterRef:
-				PickElement("Select parameter", _vm.GetElementsByType<Parameter>());
+				PickElement("Select parameter", CompatibleParameters());
 				break;
 			case ParameterSourceKind.DynamicParameter:
 				// The prefix names an object-valued parameter; the text box names the
 				// parameter to read off whatever object it points at.
-				PickElement("Select object parameter", _vm.GetElementsByType<Parameter>());
+				PickElement("Select object parameter",
+					_vm.GetElementsByType<Parameter>()
+						.Where(p => VmTypeCompatibility.Accepts(VmTypeInfo.GameObject, p.Type, _vm)));
 				break;
 			case ParameterSourceKind.ObjectRef:
 				PickElement("Select object", ObjectCandidates());
@@ -581,9 +603,8 @@ public sealed class ParameterSourceEditor : UserControl {
 		if (path.Count == 0) path.Add(leaf.Id);
 
 		// A single-element path is not a hierarchy — LooksLikeHierarchy needs a separator —
-		// so it is emitted as "<id>H<id>" only when there really is a chain.
-		var text = string.Join("H", path);
-		if (path.Count == 1) text = $"{path[0]}H{path[0]}";
+		// so it is doubled to keep the spelling parseable.
+		var text = path.Count == 1 ? $"{path[0]}H{path[0]}" : string.Join("H", path);
 
 		HierarchyGuid.TryParse(text, _vm, out _pickedHierarchy);
 		_reference.Text = DescribeHierarchy(_pickedHierarchy);
@@ -610,34 +631,10 @@ public sealed class ParameterSourceEditor : UserControl {
 	private static bool SupportsEngineGuid(VmTypeInfo? type) =>
 		type?.BaseType is VmType.BlueprintRef or VmType.BlueprintRefStorable or VmType.EntityRef;
 
-	private static bool IsElementLike(VmTypeInfo? type) {
-		if (type == null) return false;
-		if (type.BaseType is VmType.GameObject or VmType.EntityRef or VmType.BlueprintRef
-			or VmType.BlueprintRefStorable)
-			return true;
-		var systemType = VmTypeHelper.GetSystemType(type.BaseType);
-		return systemType != null && typeof(VmElement).IsAssignableFrom(systemType);
-	}
-
-	private static Type? EnumTypeOf(VmTypeInfo? type) {
-		if (type == null) return null;
-		var systemType = VmTypeHelper.GetSystemType(type.BaseType);
-		return systemType is { IsEnum: true } ? systemType : null;
-	}
-
 	private static void SelectById(ComboBox box, string id) {
+		if (string.IsNullOrEmpty(id)) return;
 		for (var i = 0; i < box.Items.Count; i++) {
 			if (box.Items[i] is ChoiceItem item && item.Id == id) {
-				box.SelectedIndex = i;
-				return;
-			}
-		}
-	}
-
-	private static void SelectByTag(ComboBox box, object? tag) {
-		if (tag == null) return;
-		for (var i = 0; i < box.Items.Count; i++) {
-			if (box.Items[i] is ChoiceItem item && Equals(item.Tag, tag)) {
 				box.SelectedIndex = i;
 				return;
 			}
@@ -680,9 +677,8 @@ public sealed class ParameterSourceEditor : UserControl {
 		};
 	}
 
-	private sealed class ChoiceItem(string id, string label, object? tag = null) {
+	private sealed class ChoiceItem(string id, string label) {
 		public string Id { get; } = id;
-		public object? Tag { get; } = tag;
 		public override string ToString() => label;
 	}
 }

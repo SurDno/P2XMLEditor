@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
@@ -199,4 +200,20 @@ public sealed class ActionScope {
 	/// </summary>
 	public static IEnumerable<Event> RaisableEvents(ParameterHolder? target, VirtualMachine vm) =>
 		target == null ? [] : EventAccessibilityUtility.GetAccessibleEvents(target, vm);
+
+	/// <summary>
+	/// Names of every functional component the object has, its inherited ones included. This
+	/// is what decides which functions can be called on it: a function is named
+	/// "&lt;Component&gt;.&lt;Method&gt;" and every one of the 29 prefixes is a component name.
+	/// </summary>
+	public static IReadOnlySet<string> ComponentsOf(ParameterHolder? target) {
+		var names = new HashSet<string>(StringComparer.Ordinal);
+		for (var guard = 0; guard < 32 && target != null; guard++) {
+			foreach (var component in target.FunctionalComponents ?? [])
+				if (!string.IsNullOrEmpty(component.Name))
+					names.Add(component.Name);
+			target = target.Parent;
+		}
+		return names;
+	}
 }
