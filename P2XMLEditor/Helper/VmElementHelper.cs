@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 namespace P2XMLEditor.Helper;
 

@@ -10,8 +10,10 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
+using Message = P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Message;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
 
