@@ -13,11 +13,12 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 
 /// <summary>
 /// Picks the parameter an action writes to — either a concrete <see cref="Parameter"/> or a
-/// "Component.Param" standard slot resolved by name on whatever the target object turns out
-/// to be.
+/// dynamic name resolved on whatever the target object turns out to be.
 ///
-/// Both are dropdowns: the target object is already known, so its parameters are a short list
-/// rather than something to go hunting for in the 59500 the data holds.
+/// Which of the two is on offer follows the target object, and normally the parameters are a
+/// dropdown of what that object declares rather than a hunt through the 59500 the data holds.
+/// The exception is a target decided at runtime, where there is no object to list and the full
+/// picker comes back.
 ///
 /// <see cref="ResolvedType"/> is the reason this control matters beyond its own value: it is
 /// the declared type of the destination, and the source editor next to it takes that as its
@@ -34,8 +35,10 @@ public sealed class ParamTargetEditor : UserControl {
 	private readonly ComboBox _componentParam;
 	private readonly ComboBox _parameter;
 	private readonly Label _hint;
+	private readonly Button _pick;
 
 	private ParameterHolder? _context;
+	private ParamTargetKind? _storedKind;
 	private Parameter? _storedParameter;
 	private string? _storedParameterId;
 	private string _originalText = "%";
@@ -79,48 +82,97 @@ public sealed class ParamTargetEditor : UserControl {
 			Text = "Select a target object first."
 		};
 
-		_valueHost = new Panel { Dock = DockStyle.Fill };
+		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_parameter, _componentParam, _hint]);
 
+		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
+		_pick.Click += (_, _) => PickParameter();
+
 		var layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1,
+			Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		layout.Controls.Add(_kind, 0, 0);
 		layout.Controls.Add(_valueHost, 1, 0);
+		layout.Controls.Add(_pick, 2, 0);
 
 		Controls.Add(layout);
 		PopulateKinds();
 		UpdateVisibleControls();
 	}
 
-	/// <summary>
-	/// Which kinds of target make sense for the object currently selected.
-	///
-	/// A concrete parameter id only resolves when the object is known while authoring. If the
-	/// target object is a parameter, a message or a loop variable, which object it will be is
-	/// decided at runtime, and a parameter id picked here would belong to some other object —
-	/// so the only thing that can name a slot on it is Component.Param, resolved by name.
-	/// </summary>
 	private void PopulateKinds() {
 		var current = SelectedKind;
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;
 		try {
+			var offered = OfferedKinds().ToList();
 			_kind.Items.Clear();
-			_kind.Items.Add(new KindItem(ParamTargetKind.Empty));
-			if (_targetHolder() != null || _storedParameterId != null)
-				_kind.Items.Add(new KindItem(ParamTargetKind.Parameter));
-			_kind.Items.Add(new KindItem(ParamTargetKind.ComponentParam));
+			foreach (var kind in offered)
+				_kind.Items.Add(new KindItem(kind));
+
+			// Whatever the action already says stays selectable, so merely opening and saving
+			// cannot move the target. That covers the empty spelling too: 53 actions across the
+			// two corpora write a bare "%" here, which is not something to author but is
+			// something to preserve.
+			if (_storedKind is { } stored && !offered.Contains(stored))
+				_kind.Items.Insert(0, new KindItem(stored));
 
 			SelectKind(current);
 			if (_kind.SelectedIndex < 0) _kind.SelectedIndex = 0;
 		} finally {
 			_suppressEvents = previouslySuppressed;
 		}
+	}
+
+	/// <summary>
+	/// Which kinds of target make sense for the object currently selected.
+	///
+	/// A concrete object has known parameters, so the target is one of them by id — across
+	/// both corpora a holder or hierarchy target never once uses a dynamic name.
+	///
+	/// When the object is decided at runtime a name resolved on it is the form that is
+	/// obviously safe, so it leads. An id is still offered because the data leans on it
+	/// heavily: a parameter-ref target writes one 703 times against 66 dynamic names, so
+	/// refusing it would make those actions uneditable in the shape they are already in.
+	/// </summary>
+	private IEnumerable<ParamTargetKind> OfferedKinds() {
+		if (_targetHolder() != null) {
+			yield return ParamTargetKind.Parameter;
+			yield break;
+		}
+
+		yield return ParamTargetKind.ComponentParam;
+		yield return ParamTargetKind.Parameter;
+	}
+
+	/// <summary>
+	/// Full parameter picker, for the one case the dropdown cannot serve: the target object is
+	/// decided at runtime, so there is no object whose parameters could be listed.
+	/// </summary>
+	private void PickParameter() {
+		if (!VmElementPicker.TryPick(FindForm(), "Select parameter", _vm.GetElementsByType<Parameter>(),
+				VmElementPicker.Describe, _storedParameter, out var picked))
+			return;
+
+		_storedParameter = picked as Parameter;
+		_storedParameterId = _storedParameter?.Id.ToString();
+
+		// PopulateParameters prefers the current selection over the stored id when deciding what
+		// to restore, so the stale one has to go or the pick is ignored.
+		var previouslySuppressed = _suppressEvents;
+		_suppressEvents = true;
+		try {
+			_parameter.SelectedIndex = -1;
+		} finally {
+			_suppressEvents = previouslySuppressed;
+		}
+
+		OnUserEdit(UpdateVisibleControls);
 	}
 
 	public string SerializedValue => _dirty ? Compose() : _originalText;
@@ -176,6 +228,7 @@ public sealed class ParamTargetEditor : UserControl {
 			// in the list, so opening and saving never silently moves the target.
 			_storedParameter = target.Parameter?.Element as Parameter;
 			_storedParameterId = target.Parameter?.Id.ToString();
+			_storedKind = target.Kind;
 
 			// After the stored id is known: a stored parameter keeps its kind selectable even
 			// where the target object no longer resolves, so opening and saving cannot move it.
@@ -248,6 +301,7 @@ public sealed class ParamTargetEditor : UserControl {
 
 		if (wantsParameter) PopulateParameters(holder);
 		if (wantsComponent) PopulateComponentParams(holder);
+		_pick.Visible = wantsParameter && holder == null;
 
 		// Derived from local state, never read back off Control.Visible, which reports false
 		// for anything whose parent chain is not shown yet — reading it during construction
@@ -257,7 +311,7 @@ public sealed class ParamTargetEditor : UserControl {
 		_componentParam.Visible = wantsComponent;
 		_hint.Visible = wantsParameter && !hasParameters;
 		_hint.Text = _targetHolder() == null
-			? "Target object is only known at runtime — use Component.Param."
+			? "Target object is only known at runtime — pick the parameter directly."
 			: "Target object has no parameters.";
 	}
 
@@ -348,7 +402,7 @@ public sealed class ParamTargetEditor : UserControl {
 		public override string ToString() => Kind switch {
 			ParamTargetKind.Empty => "(none)",
 			ParamTargetKind.Parameter => "Parameter",
-			ParamTargetKind.ComponentParam => "Component.Param",
+			ParamTargetKind.ComponentParam => "Dynamic parameter",
 			_ => Kind.ToString()
 		};
 	}

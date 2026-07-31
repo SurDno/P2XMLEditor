@@ -696,7 +696,7 @@ public sealed class ParameterSourceEditor : UserControl {
 			ParameterSourceKind.LoopIndex => "Loop index",
 			ParameterSourceKind.LoopElement => "Loop element",
 			ParameterSourceKind.ParameterRef => "Parameter",
-			ParameterSourceKind.DynamicParameter => "Parameter by name on object",
+			ParameterSourceKind.DynamicParameter => "Dynamic parameter",
 			ParameterSourceKind.ObjectRef => "Object reference",
 			ParameterSourceKind.Hierarchy => "Scene hierarchy",
 			ParameterSourceKind.GlobalList => "Global list",

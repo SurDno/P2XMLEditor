@@ -40,6 +40,7 @@ public sealed class ActionEditorForm : Form {
 	private readonly VirtualMachine _vm;
 	private readonly VmAction _action;
 	private readonly ActionScope _scope;
+	private readonly Expression? _originalExpression;
 
 	private readonly TableLayoutPanel _root;
 	private readonly Dictionary<ActionType, RadioButton> _typeButtons = [];
@@ -78,6 +79,7 @@ public sealed class ActionEditorForm : Form {
 		_vm = vm;
 		_action = action;
 		_scope = ActionScope.For(action, vm);
+		_originalExpression = action.SourceExpression;
 
 		Text = $"Action {action.Id}   —   {ContextDescription()}";
 		Size = new Size(1140, 800);
@@ -277,6 +279,9 @@ public sealed class ActionEditorForm : Form {
 			_mathOperation.SelectedItem = _action.MathOperationType;
 
 			_targetObject.Load(_action.TargetObject);
+			// A DoFunction action loads its TargetParam into the result editor instead, so the
+			// param editor never hears about the target object unless it is told.
+			_targetParam.RefreshForTarget();
 
 			// TargetParam is one field with two meanings: for a function call it is where the
 			// result goes, resolved against the local context's owner rather than the target.
@@ -440,6 +445,9 @@ public sealed class ActionEditorForm : Form {
 	private void OnActionTypeChanged(ActionType type) {
 		_selectedType = type;
 		if (_loading) return;
+		// Switching away from a function call reveals the target-param row, whose kinds are
+		// derived from the target object; it has to re-derive them before being shown.
+		_targetParam.RefreshForTarget();
 		RefreshCallee(preserveSelection: false);
 		BuildSlots(null);
 		UpdateRowVisibility();
@@ -809,6 +817,24 @@ public sealed class ActionEditorForm : Form {
 		if (_action.SourceExpression == null) return;
 		_vm.RemoveElement(_action.SourceExpression);
 		_action.SourceExpression = null;
+	}
+
+	/// <summary>
+	/// Everything else on the action is written in Save, but an expression has to exist before
+	/// the expression editor can be opened on it, so it is created against the live machine
+	/// mid-edit. Cancelling has to take that back — otherwise dismissing the form still leaves
+	/// a new Expression registered and a SourceExpression on the action.
+	///
+	/// Edits made to an expression the action already had are not rolled back: the expression
+	/// editor writes through to the same objects, and undoing that needs a general undo rather
+	/// than a special case here.
+	/// </summary>
+	protected override void OnFormClosed(FormClosedEventArgs e) {
+		if (DialogResult != DialogResult.OK && !ReferenceEquals(_action.SourceExpression, _originalExpression)) {
+			if (_action.SourceExpression != null) _vm.RemoveElement(_action.SourceExpression);
+			_action.SourceExpression = _originalExpression;
+		}
+		base.OnFormClosed(e);
 	}
 
 	protected override void Dispose(bool disposing) {
