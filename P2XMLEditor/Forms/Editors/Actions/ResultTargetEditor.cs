@@ -8,6 +8,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
 
@@ -234,7 +235,7 @@ public sealed class ResultTargetEditor : UserControl {
 
 	private void PickObject() {
 		if (!VmElementPicker.TryPick(FindForm(), "Select the object holding the result parameter",
-				_vm.GetElementsByType<ParameterHolder>(), VmElementPicker.Describe, _object, out var picked))
+				_vm.AllParameterHolders(), VmElementPicker.Describe, _object, out var picked))
 			return;
 
 		var chosen = picked as ParameterHolder ?? _scope.Owner;

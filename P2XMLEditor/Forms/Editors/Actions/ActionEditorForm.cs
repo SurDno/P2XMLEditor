@@ -53,7 +53,6 @@ public sealed class ActionEditorForm : Form {
 	private readonly Label _calleeLabel;
 	private readonly ComboBox _callee;
 	private readonly Label _returnType;
-	private readonly CheckBox _allCallees;
 	private readonly TableLayoutPanel _slots;
 	private readonly Panel _expressionPanel;
 	private readonly Label _resultLabel;
@@ -132,18 +131,13 @@ public sealed class ActionEditorForm : Form {
 			ForeColor = SystemColors.GrayText, Margin = new Padding(8, 2, 0, 2)
 		};
 
-		_allCallees = new CheckBox { Text = "show all", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(8, 8, 0, 0) };
-		_allCallees.CheckedChanged += (_, _) => RefreshCallee();
-
 		var calleeRow = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1, Margin = Padding.Empty, Padding = Padding.Empty
+			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 210));
-		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 230));
 		calleeRow.Controls.Add(_callee, 0, 0);
 		calleeRow.Controls.Add(_returnType, 1, 0);
-		calleeRow.Controls.Add(_allCallees, 2, 0);
 
 		_slots = new TableLayoutPanel {
 			Dock = DockStyle.Fill, ColumnCount = 2, AutoScroll = true, Margin = new Padding(0, 6, 0, 6),
@@ -355,16 +349,17 @@ public sealed class ActionEditorForm : Form {
 	/// full list is the only honest answer.
 	/// </summary>
 	private IEnumerable<string> CallableFunctions() {
-		if (_allCallees.Checked) return FunctionSignature.AvailableNames;
-
-		var components = ActionScope.ComponentsOf(_targetObject.ResolvedHolder);
-		if (components.Count == 0) return FunctionSignature.AvailableNames;
-		return FunctionSignature.NamesForComponents(components);
+		var components = _targetObject.ResolvedComponents;
+		// Null means the target is only known at runtime and nothing declares what it is; an
+		// empty set means it is known and has no components, which is a real answer.
+		return components == null
+			? FunctionSignature.AvailableNames
+			: FunctionSignature.NamesForComponents(components);
 	}
 
 	private IEnumerable<Event> RaisableEvents() {
 		var holder = _targetObject.ResolvedHolder;
-		if (_allCallees.Checked || holder == null)
+		if (holder == null)
 			return _vm.GetElementsByType<Event>().OrderBy(e => e.Name, StringComparer.Ordinal);
 		return ActionScope.RaisableEvents(holder, _vm).OrderBy(e => e.Name, StringComparer.Ordinal);
 	}

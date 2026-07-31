@@ -7,6 +7,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
 
@@ -99,6 +100,19 @@ public sealed class TargetObjectEditor : UserControl {
 		get {
 			try {
 				return TargetObject.Read(SerializedValue, _vm, _scope.LocalContext).ResolvedHolder;
+			} catch {
+				return null;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Components callable on the current target, or null when nothing constrains it.
+	/// </summary>
+	public IReadOnlySet<string>? ResolvedComponents {
+		get {
+			try {
+				return ActionScope.ComponentsOfTarget(Value, _vm);
 			} catch {
 				return null;
 			}
@@ -278,11 +292,13 @@ public sealed class TargetObjectEditor : UserControl {
 	private void Pick() {
 		switch (SelectedKind) {
 			case TargetObjectKind.Holder:
-				PickElement("Select object", _vm.GetElementsByType<ParameterHolder>());
+				PickElement("Select object", _vm.AllParameterHolders());
 				break;
 			case TargetObjectKind.ParameterRef:
-				// An IObjRef-valued parameter: the action runs against whatever it points at.
-				PickElement("Select object parameter", _vm.GetElementsByType<Parameter>());
+				// The action runs against whatever the parameter points at, so only a
+				// parameter that actually holds an object reference can stand here.
+				PickElement("Select object parameter",
+					_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case TargetObjectKind.Hierarchy:
 				PickHierarchy();
@@ -300,7 +316,8 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	private void PickHierarchy() {
-		var candidates = _vm.GetElementsByType<ParameterHolder>().Where(h => h is Scene or Geom or Other or Item);
+		// A hierarchy path is made of nested scene objects: HierarchyGuid holds exactly these.
+		var candidates = _vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
 		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", candidates, VmElementPicker.Describe,
 				_pickedHierarchy?.Elements[^1].Element, out var leaf))
 			return;

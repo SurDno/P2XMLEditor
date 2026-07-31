@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
+using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.Helper;
 using VmAction = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;
@@ -202,18 +204,90 @@ public sealed class ActionScope {
 		target == null ? [] : EventAccessibilityUtility.GetAccessibleEvents(target, vm);
 
 	/// <summary>
-	/// Names of every functional component the object has, its inherited ones included. This
-	/// is what decides which functions can be called on it: a function is named
-	/// "&lt;Component&gt;.&lt;Method&gt;" and every one of the 29 prefixes is a component name.
+	/// Names of every functional component the object has. This is what decides which
+	/// functions can be called on it: a function is named "&lt;Component&gt;.&lt;Method&gt;"
+	/// and every one of the 29 prefixes is a component name.
+	///
+	/// The walk follows InheritanceInfo — the prototype an object was derived from — and
+	/// emphatically not Parent, which is scene nesting. Every object's Parent chain ends at
+	/// the GameRoot, so walking it hands all 7291 holders the global managers and the filter
+	/// degenerates to no filter at all. Following inheritance instead, GlobalStorageManager
+	/// belongs to exactly one holder, and the rule still covers all 10632 DoFunction calls in
+	/// PathologicSandbox whose target resolves (own components alone miss one).
 	/// </summary>
-	public static IReadOnlySet<string> ComponentsOf(ParameterHolder? target) {
+	public static IReadOnlySet<string> ComponentsOf(ParameterHolder? target, VirtualMachine vm) {
 		var names = new HashSet<string>(StringComparer.Ordinal);
-		for (var guard = 0; guard < 32 && target != null; guard++) {
-			foreach (var component in target.FunctionalComponents ?? [])
+		if (target == null) return names;
+
+		var visited = new HashSet<ParameterHolder>();
+		var pending = new Stack<ParameterHolder>();
+		pending.Push(target);
+
+		while (pending.Count > 0) {
+			var holder = pending.Pop();
+			if (!visited.Add(holder)) continue;
+
+			foreach (var component in holder.FunctionalComponents ?? [])
 				if (!string.IsNullOrEmpty(component.Name))
 					names.Add(component.Name);
-			target = target.Parent;
+
+			foreach (var prototype in holder.InheritanceInfo ?? [])
+				if (ulong.TryParse(prototype, out var id) &&
+					vm.GetNullableElement<ParameterHolder>(id) is { } inherited)
+					pending.Push(inherited);
 		}
+
 		return names;
+	}
+
+	/// <summary>
+	/// Components callable on whatever the action targets, or null when the target is only
+	/// known at runtime and nothing constrains it.
+	///
+	/// A target that is not a concrete object still usually carries a type: a parameter or
+	/// message declared "IObjRef%cf_Controller" promises a Controller, and that promise is
+	/// the only thing the editor can honestly filter on.
+	/// </summary>
+	public static IReadOnlySet<string>? ComponentsOfTarget(TargetObject target, VirtualMachine vm) {
+		if (target.ResolvedHolder is { } holder) return ComponentsOf(holder, vm);
+
+		return target.Kind switch {
+			TargetObjectKind.ParameterRef => ComponentsOfDeclaredType(target.ParameterRef?.Type, vm),
+			TargetObjectKind.Message => ComponentsOfDeclaredType(target.Message?.Type, vm),
+			TargetObjectKind.InputParam => ComponentsOfDeclaredType(target.InputParam?.Type, vm),
+			_ => null
+		};
+	}
+
+	private static IReadOnlySet<string>? ComponentsOfDeclaredType(string? xmlType, VirtualMachine vm) {
+		if (string.IsNullOrEmpty(xmlType)) return null;
+
+		VmTypeInfo info;
+		try {
+			info = VmTypeHelper.GetVmTypeInfo(xmlType, vm);
+		} catch {
+			return null;
+		}
+
+		if (info.BaseType != VmType.GameObject) return null;
+		// "IObjRef%cf_<id>" pins the target to one object, so its own components are the answer.
+		if (info.ObjBlueprint != null) return ComponentsOf(info.ObjBlueprint, vm);
+		// A bare IObjRef promises nothing; there is nothing to filter on.
+		if (info.RequiredComponents.IsEmpty) return null;
+
+		var names = new HashSet<string>(StringComparer.Ordinal);
+		foreach (var component in RequiredComponents(info.RequiredComponents))
+			names.Add(VmTypeHelper.SerializeComponent(component));
+		return names;
+	}
+
+	private static IEnumerable<VmComponent> RequiredComponents(VmComponentMask mask) {
+		if (!mask.IsOrdered) return mask.CustomOrder ?? [];
+
+		var components = new List<VmComponent>();
+		foreach (var component in Enum.GetValues<VmComponent>())
+			if (component != VmComponent.None && (mask.Mask & component) != VmComponent.None)
+				components.Add(component);
+		return components;
 	}
 }

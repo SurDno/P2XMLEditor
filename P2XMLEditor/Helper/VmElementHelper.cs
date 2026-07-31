@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 
 namespace P2XMLEditor.Helper;
 
@@ -104,6 +106,18 @@ public static class VmElementExtensions {
 
 		return new(el);
 	}
+
+	/// <summary>
+	/// Every parameter holder in the machine, whatever its concrete type.
+	///
+	/// GetElementsByType reads buckets the reader fills by hand, one Add call per type per
+	/// element, so a subclass added later reaches the ParameterHolder bucket only if someone
+	/// remembers to write that line. A selector that must not miss a kind of object scans
+	/// instead — one pass, and it cannot fall out of date. Placeholders are excluded: they
+	/// stand in for elements the data references but does not define.
+	/// </summary>
+	public static IEnumerable<ParameterHolder> AllParameterHolders(this VirtualMachine vm) =>
+		vm.ElementsById.Values.OfType<ParameterHolder>().Where(h => h is not IPlaceholder);
 
 	public static VmElement? GetNullableElement(this VirtualMachine vm, ulong id) {
 		vm.ElementsById.TryGetValue(id, out var el);

@@ -297,7 +297,7 @@ public sealed class ParamTargetEditor : UserControl {
 		if (holder?.StandartParams is { Count: > 0 })
 			return holder.StandartParams.Keys.OrderBy(k => k, StringComparer.Ordinal);
 
-		return _vm.GetElementsByType<ParameterHolder>()
+		return _vm.AllParameterHolders()
 			.SelectMany(h => h.StandartParams?.Keys ?? Enumerable.Empty<string>())
 			.Distinct(StringComparer.Ordinal)
 			.OrderBy(k => k, StringComparer.Ordinal)

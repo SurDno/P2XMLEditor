@@ -8,6 +8,7 @@ using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Logging;
@@ -556,8 +557,7 @@ public sealed class ParameterSourceEditor : UserControl {
 				// The prefix names an object-valued parameter; the text box names the
 				// parameter to read off whatever object it points at.
 				PickElement("Select object parameter",
-					_vm.GetElementsByType<Parameter>()
-						.Where(p => VmTypeCompatibility.Accepts(VmTypeInfo.GameObject, p.Type, _vm)));
+					_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case ParameterSourceKind.ObjectRef:
 				PickElement("Select object", ObjectCandidates());
@@ -614,17 +614,19 @@ public sealed class ParameterSourceEditor : UserControl {
 	private IEnumerable<VmElement> ObjectCandidates() {
 		var type = _expectedType;
 		if (type?.BaseType is VmType.BlueprintRef or VmType.BlueprintRefStorable)
-			return _vm.GetElementsByType<GameObject>().Where(o => o is Item or Other or Character);
+			// BlueprintRef.Element is a VmEither<Item, Other, Character>; nothing else fits.
+			return _vm.AllParameterHolders().Where(o => o is Item or Other or Character);
 
 		var systemType = type == null ? null : VmTypeHelper.GetSystemType(type.BaseType);
 		if (systemType != null && typeof(VmElement).IsAssignableFrom(systemType) && systemType != typeof(GameObject))
-			return _vm.ElementsById.Values.Where(element => systemType.IsInstanceOfType(element));
+			return _vm.ElementsById.Values
+				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder);
 
-		return _vm.GetElementsByType<ParameterHolder>();
+		return _vm.AllParameterHolders();
 	}
 
 	private IEnumerable<VmElement> HierarchyCandidates() =>
-		_vm.GetElementsByType<ParameterHolder>().Where(h => h is Scene or Geom or Other or Item);
+		_vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
 
 	// ---------------------------------------------------------------- helpers
 

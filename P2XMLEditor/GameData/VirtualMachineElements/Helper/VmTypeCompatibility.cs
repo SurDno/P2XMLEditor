@@ -50,6 +50,21 @@ public static class VmTypeCompatibility {
 		}
 	}
 
+	/// <summary>
+	/// True when a parameter's declared type really is an object reference. Unlike
+	/// <see cref="Accepts(VmTypeInfo?, string?, Core.VirtualMachine)"/> this does not give an
+	/// unresolvable type the benefit of the doubt: it backs the pickers that offer "the object
+	/// held by this parameter", where anything that is not an IObjRef cannot hold one.
+	/// </summary>
+	public static bool IsObjectValued(string? declaredXmlType, Core.VirtualMachine vm) {
+		if (string.IsNullOrEmpty(declaredXmlType)) return false;
+		try {
+			return VmTypeHelper.GetVmTypeInfo(declaredXmlType, vm).BaseType == VmType.GameObject;
+		} catch {
+			return false;
+		}
+	}
+
 	/// <summary>True for slots that hold a reference to a VM element rather than a value.</summary>
 	public static bool IsElementLike(VmTypeInfo? type) {
 		if (type == null) return false;
