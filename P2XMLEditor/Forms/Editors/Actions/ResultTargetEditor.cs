@@ -76,7 +76,7 @@ public sealed class ResultTargetEditor : UserControl {
 			ForeColor = System.Drawing.SystemColors.GrayText
 		};
 
-		_parameterHost = new Panel { Dock = DockStyle.Fill };
+		_parameterHost = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty };
 		_parameterHost.Controls.AddRange([_parameter, _hint]);
 
 		var layout = new TableLayoutPanel {
@@ -213,10 +213,13 @@ public sealed class ResultTargetEditor : UserControl {
 		}
 	}
 
-	private IEnumerable<Parameter> CompatibleParameters() {
-		if (_object == null) return [];
-		var standart = _object.StandartParams ?? new Dictionary<string, Parameter>();
-		var custom = _object.CustomParams ?? new Dictionary<string, Parameter>();
+	private bool HasCompatibleParameter(ParameterHolder holder) => ParametersOf(holder).Any();
+
+	private IEnumerable<Parameter> CompatibleParameters() => _object == null ? [] : ParametersOf(_object);
+
+	private IEnumerable<Parameter> ParametersOf(ParameterHolder holder) {
+		var standart = holder.StandartParams ?? new Dictionary<string, Parameter>();
+		var custom = holder.CustomParams ?? new Dictionary<string, Parameter>();
 		return standart.Concat(custom)
 			.Where(kvp => kvp.Value != null)
 			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
@@ -234,8 +237,11 @@ public sealed class ResultTargetEditor : UserControl {
 	}
 
 	private void PickObject() {
+		// Offering an object with no parameter of the return type would only let the user pick
+		// a destination that immediately reports it has nowhere to store anything.
+		var candidates = _vm.AllParameterHolders().Where(HasCompatibleParameter);
 		if (!VmElementPicker.TryPick(FindForm(), "Select the object holding the result parameter",
-				_vm.AllParameterHolders(), VmElementPicker.Describe, _object, out var picked))
+				candidates, VmElementPicker.Describe, _object, out var picked))
 			return;
 
 		var chosen = picked as ParameterHolder ?? _scope.Owner;

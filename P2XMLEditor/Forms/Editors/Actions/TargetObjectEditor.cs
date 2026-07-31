@@ -63,7 +63,7 @@ public sealed class TargetObjectEditor : UserControl {
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_choice, _reference]);
 
-		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
+		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
 		_pick.Click += (_, _) => Pick();
 
 		var layout = new TableLayoutPanel {
@@ -133,11 +133,11 @@ public sealed class TargetObjectEditor : UserControl {
 			switch (target.Kind) {
 				case TargetObjectKind.Holder:
 					_pickedElement = target.Holder;
-					_reference.Text = VmElementPicker.Describe(target.Holder);
+					_reference.Text = VmElementPicker.DescribeDetailed(target.Holder);
 					break;
 				case TargetObjectKind.ParameterRef:
 					_pickedElement = target.ParameterRef;
-					_reference.Text = VmElementPicker.Describe(target.ParameterRef);
+					_reference.Text = VmElementPicker.DescribeDetailed(target.ParameterRef);
 					break;
 				case TargetObjectKind.Hierarchy:
 					_pickedHierarchy = target.Hierarchy;
@@ -198,7 +198,7 @@ public sealed class TargetObjectEditor : UserControl {
 	private static string DescribeHierarchy(HierarchyGuid? hierarchy) =>
 		hierarchy == null
 			? ""
-			: $"{string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.Describe(e.Element)))}   ({hierarchy.Write()})";
+			: $"{string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element)))}   ({hierarchy.Write()})";
 
 	private void PopulateKinds() {
 		var previouslySuppressed = _suppressEvents;
@@ -299,7 +299,7 @@ public sealed class TargetObjectEditor : UserControl {
 				out var picked))
 			return;
 		_pickedElement = picked;
-		_reference.Text = VmElementPicker.Describe(picked);
+		_reference.Text = VmElementPicker.DescribeDetailed(picked);
 		OnUserEdit(null);
 	}
 

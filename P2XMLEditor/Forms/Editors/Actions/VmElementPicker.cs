@@ -41,7 +41,7 @@ public sealed class VmElementPicker : Form {
 		_display = display;
 
 		Text = title;
-		Size = new Size(700, 580);
+		Size = new Size(980, 620);
 		StartPosition = FormStartPosition.CenterParent;
 		MinimizeBox = false;
 		ShowInTaskbar = false;
@@ -54,8 +54,8 @@ public sealed class VmElementPicker : Form {
 			MultiSelect = false,
 			HideSelection = false
 		};
-		_list.Columns.Add("Element", 470);
-		_list.Columns.Add("Id", 170);
+		_list.Columns.Add("Element", 600);
+		_list.Columns.Add("Id", 320);
 		_list.RetrieveVirtualItem += OnRetrieveVirtualItem;
 		_list.DoubleClick += (_, _) => Accept();
 		_headerFont = new Font(_list.Font, FontStyle.Bold);
@@ -119,7 +119,11 @@ public sealed class VmElementPicker : Form {
 		return true;
 	}
 
-	/// <summary>Human-readable label for an element, falling back to type and id.</summary>
+	/// <summary>
+	/// The element's name, with its owner for a parameter. Deliberately just the name: in the
+	/// list the type is already the group header and the filter above it, and the id has its
+	/// own column, so repeating both inside the name only crowds it out.
+	/// </summary>
 	public static string Describe(VmElement? element) {
 		if (element == null) return "";
 		var name = element switch {
@@ -127,14 +131,16 @@ public sealed class VmElementPicker : Form {
 			Parameter p => p.Name,
 			_ => null
 		};
-		var owner = element switch {
-			Parameter { Parent.Element: ParameterHolder holder } => holder.Name,
-			_ => null
-		};
 		var label = string.IsNullOrEmpty(name) ? element.GetType().Name : name;
-		if (!string.IsNullOrEmpty(owner)) label = $"{owner}.{label}";
-		return $"{label}  [{element.GetType().Name} {element.Id}]";
+		return element is Parameter { Parent.Element: ParameterHolder owner } ? $"{owner.Name}.{label}" : label;
 	}
+
+	/// <summary>
+	/// Name plus type and id, for the read-only boxes that show a chosen element on their own
+	/// with no columns around them to say which one it is.
+	/// </summary>
+	public static string DescribeDetailed(VmElement? element) =>
+		element == null ? "" : $"{Describe(element)}  [{element.GetType().Name} {element.Id}]";
 
 	private IEnumerable<string> TypeNames() =>
 		_candidates.Select(c => c.GetType().Name).Distinct(StringComparer.Ordinal)

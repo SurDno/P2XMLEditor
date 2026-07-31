@@ -107,7 +107,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		};
 		_extra.TextChanged += (_, _) => OnUserEdit(null);
 
-		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…" };
+		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
 		_pick.Click += (_, _) => Pick();
 
 		var layout = new TableLayoutPanel {
@@ -168,6 +168,12 @@ public sealed class ParameterSourceEditor : UserControl {
 	public ParameterSource Value {
 		get {
 			try {
+				// ParameterSource.Create resolves "<graphId>_inputparam_<name>" through
+				// InputParameter.TryParse, which walks up from VirtualMachine.FillScope to find
+				// the declaring graph. That is only set while the XML is being read, so outside
+				// a load an input-param reference silently degrades to a literal string. The
+				// action's own local context is exactly the scope it should resolve against.
+				using var fillScope = VirtualMachine.EnterFillScope(_scope.LocalContext);
 				return ParameterSource.Create(SerializedValue, _vm, _target, _expectedType);
 			} catch (Exception ex) {
 				Logger.Log(LogLevel.Warning, $"Could not build a parameter source from '{SerializedValue}': {ex.Message}");
@@ -213,16 +219,16 @@ public sealed class ParameterSourceEditor : UserControl {
 					break;
 				case ParameterSourceKind.ParameterRef:
 					_pickedElement = source.ParameterReference;
-					_reference.Text = VmElementPicker.Describe(source.ParameterReference);
+					_reference.Text = VmElementPicker.DescribeDetailed(source.ParameterReference);
 					break;
 				case ParameterSourceKind.DynamicParameter:
 					_pickedElement = source.DynamicObjectReference;
-					_reference.Text = VmElementPicker.Describe(source.DynamicObjectReference);
+					_reference.Text = VmElementPicker.DescribeDetailed(source.DynamicObjectReference);
 					_extra.Text = source.DynamicParameterName ?? "";
 					break;
 				case ParameterSourceKind.ObjectRef:
 					_pickedElement = ReferencedElement(source);
-					_reference.Text = VmElementPicker.Describe(_pickedElement);
+					_reference.Text = VmElementPicker.DescribeDetailed(_pickedElement);
 					break;
 				case ParameterSourceKind.Hierarchy:
 					_reference.Text = DescribeHierarchy(source.HierarchyReference);
@@ -323,7 +329,7 @@ public sealed class ParameterSourceEditor : UserControl {
 
 	private static string DescribeHierarchy(HierarchyGuid? hierarchy) {
 		if (hierarchy == null) return "";
-		var path = string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.Describe(e.Element)));
+		var path = string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element)));
 		return $"{path}   ({hierarchy.Write()})";
 	}
 
@@ -380,8 +386,9 @@ public sealed class ParameterSourceEditor : UserControl {
 			yield return ParameterSourceKind.Hierarchy;
 		}
 
-		yield return ParameterSourceKind.Empty;
-		// Raw is deliberately absent: it exists only so a value the parser rejects stays
+		// Empty and Raw are both deliberately absent. Empty is what an unset slot already is,
+		// and Raw exists only so a value the parser rejects stays visible and editable;
+		// EnsureKindOffered adds either back when a loaded value needs it.: it exists only so a value the parser rejects stays
 		// visible and editable, and EnsureKindOffered adds it for exactly those. Authoring a
 		// new unresolvable value is not something to offer.
 	}
@@ -563,7 +570,7 @@ public sealed class ParameterSourceEditor : UserControl {
 				out var picked))
 			return;
 		_pickedElement = picked;
-		_reference.Text = VmElementPicker.Describe(picked);
+		_reference.Text = VmElementPicker.DescribeDetailed(picked);
 		OnUserEdit(null);
 	}
 

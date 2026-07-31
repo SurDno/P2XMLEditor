@@ -59,10 +59,6 @@ public sealed class ParamTargetEditor : UserControl {
 			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, IntegralHeight = false,
 			Margin = new Padding(0, 0, 6, 0)
 		};
-		_kind.Items.Add(new KindItem(ParamTargetKind.Empty));
-		_kind.Items.Add(new KindItem(ParamTargetKind.Parameter));
-		_kind.Items.Add(new KindItem(ParamTargetKind.ComponentParam));
-		_kind.SelectedIndex = 0;
 		_kind.SelectedIndexChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
 
 		_parameter = new ComboBox {
@@ -97,7 +93,34 @@ public sealed class ParamTargetEditor : UserControl {
 		layout.Controls.Add(_valueHost, 1, 0);
 
 		Controls.Add(layout);
+		PopulateKinds();
 		UpdateVisibleControls();
+	}
+
+	/// <summary>
+	/// Which kinds of target make sense for the object currently selected.
+	///
+	/// A concrete parameter id only resolves when the object is known while authoring. If the
+	/// target object is a parameter, a message or a loop variable, which object it will be is
+	/// decided at runtime, and a parameter id picked here would belong to some other object —
+	/// so the only thing that can name a slot on it is Component.Param, resolved by name.
+	/// </summary>
+	private void PopulateKinds() {
+		var current = SelectedKind;
+		var previouslySuppressed = _suppressEvents;
+		_suppressEvents = true;
+		try {
+			_kind.Items.Clear();
+			_kind.Items.Add(new KindItem(ParamTargetKind.Empty));
+			if (_targetHolder() != null || _storedParameterId != null)
+				_kind.Items.Add(new KindItem(ParamTargetKind.Parameter));
+			_kind.Items.Add(new KindItem(ParamTargetKind.ComponentParam));
+
+			SelectKind(current);
+			if (_kind.SelectedIndex < 0) _kind.SelectedIndex = 0;
+		} finally {
+			_suppressEvents = previouslySuppressed;
+		}
 	}
 
 	public string SerializedValue => _dirty ? Compose() : _originalText;
@@ -154,6 +177,9 @@ public sealed class ParamTargetEditor : UserControl {
 			_storedParameter = target.Parameter?.Element as Parameter;
 			_storedParameterId = target.Parameter?.Id.ToString();
 
+			// After the stored id is known: a stored parameter keeps its kind selectable even
+			// where the target object no longer resolves, so opening and saving cannot move it.
+			PopulateKinds();
 			SelectKind(target.Kind);
 			UpdateVisibleControls();
 
@@ -173,8 +199,11 @@ public sealed class ParamTargetEditor : UserControl {
 	public ParamTargetKind SelectedKind =>
 		_kind.SelectedItem is KindItem item ? item.Kind : ParamTargetKind.Empty;
 
-	/// <summary>Rebuilds both lists after the action's target object changed.</summary>
-	public void RefreshForTarget() => UpdateVisibleControls();
+	/// <summary>Rebuilds the kind list and both value lists after the target object changed.</summary>
+	public void RefreshForTarget() {
+		PopulateKinds();
+		UpdateVisibleControls();
+	}
 
 	private string Compose() {
 		switch (SelectedKind) {
@@ -227,6 +256,9 @@ public sealed class ParamTargetEditor : UserControl {
 		_parameter.Visible = hasParameters;
 		_componentParam.Visible = wantsComponent;
 		_hint.Visible = wantsParameter && !hasParameters;
+		_hint.Text = _targetHolder() == null
+			? "Target object is only known at runtime — use Component.Param."
+			: "Target object has no parameters.";
 	}
 
 	private void PopulateParameters(ParameterHolder? holder) {

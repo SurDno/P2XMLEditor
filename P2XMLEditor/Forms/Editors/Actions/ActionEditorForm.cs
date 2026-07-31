@@ -536,6 +536,9 @@ public sealed class ActionEditorForm : Form {
 		editor.ValueChanged += (_, _) => RefreshPreview();
 		if (!string.IsNullOrEmpty(value)) {
 			try {
+				// Input-param references resolve against VirtualMachine.FillScope; without it
+				// they degrade to literals and the editor shows the wrong kind.
+				using var fillScope = VirtualMachine.EnterFillScope(_scope.LocalContext);
 				editor.Load(ParameterSource.Create(value, _vm, target, expectedType), value);
 			} catch {
 				// A value the parser rejects still has to be visible and editable, so it is
@@ -657,7 +660,16 @@ public sealed class ActionEditorForm : Form {
 	/// </summary>
 	private void EnsureExpression() {
 		if (SelectedActionType != ActionType.SetExpression) return;
-		_action.SourceExpression ??= VmElement.CreateDefault<Expression>(_vm, _action);
+		if (_action.SourceExpression != null) return;
+
+		var expression = VmElement.CreateDefault<Expression>(_vm, _action);
+		// Expression.New leaves TargetObject default-constructed, which reads as a Holder with
+		// no holder behind it — the expression editor writes that field out on open and would
+		// dereference the null. Pointing a new expression at the action's own owner both avoids
+		// that and is the sensible default.
+		if (_scope.Owner != null)
+			expression.TargetObject = TargetObject.Read(_scope.Owner.ParamId, _vm, _scope.LocalContext);
+		_action.SourceExpression = expression;
 	}
 
 	private void EditExpression() {

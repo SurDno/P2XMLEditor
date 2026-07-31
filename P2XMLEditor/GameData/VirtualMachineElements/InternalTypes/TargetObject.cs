@@ -81,6 +81,21 @@ public readonly struct TargetObject {
 		return default;
 	}
 
+	/// <summary>
+	/// False for a default-constructed value — Kind reads as Holder but there is no holder
+	/// behind it, so <see cref="Write"/> would dereference null. A freshly created element
+	/// that has not been pointed at anything yet is exactly that case.
+	/// </summary>
+	public bool IsSet => Kind switch {
+		TargetObjectKind.Holder => Holder != null,
+		TargetObjectKind.ParameterRef => ParameterRef != null,
+		TargetObjectKind.Hierarchy => Hierarchy != null,
+		TargetObjectKind.Loop => Loop != null,
+		TargetObjectKind.InputParam => InputParam != null,
+		TargetObjectKind.Message => Message != null,
+		_ => false
+	};
+
 	public string Write() {
 		var value = Kind switch {
 			TargetObjectKind.Holder => ByEngineGuid

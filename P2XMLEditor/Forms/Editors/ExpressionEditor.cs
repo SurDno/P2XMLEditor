@@ -336,7 +336,9 @@ public class ExpressionEditorForm : Form {
 		if (_expression.Function != null)
 			cmbFunction.SelectedItem = _expression.Function.Name;
 
-		txtTargetObject.Text = _expression.TargetObject.Write();
+		// A freshly created expression has been pointed at nothing yet, and Write dereferences
+		// the holder it does not have; an empty box is the honest rendering of "unset".
+		txtTargetObject.Text = _expression.TargetObject.IsSet ? _expression.TargetObject.Write() : "";
 		txtTargetParam.Text = _expression.TargetParam?.Write() ?? "";
 
 		if (_expression.Const != null) {
