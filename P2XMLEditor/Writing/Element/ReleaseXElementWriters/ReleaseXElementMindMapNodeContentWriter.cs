@@ -26,7 +26,8 @@ public class ReleaseXElementMindMapNodeContentWriter : IReleaseXElementWriter<Mi
 		if (!settings.StripNames) 
 			xElement.Add(CreateSelfClosingElement("Name", element.Name));
 		
-		xElement.Add(new XElement("Parent", element.Parent.Id));
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		
 		return EnsureFullClosingTag(xElement);
 	}

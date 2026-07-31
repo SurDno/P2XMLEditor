@@ -28,9 +28,10 @@ public class ReleaseXElementGameModeWriter : IReleaseXElementWriter<GameMode> {
 
 		xElement.Add(
 			new XElement("PlayerRef", element.PlayerRef),
-			new XElement("Name", element.Name),
-			new XElement("Parent", element.Parent.Id)
-		);
+			new XElement("Name", element.Name));
+		
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		
 		return EnsureFullClosingTag(xElement);
 	}

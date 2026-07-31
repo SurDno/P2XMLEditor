@@ -12,7 +12,8 @@ public class ReleaseXElementEntryPointWriter : IReleaseXElementWriter<EntryPoint
 			xElement.Add(new XElement("Name", element.Name));
 		if (element.ActionLine != null)
 			xElement.Add(new XElement("ActionLine", element.ActionLine.Id));
-		xElement.Add(new XElement("Parent", element.Parent.Id));
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 }

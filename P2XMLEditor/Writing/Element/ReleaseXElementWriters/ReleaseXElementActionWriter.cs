@@ -16,9 +16,8 @@ public class ReleaseXElementActionWriter : IReleaseXElementWriter<Action> {
 		if (!settings.RemoveDefaultValueTypes || element.MathOperationType != MathOperationType.None)
 			xElement.Add(new XElement("MathOperationType", element.MathOperationType.Serialize()));
 
-		xElement.Add(
-			CreateSelfClosingElement("TargetFuncName", element.TargetFuncName)
-		);
+		if(!settings.StripEditorOnlyTags || element.ActionType is ActionType.DoFunction or ActionType.RaiseEvent)
+			xElement.Add(CreateSelfClosingElement("TargetFuncName", element.TargetFuncName));
 		if (element.SourceExpression != null) 
 			xElement.Add(new XElement("SourceExpression", element.SourceExpression.Id));
 		if (element.SourceConst != null)

@@ -12,7 +12,7 @@ namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 public class ReleaseXElementMindMapNodeWriter : IReleaseXElementWriter<MindMapNode> {
 	public XElement ToXml(MindMapNode element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
-		if (!settings.RemoveDefaultValueTypes || element.LogicMapNodeType != LogicMapNodeType.Initial)
+		if (!settings.RemoveDefaultValueTypes || element.LogicMapNodeType != LogicMapNodeType.Common)
 			xElement.Add(new XElement("LogicMapNodeType", element.LogicMapNodeType.Serialize()));
 		if (element.Content?.Count > 0)
 			xElement.Add(CreateListElementUnsorted("NodeContent", element.Content.Select(c => c.Id.ToString())));
@@ -26,9 +26,8 @@ public class ReleaseXElementMindMapNodeWriter : IReleaseXElementWriter<MindMapNo
 			xElement.Add(CreateListElement("OutputLinks", element.OutputLinks.Select(l => l.Id.ToString())));
 		if (!settings.StripNames)
 			xElement.Add(new XElement("Name", element.Name));
-		xElement.Add(
-			new XElement("Parent", element.Parent.Id)
-		);
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 

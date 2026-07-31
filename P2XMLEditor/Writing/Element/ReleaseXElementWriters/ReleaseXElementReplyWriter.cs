@@ -26,10 +26,9 @@ public class ReleaseXElementReplyWriter : IReleaseXElementWriter<Reply> {
 			
 		if (!settings.RemoveDefaultValueTypes || element.OrderIndex != 0)
 			xElement.Add(new XElement("OrderIndex", element.OrderIndex));
-
-		xElement.Add(
-			new XElement("Parent", element.Parent.Id)
-		);
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
+		
 		return EnsureFullClosingTag(xElement);
 	}
 }

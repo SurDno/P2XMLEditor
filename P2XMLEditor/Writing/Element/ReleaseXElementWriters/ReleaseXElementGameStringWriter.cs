@@ -8,7 +8,8 @@ namespace P2XMLEditor.Writing.Element.ReleaseXElementWriters;
 public class ReleaseXElementGameStringWriter : IReleaseXElementWriter<GameString> {
 	public XElement ToXml(GameString element, WriterSettings settings) {
 		var xElement = CreateBaseElement(element.Id);
-		xElement.Add(new XElement("Parent", element.Parent.Id));
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 }

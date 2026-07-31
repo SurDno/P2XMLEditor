@@ -16,7 +16,7 @@ public class SaveSettingsForm : Form {
 	private readonly CheckBox _cleanUpOrphanedElements;
 	private readonly CheckBox _removeDefaultValueTypes;
 	private readonly CheckBox _stripNames;
-	private readonly CheckBox _cleanUpEmptyStrings;
+	private readonly CheckBox _stripEditorOnlyTags;
 	private readonly Button _okButton;
 	private readonly Button _cancelButton;
 
@@ -86,8 +86,8 @@ public class SaveSettingsForm : Form {
 		_cleanUpOrphanedElements = new CheckBox { Text = "Clean up orphaned elements", Location = new Point(15, 30), AutoSize = true };
 		_removeDefaultValueTypes = new CheckBox { Text = "Remove tags with default values", Location = new Point(15, 60), AutoSize = true };
 		_stripNames = new CheckBox { Text = "Strip names", Location = new Point(15, 90), AutoSize = true };
-		_cleanUpEmptyStrings = new CheckBox { Text = "Clean up empty strings", Location = new Point(15, 120), AutoSize = true };
-		cleanupGroup.Controls.AddRange([_cleanUpOrphanedElements, _removeDefaultValueTypes, _stripNames, _cleanUpEmptyStrings]);
+		_stripEditorOnlyTags = new CheckBox { Text = "Strip editor-only tags", Location = new Point(15, 120), AutoSize = true };
+		cleanupGroup.Controls.AddRange([_cleanUpOrphanedElements, _removeDefaultValueTypes, _stripNames, _stripEditorOnlyTags]);
 		leftPanel.Controls.Add(cleanupGroup);
 		mainLayout.Controls.Add(leftPanel, 0, 1);
 
@@ -145,7 +145,7 @@ public class SaveSettingsForm : Form {
 		layout.Controls.Add(new Label { 
 			Text = labelText, 
 			AutoSize = true, 
-			TextAlign = ContentAlignment.MiddleLeft, 
+			TextAlign = ContentAlignment.BottomLeft, 
 			Dock = DockStyle.Fill, 
 			Margin = new Padding(0) 
 		}, 0, row);
@@ -203,7 +203,7 @@ public class SaveSettingsForm : Form {
 			CleanUpOrphanedElements = _cleanUpOrphanedElements.Checked,
 			RemoveDefaultValueTypes = _removeDefaultValueTypes.Checked,
 			StripNames = _stripNames.Checked,
-			CleanUpEmptyStrings = _cleanUpEmptyStrings.Checked,
+			StripEditorOnlyTags = _stripEditorOnlyTags.Checked,
 			VmMetadata = metadata
 		};
 	}

@@ -10,9 +10,8 @@ public class ReleaseXElementCustomTypeWriter : IReleaseXElementWriter<CustomType
 		var xElement = CreateBaseElement(element.Id);
 		if (!settings.StripNames)
 			xElement.Add(new XElement("Name", element.Name));
-		xElement.Add(
-			new XElement("Parent", element.Parent.Id.ToString())
-		);
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 }

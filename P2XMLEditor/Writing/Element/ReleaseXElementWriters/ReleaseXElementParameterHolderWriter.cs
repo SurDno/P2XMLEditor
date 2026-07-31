@@ -31,10 +31,10 @@ public class ReleaseXElementParameterHolderWriter<T> : IReleaseXElementWriter<T>
 			xElement.Add(new XElement("GameTimeContext", element.GameTimeContext));
 		xElement.Add(new XElement("Name", element.Name));
 		
-		if (element.Parent != null)
+		if (element.Parent != null && !settings.StripEditorOnlyTags)
 			xElement.Add(new XElement("Parent", element.Parent.Id));
-		else if (element is not GameRoot)
-			throw new InvalidOperationException($"Parent is missing for {element.GetType().Name} {element.ParamId}");
+		//else if (element is not GameRoot)
+		//	throw new InvalidOperationException($"Parent is missing for {element.GetType().Name} {element.ParamId}");
 		
 		return EnsureFullClosingTag(xElement);
 	}

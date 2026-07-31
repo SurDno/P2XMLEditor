@@ -37,9 +37,7 @@ public class ReleaseXElementBranchWriter : IReleaseXElementWriter<Branch> {
 			xElement.Add(CreateBoolElement("Initial", element.Initial));
 		if (!settings.StripNames)
 			xElement.Add(new XElement("Name", element.Name));
-		xElement.Add(
-			new XElement("Parent", element.Parent.Id)
-		);
+		xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 }

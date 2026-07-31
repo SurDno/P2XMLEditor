@@ -7,8 +7,7 @@ public class WriterSettings {
 	public bool CleanUpOrphanedElements { get; set; } = false;
 	public bool RemoveDefaultValueTypes { get; set; } = false;
 	public bool StripNames { get; set; } = false;
-	public bool CleanUpEmptyStrings { get; set; } = false;
-	public bool MergeConstants { get; set; } = false;
+	public bool StripEditorOnlyTags { get; set; } = false;
 	public List<string> Languages { get; set; } = [];
 	
 	public VmVersionSettings? VmMetadata { get; set; }

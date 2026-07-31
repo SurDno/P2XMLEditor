@@ -24,9 +24,8 @@ public class ReleaseXElementMindMapWriter : IReleaseXElementWriter<MindMap> {
 		);
 		if (!settings.StripNames)
 			xElement.Add(new XElement("Name", element.Name));
-		xElement.Add(
-			new XElement("Parent", element.Parent.Id)
-		);
+		if (!settings.StripEditorOnlyTags)
+			xElement.Add(new XElement("Parent", element.Parent.Id));
 		return EnsureFullClosingTag(xElement);
 	}
 }
