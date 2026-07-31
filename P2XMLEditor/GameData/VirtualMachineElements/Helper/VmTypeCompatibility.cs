@@ -51,6 +51,33 @@ public static class VmTypeCompatibility {
 	}
 
 	/// <summary>
+	/// Whether a value of the declared type demonstrably fits the slot.
+	///
+	/// The difference from <see cref="Accepts(VmTypeInfo?, VmTypeInfo?)"/> is what happens when
+	/// the declared type cannot be worked out: Accepts lets it through, because it judges values
+	/// already stored in the data and hiding one would be worse than showing a doubtful one.
+	/// This one refuses, because it builds the lists the user picks from, and offering a
+	/// candidate that cannot be shown to fit is how the wrong type gets chosen in the first
+	/// place. An unknown *expected* type still filters nothing — there is no slot type to
+	/// disagree with.
+	/// </summary>
+	public static bool Matches(VmTypeInfo? expected, VmTypeInfo? declared) {
+		if (expected == null || expected.BaseType == VmType.Unknown) return true;
+		if (declared == null || declared.BaseType == VmType.Unknown) return false;
+		return Accepts(expected, declared);
+	}
+
+	public static bool Matches(VmTypeInfo? expected, string? declaredXmlType, Core.VirtualMachine vm) {
+		if (expected == null || expected.BaseType == VmType.Unknown) return true;
+		if (string.IsNullOrEmpty(declaredXmlType)) return false;
+		try {
+			return Matches(expected, VmTypeHelper.GetVmTypeInfo(declaredXmlType, vm));
+		} catch {
+			return false;
+		}
+	}
+
+	/// <summary>
 	/// True when a parameter's declared type really is an object reference. Unlike
 	/// <see cref="Accepts(VmTypeInfo?, string?, Core.VirtualMachine)"/> this does not give an
 	/// unresolvable type the benefit of the doubt: it backs the pickers that offer "the object

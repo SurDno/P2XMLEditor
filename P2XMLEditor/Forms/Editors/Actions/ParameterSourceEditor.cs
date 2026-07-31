@@ -58,7 +58,7 @@ public sealed class ParameterSourceEditor : UserControl {
 	private readonly TextBox _literal;
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
-	private readonly TextBox _extra;
+	private readonly ComboBox _extra;
 	private readonly Button _pick;
 
 	private VmTypeInfo? _expectedType;
@@ -102,9 +102,12 @@ public sealed class ParameterSourceEditor : UserControl {
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
 		_valueHost.Controls.AddRange([_literal, _choice, _reference]);
 
-		_extra = new TextBox {
-			Dock = DockStyle.Fill, PlaceholderText = "parameter name", Margin = new Padding(0, 0, 6, 0)
+		_extra = new ComboBox {
+			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDown, IntegralHeight = false,
+			AutoCompleteMode = AutoCompleteMode.SuggestAppend, AutoCompleteSource = AutoCompleteSource.ListItems,
+			Margin = new Padding(0, 0, 6, 0)
 		};
+		_extra.SelectedIndexChanged += (_, _) => OnUserEdit(null);
 		_extra.TextChanged += (_, _) => OnUserEdit(null);
 
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
@@ -374,8 +377,10 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		// A parameter can back any slot as long as its own declared type fits.
 		if (CompatibleParameters().Any()) yield return ParameterSourceKind.ParameterRef;
-		// Resolved by name at runtime, so nothing can be checked here and it always applies.
-		yield return ParameterSourceKind.DynamicParameter;
+		// Which object it reads from is only known at runtime, but the name is not: it has to
+		// be a standard parameter name whose declared type can fill this slot, so the kind is
+		// pointless where no such name exists.
+		if (DynamicParameterNames().Any()) yield return ParameterSourceKind.DynamicParameter;
 
 		// const_ is an Int32 literal the engine reads only for loop bounds.
 		if (AllowConstant && (isUntyped || type!.BaseType == VmType.Int32))
@@ -451,6 +456,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		_pick.Visible = showReference;
 
 		if (showChoice) PopulateChoices(kind, literalIsChosen);
+		if (showExtra) PopulateDynamicNames();
 
 		_literal.PlaceholderText = kind switch {
 			ParameterSourceKind.GlobalList => "global list name",
@@ -509,6 +515,32 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 	}
 
+	/// <summary>
+	/// Names a "parameter by name on object" may resolve to. The object is only known at
+	/// runtime, but the name is not: standard parameter names are declared game-wide with a
+	/// type, so the ones whose type cannot fill this slot are left out. The box stays editable
+	/// for a name the loaded data uses and the index does not know.
+	/// </summary>
+	private void PopulateDynamicNames() {
+		var current = _extra.Text;
+		var previouslySuppressed = _suppressEvents;
+		_suppressEvents = true;
+		try {
+			_extra.Items.Clear();
+			foreach (var name in DynamicParameterNames())
+				_extra.Items.Add(name);
+			_extra.Text = current;
+		} finally {
+			_suppressEvents = previouslySuppressed;
+		}
+	}
+
+	private IEnumerable<string> DynamicParameterNames() =>
+		_vm.StandartParamTypes
+			.Where(entry => VmTypeCompatibility.Matches(_expectedType, entry.Value))
+			.Select(entry => entry.Key)
+			.OrderBy(name => name, StringComparer.Ordinal);
+
 	private IEnumerable<(string Id, string Label)> LiteralChoices() {
 		var enumType = VmTypeCompatibility.EnumTypeOf(_expectedType);
 		if (enumType != null)
@@ -527,10 +559,10 @@ public sealed class ParameterSourceEditor : UserControl {
 	// ---------------------------------------------------------------- filtered candidates
 
 	private IEnumerable<Message> CompatibleMessages() =>
-		_scope.Messages.Where(m => VmTypeCompatibility.Accepts(_expectedType, m.Type, _vm));
+		_scope.Messages.Where(m => VmTypeCompatibility.Matches(_expectedType, m.Type, _vm));
 
 	private IEnumerable<InputParameter> CompatibleInputParams() =>
-		_scope.InputParams.Where(p => VmTypeCompatibility.Accepts(_expectedType, p.Type, _vm));
+		_scope.InputParams.Where(p => VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
 
 	/// <summary>
 	/// A loop index is an Int32 and a loop element is an object; both are fixed by the loop
@@ -538,10 +570,10 @@ public sealed class ParameterSourceEditor : UserControl {
 	/// </summary>
 	private IEnumerable<LoopParameter> CompatibleLoops(bool index) =>
 		_scope.LoopVariables.Where(l => l.IsIndex == index &&
-			VmTypeCompatibility.Accepts(_expectedType, index ? VmTypeInfo.Int32 : VmTypeInfo.GameObject));
+			VmTypeCompatibility.Matches(_expectedType, index ? VmTypeInfo.Int32 : VmTypeInfo.GameObject));
 
 	private IEnumerable<Parameter> CompatibleParameters() =>
-		_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.Accepts(_expectedType, p.Type, _vm));
+		_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
 
 	// ---------------------------------------------------------------- picking
 

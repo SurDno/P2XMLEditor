@@ -65,6 +65,18 @@ public class VirtualMachine {
 		return _standartParamTypes.TryGetValue(name, out type!);
 	}
 
+	/// <summary>
+	/// Every standard parameter name in the data with its declared type — the same index
+	/// <see cref="TryResolveStandartParamType"/> answers from, exposed so an editor can offer
+	/// the names that fit a slot instead of asking about one name at a time.
+	/// </summary>
+	public IReadOnlyDictionary<string, VmTypeInfo> StandartParamTypes {
+		get {
+			_standartParamTypes ??= BuildStandartParamTypes();
+			return _standartParamTypes;
+		}
+	}
+
 	public void InvalidateStandartParamTypes() => _standartParamTypes = null;
 
 	private Dictionary<string, VmTypeInfo> BuildStandartParamTypes() {

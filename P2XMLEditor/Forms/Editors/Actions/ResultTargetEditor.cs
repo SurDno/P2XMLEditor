@@ -224,7 +224,7 @@ public sealed class ResultTargetEditor : UserControl {
 			.Where(kvp => kvp.Value != null)
 			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
 			.Select(kvp => kvp.Value)
-			.Where(p => VmTypeCompatibility.Accepts(_expectedType, p.Type, _vm));
+			.Where(p => VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
 	}
 
 	private void SelectParameterId(string id) {
