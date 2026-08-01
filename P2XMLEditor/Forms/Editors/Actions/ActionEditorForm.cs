@@ -30,7 +30,7 @@ public sealed class ActionEditorForm : Form {
 	private const int RowHeight = 38;
 	private const int ContentHeight = 30;
 	private const int LabelColumn = 200;
-	private const int TypeColumn = 190;
+	private const int TypeColumn = 300;
 
 	/// <summary>ACTION_TYPE_NONE never occurs in the data and is not something to author.</summary>
 	private static readonly ActionType[] EditableTypes = [
@@ -45,7 +45,6 @@ public sealed class ActionEditorForm : Form {
 	private readonly TableLayoutPanel _root;
 	private readonly Dictionary<ActionType, RadioButton> _typeButtons = [];
 	private readonly TextBox _name;
-	private readonly ComboBox _mathOperation;
 	private readonly TargetObjectEditor _targetObject;
 	private readonly ParamTargetEditor _targetParam;
 	private readonly Label _calleeLabel;
@@ -53,7 +52,6 @@ public sealed class ActionEditorForm : Form {
 	private readonly Label _returnType;
 	private readonly GroupBox _slotsGroup;
 	private readonly TableLayoutPanel _slots;
-	private readonly TextBox _expressionPreview;
 	private readonly CheckBox _resultToggle;
 	private readonly ResultTargetEditor _result;
 	private readonly TextBox _preview;
@@ -61,19 +59,25 @@ public sealed class ActionEditorForm : Form {
 
 	private readonly List<ParameterSourceEditor> _slotEditors = [];
 	private ActionType _selectedType = ActionType.SetParam;
+
+	// The operation and the expression preview live inside the source-value group, which is
+	// rebuilt from scratch whenever the shape of the action changes. So the operation is held
+	// as a value rather than read off a control, and the preview box is whichever one the
+	// current rebuild produced — null while no expression row is on screen.
+	private MathOperationType _mathOperation = MathOperationType.None;
+	private TextBox? _expressionPreview;
+
 	private bool _loading = true;
 	private bool _suppressCalleeEvents;
 
 	private const int RowName = 0;
 	private const int RowTargetObject = 1;
 	private const int RowTargetParam = 2;
-	private const int RowOperation = 3;
-	private const int RowCallee = 4;
-	private const int RowExpression = 5;
-	private const int RowSlots = 6;
-	private const int RowResult = 7;
-	private const int RowPreview = 8;
-	private const int TotalRows = 9;
+	private const int RowCallee = 3;
+	private const int RowSlots = 4;
+	private const int RowResult = 5;
+	private const int RowPreview = 6;
+	private const int TotalRows = 7;
 
 	public ActionEditorForm(VirtualMachine vm, VmAction action) {
 		_vm = vm;
@@ -98,11 +102,6 @@ public sealed class ActionEditorForm : Form {
 
 		_name = Row(new TextBox());
 
-		_mathOperation = Row(NewCombo(ComboBoxStyle.DropDownList));
-		foreach (var operation in Enum.GetValues<MathOperationType>())
-			_mathOperation.Items.Add(operation);
-		_mathOperation.SelectedIndexChanged += (_, _) => RefreshPreview();
-
 		_targetObject = Row(new TargetObjectEditor(_vm, _scope));
 		_targetParam = Row(new ParamTargetEditor(_vm,
 			() => new TargetObjectBinding(_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget)));
@@ -113,10 +112,7 @@ public sealed class ActionEditorForm : Form {
 			PushExpectedTypeToSource();
 			RefreshPreview();
 		};
-		_result.ValueChanged += (_, _) => {
-			UpdateResultLabel();
-			RefreshPreview();
-		};
+		_result.ValueChanged += (_, _) => RefreshPreview();
 
 		_calleeLabel = NewLabel("Function");
 		_callee = Row(NewCombo(ComboBoxStyle.DropDown));
@@ -147,16 +143,9 @@ public sealed class ActionEditorForm : Form {
 		};
 		_slotsGroup.Controls.Add(_slots);
 
-		_expressionPreview = Row(new TextBox { ReadOnly = true });
-		var editExpression = new Button { Text = "Edit expression…", Size = new Size(170, ContentHeight) };
-		editExpression.Click += (_, _) => EditExpression();
-
-		var expressionRow = NewRowPanel(2);
-		expressionRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		expressionRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 180));
-		expressionRow.Controls.Add(_expressionPreview, 0, 0);
-		expressionRow.Controls.Add(Row(editExpression), 1, 0);
-
+		// The toggle is the one place that says whether a result is stored: it pushes into the
+		// editor and is never assigned back from it, so the checkbox the user sees and the value
+		// that gets written cannot drift apart.
 		_resultToggle = Row(new CheckBox { Text = "Store result in", AutoSize = false });
 		_resultToggle.CheckedChanged += (_, _) => {
 			_result.Storing = _resultToggle.Checked;
@@ -171,9 +160,7 @@ public sealed class ActionEditorForm : Form {
 		AddRow(RowName, "Name", _name);
 		AddRow(RowTargetObject, "Target object", _targetObject);
 		AddRow(RowTargetParam, "Target param", _targetParam);
-		AddRow(RowOperation, "Operation", _mathOperation);
 		AddRow(RowCallee, _calleeLabel, calleeRow);
-		AddRow(RowExpression, "Expression", expressionRow);
 		AddSpanningRow(RowSlots, _slotsGroup);
 		AddRow(RowResult, _resultToggle, _result);
 		AddSpanningRow(RowPreview, _preview);
@@ -241,10 +228,15 @@ public sealed class ActionEditorForm : Form {
 		return label;
 	}
 
-	private GroupBox BuildTypeSelector() {
+	/// <summary>
+	/// The action types, top-docked and sized to their own content: five radio buttons have no
+	/// use for the height of the whole form, and stretching them only puts a field of empty box
+	/// next to the rows that matter.
+	/// </summary>
+	private Control BuildTypeSelector() {
 		var flow = new FlowLayoutPanel {
-			Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown, WrapContents = false,
-			Padding = new Padding(8, 6, 6, 6)
+			Dock = DockStyle.Top, FlowDirection = FlowDirection.TopDown, WrapContents = false,
+			AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Padding = new Padding(8, 6, 6, 6)
 		};
 
 		foreach (var type in EditableTypes) {
@@ -259,17 +251,30 @@ public sealed class ActionEditorForm : Form {
 			flow.Controls.Add(button);
 		}
 
-		var group = new GroupBox { Text = "Action type", Dock = DockStyle.Fill, Margin = new Padding(12, 12, 0, 6) };
+		var group = new GroupBox {
+			Text = "Action type", Dock = DockStyle.Top, AutoSize = true,
+			AutoSizeMode = AutoSizeMode.GrowAndShrink, Margin = new Padding(12, 12, 0, 6)
+		};
 		group.Controls.Add(flow);
-		return group;
+
+		// The group is docked inside a plain host so it keeps its own height instead of being
+		// stretched to fill the table cell it sits in.
+		var host = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty };
+		host.Controls.Add(group);
+		return host;
 	}
 
+	/// <summary>
+	/// Says what the action does, not what its enum is called: every type both reads and writes
+	/// something, and "Math" alone does not say that the thing it changes is the target
+	/// parameter.
+	/// </summary>
 	private static string DescribeType(ActionType type) => type switch {
-		ActionType.SetParam => "Set parameter",
-		ActionType.SetExpression => "Set expression",
-		ActionType.Math => "Math",
-		ActionType.DoFunction => "Call function",
-		ActionType.RaiseEvent => "Raise event",
+		ActionType.SetParam => "Set parameter to value",
+		ActionType.SetExpression => "Set parameter to result of expression",
+		ActionType.Math => "Perform math on parameter",
+		ActionType.DoFunction => "Call function on object",
+		ActionType.RaiseEvent => "Raise event on object",
 		_ => type.ToString()
 	};
 
@@ -280,8 +285,9 @@ public sealed class ActionEditorForm : Form {
 		try {
 			_name.Text = _action.Name ?? "";
 			_selectedType = EditableTypes.Contains(_action.ActionType) ? _action.ActionType : ActionType.SetParam;
+			// Before the radio is checked: the operation row is built from this value.
+			_mathOperation = _action.MathOperationType;
 			_typeButtons[_selectedType].Checked = true;
-			_mathOperation.SelectedItem = _action.MathOperationType;
 
 			_targetObject.Load(_action.TargetObject);
 			// A DoFunction action loads its TargetParam into the result editor instead, so the
@@ -290,10 +296,13 @@ public sealed class ActionEditorForm : Form {
 
 			// TargetParam is one field with two meanings: for a function call it is where the
 			// result goes, resolved against the local context's owner rather than the target.
-			if (_selectedType == ActionType.DoFunction)
+			if (_selectedType == ActionType.DoFunction) {
 				_result.Load(_action.TargetParam);
-			else
+				// The only place the toggle is set from the data; from here on it drives.
+				_resultToggle.Checked = _result.Storing;
+			} else {
 				_targetParam.Load(_action.TargetParam);
+			}
 
 			RefreshCallee(preserveSelection: false);
 			BuildSlots(_action.GetParamStrings());
@@ -478,12 +487,23 @@ public sealed class ActionEditorForm : Form {
 		_slots.RowStyles.Clear();
 		_slots.RowCount = 0;
 		_slotEditors.Clear();
+		_expressionPreview = null;
 
 		switch (SelectedActionType) {
 			case ActionType.SetParam:
-			case ActionType.Math:
 				_slotsGroup.Text = "Source value";
 				AddSlot("Source", _targetParam.ResolvedType, ValueAt(existing, 0), _targetParam.Value);
+				break;
+			case ActionType.Math:
+				// The operation belongs with the value it applies: "+" and the number added are
+				// one thought, and reading them a row apart with the target between them is not.
+				_slotsGroup.Text = "Source value";
+				AddOperationRow();
+				AddSlot("Source", _targetParam.ResolvedType, ValueAt(existing, 0), _targetParam.Value);
+				break;
+			case ActionType.SetExpression:
+				_slotsGroup.Text = "Source value";
+				AddExpressionRow();
 				break;
 			case ActionType.DoFunction:
 				_slotsGroup.Text = "Function parameters";
@@ -569,6 +589,75 @@ public sealed class ActionEditorForm : Form {
 		_slots.Controls.Add(editor, 1, row);
 	}
 
+	/// <summary>
+	/// The math operation, as one radio per operation in equal columns.
+	///
+	/// ACTION_OPERATION_TYPE_NONE is not offered: it is what an unset field reads as, and no
+	/// Math action in either corpus carries it. A Math action that still has it is caught on
+	/// save rather than written out as an operation the engine cannot perform.
+	/// </summary>
+	private void AddOperationRow() {
+		var operations = Enum.GetValues<MathOperationType>().Where(o => o != MathOperationType.None).ToList();
+
+		var strip = new TableLayoutPanel {
+			ColumnCount = operations.Count, RowCount = 1, Dock = DockStyle.Fill,
+			Margin = Padding.Empty, Padding = Padding.Empty
+		};
+		strip.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+		foreach (var operation in operations) {
+			// Equal columns, so the options read as one set of choices rather than as text of
+			// varying length that happens to have buttons in front of it.
+			strip.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / operations.Count));
+			var button = new RadioButton {
+				Text = DescribeOperation(operation), Dock = DockStyle.Fill, AutoSize = false,
+				TextAlign = ContentAlignment.MiddleLeft, Checked = _mathOperation == operation
+			};
+			var captured = operation;
+			button.CheckedChanged += (_, _) => {
+				if (!button.Checked) return;
+				_mathOperation = captured;
+				RefreshPreview();
+			};
+			strip.Controls.Add(button, strip.Controls.Count, 0);
+		}
+
+		var row = NewSlotRow();
+		_slots.Controls.Add(NewLabel("Operation"), 0, row);
+		_slots.Controls.Add(strip, 1, row);
+	}
+
+	private static string DescribeOperation(MathOperationType operation) => operation switch {
+		MathOperationType.Addition => "Add",
+		MathOperationType.Subtraction => "Subtract",
+		MathOperationType.Multiply => "Multiply",
+		MathOperationType.Division => "Divide",
+		_ => operation.ToString()
+	};
+
+	/// <summary>
+	/// The expression a SetExpression action reads from. It is the action's source value, so it
+	/// sits where every other source value does rather than in a row of its own.
+	/// </summary>
+	private void AddExpressionRow() {
+		_expressionPreview = new TextBox { Dock = DockStyle.Fill, ReadOnly = true, Margin = new Padding(0, 4, 6, 4) };
+		var edit = new Button { Dock = DockStyle.Fill, Text = "Edit expression…", Margin = new Padding(0, 4, 0, 4) };
+		edit.Click += (_, _) => EditExpression();
+
+		var panel = new TableLayoutPanel {
+			ColumnCount = 2, RowCount = 1, Dock = DockStyle.Fill, Margin = Padding.Empty, Padding = Padding.Empty
+		};
+		panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170));
+		panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+		panel.Controls.Add(_expressionPreview, 0, 0);
+		panel.Controls.Add(edit, 1, 0);
+
+		var row = NewSlotRow();
+		_slots.Controls.Add(NewLabel("Expression"), 0, row);
+		_slots.Controls.Add(panel, 1, row);
+		UpdateExpressionPreview();
+	}
+
 	private void AddNote(string text) {
 		var row = NewSlotRow();
 		var note = NewLabel(text);
@@ -629,37 +718,28 @@ public sealed class ActionEditorForm : Form {
 		var signature = CurrentSignature();
 		var storesResult = type == ActionType.DoFunction && signature is { IsVoid: false };
 
-		SetRowVisible(RowOperation, type == ActionType.Math);
 		// A function call writes TargetParam too, but as a result destination bound against
-		// the local context rather than the target object — that is the "Save result in" row,
+		// the local context rather than the target object — that is the "Store result in" row,
 		// and showing both would be two controls fighting over one field.
 		SetRowVisible(RowTargetParam,
 			type is ActionType.SetParam or ActionType.Math or ActionType.SetExpression);
 		SetRowVisible(RowCallee, type is ActionType.DoFunction or ActionType.RaiseEvent);
-		SetRowVisible(RowExpression, type == ActionType.SetExpression);
-		SetRowVisible(RowSlots, type != ActionType.SetExpression);
 		SetRowVisible(RowResult, storesResult);
 
 		if (storesResult) _result.ExpectedType = signature!.ReturnTypeInfo;
-		UpdateResultLabel();
-		UpdateExpressionPreview();
 
 		_returnType.Text = type == ActionType.DoFunction && signature != null
 			? signature.IsVoid ? "returns nothing" : $"returns {Describe(signature.ReturnTypeInfo)}"
 			: "";
 	}
 
-	/// <summary>Keeps the toggle and the control it drives in step.</summary>
-	private void UpdateResultLabel() => _resultToggle.Checked = _result.Storing;
-
 	/// <summary>
 	/// Collapses a row to zero height rather than merely hiding its controls, so an
-	/// inapplicable field leaves no gap behind.
+	/// inapplicable field leaves no gap behind. Only the fixed-height rows are ever toggled:
+	/// the source-value group applies to every action type and keeps the leftover height.
 	/// </summary>
 	private void SetRowVisible(int row, bool visible) {
-		_root.RowStyles[row] = row == RowSlots
-			? new RowStyle(visible ? SizeType.Percent : SizeType.Absolute, visible ? 100 : 0)
-			: new RowStyle(SizeType.Absolute, visible ? RowHeight : 0);
+		_root.RowStyles[row] = new RowStyle(SizeType.Absolute, visible ? RowHeight : 0);
 
 		foreach (Control control in _root.Controls)
 			if (_root.GetCellPosition(control).Row == row)
@@ -696,10 +776,16 @@ public sealed class ActionEditorForm : Form {
 		RefreshPreview();
 	}
 
-	private void UpdateExpressionPreview() =>
+	/// <summary>
+	/// No-op unless an expression row is on screen: the box belongs to the source-value group
+	/// and only exists while a SetExpression action is being edited.
+	/// </summary>
+	private void UpdateExpressionPreview() {
+		if (_expressionPreview == null) return;
 		_expressionPreview.Text = _action.SourceExpression == null
 			? "(none)"
 			: $"{PreviewHelper.Preview(_action.SourceExpression)}   [id {_action.SourceExpression.Id}]";
+	}
 
 	// ---------------------------------------------------------------- preview
 
@@ -730,40 +816,70 @@ public sealed class ActionEditorForm : Form {
 	/// </summary>
 	private string TargetParamText() {
 		if (SelectedActionType != ActionType.DoFunction) return _targetParam.SerializedValue;
-		return CurrentSignature() is { IsVoid: false } ? _result.SerializedValue : "%";
+		return CurrentSignature() is { IsVoid: false } && _resultToggle.Checked ? _result.SerializedValue : "%";
 	}
 
 	// ---------------------------------------------------------------- saving
 
-	private void Save() {
+	/// <summary>
+	/// Why the action cannot be saved as it stands, or null when it can. Anything that would be
+	/// a guaranteed runtime error is refused here rather than written out.
+	/// </summary>
+	private string? ValidationError(out FunctionSignature? signature) {
+		signature = null;
 		var type = SelectedActionType;
-		FunctionSignature? signature = null;
 
 		if (type == ActionType.DoFunction) {
 			var name = SelectedCallee?.Id ?? _callee.Text;
 			signature = string.IsNullOrEmpty(name) ? null : FunctionSignature.Of(name, _vm);
-			if (signature == null) {
-				Reject($"'{name}' is not a known function.");
-				return;
-			}
-			// A result destination that does not resolve is a guaranteed runtime error, so it
-			// is refused here rather than written out.
-			if (!signature.IsVoid && _result.ValidationError is { } error) {
-				Reject(error);
-				return;
-			}
+			if (signature == null) return $"'{name}' is not a known function.";
+			if (!signature.IsVoid && _resultToggle.Checked && _result.ValidationError is { } error) return error;
 		}
 
-		if (type == ActionType.RaiseEvent && SelectedCallee?.Event == null) {
-			Reject("Select an event to raise.");
+		if (type == ActionType.RaiseEvent && SelectedCallee?.Event == null)
+			return "Select an event to raise.";
+
+		if (type == ActionType.Math && _mathOperation == MathOperationType.None)
+			return "Choose the operation to perform.";
+
+		// Every action in both corpora names one, and the writer calls TargetObject.Write()
+		// unconditionally — an unset one takes down the whole save, not just this action.
+		if (!_targetObject.Value.IsSet)
+			return "Choose the object this action runs on.";
+
+		return TargetParamError(type);
+	}
+
+	/// <summary>
+	/// The destination this action would write to, against the two things the data never says.
+	///
+	/// A SetParam, Math or SetExpression action always names one: all 11610 empty TargetParams
+	/// in PathologicSandbox and 1232 in MarbleNest belong to void function calls and raised
+	/// events, which write nowhere by design. And nothing writes into an expression's constant
+	/// — see <see cref="Parameter.IsConstant"/> — whatever route it was reached by.
+	/// </summary>
+	private string? TargetParamError(ActionType type) {
+		var needsTarget = type is ActionType.SetParam or ActionType.Math or ActionType.SetExpression;
+		var missing = needsTarget ? "Choose the parameter this action writes to." : null;
+
+		if (!ParamTarget.TryRead(TargetParamText(), _vm, out var target)) return missing;
+		if (target.Kind == ParamTargetKind.Empty) return missing;
+
+		return target.Parameter?.Element is Parameter { IsConstant: true } constant
+			? $"'{constant.Name}' holds an expression's constant value and cannot be written to."
+			: null;
+	}
+
+	private void Save() {
+		if (ValidationError(out var signature) is { } problem) {
+			Reject(problem);
 			return;
 		}
 
+		var type = SelectedActionType;
 		_action.Name = _name.Text;
 		_action.ActionType = type;
-		_action.MathOperationType = type == ActionType.Math
-			? (_mathOperation.SelectedItem as MathOperationType?) ?? MathOperationType.None
-			: MathOperationType.None;
+		_action.MathOperationType = type == ActionType.Math ? _mathOperation : MathOperationType.None;
 
 		_action.TargetObject = _targetObject.Value;
 		_action.TargetParam = ParamTarget.TryRead(TargetParamText(), _vm, out var targetParam)

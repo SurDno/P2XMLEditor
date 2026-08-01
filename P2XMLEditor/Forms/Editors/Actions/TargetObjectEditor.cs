@@ -8,6 +8,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
+using Message = P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Message;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
 
@@ -34,6 +35,7 @@ public sealed class TargetObjectEditor : UserControl {
 
 	private VmElement? _pickedElement;
 	private HierarchyGuid? _pickedHierarchy;
+	private string? _storedChoiceId;
 	private string _originalText = "";
 	private bool _dirty;
 	private bool _suppressEvents;
@@ -90,7 +92,7 @@ public sealed class TargetObjectEditor : UserControl {
 	public ParameterHolder? ResolvedHolder {
 		get {
 			try {
-				return TargetObject.Read(SerializedValue, _vm, _scope.LocalContext).ResolvedHolder;
+				return Value.ResolvedHolder;
 			} catch {
 				return null;
 			}
@@ -129,10 +131,16 @@ public sealed class TargetObjectEditor : UserControl {
 		}
 	}
 
+	/// <summary>
+	/// TryRead, not Read: the form asks for this on every keystroke and about a target the user
+	/// has not chosen yet, and an unfinished edit is not something to report as bad data.
+	/// </summary>
 	public TargetObject Value {
 		get {
 			try {
-				return TargetObject.Read(SerializedValue, _vm, _scope.LocalContext);
+				return TargetObject.TryRead(SerializedValue, _vm, out var target, _scope.LocalContext)
+					? target
+					: default;
 			} catch {
 				return default;
 			}
@@ -145,6 +153,15 @@ public sealed class TargetObjectEditor : UserControl {
 		try {
 			_originalText = rawText ?? SafeWrite(target);
 			_dirty = false;
+
+			// Read before the lists are built: a stored choice the filters would leave out is
+			// still listed, so opening an action and saving it cannot move its target.
+			_storedChoiceId = target.Kind switch {
+				TargetObjectKind.Message => target.Message?.Name,
+				TargetObjectKind.InputParam => target.InputParam?.Name,
+				TargetObjectKind.Loop => target.Loop?.ParamId,
+				_ => null
+			};
 
 			SelectKind(target.Kind);
 			UpdateVisibleControls();
@@ -227,9 +244,9 @@ public sealed class TargetObjectEditor : UserControl {
 			_kind.Items.Add(new KindItem(TargetObjectKind.Holder));
 			_kind.Items.Add(new KindItem(TargetObjectKind.Hierarchy));
 			_kind.Items.Add(new KindItem(TargetObjectKind.ParameterRef));
-			if (_scope.Messages.Count > 0) _kind.Items.Add(new KindItem(TargetObjectKind.Message));
-			if (_scope.InputParams.Count > 0) _kind.Items.Add(new KindItem(TargetObjectKind.InputParam));
-			if (_scope.LoopVariables.Count > 0) _kind.Items.Add(new KindItem(TargetObjectKind.Loop));
+			if (ObjectValuedMessages().Any()) _kind.Items.Add(new KindItem(TargetObjectKind.Message));
+			if (ObjectValuedInputParams().Any()) _kind.Items.Add(new KindItem(TargetObjectKind.InputParam));
+			if (LoopElements().Any()) _kind.Items.Add(new KindItem(TargetObjectKind.Loop));
 			_kind.SelectedIndex = 0;
 		} finally {
 			_suppressEvents = previouslySuppressed;
@@ -264,30 +281,40 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	private void PopulateChoices(TargetObjectKind kind) {
-		var selected = (_choice.SelectedItem as ChoiceItem)?.Id;
+		var selected = (_choice.SelectedItem as ChoiceItem)?.Id ?? _storedChoiceId;
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;
 		try {
 			_choice.Items.Clear();
+			var listed = false;
 			switch (kind) {
 				case TargetObjectKind.Message:
-					foreach (var message in _scope.Messages)
+					foreach (var message in ObjectValuedMessages()) {
 						_choice.Items.Add(new ChoiceItem(message.Name,
 							$"{message.ParamName}   [{message.Type}]   ← {message.Event.Name}"));
+						listed |= message.Name == _storedChoiceId;
+					}
 					break;
 				case TargetObjectKind.InputParam:
-					foreach (var inputParam in _scope.InputParams)
+					foreach (var inputParam in ObjectValuedInputParams()) {
 						_choice.Items.Add(new ChoiceItem(inputParam.Name,
 							$"{inputParam.ParamName}   [{inputParam.Type}]   ← {inputParam.Graph.Name}"));
+						listed |= inputParam.Name == _storedChoiceId;
+					}
 					break;
 				case TargetObjectKind.Loop:
-					foreach (var loop in _scope.LoopVariables)
+					foreach (var loop in LoopElements()) {
 						_choice.Items.Add(new ChoiceItem(loop.ParamId,
-							loop.IsIndex
-								? $"index of {loop.ActionLine.Name}"
-								: $"element of {loop.ListName} in {loop.ActionLine.Name}"));
+							$"element of {loop.ListName} in {loop.ActionLine.Name}"));
+						listed |= loop.ParamId == _storedChoiceId;
+					}
 					break;
 			}
+
+			// What the action already says stays selectable even where the filter would have
+			// left it out, so merely opening and saving cannot move the target.
+			if (_storedChoiceId != null && !listed && KindOfStoredChoice() == kind)
+				_choice.Items.Insert(0, new ChoiceItem(_storedChoiceId, $"{_storedChoiceId}   (does not hold an object)"));
 
 			if (selected != null) SelectById(_choice, selected);
 			if (_choice.SelectedIndex < 0 && _choice.Items.Count > 0) _choice.SelectedIndex = 0;
@@ -296,6 +323,28 @@ public sealed class TargetObjectEditor : UserControl {
 		}
 	}
 
+	private TargetObjectKind KindOfStoredChoice() =>
+		_storedChoiceId == null ? TargetObjectKind.Holder
+		: _storedChoiceId.Contains("_message_") ? TargetObjectKind.Message
+		: _storedChoiceId.Contains("_inputparam_") ? TargetObjectKind.InputParam
+		: TargetObjectKind.Loop;
+
+	/// <summary>
+	/// The action runs against an object, so only a variable that holds one can name it.
+	///
+	/// Every local variable named as a target across both corpora agrees: all 41 input-param
+	/// references and all 21 message references that resolve are declared IObjRef, and all 93
+	/// loop references are the element rather than the index — which is what the types say
+	/// anyway, an index being an Int32 with no object behind it.
+	/// </summary>
+	private IEnumerable<Message> ObjectValuedMessages() =>
+		_scope.Messages.Where(m => VmTypeCompatibility.IsObjectValued(m.Type, _vm));
+
+	private IEnumerable<InputParameter> ObjectValuedInputParams() =>
+		_scope.InputParams.Where(p => VmTypeCompatibility.IsObjectValued(p.Type, _vm));
+
+	private IEnumerable<LoopParameter> LoopElements() => _scope.LoopVariables.Where(l => !l.IsIndex);
+
 	private void Pick() {
 		switch (SelectedKind) {
 			case TargetObjectKind.Holder:
@@ -303,9 +352,11 @@ public sealed class TargetObjectEditor : UserControl {
 				break;
 			case TargetObjectKind.ParameterRef:
 				// The action runs against whatever the parameter points at, so only a
-				// parameter that actually holds an object reference can stand here.
+				// parameter that actually holds an object reference can stand here — and an
+				// expression's constant holds a literal, not an object.
 				PickElement("Select object parameter",
-					_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
+					_vm.GetElementsByType<Parameter>()
+						.Where(p => !p.IsConstant && VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case TargetObjectKind.Hierarchy:
 				PickHierarchy();

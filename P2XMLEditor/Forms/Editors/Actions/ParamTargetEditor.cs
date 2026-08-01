@@ -110,8 +110,8 @@ public sealed class ParamTargetEditor : UserControl {
 
 			// Whatever the action already says stays selectable, so merely opening and saving
 			// cannot move the target — including spellings that are not on offer, such as the
-			// empty one. No SetParam, Math or SetExpression action in either corpus actually
-			// writes an empty TargetParam, but nothing here depends on that staying true.
+			// empty one. Leaving it empty is refused on save for the types that need a
+			// destination; it stays listed so the refusal names what is actually there.
 			if (_storedKind is { } stored && !offered.Contains(stored))
 				_kind.Items.Insert(0, new KindItem(stored));
 

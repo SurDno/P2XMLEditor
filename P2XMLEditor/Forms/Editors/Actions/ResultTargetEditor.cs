@@ -122,12 +122,14 @@ public sealed class ResultTargetEditor : UserControl {
 		ParamTarget.TryRead(SerializedValue, _vm, out var target) ? target : ParamTarget.Empty();
 
 	/// <summary>
-	/// Why the current destination cannot be saved, or null when it is fine. Storing nowhere
-	/// is always fine; storing into nothing is not.
+	/// Why this destination cannot be saved, or null when it is fine.
+	///
+	/// Asked only where a result is actually being stored — the form's toggle decides that, and
+	/// answering "fine" here whenever the editor believes it is not storing would let the two
+	/// disagree and save a checked box as no destination at all.
 	/// </summary>
 	public string? ValidationError {
 		get {
-			if (!_storing) return null;
 			if (_object == null) return "There is no object to store the function result on.";
 			if (SelectedParameterId == null)
 				return $"Choose a parameter on {_object.Name} to store the result in, or clear \"Store result in\".";

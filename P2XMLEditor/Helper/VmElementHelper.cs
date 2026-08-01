@@ -117,8 +117,25 @@ public static class VmElementExtensions {
 	/// instead — one pass, and it cannot fall out of date. Placeholders are excluded: they
 	/// stand in for elements the data references but does not define.
 	/// </summary>
-	public static IEnumerable<ParameterHolder> AllParameterHolders(this VirtualMachine vm) =>
-		vm.ElementsById.Values.OfType<ParameterHolder>().Where(h => h is not IPlaceholder);
+	public static IReadOnlyList<ParameterHolder> AllParameterHolders(this VirtualMachine vm) {
+		var holders = new List<ParameterHolder>();
+		foreach (var element in vm.AllElements())
+			if (element is ParameterHolder holder and not IPlaceholder)
+				holders.Add(holder);
+		return holders;
+	}
+
+	/// <summary>
+	/// Every element, as a snapshot.
+	///
+	/// Deliberately not a lazy view over ElementsById. Reading a declared type can *write* to
+	/// the machine — VmTypeHelper registers a placeholder for an "IObjRef%cf_&lt;id&gt;" whose
+	/// blueprint is missing from the data — so any caller that filters these by type would be
+	/// mutating the dictionary it is walking, and the enumerator throws. Callers building a
+	/// candidate list do exactly that, so the copy is taken once, here.
+	/// </summary>
+	public static IReadOnlyList<VmElement> AllElements(this VirtualMachine vm) =>
+		vm.ElementsById.Values.ToList();
 
 	public static VmElement? GetNullableElement(this VirtualMachine vm, ulong id) {
 		vm.ElementsById.TryGetValue(id, out var el);

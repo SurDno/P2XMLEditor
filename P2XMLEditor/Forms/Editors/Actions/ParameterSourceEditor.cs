@@ -679,8 +679,14 @@ public sealed class ParameterSourceEditor : UserControl {
 		_scope.LoopVariables.Where(l => l.IsIndex == index &&
 			VmTypeCompatibility.Matches(_expectedType, index ? VmTypeInfo.Int32 : VmTypeInfo.GameObject));
 
+	/// <summary>
+	/// An expression's constant is excluded here as everywhere else: it is the expression's own
+	/// literal storage, reachable only through the expression, and no action in either corpus
+	/// reads one.
+	/// </summary>
 	private IEnumerable<Parameter> CompatibleParameters() =>
-		_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
+		_vm.GetElementsByType<Parameter>()
+			.Where(p => !p.IsConstant && VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
 
 	// ---------------------------------------------------------------- picking
 
@@ -693,7 +699,8 @@ public sealed class ParameterSourceEditor : UserControl {
 				// The prefix names an object-valued parameter; the text box names the
 				// parameter to read off whatever object it points at.
 				PickElement("Select object parameter",
-					_vm.GetElementsByType<Parameter>().Where(p => VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
+					_vm.GetElementsByType<Parameter>()
+						.Where(p => !p.IsConstant && VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case ParameterSourceKind.ObjectRef:
 				PickElement("Select object", ObjectCandidates());
@@ -751,8 +758,9 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		var systemType = type == null ? null : VmTypeHelper.GetSystemType(type.BaseType);
 		if (systemType != null && typeof(VmElement).IsAssignableFrom(systemType) && systemType != typeof(GameObject))
-			return _vm.ElementsById.Values
-				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder);
+			return _vm.AllElements()
+				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder
+					&& element is not Parameter { IsConstant: true });
 
 		return _vm.AllParameterHolders();
 	}
