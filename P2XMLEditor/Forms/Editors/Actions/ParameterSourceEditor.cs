@@ -50,6 +50,8 @@ public enum ParameterSourceKind {
 /// </summary>
 public sealed class ParameterSourceEditor : UserControl {
 	public const int PreferredHeight = 30;
+	private const int ExtraColumnWidth = 140;
+	private const int PickColumnWidth = 86;
 
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
@@ -61,9 +63,12 @@ public sealed class ParameterSourceEditor : UserControl {
 	private readonly ComboBox _choice;
 	private readonly TextBox _reference;
 	private readonly ComboBox _extra;
+	private readonly ComboBox _named;
 	private readonly Button _pick;
+	private readonly TableLayoutPanel _layout;
 
 	private VmTypeInfo? _expectedType;
+	private SlotConstraint? _constraint;
 	private VmElement? _pickedElement;
 	private HierarchyGuid? _pickedHierarchy;
 	private string _originalText = "";
@@ -101,8 +106,17 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		_reference = new TextBox { Dock = DockStyle.Fill, ReadOnly = true };
 
+		// Some slots take an object's name as a plain string. Editable, because the data has a
+		// few names that are real objects without the component the slot usually wants.
+		_named = new ComboBox {
+			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDown, IntegralHeight = false,
+			AutoCompleteMode = AutoCompleteMode.SuggestAppend, AutoCompleteSource = AutoCompleteSource.ListItems
+		};
+		_named.SelectedIndexChanged += (_, _) => OnUserEdit(null);
+		_named.TextChanged += (_, _) => OnUserEdit(null);
+
 		_valueHost = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0, 0, 6, 0) };
-		_valueHost.Controls.AddRange([_literal, _choice, _reference]);
+		_valueHost.Controls.AddRange([_literal, _choice, _named, _reference]);
 
 		_extra = new ComboBox {
 			Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDown, IntegralHeight = false,
@@ -115,21 +129,21 @@ public sealed class ParameterSourceEditor : UserControl {
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
 		_pick.Click += (_, _) => Pick();
 
-		var layout = new TableLayoutPanel {
+		_layout = new TableLayoutPanel {
 			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
-		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-		layout.Controls.Add(_kind, 0, 0);
-		layout.Controls.Add(_valueHost, 1, 0);
-		layout.Controls.Add(_extra, 2, 0);
-		layout.Controls.Add(_pick, 3, 0);
+		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
+		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, ExtraColumnWidth));
+		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, PickColumnWidth));
+		_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+		_layout.Controls.Add(_kind, 0, 0);
+		_layout.Controls.Add(_valueHost, 1, 0);
+		_layout.Controls.Add(_extra, 2, 0);
+		_layout.Controls.Add(_pick, 3, 0);
 
-		Controls.Add(layout);
+		Controls.Add(_layout);
 
 		PopulateKinds();
 		UpdateVisibleControls();
@@ -158,6 +172,18 @@ public sealed class ParameterSourceEditor : UserControl {
 			// the control no longer holds what it was loaded with, so it stops claiming to:
 			// otherwise an untouched slot would keep emitting a value the new type rejects.
 			if (Compose() != before) _dirty = true;
+		}
+	}
+
+	/// <summary>
+	/// What this slot really accepts, where the function narrows it beyond the declared type.
+	/// </summary>
+	public SlotConstraint? Constraint {
+		get => _constraint;
+		set {
+			_constraint = value;
+			PopulateKinds();
+			UpdateVisibleControls();
 		}
 	}
 
@@ -210,6 +236,7 @@ public sealed class ParameterSourceEditor : UserControl {
 					var literal = source.LiteralValue?.Serialize() ?? "";
 					if (source.IsCommaSeparator) literal = literal.Replace('.', ',');
 					_literal.Text = literal;
+					_named.Text = literal;
 					SelectById(_choice, literal);
 					break;
 				case ParameterSourceKind.Message:
@@ -224,16 +251,16 @@ public sealed class ParameterSourceEditor : UserControl {
 					break;
 				case ParameterSourceKind.ParameterRef:
 					_pickedElement = source.ParameterReference;
-					_reference.Text = VmElementPicker.DescribeDetailed(source.ParameterReference);
+					_reference.Text = VmElementPicker.DescribeDetailed(source.ParameterReference, _vm);
 					break;
 				case ParameterSourceKind.DynamicParameter:
 					_pickedElement = source.DynamicObjectReference;
-					_reference.Text = VmElementPicker.DescribeDetailed(source.DynamicObjectReference);
+					_reference.Text = VmElementPicker.DescribeDetailed(source.DynamicObjectReference, _vm);
 					_extra.Text = source.DynamicParameterName ?? "";
 					break;
 				case ParameterSourceKind.ObjectRef:
 					_pickedElement = ReferencedElement(source);
-					_reference.Text = VmElementPicker.DescribeDetailed(_pickedElement);
+					_reference.Text = VmElementPicker.DescribeDetailed(_pickedElement, _vm);
 					break;
 				case ParameterSourceKind.Hierarchy:
 					_reference.Text = DescribeHierarchy(source.HierarchyReference);
@@ -313,11 +340,15 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	/// <summary>Enum and boolean literals are chosen, not typed; everything else is free text.</summary>
-	private string CurrentLiteral() =>
-		LiteralIsChosen ? (_choice.SelectedItem as ChoiceItem)?.Id ?? "" : _literal.Text;
+	private string CurrentLiteral() {
+		if (LiteralIsNamedObject) return _named.Text;
+		return LiteralIsChosen ? (_choice.SelectedItem as ChoiceItem)?.Id ?? "" : _literal.Text;
+	}
 
 	private bool LiteralIsChosen =>
 		VmTypeCompatibility.EnumTypeOf(_expectedType) != null || _expectedType?.BaseType == VmType.Boolean;
+
+	private bool LiteralIsNamedObject => _constraint?.Form == SlotValueForm.Name;
 
 	private static string SafeWrite(ParameterSource source) {
 		try {
@@ -334,7 +365,7 @@ public sealed class ParameterSourceEditor : UserControl {
 
 	private static string DescribeHierarchy(HierarchyGuid? hierarchy) {
 		if (hierarchy == null) return "";
-		var path = string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element)));
+		var path = string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element, _vm)));
 		return $"{path}   ({hierarchy.Write()})";
 	}
 
@@ -437,13 +468,14 @@ public sealed class ParameterSourceEditor : UserControl {
 
 	private void UpdateVisibleControls() {
 		var kind = SelectedKind;
-		var literalIsChosen = LiteralIsChosen && kind == ParameterSourceKind.Literal;
+		var literalIsNamed = LiteralIsNamedObject && kind == ParameterSourceKind.Literal;
+		var literalIsChosen = !literalIsNamed && LiteralIsChosen && kind == ParameterSourceKind.Literal;
 
 		// Visibility is derived from local booleans rather than read back off the controls:
 		// Control.Visible reports false for anything whose parent chain is not yet shown, so
 		// reading it during construction would leave the dependent controls hidden until the
 		// user happened to change a dropdown.
-		var showLiteral = !literalIsChosen && kind is ParameterSourceKind.Literal
+		var showLiteral = !literalIsChosen && !literalIsNamed && kind is ParameterSourceKind.Literal
 			or ParameterSourceKind.Constant or ParameterSourceKind.GlobalList or ParameterSourceKind.Raw;
 		var showChoice = literalIsChosen || kind is ParameterSourceKind.Message or ParameterSourceKind.InputParam
 			or ParameterSourceKind.LoopIndex or ParameterSourceKind.LoopElement;
@@ -453,12 +485,20 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		_literal.Visible = showLiteral;
 		_choice.Visible = showChoice;
+		_named.Visible = literalIsNamed;
 		_reference.Visible = showReference;
 		_extra.Visible = showExtra;
 		_pick.Visible = showReference;
 
+		// A column that holds nothing takes no width, so a literal gets the whole row and an
+		// object reference has its Select button flush against the value.
+		_layout.ColumnStyles[2].Width = showExtra ? ExtraColumnWidth : 0;
+		_layout.ColumnStyles[3].Width = showReference ? PickColumnWidth : 0;
+
 		if (showChoice) PopulateChoices(kind, literalIsChosen);
 		if (showExtra) PopulateDynamicNames();
+		if (literalIsNamed) PopulateObjectNames();
+		if (showReference) _reference.Text = CurrentReferenceText(kind);
 
 		_literal.PlaceholderText = kind switch {
 			ParameterSourceKind.GlobalList => "global list name",
@@ -543,6 +583,71 @@ public sealed class ParameterSourceEditor : UserControl {
 			.Select(entry => entry.Key)
 			.OrderBy(name => name, StringComparer.Ordinal);
 
+	/// <summary>
+	/// What the reference box should read for the kind now selected. Object reference and scene
+	/// hierarchy describe the same object two ways, so switching between them carries the value
+	/// across instead of blanking it: a hierarchy keeps its leaf, and an object rebuilds the
+	/// path from its own parent chain.
+	/// </summary>
+	private string CurrentReferenceText(ParameterSourceKind kind) {
+		switch (kind) {
+			case ParameterSourceKind.ObjectRef:
+				_pickedElement ??= _pickedHierarchy?.Elements[^1].Element;
+				return VmElementPicker.DescribeDetailed(_pickedElement, _vm);
+			case ParameterSourceKind.Hierarchy:
+				_pickedHierarchy ??= HierarchyOf(_pickedElement);
+				return DescribeHierarchy(_pickedHierarchy);
+			case ParameterSourceKind.ParameterRef:
+			case ParameterSourceKind.DynamicParameter:
+				return VmElementPicker.DescribeDetailed(_pickedElement, _vm);
+			default:
+				return "";
+		}
+	}
+
+	/// <summary>The path from an object's own parent chain, in the spelling HierarchyGuid parses.</summary>
+	private HierarchyGuid? HierarchyOf(VmElement? leaf) {
+		if (leaf == null) return null;
+
+		var path = new List<ulong>();
+		var current = leaf as ParameterHolder;
+		for (var guard = 0; guard < 32 && current != null; guard++) {
+			path.Insert(0, current.Id);
+			current = current.Parent;
+		}
+		if (path.Count == 0) path.Add(leaf.Id);
+
+		// A single-element path is not a hierarchy — LooksLikeHierarchy needs a separator — so
+		// it is doubled to keep the spelling parseable.
+		var text = path.Count == 1 ? $"{path[0]}H{path[0]}" : string.Join("H", path);
+		return HierarchyGuid.TryParse(text, _vm, out var hierarchy) ? hierarchy : null;
+	}
+
+	/// <summary>Names of the objects a name-form slot accepts.</summary>
+	private void PopulateObjectNames() {
+		var current = _named.Text;
+		var previouslySuppressed = _suppressEvents;
+		_suppressEvents = true;
+		try {
+			_named.Items.Clear();
+			foreach (var name in ConstrainedObjects().Select(o => o.Name).Distinct(StringComparer.Ordinal)
+						 .OrderBy(n => n, StringComparer.Ordinal))
+				_named.Items.Add(name);
+			_named.Text = current;
+		} finally {
+			_suppressEvents = previouslySuppressed;
+		}
+	}
+
+	/// <summary>Objects satisfying the slot's component constraint, or all of them when free.</summary>
+	private IEnumerable<ParameterHolder> ConstrainedObjects() {
+		var required = _constraint?.RequiredComponent ?? VmComponent.None;
+		var all = _vm.AllParameterHolders();
+		return required == VmComponent.None
+			? all
+			: all.Where(h => ActionScope.HasComponent(h, required, _vm));
+	}
+
 	private IEnumerable<(string Id, string Label)> LiteralChoices() {
 		var enumType = VmTypeCompatibility.EnumTypeOf(_expectedType);
 		if (enumType != null)
@@ -600,11 +705,14 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	private void PickElement(string title, IEnumerable<VmElement> candidates) {
-		if (!VmElementPicker.TryPick(FindForm(), title, candidates, VmElementPicker.Describe, _pickedElement,
+		if (!VmElementPicker.TryPick(FindForm(), title, candidates, e => VmElementPicker.Describe(e, _vm), _pickedElement,
 				out var picked))
 			return;
 		_pickedElement = picked;
-		_reference.Text = VmElementPicker.DescribeDetailed(picked);
+		// The two object kinds describe the same thing, so a fresh pick invalidates the path
+		// built from the previous one rather than leaving it to reappear on a kind switch.
+		_pickedHierarchy = null;
+		_reference.Text = VmElementPicker.DescribeDetailed(picked, _vm);
 		OnUserEdit(null);
 	}
 
@@ -615,7 +723,7 @@ public sealed class ParameterSourceEditor : UserControl {
 	/// </summary>
 	private void PickHierarchy() {
 		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", HierarchyCandidates(),
-				VmElementPicker.Describe, _pickedHierarchy?.Elements[^1].Element, out var leaf))
+				e => VmElementPicker.Describe(e, _vm), _pickedHierarchy?.Elements[^1].Element, out var leaf))
 			return;
 
 		if (leaf == null) {
@@ -625,24 +733,17 @@ public sealed class ParameterSourceEditor : UserControl {
 			return;
 		}
 
-		var path = new List<ulong>();
-		var current = leaf as ParameterHolder;
-		for (var guard = 0; guard < 32 && current != null; guard++) {
-			path.Insert(0, current.Id);
-			current = current.Parent;
-		}
-		if (path.Count == 0) path.Add(leaf.Id);
-
-		// A single-element path is not a hierarchy — LooksLikeHierarchy needs a separator —
-		// so it is doubled to keep the spelling parseable.
-		var text = path.Count == 1 ? $"{path[0]}H{path[0]}" : string.Join("H", path);
-
-		HierarchyGuid.TryParse(text, _vm, out _pickedHierarchy);
+		_pickedHierarchy = HierarchyOf(leaf);
+		_pickedElement = leaf;
 		_reference.Text = DescribeHierarchy(_pickedHierarchy);
 		OnUserEdit(null);
 	}
 
 	private IEnumerable<VmElement> ObjectCandidates() {
+		// A function that only accepts, say, a storable says so regardless of the wider type its
+		// declaration carries.
+		if (_constraint is { RequiredComponent: not VmComponent.None }) return ConstrainedObjects();
+
 		var type = _expectedType;
 		if (type?.BaseType is VmType.BlueprintRef or VmType.BlueprintRefStorable)
 			// BlueprintRef.Element is a VmEither<Item, Other, Character>; nothing else fits.

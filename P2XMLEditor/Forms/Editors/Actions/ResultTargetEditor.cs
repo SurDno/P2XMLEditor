@@ -32,7 +32,6 @@ public sealed class ResultTargetEditor : UserControl {
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
 
-	private readonly CheckBox _store;
 	private readonly TextBox _objectDisplay;
 	private readonly Button _pickObject;
 	private readonly ComboBox _parameter;
@@ -40,6 +39,7 @@ public sealed class ResultTargetEditor : UserControl {
 	private readonly Panel _parameterHost;
 
 	private ParameterHolder? _object;
+	private bool _storing;
 	private VmTypeInfo? _expectedType;
 	private string? _pendingParameterId;
 	private string _originalText = "%";
@@ -55,11 +55,6 @@ public sealed class ResultTargetEditor : UserControl {
 
 		Height = PreferredHeight;
 		Margin = new Padding(0, 2, 0, 2);
-
-		_store = new CheckBox {
-			Dock = DockStyle.Fill, Text = "Store result", AutoSize = false, Margin = new Padding(0, 0, 6, 0)
-		};
-		_store.CheckedChanged += (_, _) => OnUserEdit(UpdateVisibleControls);
 
 		_objectDisplay = new TextBox { Dock = DockStyle.Fill, ReadOnly = true, Margin = new Padding(0, 0, 6, 0) };
 
@@ -79,26 +74,35 @@ public sealed class ResultTargetEditor : UserControl {
 		_parameterHost = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty };
 		_parameterHost.Controls.AddRange([_parameter, _hint]);
 
+		// The toggle lives in the form's label column, so the object field starts the row here.
 		var layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
+			Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
-		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86));
 		layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55));
 		layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-		layout.Controls.Add(_store, 0, 0);
-		layout.Controls.Add(_objectDisplay, 1, 0);
-		layout.Controls.Add(_pickObject, 2, 0);
-		layout.Controls.Add(_parameterHost, 3, 0);
+		layout.Controls.Add(_objectDisplay, 0, 0);
+		layout.Controls.Add(_pickObject, 1, 0);
+		layout.Controls.Add(_parameterHost, 2, 0);
 
 		Controls.Add(layout);
 		UpdateVisibleControls();
 	}
 
-	/// <summary>Raised when the store checkbox is toggled, so the row label can grey out with it.</summary>
-	public bool StoresResult => _store.Checked;
+	/// <summary>
+	/// Whether a destination is being stored at all. The toggle itself sits in the form's label
+	/// column so the object field can start the row, so this is driven from outside.
+	/// </summary>
+	public bool Storing {
+		get => _storing;
+		set {
+			if (_storing == value) return;
+			_storing = value;
+			OnUserEdit(UpdateVisibleControls);
+		}
+	}
 
 	/// <summary>The function's return type. Setting it refilters the parameter list.</summary>
 	public VmTypeInfo? ExpectedType {
@@ -123,10 +127,10 @@ public sealed class ResultTargetEditor : UserControl {
 	/// </summary>
 	public string? ValidationError {
 		get {
-			if (!_store.Checked) return null;
+			if (!_storing) return null;
 			if (_object == null) return "There is no object to store the function result on.";
 			if (SelectedParameterId == null)
-				return $"Choose a parameter on {_object.Name} to store the result in, or clear \"Store result\".";
+				return $"Choose a parameter on {_object.Name} to store the result in, or clear \"Store result in\".";
 			return null;
 		}
 	}
@@ -143,7 +147,7 @@ public sealed class ResultTargetEditor : UserControl {
 			// An absent context means the owner, which is what the engine assumes.
 			_object = target.ContextHolder ?? _scope.Owner;
 			_pendingParameterId = target.Parameter?.Id.ToString();
-			_store.Checked = target.Kind == ParamTargetKind.Parameter;
+			_storing = target.Kind == ParamTargetKind.Parameter;
 
 			UpdateVisibleControls();
 		} finally {
@@ -152,7 +156,7 @@ public sealed class ResultTargetEditor : UserControl {
 	}
 
 	private string Compose() {
-		if (!_store.Checked) return "%";
+		if (!_storing) return "%";
 		var id = SelectedParameterId;
 		if (string.IsNullOrEmpty(id)) return "%";
 
@@ -170,7 +174,7 @@ public sealed class ResultTargetEditor : UserControl {
 	}
 
 	private void UpdateVisibleControls() {
-		var storing = _store.Checked;
+		var storing = _storing;
 		if (storing) PopulateParameters();
 
 		var hasParameters = storing && _parameter.Items.Count > 0;
@@ -241,7 +245,7 @@ public sealed class ResultTargetEditor : UserControl {
 		// a destination that immediately reports it has nowhere to store anything.
 		var candidates = _vm.AllParameterHolders().Where(HasCompatibleParameter);
 		if (!VmElementPicker.TryPick(FindForm(), "Select the object holding the result parameter",
-				candidates, VmElementPicker.Describe, _object, out var picked))
+				candidates, e => VmElementPicker.Describe(e, _vm), _object, out var picked))
 			return;
 
 		var chosen = picked as ParameterHolder ?? _scope.Owner;

@@ -152,11 +152,11 @@ public sealed class TargetObjectEditor : UserControl {
 			switch (target.Kind) {
 				case TargetObjectKind.Holder:
 					_pickedElement = target.Holder;
-					_reference.Text = VmElementPicker.DescribeDetailed(target.Holder);
+					_reference.Text = VmElementPicker.DescribeDetailed(target.Holder, _vm);
 					break;
 				case TargetObjectKind.ParameterRef:
 					_pickedElement = target.ParameterRef;
-					_reference.Text = VmElementPicker.DescribeDetailed(target.ParameterRef);
+					_reference.Text = VmElementPicker.DescribeDetailed(target.ParameterRef, _vm);
 					break;
 				case TargetObjectKind.Hierarchy:
 					_pickedHierarchy = target.Hierarchy;
@@ -217,7 +217,7 @@ public sealed class TargetObjectEditor : UserControl {
 	private static string DescribeHierarchy(HierarchyGuid? hierarchy) =>
 		hierarchy == null
 			? ""
-			: $"{string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element)))}   ({hierarchy.Write()})";
+			: $"{string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element, _vm)))}   ({hierarchy.Write()})";
 
 	private void PopulateKinds() {
 		var previouslySuppressed = _suppressEvents;
@@ -314,18 +314,18 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	private void PickElement(string title, IEnumerable<VmElement> candidates) {
-		if (!VmElementPicker.TryPick(FindForm(), title, candidates, VmElementPicker.Describe, _pickedElement,
+		if (!VmElementPicker.TryPick(FindForm(), title, candidates, e => VmElementPicker.Describe(e, _vm), _pickedElement,
 				out var picked))
 			return;
 		_pickedElement = picked;
-		_reference.Text = VmElementPicker.DescribeDetailed(picked);
+		_reference.Text = VmElementPicker.DescribeDetailed(picked, _vm);
 		OnUserEdit(null);
 	}
 
 	private void PickHierarchy() {
 		// A hierarchy path is made of nested scene objects: HierarchyGuid holds exactly these.
 		var candidates = _vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
-		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", candidates, VmElementPicker.Describe,
+		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", candidates, e => VmElementPicker.Describe(e, _vm),
 				_pickedHierarchy?.Elements[^1].Element, out var leaf))
 			return;
 

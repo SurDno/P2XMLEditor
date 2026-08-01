@@ -259,6 +259,11 @@ public sealed class ActionScope {
 		};
 	}
 
+	/// <summary>Whether an object carries a component, its inherited ones included.</summary>
+	public static bool HasComponent(ParameterHolder holder, VmComponent component, VirtualMachine vm) =>
+		component == VmComponent.None ||
+		ComponentsOf(holder, vm).Contains(VmTypeHelper.SerializeComponent(component));
+
 	/// <summary>
 	/// The single object a runtime-decided target is nonetheless pinned to.
 	///

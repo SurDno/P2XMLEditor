@@ -297,7 +297,7 @@ public sealed class ParamTargetEditor : UserControl {
 			if (_storedParameterId != null && !listed)
 				_parameter.Items.Insert(0, new ParameterItem(_storedParameter,
 					_storedParameter != null
-						? $"{VmElementPicker.Describe(_storedParameter)}   (not on target object)"
+						? $"{VmElementPicker.Describe(_storedParameter, _vm)}   (not on target object)"
 						: $"(missing parameter {_storedParameterId})",
 					_storedParameterId));
 

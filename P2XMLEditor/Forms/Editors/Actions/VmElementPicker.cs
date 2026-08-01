@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
@@ -124,8 +125,14 @@ public sealed class VmElementPicker : Form {
 	/// list the type is already the group header and the filter above it, and the id has its
 	/// own column, so repeating both inside the name only crowds it out.
 	/// </summary>
-	public static string Describe(VmElement? element) {
+	public static string Describe(VmElement? element, VirtualMachine? vm = null) {
 		if (element == null) return "";
+
+		// A Sample carries no name of its own — only the engine GUID of the template it stands
+		// for, which is where the name lives.
+		if (element is Sample sample && TemplateName(sample, vm) is { } templateName)
+			return templateName;
+
 		var name = element switch {
 			INamedElement named => named.Name,
 			Parameter p => p.Name,
@@ -135,12 +142,21 @@ public sealed class VmElementPicker : Form {
 		return element is Parameter { Parent.Element: ParameterHolder owner } ? $"{owner.Name}.{label}" : label;
 	}
 
+	private static string? TemplateName(Sample sample, VirtualMachine? vm) {
+		if (vm == null || string.IsNullOrEmpty(sample.EngineId)) return null;
+		if (!Guid.TryParse(sample.EngineId, out var id)) return null;
+		return vm.TemplateManagerInst.Templates.TryGetValue(id, out var template) &&
+			   !string.IsNullOrEmpty(template.Name)
+			? template.Name
+			: null;
+	}
+
 	/// <summary>
 	/// Name plus type and id, for the read-only boxes that show a chosen element on their own
 	/// with no columns around them to say which one it is.
 	/// </summary>
-	public static string DescribeDetailed(VmElement? element) =>
-		element == null ? "" : $"{Describe(element)}  [{element.GetType().Name} {element.Id}]";
+	public static string DescribeDetailed(VmElement? element, VirtualMachine? vm = null) =>
+		element == null ? "" : $"{Describe(element, vm)}  [{element.GetType().Name} {element.Id}]";
 
 	private IEnumerable<string> TypeNames() =>
 		_candidates.Select(c => c.GetType().Name).Distinct(StringComparer.Ordinal)

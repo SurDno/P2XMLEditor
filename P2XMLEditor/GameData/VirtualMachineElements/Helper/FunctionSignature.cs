@@ -21,7 +21,11 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;
 /// <see cref="Of"/> still verifies the count against ParamCount before trusting it.
 /// </summary>
 public sealed class FunctionSignature {
-	public sealed record Slot(int Index, string Name, VmTypeInfo Type);
+	/// <param name="Constraint">
+	/// What this particular function really accepts here, where that is narrower than the
+	/// declared type. Null when the declaration is the whole story.
+	/// </param>
+	public sealed record Slot(int Index, string Name, VmTypeInfo Type, SlotConstraint? Constraint = null);
 
 	public string Name { get; }
 	public VmType ReturnType { get; }
@@ -74,7 +78,8 @@ public sealed class FunctionSignature {
 
 		var slots = new List<Slot>(properties.Length);
 		for (var i = 0; i < properties.Length; i++)
-			slots.Add(new Slot(i, properties[i].Name, SlotType(properties[i], instance)));
+			slots.Add(new Slot(i, properties[i].Name, SlotType(properties[i], instance),
+				FunctionSlotOverrides.For(name, properties[i].Name)));
 
 		return new FunctionSignature(name, returnType, slots);
 	}

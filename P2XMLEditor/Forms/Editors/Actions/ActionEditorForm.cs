@@ -54,7 +54,7 @@ public sealed class ActionEditorForm : Form {
 	private readonly GroupBox _slotsGroup;
 	private readonly TableLayoutPanel _slots;
 	private readonly TextBox _expressionPreview;
-	private readonly Label _resultLabel;
+	private readonly CheckBox _resultToggle;
 	private readonly ResultTargetEditor _result;
 	private readonly TextBox _preview;
 	private readonly ToolTip _toolTip = new();
@@ -157,7 +157,11 @@ public sealed class ActionEditorForm : Form {
 		expressionRow.Controls.Add(_expressionPreview, 0, 0);
 		expressionRow.Controls.Add(Row(editExpression), 1, 0);
 
-		_resultLabel = NewLabel("Save result in");
+		_resultToggle = Row(new CheckBox { Text = "Store result in", AutoSize = false });
+		_resultToggle.CheckedChanged += (_, _) => {
+			_result.Storing = _resultToggle.Checked;
+			RefreshPreview();
+		};
 
 		_preview = new TextBox {
 			Dock = DockStyle.Fill, ReadOnly = true, Multiline = true, ScrollBars = ScrollBars.Vertical,
@@ -171,7 +175,7 @@ public sealed class ActionEditorForm : Form {
 		AddRow(RowCallee, _calleeLabel, calleeRow);
 		AddRow(RowExpression, "Expression", expressionRow);
 		AddSpanningRow(RowSlots, _slotsGroup);
-		AddRow(RowResult, _resultLabel, _result);
+		AddRow(RowResult, _resultToggle, _result);
 		AddSpanningRow(RowPreview, _preview);
 
 		var split = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1 };
@@ -514,7 +518,8 @@ public sealed class ActionEditorForm : Form {
 		}
 
 		foreach (var slot in signature.Slots)
-			AddSlot($"{slot.Name}   [{Describe(slot.Type)}]", slot.Type, ValueAt(existing, slot.Index), null);
+			AddSlot($"{slot.Name}   [{Describe(slot.Type)}]", slot.Type, ValueAt(existing, slot.Index), null,
+				slot.Constraint);
 	}
 
 	private FunctionSignature? CurrentSignature(IReadOnlyList<string>? existing = null) {
@@ -540,8 +545,10 @@ public sealed class ActionEditorForm : Form {
 		}
 	}
 
-	private void AddSlot(string label, VmTypeInfo? expectedType, string value, ParamTarget? target) {
+	private void AddSlot(string label, VmTypeInfo? expectedType, string value, ParamTarget? target,
+		SlotConstraint? constraint = null) {
 		var editor = Row(new ParameterSourceEditor(_vm, _scope, expectedType, target));
+		if (constraint != null) editor.Constraint = constraint;
 		editor.ValueChanged += (_, _) => RefreshPreview();
 		if (!string.IsNullOrEmpty(value)) {
 			try {
@@ -607,7 +614,7 @@ public sealed class ActionEditorForm : Form {
 
 	private void AddRow(int row, string label, Control control) => AddRow(row, NewLabel(label), control);
 
-	private void AddRow(int row, Label label, Control control) {
+	private void AddRow(int row, Control label, Control control) {
 		_root.Controls.Add(label, 0, row);
 		_root.Controls.Add(control, 1, row);
 	}
@@ -642,9 +649,8 @@ public sealed class ActionEditorForm : Form {
 			: "";
 	}
 
-	/// <summary>Greys the row label along with the control when the result is not being stored.</summary>
-	private void UpdateResultLabel() =>
-		_resultLabel.ForeColor = _result.StoresResult ? SystemColors.ControlText : SystemColors.GrayText;
+	/// <summary>Keeps the toggle and the control it drives in step.</summary>
+	private void UpdateResultLabel() => _resultToggle.Checked = _result.Storing;
 
 	/// <summary>
 	/// Collapses a row to zero height rather than merely hiding its controls, so an
