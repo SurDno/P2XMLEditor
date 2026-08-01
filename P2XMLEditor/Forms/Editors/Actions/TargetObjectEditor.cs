@@ -214,7 +214,7 @@ public sealed class TargetObjectEditor : UserControl {
 		}
 	}
 
-	private static string DescribeHierarchy(HierarchyGuid? hierarchy) =>
+	private string DescribeHierarchy(HierarchyGuid? hierarchy) =>
 		hierarchy == null
 			? ""
 			: $"{string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element, _vm)))}   ({hierarchy.Write()})";

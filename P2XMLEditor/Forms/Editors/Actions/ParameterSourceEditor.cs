@@ -363,7 +363,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		?? source.BlueprintReference?.Element.Element
 		?? source.EntityReference?.Element;
 
-	private static string DescribeHierarchy(HierarchyGuid? hierarchy) {
+	private string DescribeHierarchy(HierarchyGuid? hierarchy) {
 		if (hierarchy == null) return "";
 		var path = string.Join(" → ", hierarchy.Elements.Select(e => VmElementPicker.DescribeDetailed(e.Element, _vm)));
 		return $"{path}   ({hierarchy.Write()})";
