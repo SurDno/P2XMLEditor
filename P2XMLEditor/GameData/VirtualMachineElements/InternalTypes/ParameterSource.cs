@@ -73,8 +73,21 @@ public struct ParameterSource {
 			return src;
 		}
 
-		// --- prefix / content split
-		var sep = body.IndexOf('%');
+		// --- prefix / content split, as CommonVariable.Read does it:
+		//
+		//   var parts = data.Split('%');
+		//   if (parts.Length == 1) { contextData = ""; variableData = parts[0]; }
+		//   else { contextData = parts[0]; variableData = parts[1];
+		//          if (parts.Length > 2) variableData += "%" + parts[2]; }
+		//
+		// A leading '%' therefore does not introduce a prefix — it *is* the empty context, and
+		// everything after it is the value, further '%' included. Splitting the body again would
+		// read "%IObjRef%cf_Building" as the prefix "IObjRef" with the value "cf_Building",
+		// where the engine sees an empty context and the whole "IObjRef%cf_Building" as one
+		// value: a type narrowed by functional component, which is what
+		// GameComponent.GetNearestOwnerByFunctional takes. All 23 two-'%' values across both
+		// corpora are of that shape.
+		var sep = src.HasLeadingPercent ? -1 : body.IndexOf('%');
 		string content;
 		if (sep != -1) {
 			var prefix = body[..sep];

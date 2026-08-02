@@ -355,7 +355,7 @@ public sealed class ParameterSourceEditor : UserControl {
 			case ParameterSourceKind.None:
 				return NoneKeyword;
 			case ParameterSourceKind.Literal:
-				return CurrentLiteral();
+				return WriteLiteral(CurrentLiteral());
 			case ParameterSourceKind.Constant:
 				return "const_" + CurrentLiteral();
 			case ParameterSourceKind.Message:
@@ -687,6 +687,20 @@ public sealed class ParameterSourceEditor : UserControl {
 		if (path is not { Length: > 1 }) return null;
 		return HierarchyGuid.TryParse(string.Join("H", path), _vm, out var hierarchy) ? hierarchy : null;
 	}
+
+	/// <summary>
+	/// A literal, with the leading '%' a value containing one cannot do without.
+	///
+	/// Separators.cs gives the same character two jobs — CommonVariablePartSeparator = '%'
+	/// splits context from value, and VMTypePartSeparator = '%' splits a VMType's base from its
+	/// spec part, as in "IObjRef%cf_Building" (VMSpecTypePrefix = "cf_", and
+	/// VMTypeSpecialPartSeparator = '&' joins several, as in "cf_Common&amp;Gate"). Written bare,
+	/// CommonVariable.Read would take "IObjRef" for the context and "cf_Building" for the whole
+	/// value. The leading '%' forces the context empty and hands the engine the value entire,
+	/// which is why every such value in the data carries one.
+	/// </summary>
+	private static string WriteLiteral(string literal) =>
+		literal.Contains('%') ? "%" + literal : literal;
 
 	/// <summary>The prefix as it is written, or null when the slot carries no context.</summary>
 	private string? PrefixText() =>

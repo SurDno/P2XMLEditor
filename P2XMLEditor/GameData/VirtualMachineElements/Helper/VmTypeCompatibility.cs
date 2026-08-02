@@ -103,9 +103,17 @@ public static class VmTypeCompatibility {
 	}
 
 	/// <summary>True for slots whose value is typed in, rather than chosen from the data.</summary>
+	/// <summary>
+	/// Types whose value is written out rather than referenced.
+	///
+	/// TypeValue is one of them: a VMType slot takes a type name, optionally narrowed by
+	/// functional component — "IObjRef%cf_Building", or "IObjRef%cf_Common&amp;Gate" for a
+	/// conjunction. That is a value the engine reads whole, not a reference to anything, so it
+	/// belongs here; without it a VMType slot offers no way to fill it at all.
+	/// </summary>
 	public static bool IsLiteralLike(VmTypeInfo? type) =>
 		type == null || type.BaseType is VmType.Unknown or VmType.Boolean or VmType.Int32 or VmType.Single
-			or VmType.String or VmType.UInt64 or VmType.GameTime || EnumTypeOf(type) != null;
+			or VmType.String or VmType.UInt64 or VmType.GameTime or VmType.TypeValue || EnumTypeOf(type) != null;
 
 	public static System.Type? EnumTypeOf(VmTypeInfo? type) {
 		if (type == null) return null;
