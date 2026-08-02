@@ -605,22 +605,19 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 	}
 
-	/// <summary>The path from an object's own parent chain, in the spelling HierarchyGuid parses.</summary>
+	/// <summary>
+	/// The path naming an object, when there is exactly one.
+	///
+	/// Only used to carry a value across a kind switch, so it answers nothing it cannot answer
+	/// with certainty: an object placed nowhere has no path at all, and one placed in several
+	/// spots has no single path to promote it to — the user picks which, in
+	/// <see cref="HierarchyPicker"/>.
+	/// </summary>
 	private HierarchyGuid? HierarchyOf(VmElement? leaf) {
 		if (leaf == null) return null;
-
-		var path = new List<ulong>();
-		var current = leaf as ParameterHolder;
-		for (var guard = 0; guard < 32 && current != null; guard++) {
-			path.Insert(0, current.Id);
-			current = current.Parent;
-		}
-		if (path.Count == 0) path.Add(leaf.Id);
-
-		// A single-element path is not a hierarchy — LooksLikeHierarchy needs a separator — so
-		// it is doubled to keep the spelling parseable.
-		var text = path.Count == 1 ? $"{path[0]}H{path[0]}" : string.Join("H", path);
-		return HierarchyGuid.TryParse(text, _vm, out var hierarchy) ? hierarchy : null;
+		var path = WorldHierarchy.For(_vm).SolePlacement(leaf.Id);
+		if (path is not { Length: > 1 }) return null;
+		return HierarchyGuid.TryParse(string.Join("H", path), _vm, out var hierarchy) ? hierarchy : null;
 	}
 
 	/// <summary>Names of the objects a name-form slot accepts.</summary>
@@ -724,25 +721,18 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	/// <summary>
-	/// A hierarchy is a path of nested scene objects. It is picked leaf-first and the path is
-	/// then read off the element's own parent chain, which is the only spelling the loader
-	/// accepts anyway.
+	/// A hierarchy names a spot in the built world, so it is picked as a placement rather than
+	/// as an object — see <see cref="HierarchyPicker"/>.
 	/// </summary>
 	private void PickHierarchy() {
-		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", HierarchyCandidates(),
-				e => VmElementPicker.Describe(e, _vm), _pickedHierarchy?.Elements[^1].Element, out var leaf))
+		if (!HierarchyPicker.TryPick(FindForm(), _vm, "Select a place in the world", _pickedHierarchy, out var picked))
 			return;
 
-		if (leaf == null) {
-			_pickedHierarchy = null;
-			_reference.Text = "";
-			OnUserEdit(null);
-			return;
-		}
-
-		_pickedHierarchy = HierarchyOf(leaf);
-		_pickedElement = leaf;
-		_reference.Text = DescribeHierarchy(_pickedHierarchy);
+		_pickedHierarchy = picked;
+		// The object kind describes the same thing a different way; carrying a stale element
+		// across would let a kind switch resurrect the object the path replaced.
+		_pickedElement = picked?.Elements[^1].Element;
+		_reference.Text = DescribeHierarchy(picked);
 		OnUserEdit(null);
 	}
 
@@ -762,11 +752,14 @@ public sealed class ParameterSourceEditor : UserControl {
 				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder
 					&& element is not Parameter { IsConstant: true });
 
-		return _vm.AllParameterHolders();
+		// Only the unconstrained case is narrowed to what a bare id can name: an object placed
+		// exactly once belongs to the Scene hierarchy kind instead. The cases above stay whole
+		// — a blueprint reference names a template by construction, so the same reasoning does
+		// not apply to it.
+		var world = WorldHierarchy.For(_vm);
+		var holders = _vm.AllParameterHolders();
+		return world.IsAvailable ? holders.Where(holder => world.NamedByBareId(holder.Id)) : holders;
 	}
-
-	private IEnumerable<VmElement> HierarchyCandidates() =>
-		_vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
 
 	// ---------------------------------------------------------------- helpers
 

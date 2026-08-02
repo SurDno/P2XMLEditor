@@ -348,7 +348,7 @@ public sealed class TargetObjectEditor : UserControl {
 	private void Pick() {
 		switch (SelectedKind) {
 			case TargetObjectKind.Holder:
-				PickElement("Select object", _vm.AllParameterHolders());
+				PickElement("Select object", HolderCandidates());
 				break;
 			case TargetObjectKind.ParameterRef:
 				// The action runs against whatever the parameter points at, so only a
@@ -364,6 +364,18 @@ public sealed class TargetObjectEditor : UserControl {
 		}
 	}
 
+	/// <summary>
+	/// Objects a bare id can name. An object placed exactly once in the world is left out —
+	/// its id names the shared template, not the placement, and the Scene hierarchy kind is
+	/// where it belongs. Whatever the action already says stays listed regardless, so opening
+	/// the picker on an existing target and cancelling out of it cannot lose the value.
+	/// </summary>
+	private IEnumerable<VmElement> HolderCandidates() {
+		var world = WorldHierarchy.For(_vm);
+		var holders = _vm.AllParameterHolders();
+		return world.IsAvailable ? holders.Where(holder => world.NamedByBareId(holder.Id)) : holders;
+	}
+
 	private void PickElement(string title, IEnumerable<VmElement> candidates) {
 		if (!VmElementPicker.TryPick(FindForm(), title, candidates, e => VmElementPicker.Describe(e, _vm), _pickedElement,
 				out var picked))
@@ -373,31 +385,18 @@ public sealed class TargetObjectEditor : UserControl {
 		OnUserEdit(null);
 	}
 
+	/// <summary>
+	/// Picked as a placement, not as an object: see <see cref="HierarchyPicker"/>. The old path
+	/// was read off the object's own parent chain, which is the VM ownership tree and matches
+	/// nothing the engine builds — of the 2673 hierarchy guids in the Sandbox, none equals its
+	/// leaf's parent chain.
+	/// </summary>
 	private void PickHierarchy() {
-		// A hierarchy path is made of nested scene objects: HierarchyGuid holds exactly these.
-		var candidates = _vm.AllParameterHolders().Where(h => h is Scene or Geom or Other or Item);
-		if (!VmElementPicker.TryPick(FindForm(), "Select hierarchy leaf", candidates, e => VmElementPicker.Describe(e, _vm),
-				_pickedHierarchy?.Elements[^1].Element, out var leaf))
+		if (!HierarchyPicker.TryPick(FindForm(), _vm, "Select a place in the world", _pickedHierarchy, out var picked))
 			return;
 
-		if (leaf == null) {
-			_pickedHierarchy = null;
-			_reference.Text = "";
-			OnUserEdit(null);
-			return;
-		}
-
-		var path = new List<ulong>();
-		var current = leaf as ParameterHolder;
-		for (var guard = 0; guard < 32 && current != null; guard++) {
-			path.Insert(0, current.Id);
-			current = current.Parent;
-		}
-		if (path.Count == 0) path.Add(leaf.Id);
-
-		var text = path.Count == 1 ? $"{path[0]}H{path[0]}" : string.Join("H", path);
-		HierarchyGuid.TryParse(text, _vm, out _pickedHierarchy);
-		_reference.Text = DescribeHierarchy(_pickedHierarchy);
+		_pickedHierarchy = picked;
+		_reference.Text = DescribeHierarchy(picked);
 		OnUserEdit(null);
 	}
 

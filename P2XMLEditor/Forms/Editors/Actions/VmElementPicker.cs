@@ -39,6 +39,10 @@ public sealed class VmElementPicker : Form {
 	private VmElementPicker(string title, IEnumerable<VmElement> candidates, Func<VmElement, string> display,
 		VmElement? current) {
 		_candidates = candidates.ToList();
+		// Callers narrow the list to what is worth authoring; what the element already says is
+		// not always in that set, and dropping it would mean the current value is invisible
+		// here and silently replaced by whatever the user picks instead.
+		if (current != null && !_candidates.Contains(current)) _candidates.Insert(0, current);
 		_display = display;
 
 		Text = title;
