@@ -757,11 +757,12 @@ public sealed class ParameterSourceEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Says so when the object is placed in the world, because then the id and a hierarchy path
-	/// name different things — see <see cref="WorldHierarchy.BareIdNote"/>. Nothing is filtered
-	/// out on the strength of it: the engine accepts an id for any object.
+	/// Why an id would not reach this object when the action runs — see
+	/// <see cref="BareIdReach"/>. Shown, not enforced: the answer depends on where the action
+	/// lives, and the shipped content relies on both outcomes.
 	/// </summary>
-	private string? BareIdNote(VmElement element) => WorldHierarchy.For(_vm).BareIdNote(element.Id);
+	private string? BareIdNote(VmElement element) =>
+		BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
 
 	// ---------------------------------------------------------------- helpers
 

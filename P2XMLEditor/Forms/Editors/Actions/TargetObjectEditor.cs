@@ -365,22 +365,22 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Says so when the object is placed in the world, because then an id and a hierarchy path
-	/// do not reach the same thing at runtime — see <see cref="WorldHierarchy.BareIdNote"/>.
-	/// Nothing is filtered out on the strength of it: the shipped content does exactly this for
-	/// Common.Init, which wants the static object.
+	/// Why an id would not reach this object when the action runs — see
+	/// <see cref="BareIdReach"/>. Nothing is filtered out on the strength of it: the answer
+	/// depends on where the action lives, which is exactly why it is shown rather than enforced.
 	/// </summary>
-	private string? BareIdNote(VmElement element) => WorldHierarchy.For(_vm).BareIdNote(element.Id);
+	private string? BareIdNote(VmElement element) =>
+		BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
 
 	/// <summary>
 	/// A chosen object, carrying the warning where an id cannot reach it at runtime. Shown on
-	/// the target itself and not only inside the picker, so an action that already names a
-	/// placed object by id says so on sight rather than only while it is being re-chosen.
+	/// the target itself and not only inside the picker, so an action that already names an
+	/// unreachable object says so on sight rather than only while it is being re-chosen.
 	/// </summary>
 	private string DescribeHolder(VmElement? element) {
 		var text = VmElementPicker.DescribeDetailed(element, _vm);
-		if (element == null || !WorldHierarchy.For(_vm).IsPlaced(element.Id)) return text;
-		return $"{text}   ⚠ {WorldHierarchy.For(_vm).BareIdNote(element.Id)}";
+		var problem = element == null ? null : BareIdNote(element);
+		return problem == null ? text : $"{text}   ⚠ {problem}";
 	}
 
 	private void PickElement(string title, IEnumerable<VmElement> candidates,
