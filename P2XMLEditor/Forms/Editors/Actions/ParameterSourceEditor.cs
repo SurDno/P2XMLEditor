@@ -20,6 +20,7 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 
 public enum ParameterSourceKind {
 	Empty,
+	None,
 	Literal,
 	Constant,
 	Message,
@@ -55,6 +56,21 @@ public sealed class ParameterSourceEditor : UserControl {
 	private const int PickColumnWidth = 86;
 	private const int ContextColumnWidth = 150;
 	private const string NoContextLabel = "(no context)";
+
+	/// <summary>
+	/// The engine's null. <c>CommonVariable.Bind</c> answers it with
+	/// <c>BaseSerializer.GetDefaultValue(needType.BaseType)</c> — 0, false, "", the zero enum
+	/// member, a blank reference wrapper, an empty list — so it fits any slot, and
+	/// <c>bool isWeak = variableData == "none"</c> then lets it past
+	/// <c>VMTypeUtility.IsTypesCompatible</c> for references and lists.
+	///
+	/// Both tests read variableData, never the context, so "&lt;anything&gt;%none" is just
+	/// "none" — which is why a literal offers no context and this is written bare.
+	/// </summary>
+	private const string NoneKeyword = "none";
+
+	private static bool IsNoneLiteral(string? literal) =>
+		string.Equals(literal, NoneKeyword, StringComparison.OrdinalIgnoreCase);
 
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
@@ -336,8 +352,10 @@ public sealed class ParameterSourceEditor : UserControl {
 		switch (SelectedKind) {
 			case ParameterSourceKind.Empty:
 				return "";
+			case ParameterSourceKind.None:
+				return NoneKeyword;
 			case ParameterSourceKind.Literal:
-				return WithPrefix(CurrentLiteral());
+				return CurrentLiteral();
 			case ParameterSourceKind.Constant:
 				return "const_" + CurrentLiteral();
 			case ParameterSourceKind.Message:
@@ -435,6 +453,11 @@ public sealed class ParameterSourceEditor : UserControl {
 			yield return ParameterSourceKind.Hierarchy;
 		}
 		if (isLiteral) yield return ParameterSourceKind.Literal;
+		// Offered whatever the slot's type, because GetDefaultValue adapts to it and isWeak
+		// waives the type check. Notably this is the only way to empty a reference slot: the
+		// Literal kind is not offered for one, so "none" would otherwise be unreachable exactly
+		// where it does the most.
+		yield return ParameterSourceKind.None;
 		if (isList) yield return ParameterSourceKind.GlobalList;
 
 		if (CompatibleMessages().Any()) yield return ParameterSourceKind.Message;
@@ -494,7 +517,10 @@ public sealed class ParameterSourceEditor : UserControl {
 		if (source.HierarchyReference != null) return ParameterSourceKind.Hierarchy;
 		if (source.GlobalListName != null) return ParameterSourceKind.GlobalList;
 		if (ReferencedElement(source) != null) return ParameterSourceKind.ObjectRef;
-		if (source.LiteralValue != null) return ParameterSourceKind.Literal;
+		if (source.LiteralValue != null)
+			return IsNoneLiteral(source.LiteralValue.Serialize())
+				? ParameterSourceKind.None
+				: ParameterSourceKind.Literal;
 		return ParameterSourceKind.Empty;
 	}
 
@@ -520,8 +546,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		// in, and an object reference is the context rather than something read from one.
 		var showContext = kind is ParameterSourceKind.Message or ParameterSourceKind.InputParam
 			or ParameterSourceKind.LoopIndex or ParameterSourceKind.LoopElement
-			or ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
-			or ParameterSourceKind.Literal;
+			or ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter;
 
 		_literal.Visible = showLiteral;
 		_choice.Visible = showChoice;
@@ -705,35 +730,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		};
 
 		menu.Items.AddRange([none, byObject, byPlacement]);
-
-		// A variable can itself be the context — "<event>_message_MapItem%none" reads a value
-		// relative to whatever the message carries. Listed inline rather than behind a picker:
-		// the scope holds a handful of these, not a corpus of them.
-		AddVariableContexts(menu, "Event message", _scope.Messages.Select(m => m.Name));
-		AddVariableContexts(menu, "Graph input param", _scope.InputParams.Select(p => p.Name));
-
 		menu.Show(_context, new Point(0, _context.Height));
-	}
-
-	private void AddVariableContexts(ContextMenuStrip menu, string label, IEnumerable<string> names) {
-		var listed = names.Distinct(StringComparer.Ordinal).OrderBy(n => n, StringComparer.Ordinal).ToList();
-		if (listed.Count == 0) return;
-
-		var group = new ToolStripMenuItem(label + "…");
-		foreach (var name in listed) {
-			var item = new ToolStripMenuItem(name);
-			item.Click += (_, _) => SetStringContext(name);
-			group.DropDownItems.Add(item);
-		}
-		menu.Items.Add(group);
-	}
-
-	private void SetStringContext(string name) {
-		_prefixHolder = null;
-		_prefixHierarchy = null;
-		_prefixString = name;
-		_context.Text = ContextLabel();
-		OnUserEdit(null);
 	}
 
 	private void SetContext(ParameterHolder? holder, HierarchyGuid? hierarchy) {
@@ -920,6 +917,7 @@ public sealed class ParameterSourceEditor : UserControl {
 		public ParameterSourceKind Kind { get; } = kind;
 		public override string ToString() => Kind switch {
 			ParameterSourceKind.Empty => "(empty)",
+			ParameterSourceKind.None => "none (null / default)",
 			ParameterSourceKind.Literal => "Literal value",
 			ParameterSourceKind.Constant => "Constant (const_)",
 			ParameterSourceKind.Message => "Event message",
