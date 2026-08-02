@@ -700,7 +700,7 @@ public sealed class ParameterSourceEditor : UserControl {
 						.Where(p => !p.IsConstant && VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case ParameterSourceKind.ObjectRef:
-				PickElement("Select object", ObjectCandidates());
+				PickElement("Select object", ObjectCandidates(), BareIdNote);
 				break;
 			case ParameterSourceKind.Hierarchy:
 				PickHierarchy();
@@ -708,9 +708,10 @@ public sealed class ParameterSourceEditor : UserControl {
 		}
 	}
 
-	private void PickElement(string title, IEnumerable<VmElement> candidates) {
+	private void PickElement(string title, IEnumerable<VmElement> candidates,
+		Func<VmElement, string?>? note = null) {
 		if (!VmElementPicker.TryPick(FindForm(), title, candidates, e => VmElementPicker.Describe(e, _vm), _pickedElement,
-				out var picked))
+				out var picked, note))
 			return;
 		_pickedElement = picked;
 		// The two object kinds describe the same thing, so a fresh pick invalidates the path
@@ -752,14 +753,15 @@ public sealed class ParameterSourceEditor : UserControl {
 				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder
 					&& element is not Parameter { IsConstant: true });
 
-		// Only the unconstrained case is narrowed to what a bare id can name: an object placed
-		// exactly once belongs to the Scene hierarchy kind instead. The cases above stay whole
-		// — a blueprint reference names a template by construction, so the same reasoning does
-		// not apply to it.
-		var world = WorldHierarchy.For(_vm);
-		var holders = _vm.AllParameterHolders();
-		return world.IsAvailable ? holders.Where(holder => world.NamedByBareId(holder.Id)) : holders;
+		return _vm.AllParameterHolders();
 	}
+
+	/// <summary>
+	/// Says so when the object is placed in the world, because then the id and a hierarchy path
+	/// name different things — see <see cref="WorldHierarchy.BareIdNote"/>. Nothing is filtered
+	/// out on the strength of it: the engine accepts an id for any object.
+	/// </summary>
+	private string? BareIdNote(VmElement element) => WorldHierarchy.For(_vm).BareIdNote(element.Id);
 
 	// ---------------------------------------------------------------- helpers
 

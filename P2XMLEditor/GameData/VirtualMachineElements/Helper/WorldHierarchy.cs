@@ -101,15 +101,27 @@ public sealed class WorldHierarchy {
 	public bool IsRegistrable(IEnumerable<ulong> path) => _registrable.Contains(string.Join("H", path));
 
 	/// <summary>
-	/// True when a bare id is the right way to name this object.
+	/// What a bare id means for this object, or null when it raises no question.
 	///
-	/// Placed nowhere, it is a template the engine instantiates at runtime and a bare id is all
-	/// there is. Placed in several spots, the id names the template and the engine picks an
-	/// instance — which is what the crowd objects in the Sandbox rely on. Placed exactly once,
-	/// its path is unambiguous and that is what the data writes: 877 of the 880 singly-placed
-	/// objects referenced across both corpora are named by path, never by id.
+	/// Not a validity check — the engine takes a bare id for any object whatsoever.
+	/// <c>GuidUtility.GetGuidFormat</c> reads a plain number as GT_BASE before it tries
+	/// anything else, and <c>CommonVariable.GetTemplateByGuid</c> then hands back whatever
+	/// <c>GetObjectByGuid</c> finds, placed or not. What differs is the answer: a bare id names
+	/// the static template, a path names one placement of it.
+	///
+	/// So for a placed object the two spellings mean different things, and the shipped content
+	/// uses both deliberately — all 21 actions naming a singly-placed object by id are
+	/// Common.Init on it, and 17 of those objects are targeted by full path elsewhere in the
+	/// same corpus. Hence a note rather than a filter.
 	/// </summary>
-	public bool NamedByBareId(ulong id) => PlacementCount(id) != 1;
+	public string? BareIdNote(ulong id) {
+		var count = PlacementCount(id);
+		return count switch {
+			0 => null,
+			1 => "placed once — a bare id names the template, not the placement",
+			_ => $"placed {count}× — a bare id names the template, not any one placement"
+		};
+	}
 
 	/// <summary>Children of a node in the raw structure, mounts first.</summary>
 	public IReadOnlyList<(ulong Child, ChildContainerType Kind)> Children(ulong node) =>

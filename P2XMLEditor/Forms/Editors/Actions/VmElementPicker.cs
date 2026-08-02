@@ -24,6 +24,7 @@ public sealed class VmElementPicker : Form {
 
 	private readonly List<VmElement> _candidates;
 	private readonly Func<VmElement, string> _display;
+	private readonly Func<VmElement, string?>? _note;
 	private readonly ListView _list;
 	private readonly SearchControl _search;
 	private readonly ComboBox _typeFilter;
@@ -37,13 +38,14 @@ public sealed class VmElementPicker : Form {
 	private readonly record struct Row(VmElement? Element, string Text, bool IsHeader);
 
 	private VmElementPicker(string title, IEnumerable<VmElement> candidates, Func<VmElement, string> display,
-		VmElement? current) {
+		VmElement? current, Func<VmElement, string?>? note) {
 		_candidates = candidates.ToList();
 		// Callers narrow the list to what is worth authoring; what the element already says is
 		// not always in that set, and dropping it would mean the current value is invisible
 		// here and silently replaced by whatever the user picks instead.
 		if (current != null && !_candidates.Contains(current)) _candidates.Insert(0, current);
 		_display = display;
+		_note = note;
 
 		Text = title;
 		Size = new Size(980, 620);
@@ -59,8 +61,9 @@ public sealed class VmElementPicker : Form {
 			MultiSelect = false,
 			HideSelection = false
 		};
-		_list.Columns.Add("Element", 600);
-		_list.Columns.Add("Id", 320);
+		_list.Columns.Add("Element", note == null ? 600 : 380);
+		_list.Columns.Add("Id", note == null ? 320 : 200);
+		if (note != null) _list.Columns.Add("Note", 360);
 		_list.RetrieveVirtualItem += OnRetrieveVirtualItem;
 		_list.DoubleClick += (_, _) => Accept();
 		_headerFont = new Font(_list.Font, FontStyle.Bold);
@@ -112,10 +115,15 @@ public sealed class VmElementPicker : Form {
 		if (current != null) SelectElement(current);
 	}
 
-	/// <summary>Returns true when the user confirmed; <paramref name="result"/> is null if they cleared.</summary>
+	/// <summary>
+	/// Returns true when the user confirmed; <paramref name="result"/> is null if they cleared.
+	/// <paramref name="note"/> annotates a row where the choice carries a caveat worth knowing
+	/// before it is made rather than after.
+	/// </summary>
 	public static bool TryPick(IWin32Window? owner, string title, IEnumerable<VmElement> candidates,
-		Func<VmElement, string> display, VmElement? current, out VmElement? result) {
-		using var picker = new VmElementPicker(title, candidates, display, current);
+		Func<VmElement, string> display, VmElement? current, out VmElement? result,
+		Func<VmElement, string?>? note = null) {
+		using var picker = new VmElementPicker(title, candidates, display, current, note);
 		if (picker.ShowDialog(owner) != DialogResult.OK) {
 			result = null;
 			return false;
@@ -181,6 +189,7 @@ public sealed class VmElementPicker : Form {
 		} else {
 			item.SubItems.Add(row.Element!.Id.ToString());
 		}
+		if (_note != null) item.SubItems.Add(row.IsHeader ? "" : _note(row.Element!) ?? "");
 		e.Item = item;
 	}
 
@@ -188,7 +197,9 @@ public sealed class VmElementPicker : Form {
 		var type = _typeFilter.SelectedItem as string ?? AllTypes;
 		var matching = _candidates
 			.Where(c => type == AllTypes || c.GetType().Name == type)
-			.Where(c => _search.IsMatchAny(_display(c), c.Id.ToString()))
+			// The note is searchable too, so "placed" narrows the list to the objects where
+			// choosing the id over a hierarchy path is the decision being made.
+			.Where(c => _search.IsMatchAny(_display(c), c.Id.ToString(), _note?.Invoke(c) ?? ""))
 			.ToList();
 
 		_rows = new List<Row>(matching.Count + 16);

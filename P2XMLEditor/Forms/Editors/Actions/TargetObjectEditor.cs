@@ -348,7 +348,7 @@ public sealed class TargetObjectEditor : UserControl {
 	private void Pick() {
 		switch (SelectedKind) {
 			case TargetObjectKind.Holder:
-				PickElement("Select object", HolderCandidates());
+				PickElement("Select object", _vm.AllParameterHolders(), BareIdNote);
 				break;
 			case TargetObjectKind.ParameterRef:
 				// The action runs against whatever the parameter points at, so only a
@@ -365,20 +365,17 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Objects a bare id can name. An object placed exactly once in the world is left out —
-	/// its id names the shared template, not the placement, and the Scene hierarchy kind is
-	/// where it belongs. Whatever the action already says stays listed regardless, so opening
-	/// the picker on an existing target and cancelling out of it cannot lose the value.
+	/// Says so when the object is placed in the world, because then the id and a hierarchy path
+	/// name different things — see <see cref="WorldHierarchy.BareIdNote"/>. Nothing is filtered
+	/// out on the strength of it: the engine accepts an id for any object, and the shipped
+	/// content does exactly this for Common.Init on placed objects.
 	/// </summary>
-	private IEnumerable<VmElement> HolderCandidates() {
-		var world = WorldHierarchy.For(_vm);
-		var holders = _vm.AllParameterHolders();
-		return world.IsAvailable ? holders.Where(holder => world.NamedByBareId(holder.Id)) : holders;
-	}
+	private string? BareIdNote(VmElement element) => WorldHierarchy.For(_vm).BareIdNote(element.Id);
 
-	private void PickElement(string title, IEnumerable<VmElement> candidates) {
+	private void PickElement(string title, IEnumerable<VmElement> candidates,
+		Func<VmElement, string?>? note = null) {
 		if (!VmElementPicker.TryPick(FindForm(), title, candidates, e => VmElementPicker.Describe(e, _vm), _pickedElement,
-				out var picked))
+				out var picked, note))
 			return;
 		_pickedElement = picked;
 		_reference.Text = VmElementPicker.DescribeDetailed(picked, _vm);
