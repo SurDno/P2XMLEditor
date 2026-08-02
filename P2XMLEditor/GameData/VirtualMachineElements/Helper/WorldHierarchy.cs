@@ -100,27 +100,37 @@ public sealed class WorldHierarchy {
 	/// <summary>True when the builder produces this path, so the engine can resolve it.</summary>
 	public bool IsRegistrable(IEnumerable<ulong> path) => _registrable.Contains(string.Join("H", path));
 
+	/// <summary>True when the object exists somewhere in the built world.</summary>
+	public bool IsPlaced(ulong id) => PlacementCount(id) > 0;
+
 	/// <summary>
-	/// What a bare id means for this object, or null when it raises no question.
+	/// What a bare id can and cannot reach for this object, or null when it raises no question.
 	///
-	/// Not a validity check — the engine takes a bare id for any object whatsoever.
-	/// <c>GuidUtility.GetGuidFormat</c> reads a plain number as GT_BASE before it tries
-	/// anything else, and <c>CommonVariable.GetTemplateByGuid</c> then hands back whatever
-	/// <c>GetObjectByGuid</c> finds, placed or not. What differs is the answer: a bare id names
-	/// the static template, a path names one placement of it.
+	/// A bare id always parses — <c>GuidUtility.GetGuidFormat</c> reads a plain number as
+	/// GT_BASE before it tries anything else, and <c>CommonVariable.GetTemplateByGuid</c> hands
+	/// back whatever <c>GetObjectByGuid</c> finds, placed or not. But parsing only gets the
+	/// static object. Reaching the live entity goes through <c>VMObjRef.LoadDynamic</c>, and
+	/// there the two spellings are not interchangeable, because
+	/// <c>VirtualMachine.RegisterDynamicObject</c> files each entity under one key or the other:
 	///
-	/// So for a placed object the two spellings mean different things, and the shipped content
-	/// uses both deliberately — all 21 actions naming a singly-placed object by id are
-	/// Common.Init on it, and 17 of those objects are targeted by full path elsewhere in the
-	/// same corpus. Hence a note rather than a filter.
+	///   if (templateObj is IWorldHierarchyObject) AddDynamicObjectEntityByHierarchyGuid(...)
+	///   else                                      AddDynamicObjectEntityByStaticGuid(...)
+	///
+	/// A placed object is an IWorldHierarchyObject, so it is never in
+	/// staticObjGuidsToDynamicEntityDict and GetDynamicObjectEntityByStaticGuid cannot find it
+	/// — EngineInstance stays null and <c>Exist</c> is false. So a bare id to a placed object
+	/// reaches the static object only, and any call needing the live entity does nothing.
+	///
+	/// Not a filter, because that is sometimes the point: all 21 actions in the shipped corpora
+	/// that name a singly-placed object by id are Common.Init on it, which acts on the static
+	/// object, and 17 of those same objects are targeted by full path elsewhere.
 	/// </summary>
 	public string? BareIdNote(ulong id) {
 		var count = PlacementCount(id);
-		return count switch {
-			0 => null,
-			1 => "placed once — a bare id names the template, not the placement",
-			_ => $"placed {count}× — a bare id names the template, not any one placement"
-		};
+		if (count == 0) return null;
+		var where = count == 1 ? "placed in the world" : $"placed {count}× in the world";
+		return $"{where} — an id reaches the static object only; the live entity is registered "
+			   + "under its hierarchy guid";
 	}
 
 	/// <summary>Children of a node in the raw structure, mounts first.</summary>

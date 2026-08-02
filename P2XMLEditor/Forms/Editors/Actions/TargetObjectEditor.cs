@@ -169,7 +169,7 @@ public sealed class TargetObjectEditor : UserControl {
 			switch (target.Kind) {
 				case TargetObjectKind.Holder:
 					_pickedElement = target.Holder;
-					_reference.Text = VmElementPicker.DescribeDetailed(target.Holder, _vm);
+					_reference.Text = DescribeHolder(target.Holder);
 					break;
 				case TargetObjectKind.ParameterRef:
 					_pickedElement = target.ParameterRef;
@@ -365,12 +365,23 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Says so when the object is placed in the world, because then the id and a hierarchy path
-	/// name different things — see <see cref="WorldHierarchy.BareIdNote"/>. Nothing is filtered
-	/// out on the strength of it: the engine accepts an id for any object, and the shipped
-	/// content does exactly this for Common.Init on placed objects.
+	/// Says so when the object is placed in the world, because then an id and a hierarchy path
+	/// do not reach the same thing at runtime — see <see cref="WorldHierarchy.BareIdNote"/>.
+	/// Nothing is filtered out on the strength of it: the shipped content does exactly this for
+	/// Common.Init, which wants the static object.
 	/// </summary>
 	private string? BareIdNote(VmElement element) => WorldHierarchy.For(_vm).BareIdNote(element.Id);
+
+	/// <summary>
+	/// A chosen object, carrying the warning where an id cannot reach it at runtime. Shown on
+	/// the target itself and not only inside the picker, so an action that already names a
+	/// placed object by id says so on sight rather than only while it is being re-chosen.
+	/// </summary>
+	private string DescribeHolder(VmElement? element) {
+		var text = VmElementPicker.DescribeDetailed(element, _vm);
+		if (element == null || !WorldHierarchy.For(_vm).IsPlaced(element.Id)) return text;
+		return $"{text}   ⚠ {WorldHierarchy.For(_vm).BareIdNote(element.Id)}";
+	}
 
 	private void PickElement(string title, IEnumerable<VmElement> candidates,
 		Func<VmElement, string?>? note = null) {
@@ -378,7 +389,9 @@ public sealed class TargetObjectEditor : UserControl {
 				out var picked, note))
 			return;
 		_pickedElement = picked;
-		_reference.Text = VmElementPicker.DescribeDetailed(picked, _vm);
+		_reference.Text = SelectedKind == TargetObjectKind.Holder
+			? DescribeHolder(picked)
+			: VmElementPicker.DescribeDetailed(picked, _vm);
 		OnUserEdit(null);
 	}
 
