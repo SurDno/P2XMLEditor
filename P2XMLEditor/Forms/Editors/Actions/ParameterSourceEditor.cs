@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
@@ -52,6 +53,8 @@ public sealed class ParameterSourceEditor : UserControl {
 	public const int PreferredHeight = 30;
 	private const int ExtraColumnWidth = 140;
 	private const int PickColumnWidth = 86;
+	private const int ContextColumnWidth = 150;
+	private const string NoContextLabel = "(no context)";
 
 	private readonly VirtualMachine _vm;
 	private readonly ActionScope _scope;
@@ -65,12 +68,27 @@ public sealed class ParameterSourceEditor : UserControl {
 	private readonly ComboBox _extra;
 	private readonly ComboBox _named;
 	private readonly Button _pick;
+	private readonly Button _context;
 	private readonly TableLayoutPanel _layout;
 
 	private VmTypeInfo? _expectedType;
 	private SlotConstraint? _constraint;
 	private VmElement? _pickedElement;
 	private HierarchyGuid? _pickedHierarchy;
+
+	// The "<context>%<value>" prefix. The data reads a variable in another object's context —
+	// "<questId>%local_..._Loop_..._Element", "<blueprintId>%<event>_message_object" — and names
+	// the owner of a parameter by placement rather than by id, which a bare id cannot do for an
+	// object that is placed. ParameterSource already parses and writes both; this is what lets
+	// the editor author them.
+	private ParameterHolder? _prefixHolder;
+	private HierarchyGuid? _prefixHierarchy;
+
+	// A prefix that is neither: an input parameter, or a name the loader could not resolve to
+	// anything. Held verbatim so editing the value of such a slot does not silently drop the
+	// context it is read in.
+	private string? _prefixString;
+
 	private string _originalText = "";
 	private bool _dirty;
 	private bool _suppressEvents;
@@ -129,19 +147,27 @@ public sealed class ParameterSourceEditor : UserControl {
 		_pick = new Button { Dock = DockStyle.Fill, Text = "Select…", Margin = Padding.Empty };
 		_pick.Click += (_, _) => Pick();
 
+		_context = new Button {
+			Dock = DockStyle.Fill, Text = NoContextLabel, TextAlign = ContentAlignment.MiddleLeft,
+			Margin = new Padding(0, 0, 6, 0)
+		};
+		_context.Click += (_, _) => ChooseContext();
+
 		_layout = new TableLayoutPanel {
-			Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1,
+			Dock = DockStyle.Fill, ColumnCount = 5, RowCount = 1,
 			Margin = Padding.Empty, Padding = Padding.Empty
 		};
 		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190));
 		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, ExtraColumnWidth));
+		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, ContextColumnWidth));
 		_layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, PickColumnWidth));
 		_layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 		_layout.Controls.Add(_kind, 0, 0);
 		_layout.Controls.Add(_valueHost, 1, 0);
 		_layout.Controls.Add(_extra, 2, 0);
-		_layout.Controls.Add(_pick, 3, 0);
+		_layout.Controls.Add(_context, 3, 0);
+		_layout.Controls.Add(_pick, 4, 0);
 
 		Controls.Add(_layout);
 
@@ -222,6 +248,9 @@ public sealed class ParameterSourceEditor : UserControl {
 			_dirty = false;
 			_pickedElement = source.ElementReference;
 			_pickedHierarchy = source.HierarchyReference;
+			_prefixHolder = source.PrefixHolder;
+			_prefixHierarchy = source.PrefixHierarchy;
+			_prefixString = source.PrefixInputParamReference?.Name ?? source.PrefixString;
 
 			var kind = KindOf(source);
 			EnsureKindOffered(kind);
@@ -308,22 +337,27 @@ public sealed class ParameterSourceEditor : UserControl {
 			case ParameterSourceKind.Empty:
 				return "";
 			case ParameterSourceKind.Literal:
-				return CurrentLiteral();
+				return WithPrefix(CurrentLiteral());
 			case ParameterSourceKind.Constant:
 				return "const_" + CurrentLiteral();
 			case ParameterSourceKind.Message:
 			case ParameterSourceKind.InputParam:
 			case ParameterSourceKind.LoopIndex:
 			case ParameterSourceKind.LoopElement:
-				return (_choice.SelectedItem as ChoiceItem)?.Id ?? "";
+				// A variable can be read in another object's context — "<questId>%<loopVar>" —
+				// which is how the data reaches a loop element or an event message belonging to
+				// logic other than the one running.
+				return WithPrefix((_choice.SelectedItem as ChoiceItem)?.Id ?? "");
 			case ParameterSourceKind.ParameterRef:
-				// A parameter reference carries its holder as the prefix; the holder is the
-				// parameter's own parent, so there is nothing separate for the user to pick.
-				return _pickedElement is Parameter p ? $"{p.Parent.Id}%{p.Id}" : "";
+				// The prefix names the object the parameter is read off. It defaults to the
+				// parameter's own parent, and is overridable because a placed owner cannot be
+				// named by id — "<hierarchyPath>%<parameterId>" is how the data does it.
+				if (_pickedElement is not Parameter p) return "";
+				return $"{PrefixText() ?? p.Parent.Id.ToString()}%{p.Id}";
 			case ParameterSourceKind.DynamicParameter:
-				return _pickedElement != null && _extra.Text.Length > 0
-					? $"{_pickedElement.Id}%{_extra.Text}"
-					: "";
+				if (_extra.Text.Length == 0) return "";
+				var owner = PrefixText() ?? _pickedElement?.Id.ToString();
+				return owner == null ? "" : $"{owner}%{_extra.Text}";
 			case ParameterSourceKind.ObjectRef:
 				// Always by id. An engine GUID names the same object and the data uses it in
 				// places, so an untouched value still round-trips, but nothing is authored
@@ -482,18 +516,27 @@ public sealed class ParameterSourceEditor : UserControl {
 		var showReference = kind is ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
 			or ParameterSourceKind.ObjectRef or ParameterSourceKind.Hierarchy;
 		var showExtra = kind == ParameterSourceKind.DynamicParameter;
+		// Only kinds the data ever prefixes. A literal or a raw value has no context to be read
+		// in, and an object reference is the context rather than something read from one.
+		var showContext = kind is ParameterSourceKind.Message or ParameterSourceKind.InputParam
+			or ParameterSourceKind.LoopIndex or ParameterSourceKind.LoopElement
+			or ParameterSourceKind.ParameterRef or ParameterSourceKind.DynamicParameter
+			or ParameterSourceKind.Literal;
 
 		_literal.Visible = showLiteral;
 		_choice.Visible = showChoice;
 		_named.Visible = literalIsNamed;
 		_reference.Visible = showReference;
 		_extra.Visible = showExtra;
+		_context.Visible = showContext;
 		_pick.Visible = showReference;
+		if (showContext) _context.Text = ContextLabel();
 
 		// A column that holds nothing takes no width, so a literal gets the whole row and an
 		// object reference has its Select button flush against the value.
 		_layout.ColumnStyles[2].Width = showExtra ? ExtraColumnWidth : 0;
-		_layout.ColumnStyles[3].Width = showReference ? PickColumnWidth : 0;
+		_layout.ColumnStyles[3].Width = showContext ? ContextColumnWidth : 0;
+		_layout.ColumnStyles[4].Width = showReference ? PickColumnWidth : 0;
 
 		if (showChoice) PopulateChoices(kind, literalIsChosen);
 		if (showExtra) PopulateDynamicNames();
@@ -618,6 +661,87 @@ public sealed class ParameterSourceEditor : UserControl {
 		var path = WorldHierarchy.For(_vm).SolePlacement(leaf.Id);
 		if (path is not { Length: > 1 }) return null;
 		return HierarchyGuid.TryParse(string.Join("H", path), _vm, out var hierarchy) ? hierarchy : null;
+	}
+
+	/// <summary>The prefix as it is written, or null when the slot carries no context.</summary>
+	private string? PrefixText() =>
+		_prefixHierarchy != null ? _prefixHierarchy.Write()
+		: _prefixHolder != null ? _prefixHolder.Id.ToString()
+		: _prefixString;
+
+	private string WithPrefix(string value) {
+		var prefix = PrefixText();
+		return prefix == null || value.Length == 0 ? value : $"{prefix}%{value}";
+	}
+
+	private string ContextLabel() =>
+		_prefixHierarchy != null ? $"in: {VmElementPicker.Describe(_prefixHierarchy.Elements[^1].Element, _vm)}"
+		: _prefixHolder != null ? $"in: {VmElementPicker.Describe(_prefixHolder, _vm)}"
+		: _prefixString != null ? $"in: {_prefixString}"
+		: NoContextLabel;
+
+	/// <summary>
+	/// Picks what the value is read relative to: nothing, an object by id, or a placement in the
+	/// world. Kept as a menu rather than a fourth kind per variable so the kind list stays about
+	/// what the value *is* rather than where it is read.
+	/// </summary>
+	private void ChooseContext() {
+		var menu = new ContextMenuStrip();
+
+		var none = new ToolStripMenuItem(NoContextLabel);
+		none.Click += (_, _) => SetContext(null, null);
+
+		var byObject = new ToolStripMenuItem("Object…");
+		byObject.Click += (_, _) => {
+			if (VmElementPicker.TryPick(FindForm(), "Select context object", _vm.AllParameterHolders(),
+					e => VmElementPicker.Describe(e, _vm), _prefixHolder, out var picked, BareIdNote))
+				SetContext(picked as ParameterHolder, null);
+		};
+
+		var byPlacement = new ToolStripMenuItem("Place in the world…");
+		byPlacement.Click += (_, _) => {
+			if (HierarchyPicker.TryPick(FindForm(), _vm, "Select context placement", _prefixHierarchy, out var path))
+				SetContext(null, path);
+		};
+
+		menu.Items.AddRange([none, byObject, byPlacement]);
+
+		// A variable can itself be the context — "<event>_message_MapItem%none" reads a value
+		// relative to whatever the message carries. Listed inline rather than behind a picker:
+		// the scope holds a handful of these, not a corpus of them.
+		AddVariableContexts(menu, "Event message", _scope.Messages.Select(m => m.Name));
+		AddVariableContexts(menu, "Graph input param", _scope.InputParams.Select(p => p.Name));
+
+		menu.Show(_context, new Point(0, _context.Height));
+	}
+
+	private void AddVariableContexts(ContextMenuStrip menu, string label, IEnumerable<string> names) {
+		var listed = names.Distinct(StringComparer.Ordinal).OrderBy(n => n, StringComparer.Ordinal).ToList();
+		if (listed.Count == 0) return;
+
+		var group = new ToolStripMenuItem(label + "…");
+		foreach (var name in listed) {
+			var item = new ToolStripMenuItem(name);
+			item.Click += (_, _) => SetStringContext(name);
+			group.DropDownItems.Add(item);
+		}
+		menu.Items.Add(group);
+	}
+
+	private void SetStringContext(string name) {
+		_prefixHolder = null;
+		_prefixHierarchy = null;
+		_prefixString = name;
+		_context.Text = ContextLabel();
+		OnUserEdit(null);
+	}
+
+	private void SetContext(ParameterHolder? holder, HierarchyGuid? hierarchy) {
+		_prefixHolder = holder;
+		_prefixHierarchy = hierarchy;
+		_prefixString = null;
+		_context.Text = ContextLabel();
+		OnUserEdit(null);
 	}
 
 	/// <summary>Names of the objects a name-form slot accepts.</summary>
