@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
-using P2XMLEditor.Forms.Editors.Graphs;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
@@ -70,7 +69,9 @@ public class GraphsBrowser : SplitContainer {
 		_canvas = new GraphCanvas(vm) { Dock = DockStyle.Fill };
 		_canvas.SelectionChanged += (_, _) => OnSelectionChanged();
 		_canvas.NodeActivated += (_, node) => Activate(node);
-		_canvas.LinkActivated += (_, link) => EditLink(link);
+		// Double-clicking a link no longer opens anything: it is already selected, and the
+		// inspector beside the canvas is where it is edited.
+		_canvas.LinkActivated += (_, _) => _inspector.Focus();
 		_canvas.GraphChanged += (_, _) => {
 			ReloadList();
 			RefreshProblems();
@@ -175,14 +176,7 @@ public class GraphsBrowser : SplitContainer {
 	// ---------------------------------------------------------------- selection
 
 	private void OnSelectionChanged() {
-		_inspector.SetNode(_canvas.SelectedNode);
-		RefreshProblems();
-	}
-
-	private void EditLink(GraphLink link) {
-		using var editor = new GraphLinkEditorForm(_vm, link);
-		if (editor.ShowDialog(FindForm()) != DialogResult.OK) return;
-		_canvas.Redraw();
+		_inspector.SetSelection(_canvas.SelectedNode, _canvas.SelectedLink);
 		RefreshProblems();
 	}
 

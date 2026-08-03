@@ -9,7 +9,6 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
-using P2XMLEditor.Forms.Editors.Graphs;
 using P2XMLEditor.Helper;
 using P2XMLEditor.WindowsFormsExtensions;
 
@@ -101,8 +100,21 @@ public sealed class GraphCanvas : UserControl {
 
 	// ---------------------------------------------------------------- layout
 
+	private const float ColumnSpacing = NodeWidth + 130f;
+	private const float RowGap = 34f;
+
 	/// <summary>
-	/// Places nodes by layer, so an unread graph reads top to bottom in the order it runs.
+	/// Lays the graph out left to right: one column per step of the flow, and everything that
+	/// can happen at the same step stacked down that column. Consequence reads along the page
+	/// and a branch's outcomes fan out beside each other, which is the shape a branch has —
+	/// three conditions are three things that might happen next, not three steps.
+	///
+	/// SugiyamaLayout gives layer and order as coordinates (Order on X, -Layer on Y); asking it
+	/// for unit spacing and reading them back is how those become a column and a row. The rows
+	/// are then packed with each node's real height, because a branch with six conditions is
+	/// several times the height of a state and a fixed row pitch either overlaps them or leaves
+	/// a field of whitespace between the small ones.
+	///
 	/// Positions already chosen by hand are kept — the layout is a starting point, not a rule.
 	/// </summary>
 	private void Relayout() {
@@ -117,14 +129,32 @@ public sealed class GraphCanvas : UserControl {
 				layout.AddEdge(from.Id, to.Id);
 		}
 
-		foreach (var (id, position) in layout.Layout(1.6f, 1.6f))
-			_positions[id] = new PointF(position.x * 320f, -position.y * 260f);
+		var placed = layout.Layout(1f, 1f);
+		var byId = nodes.ToDictionary(n => n.Id);
+
+		// layer -> the nodes in it, in the order the crossing pass settled on
+		var columns = new SortedDictionary<int, List<(int Order, VmElement Node)>>();
+		foreach (var (id, position) in placed) {
+			if (!byId.TryGetValue(id, out var node)) continue;
+			var column = (int)Math.Round(-position.y);
+			if (!columns.TryGetValue(column, out var list)) columns[column] = list = [];
+			list.Add(((int)Math.Round(position.x), node));
+		}
+
+		foreach (var (column, members) in columns) {
+			members.Sort((a, b) => a.Order.CompareTo(b.Order));
+			var y = 0f;
+			foreach (var (_, node) in members) {
+				_positions[node.Id] = new PointF(column * ColumnSpacing, y);
+				y += NodeHeight(node) + RowGap;
+			}
+		}
 
 		// A node the layout could not place — one with no links at all — still needs somewhere.
 		var free = 0;
 		foreach (var node in nodes)
 			if (!_positions.ContainsKey(node.Id))
-				_positions[node.Id] = new PointF(free++ * 260f, 0);
+				_positions[node.Id] = new PointF(-ColumnSpacing, free++ * 140f);
 
 		_surface.Invalidate();
 	}
@@ -471,8 +501,9 @@ public sealed class GraphCanvas : UserControl {
 
 	/// <summary>
 	/// Draws a link from one node's exit to another. The endpoints are set here because the
-	/// gesture said them; everything else is left to the editor, which opens straight away so a
-	/// half-made link is never left lying in the graph.
+	/// gesture said them, and the new link is selected so the inspector picks it up — there is
+	/// no dialog in the way, which is the point: a link is a thing on the canvas, and editing it
+	/// belongs beside the canvas rather than on top of it.
 	/// </summary>
 	private void Connect(VmElement from, int exit, VmElement to) {
 		var link = VmElement.CreateDefault<GraphLink>(_vm, _container);
@@ -482,13 +513,6 @@ public sealed class GraphCanvas : UserControl {
 		link.DestEntryPointIndex = GraphTopology.EntriesOf(to).FirstOrDefault().Index;
 
 		Attach(link, from, to);
-
-		using var editor = new GraphLinkEditorForm(_vm, link);
-		if (editor.ShowDialog(FindForm()) != DialogResult.OK) {
-			Detach(link, from, to);
-			_vm.RemoveElement(link);
-		}
-
 		Select(null, link);
 		GraphChanged?.Invoke(this, EventArgs.Empty);
 	}
@@ -528,11 +552,11 @@ public sealed class GraphCanvas : UserControl {
 		var menu = new ContextMenuStrip();
 
 		if (_selectedNode is { } node) {
-			menu.Items.Add("Edit…", null, (_, _) => NodeActivated?.Invoke(this, node));
+			if (GraphTopology.IsContainer(node))
+				menu.Items.Add("Open", null, (_, _) => NodeActivated?.Invoke(this, node));
 			menu.Items.Add("Delete node", null, (_, _) => DeleteNode(node));
 			menu.Items.Add(new ToolStripSeparator());
 		} else if (_selectedLink is { } link) {
-			menu.Items.Add("Edit link…", null, (_, _) => LinkActivated?.Invoke(this, link));
 			menu.Items.Add(link.Enabled ? "Disable link" : "Enable link", null, (_, _) => {
 				link.Enabled = !link.Enabled;
 				GraphChanged?.Invoke(this, EventArgs.Empty);
