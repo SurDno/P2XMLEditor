@@ -100,6 +100,23 @@ public sealed class FunctionSignature {
 	}
 
 	/// <summary>
+	/// Why the function list looks the way it does, for the editor to show beside it.
+	///
+	/// Without this the filter is invisible and its two extremes are indistinguishable from a
+	/// broken control: a target the editor cannot identify offers every function, and a target
+	/// that genuinely has no components offers none. Both are common when picking a place in
+	/// the world — of the Sandbox's 76015 placements, 45274 end at a node the xml never
+	/// defines and 70058 at an engine-imported object that declares no component at all.
+	/// </summary>
+	public static string DescribeComponentFilter(IReadOnlySet<string>? components) {
+		if (components == null)
+			return "target not identified here — every function is offered";
+		if (components.Count == 0)
+			return "this object declares no components, so nothing can be called on it";
+		return "on this object: " + string.Join(", ", components.OrderBy(c => c, StringComparer.Ordinal));
+	}
+
+	/// <summary>
 	/// Builds the function from slot values, padding or trimming to the declared arity so a
 	/// half-filled editor still produces a constructible function.
 	/// </summary>

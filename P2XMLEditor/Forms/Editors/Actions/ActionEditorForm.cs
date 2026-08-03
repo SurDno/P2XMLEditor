@@ -128,7 +128,7 @@ public sealed class ActionEditorForm : Form {
 
 		var calleeRow = NewRowPanel(2);
 		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 230));
+		calleeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 320));
 		calleeRow.Controls.Add(_callee, 0, 0);
 		calleeRow.Controls.Add(_returnType, 1, 0);
 
@@ -728,9 +728,15 @@ public sealed class ActionEditorForm : Form {
 
 		if (storesResult) _result.ExpectedType = signature!.ReturnTypeInfo;
 
-		_returnType.Text = type == ActionType.DoFunction && signature != null
-			? signature.IsVoid ? "returns nothing" : $"returns {Describe(signature.ReturnTypeInfo)}"
-			: "";
+		// With a function chosen its return type is the useful thing to say; with none chosen
+		// the space says why the list holds what it holds, so an empty or unfiltered list reads
+		// as an answer rather than as a broken control.
+		_returnType.Text = type != ActionType.DoFunction ? ""
+			: signature != null
+				? signature.IsVoid ? "returns nothing" : $"returns {Describe(signature.ReturnTypeInfo)}"
+				: FunctionSignature.DescribeComponentFilter(_targetObject.ResolvedComponents);
+		// The component list can outrun the column; AutoEllipsis clips it, the tooltip keeps it.
+		_toolTip.SetToolTip(_returnType, _returnType.Text);
 	}
 
 	/// <summary>

@@ -26,8 +26,18 @@ public static class ExpressionTyping {
 				return expression.Const is { } constant ? VmTypeHelper.GetVmTypeInfo(constant.Type, vm) : null;
 
 			case ExprKind.Param:
-				// ExpressionParamTarget works the type out while reading — off the parameter's
-				// own declaration, or the message or input param it names.
+				// An object written in directly is not typed by what it happens to be. The
+				// engine stores a bare id or a hierarchy path and reads it back with the type
+				// the other side wants: the same character id answers as ICharacterRef, as
+				// IBlueprintRef when compared against a template, and as IEntity when compared
+				// against a region. Reporting the element's own class here would have the
+				// editor refuse comparisons the game itself ships — 64 of them across the two
+				// corpora, among them every "Get object template(X) == <character>".
+				if (expression.TargetParam is { IsLiteral: true }) return null;
+
+				// Everything else really is declared: ExpressionParamTarget works the type out
+				// while reading, off the parameter's own declaration or the message or input
+				// param it names.
 				return expression.TargetParam?.ValueType;
 
 			case ExprKind.Function:
@@ -52,9 +62,14 @@ public static class ExpressionTyping {
 	/// What the expression on one side of a comparison has to produce, or null when nothing
 	/// constrains it yet.
 	///
-	/// A ValueExpression condition uses only its first operand and reads it as a truth value;
-	/// the others compare two operands, so each is typed by the other. Inversion does not enter
-	/// into it — it negates the result of the comparison, not the type of an operand.
+	/// Comparisons type each side by the other. Inversion does not enter into it — it negates
+	/// the result of the comparison, not the type of an operand.
+	///
+	/// ValueExpression is the odd one out and constrains nothing. It reads as "the condition's
+	/// value is this expression" rather than "is this expression true", and the data bears that
+	/// out: of the 1295 vanilla ValueExpression conditions, 1010 have a number as their first
+	/// operand — branch weights, dialogue priorities and the like — and only 285 a boolean.
+	/// Demanding a boolean here would hide the majority of them.
 	/// </summary>
 	public static VmTypeInfo? ExpectedFor(PartCondition? condition, bool firstSide, VirtualMachine vm) {
 		if (condition == null) return null;
@@ -62,10 +77,8 @@ public static class ExpressionTyping {
 		switch (condition.ConditionType) {
 			case ConditionType.ConstTrue:
 			case ConditionType.ConstFalse:
-				return null;
-
 			case ConditionType.ValueExpression:
-				return firstSide ? VmTypeInfo.Boolean : null;
+				return null;
 
 			default:
 				return TypeOf(firstSide ? condition.SecondExpression : condition.FirstExpression, vm);

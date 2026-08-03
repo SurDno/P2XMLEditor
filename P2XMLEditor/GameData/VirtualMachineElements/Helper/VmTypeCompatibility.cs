@@ -27,6 +27,9 @@ public static class VmTypeCompatibility {
 
 		if (Numeric.Contains(expected.BaseType) && Numeric.Contains(declared.BaseType)) return true;
 		if (Blueprint.Contains(expected.BaseType) && Blueprint.Contains(declared.BaseType)) return true;
+		if (IsObjectFamily(expected) && IsObjectFamily(declared) &&
+			(IsGenericObjectRef(expected) || IsGenericObjectRef(declared)))
+			return true;
 
 		// Several VmTypes are distinct declarations of one runtime type; those are the same
 		// slot as far as a value is concerned.
@@ -34,6 +37,30 @@ public static class VmTypeCompatibility {
 		var declaredSystem = VmTypeHelper.GetSystemType(declared.BaseType);
 		return expectedSystem != null && expectedSystem == declaredSystem;
 	}
+
+	/// <summary>
+	/// One world object under several declarations: IObjRef, IEntity, and the narrower
+	/// ICharacterRef / ISceneRef.
+	/// </summary>
+	private static bool IsObjectFamily(VmTypeInfo type) {
+		if (type.BaseType == VmType.EntityRef) return true;
+		var systemType = VmTypeHelper.GetSystemType(type.BaseType);
+		return systemType != null && typeof(GameObject).IsAssignableFrom(systemType);
+	}
+
+	/// <summary>
+	/// The two declarations that name a world object without saying which kind: IObjRef, the
+	/// general reference, and IEntity, the same object named as the engine entity it is placed
+	/// as. Either fits against any specific object reference, and the shipped data relies on
+	/// it — Position.GetRegion returns IEntity and is compared against IObjRef%cf_Region
+	/// parameters and against hierarchy paths thirteen times across the two corpora.
+	///
+	/// Two *specific* references still have to agree, which is why this is a separate test:
+	/// ICharacterRef against ISceneRef is a mistake, not a widening. Blueprint references are
+	/// outside the family entirely — a blueprint is the template, not the object.
+	/// </summary>
+	private static bool IsGenericObjectRef(VmTypeInfo type) =>
+		type.BaseType is VmType.EntityRef or VmType.GameObject;
 
 	/// <summary>An untyped list fits any list; two typed lists have to agree on the element.</summary>
 	private static bool ElementTypesAgree(VmTypeInfo expected, VmTypeInfo declared) =>

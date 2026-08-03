@@ -127,8 +127,10 @@ public sealed class ExpressionEditorForm : Form {
 			RefreshPreview();
 		};
 
+		// Two lines' worth: with a function selected this carries the expected type and the
+		// reason the function list holds what it holds, which does not fit on one.
 		_expects = new Label {
-			Dock = DockStyle.Top, Height = 26, TextAlign = ContentAlignment.MiddleLeft,
+			Dock = DockStyle.Top, Height = 44, TextAlign = ContentAlignment.MiddleLeft,
 			Padding = new Padding(10, 0, 0, 0), ForeColor = SystemColors.GrayText
 		};
 
@@ -235,10 +237,7 @@ public sealed class ExpressionEditorForm : Form {
 		_slots.Visible = kind == ExprKind.Function;
 		_formula.Visible = kind == ExprKind.Complex;
 
-		_expects.Text = _expectedType == null
-			? "Nothing constrains the type yet — anything may be chosen, and whatever is chosen "
-			  + "will constrain the other side."
-			: $"Must produce {Describe(_expectedType)}.";
+		RefreshExpectsText();
 	}
 
 	// ---------------------------------------------------------------- functions
@@ -272,6 +271,28 @@ public sealed class ExpressionEditorForm : Form {
 			_function.Items.Insert(0, new FunctionItem(selected!, $"{selected}   (does not fit here)"));
 
 		SelectFunction(selected);
+		RefreshExpectsText();
+	}
+
+	/// <summary>
+	/// The grey line above the form: what this expression has to produce, and — while a function
+	/// is being chosen — what narrowed the list to what it holds. The second half matters most
+	/// when the list is empty or complete, either of which reads as a broken control until it
+	/// says which it is.
+	/// </summary>
+	private void RefreshExpectsText() {
+		// PopulateFunctions can run from a child control's event before the label exists.
+		if (_expects == null) return;
+
+		var expects = _expectedType == null
+			? "Nothing constrains the type yet — anything may be chosen, and whatever is chosen "
+			  + "will constrain the other side."
+			: $"Must produce {Describe(_expectedType)}.";
+
+		_expects.Text = SelectedKind != ExprKind.Function
+			? expects
+			: $"{expects}   {_function.Items.Count} function(s) offered — "
+			  + FunctionSignature.DescribeComponentFilter(_targetObject.ResolvedComponents) + ".";
 	}
 
 	/// <summary>
