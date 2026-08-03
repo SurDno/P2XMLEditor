@@ -248,13 +248,20 @@ public sealed class GraphCanvas : UserControl {
 			// A link with no source is subscribed to an event and enters from outside the graph.
 			: new PointF(_bounds[to!.Id].X - 70 * _zoom, EntryPoint(to, link.DestEntryPointIndex).Y);
 
-		// A link with no destination ends the flow — a fifth of them do. Drawn as a stub with a
-		// stop marker, because an exit that terminates and an exit nothing leaves by look the
-		// same otherwise, and they mean opposite things.
+		// A link with no destination returns rather than moving on — a fifth of them do — and
+		// how it returns is DestEntryPointIndex read as a LinkExit. Drawn as a stub carrying that
+		// word, because an exit that returns to the previous state and one that leaves the
+		// subgraph go to entirely different places.
 		if (to == null) {
 			var stop = new PointF(start.X + 46 * _zoom, start.Y);
 			g.DrawLine(pen, start, stop);
 			g.DrawEllipse(pen, stop.X, stop.Y - 5 * _zoom, 10 * _zoom, 10 * _zoom);
+
+			if (_zoom >= 0.45f) {
+				using var font = new Font(FontFamily.GenericSansSerif, Math.Max(4f, 7.5f * _zoom));
+				using var brush = new SolidBrush(colour);
+				g.DrawString(ReturnLabel(link), font, brush, stop.X + 14 * _zoom, stop.Y - 4 * _zoom);
+			}
 			return;
 		}
 
@@ -272,6 +279,13 @@ public sealed class GraphCanvas : UserControl {
 		g.FillRectangle(Brushes.White, middle.X - size.Width / 2, middle.Y, size.Width, size.Height);
 		g.DrawString(label, font, new SolidBrush(colour), middle.X - size.Width / 2, middle.Y);
 	}
+
+	private static string ReturnLabel(GraphLink link) => GraphTopology.ExitTypeOf(link) switch {
+		GraphTopology.LinkExit.OuterGraph => "↰ out of subgraph",
+		GraphTopology.LinkExit.OuterEventExecution => "↰ out of event",
+		GraphTopology.LinkExit.PreviousState => "↩ previous state",
+		_ => $"↩ ?{link.DestEntryPointIndex}"
+	};
 
 	private static string LabelOf(GraphLink link) {
 		if (link.Event != null) return Truncate(link.Event.Name, 28);

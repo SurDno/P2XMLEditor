@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using P2XMLEditor.Core;
@@ -41,6 +42,41 @@ public static class GraphTopology {
 
 	/// <summary>One way into a node.</summary>
 	public readonly record struct Entry(int Index, string Label, EntryPoint? EntryPoint);
+
+	/// <summary>
+	/// Where a link goes when it has no destination.
+	///
+	/// The field is DestEntryPointIndex, reused: <c>VMEventLink.LinkExitType</c> is
+	/// <c>destState == null ? (ELinkExitType) destEntryPointIndex : LINK_EXIT_TYPE_NONE</c>. So
+	/// on a link that goes nowhere the number is not an entry point at all but this enum, and
+	/// the two values in the data mean genuinely different things — 5673 links return to the
+	/// state they came from and 2760 leave the subgraph entirely.
+	/// </summary>
+	public enum LinkExit {
+		/// <summary>Back to the state the FSM was in before.</summary>
+		PreviousState = 0,
+
+		/// <summary>Out of this subgraph, to the link that entered it.</summary>
+		OuterGraph = 1,
+
+		/// <summary>Out of the event execution the subgraph was started by. 3 links in the corpus.</summary>
+		OuterEventExecution = 2
+	}
+
+	/// <summary>How a destination-less link leaves. Meaningless on a link that goes somewhere.</summary>
+	public static LinkExit ExitTypeOf(GraphLink link) => (LinkExit)link.DestEntryPointIndex;
+
+	/// <summary>
+	/// The ways out, labelled. OuterGraph and OuterEventExecution only differ from PreviousState
+	/// inside a subgraph — <c>ExitFromSubGraph</c> checks <c>Parent.IsSubGraph</c> first and
+	/// falls back to returning to the previous state — which the label says rather than leaving
+	/// the user to find out.
+	/// </summary>
+	public static IReadOnlyList<(LinkExit Exit, string Label)> ExitTypes => [
+		(LinkExit.PreviousState, "0:  back to the previous state"),
+		(LinkExit.OuterGraph, "1:  out of this subgraph (previous state if it is not one)"),
+		(LinkExit.OuterEventExecution, "2:  out of the event execution that started it")
+	];
 
 	/// <summary>One argument a link passes to the graph it enters.</summary>
 	public readonly record struct Argument(int Index, InputParameter? Parameter, string Value) {
@@ -235,10 +271,13 @@ public static class GraphTopology {
 				? "An event link starts from the event rather than a node, so its exit index must be -1."
 				: $"{NameOf(link.Source?.Element)} has no exit {link.SourceExitPointIndex}.";
 
-		// A link with no destination ends the flow. That is not a mistake and not rare: 926 of
-		// MarbleNest's links and 7510 of the Sandbox's have none, and every one of them is
-		// listed in its graph's EventLinks like any other.
-		if (IsTerminator(link)) return null;
+		// A link with no destination does not end the flow — it returns, and the way it returns
+		// is DestEntryPointIndex read as a LinkExit. Nothing else validates that number, so a
+		// value outside the enum would be read as a cast of whatever it is.
+		if (IsTerminator(link))
+			return Enum.IsDefined(typeof(LinkExit), (LinkExit)link.DestEntryPointIndex)
+				? null
+				: $"A link that goes nowhere returns, and {link.DestEntryPointIndex} is not a way of returning.";
 
 		var entries = EntriesOf(link.Destination?.Element);
 		if (entries.All(e => e.Index != link.DestEntryPointIndex))
@@ -252,6 +291,6 @@ public static class GraphTopology {
 		return null;
 	}
 
-	/// <summary>True for a link that ends the flow rather than going anywhere.</summary>
+	/// <summary>True for a link that returns rather than moving to another node.</summary>
 	public static bool IsTerminator(GraphLink link) => link.Destination?.Element == null;
 }

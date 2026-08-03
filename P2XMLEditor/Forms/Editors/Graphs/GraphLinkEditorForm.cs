@@ -56,6 +56,8 @@ public sealed class GraphLinkEditorForm : Form {
 
 	private readonly List<ParameterSourceEditor> _argumentEditors = [];
 
+	private Panel _entryRow = null!;
+
 	private bool _loading = true;
 
 	public GraphLinkEditorForm(VirtualMachine vm, GraphLink link) {
@@ -117,7 +119,7 @@ public sealed class GraphLinkEditorForm : Form {
 		AddRow("Leaves", _source);
 		AddRow("by", _exit);
 		AddRow("Goes to", _destination);
-		AddRow("entering at", _entry);
+		_entryRow = AddRow("entering at", _entry);
 
 		_arguments = new TableLayoutPanel {
 			Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 0, AutoScroll = true,
@@ -163,7 +165,7 @@ public sealed class GraphLinkEditorForm : Form {
 	private static ComboBox NewCombo() =>
 		new() { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList, IntegralHeight = false };
 
-	private void AddRow(string label, Control control) {
+	private Panel AddRow(string label, Control control) {
 		var row = _rows.RowCount;
 		_rows.RowCount = row + 1;
 		_rows.RowStyles.Add(new RowStyle(SizeType.Absolute, RowHeight));
@@ -172,10 +174,13 @@ public sealed class GraphLinkEditorForm : Form {
 		control.Dock = DockStyle.Fill;
 		host.Controls.Add(control);
 
-		_rows.Controls.Add(new Label {
+		var caption = new Label {
 			Text = label, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft
-		}, 0, row);
+		};
+		_rows.Controls.Add(caption, 0, row);
 		_rows.Controls.Add(host, 1, row);
+		host.Tag = caption;
+		return host;
 	}
 
 	// ---------------------------------------------------------------- loading
@@ -266,9 +271,9 @@ public sealed class GraphLinkEditorForm : Form {
 
 	private void PopulateDestinations() {
 		_destination.Items.Clear();
-		// Going nowhere is a real answer: a link with no destination ends the flow, and a fifth
-		// of the links in the shipped data are exactly that.
-		_destination.Items.Add(new ChoiceItem("", "(nowhere — the flow ends here)"));
+		// Going nowhere is a real answer: a link with no destination returns rather than moving
+		// on, and a fifth of the links in the shipped data are exactly that.
+		_destination.Items.Add(new ChoiceItem("", "(nowhere — the link returns instead)"));
 		foreach (var node in GraphTopology.NodesOf(_container))
 			_destination.Items.Add(new ChoiceItem(node.Id.ToString(),
 				$"{GraphTopology.NameOf(node)}   [{TypeName(node)}]"));
@@ -283,11 +288,28 @@ public sealed class GraphLinkEditorForm : Form {
 		}
 	}
 
+	/// <summary>
+	/// The second half of "goes to". With a destination it is which entry point the link arrives
+	/// through; without one the same field is a LinkExit saying how the flow returns, so the row
+	/// changes what it offers and what it is called rather than pretending the number means the
+	/// same thing both ways.
+	/// </summary>
 	private void PopulateEntries() {
 		var selected = (_entry.SelectedItem as IndexItem)?.Index;
 		_entry.Items.Clear();
-		foreach (var entry in GraphTopology.EntriesOf(SelectedDestination))
-			_entry.Items.Add(new IndexItem(entry.Index, entry.Label));
+
+		var destination = SelectedDestination;
+		if (destination == null) {
+			foreach (var (exit, label) in GraphTopology.ExitTypes)
+				_entry.Items.Add(new IndexItem((int)exit, label));
+		} else {
+			foreach (var entry in GraphTopology.EntriesOf(destination))
+				_entry.Items.Add(new IndexItem(entry.Index, entry.Label));
+		}
+
+		if (_entryRow.Tag is Label caption)
+			caption.Text = destination == null ? "returning" : "entering at";
+
 		if (selected != null) SelectByIndex(_entry, selected.Value);
 		if (_entry.SelectedIndex < 0 && _entry.Items.Count > 0) _entry.SelectedIndex = 0;
 	}
@@ -453,7 +475,7 @@ public sealed class GraphLinkEditorForm : Form {
 			$"owner       {_owner.Value?.Write() ?? "(this FSM)"}",
 			$"event       {SelectedEvent?.Name ?? "(none)"}",
 			$"from        {GraphTopology.NameOf(_link.Source?.Element)}  exit {SelectedExitIndex}",
-			$"to          {(SelectedDestination == null ? "(nothing — ends here)" : GraphTopology.NameOf(SelectedDestination) + "  entry " + SelectedEntryIndex)}"
+			$"to          {(SelectedDestination == null ? "returns: " + ((GraphTopology.LinkExit)SelectedEntryIndex) : GraphTopology.NameOf(SelectedDestination) + "  entry " + SelectedEntryIndex)}"
 		};
 
 		for (var i = 0; i < _argumentEditors.Count; i++)
