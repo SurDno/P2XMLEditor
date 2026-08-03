@@ -10,6 +10,7 @@ using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using ExprKind = P2XMLEditor.GameData.VirtualMachineElements.Enums.ExpressionType;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
@@ -40,6 +41,12 @@ public sealed class ExpressionEditorForm : Form {
 	private readonly ActionScope _scope;
 	private readonly VmTypeInfo? _expectedType;
 
+	// Set when the expression is one side of a comparison. Then "fits" is not "is the same
+	// type" but "can the engine actually compare these", which is neither symmetric nor the
+	// same for every operator — see ExpressionComparability.
+	private readonly ConditionType? _comparison;
+	private readonly bool _firstSide;
+
 	private readonly ComboBox _kind;
 	private readonly ComboBox _function;
 	private readonly CheckBox _inversion;
@@ -62,10 +69,18 @@ public sealed class ExpressionEditorForm : Form {
 	/// <param name="expectedType">
 	/// What the value is going to be used as, or null when nothing constrains it yet.
 	/// </param>
-	public ExpressionEditorForm(VirtualMachine vm, Expression expression, VmTypeInfo? expectedType = null) {
+	/// <param name="comparison">
+	/// The condition this expression is an operand of, when it is one. Supplying it lets the
+	/// editor refuse pairs the engine loads but cannot compare, and the ones it compares wrongly.
+	/// </param>
+	/// <param name="firstSide">Which operand this is; the rules are not symmetric.</param>
+	public ExpressionEditorForm(VirtualMachine vm, Expression expression, VmTypeInfo? expectedType = null,
+		ConditionType? comparison = null, bool firstSide = true) {
 		_vm = vm;
 		_expression = expression;
 		_expectedType = expectedType;
+		_comparison = comparison;
+		_firstSide = firstSide;
 		_scope = ActionScope.For(expression.LocalContext.Element, null, vm);
 
 		Text = "Edit expression";
@@ -86,7 +101,7 @@ public sealed class ExpressionEditorForm : Form {
 		};
 
 		_targetParam = new ParamTargetEditor(vm, () => new TargetObjectBinding(
-			_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget));
+			_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget)) { ExpectedType = expectedType };
 		_targetParam.ValueChanged += (_, _) => RefreshPreview();
 
 		_function = NewCombo();
@@ -234,7 +249,8 @@ public sealed class ExpressionEditorForm : Form {
 		var listed = false;
 		foreach (var name in names) {
 			var signature = FunctionSignature.Of(name, _vm);
-			if (!ExpressionTyping.Fits(signature, _expectedType, _vm)) continue;
+			if (!ExpressionTyping.CanBeExpression(signature)) continue;
+			if (!Comparable(signature!.ReturnTypeInfo).IsAllowed) continue;
 			_function.Items.Add(new FunctionItem(name, $"{name}   → {Describe(signature!.ReturnTypeInfo)}"));
 			listed |= name == selected;
 		}
@@ -245,6 +261,22 @@ public sealed class ExpressionEditorForm : Form {
 			_function.Items.Insert(0, new FunctionItem(selected!, $"{selected}   (does not fit here)"));
 
 		SelectFunction(selected);
+	}
+
+	/// <summary>
+	/// Whether a value of this type may stand here. Inside a comparison that is
+	/// <see cref="ExpressionComparability"/> with the sides the right way round; anywhere else
+	/// it is the ordinary type match.
+	/// </summary>
+	private ExpressionComparability.Result Comparable(VmTypeInfo? mine) {
+		if (_comparison is not { } comparison)
+			return VmTypeCompatibility.Matches(_expectedType, mine)
+				? ExpressionComparability.Result.Ok
+				: ExpressionComparability.Result.No($"does not fit {Describe(_expectedType)}");
+
+		return _firstSide
+			? ExpressionComparability.Check(mine, _expectedType, comparison, _vm)
+			: ExpressionComparability.Check(_expectedType, mine, comparison, _vm);
 	}
 
 	private string? SelectedFunctionName => (_function.SelectedItem as FunctionItem)?.Name;
@@ -439,6 +471,10 @@ public sealed class ExpressionEditorForm : Form {
 				lines.Add($"value     {_constant.SerializedValue}");
 				break;
 		}
+
+		var verdict = Comparable(ExpressionTyping.TypeOf(_expression, _vm) ?? CurrentSignature()?.ReturnTypeInfo);
+		if (verdict.Verdict != ExpressionComparability.Verdict.Fine && verdict.Reason != null)
+			lines.Add($"\r\n{(verdict.IsAllowed ? "note" : "!")} {verdict.Reason}");
 
 		if (_inversion.Checked) lines.Add("inverted");
 		if (ValidationError() is { } error) lines.Add($"\r\n! {error}");

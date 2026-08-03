@@ -4,8 +4,10 @@ using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData;
+using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 
@@ -35,6 +37,7 @@ public sealed class ParamTargetEditor : UserControl {
 	private readonly ComboBox _parameter;
 	private readonly Label _hint;
 
+	private VmTypeInfo? _expectedType;
 	private ParameterHolder? _context;
 	private ParamTargetKind? _storedKind;
 	private Parameter? _storedParameter;
@@ -44,6 +47,22 @@ public sealed class ParamTargetEditor : UserControl {
 	private bool _suppressEvents;
 
 	public event EventHandler? ValueChanged;
+
+	/// <summary>
+	/// The type the parameter has to hold, or null to offer every one the target declares.
+	///
+	/// An expression reading a parameter is an operand like any other, so the same constraint
+	/// that narrows a function list narrows this one. What the element already names stays
+	/// listed regardless — the existing entry is kept even when the filter would drop it — so
+	/// opening a mistyped one and cancelling cannot quietly rewrite it.
+	/// </summary>
+	public VmTypeInfo? ExpectedType {
+		get => _expectedType;
+		set {
+			_expectedType = value;
+			UpdateVisibleControls();
+		}
+	}
 
 	/// <param name="target">
 	/// Supplies what the action's target object resolves to, so the lists can be what that
@@ -308,12 +327,13 @@ public sealed class ParamTargetEditor : UserControl {
 	}
 
 	/// <summary>Standard and custom parameters of the object, in a stable order.</summary>
-	private static IEnumerable<Parameter> ParametersOf(ParameterHolder? holder) {
+	private IEnumerable<Parameter> ParametersOf(ParameterHolder? holder) {
 		if (holder == null) return [];
 		var standart = holder.StandartParams ?? new Dictionary<string, Parameter>();
 		var custom = holder.CustomParams ?? new Dictionary<string, Parameter>();
 		return standart.Concat(custom)
 			.Where(kvp => kvp.Value != null)
+			.Where(kvp => VmTypeCompatibility.Matches(_expectedType, kvp.Value.Type, _vm))
 			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
 			.Select(kvp => kvp.Value);
 	}
@@ -348,13 +368,25 @@ public sealed class ParamTargetEditor : UserControl {
 	/// </summary>
 	private IEnumerable<string> ComponentParamNames(ParameterHolder? holder) {
 		if (holder?.StandartParams is { Count: > 0 })
-			return holder.StandartParams.Keys.OrderBy(k => k, StringComparer.Ordinal);
+			return holder.StandartParams.Keys.Where(FitsExpected).OrderBy(k => k, StringComparer.Ordinal);
 
 		return _vm.AllParameterHolders()
 			.SelectMany(h => h.StandartParams?.Keys ?? Enumerable.Empty<string>())
 			.Distinct(StringComparer.Ordinal)
+			.Where(FitsExpected)
 			.OrderBy(k => k, StringComparer.Ordinal)
 			.ToList();
+	}
+
+	/// <summary>
+	/// Whether a standard parameter name can hold the expected type. Which object it will be
+	/// read off is only known at runtime, but the name fixes the type, so the filter applies
+	/// here too. A name whose type cannot be resolved is kept rather than hidden.
+	/// </summary>
+	private bool FitsExpected(string name) {
+		if (_expectedType == null || _expectedType.BaseType == VmType.Unknown) return true;
+		return !_vm.TryResolveStandartParamType(name, out var type)
+			   || VmTypeCompatibility.Matches(_expectedType, type);
 	}
 
 	private void OnUserEdit(System.Action? before) {

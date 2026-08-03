@@ -70,7 +70,8 @@ public class PartConditionEditorForm : Form {
 			var firstSide = lstExpressions.SelectedIndex == 0;
 			using var exprEditor = new ExpressionEditorForm(_vm,
 				firstSide ? _partCondition.FirstExpression : _partCondition.SecondExpression,
-				ExpressionTyping.ExpectedFor(_partCondition, firstSide, _vm));
+				ExpressionTyping.ExpectedFor(_partCondition, firstSide, _vm),
+				_partCondition.ConditionType, firstSide);
 			if (exprEditor.ShowDialog() == DialogResult.OK)
 				LoadExpressionsList();
 		};
