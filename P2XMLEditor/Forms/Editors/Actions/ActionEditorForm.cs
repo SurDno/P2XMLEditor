@@ -770,10 +770,22 @@ public sealed class ActionEditorForm : Form {
 	private void EditExpression() {
 		EnsureExpression();
 		if (_action.SourceExpression == null) return;
-		using var editor = new ExpressionEditorForm(_vm, _action.SourceExpression);
+		// A SetExpression writes into the target parameter, so that parameter's declared type is
+		// what the expression has to produce.
+		using var editor = new ExpressionEditorForm(_vm, _action.SourceExpression, TargetParamType());
 		editor.ShowDialog(this);
 		UpdateExpressionPreview();
 		RefreshPreview();
+	}
+
+	/// <summary>The declared type of the parameter a SetParam/SetExpression writes into.</summary>
+	private VmTypeInfo? TargetParamType() {
+		try {
+			var parameter = _targetParam.Value.Parameter?.Element as Parameter;
+			return parameter == null ? null : SafeTypeInfo(parameter.Type);
+		} catch {
+			return null;
+		}
 	}
 
 	/// <summary>

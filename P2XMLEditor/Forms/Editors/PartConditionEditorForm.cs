@@ -5,6 +5,8 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Forms.Editors.Actions;
+using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.Editors;
@@ -63,8 +65,12 @@ public class PartConditionEditorForm : Form {
 			if (!lstExpressions.Enabled) return;
 			_partCondition.FirstExpression ??= VmElement.CreateDefault<Expression>(_vm, _localContext.Element);
 			_partCondition.SecondExpression ??= VmElement.CreateDefault<Expression>(_vm, _localContext.Element);
+			// Each side is typed by the other, so the expected type is read fresh on every open:
+			// filling one side in constrains what the other may then be.
+			var firstSide = lstExpressions.SelectedIndex == 0;
 			using var exprEditor = new ExpressionEditorForm(_vm,
-				lstExpressions.SelectedIndex == 0 ? _partCondition.FirstExpression : _partCondition.SecondExpression);
+				firstSide ? _partCondition.FirstExpression : _partCondition.SecondExpression,
+				ExpressionTyping.ExpectedFor(_partCondition, firstSide, _vm));
 			if (exprEditor.ShowDialog() == DialogResult.OK)
 				LoadExpressionsList();
 		};
