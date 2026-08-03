@@ -57,6 +57,7 @@ public sealed class ExpressionEditorForm : Form {
 	private readonly TargetObjectEditor _targetObject;
 	private readonly ParamTargetEditor _targetParam;
 	private readonly ParameterSourceEditor _constant;
+	private readonly FormulaEditor _formula;
 
 	private readonly List<ParameterSourceEditor> _slotEditors = [];
 	private Panel _targetObjectRow = null!;
@@ -115,8 +116,16 @@ public sealed class ExpressionEditorForm : Form {
 		_constant = new ParameterSourceEditor(vm, _scope, expectedType);
 		_constant.ValueChanged += (_, _) => RefreshPreview();
 
+		_formula = new FormulaEditor(vm, expression) { Dock = DockStyle.Fill };
+		_formula.ValueChanged += (_, _) => RefreshPreview();
+
 		_inversion = new CheckBox { Text = "Invert result", AutoSize = true, Dock = DockStyle.Left };
-		_inversion.CheckedChanged += (_, _) => RefreshPreview();
+		_inversion.CheckedChanged += (_, _) => {
+			// Inversion negates the whole formula, so the rendering follows it — through the
+			// control's own flag, not the model, which is only written on save.
+			_formula.Inverted = _inversion.Checked;
+			RefreshPreview();
+		};
 
 		_expects = new Label {
 			Dock = DockStyle.Top, Height = 26, TextAlign = ContentAlignment.MiddleLeft,
@@ -145,8 +154,8 @@ public sealed class ExpressionEditorForm : Form {
 		AddRow("", _inversion);
 
 		_preview = new TextBox {
-			Dock = DockStyle.Fill, ReadOnly = true, Multiline = true, ScrollBars = ScrollBars.Vertical,
-			Font = new Font(FontFamily.GenericMonospace, 9f)
+			Dock = DockStyle.Bottom, Height = 150, ReadOnly = true, Multiline = true,
+			ScrollBars = ScrollBars.Vertical, Font = new Font(FontFamily.GenericMonospace, 9f)
 		};
 
 		var buttons = new FlowLayoutPanel {
@@ -162,6 +171,7 @@ public sealed class ExpressionEditorForm : Form {
 
 		var body = new Panel { Dock = DockStyle.Fill };
 		body.Controls.Add(_preview);
+		body.Controls.Add(_formula);
 		body.Controls.Add(_slots);
 		body.Controls.Add(_rows);
 		body.Controls.Add(_expects);
@@ -223,6 +233,7 @@ public sealed class ExpressionEditorForm : Form {
 		_functionRow.Visible = kind == ExprKind.Function;
 		_constantRow.Visible = kind == ExprKind.Const;
 		_slots.Visible = kind == ExprKind.Function;
+		_formula.Visible = kind == ExprKind.Complex;
 
 		_expects.Text = _expectedType == null
 			? "Nothing constrains the type yet — anything may be chosen, and whatever is chosen "
@@ -352,6 +363,7 @@ public sealed class ExpressionEditorForm : Form {
 		UpdateVisibleRows();
 
 		_inversion.Checked = expression.Inversion;
+		_formula.Inverted = expression.Inversion;
 		_targetObject.Load(expression.TargetObject);
 
 		if (expression.TargetParam is { } target && target.Param is { } param)
@@ -365,6 +377,9 @@ public sealed class ExpressionEditorForm : Form {
 				_constant.LoadRaw(text);
 			}
 		}
+
+		if (expression.ExpressionType == ExprKind.Complex)
+			_formula.Load(expression.FormulaChilds, expression.FormulaOperations);
 
 		if (expression.ExpressionType == ExprKind.Function) {
 			PopulateFunctions();
@@ -395,6 +410,8 @@ public sealed class ExpressionEditorForm : Form {
 				return null;
 			case ExprKind.Const:
 				return string.IsNullOrEmpty(_constant.SerializedValue) ? "Give the constant a value." : null;
+			case ExprKind.Complex:
+				return _formula.Validate();
 			default:
 				return null;
 		}
@@ -420,6 +437,17 @@ public sealed class ExpressionEditorForm : Form {
 		_expression.Function = kind == ExprKind.Function
 			? FunctionSignature.Create(SelectedFunctionName!, _vm, ExistingSlotValues())
 			: null;
+
+		if (kind == ExprKind.Complex) {
+			_expression.FormulaChilds = _formula.Children.ToList();
+			_expression.FormulaOperations = _formula.Operations.ToList();
+		} else if (_expression.FormulaChilds != null) {
+			// Retyping away from a formula leaves its terms behind; they belong to this
+			// expression and nothing else refers to them.
+			foreach (var child in _expression.FormulaChilds) _vm.RemoveElement(child);
+			_expression.FormulaChilds = null;
+			_expression.FormulaOperations = null;
+		}
 
 		if (kind == ExprKind.Const && _expression.Const is { } constant) {
 			// The constant is a Parameter holding a typed value, not a string, so what the box
@@ -469,6 +497,9 @@ public sealed class ExpressionEditorForm : Form {
 				break;
 			case ExprKind.Const:
 				lines.Add($"value     {_constant.SerializedValue}");
+				break;
+			case ExprKind.Complex:
+				lines.Add($"formula   {_formula.Render()}");
 				break;
 		}
 
