@@ -732,8 +732,11 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		var byObject = new ToolStripMenuItem("Object…");
 		byObject.Click += (_, _) => {
-			if (VmElementPicker.TryPick(FindForm(), "Select context object", _vm.AllParameterHolders(),
-					e => VmElementPicker.Describe(e, _vm), _prefixHolder, out var picked, BareIdNote))
+			// A context, unlike the value itself, is resolved through the dynamic-context lookup,
+			// so only objects a bare id reaches from here are worth offering.
+			if (VmElementPicker.TryPick(FindForm(), "Select context object",
+					BareIdReach.Offer(_vm.AllParameterHolders(), _scope.Owner, _prefixHolder, _vm),
+					e => VmElementPicker.Describe(e, _vm), _prefixHolder, out var picked))
 				SetContext(picked as ParameterHolder, null);
 		};
 
@@ -835,7 +838,11 @@ public sealed class ParameterSourceEditor : UserControl {
 						.Where(p => !p.IsConstant && VmTypeCompatibility.IsObjectValued(p.Type, _vm)));
 				break;
 			case ParameterSourceKind.ObjectRef:
-				PickElement("Select object", ObjectCandidates(), BareIdNote);
+				// No reachability filter here, and no note either: this is a value, not a
+				// context. GetDynamicVariableValue builds a VMObjRef straight from the id — see
+				// BareIdReach for why holding a value to that rule would fail 2614 of the
+				// corpus's own source parameters.
+				PickElement("Select object", ObjectCandidates());
 				break;
 			case ParameterSourceKind.Hierarchy:
 				PickHierarchy();
@@ -890,14 +897,6 @@ public sealed class ParameterSourceEditor : UserControl {
 
 		return _vm.AllParameterHolders();
 	}
-
-	/// <summary>
-	/// Why an id would not reach this object when the action runs — see
-	/// <see cref="BareIdReach"/>. Shown, not enforced: the answer depends on where the action
-	/// lives, and the shipped content relies on both outcomes.
-	/// </summary>
-	private string? BareIdNote(VmElement element) =>
-		BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
 
 	// ---------------------------------------------------------------- helpers
 

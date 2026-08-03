@@ -46,6 +46,13 @@ public sealed class EventOwnerEditor : UserControl {
 
 	private bool _suppressEvents;
 
+	/// <summary>
+	/// The object the link's graph runs on. GetEventOwnerDynamicContext binds the owner against
+	/// it and then goes through the same dynamic-context lookup an action's target does, so it
+	/// decides which objects a bare id can name here — see <see cref="BareIdReach"/>.
+	/// </summary>
+	public ParameterHolder? GraphOwner { get; set; }
+
 	public event EventHandler? ValueChanged;
 
 	public EventOwnerEditor(VirtualMachine vm) {
@@ -176,7 +183,8 @@ public sealed class EventOwnerEditor : UserControl {
 		switch (SelectedKind) {
 			case EventOwnerKind.Holder:
 				if (VmElementPicker.TryPick(FindForm(), "Select the object whose event fires this link",
-						_vm.AllParameterHolders(), e => VmElementPicker.Describe(e, _vm), _holder, out var holder)) {
+						BareIdReach.Offer(_vm.AllParameterHolders(), GraphOwner, _holder, _vm),
+						e => VmElementPicker.Describe(e, _vm), _holder, out var holder)) {
 					_holder = holder as ParameterHolder;
 					OnUserEdit(UpdateVisibleControls);
 				}

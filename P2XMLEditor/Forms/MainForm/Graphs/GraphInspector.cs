@@ -379,7 +379,7 @@ public sealed class GraphInspector : Panel {
 		enabled.CheckedChanged += (_, _) => { link.Enabled = enabled.Checked; Touch(); };
 		Row(rows, "", enabled);
 
-		var owner = new EventOwnerEditor(_vm);
+		var owner = new EventOwnerEditor(_vm) { GraphOwner = OwnerOf(link.Parent.Element) };
 		owner.Load(link.EventObject);
 		owner.ValueChanged += (_, _) => {
 			link.EventObject = owner.Value;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
@@ -33,8 +34,33 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;
 /// all 3276 non-static ones are self-targets, all 1844 static ones are unplaced, and no action
 /// anywhere names a static placed object by id. The one apparent exception — a Character
 /// targeting the blueprint StrangeBride — is the IsStaticDerived case, not a self-target.
+///
+/// This applies to naming a *context* and not to naming a *value*, and the difference decides
+/// where it may be enforced. A context is an object whose FSM is then used: an action's target
+/// object, the prefix a parameter is read through, a link's event owner. Those all reach
+/// GetDynamicContextByBlueprintContext, and the shipped data obeys the rule — 17452 of 17452
+/// action targets and 7764 of 7765 context prefixes.
+///
+/// A value does not go near it. An object written into a source parameter or an expression is
+/// read by GetDynamicVariableValue, which builds a VMObjRef straight from the id and never asks
+/// for a dynamic context. Held to this rule the corpus would fail 2614 source parameters and 49
+/// expression literals — which is how the distinction was found, having first been missed.
 /// </summary>
 public static class BareIdReach {
+	/// <summary>True when a bare id names this object's context successfully.</summary>
+	public static bool Reachable(ParameterHolder? target, ParameterHolder? owner, VirtualMachine vm) =>
+		Problem(target, owner, vm) == null;
+
+	/// <summary>
+	/// The objects worth offering where one is being named as a context. Whatever is already
+	/// selected stays in the list even when it does not qualify: existing data outranks the
+	/// editor's reading of it, and a picker that hid the current value would look broken.
+	/// </summary>
+	public static IEnumerable<VmElement> Offer(IEnumerable<VmElement> candidates, ParameterHolder? owner,
+		VmElement? current, VirtualMachine vm) =>
+		candidates.Where(candidate =>
+			ReferenceEquals(candidate, current) || Reachable(candidate as ParameterHolder, owner, vm));
+
 	/// <summary>Why a bare id will not reach this object at runtime, or null when it will.</summary>
 	public static string? Problem(ParameterHolder? target, ParameterHolder? owner, VirtualMachine vm) {
 		if (target == null) return null;

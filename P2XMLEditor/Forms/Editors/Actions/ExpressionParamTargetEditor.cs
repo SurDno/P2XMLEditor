@@ -331,8 +331,9 @@ public sealed class ExpressionParamTargetEditor : UserControl {
 
 		var byId = new ToolStripMenuItem("Object…");
 		byId.Click += (_, _) => {
+			// A value, not a context — no reachability filter. See BareIdReach.
 			if (!VmElementPicker.TryPick(FindForm(), "Select object", _vm.AllParameterHolders(),
-					e => VmElementPicker.Describe(e, _vm), _picked, out var picked, BareIdNote))
+					e => VmElementPicker.Describe(e, _vm), _picked, out var picked))
 				return;
 			_picked = picked;
 			_pickedHierarchy = null;
@@ -354,9 +355,6 @@ public sealed class ExpressionParamTargetEditor : UserControl {
 		menu.Items.AddRange([byId, byPlacement]);
 		menu.Show(_pick, new Point(0, _pick.Height));
 	}
-
-	private string? BareIdNote(VmElement element) =>
-		BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
 
 	// ---------------------------------------------------------------- helpers
 

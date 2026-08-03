@@ -348,7 +348,12 @@ public sealed class TargetObjectEditor : UserControl {
 	private void Pick() {
 		switch (SelectedKind) {
 			case TargetObjectKind.Holder:
-				PickElement("Select object", _vm.AllParameterHolders(), BareIdNote);
+				// Only objects a bare id can actually reach from here. The action's target is a
+				// context, and BareIdReach settles which of those an id lands on given where the
+				// action runs — so an object that cannot be reached is not a choice to annotate,
+				// it is a choice not to offer.
+				PickElement("Select object",
+					BareIdReach.Offer(_vm.AllParameterHolders(), _scope.Owner, _pickedElement, _vm));
 				break;
 			case TargetObjectKind.ParameterRef:
 				// The action runs against whatever the parameter points at, so only a
@@ -365,21 +370,13 @@ public sealed class TargetObjectEditor : UserControl {
 	}
 
 	/// <summary>
-	/// Why an id would not reach this object when the action runs — see
-	/// <see cref="BareIdReach"/>. Nothing is filtered out on the strength of it: the answer
-	/// depends on where the action lives, which is exactly why it is shown rather than enforced.
-	/// </summary>
-	private string? BareIdNote(VmElement element) =>
-		BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
-
-	/// <summary>
-	/// A chosen object, carrying the warning where an id cannot reach it at runtime. Shown on
-	/// the target itself and not only inside the picker, so an action that already names an
-	/// unreachable object says so on sight rather than only while it is being re-chosen.
+	/// A chosen object, carrying the warning where an id cannot reach it at runtime. The picker
+	/// no longer offers such objects, so this is only ever about a value the data already holds
+	/// — which is exactly when it needs saying, since nothing else would.
 	/// </summary>
 	private string DescribeHolder(VmElement? element) {
 		var text = VmElementPicker.DescribeDetailed(element, _vm);
-		var problem = element == null ? null : BareIdNote(element);
+		var problem = BareIdReach.Problem(element as ParameterHolder, _scope.Owner, _vm);
 		return problem == null ? text : $"{text}   ⚠ {problem}";
 	}
 
