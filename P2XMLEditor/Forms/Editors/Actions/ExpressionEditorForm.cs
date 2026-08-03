@@ -20,10 +20,12 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 /// Edits one <see cref="Expression"/>, on the same footing as
 /// <see cref="ActionEditorForm"/>: the kind as a column of radios down the left, a target object
 /// beside it, and whatever that combination needs below — reusing <see cref="TargetObjectEditor"/>,
-/// <see cref="ParamTargetEditor"/> and <see cref="ParameterSourceEditor"/> rather than growing
-/// its own half of each. The one thing it does not share is the constant: that is the
-/// expression's own <see cref="Parameter"/> rather than a slot value, and
-/// <see cref="ConstantEditor"/> edits it as one.
+/// <see cref="ExpressionParamTargetEditor"/> and <see cref="ParameterSourceEditor"/> rather than
+/// growing its own half of each. Two things it does not share: the constant, which is the
+/// expression's own <see cref="Parameter"/> rather than a slot value and gets
+/// <see cref="ConstantEditor"/>; and the target object, which for a Param expression the engine
+/// never reads — the whole address is the value itself — so the row is kept only to write back
+/// what was there.
 ///
 /// The difference from an action is that an expression is an operand: it always produces a
 /// value, and something is usually waiting for it to be of a particular type. That expected
@@ -59,7 +61,7 @@ public sealed class ExpressionEditorForm : Form {
 	private readonly TableLayoutPanel _rows;
 	private readonly TableLayoutPanel _slots;
 	private readonly TargetObjectEditor _targetObject;
-	private readonly ParamTargetEditor _targetParam;
+	private readonly ExpressionParamTargetEditor _targetParam;
 	private readonly ConstantEditor _constant;
 	private readonly FormulaEditor _formula;
 
@@ -104,8 +106,10 @@ public sealed class ExpressionEditorForm : Form {
 			RefreshPreview();
 		};
 
-		_targetParam = new ParamTargetEditor(vm, () => new TargetObjectBinding(
-			_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget)) { ExpectedType = expectedType };
+		// Not a ParamTargetEditor: an expression's TargetParam is the whole address and takes
+		// four shapes besides a parameter — see ExpressionParamTargetEditor.
+		_targetParam = new ExpressionParamTargetEditor(vm, _scope, () => new TargetObjectBinding(
+			_targetObject.EffectiveHolder, _targetObject.IsConcreteTarget), expectedType);
 		_targetParam.ValueChanged += (_, _) => RefreshPreview();
 
 		_function = NewCombo();
@@ -152,7 +156,7 @@ public sealed class ExpressionEditorForm : Form {
 		_rows.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
 		_targetObjectRow = AddRow("Target object", _targetObject);
-		_targetParamRow = AddRow("Parameter", _targetParam);
+		_targetParamRow = AddRow("Reads", _targetParam);
 		_functionRow = AddRow("Function", _function);
 		_constantRow = AddRow("Value", _constant);
 		AddRow("", _inversion);
@@ -461,8 +465,15 @@ public sealed class ExpressionEditorForm : Form {
 		_formula.Inverted = expression.Inversion;
 		_targetObject.Load(expression.TargetObject);
 
-		if (expression.TargetParam is { } target && target.Param is { } param)
-			_targetParam.Load(param);
+		// Every kind, not just the parameter one. Loading only that wrote an empty value over an
+		// expression that read a message, an input param or an object written in by hand.
+		try {
+			_targetParam.Load(expression.TargetParam, expression.TargetParam?.Write());
+		} catch {
+			// A stored value the reader could not make sense of stays visible and editable
+			// rather than costing the user the whole form.
+			_targetParam.LoadRaw(expression.TargetParam?.UnresolvedRawString ?? "");
+		}
 
 		if (expression.Const is { } constant) _constant.Load(constant);
 
@@ -484,8 +495,11 @@ public sealed class ExpressionEditorForm : Form {
 	private string? ValidationError() {
 		switch (SelectedKind) {
 			case ExprKind.Param:
-				if (!_targetObject.Value.IsSet) return "The expression reads a parameter, so it needs a target object.";
-				return null;
+				// The target object is not the address — the engine never reads it for this kind —
+				// so what has to be filled in is the value itself.
+				return string.IsNullOrEmpty(_targetParam.SerializedValue)
+					? "The expression reads something, so it needs a parameter, a message or an object."
+					: null;
 			case ExprKind.Function:
 				if (string.IsNullOrEmpty(SelectedFunctionName)) return "Choose a function.";
 				var signature = CurrentSignature();
@@ -530,7 +544,7 @@ public sealed class ExpressionEditorForm : Form {
 			_expression.TargetObject = TargetObject.Read(_targetObject.SerializedValue, _vm, _scope.LocalContext);
 
 		_expression.TargetParam = kind == ExprKind.Param
-			? ExpressionParamTarget.Read(_targetParam.Value.Write(), _vm, _scope.LocalContext)
+			? ExpressionParamTarget.Read(_targetParam.SerializedValue, _vm, _scope.LocalContext)
 			: null;
 
 		_expression.Function = kind == ExprKind.Function
@@ -572,8 +586,8 @@ public sealed class ExpressionEditorForm : Form {
 
 		switch (SelectedKind) {
 			case ExprKind.Param:
-				lines.Add($"object    {_targetObject.SerializedValue}");
-				lines.Add($"param     {SafeWrite(_targetParam)}");
+				lines.Add($"reads     {_targetParam.SerializedValue}   ({_targetParam.SelectedKind})");
+				lines.Add($"object    {_targetObject.SerializedValue}   (kept, but the engine ignores it here)");
 				break;
 			case ExprKind.Function:
 				lines.Add($"object    {_targetObject.SerializedValue}");
@@ -599,14 +613,6 @@ public sealed class ExpressionEditorForm : Form {
 		if (ValidationError() is { } error) lines.Add($"\r\n! {error}");
 
 		_preview.Text = string.Join("\r\n", lines);
-	}
-
-	private static string SafeWrite(ParamTargetEditor editor) {
-		try {
-			return editor.Value.Write();
-		} catch {
-			return "";
-		}
 	}
 
 	private static string Describe(VmTypeInfo? type) {
