@@ -5,6 +5,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using VmAction = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
@@ -249,7 +250,13 @@ public sealed class ActionScope {
 	/// the only thing the editor can honestly filter on.
 	/// </summary>
 	public static IReadOnlySet<string>? ComponentsOfTarget(TargetObject target, VirtualMachine vm) {
-		if (target.ResolvedHolder is { } holder) return ComponentsOf(holder, vm);
+		if (target.ResolvedHolder is { } holder)
+			// A placeholder stands in for an object the data references but does not define —
+			// most of the world hierarchy is engine-only, 14102 of the Sandbox's 20459 placed
+			// objects. It declares no components because nothing here knows any, which is not
+			// the same as having none: answering with an empty set would offer no function at
+			// all on a scene object that in fact supports plenty. Unknown is the honest answer.
+			return holder is IPlaceholder ? null : ComponentsOf(holder, vm);
 
 		return target.Kind switch {
 			TargetObjectKind.ParameterRef => ComponentsOfDeclaredType(target.ParameterRef?.Type, vm),
