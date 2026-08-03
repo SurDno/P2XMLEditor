@@ -7,6 +7,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
@@ -17,10 +18,12 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 
 /// <summary>
 /// Edits one <see cref="Expression"/>, on the same footing as
-/// <see cref="ActionEditorForm"/>: the kind on top, a target object below it, and whatever that
-/// combination needs after — reusing <see cref="TargetObjectEditor"/>,
+/// <see cref="ActionEditorForm"/>: the kind as a column of radios down the left, a target object
+/// beside it, and whatever that combination needs below — reusing <see cref="TargetObjectEditor"/>,
 /// <see cref="ParamTargetEditor"/> and <see cref="ParameterSourceEditor"/> rather than growing
-/// its own half of each.
+/// its own half of each. The one thing it does not share is the constant: that is the
+/// expression's own <see cref="Parameter"/> rather than a slot value, and
+/// <see cref="ConstantEditor"/> edits it as one.
 ///
 /// The difference from an action is that an expression is an operand: it always produces a
 /// value, and something is usually waiting for it to be of a particular type. That expected
@@ -35,6 +38,7 @@ namespace P2XMLEditor.Forms.Editors.Actions;
 public sealed class ExpressionEditorForm : Form {
 	private const int RowHeight = 34;
 	private const int LabelWidth = 150;
+	private const int KindColumnWidth = 280;
 
 	private readonly VirtualMachine _vm;
 	private readonly Expression _expression;
@@ -47,7 +51,7 @@ public sealed class ExpressionEditorForm : Form {
 	private readonly ConditionType? _comparison;
 	private readonly bool _firstSide;
 
-	private readonly ComboBox _kind;
+	private readonly Dictionary<ExprKind, RadioButton> _kindButtons = [];
 	private readonly ComboBox _function;
 	private readonly CheckBox _inversion;
 	private readonly Label _expects;
@@ -56,7 +60,7 @@ public sealed class ExpressionEditorForm : Form {
 	private readonly TableLayoutPanel _slots;
 	private readonly TargetObjectEditor _targetObject;
 	private readonly ParamTargetEditor _targetParam;
-	private readonly ParameterSourceEditor _constant;
+	private readonly ConstantEditor _constant;
 	private readonly FormulaEditor _formula;
 
 	private readonly List<ParameterSourceEditor> _slotEditors = [];
@@ -66,6 +70,8 @@ public sealed class ExpressionEditorForm : Form {
 	private Panel _constantRow = null!;
 
 	private bool _loading = true;
+	private ExprKind _selectedKind = ExprKind.Param;
+	private bool? _anyFunctionFits;
 
 	/// <param name="expectedType">
 	/// What the value is going to be used as, or null when nothing constrains it yet.
@@ -90,9 +96,6 @@ public sealed class ExpressionEditorForm : Form {
 		MinimizeBox = false;
 		ShowInTaskbar = false;
 
-		_kind = NewCombo();
-		_kind.SelectedIndexChanged += (_, _) => OnKindChanged();
-
 		_targetObject = new TargetObjectEditor(vm, _scope);
 		_targetObject.ValueChanged += (_, _) => {
 			// The target decides which components — and so which functions — are callable, in
@@ -111,9 +114,9 @@ public sealed class ExpressionEditorForm : Form {
 			RefreshPreview();
 		};
 
-		// A constant is a value like any other slot's, so it is edited by the same control —
-		// which also means the expected type filters it exactly as it does everywhere else.
-		_constant = new ParameterSourceEditor(vm, _scope, expectedType);
+		// A constant is the expression's own Parameter, so it is edited as one — a declared type
+		// and a literal of that type, and nothing else. See ConstantEditor.
+		_constant = new ConstantEditor(vm, expectedType);
 		_constant.ValueChanged += (_, _) => RefreshPreview();
 
 		_formula = new FormulaEditor(vm, expression) { Dock = DockStyle.Fill };
@@ -148,7 +151,6 @@ public sealed class ExpressionEditorForm : Form {
 		_rows.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LabelWidth));
 		_rows.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
-		AddRow("Expression is", _kind);
 		_targetObjectRow = AddRow("Target object", _targetObject);
 		_targetParamRow = AddRow("Parameter", _targetParam);
 		_functionRow = AddRow("Function", _function);
@@ -178,10 +180,19 @@ public sealed class ExpressionEditorForm : Form {
 		body.Controls.Add(_rows);
 		body.Controls.Add(_expects);
 
-		Controls.Add(body);
+		// The kind sits in its own column of radios rather than in a dropdown, as the action type
+		// does: it reshapes the whole form beneath it, and a control that does that should show
+		// every option it could have been instead of hiding them behind a click.
+		var split = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1 };
+		split.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, KindColumnWidth));
+		split.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+		split.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+		split.Controls.Add(BuildKindSelector(expression.ExpressionType), 0, 0);
+		split.Controls.Add(body, 1, 0);
+
+		Controls.Add(split);
 		Controls.Add(buttons);
 
-		PopulateKinds();
 		Load(expression);
 		_loading = false;
 		UpdateVisibleRows();
@@ -212,17 +223,80 @@ public sealed class ExpressionEditorForm : Form {
 	private static readonly ExprKind[] Kinds =
 		[ExprKind.Param, ExprKind.Const, ExprKind.Function, ExprKind.Complex];
 
-	private void PopulateKinds() {
-		_kind.Items.Clear();
-		foreach (var kind in Kinds) _kind.Items.Add(new KindItem(kind));
-		_kind.SelectedIndex = 0;
+	/// <summary>
+	/// The kinds this expression could be. A parameter or a constant can produce any type, so
+	/// those are always on; the other two cannot always, and a kind that cannot possibly satisfy
+	/// the slot is a dead end rather than a choice:
+	///
+	/// * a function is only possible when some function returns something usable here. Where the
+	///   slot wants a String and every function returns a number, an object or nothing at all,
+	///   picking Function leads to an empty list and no way forward.
+	/// * a formula is always a number — the engine says so, and errors to 0.0 at runtime if a
+	///   term is not one — so it cannot stand where a number will not do.
+	///
+	/// Neither test looks at the target object, which is not chosen yet when the kind is: they
+	/// ask whether <em>any</em> target could work, so the answer does not change under the user.
+	/// Whatever the expression already is stays offered regardless, since existing data outranks
+	/// the editor's opinion of it.
+	/// </summary>
+	private Control BuildKindSelector(ExprKind current) {
+		var flow = new FlowLayoutPanel {
+			Dock = DockStyle.Top, FlowDirection = FlowDirection.TopDown, WrapContents = false,
+			AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Padding = new Padding(8, 6, 6, 6)
+		};
+
+		foreach (var kind in Kinds) {
+			if (kind != current && !IsPossible(kind)) continue;
+
+			var button = new RadioButton {
+				Text = KindItem.Describe(kind), AutoSize = true, Margin = new Padding(0, 6, 0, 6)
+			};
+			var captured = kind;
+			button.CheckedChanged += (_, _) => {
+				if (button.Checked) OnKindChanged(captured);
+			};
+			_kindButtons[kind] = button;
+			flow.Controls.Add(button);
+		}
+
+		var group = new GroupBox {
+			Text = "Expression is", Dock = DockStyle.Top, AutoSize = true,
+			AutoSizeMode = AutoSizeMode.GrowAndShrink, Margin = new Padding(12, 12, 0, 6)
+		};
+		group.Controls.Add(flow);
+
+		// Docked inside a plain host so the group keeps its own height rather than being
+		// stretched down the table cell it sits in.
+		var host = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty };
+		host.Controls.Add(group);
+		return host;
 	}
 
-	private ExprKind SelectedKind => _kind.SelectedItem is KindItem item ? item.Kind : ExprKind.Param;
+	private bool IsPossible(ExprKind kind) => kind switch {
+		ExprKind.Function => AnyFunctionFits(),
+		ExprKind.Complex => Comparable(VmTypeInfo.Single).IsAllowed || Comparable(VmTypeInfo.Int32).IsAllowed,
+		_ => true
+	};
 
-	private void OnKindChanged() {
+	/// <summary>
+	/// Whether any function at all could stand here. Worked out once: the expected type and the
+	/// comparison are fixed for the life of the form, so the answer cannot change.
+	/// </summary>
+	private bool AnyFunctionFits() {
+		_anyFunctionFits ??= FunctionSignature.AvailableNames.Any(name => {
+			var signature = FunctionSignature.Of(name, _vm);
+			return ExpressionTyping.CanBeExpression(signature) &&
+				   Comparable(signature!.ReturnTypeInfo).IsAllowed;
+		});
+		return _anyFunctionFits.Value;
+	}
+
+	private ExprKind SelectedKind => _selectedKind;
+
+	private void OnKindChanged(ExprKind kind) {
+		_selectedKind = kind;
 		UpdateVisibleRows();
-		if (SelectedKind == ExprKind.Function) PopulateFunctions();
+		if (kind == ExprKind.Function) PopulateFunctions();
 		RefreshPreview();
 	}
 
@@ -390,14 +464,7 @@ public sealed class ExpressionEditorForm : Form {
 		if (expression.TargetParam is { } target && target.Param is { } param)
 			_targetParam.Load(param);
 
-		if (expression.Const is { } constant) {
-			var text = SafeSerialize(constant.Value);
-			try {
-				_constant.Load(ParameterSource.Create(text, _vm, null, ConstantType(constant)), text);
-			} catch {
-				_constant.LoadRaw(text);
-			}
-		}
+		if (expression.Const is { } constant) _constant.Load(constant);
 
 		if (expression.ExpressionType == ExprKind.Complex)
 			_formula.Load(expression.FormulaChilds, expression.FormulaOperations);
@@ -410,12 +477,8 @@ public sealed class ExpressionEditorForm : Form {
 	}
 
 	private void SelectKind(ExprKind kind) {
-		for (var i = 0; i < _kind.Items.Count; i++) {
-			if (_kind.Items[i] is KindItem item && item.Kind == kind) {
-				_kind.SelectedIndex = i;
-				return;
-			}
-		}
+		_selectedKind = kind;
+		if (_kindButtons.TryGetValue(kind, out var button)) button.Checked = true;
 	}
 
 	private string? ValidationError() {
@@ -430,7 +493,8 @@ public sealed class ExpressionEditorForm : Form {
 					return $"{SelectedFunctionName} returns nothing, so it cannot be an expression.";
 				return null;
 			case ExprKind.Const:
-				return string.IsNullOrEmpty(_constant.SerializedValue) ? "Give the constant a value." : null;
+				if (_constant.SelectedTypeName.Length == 0) return "Give the constant a type.";
+				return _constant.IsComplete ? null : "Give the constant a value.";
 			case ExprKind.Complex:
 				return _formula.Validate();
 			default:
@@ -445,6 +509,20 @@ public sealed class ExpressionEditorForm : Form {
 		}
 
 		var kind = SelectedKind;
+
+		// The constant is a Parameter holding a typed value, not a string, so what the boxes say
+		// has to survive being read as that type. Built before anything is written, so a literal
+		// the type cannot take leaves the expression exactly as it was rather than half-retyped.
+		ParameterValue? constantValue = null;
+		if (kind == ExprKind.Const) {
+			constantValue = _constant.Build();
+			if (constantValue == null) {
+				MessageBox.Show(this, $"'{_constant.SerializedValue}' is not a {_constant.SelectedTypeName}.",
+					"Cannot save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+		}
+
 		_expression.ExpressionType = kind;
 		_expression.Inversion = _inversion.Checked;
 
@@ -470,24 +548,12 @@ public sealed class ExpressionEditorForm : Form {
 			_expression.FormulaOperations = null;
 		}
 
-		if (kind == ExprKind.Const && _expression.Const is { } constant) {
-			// The constant is a Parameter holding a typed value, not a string, so what the box
-			// says has to survive being read as that type before it is stored. Failing here
-			// rather than storing something unreadable keeps a bad literal out of the data.
-			ParameterValue? value;
-			try {
-				value = ParameterValue.Create(_vm, ConstantType(constant), _constant.SerializedValue);
-			} catch (Exception ex) {
-				MessageBox.Show(this, $"Cannot store the constant: {ex.Message}", "Cannot save",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-			if (value == null) {
-				MessageBox.Show(this, $"'{_constant.SerializedValue}' is not a {Describe(ConstantType(constant))}.",
-					"Cannot save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-			constant.Value = value;
+		if (constantValue != null) {
+			// An expression that has never been a constant owns no Parameter to put it in. The
+			// Parameter belongs to the expression — Parent points back at it — so it is made here
+			// rather than expected to exist.
+			_expression.Const ??= VmElement.CreateDefault<Parameter>(_vm, _expression);
+			_expression.Const.Value = constantValue;
 		}
 
 		DialogResult = DialogResult.OK;
@@ -517,6 +583,7 @@ public sealed class ExpressionEditorForm : Form {
 					lines.Add($"  arg[{i}]  {_slotEditors[i].SerializedValue}");
 				break;
 			case ExprKind.Const:
+				lines.Add($"type      {_constant.SelectedTypeName}");
 				lines.Add($"value     {_constant.SerializedValue}");
 				break;
 			case ExprKind.Complex:
@@ -532,29 +599,6 @@ public sealed class ExpressionEditorForm : Form {
 		if (ValidationError() is { } error) lines.Add($"\r\n! {error}");
 
 		_preview.Text = string.Join("\r\n", lines);
-	}
-
-	/// <summary>
-	/// The constant's own declared type, falling back to what the slot expects. A constant
-	/// carries its type on the Parameter that holds it, so an existing one keeps it; a fresh
-	/// one takes the type of whatever it is being compared against.
-	/// </summary>
-	private VmTypeInfo ConstantType(Parameter constant) {
-		try {
-			if (!string.IsNullOrEmpty(constant.Type))
-				return VmTypeHelper.GetVmTypeInfo(constant.Type, _vm);
-		} catch {
-			// An unreadable declaration is no reason to refuse to show the value.
-		}
-		return _expectedType ?? VmTypeInfo.Unknown;
-	}
-
-	private static string SafeSerialize(ParameterValue? value) {
-		try {
-			return value?.Serialize() ?? "";
-		} catch {
-			return "";
-		}
 	}
 
 	private static string SafeWrite(ParamTargetEditor editor) {
@@ -573,14 +617,14 @@ public sealed class ExpressionEditorForm : Form {
 		}
 	}
 
-	private sealed class KindItem(ExprKind kind) {
-		public ExprKind Kind { get; } = kind;
-		public override string ToString() => Kind switch {
-			ExprKind.Param => "a parameter's value",
-			ExprKind.Const => "a constant",
-			ExprKind.Function => "a function's result",
-			ExprKind.Complex => "a formula",
-			_ => Kind.ToString()
+	/// <summary>Says what the expression reads, not what its enum member is called.</summary>
+	private static class KindItem {
+		public static string Describe(ExprKind kind) => kind switch {
+			ExprKind.Param => "A parameter's value",
+			ExprKind.Const => "A constant",
+			ExprKind.Function => "A function's result",
+			ExprKind.Complex => "A formula",
+			_ => kind.ToString()
 		};
 	}
 

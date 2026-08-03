@@ -7,6 +7,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.Actions;
 using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.Dialogs;
+using P2XMLEditor.Forms.MainForm.Expressions;
 using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
@@ -75,6 +76,7 @@ public class MainForm : Form {
 		RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+		RegisterTabFactory("Expressions", () => new ExpressionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		
 		ShowTab("Mind Maps");
