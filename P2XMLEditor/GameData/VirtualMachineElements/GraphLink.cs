@@ -27,6 +27,20 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 	public string Name { get; set; }
 	public VmEither<Graph, Talking> Parent { get; set; }
 
+	/// <summary>
+	/// An unattached link inside <paramref name="parent"/>. Both ends are left for the caller,
+	/// which is what draws them; the indices start at the values the data uses for "the single
+	/// unconditional exit" and "the first entry point", so a link is valid the moment its
+	/// endpoints are set.
+	/// </summary>
+	public static GraphLink New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "New link",
+		Enabled = true,
+		SourceExitPointIndex = -1,
+		DestEntryPointIndex = 0,
+		Parent = new(parent)
+	};
+
 	public void FillFromRawData(RawGraphLinkData data, VirtualMachine vm) {
 		Event = data.EventId.HasValue ? vm.GetElement<Event>(data.EventId.Value) : null;
 		EventObject = EventOwner.Read(data.EventObject, vm);

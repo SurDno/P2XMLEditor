@@ -39,6 +39,44 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 		OrderIndex = data.OrderIndex;
 	}
 	
+	/// <summary>
+	/// An empty line in the local context of <paramref name="parent"/>. A line's context is the
+	/// node its actions run in, which is what every reference inside them resolves against, so a
+	/// parent that is not a node is walked up until one is.
+	/// </summary>
+	public static ActionLine New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "New line",
+		ActionLineType = ActionLineType.Common,
+		Actions = [],
+		OrderIndex = 0,
+		LocalContext = new(LocalContextOf(parent))
+	};
+
+	/// <summary>
+	/// The nearest enclosing node an action can name as its context. An entry point, an action
+	/// line or an action stands in for the node that owns it.
+	/// </summary>
+	internal static VmElement LocalContextOf(VmElement element) {
+		for (var guard = 0; guard < 16; guard++) {
+			switch (element) {
+				case State or Graph or Branch or Talking or Speech:
+					return element;
+				case EntryPoint point:
+					element = point.Parent.Element;
+					break;
+				case ActionLine line:
+					element = line.LocalContext.Element;
+					break;
+				case Action action:
+					element = action.LocalContext.Element;
+					break;
+				default:
+					return element;
+			}
+		}
+		return element;
+	}
+
 	public override void OnDestroy(VirtualMachine vm) {
 		foreach(var action in Actions ?? [])
 			vm.RemoveElement(action.Element);

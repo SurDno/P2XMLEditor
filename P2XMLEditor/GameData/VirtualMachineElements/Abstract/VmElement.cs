@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.Data;
+using VmAction = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
@@ -23,6 +24,12 @@ public abstract class VmElement(ulong id) {
 			not null when type == typeof(GameString) => GameString.New(vm, id, parent),
 			not null when type == typeof(Expression) => Expression.New(vm, id, parent),
 			not null when type == typeof(Parameter) => Parameter.New(vm, id, parent),
+			not null when type == typeof(EntryPoint) => EntryPoint.New(vm, id, parent),
+			not null when type == typeof(ActionLine) => ActionLine.New(vm, id, parent),
+			not null when type == typeof(VmAction) => VmAction.New(vm, id, parent),
+			not null when type == typeof(State) => State.New(vm, id, parent),
+			not null when type == typeof(Branch) => Branch.New(vm, id, parent),
+			not null when type == typeof(GraphLink) => GraphLink.New(vm, id, parent),
 			_ => throw new ArgumentException($"Type {type!.Name} does not yet support default creation")
 		};
 	}

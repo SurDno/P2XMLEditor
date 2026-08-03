@@ -25,7 +25,19 @@ public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 		Parent = vm.GetElement<State, Graph, Branch, Speech, Talking>(data.ParentId);
 	}
 	
-	public static VmElement New(VirtualMachine vm, ulong id, VmElement parent) => throw new NotImplementedException();
+	/// <summary>
+	/// A fresh entry point, with the action line it exists to run. Every one of the 42 000-odd
+	/// entry points in the corpus has a line; one without has nothing to do on arrival, so the
+	/// line is made here rather than left for the caller to remember.
+	/// </summary>
+	public static EntryPoint New(VirtualMachine vm, ulong id, VmElement parent) {
+		var point = new EntryPoint(id) {
+			Name = "Entry",
+			Parent = new(parent)
+		};
+		point.ActionLine = CreateDefault<ActionLine>(vm, parent);
+		return point;
+	}
 	
 	public override void OnDestroy(VirtualMachine vm) {
 		if (ActionLine != null)

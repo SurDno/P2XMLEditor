@@ -77,6 +77,25 @@ public sealed class ActionScope {
 	}
 
 	/// <summary>
+	/// The scope a <see cref="GraphLink"/>'s arguments are written in.
+	///
+	/// Not the reachability walk: a link is not inside the graph's flow, it is the thing that
+	/// starts it. What it has to hand is exactly its own event's payload — the messages of the
+	/// event it subscribes to — plus the input parameters of the graph that owns it, which are
+	/// already bound by the time the link fires. There is no action line, so no loop variables.
+	/// </summary>
+	public static ActionScope ForLink(GraphLink link, VirtualMachine vm) {
+		var parent = link.Parent.Element;
+		return new ActionScope(
+			link.Event?.Messages ?? [],
+			(parent as Graph)?.InputParams ?? [],
+			[],
+			parent,
+			null,
+			OwnerOf(parent));
+	}
+
+	/// <summary>
 	/// Backwards reachability walk. Every node is visited at most once, so a cyclic graph
 	/// terminates and a node reachable by several routes contributes its messages once.
 	/// </summary>

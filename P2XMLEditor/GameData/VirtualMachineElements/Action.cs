@@ -120,6 +120,19 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 		}
 	}
 		
+	/// <summary>
+	/// A blank SetParam action in the local context of <paramref name="parent"/>. SetParam is
+	/// the only type that says nothing until it is filled in — every other one needs a function,
+	/// an event or an expression the caller has not chosen yet.
+	/// </summary>
+	public static Action New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "",
+		ActionType = ActionType.SetParam,
+		MathOperationType = MathOperationType.None,
+		OrderIndex = 0,
+		LocalContext = new(ActionLine.LocalContextOf(parent))
+	};
+
 	public override void OnDestroy(VirtualMachine vm) {
 		if (SourceExpression != null)
 			vm.RemoveElement(SourceExpression);

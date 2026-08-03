@@ -193,7 +193,7 @@ public sealed class ExpressionEditorForm : Form {
 		Controls.Add(split);
 		Controls.Add(buttons);
 
-		Load(expression);
+		LoadExpression(expression);
 		_loading = false;
 		UpdateVisibleRows();
 		RefreshPreview();
@@ -453,7 +453,7 @@ public sealed class ExpressionEditorForm : Form {
 
 	// ---------------------------------------------------------------- load / save
 
-	private void Load(Expression expression) {
+	private void LoadExpression(Expression expression) {
 		SelectKind(expression.ExpressionType);
 		UpdateVisibleRows();
 
