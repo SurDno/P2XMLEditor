@@ -83,6 +83,7 @@ public class GraphsBrowser : SplitContainer {
 			RefreshProblems();
 		};
 		_inspector.OpenRequested += (_, node) => Activate(node);
+		_inspector.SelectLinkRequested += (_, link) => _canvas.SelectLink(link);
 
 		var right = new Panel { Dock = DockStyle.Fill };
 		right.Controls.Add(_canvas);

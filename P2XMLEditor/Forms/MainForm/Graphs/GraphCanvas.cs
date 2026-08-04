@@ -93,6 +93,9 @@ public sealed class GraphCanvas : UserControl {
 		SelectionChanged?.Invoke(this, EventArgs.Empty);
 	}
 
+	/// <summary>Selects a link from outside — the inspector's exit list jumps here.</summary>
+	public void SelectLink(GraphLink link) => Select(null, link);
+
 	public void Redraw(bool relayout = false) {
 		if (relayout) Relayout();
 		else _surface.Invalidate();
