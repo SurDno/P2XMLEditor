@@ -12,6 +12,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using Action = System.Action;
 using ExprKind = P2XMLEditor.GameData.VirtualMachineElements.Enums.ExpressionType;
 
 namespace P2XMLEditor.Forms.Editors.Actions;

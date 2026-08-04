@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using P2XMLEditor.GameData.Enums;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;

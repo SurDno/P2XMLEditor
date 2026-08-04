@@ -19,7 +19,7 @@ public class DialogBrowser : SplitContainer {
 		_vm = vm;
 		Dock = DockStyle.Fill;
 		Orientation = Orientation.Vertical;
-		SplitterDistance = 400;
+		SplitterDistance = 250;
 		
 		var leftPanel = new Panel { 
 			Dock = DockStyle.Fill,
@@ -38,7 +38,7 @@ public class DialogBrowser : SplitContainer {
 			MultiSelect = false,
 			Top = _searchControl.Bottom + 5
 		};
-		_dialogList.Columns.Add("Dialog", 400);
+		_dialogList.Columns.Add("Dialog", 220);
 		_dialogList.SelectedIndexChanged += OnDialogSelected;
 		leftPanel.Controls.Add(_dialogList);
 		

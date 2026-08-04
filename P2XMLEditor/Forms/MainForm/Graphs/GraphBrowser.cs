@@ -26,6 +26,7 @@ public class GraphsBrowser : SplitContainer {
 	private readonly VirtualMachine _vm;
 
 	private readonly SearchControl _search;
+	private readonly CheckBox _showSubgraphs;
 	private readonly ListView _list;
 	private readonly ToolStrip _trailBar;
 	private readonly GraphCanvas _canvas;
@@ -49,13 +50,15 @@ public class GraphsBrowser : SplitContainer {
 		};
 		_list.Columns.Add("Graph", 200);
 		_list.Columns.Add("Owner", 150);
-		_list.Columns.Add("Nodes", 60);
 		_list.SelectedIndexChanged += (_, _) => {
 			if (_list.SelectedItems.Count > 0 && _list.SelectedItems[0].Tag is Graph graph) Open(graph, reset: true);
 		};
 
 		var left = new Panel { Dock = DockStyle.Fill, Padding = new Padding(4) };
+		_showSubgraphs = new CheckBox { Dock = DockStyle.Top, Text = "Show subgraphs", Checked = false, Padding = new Padding(2, 4, 0, 4) };
+		_showSubgraphs.CheckedChanged += (_, _) => ReloadList();
 		left.Controls.Add(_list);
+		left.Controls.Add(_showSubgraphs);
 		left.Controls.Add(_search);
 		Panel1.Controls.Add(left);
 
@@ -102,6 +105,7 @@ public class GraphsBrowser : SplitContainer {
 
 		var graphs = _vm.GetElementsByType<Graph>()
 			.Where(g => !g.IsOrphaned())
+			.Where(g => _showSubgraphs.Checked || g.Parent.Element is not Graph)
 			.OrderBy(g => OwnerName(g), StringComparer.Ordinal)
 			.ThenBy(g => g.Name, StringComparer.Ordinal)
 			.ToList();
@@ -112,7 +116,6 @@ public class GraphsBrowser : SplitContainer {
 
 			var item = new ListViewItem(graph.Name ?? graph.Id.ToString()) { Tag = graph };
 			item.SubItems.Add(OwnerName(graph));
-			item.SubItems.Add(graph.States.Count.ToString());
 			_list.Items.Add(item);
 			shown++;
 		}

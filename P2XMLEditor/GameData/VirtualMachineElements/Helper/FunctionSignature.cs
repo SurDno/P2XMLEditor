@@ -161,7 +161,7 @@ public sealed class FunctionSignature {
 		return LiveSource(property, instance)?.TypeInfo ?? VmTypeInfo.Unknown;
 	}
 
-	private static ParameterSource? LiveSource(PropertyInfo property, VmFunction? instance) {
+	internal static ParameterSource? LiveSource(PropertyInfo property, VmFunction? instance) {
 		if (instance == null) return null;
 		var slot = property.GetValue(instance);
 		if (slot == null) return null;
@@ -171,7 +171,7 @@ public sealed class FunctionSignature {
 
 	private static readonly ConcurrentDictionary<Type, PropertyInfo[]> SlotPropertyCache = new();
 
-	private static PropertyInfo[] SlotProperties(Type functionType) =>
+	internal static PropertyInfo[] SlotProperties(Type functionType) =>
 		SlotPropertyCache.GetOrAdd(functionType, static t => t
 			.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
 			.Where(p => p.PropertyType.IsGenericType &&

@@ -339,11 +339,11 @@ public sealed class GraphCanvas : UserControl {
 		var label = LabelOf(link);
 		if (label.Length == 0 || _zoom < 0.45f) return;
 
-		using var font = new Font(FontFamily.GenericSansSerif, Math.Max(4f, 7.5f * _zoom));
+		using var font1 = new Font(FontFamily.GenericSansSerif, Math.Max(4f, 7.5f * _zoom));
 		var middle = new PointF((start.X + end.X) / 2, (start.Y + end.Y) / 2 - 8 * _zoom);
-		var size = g.MeasureString(label, font);
+		var size = g.MeasureString(label, font1);
 		g.FillRectangle(Brushes.White, middle.X - size.Width / 2, middle.Y, size.Width, size.Height);
-		g.DrawString(label, font, new SolidBrush(colour), middle.X - size.Width / 2, middle.Y);
+		g.DrawString(label, font1, new SolidBrush(colour), middle.X - size.Width / 2, middle.Y);
 	}
 
 	private static string ReturnLabel(GraphLink link) => GraphTopology.ExitTypeOf(link) switch {

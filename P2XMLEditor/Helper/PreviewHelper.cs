@@ -55,14 +55,57 @@ public static class PreviewHelper {
 			null => "<none>",
 			ExpressionType.Const => Preview(expression.Const!),
 			ExpressionType.Function =>
-				$"{expression.Function!.Name}({string.Join(',', expression.Function!.GetParamStrings() ?? [])})",
+				$"{expression.Function!.Name}({string.Join(',', GetPreviewParamStrings(expression.Function!))})",
 			ExpressionType.Param => Preview(expression.TargetObject) + " " + Preview(expression.TargetParam),
 			ExpressionType.Complex => "Not supported expression",
 			_ => throw new ArgumentOutOfRangeException()
 		};
 	}
 
-	public static string Preview(TargetObject targetObject) => targetObject.Write();
-	public static string Preview(ExpressionParamTarget? targetParam) => targetParam?.Write() ?? "<null>";
+	private static System.Collections.Generic.IEnumerable<string> GetPreviewParamStrings(P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract.VmFunction function) {
+		var raw = function.GetParamStrings();
+		if (raw == null || raw.Count == 0) return [];
+
+		var properties = P2XMLEditor.GameData.VirtualMachineElements.Helper.FunctionSignature.SlotProperties(function.GetType());
+		if (properties.Length != raw.Count) return raw;
+
+		var results = new System.Collections.Generic.List<string>(raw.Count);
+		for (var i = 0; i < properties.Length; i++) {
+			if (P2XMLEditor.GameData.VirtualMachineElements.Helper.FunctionSignature.LiveSource(properties[i], function) is { } source) {
+				results.Add(source.GetVariableName() ?? source.Write());
+			} else {
+				results.Add(raw[i]);
+			}
+		}
+		return results;
+	}
+
+	public static string Preview(TargetObject targetObject) {
+		if (!targetObject.IsSet) return "<null>";
+		var name = targetObject.Kind switch {
+			TargetObjectKind.Holder => targetObject.Holder?.Name,
+			TargetObjectKind.ParameterRef => targetObject.ParameterRef?.Name,
+			TargetObjectKind.Message => targetObject.Message?.Name,
+			TargetObjectKind.InputParam => targetObject.InputParam?.Name,
+			TargetObjectKind.Loop => targetObject.Loop?.ParamId,
+			_ => null
+		};
+		var result = name ?? targetObject.Write();
+		return targetObject.HasLeadingPercent ? "%" + result : result;
+	}
+
+	public static string Preview(ExpressionParamTarget? targetParam) {
+		if (targetParam == null) return "<null>";
+		var tp = targetParam.Value;
+		var name = tp.Kind switch {
+			ExpressionParamKind.Param => tp.Param?.Parameter?.Element is Parameter p ? p.Name : null,
+			ExpressionParamKind.Message => tp.Message?.Name,
+			ExpressionParamKind.InputParam => tp.InputParam?.Name,
+			ExpressionParamKind.ObjectLiteral => tp.ObjectLiteral is INamedElement ne ? ne.Name : null,
+			_ => null
+		};
+		var result = name ?? tp.Write();
+		return tp.HasLeadingPercent ? "%" + result : result;
+	}
 
 }
