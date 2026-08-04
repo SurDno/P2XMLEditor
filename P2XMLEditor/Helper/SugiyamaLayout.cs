@@ -23,9 +23,14 @@ public class SugiyamaLayout<T> where T : notnull {
 		}
 	}
 
+	/// <summary>
+	/// Records an edge, ignoring one whose ends are not both nodes here. A graph's links can
+	/// name something outside it — a placeholder standing in for an id the data never defines,
+	/// or a node belonging to another graph — and indexing straight into the dictionary turned
+	/// that into a KeyNotFoundException at load.
+	/// </summary>
 	public void AddEdge(T from, T to) {
-		var a = _nodes[from];
-		var b = _nodes[to];
+		if (!_nodes.TryGetValue(from, out var a) || !_nodes.TryGetValue(to, out var b)) return;
 		a.Out.Add(b);
 		b.In.Add(a);
 	}

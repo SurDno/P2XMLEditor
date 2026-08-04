@@ -119,13 +119,18 @@ public sealed class GraphCanvas : UserControl {
 	/// </summary>
 	private void Relayout() {
 		var nodes = GraphTopology.NodesOf(_container);
+		var here = nodes.Select(n => n.Id).ToHashSet();
+
 		var layout = new SugiyamaLayout<ulong>();
 		foreach (var node in nodes) layout.AddNode(node.Id);
 
+		// Only links between two nodes of this graph shape it. A link can name something else
+		// entirely — a placeholder for an id the data never defines, or a node in another graph
+		// — and such an end has no position here to lay out against.
 		foreach (var link in GraphTopology.LinksOf(_container)) {
 			var from = link.Source?.Element;
 			var to = link.Destination?.Element;
-			if (from != null && to != null && _positions.ContainsKey(from.Id) == _positions.ContainsKey(to.Id))
+			if (from != null && to != null && here.Contains(from.Id) && here.Contains(to.Id))
 				layout.AddEdge(from.Id, to.Id);
 		}
 

@@ -418,7 +418,16 @@ public sealed class GraphInspector : Panel {
 		foreach (var node in GraphTopology.NodesOf(link.Parent.Element))
 			destination.Items.Add(new ChoiceItem(node.Id.ToString(),
 				$"{GraphTopology.NameOf(node)}   [{node.GetType().Name}]"));
-		SelectById(destination, link.Destination?.Element.Id.ToString() ?? "");
+
+		// A destination outside this graph — a placeholder for an id the data never defines, or
+		// a node belonging elsewhere — is kept selectable. Dropping it would show the link as
+		// going nowhere, which is a different thing entirely and one save away from being true.
+		var current = link.Destination?.Element;
+		if (current != null && GraphTopology.NodesOf(link.Parent.Element).All(n => n.Id != current.Id))
+			destination.Items.Add(new ChoiceItem(current.Id.ToString(),
+				$"{GraphTopology.NameOf(current)}   (not in this graph)"));
+
+		SelectById(destination, current?.Id.ToString() ?? "");
 		destination.SelectedIndexChanged += (_, _) => {
 			Retarget(link, Resolve((destination.SelectedItem as ChoiceItem)?.Id));
 			PopulateEntries(link);

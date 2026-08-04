@@ -6,6 +6,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;
@@ -151,9 +152,12 @@ public static class GraphTopology {
 	}
 
 	/// <summary>True for a node the editor can descend into.</summary>
-	public static bool IsContainer(VmElement? node) => node is Graph or Talking;
+	public static bool IsContainer(VmElement? node) => node is (Graph or Talking) and not IPlaceholder;
 
 	public static string NameOf(VmElement? node) => node switch {
+		// A placeholder has no name to show and the id is the only thing known about it, so the
+		// id is what it is called — with a word saying why there is nothing else.
+		IPlaceholder => $"{node.Id} (undefined)",
 		IGraphElement graphElement => Blank(graphElement.Name) ? node.Id.ToString() : graphElement.Name,
 		Talking talking => Blank(talking.Name) ? node.Id.ToString() : talking.Name,
 		Speech speech => Blank(speech.Name) ? node.Id.ToString() : speech.Name,
@@ -171,9 +175,9 @@ public static class GraphTopology {
 	};
 
 	public static List<EntryPoint> EntryPointsOf(VmElement? node) => node switch {
-		IGraphElement graphElement => graphElement.EntryPoints,
-		Talking talking => talking.EntryPoints,
-		Speech speech => speech.EntryPoints,
+		IGraphElement graphElement => graphElement.EntryPoints ?? [],
+		Talking talking => talking.EntryPoints ?? [],
+		Speech speech => speech.EntryPoints ?? [],
 		_ => []
 	};
 
@@ -186,7 +190,7 @@ public static class GraphTopology {
 	/// </summary>
 	public static IReadOnlyList<Exit> ExitsOf(VmElement? node) {
 		switch (node) {
-			case Branch branch: {
+			case Branch { BranchConditions: not null } branch: {
 				var exits = new List<Exit>(branch.BranchConditions.Count + 1);
 				for (var i = 0; i < branch.BranchConditions.Count; i++) {
 					var condition = branch.BranchConditions[i].Element;
@@ -200,7 +204,7 @@ public static class GraphTopology {
 				return exits;
 			}
 
-			case Speech speech:
+			case Speech { Replies: not null } speech:
 				return speech.Replies
 					.Select((reply, i) => new Exit(i, $"{i}:  {DescribeReply(reply)}", null, reply))
 					.ToList();
