@@ -46,7 +46,6 @@ public sealed class GraphInspector : Panel {
 
 	public event EventHandler? Changed;
 	public event EventHandler<VmElement>? OpenRequested;
-	public event EventHandler<GraphLink>? SelectLinkRequested;
 
 	public GraphInspector(VirtualMachine vm) {
 		_vm = vm;
@@ -231,7 +230,6 @@ public sealed class GraphInspector : Panel {
 		entries.Changed += (_, _) => Touch();
 		Section("Entry points — what runs when a link arrives", entries, 210);
 
-		if (node is Branch conditions) BuildConditions(conditions);
 		if (node is Graph graph) {
 			var inputs = new InputParamsEditor(_vm);
 			inputs.SetGraph(graph);
@@ -270,118 +268,6 @@ public sealed class GraphInspector : Panel {
 			Talking talking => $"{talking.States.Count} node(s).  {entries} entry point(s).",
 			_ => $"One exit, taken when it finishes.  {entries} entry point(s)."
 		};
-	}
-
-	// ---------------------------------------------------------------- conditions
-
-	private ListView _conditions = null!;
-
-	/// <summary>
-	/// The branch's exits, and what leaves by each. Read-mostly on purpose: a condition belongs
-	/// to the link it gates, and that is where it is edited — double-clicking a row selects that
-	/// link and takes you there. Editing is still offered here for the one case the link view
-	/// cannot reach, an exit whose condition has no link on it, which the engine evaluates and
-	/// then returns from.
-	/// </summary>
-	private void BuildConditions(Branch branch) {
-		_conditions = new ListView {
-			Dock = DockStyle.Fill, View = View.Details, FullRowSelect = true, HideSelection = false
-		};
-		_conditions.Columns.Add("Exit", 40);
-		_conditions.Columns.Add("Taken when", 230);
-		_conditions.Columns.Add("Leads to", 110);
-		_conditions.DoubleClick += (_, _) => GoToLink(branch);
-
-		var buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, AutoSize = true, Padding = new Padding(0, 4, 0, 0) };
-		buttons.Controls.AddRange([
-			NewButton("Go to link", () => GoToLink(branch)),
-			NewButton("Edit condition…", () => EditCondition(branch)),
-			NewButton("Remove exit", () => RemoveCondition(branch))
-		]);
-
-		var host = new Panel { Dock = DockStyle.Fill };
-		host.Controls.Add(_conditions);
-		host.Controls.Add(buttons);
-
-		ReloadConditions(branch);
-		Section("Exits", host, 190);
-	}
-
-	/// <summary>Selects the link that leaves by the chosen exit, so its condition can be edited.</summary>
-	private void GoToLink(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow row || row.Link == null) return;
-		SelectLinkRequested?.Invoke(this, row.Link);
-	}
-
-	private sealed record ExitRow(int Index, VmElement? Condition, GraphLink? Link);
-
-	private void ReloadConditions(Branch branch) {
-		_conditions.BeginUpdate();
-		_conditions.Items.Clear();
-
-		foreach (var exit in GraphTopology.ExitsOf(branch)) {
-			var link = GraphTopology.LinksOf(GraphTopology.ContainerOf(branch))
-				.FirstOrDefault(l => l.Source?.Element == branch && l.SourceExitPointIndex == exit.Index);
-
-			var item = new ListViewItem(exit.Index.ToString()) { Tag = new ExitRow(exit.Index, exit.Condition, link) };
-			item.SubItems.Add(exit.Label);
-			item.SubItems.Add(link == null ? "(nothing)"
-				: link.Destination?.Element == null ? "returns"
-				: GraphTopology.NameOf(link.Destination.Value.Element));
-			if (link == null) item.ForeColor = SystemColors.GrayText;
-			_conditions.Items.Add(item);
-		}
-
-		_conditions.EndUpdate();
-	}
-
-	private void AddCondition(Branch branch) {
-		var condition = VmElement.CreateDefault<Condition>(_vm, branch);
-		using var editor = new ConditionEditorForm(_vm, condition, new(branch));
-		if (editor.ShowDialog(FindForm()) == DialogResult.OK) {
-			branch.BranchConditions.Add(new(condition));
-			ReloadConditions(branch);
-			Touch();
-		} else {
-			_vm.RemoveElement(condition);
-		}
-	}
-
-	private void EditCondition(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow { Condition: Condition condition }) return;
-
-		using var editor = new ConditionEditorForm(_vm, condition, new(branch));
-		if (editor.ShowDialog(FindForm()) != DialogResult.OK) return;
-		ReloadConditions(branch);
-		Touch();
-	}
-
-	/// <summary>
-	/// Removing a condition removes an exit with it, so every link leaving by a later one moves
-	/// down. Said plainly first, because nothing on screen would show it afterwards.
-	/// </summary>
-	private void RemoveCondition(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow { Condition: { } condition }) return;
-
-		var index = branch.BranchConditions.FindIndex(c => c.Element == condition);
-		if (index < 0) return;
-
-		var affected = _vm.GetElementsByType<GraphLink>()
-			.Count(l => l.Source?.Element == branch && l.SourceExitPointIndex >= index);
-
-		var message = $"Remove exit {index}?";
-		if (affected > 0) message += $"\n\n{affected} link(s) leave by it or by a later exit and will shift down.";
-		if (MessageBox.Show(this, message, "Remove condition", MessageBoxButtons.YesNo,
-				MessageBoxIcon.Warning) != DialogResult.Yes)
-			return;
-
-		branch.BranchConditions.RemoveAt(index);
-		_vm.RemoveElement(condition);
-		ReloadConditions(branch);
-		Touch();
 	}
 
 	// ---------------------------------------------------------------- link
@@ -441,15 +327,21 @@ public sealed class GraphInspector : Panel {
 			TextAlign = ContentAlignment.MiddleLeft, AutoEllipsis = true
 		});
 
-		var exit = NewCombo();
-		foreach (var value in GraphTopology.ExitsOf(link.Source?.Element))
-			exit.Items.Add(new IndexItem(value.Index, value.Label));
-		SelectByIndex(exit, link.SourceExitPointIndex);
-		exit.SelectedIndexChanged += (_, _) => {
-			if (exit.SelectedItem is IndexItem item) link.SourceExitPointIndex = item.Index;
-			Touch();
-		};
-		Row(rows, "by", exit);
+		// No exit picker for a branch: the link owns the condition it is taken on, and choosing
+		// a different index would silently hand it somebody else's. A speech keeps one, because
+		// there the exit is which reply was given and picking it is the whole point. A state or
+		// a subgraph has a single unconditional exit, so there is nothing to pick.
+		var exits = GraphTopology.ExitsOf(link.Source?.Element);
+		if (branch == null && exits.Count > 1) {
+			var exit = NewCombo();
+			foreach (var value in exits) exit.Items.Add(new IndexItem(value.Index, value.Label));
+			SelectByIndex(exit, link.SourceExitPointIndex);
+			exit.SelectedIndexChanged += (_, _) => {
+				if (exit.SelectedItem is IndexItem item) link.SourceExitPointIndex = item.Index;
+				Touch();
+			};
+			Row(rows, "by", exit);
+		}
 
 		var destination = NewCombo();
 		destination.Items.Add(new ChoiceItem("", "(nowhere — the link returns instead)"));
@@ -539,8 +431,9 @@ public sealed class GraphInspector : Panel {
 				text.Text = DescribeCondition(branch, index, editable);
 				Touch();
 			}));
+			buttons.Controls.Add(NewButton("Remove", () => RemoveExitCondition(link, branch, editable)));
 		} else if (index == conditions.Count) {
-			buttons.Controls.Add(NewButton("Give this exit a condition", () => AddExitCondition(link, branch)));
+			buttons.Controls.Add(NewButton("Give this link a condition", () => AddExitCondition(link, branch)));
 		}
 
 		var host = new Panel { Dock = DockStyle.Fill };
@@ -588,6 +481,31 @@ public sealed class GraphInspector : Panel {
 		}
 
 		branch.BranchConditions.Add(new(condition));
+		SetSelection(null, link);
+		Touch();
+	}
+
+	/// <summary>
+	/// Drops the condition, which drops the exit with it. Every link leaving by a later exit
+	/// moves down a number, so this is the one edit here that reaches past the link in front of
+	/// you — it says how many before doing anything.
+	/// </summary>
+	private void RemoveExitCondition(GraphLink link, Branch branch, Condition condition) {
+		var index = branch.BranchConditions.FindIndex(c => c.Element == condition);
+		if (index < 0) return;
+
+		var affected = GraphTopology.LinksOf(GraphTopology.ContainerOf(branch))
+			.Count(l => l.Source?.Element == branch && l.SourceExitPointIndex > index);
+
+		var message = "Remove this condition?\n\nThis link will fall through to the otherwise exit.";
+		if (affected > 0) message += $"\n\n{affected} other link(s) leave by a later exit and will shift down.";
+
+		if (MessageBox.Show(this, message, "Remove condition", MessageBoxButtons.YesNo,
+				MessageBoxIcon.Warning) != DialogResult.Yes)
+			return;
+
+		branch.BranchConditions.RemoveAt(index);
+		_vm.RemoveElement(condition);
 		SetSelection(null, link);
 		Touch();
 	}

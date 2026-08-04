@@ -93,9 +93,6 @@ public sealed class GraphCanvas : UserControl {
 		SelectionChanged?.Invoke(this, EventArgs.Empty);
 	}
 
-	/// <summary>Selects a link from outside — the inspector's exit list jumps here.</summary>
-	public void SelectLink(GraphLink link) => Select(null, link);
-
 	public void Redraw(bool relayout = false) {
 		if (relayout) Relayout();
 		else _surface.Invalidate();
@@ -356,7 +353,14 @@ public sealed class GraphCanvas : UserControl {
 		_ => $"↩ ?{link.DestEntryPointIndex}"
 	};
 
+	/// <summary>
+	/// What to write beside a link. A link leaving a branch is taken on a condition, so that is
+	/// what it says — "AfterEntry", which is what the editor of the day named nearly all of
+	/// them, tells the reader nothing at all. Everything else is named by its event, or by its
+	/// own name when it has no event.
+	/// </summary>
 	private static string LabelOf(GraphLink link) {
+		if (GraphTopology.ConditionLabelFor(link) is { } condition) return Truncate(condition, 34);
 		if (link.Event != null) return Truncate(link.Event.Name, 28);
 		return string.IsNullOrWhiteSpace(link.Name) ? "" : Truncate(link.Name, 28);
 	}

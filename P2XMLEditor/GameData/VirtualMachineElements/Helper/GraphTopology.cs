@@ -217,6 +217,28 @@ public static class GraphTopology {
 		}
 	}
 
+	/// <summary>
+	/// The branch condition this link is taken on, or null when it leaves something that is not
+	/// a branch, or leaves by the otherwise exit. Fetched by index rather than through
+	/// <see cref="ExitsOf"/>, which previews every condition of the branch — the canvas asks
+	/// this once per link per repaint.
+	/// </summary>
+	public static VmElement? ConditionFor(GraphLink link) {
+		if (link.Source?.Element is not Branch { BranchConditions: not null } branch) return null;
+		var index = link.SourceExitPointIndex;
+		return index >= 0 && index < branch.BranchConditions.Count ? branch.BranchConditions[index].Element : null;
+	}
+
+	/// <summary>
+	/// What a link leaving a branch is taken on, in one line. The otherwise exit says so rather
+	/// than reading as a condition that is missing.
+	/// </summary>
+	public static string? ConditionLabelFor(GraphLink link) {
+		if (link.Source?.Element is not Branch { BranchConditions: not null } branch) return null;
+		if (ConditionFor(link) is { } condition) return DescribeCondition(condition);
+		return link.SourceExitPointIndex == branch.BranchConditions.Count ? ElseLabel(branch.BranchType) : null;
+	}
+
 	private static string ElseLabel(BranchType type) => type switch {
 		BranchType.Case => "otherwise (no condition matched)",
 		BranchType.FlipFlop => "otherwise",
@@ -224,7 +246,7 @@ public static class GraphTopology {
 		_ => "otherwise"
 	};
 
-	private static string DescribeCondition(VmElement? condition) {
+	public static string DescribeCondition(VmElement? condition) {
 		try {
 			return condition == null ? "(no condition)" : PreviewHelper.Preview(condition);
 		} catch {
