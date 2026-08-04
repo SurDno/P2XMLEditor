@@ -141,10 +141,19 @@ public sealed class GraphCanvas : UserControl {
 			list.Add(((int)Math.Round(position.x), node));
 		}
 
+		// Columns are filled left to right so each one can be ordered by where its predecessors
+		// ended up: a node reached from the first exit of a node sits above one reached from the
+		// second. Barycentres alone do not give that — they minimise crossings and are free to
+		// put the second connection's node above the first's, which reads as the branch running
+		// backwards.
+		var rowOf = new Dictionary<ulong, int>();
 		foreach (var (column, members) in columns) {
-			members.Sort((a, b) => a.Order.CompareTo(b.Order));
+			members.Sort((a, b) => Compare(SortKey(a.Node, rowOf), SortKey(b.Node, rowOf)));
+
 			var y = 0f;
-			foreach (var (_, node) in members) {
+			for (var row = 0; row < members.Count; row++) {
+				var node = members[row].Node;
+				rowOf[node.Id] = row;
 				_positions[node.Id] = new PointF(column * ColumnSpacing, y);
 				y += NodeHeight(node) + RowGap;
 			}
@@ -157,6 +166,36 @@ public sealed class GraphCanvas : UserControl {
 				_positions[node.Id] = new PointF(-ColumnSpacing, free++ * 140f);
 
 		_surface.Invalidate();
+	}
+
+	/// <summary>
+	/// Where a node belongs in its column: under the highest-placed node that reaches it, and
+	/// within that, in the order of the exits it is reached by. The initial node leads the first
+	/// column because that is where the graph starts.
+	/// </summary>
+	private (int Row, int Exit, ulong Id) SortKey(VmElement node, Dictionary<ulong, int> rowOf) {
+		var best = (Row: int.MaxValue, Exit: int.MaxValue);
+
+		foreach (var link in GraphTopology.LinksOf(_container)) {
+			if (link.Destination?.Element != node) continue;
+			if (link.Source?.Element is not { } source || !rowOf.TryGetValue(source.Id, out var row)) continue;
+
+			var exits = GraphTopology.ExitsOf(source);
+			var exit = 0;
+			for (var i = 0; i < exits.Count; i++)
+				if (exits[i].Index == link.SourceExitPointIndex) { exit = i; break; }
+
+			if (row < best.Row || (row == best.Row && exit < best.Exit)) best = (row, exit);
+		}
+
+		if (best.Row == int.MaxValue && GraphTopology.IsInitial(node)) return (-1, 0, node.Id);
+		return (best.Row, best.Exit, node.Id);
+	}
+
+	private static int Compare((int Row, int Exit, ulong Id) a, (int Row, int Exit, ulong Id) b) {
+		if (a.Row != b.Row) return a.Row.CompareTo(b.Row);
+		if (a.Exit != b.Exit) return a.Exit.CompareTo(b.Exit);
+		return a.Id.CompareTo(b.Id);
 	}
 
 	public void FitView() {
@@ -270,32 +309,24 @@ public sealed class GraphCanvas : UserControl {
 		};
 		if (!link.Enabled) pen.DashStyle = DashStyle.Dash;
 
-		var hasSource = link.Source?.Element is { } source && _bounds.ContainsKey(source.Id);
-		if (!hasSource && to == null) return;
-
-		var start = hasSource
-			? ExitPoint(link.Source!.Value.Element, link.SourceExitPointIndex)
-			// A link with no source is subscribed to an event and enters from outside the graph.
-			: new PointF(_bounds[to!.Id].X - 70 * _zoom, EntryPoint(to, link.DestEntryPointIndex).Y);
+		if (Geometry(link) is not { } geometry) return;
+		var (start, end, isStub) = geometry;
 
 		// A link with no destination returns rather than moving on — a fifth of them do — and
 		// how it returns is DestEntryPointIndex read as a LinkExit. Drawn as a stub carrying that
 		// word, because an exit that returns to the previous state and one that leaves the
 		// subgraph go to entirely different places.
-		if (to == null) {
-			var stop = new PointF(start.X + 46 * _zoom, start.Y);
-			g.DrawLine(pen, start, stop);
-			g.DrawEllipse(pen, stop.X, stop.Y - 5 * _zoom, 10 * _zoom, 10 * _zoom);
+		if (isStub) {
+			g.DrawLine(pen, start, end);
+			g.DrawEllipse(pen, end.X, end.Y - 5 * _zoom, 10 * _zoom, 10 * _zoom);
 
 			if (_zoom >= 0.45f) {
 				using var font = new Font(FontFamily.GenericSansSerif, Math.Max(4f, 7.5f * _zoom));
 				using var brush = new SolidBrush(colour);
-				g.DrawString(ReturnLabel(link), font, brush, stop.X + 14 * _zoom, stop.Y - 4 * _zoom);
+				g.DrawString(ReturnLabel(link), font, brush, end.X + 14 * _zoom, end.Y - 4 * _zoom);
 			}
 			return;
 		}
-
-		var end = EntryPoint(to, link.DestEntryPointIndex);
 
 		var bend = Math.Max(30f, Math.Abs(end.X - start.X) * 0.4f) * _zoom;
 		g.DrawBezier(pen, start, new PointF(start.X + bend, start.Y), new PointF(end.X - bend, end.Y), end);
@@ -361,20 +392,45 @@ public sealed class GraphCanvas : UserControl {
 		GraphTopology.NodesOf(_container)
 			.LastOrDefault(n => _bounds.TryGetValue(n.Id, out var b) && b.Contains(screen));
 
-	/// <summary>The link whose curve passes near the point. Sampled, because a bezier has no cheap hit test.</summary>
+	/// <summary>
+	/// Where a link is drawn, or null when neither end is on screen. One method so hit-testing
+	/// and drawing cannot drift apart — they did, and the links that return instead of going
+	/// somewhere were drawn but could not be clicked, which left 8436 of them uneditable.
+	/// </summary>
+	private (PointF Start, PointF End, bool IsStub)? Geometry(GraphLink link) {
+		var to = link.Destination?.Element;
+		if (to != null && !_bounds.ContainsKey(to.Id)) return null;
+
+		var hasSource = link.Source?.Element is { } source && _bounds.ContainsKey(source.Id);
+		if (!hasSource && to == null) return null;
+
+		var start = hasSource
+			? ExitPoint(link.Source!.Value.Element, link.SourceExitPointIndex)
+			// A link with no source is subscribed to an event and enters from outside the graph.
+			: new PointF(_bounds[to!.Id].X - 70 * _zoom, EntryPoint(to, link.DestEntryPointIndex).Y);
+
+		return to == null
+			? (start, new PointF(start.X + 46 * _zoom, start.Y), true)
+			: (start, EntryPoint(to, link.DestEntryPointIndex), false);
+	}
+
+	/// <summary>The link whose line passes near the point. Sampled, because a bezier has no cheap hit test.</summary>
 	private GraphLink? LinkAt(Point screen) {
 		foreach (var link in GraphTopology.LinksOf(_container)) {
-			var to = link.Destination?.Element;
-			if (to == null || !_bounds.ContainsKey(to.Id)) continue;
-			if (link.Source?.Element is { } src && !_bounds.ContainsKey(src.Id)) continue;
+			if (Geometry(link) is not { } geometry) continue;
+			var (start, end, isStub) = geometry;
 
-			var start = link.Source?.Element is { } from && _bounds.ContainsKey(from.Id)
-				? ExitPoint(from, link.SourceExitPointIndex)
-				: new PointF(_bounds[to.Id].X - 70 * _zoom, EntryPoint(to, link.DestEntryPointIndex).Y);
-			var end = EntryPoint(to, link.DestEntryPointIndex);
+			if (isStub) {
+				// The stub is a short horizontal run plus its stop marker; the marker is the part
+				// most likely to be aimed at, so the reach extends past the line's end.
+				if (screen.Y > start.Y - 8 && screen.Y < start.Y + 8 &&
+					screen.X > start.X - 4 && screen.X < end.X + 14 * _zoom)
+					return link;
+				continue;
+			}
+
 			var bend = Math.Max(30f, Math.Abs(end.X - start.X) * 0.4f) * _zoom;
-
-			for (var t = 0f; t <= 1f; t += 0.05f) {
+			for (var t = 0f; t <= 1f; t += 0.02f) {
 				var point = Bezier(start, new PointF(start.X + bend, start.Y), new PointF(end.X - bend, end.Y), end, t);
 				if (Math.Abs(point.X - screen.X) < 6 && Math.Abs(point.Y - screen.Y) < 6) return link;
 			}

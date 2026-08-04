@@ -41,17 +41,96 @@ public class SugiyamaLayout<T> where T : notnull {
 		return _nodes.Values.ToDictionary(n => n.Data, n => (n.X, n.Y));
 	}
 
+	/// <summary>
+	/// Longest-path layering, over the graph with its cycles broken.
+	///
+	/// The previous version relaxed layers from a queue with no visited set, which does not
+	/// terminate on a cyclic graph: every trip round a loop pushes its members again with a
+	/// higher layer, and the queue grows until its backing array cannot. A state machine is
+	/// cyclic by nature — a state that can return to an earlier one is the normal case — so this
+	/// was not an edge case; the Cathedral graph in PathologicSandbox, 31 nodes and 46 links,
+	/// took it out with an OutOfMemoryException.
+	///
+	/// Cycles are broken by a depth-first pass: an edge back to a node still on the stack is a
+	/// back edge and is left out of the layering, which is the usual Sugiyama step. It still
+	/// draws — the canvas draws every link regardless — it just does not get a say in what is
+	/// upstream of what, because in a cycle nothing is.
+	/// </summary>
 	private void AssignLayers() {
-		var queue = new Queue<Node>(
-			_nodes.Values.Where(n => n.In.Count == 0));
+		var backEdges = FindBackEdges();
 
-		while (queue.Count > 0) {
-			var node = queue.Dequeue();
+		// Kahn's algorithm over the remaining edges: a node's layer is one past the last of its
+		// predecessors, and every node is settled exactly once.
+		var remaining = _nodes.Values.ToDictionary(n => n,
+			n => n.In.Count(parent => !backEdges.Contains((parent, n))));
+
+		var ready = new Queue<Node>(remaining.Where(pair => pair.Value == 0).Select(pair => pair.Key));
+
+		// A component that is one whole cycle has no zero-indegree node even after the back edge
+		// is cut, if the cut edge was the only way in. Seeding with the lowest id keeps the
+		// result stable rather than dependent on dictionary order.
+		if (ready.Count == 0 && _nodes.Count > 0)
+			ready.Enqueue(_nodes.Values.OrderBy(n => n.Data.ToString(), StringComparer.Ordinal).First());
+
+		var settled = new HashSet<Node>();
+		while (ready.Count > 0) {
+			var node = ready.Dequeue();
+			if (!settled.Add(node)) continue;
+
 			foreach (var child in node.Out) {
+				if (backEdges.Contains((node, child))) continue;
 				child.Layer = Math.Max(child.Layer, node.Layer + 1);
-				queue.Enqueue(child);
+				if (--remaining[child] <= 0 && !settled.Contains(child)) ready.Enqueue(child);
 			}
 		}
+
+		// Anything the walk never reached — a cycle behind a cut edge — is placed after whatever
+		// does reach it, so it is at least not on top of its own predecessors.
+		foreach (var node in _nodes.Values) {
+			if (settled.Contains(node)) continue;
+			var upstream = node.In.Where(settled.Contains).Select(n => n.Layer).DefaultIfEmpty(-1).Max();
+			node.Layer = upstream + 1;
+		}
+	}
+
+	/// <summary>
+	/// Edges that close a cycle, found by an iterative depth-first walk. Iterative because a
+	/// graph here can be deeper than the stack is willing to go, and because the recursion is
+	/// the part that would fail silently.
+	/// </summary>
+	private HashSet<(Node From, Node To)> FindBackEdges() {
+		var backEdges = new HashSet<(Node, Node)>();
+		var visited = new HashSet<Node>();
+		var onStack = new HashSet<Node>();
+
+		foreach (var root in _nodes.Values.OrderByDescending(n => n.In.Count == 0)) {
+			if (visited.Contains(root)) continue;
+
+			var stack = new Stack<(Node Node, int Index)>();
+			stack.Push((root, 0));
+			visited.Add(root);
+			onStack.Add(root);
+
+			while (stack.Count > 0) {
+				var (node, index) = stack.Pop();
+				if (index >= node.Out.Count) {
+					onStack.Remove(node);
+					continue;
+				}
+
+				stack.Push((node, index + 1));
+				var child = node.Out[index];
+
+				if (onStack.Contains(child)) {
+					backEdges.Add((node, child));
+				} else if (visited.Add(child)) {
+					onStack.Add(child);
+					stack.Push((child, 0));
+				}
+			}
+		}
+
+		return backEdges;
 	}
 
 	private void MinimizeCrossings() {

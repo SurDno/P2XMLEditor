@@ -188,11 +188,10 @@ public sealed class GraphInspector : Panel {
 			Text = "Initial — the FSM starts here", AutoSize = false, Checked = GraphTopology.IsInitial(node)
 		};
 		initial.CheckedChanged += (_, _) => {
-			switch (node) {
-				case IGraphElement element: element.Initial = initial.Checked; break;
-				case Talking talking: talking.Initial = initial.Checked; break;
-				case Speech speech: speech.Initial = initial.Checked; break;
-			}
+			// Exclusive: the engine takes the first initial node it finds and ignores any others,
+			// so ticking one unticks the rest rather than leaving a flag that does nothing.
+			if (initial.Checked) GraphTopology.MakeInitial(node);
+			else GraphTopology.SetInitial(node, false);
 			Touch();
 		};
 		Row(general, "", initial);

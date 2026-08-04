@@ -191,17 +191,22 @@ public class GraphsBrowser : SplitContainer {
 			return;
 		}
 
-		var complaints = GraphTopology.LinksOf(_trail[^1])
+		var complaints = new List<string>();
+
+		// The graph as a whole first: a missing or duplicated initial node is about the graph
+		// rather than any one link, and it is the one that stops it running at all.
+		if (GraphTopology.InitialProblem(_trail[^1]) is { } initial) complaints.Add(initial);
+
+		complaints.AddRange(GraphTopology.LinksOf(_trail[^1])
 			.Select(link => (link, problem: GraphTopology.Problem(link)))
 			.Where(pair => pair.problem != null)
-			.ToList();
+			.Select(pair => $"{pair.link.Name}: {pair.problem}"));
 
 		_problem.Visible = complaints.Count > 0;
 		if (complaints.Count == 0) return;
 
-		var (first, message) = complaints[0];
 		_problem.Text = complaints.Count == 1
-			? $"⚠ {first.Name}: {message}"
-			: $"⚠ {first.Name}: {message}   (and {complaints.Count - 1} more)";
+			? $"⚠ {complaints[0]}"
+			: $"⚠ {complaints[0]}   (and {complaints.Count - 1} more)";
 	}
 }

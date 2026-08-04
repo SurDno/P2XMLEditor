@@ -100,6 +100,56 @@ public static class GraphTopology {
 		_ => []
 	};
 
+	/// <summary>The Graph or Talking a node is drawn inside, or null for a top-level graph.</summary>
+	public static VmElement? ContainerOf(VmElement? node) => node switch {
+		State state => state.Parent,
+		Branch branch => branch.Parent.Element,
+		Speech speech => speech.Parent,
+		Talking talking => talking.Parent,
+		Graph graph => graph.Parent.Element as Graph,
+		_ => null
+	};
+
+	/// <summary>
+	/// What is wrong with a container's set of initial nodes, or null.
+	///
+	/// <c>FiniteStateMachine.InitState</c> returns the first node whose Initial is set and logs
+	/// "Init state not found" when there is none, so a graph needs exactly one — a second is
+	/// never reached and its author almost certainly meant it to be. Every graph in both corpora
+	/// has exactly one: 599 in MarbleNest and 5141 in the Sandbox, no exceptions.
+	/// </summary>
+	public static string? InitialProblem(VmElement? container) {
+		if (container == null) return null;
+
+		var initial = NodesOf(container).Where(IsInitial).ToList();
+		return initial.Count switch {
+			0 => "No node is marked initial, so the graph has nowhere to start.",
+			1 => null,
+			_ => $"{initial.Count} nodes are marked initial ({string.Join(", ", initial.Select(NameOf))}); "
+				 + "only the first is ever used."
+		};
+	}
+
+	/// <summary>
+	/// Makes <paramref name="node"/> the one initial node of its container. Exclusive because
+	/// the engine takes the first and ignores the rest — leaving the others set would keep a
+	/// flag on screen that does nothing.
+	/// </summary>
+	public static void MakeInitial(VmElement node) {
+		var container = ContainerOf(node);
+		if (container == null) { SetInitial(node, true); return; }
+
+		foreach (var sibling in NodesOf(container)) SetInitial(sibling, ReferenceEquals(sibling, node));
+	}
+
+	public static void SetInitial(VmElement node, bool value) {
+		switch (node) {
+			case IGraphElement element: element.Initial = value; break;
+			case Talking talking: talking.Initial = value; break;
+			case Speech speech: speech.Initial = value; break;
+		}
+	}
+
 	/// <summary>True for a node the editor can descend into.</summary>
 	public static bool IsContainer(VmElement? node) => node is Graph or Talking;
 
