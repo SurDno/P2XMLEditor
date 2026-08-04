@@ -46,7 +46,6 @@ public sealed class GraphInspector : Panel {
 
 	public event EventHandler? Changed;
 	public event EventHandler<VmElement>? OpenRequested;
-	public event EventHandler<GraphLink>? SelectLinkRequested;
 
 	public GraphInspector(VirtualMachine vm) {
 		_vm = vm;
@@ -250,6 +249,10 @@ public sealed class GraphInspector : Panel {
 	/// The node in one paragraph, leading with what is easiest to get wrong: a branch always has
 	/// one more exit than it has conditions, and a graph's parameters have to be supplied by
 	/// every link entering it.
+	///
+	/// The conditions themselves are not repeated here. They are written on the links they gate,
+	/// which is where they are read and where they are edited; saying them twice only raises the
+	/// question of which of the two is the real one.
 	/// </summary>
 	private string Summarise(VmElement node) {
 		var exits = GraphTopology.ExitsOf(node).Count;
@@ -257,8 +260,9 @@ public sealed class GraphInspector : Panel {
 
 		return node switch {
 			Branch branch =>
-				$"{branch.BranchConditions.Count} condition(s), so {exits} exits — one per condition and "
-				+ $"one for when none matched.  {entries} entry point(s).",
+				$"{branch.BranchConditions?.Count ?? 0} condition(s), so {exits} exits — one per condition and "
+				+ $"one for when none matched.  Each is written on the link it gates.{Dangling(branch)}"
+				+ $"  {entries} entry point(s).",
 			Graph graph =>
 				$"{graph.GraphType.Serialize()}, {graph.States.Count} node(s), "
 				+ $"{graph.InputParams?.Count ?? 0} input parameter(s), {entries} entry point(s)."
@@ -271,117 +275,17 @@ public sealed class GraphInspector : Panel {
 		};
 	}
 
-
-	// ---------------------------------------------------------------- conditions
-
-	private ListView _conditions = null!;
-
 	/// <summary>
-	/// The branch's exits, and what leaves by each. Read-mostly on purpose: a condition belongs
-	/// to the link it gates, and that is where it is edited — double-clicking a row selects that
-	/// link and takes you there. Editing is still offered here for the one case the link view
-	/// cannot reach, an exit whose condition has no link on it, which the engine evaluates and
-	/// then returns from.
+	/// Conditions with nothing leaving by them. The engine evaluates such an exit and then
+	/// returns from it, and the game never ships one — all 4713 branch conditions across the two
+	/// corpora have a link on them. With the conditions living on the links there is nothing on
+	/// screen that would show one either, so the count says it.
 	/// </summary>
-	private void BuildConditions(Branch branch) {
-		_conditions = new ListView {
-			Dock = DockStyle.Fill, View = View.Details, FullRowSelect = true, HideSelection = false
-		};
-		_conditions.Columns.Add("Exit", 40);
-		_conditions.Columns.Add("Taken when", 230);
-		_conditions.Columns.Add("Leads to", 110);
-		_conditions.DoubleClick += (_, _) => GoToLink(branch);
-
-		var buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, AutoSize = true, Padding = new Padding(0, 4, 0, 0) };
-		buttons.Controls.AddRange([
-			NewButton("Go to link", () => GoToLink(branch)),
-			NewButton("Edit condition…", () => EditCondition(branch)),
-			NewButton("Remove exit", () => RemoveCondition(branch))
-		]);
-
-		var host = new Panel { Dock = DockStyle.Fill };
-		host.Controls.Add(_conditions);
-		host.Controls.Add(buttons);
-
-		ReloadConditions(branch);
-		Section("Exits", host, 190);
-	}
-
-	/// <summary>Selects the link that leaves by the chosen exit, so its condition can be edited.</summary>
-	private void GoToLink(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow row || row.Link == null) return;
-		SelectLinkRequested?.Invoke(this, row.Link);
-	}
-
-	private sealed record ExitRow(int Index, VmElement? Condition, GraphLink? Link);
-
-	private void ReloadConditions(Branch branch) {
-		_conditions.BeginUpdate();
-		_conditions.Items.Clear();
-
-		foreach (var exit in GraphTopology.ExitsOf(branch)) {
-			var link = GraphTopology.LinksOf(GraphTopology.ContainerOf(branch))
-				.FirstOrDefault(l => l.Source?.Element == branch && l.SourceExitPointIndex == exit.Index);
-
-			var item = new ListViewItem(exit.Index.ToString()) { Tag = new ExitRow(exit.Index, exit.Condition, link) };
-			item.SubItems.Add(exit.Label);
-			item.SubItems.Add(link == null ? "(nothing)"
-				: link.Destination?.Element == null ? "returns"
-				: GraphTopology.NameOf(link.Destination.Value.Element));
-			if (link == null) item.ForeColor = SystemColors.GrayText;
-			_conditions.Items.Add(item);
-		}
-
-		_conditions.EndUpdate();
-	}
-
-	private void AddCondition(Branch branch) {
-		var condition = VmElement.CreateDefault<Condition>(_vm, branch);
-		using var editor = new ConditionEditorForm(_vm, condition, new(branch));
-		if (editor.ShowDialog(FindForm()) == DialogResult.OK) {
-			branch.BranchConditions.Add(new(condition));
-			ReloadConditions(branch);
-			Touch();
-		} else {
-			_vm.RemoveElement(condition);
-		}
-	}
-
-	private void EditCondition(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow { Condition: Condition condition }) return;
-
-		using var editor = new ConditionEditorForm(_vm, condition, new(branch));
-		if (editor.ShowDialog(FindForm()) != DialogResult.OK) return;
-		ReloadConditions(branch);
-		Touch();
-	}
-
-	/// <summary>
-	/// Removing a condition removes an exit with it, so every link leaving by a later one moves
-	/// down. Said plainly first, because nothing on screen would show it afterwards.
-	/// </summary>
-	private void RemoveCondition(Branch branch) {
-		if (_conditions.SelectedItems.Count == 0) return;
-		if (_conditions.SelectedItems[0].Tag is not ExitRow { Condition: { } condition }) return;
-
-		var index = branch.BranchConditions.FindIndex(c => c.Element == condition);
-		if (index < 0) return;
-
-		var affected = _vm.GetElementsByType<GraphLink>()
-			.Count(l => l.Source?.Element == branch && l.SourceExitPointIndex >= index);
-
-		var message = $"Remove exit {index}?";
-		if (affected > 0) message += $"\n\n{affected} link(s) leave by it or by a later exit and will shift down.";
-		if (MessageBox.Show(this, message, "Remove condition", MessageBoxButtons.YesNo,
-				MessageBoxIcon.Warning) != DialogResult.Yes)
-			return;
-
-		branch.BranchConditions.RemoveAt(index);
-		_vm.RemoveElement((Condition)condition);
-		ReloadConditions(branch);
-		Touch();
+	private static string Dangling(Branch branch) {
+		var links = GraphTopology.LinksFrom(branch);
+		var count = GraphTopology.ExitsOf(branch)
+			.Count(exit => exit.Condition != null && links.All(l => l.SourceExitPointIndex != exit.Index));
+		return count == 0 ? "" : $"  {count} condition(s) have no link and are evaluated for nothing.";
 	}
 
 
@@ -535,7 +439,8 @@ public sealed class GraphInspector : Panel {
 
 		var text = new TextBox {
 			Dock = DockStyle.Fill, ReadOnly = true, Multiline = true, BorderStyle = BorderStyle.None,
-			BackColor = SystemColors.Control, Text = DescribeCondition(branch, index, condition)
+			BackColor = SystemColors.Control, ScrollBars = ScrollBars.Vertical, WordWrap = true,
+			Text = DescribeCondition(branch, index, condition)
 		};
 
 		var buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, AutoSize = true, Padding = new Padding(0, 4, 0, 0) };
@@ -554,7 +459,20 @@ public sealed class GraphInspector : Panel {
 		var host = new Panel { Dock = DockStyle.Fill };
 		host.Controls.Add(text);
 		host.Controls.Add(buttons);
-		Section("Taken when", host, 108);
+
+		// This is the one thing on a branch link worth reading, and a condition is a nested
+		// expression written out in full — three lines was showing a tenth of a real one and
+		// asking the user to scroll a read-only box a line at a time to see the rest.
+		Section("Taken when", host, ConditionHeight(text.Text));
+	}
+
+	/// <summary>
+	/// Enough room for the condition as written, within reason: short ones do not leave a hole
+	/// under themselves and long ones stop being a peephole.
+	/// </summary>
+	private static int ConditionHeight(string text) {
+		var lines = text.Length / 46 + text.Count(c => c == '\n') + 1;
+		return Math.Clamp(48 + lines * 15, 108, 320);
 	}
 
 	private string DescribeCondition(Branch branch, int index, VmElement? condition) {
@@ -574,53 +492,47 @@ public sealed class GraphInspector : Panel {
 	/// <summary>
 	/// Turns the "otherwise" exit into a conditional one. Appending is all it takes: the new
 	/// condition lands at the index this link already leaves by, and the otherwise exit moves to
-	/// the next number. Any other link on that same exit comes along, so it says how many.
+	/// the next number — taking anything else that was leaving by it along, so those links stay
+	/// on "otherwise" rather than inheriting a condition written for this one.
 	/// </summary>
 	private void AddExitCondition(GraphLink link, Branch branch) {
 		var index = link.SourceExitPointIndex;
-		var sharing = GraphTopology.LinksOf(GraphTopology.ContainerOf(branch))
-			.Count(l => l.Source?.Element == branch && l.SourceExitPointIndex == index) - 1;
+		var condition = GraphTopology.AddCondition(branch, _vm);
 
-		if (sharing > 0 &&
-			MessageBox.Show(this,
-				$"{sharing} other link(s) also leave by this exit and will be taken on the same condition.\n\n"
-				+ "Continue?", "Give this exit a condition", MessageBoxButtons.YesNo,
-				MessageBoxIcon.Warning) != DialogResult.Yes)
-			return;
+		// AddCondition moved every link on the otherwise exit up, including this one; this is the
+		// link the condition was written for, so it stays where it is and takes it.
+		link.SourceExitPointIndex = index;
 
-		var condition = VmElement.CreateDefault<Condition>(_vm, branch);
 		using var editor = new ConditionEditorForm(_vm, condition, new(branch));
 		if (editor.ShowDialog(FindForm()) != DialogResult.OK) {
-			_vm.RemoveElement(condition);
+			GraphTopology.RemoveConditionAt(branch, index, _vm);
+			SetSelection(null, link);
 			return;
 		}
 
-		branch.BranchConditions.Add(new(condition));
 		SetSelection(null, link);
 		Touch();
 	}
 
 	/// <summary>
 	/// Drops the condition, which drops the exit with it. Every link leaving by a later exit
-	/// moves down a number, so this is the one edit here that reaches past the link in front of
-	/// you — it says how many before doing anything.
+	/// moves down a number so it keeps the condition it was on, so this is the one edit here
+	/// that reaches past the link in front of you — it says how many before doing anything.
 	/// </summary>
 	private void RemoveExitCondition(GraphLink link, Branch branch, Condition condition) {
 		var index = branch.BranchConditions.FindIndex(c => c.Element == condition);
 		if (index < 0) return;
 
-		var affected = GraphTopology.LinksOf(GraphTopology.ContainerOf(branch))
-			.Count(l => l.Source?.Element == branch && l.SourceExitPointIndex > index);
+		var affected = GraphTopology.LinksFrom(branch).Count(l => l.SourceExitPointIndex > index);
 
 		var message = "Remove this condition?\n\nThis link will fall through to the otherwise exit.";
-		if (affected > 0) message += $"\n\n{affected} other link(s) leave by a later exit and will shift down.";
+		if (affected > 0) message += $"\n\n{affected} other link(s) leave by a later exit and will move down a number.";
 
 		if (MessageBox.Show(this, message, "Remove condition", MessageBoxButtons.YesNo,
 				MessageBoxIcon.Warning) != DialogResult.Yes)
 			return;
 
-		branch.BranchConditions.RemoveAt(index);
-		_vm.RemoveElement(condition);
+		GraphTopology.RemoveConditionAt(branch, index, _vm);
 		SetSelection(null, link);
 		Touch();
 	}

@@ -26,6 +26,9 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.Helper;
 /// * A branch has one exit per condition, numbered from zero, plus one more for "no condition
 ///   matched" — 4408 links leave by a condition and 3302 by the else exit, and not one names
 ///   an index beyond it.
+/// * A branch condition and the link it gates are written together and go together: of the 8015
+///   links leaving a branch, no two leave by the same exit, and not one of the 4713 conditions
+///   is left with nothing leaving by it.
 /// * A speech has one exit per reply — all 12 308 of them, none out of range and none -1.
 /// * DestEntryPointIndex always indexes the destination's own EntryPoints; all 38 286 links do.
 /// * A link's SourceParams are the arguments for the destination's input parameters, matched
@@ -39,7 +42,17 @@ public static class GraphTopology {
 	/// <param name="Label">What to show for it.</param>
 	/// <param name="Condition">The branch condition this exit is taken on, when it is one.</param>
 	/// <param name="Reply">The reply this exit is taken on, when it is one.</param>
-	public readonly record struct Exit(int Index, string Label, VmElement? Condition = null, Reply? Reply = null);
+	/// <param name="ShortLabel">
+	/// What to write on the node's own row, when that differs from <paramref name="Label"/>.
+	/// A branch's condition is written beside the link it gates; writing it again down the side
+	/// of the branch says the same sentence twice and makes the branch the widest thing on
+	/// screen for no gain.
+	/// </param>
+	public readonly record struct Exit(int Index, string Label, VmElement? Condition = null, Reply? Reply = null,
+		string? ShortLabel = null) {
+		/// <summary>What the node itself writes for this exit.</summary>
+		public string PortLabel => ShortLabel ?? Label;
+	}
 
 	/// <summary>One way into a node.</summary>
 	public readonly record struct Entry(int Index, string Label, EntryPoint? EntryPoint);
@@ -194,13 +207,14 @@ public static class GraphTopology {
 				var exits = new List<Exit>(branch.BranchConditions.Count + 1);
 				for (var i = 0; i < branch.BranchConditions.Count; i++) {
 					var condition = branch.BranchConditions[i].Element;
-					exits.Add(new Exit(i, $"{i}:  {DescribeCondition(condition)}", condition));
+					exits.Add(new Exit(i, $"{i}:  {DescribeCondition(condition)}", condition, null, $"exit {i}"));
 				}
 				// The engine leaves by this one when nothing matched. A MaxValue branch always
 				// matches something and never uses it, but it is written the same way and there
 				// is nothing in the data to say it may not be.
 				exits.Add(new Exit(branch.BranchConditions.Count,
-					$"{branch.BranchConditions.Count}:  {ElseLabel(branch.BranchType)}"));
+					$"{branch.BranchConditions.Count}:  {ElseLabel(branch.BranchType)}", null, null,
+					ElseLabel(branch.BranchType)));
 				return exits;
 			}
 
@@ -237,6 +251,61 @@ public static class GraphTopology {
 		if (link.Source?.Element is not Branch { BranchConditions: not null } branch) return null;
 		if (ConditionFor(link) is { } condition) return DescribeCondition(condition);
 		return link.SourceExitPointIndex == branch.BranchConditions.Count ? ElseLabel(branch.BranchType) : null;
+	}
+
+	/// <summary>
+	/// Every link that leaves <paramref name="node"/>, taken from the container it is drawn in
+	/// rather than from the node's own OutputLinks — the two are meant to agree, and the
+	/// container's list is the one the canvas draws and the one a save writes.
+	/// </summary>
+	public static IReadOnlyList<GraphLink> LinksFrom(VmElement? node) {
+		if (node == null) return [];
+		if (ContainerOf(node) is { } container)
+			return LinksOf(container).Where(l => l.Source?.Element == node).ToList();
+		return node is IGraphElement element ? element.OutputLinks ?? [] : [];
+	}
+
+	/// <summary>
+	/// Appends a condition, which appends an exit. The new exit takes the number the otherwise
+	/// exit had, so anything already leaving by "otherwise" has to move up with it or it silently
+	/// becomes gated by a condition nobody wrote for it.
+	/// </summary>
+	public static Condition AddCondition(Branch branch, VirtualMachine vm) {
+		if (branch.BranchConditions == null) branch.BranchConditions = new List<VmEither<Condition, PartCondition>>();
+		var index = branch.BranchConditions.Count;
+
+		foreach (var link in LinksFrom(branch))
+			if (link.SourceExitPointIndex >= index)
+				link.SourceExitPointIndex++;
+
+		var condition = VmElement.CreateDefault<Condition>(vm, branch);
+		branch.BranchConditions.Add(new(condition));
+		return condition;
+	}
+
+	/// <summary>
+	/// Drops the condition at <paramref name="index"/>, which drops its exit with it.
+	///
+	/// The indices are positions in a list, so closing a gap in the list has to close it on the
+	/// links too: everything leaving by a later exit moves down one and keeps the condition it
+	/// was on, and anything that was on this exit falls through to "otherwise", which is where
+	/// it now goes. Leaving the numbers alone would rewire the branch without touching a link.
+	/// </summary>
+	public static void RemoveConditionAt(Branch branch, int index, VirtualMachine vm) {
+		if (branch.BranchConditions == null || index < 0 || index >= branch.BranchConditions.Count) return;
+
+		var condition = branch.BranchConditions[index].Element;
+		var links = LinksFrom(branch);
+
+		branch.BranchConditions.RemoveAt(index);
+		var otherwise = branch.BranchConditions.Count;
+
+		foreach (var link in links) {
+			if (link.SourceExitPointIndex == index) link.SourceExitPointIndex = otherwise;
+			else if (link.SourceExitPointIndex > index) link.SourceExitPointIndex--;
+		}
+
+		vm.RemoveElement(condition);
 	}
 
 	private static string ElseLabel(BranchType type) => type switch {
