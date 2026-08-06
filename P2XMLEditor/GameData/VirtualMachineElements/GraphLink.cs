@@ -27,6 +27,20 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 	public string Name { get; set; }
 	public VmEither<Graph, Talking> Parent { get; set; }
 
+	/// <summary>
+	/// An unattached link inside <paramref name="parent"/>. Both ends are left for the caller,
+	/// which is what draws them; the indices start at the values the data uses for "the single
+	/// unconditional exit" and "the first entry point", so a link is valid the moment its
+	/// endpoints are set.
+	/// </summary>
+	public static GraphLink New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "New link",
+		Enabled = true,
+		SourceExitPointIndex = -1,
+		DestEntryPointIndex = 0,
+		Parent = new(parent)
+	};
+
 	public void FillFromRawData(RawGraphLinkData data, VirtualMachine vm) {
 		Event = data.EventId.HasValue ? vm.GetElement<Event>(data.EventId.Value) : null;
 		EventObject = EventOwner.Read(data.EventObject, vm);
@@ -42,5 +56,25 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 		Enabled = data.Enabled;
 		Name = data.Name;
 		Parent = vm.GetElement<Graph, Talking>(data.ParentId);
+	}
+
+	public override void OnDestroy(VirtualMachine vm) {
+		if (Source?.Element is IGraphElement sourceGraphElement) {
+			sourceGraphElement.OutputLinks?.Remove(this);
+		} else if (Source?.Element is Speech sourceSpeech) {
+			sourceSpeech.OutputLinks?.Remove(this);
+		}
+		
+		if (Destination?.Element is IGraphElement destGraphElement) {
+			destGraphElement.InputLinks?.Remove(this);
+		} else if (Destination?.Element is Speech destSpeech) {
+			destSpeech.InputLinks?.Remove(this);
+		}
+		if (Parent.Element is Graph parentGraph) {
+			parentGraph.EventLinks?.Remove(this);
+		}
+		if (Parent.Element is Talking parentTalking) {
+			parentTalking.EventLinks?.Remove(this);
+		}
 	}
 }

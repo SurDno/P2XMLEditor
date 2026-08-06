@@ -9,19 +9,19 @@ namespace P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Functions.Ac
 public class GlobalStorageManagerAddItemsToStoragesLinearFunction : VmFunction {
 	public override VmType ReturnType => VmType.Void;
 	public override int ParamCount => 6;
-	public FunctionSourceParam<string>? StorageGroup { get; }
-	public FunctionSourceParam<string>? Probability { get; }
-	public FunctionSourceParam<string>? ItemList { get; }
-	public FunctionSourceParam<string>? WeightList { get; }
-	public FunctionSourceParam<string>? MinCountList { get; }
-	public FunctionSourceParam<string>? MaxCountList { get; }
-	public override List<string>? GetParamStrings() => [StorageGroup?.Write() ?? "", Probability?.Write() ?? "", ItemList?.Write() ?? "", WeightList?.Write() ?? "", MinCountList?.Write() ?? "", MaxCountList?.Write() ?? ""];
+	public FunctionSourceParam<string>? StoragesRootInfo { get; }
+	public FunctionSourceParam<string>? StorageTags { get; }
+	public FunctionSourceParam<string>? ContainerTypes { get; }
+	public FunctionSourceParam<string>? ContainerTags { get; }
+	public FunctionSourceParam<string>? ContainerStatusesData { get; }
+	public FunctionSourceParam<string>? StorageTypes { get; }
+	public override List<string>? GetParamStrings() => [StoragesRootInfo?.Write() ?? "", StorageTags?.Write() ?? "", ContainerTypes?.Write() ?? "", ContainerTags?.Write() ?? "", ContainerStatusesData?.Write() ?? "", StorageTypes?.Write() ?? ""];
 	public GlobalStorageManagerAddItemsToStoragesLinearFunction(VirtualMachine vm, string[] parameters) {
-		StorageGroup = FunctionSourceParam<string>.Read(parameters[0], vm);
-		Probability = FunctionSourceParam<string>.Read(parameters[1], vm);
-		ItemList = FunctionSourceParam<string>.Read(parameters[2], vm);
-		WeightList = FunctionSourceParam<string>.Read(parameters[3], vm);
-		MinCountList = FunctionSourceParam<string>.Read(parameters[4], vm);
-		MaxCountList = FunctionSourceParam<string>.Read(parameters[5], vm);
+		StoragesRootInfo = FunctionSourceParam<string>.Read(parameters[0], vm);
+		StorageTags = FunctionSourceParam<string>.Read(parameters[1], vm);
+		ContainerTypes = FunctionSourceParam<string>.Read(parameters[2], vm);
+		ContainerTags = FunctionSourceParam<string>.Read(parameters[3], vm);
+		ContainerStatusesData = FunctionSourceParam<string>.Read(parameters[4], vm);
+		StorageTypes = FunctionSourceParam<string>.Read(parameters[5], vm);
 	}
 }

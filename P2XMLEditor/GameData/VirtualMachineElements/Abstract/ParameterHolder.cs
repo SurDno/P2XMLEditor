@@ -26,17 +26,17 @@ public abstract class ParameterHolder(ulong id) : VmElement(id), INamedElement {
 
 
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var functionalComponent in FunctionalComponents)
+		foreach (var functionalComponent in FunctionalComponents?.ToList() ?? [])
 			vm.RemoveElement(functionalComponent);
 		if (EventGraph != null)
 			vm.RemoveElement(EventGraph);
-		foreach (var kvp in StandartParams ?? []) 
+		foreach (var kvp in StandartParams?.ToList() ?? []) 
 			vm.RemoveElement(kvp.Value);
-		foreach (var kvp in CustomParams ?? []) 
+		foreach (var kvp in CustomParams?.ToList() ?? []) 
 			vm.RemoveElement(kvp.Value);
-		foreach (var ev in Events ?? [])
+		foreach (var ev in Events?.ToList() ?? [])
 			vm.RemoveElement(ev);
-		foreach (var ph in vm.GetElementsByType<ParameterHolder>()) {
+		foreach (var ph in vm.GetElementsByType<ParameterHolder>().ToList()) {
 			if (ph.ChildObjects != null && ph.ChildObjects.Contains(this))
 				ph.ChildObjects.Remove(this);
 		}

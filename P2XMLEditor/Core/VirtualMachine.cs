@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using P2XMLEditor.Data;
 using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -15,6 +16,7 @@ public class VirtualMachine {
 	public readonly Dictionary<ulong, VmElement> ElementsById = new();
 	public readonly TemplateManager TemplateManagerInst;
 	public readonly GameType Type;
+	public VmVersionSettings? VmMetadata { get; set; }
 
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new() {
 		[typeof(VmElement)] = [],
@@ -63,6 +65,18 @@ public class VirtualMachine {
 	public bool TryResolveStandartParamType(string name, out VmTypeInfo type) {
 		_standartParamTypes ??= BuildStandartParamTypes();
 		return _standartParamTypes.TryGetValue(name, out type!);
+	}
+
+	/// <summary>
+	/// Every standard parameter name in the data with its declared type — the same index
+	/// <see cref="TryResolveStandartParamType"/> answers from, exposed so an editor can offer
+	/// the names that fit a slot instead of asking about one name at a time.
+	/// </summary>
+	public IReadOnlyDictionary<string, VmTypeInfo> StandartParamTypes {
+		get {
+			_standartParamTypes ??= BuildStandartParamTypes();
+			return _standartParamTypes;
+		}
 	}
 
 	public void InvalidateStandartParamTypes() => _standartParamTypes = null;
@@ -115,6 +129,8 @@ public class VirtualMachine {
 	}
 	
 	public int GetDataCapacity() => ElementsById.Count(e => e.Value is not (ParameterPlaceholder or ScenePlaceholder));
+
+
 	
 	public T Register<T>(T element) where T : VmElement {
 		if (ElementsById.TryGetValue(element.Id, out var el))

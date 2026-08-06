@@ -1,9 +1,12 @@
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Forms.Editors.Actions;
+using P2XMLEditor.GameData.VirtualMachineElements.Helper;
 using P2XMLEditor.Helper;
 
 namespace P2XMLEditor.Forms.Editors;
@@ -18,6 +21,16 @@ public class ConditionEditorForm : Form {
 	private Button btnAddNestedCondition;
 	private Button btnRemovePredicate;
 	private Button btnOK;
+    // PartCondition settings panel
+    private Panel pnlPartConditionSettings;
+    private TextBox txtName;
+    private ComboBox cmbConditionType;
+    private LinkLabel lnkFirstExpression;
+    private LinkLabel lnkSecondExpression;
+    private FlowLayoutPanel pnlFirstExpression;
+    private FlowLayoutPanel pnlSecondExpression;
+    private PartCondition _currentPartCondition;
+
 	public ConditionEditorForm(VirtualMachine vm, Condition condition,
 		VmEither<Branch, Event, MindMapNode, Speech, State> localContext) {
 		_vm = vm;
@@ -53,24 +66,27 @@ public class ConditionEditorForm : Form {
 	private void InitializeComponents() {
 		Text = "Edit Condition";
 		Width = 900;
-		Height = 400;
+		Height = 500;
+        
+        var splitContainer = new SplitContainer { Dock = DockStyle.Fill };
+        var leftPanel = new Panel { Dock = DockStyle.Fill };
+        
 		cmbOperation = new ComboBox { Dock = DockStyle.Top, Enabled = false };
 		UpdateOperationComboBox();
 		lstPredicates = new ListBox { Dock = DockStyle.Fill };
+        lstPredicates.SelectedIndexChanged += (_, _) => {
+            UpdatePartConditionPanel();
+        };
 		lstPredicates.DoubleClick += (_, _) => {
+			if (lstPredicates.SelectedIndex < 0) return;
 			switch (_condition.Predicates[lstPredicates.SelectedIndex].Element) {
-				case PartCondition partCond: {
-					using var partEditor = new PartConditionEditorForm(_vm, partCond, _localContext);
-					partEditor.ShowDialog();
-					break;
-				}
 				case Condition nestedCondition: {
 					using var condEditor = new ConditionEditorForm(_vm, nestedCondition, _localContext);
 					condEditor.ShowDialog();
+					LoadData();
 					break;
 				}
 			}
-			LoadData();
 		};
 		btnAddPartCondition = new Button { Text = "Add PartCondition", Dock = DockStyle.Top, Height = 40 };
 		btnAddPartCondition.Click += (_, _) => {
@@ -97,10 +113,159 @@ public class ConditionEditorForm : Form {
 		topPanel.Controls.Add(btnAddNestedCondition);
 		topPanel.Controls.Add(btnAddPartCondition);
 		topPanel.Controls.Add(cmbOperation);
-		Controls.Add(lstPredicates);
-		Controls.Add(topPanel);
+		leftPanel.Controls.Add(lstPredicates);
+		leftPanel.Controls.Add(topPanel);
+        
+        splitContainer.Panel1.Controls.Add(leftPanel);
+        
+        // Right Panel (PartCondition Settings)
+        pnlPartConditionSettings = new Panel { Dock = DockStyle.Fill, Visible = false };
+        
+        var namePanel = new Panel { Dock = DockStyle.Top, Height = 60 };
+		var lblName = new Label { Text = "Name:", Dock = DockStyle.Top, Height = 30 };
+		txtName = new TextBox { Dock = DockStyle.Top, Height = 30 };
+        txtName.TextChanged += (_, _) => {
+            if (_currentPartCondition == null) return;
+            _currentPartCondition.Name = txtName.Text;
+            RefreshSelectedPredicatePreview();
+        };
+		namePanel.Controls.Add(txtName);
+		namePanel.Controls.Add(lblName);
+        
+        var typePanel = new Panel { Dock = DockStyle.Top, Height = 60 };
+		var lblType = new Label { Text = "Condition Type:", Dock = DockStyle.Top, Height = 30 };
+		cmbConditionType = new ComboBox { Dock = DockStyle.Top, Height = 30 };
+		cmbConditionType.Items.AddRange(Enum.GetValues(typeof(ConditionType)).Cast<object>().ToArray());
+		cmbConditionType.SelectedIndexChanged += (_, _) => {
+            if (_currentPartCondition == null) return;
+			if (cmbConditionType.SelectedItem is not ConditionType selectedType) return;
+            var oldType = _currentPartCondition.ConditionType;
+			_currentPartCondition.ConditionType = selectedType;
+            
+			if (selectedType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
+				_vm.RemoveElement(_currentPartCondition.FirstExpression);
+				_currentPartCondition.FirstExpression = null;
+				_vm.RemoveElement(_currentPartCondition.SecondExpression);
+				_currentPartCondition.SecondExpression = null;
+			} else if (oldType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
+                // Switching from Const to Binary: Initialize to null to avoid type deadlock
+                _vm.RemoveElement(_currentPartCondition.FirstExpression);
+                _vm.RemoveElement(_currentPartCondition.SecondExpression);
+                _currentPartCondition.FirstExpression = null;
+                _currentPartCondition.SecondExpression = null;
+            }
+			UpdateExpressionsView();
+            RefreshSelectedPredicatePreview();
+		};
+		typePanel.Controls.Add(cmbConditionType);
+		typePanel.Controls.Add(lblType);
+        
+        var exprPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown };
+        
+        pnlFirstExpression = new FlowLayoutPanel { Width = 500, Height = 35, FlowDirection = FlowDirection.LeftToRight };
+        lnkFirstExpression = new LinkLabel { Width = 400, Height = 30, AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft };
+        lnkFirstExpression.LinkClicked += (_, _) => OpenExpressionEditor(true);
+        var btnClearFirst = new Button { Text = "Clear", Width = 50, Height = 30 };
+        btnClearFirst.Click += (_, _) => ClearExpression(true);
+        pnlFirstExpression.Controls.Add(lnkFirstExpression);
+        pnlFirstExpression.Controls.Add(btnClearFirst);
+        
+        pnlSecondExpression = new FlowLayoutPanel { Width = 500, Height = 35, FlowDirection = FlowDirection.LeftToRight };
+        lnkSecondExpression = new LinkLabel { Width = 400, Height = 30, AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft };
+        lnkSecondExpression.LinkClicked += (_, _) => OpenExpressionEditor(false);
+        var btnClearSecond = new Button { Text = "Clear", Width = 50, Height = 30 };
+        btnClearSecond.Click += (_, _) => ClearExpression(false);
+        pnlSecondExpression.Controls.Add(lnkSecondExpression);
+        pnlSecondExpression.Controls.Add(btnClearSecond);
+        
+        exprPanel.Controls.Add(pnlFirstExpression);
+        exprPanel.Controls.Add(pnlSecondExpression);
+        
+        pnlPartConditionSettings.Controls.Add(exprPanel);
+        pnlPartConditionSettings.Controls.Add(typePanel);
+        pnlPartConditionSettings.Controls.Add(namePanel);
+        
+        splitContainer.Panel2.Controls.Add(pnlPartConditionSettings);
+        
+		Controls.Add(splitContainer);
 		Controls.Add(btnOK);
 	}
+    
+    private void UpdatePartConditionPanel() {
+        if (lstPredicates.SelectedIndex < 0) {
+            pnlPartConditionSettings.Visible = false;
+            _currentPartCondition = null;
+            return;
+        }
+        
+        var selectedElement = _condition.Predicates[lstPredicates.SelectedIndex].Element;
+        if (selectedElement is PartCondition partCond) {
+            _currentPartCondition = partCond;
+            pnlPartConditionSettings.Visible = true;
+            
+            txtName.Text = partCond.Name ?? string.Empty;
+            cmbConditionType.SelectedItem = partCond.ConditionType;
+            UpdateExpressionsView();
+        } else {
+            pnlPartConditionSettings.Visible = false;
+            _currentPartCondition = null;
+        }
+    }
+    
+    private void RefreshSelectedPredicatePreview() {
+        if (lstPredicates.SelectedIndex < 0) return;
+        var idx = lstPredicates.SelectedIndex;
+        var element = _condition.Predicates[idx].Element;
+        lstPredicates.Items[idx] = PreviewHelper.Preview(element);
+    }
+    
+    private void UpdateExpressionsView() {
+        if (_currentPartCondition == null) return;
+        bool isBinary = !(_currentPartCondition.ConditionType is ConditionType.ConstTrue or ConditionType.ConstFalse);
+        bool showSecond = isBinary && _currentPartCondition.ConditionType is not ConditionType.ValueExpression;
+        
+        pnlFirstExpression.Visible = isBinary;
+        pnlSecondExpression.Visible = showSecond;
+        
+        if (isBinary) {
+            lnkFirstExpression.Text = "First Expression: " + PreviewHelper.Preview(_currentPartCondition.FirstExpression);
+            if (showSecond)
+                lnkSecondExpression.Text = "Second Expression: " + PreviewHelper.Preview(_currentPartCondition.SecondExpression);
+        }
+    }
+    
+    private void ClearExpression(bool firstSide) {
+        if (_currentPartCondition == null) return;
+        if (firstSide) {
+            _vm.RemoveElement(_currentPartCondition.FirstExpression);
+            _currentPartCondition.FirstExpression = null;
+        } else {
+            _vm.RemoveElement(_currentPartCondition.SecondExpression);
+            _currentPartCondition.SecondExpression = null;
+        }
+        UpdateExpressionsView();
+        RefreshSelectedPredicatePreview();
+    }
+    
+    private void OpenExpressionEditor(bool firstSide) {
+        if (_currentPartCondition == null) return;
+        
+        if (firstSide)
+            _currentPartCondition.FirstExpression ??= VmElement.CreateDefault<Expression>(_vm, _localContext.Element);
+        else
+            _currentPartCondition.SecondExpression ??= VmElement.CreateDefault<Expression>(_vm, _localContext.Element);
+            
+        using var exprEditor = new ExpressionEditorForm(_vm,
+            firstSide ? _currentPartCondition.FirstExpression : _currentPartCondition.SecondExpression,
+            ExpressionTyping.ExpectedFor(_currentPartCondition, firstSide, _vm),
+            _currentPartCondition.ConditionType, firstSide);
+            
+        if (exprEditor.ShowDialog() == DialogResult.OK) {
+            UpdateExpressionsView();
+            RefreshSelectedPredicatePreview();
+        }
+    }
+    
 	private void UpdateOperationComboBox() {
 		var curSelection = cmbOperation.SelectedItem;
 		cmbOperation.Items.Clear();
@@ -118,15 +283,32 @@ public class ConditionEditorForm : Form {
 		}
 	}
 	private void LoadData() {
+        var lastSelectedIndex = lstPredicates.SelectedIndex;
 		lstPredicates.Items.Clear();
 		foreach (var pred in _condition.Predicates) 
 			lstPredicates.Items.Add(PreviewHelper.Preview(pred.Element));
-		if (lstPredicates.Items.Count > 0 && lstPredicates.SelectedIndex < 0)
-			lstPredicates.SelectedIndex = 0;
+		if (lstPredicates.Items.Count > 0)
+			lstPredicates.SelectedIndex = lastSelectedIndex >= 0 && lastSelectedIndex < lstPredicates.Items.Count ? lastSelectedIndex : 0;
+        else
+            UpdatePartConditionPanel();
 		UpdateOperationComboBox();
 		UpdatePredicateOrderIndices();
 	}
 	private void BtnOK_Click(object sender, EventArgs e) {
+		foreach (var pred in _condition.Predicates) {
+			if (pred.Element is PartCondition pc) {
+				if (pc.ConditionType is not (ConditionType.ConstTrue or ConditionType.ConstFalse)) {
+					if (pc.FirstExpression == null) {
+						MessageBox.Show($"PartCondition '{pc.Name}' is missing its first expression.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+					if (pc.ConditionType != ConditionType.ValueExpression && pc.SecondExpression == null) {
+						MessageBox.Show($"PartCondition '{pc.Name}' is missing its second expression.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+				}
+			}
+		}
 		_condition.Operation = _condition.Predicates.Count <= 1 ? ConditionOperation.Root : (ConditionOperation)cmbOperation.SelectedItem!;
 		UpdatePredicateOrderIndices();
 		DialogResult = DialogResult.OK;

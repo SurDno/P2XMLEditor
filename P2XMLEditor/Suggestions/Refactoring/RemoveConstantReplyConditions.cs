@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
@@ -10,6 +11,7 @@ public class RemoveConstantReplyConditions(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
 		var replies = Vm.GetElementsByType<Reply>();
 		
+		int removedCount = 0;
 		foreach (var reply in replies) {
 			var replyEnableCondition = reply.EnableCondition;
 			if (replyEnableCondition == null) continue;
@@ -21,7 +23,11 @@ public class RemoveConstantReplyConditions(VirtualMachine vm) : Suggestion(vm) {
 			
 			Vm.RemoveElement(replyEnableCondition);
 			reply.EnableCondition = null;
+			Logger.Log(LogLevel.Info, $"Removed constant true reply condition from Reply '{reply.Name ?? reply.Id.ToString()}'");
+			removedCount++;
 		}
+		
+		Logger.Log(LogLevel.Info, $"Completed: Removed {removedCount} constant reply conditions.");
 		
 	}
 }

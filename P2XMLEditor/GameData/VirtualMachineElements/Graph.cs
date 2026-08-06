@@ -49,12 +49,16 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 	}
 	
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var state in States) 
+		foreach (var state in States?.ToList() ?? []) 
 			vm.RemoveElement(state.Element);
-		foreach (var link in InputLinks ?? []) 
+		foreach (var link in InputLinks?.ToList() ?? []) 
 			vm.RemoveElement(link);
-		foreach (var entryPoint in EntryPoints) 
+		foreach (var link in OutputLinks?.ToList() ?? []) 
+			vm.RemoveElement(link);
+		foreach (var entryPoint in EntryPoints?.ToList() ?? []) 
 			vm.RemoveElement(entryPoint);
+		foreach (var ev in EventLinks?.ToList() ?? [])
+			vm.RemoveElement(ev);
 		switch (Parent.Element) {
 			case ParameterHolder parameterHolder:
 				parameterHolder.EventGraph = null;

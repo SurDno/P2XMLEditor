@@ -4,6 +4,7 @@ using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
@@ -21,7 +22,11 @@ public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 				continue;
 			var otherPredicates = valuePredicates.Where(p => p.Element is not Condition);
 			cond.Predicates = otherPredicates.Concat(predicateConditions.SelectMany(nc => nc.Predicates)).ToList();
+			
+			string context = "";
+			
 			foreach (var subcond in predicateConditions) {
+				Logger.Log(LogLevel.Info, $"Merged nested condition '{subcond!.Name}' into parent condition '{cond.Name}'{context}");
 				subcond!.Predicates = [];
 				subcond.Operation = (ConditionOperation)int.MaxValue;
 				subcond.Name = null!;
@@ -32,5 +37,7 @@ public class MergeNestedConditions(VirtualMachine vm) : Suggestion(vm) {
 		
 		foreach(var subcond in subcondsToRemove)
 			Vm.RemoveElement(subcond);
+			
+		Logger.Log(LogLevel.Info, $"Completed: Merged {subcondsToRemove.Count} nested conditions.");
 	}
 }

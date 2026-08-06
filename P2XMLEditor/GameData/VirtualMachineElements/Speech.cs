@@ -57,4 +57,18 @@ public class Speech(ulong id) : VmElement(id), IFiller<RawSpeechData> {
 	}
 	
 	public override bool IsOrphaned() => Parent.States.All(r => r.Element != this);
+
+	public override void OnDestroy(VirtualMachine vm) {
+		foreach (var reply in Replies?.ToList() ?? [])
+			vm.RemoveElement(reply);
+		foreach (var ep in EntryPoints?.ToList() ?? [])
+			vm.RemoveElement(ep);
+		foreach (var link in InputLinks?.ToList() ?? [])
+			vm.RemoveElement(link);
+		foreach (var link in OutputLinks?.ToList() ?? [])
+			vm.RemoveElement(link);
+		if (Text != null)
+			vm.RemoveElement(Text);
+		Parent?.States?.RemoveAll(s => s.Element == this);
+	}
 }

@@ -12,6 +12,7 @@ public class VmTypeInfo(VmType baseType) {
 	
 	public static VmTypeInfo Unknown => new(VmType.Unknown);
 	public static VmTypeInfo Int32 => new(VmType.Int32);
+	public static VmTypeInfo Single => new(VmType.Single);
 	public static VmTypeInfo Boolean => new(VmType.Boolean);
 	public static VmTypeInfo String => new(VmType.String);
 	public static VmTypeInfo GameObject => new(VmType.GameObject);

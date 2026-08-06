@@ -30,6 +30,15 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 	public string Type => Value?.XmlType ?? string.Empty;
 	public string SerializedValue => Value?.Serialize() ?? string.Empty;
 
+	/// <summary>
+	/// True for a parameter that holds an expression's constant operand rather than living on
+	/// an object. It is storage for a literal the expression reads, so nothing can be written
+	/// into it and no object can be reached through it. The data agrees: of the 6224 such
+	/// parameters in PathologicSandbox and 512 in MarbleNest, not one is named by any action —
+	/// not as a target object, not as a target param, not as a source.
+	/// </summary>
+	public bool IsConstant => Parent.Element is Expression;
+
 	public override bool IsOrphaned() {
 		return Parent.Element switch {
 			ParameterHolder ph => ph.StandartParams.Concat(ph.CustomParams ?? []).All(p => p.Value != this),

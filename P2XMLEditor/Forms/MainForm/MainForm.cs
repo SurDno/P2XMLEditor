@@ -7,7 +7,8 @@ using P2XMLEditor.Core;
 using P2XMLEditor.Forms.MainForm.Actions;
 using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.Dialogs;
-using P2XMLEditor.Forms.MainForm.FiniteStateMachines;
+using P2XMLEditor.Forms.MainForm.Expressions;
+using P2XMLEditor.Forms.MainForm.Graphs;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
@@ -71,10 +72,11 @@ public class MainForm : Form {
 		_tabFactories.Clear();
 		
 		RegisterTabFactory("Mind Maps", () => new MindMapTabControl(_virtualMachine) { Dock = DockStyle.Fill });
-		RegisterTabFactory("FSM Graphs", () => new FSMBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+		RegisterTabFactory("Graphs", () => new GraphsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
-		//RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+		RegisterTabFactory("Expressions", () => new ExpressionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		
 		ShowTab("Mind Maps");

@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 
 namespace P2XMLEditor.Helper;
 
@@ -104,6 +107,35 @@ public static class VmElementExtensions {
 
 		return new(el);
 	}
+
+	/// <summary>
+	/// Every parameter holder in the machine, whatever its concrete type.
+	///
+	/// GetElementsByType reads buckets the reader fills by hand, one Add call per type per
+	/// element, so a subclass added later reaches the ParameterHolder bucket only if someone
+	/// remembers to write that line. A selector that must not miss a kind of object scans
+	/// instead — one pass, and it cannot fall out of date. Placeholders are excluded: they
+	/// stand in for elements the data references but does not define.
+	/// </summary>
+	public static IReadOnlyList<ParameterHolder> AllParameterHolders(this VirtualMachine vm) {
+		var holders = new List<ParameterHolder>();
+		foreach (var element in vm.AllElements())
+			if (element is ParameterHolder holder and not IPlaceholder)
+				holders.Add(holder);
+		return holders;
+	}
+
+	/// <summary>
+	/// Every element, as a snapshot.
+	///
+	/// Deliberately not a lazy view over ElementsById. Reading a declared type can *write* to
+	/// the machine — VmTypeHelper registers a placeholder for an "IObjRef%cf_&lt;id&gt;" whose
+	/// blueprint is missing from the data — so any caller that filters these by type would be
+	/// mutating the dictionary it is walking, and the enumerator throws. Callers building a
+	/// candidate list do exactly that, so the copy is taken once, here.
+	/// </summary>
+	public static IReadOnlyList<VmElement> AllElements(this VirtualMachine vm) =>
+		vm.ElementsById.Values.ToList();
 
 	public static VmElement? GetNullableElement(this VirtualMachine vm, ulong id) {
 		vm.ElementsById.TryGetValue(id, out var el);

@@ -89,18 +89,15 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 	}
 
 	public override void OnDestroy(VirtualMachine vm) {
-		if (Const is not null) 
+		if (Const != null)
 			vm.RemoveElement(Const);
-
-		foreach (var pc in vm.GetElementsByType<PartCondition>()) {
+		foreach (var childExpression in FormulaChilds?.ToList() ?? [])
+			vm.RemoveElement(childExpression);
+		foreach (var pc in vm.GetElementsByType<PartCondition>().ToList()) {
 			if (pc.FirstExpression == this)
 				pc.FirstExpression = null!;
 			if (pc.SecondExpression == this)
 				pc.SecondExpression = null!;
 		}
-
-		if (FormulaChilds is null) return;
-		foreach (var childExpression in FormulaChilds)
-			vm.RemoveElement(childExpression);
 	}
 }

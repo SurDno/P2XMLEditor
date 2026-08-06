@@ -10,6 +10,7 @@ public class SearchControl : Panel {
 	private readonly TextBox _searchBox;
 	private readonly CheckBox _regexCheckBox;
 	private readonly Label _statusLabel;
+	private readonly Timer _debounceTimer;
 	
 	public event EventHandler? SearchChanged;
 	
@@ -37,7 +38,16 @@ public class SearchControl : Panel {
 			Location = new Point(85, 9),
 			Size = new Size(300, 15)
 		};
-		_searchBox.TextChanged += (_, _) => OnSearchChanged();
+		_debounceTimer = new Timer { Interval = 100 };
+		_debounceTimer.Tick += (_, _) => {
+			_debounceTimer.Stop();
+			OnSearchChanged();
+		};
+		
+		_searchBox.TextChanged += (_, _) => {
+			_debounceTimer.Stop();
+			_debounceTimer.Start();
+		};
 
 		if (enableRegex) {
 			_regexCheckBox = new CheckBox {

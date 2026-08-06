@@ -37,6 +37,33 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 		};
 	}
 	
+	/// <summary>
+	/// A case branch with no conditions. That is not a degenerate state: a branch always has
+	/// one more exit than it has conditions — the one taken when none matched — so a fresh
+	/// branch already has somewhere for a link to leave from.
+	/// </summary>
+	public static Branch New(VirtualMachine vm, ulong id, VmElement parent) {
+		var owner = parent switch {
+			Graph g => g.Owner,
+			Talking t => t.Owner.Element as ParameterHolder,
+			_ => null
+		};
+		var branch = new Branch(id) {
+			Name = "New branch",
+			BranchType = BranchType.Case,
+			BranchConditions = [],
+			Parent = new(parent),
+			Owner = owner!,
+			EntryPoints = [],
+			InputLinks = [],
+			OutputLinks = [],
+			IgnoreBlock = false,
+			Initial = false
+		};
+		branch.EntryPoints.Add(CreateDefault<EntryPoint>(vm, branch));
+		return branch;
+	}
+
 	public void FillFromRawData(RawBranchData data, VirtualMachine vm) {
 		BranchConditions = [];
 		if (data.BranchConditionIds != null) {
@@ -68,9 +95,19 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 	}
 	
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var link in InputLinks ?? []) 
+		foreach (var link in InputLinks?.ToList() ?? []) 
 			vm.RemoveElement(link);
-		foreach (var entryPoint in EntryPoints) 
+		foreach (var link in OutputLinks?.ToList() ?? []) 
+			vm.RemoveElement(link);
+		foreach (var entryPoint in EntryPoints?.ToList() ?? []) 
 			vm.RemoveElement(entryPoint);
+		foreach (var cond in BranchConditions?.ToList() ?? []) 
+			vm.RemoveElement(cond.Element);
+			
+		if (Parent.Element is Graph parentGraph) {
+			parentGraph.States?.RemoveAll(s => s.Element == this);
+		} else if (Parent.Element is Talking parentTalking) {
+			parentTalking.States?.RemoveAll(s => s.Element == this);
+		}
 	}
 }

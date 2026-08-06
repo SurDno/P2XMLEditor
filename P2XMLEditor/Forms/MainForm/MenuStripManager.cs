@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
@@ -12,6 +13,7 @@ using P2XMLEditor.Forms.MainForm.SaveSettings;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Services;
+using P2XMLEditor.Logging;
 using P2XMLEditor.Suggestions;
 
 namespace P2XMLEditor.Forms.MainForm;
@@ -69,6 +71,91 @@ public class MenuStripManager {
 	   _menuStrip.Items.Add(cleanupMenu);
 	   
 	   windowMenu.DropDownOpening += (_, _) => UpdateWindowMenu(windowMenu);
+
+	   AddPlayButton();
+   }
+
+   private void AddPlayButton() {
+	   var playButton = new ToolStripMenuItem("Play") {
+		   Alignment = ToolStripItemAlignment.Right,
+		   ToolTipText = "Play P2XMLEditorTest"
+	   };
+
+	   var bmp = new Bitmap(16, 16);
+	   using (var g = Graphics.FromImage(bmp)) {
+		   g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+		   g.FillPolygon(Brushes.Green, new Point[] { new(3, 2), new(13, 8), new(3, 14) });
+	   }
+	   playButton.Image = bmp;
+
+	   playButton.Click += async (_, _) => {
+		   if (_mainForm.Paths == null || _mainForm.VirtualMachine == null) return;
+		   
+		   var exePath = Path.GetFullPath(Path.Combine(_mainForm.Paths.VmPath, "..", "..", "..", "Pathologic.exe"));
+		   if (!File.Exists(exePath)) {
+			   MessageBox.Show($"Could not find executable at {exePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			   return;
+		   }
+
+		   playButton.Enabled = false;
+		   var testDir = Path.Combine(_mainForm.Paths.VmPath, "..", "P2XMLEditorTest");
+
+		   try {
+			   var settings = new WriterSettings {
+				   Format = WriterFormat.Release,
+				   VmMetadata = _mainForm.VirtualMachine.VmMetadata != null 
+				       ? _mainForm.VirtualMachine.VmMetadata with { OutputPath = testDir }
+				       : new VmVersionSettings(
+					       OutputPath: testDir,
+					       GameName: "Haruspex",
+					       Scene: new Guid("1d70fc8a-a74d-5144-693c-ae5769293269"),
+					       WeatherSnapshot: new Guid("16de4259-4406-48d7-9244-84a87cbbc369"),
+					       SolarTime: new DateTime(1, 1, 1, 7, 30, 0),
+					       SkyRotation: 145,
+					       LoadingWindowGameDay: -1,
+					       HideLoadingWindow: false,
+					       LoadingScreenName: "PathologicSandbox"
+				       )
+			   };
+
+			   var writer = new ReleaseVirtualMachineWriter(testDir, _mainForm.VirtualMachine);
+			   writer.SaveVirtualMachine(settings);
+			   VersionXmlGenerator.Generate(testDir, settings.VmMetadata, _mainForm.VirtualMachine.GetDataCapacity());
+
+			   var processStartInfo = new ProcessStartInfo {
+				   FileName = exePath,
+				   Arguments = "-load \"P2XMLEditorTest\"",
+				   WorkingDirectory = Path.GetDirectoryName(exePath)
+			   };
+
+			   using var process = Process.Start(processStartInfo);
+			   if (process != null) {
+				   await System.Threading.Tasks.Task.Run(process.WaitForExit);
+			   }
+		   } catch (Exception ex) {
+			   MessageBox.Show($"Failed to play: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+		   } finally {
+			   if (Directory.Exists(testDir)) {
+				   try {
+					   Directory.Delete(testDir, true);
+				   } catch (Exception ex) {
+					   Logger.Log(LogLevel.Warning, $"Failed to clean up test directory {testDir}: {ex.Message}");
+				   }
+			   }
+			   playButton.Enabled = true;
+		   }
+	   };
+
+	   _menuStrip.Items.Add(playButton);
+
+	   _mainForm.Activated += (_, _) => {
+		   if (_mainForm.Paths != null) {
+			   var exePath = Path.GetFullPath(Path.Combine(_mainForm.Paths.VmPath, "..", "..", "..", "Pathologic.exe"));
+			   playButton.Enabled = File.Exists(exePath);
+		   } else {
+			   playButton.Enabled = false;
+		   }
+	   };
    }
 
    private void UpdateDisplayMenu(ToolStripMenuItem displayMenu) {
@@ -195,7 +282,7 @@ public class MenuStripManager {
 	   if (MessageBox.Show("Are you sure you want to overwrite the existing virtual machine files?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
 	   var detectedType = _mainForm.VirtualMachine.Type;
-	   var saveSettingsForm = new SaveSettingsForm(detectedType);
+	   var saveSettingsForm = new SaveSettingsForm(detectedType, false, null, null, _mainForm.VirtualMachine.VmMetadata);
 	   if (saveSettingsForm.ShowDialog() != DialogResult.OK) return;
 
 	   var settings = saveSettingsForm.Settings;
@@ -216,7 +303,7 @@ public class MenuStripManager {
 
 	   var detectedType = _mainForm.VirtualMachine.Type;
 	   var defaultPath = _mainForm.Paths.VmPath + "Recreation";
-	   var saveSettingsForm = new SaveSettingsForm(detectedType, true, _mainForm.VirtualMachine.TemplateManagerInst, defaultPath);
+	   var saveSettingsForm = new SaveSettingsForm(detectedType, true, _mainForm.VirtualMachine.TemplateManagerInst, defaultPath, _mainForm.VirtualMachine.VmMetadata);
 	   if (saveSettingsForm.ShowDialog() != DialogResult.OK) return;
 
 	   var settings = saveSettingsForm.Settings;

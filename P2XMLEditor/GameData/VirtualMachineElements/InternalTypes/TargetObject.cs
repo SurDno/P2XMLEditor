@@ -29,6 +29,30 @@ public readonly struct TargetObject {
 	public bool HasLeadingPercent { get; init; }
 
 	public static TargetObject Read(string data, VirtualMachine vm, VmElement? scope = null) {
+		if (TryRead(data, vm, out var target, scope)) return target;
+
+		// An absent target is absent, not broken: a SetParam action names no object and the
+		// editor asks about a target the user has not chosen yet.
+		if (!string.IsNullOrEmpty(data))
+			Logger.Log(LogLevel.Error, $"Unresolved TargetObject '{data}'.");
+		return default;
+	}
+
+	/// <summary>
+	/// Parses a target, reporting failure instead of logging it.
+	///
+	/// The editor re-reads its own field on every keystroke and asks about targets that are
+	/// half-written or not yet set. Those are not defects in the data and have no business in
+	/// the log, so the editors use this and the loader uses <see cref="Read"/>.
+	/// </summary>
+	public static bool TryRead(string? data, VirtualMachine vm, out TargetObject target, VmElement? scope = null) {
+		target = ReadCore(data ?? "", vm, scope);
+		return target.IsSet;
+	}
+
+	private static TargetObject ReadCore(string data, VirtualMachine vm, VmElement? scope) {
+		if (data.Length == 0) return default;
+
 		var leading = data.StartsWith('%');
 		var body = leading ? data[1..] : data;
 
@@ -77,9 +101,23 @@ public readonly struct TargetObject {
 							   ByEngineGuid = true, HasLeadingPercent = leading };
 		}
 
-		Logger.Log(LogLevel.Error, $"Unresolved TargetObject '{data}'.");
 		return default;
 	}
+
+	/// <summary>
+	/// False for a default-constructed value — Kind reads as Holder but there is no holder
+	/// behind it, so <see cref="Write"/> would dereference null. A freshly created element
+	/// that has not been pointed at anything yet is exactly that case.
+	/// </summary>
+	public bool IsSet => Kind switch {
+		TargetObjectKind.Holder => Holder != null,
+		TargetObjectKind.ParameterRef => ParameterRef != null,
+		TargetObjectKind.Hierarchy => Hierarchy != null,
+		TargetObjectKind.Loop => Loop != null,
+		TargetObjectKind.InputParam => InputParam != null,
+		TargetObjectKind.Message => Message != null,
+		_ => false
+	};
 
 	public string Write() {
 		var value = Kind switch {
