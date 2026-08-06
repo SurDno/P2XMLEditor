@@ -38,7 +38,7 @@ public class Condition(ulong id) : VmElement(id), IFiller<RawConditionData>, IVm
 	};
 
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var predicate in Predicates)
+		foreach (var predicate in Predicates?.ToList() ?? [])
 			vm.RemoveElement(predicate.Element);
 	}
 }

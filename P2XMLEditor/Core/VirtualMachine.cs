@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using P2XMLEditor.Data;
 using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -15,6 +16,7 @@ public class VirtualMachine {
 	public readonly Dictionary<ulong, VmElement> ElementsById = new();
 	public readonly TemplateManager TemplateManagerInst;
 	public readonly GameType Type;
+	public VmVersionSettings? VmMetadata { get; set; }
 
 	public readonly Dictionary<Type, List<VmElement>> ElementsByType = new() {
 		[typeof(VmElement)] = [],
@@ -127,6 +129,8 @@ public class VirtualMachine {
 	}
 	
 	public int GetDataCapacity() => ElementsById.Count(e => e.Value is not (ParameterPlaceholder or ScenePlaceholder));
+
+
 	
 	public T Register<T>(T element) where T : VmElement {
 		if (ElementsById.TryGetValue(element.Id, out var el))

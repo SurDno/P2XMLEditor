@@ -10,6 +10,7 @@ using P2XMLEditor.Logging;
 using P2XMLEditor.Parsing;
 using P2XMLEditor.Parsing.Executors;
 using P2XMLEditor.Parsing.RawData;
+using P2XMLEditor.Data;
 using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Core;
@@ -25,6 +26,7 @@ public class VirtualMachineReader {
 		_vmPath = vmPath;
 		var type = DetectVmType(vmPath);
 		_vm = new VirtualMachine(ReadDataCapacity(vmPath, type), GetTemplateManager(templatesPath), type);
+		_vm.VmMetadata = ReadVmMetadata(vmPath, type);
 
 		_executor = type == GameType.Demo ? new DemoXElementParsingExecutor() : mode switch {
 			ParsingMode.Fastest => new FastestParsingExecutor(),
@@ -71,6 +73,84 @@ public class VirtualMachineReader {
 
 		Logger.Log(LogLevel.Info, $"DataCapacity inferred from Version.xml: {val}");
 		return val;
+	}
+
+	private static VmVersionSettings ReadVmMetadata(string vmPath, GameType type) {
+		var versionPath = Path.Combine(vmPath, "Version.xml");
+		if (File.Exists(versionPath)) {
+			var root = XDocument.Load(versionPath).Root;
+			var gameDataInfo = root?.Element("GameDataInfo");
+			if (gameDataInfo != null) {
+				var solarTimeStr = gameDataInfo.Element("SolarTime")?.Value ?? "1.07:30:00";
+				var parts = solarTimeStr.Split('.');
+				var day = 1;
+				TimeSpan time = new TimeSpan(7, 30, 0);
+				if (parts.Length == 2) {
+					int.TryParse(parts[0], out day);
+					TimeSpan.TryParse(parts[1], out time);
+				}
+				
+				return new VmVersionSettings(
+					OutputPath: vmPath,
+					GameName: gameDataInfo.Element("GameName")?.Value ?? "Haruspex",
+					Scene: Guid.TryParse(gameDataInfo.Element("Scene")?.Value, out var sGuid) ? sGuid : new Guid("1d70fc8a-a74d-5144-693c-ae5769293269"),
+					WeatherSnapshot: Guid.TryParse(gameDataInfo.Element("WeatherSnapshot")?.Value, out var wGuid) ? wGuid : new Guid("16de4259-4406-48d7-9244-84a87cbbc369"),
+					SolarTime: new DateTime(1, 1, day == 0 ? 1 : day, time.Hours, time.Minutes, time.Seconds),
+					SkyRotation: int.TryParse(gameDataInfo.Element("SkyRotation")?.Value, out var rot) ? rot : 145,
+					LoadingWindowGameDay: int.TryParse(gameDataInfo.Element("LoadingWindowGameDay")?.Value, out var lDay) ? lDay : -1,
+					HideLoadingWindow: bool.TryParse(gameDataInfo.Element("HideLoadingWindow")?.Value, out var hWindow) && hWindow,
+					LoadingScreenName: gameDataInfo.Element("LoadingScreenName")?.Value ?? "PathologicSandbox"
+				);
+			}
+		}
+
+		var dirName = new DirectoryInfo(vmPath).Name;
+		return dirName switch {
+			"PathologicHaruspexIntro" => new VmVersionSettings(
+				OutputPath: vmPath,
+				GameName: "Haruspex",
+				Scene: new Guid("3f6565e9-4eea-8704-18d8-7ae41f1df931"),
+				WeatherSnapshot: new Guid("16de4259-4406-48d7-9244-84a87cbbc369"),
+				SolarTime: new DateTime(1, 1, 2, 14, 0, 0),
+				SkyRotation: 145,
+				LoadingWindowGameDay: -2,
+				HideLoadingWindow: true,
+				LoadingScreenName: dirName
+			),
+			"PathologicPlagueIntro" => new VmVersionSettings(
+				OutputPath: vmPath,
+				GameName: "Haruspex",
+				Scene: new Guid("f854d1c4-8243-0434-ab62-18013e9b5912"),
+				WeatherSnapshot: new Guid("3bd97c5d-8cfc-46f5-b998-47995d526d6b"),
+				SolarTime: new DateTime(1, 1, 12, 0, 0, 0),
+				SkyRotation: 145,
+				LoadingWindowGameDay: -3,
+				HideLoadingWindow: true,
+				LoadingScreenName: dirName
+			),
+			"MarbleNest" => new VmVersionSettings(
+				OutputPath: vmPath,
+				GameName: "MarbleNest",
+				Scene: new Guid("15b72aec-9c38-3884-2961-b4faed09e3f9"),
+				WeatherSnapshot: new Guid("3bd97c5d-8cfc-46f5-b998-47995d526d6b"),
+				SolarTime: new DateTime(1, 1, 12, 0, 0, 0),
+				SkyRotation: 370,
+				LoadingWindowGameDay: -3,
+				HideLoadingWindow: true,
+				LoadingScreenName: dirName
+			),
+			_ => new VmVersionSettings(
+				OutputPath: vmPath,
+				GameName: "Haruspex",
+				Scene: new Guid("1d70fc8a-a74d-5144-693c-ae5769293269"),
+				WeatherSnapshot: new Guid("16de4259-4406-48d7-9244-84a87cbbc369"),
+				SolarTime: new DateTime(1, 1, 1, 7, 30, 0),
+				SkyRotation: 145,
+				LoadingWindowGameDay: -1,
+				HideLoadingWindow: false,
+				LoadingScreenName: "PathologicSandbox"
+			)
+		};
 	}
 
 	[PerformanceLogHook]

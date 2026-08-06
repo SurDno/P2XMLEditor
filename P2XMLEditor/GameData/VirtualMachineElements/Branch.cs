@@ -95,9 +95,19 @@ public class Branch(ulong id) : VmElement(id), IGraphElement, IFiller<RawBranchD
 	}
 	
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var link in InputLinks ?? []) 
+		foreach (var link in InputLinks?.ToList() ?? []) 
 			vm.RemoveElement(link);
-		foreach (var entryPoint in EntryPoints) 
+		foreach (var link in OutputLinks?.ToList() ?? []) 
+			vm.RemoveElement(link);
+		foreach (var entryPoint in EntryPoints?.ToList() ?? []) 
 			vm.RemoveElement(entryPoint);
+		foreach (var cond in BranchConditions?.ToList() ?? []) 
+			vm.RemoveElement(cond.Element);
+			
+		if (Parent.Element is Graph parentGraph) {
+			parentGraph.States?.RemoveAll(s => s.Element == this);
+		} else if (Parent.Element is Talking parentTalking) {
+			parentTalking.States?.RemoveAll(s => s.Element == this);
+		}
 	}
 }

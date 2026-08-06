@@ -309,7 +309,7 @@ public static class GraphTopology {
 	}
 
 	private static string ElseLabel(BranchType type) => type switch {
-		BranchType.Case => "otherwise (no condition matched)",
+		BranchType.Case => "else",
 		BranchType.FlipFlop => "otherwise",
 		BranchType.MessageCast => "otherwise (the cast failed)",
 		_ => "otherwise"

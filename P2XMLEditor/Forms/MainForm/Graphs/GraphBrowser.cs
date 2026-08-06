@@ -137,6 +137,10 @@ public class GraphsBrowser : SplitContainer {
 	}
 
 	private void Activate(VmElement node) {
+		if (node is Graph proxy && proxy.SubstituteGraph != null) {
+			Descend(proxy.SubstituteGraph.Value.Element);
+			return;
+		}
 		if (GraphTopology.IsContainer(node)) {
 			Descend(node);
 			return;

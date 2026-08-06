@@ -37,4 +37,11 @@ public class Reply(ulong id) : VmElement(id), IFiller<RawReplyData> {
 	}
 	
 	public override bool IsOrphaned() => Parent.Replies.All(r => r != this);
+
+	public override void OnDestroy(VirtualMachine vm) {
+		if (Text != null) vm.RemoveElement(Text);
+		if (EnableCondition != null) vm.RemoveElement(EnableCondition);
+		if (ActionLine != null) vm.RemoveElement(ActionLine);
+		Parent.Replies?.Remove(this);
+	}
 }

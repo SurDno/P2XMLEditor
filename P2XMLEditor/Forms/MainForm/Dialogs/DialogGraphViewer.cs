@@ -22,6 +22,7 @@ public class DialogGraphViewer : GraphViewer {
 	private ContextMenuStrip _backgroundMenu;
 	private readonly Dictionary<ulong, (ulong from, ulong to)> _conditionEdgeMarkers = [], _actionEdgeMarkers = [];
 	private readonly HashSet<ulong> _decoratorIds = [];
+	private ulong? _linkingSourceNodeId;
 
 	private const float NODE_WIDTH = 220f;
 	private const float NODE_HEIGHT = 100f;
@@ -32,6 +33,7 @@ public class DialogGraphViewer : GraphViewer {
 	private enum NodeType {
 		Speech,
 		Reply,
+		Branch,
 		Condition,
 		Action
 	}
@@ -180,47 +182,71 @@ public class DialogGraphViewer : GraphViewer {
 		}
 
 		foreach (var state in _talking.States) {
-			if (state.Element is not Speech speech) continue;
+			switch (state.Element) {
+				case Speech speech: {
+					AddLayoutNode(speech.Id, speech, NodeType.Speech);
 
-			AddLayoutNode(speech.Id, speech, NodeType.Speech);
+					var replies = speech.Replies.OrderBy(r => r.OrderIndex).ToList();
 
-			var replies = speech.Replies.OrderBy(r => r.OrderIndex).ToList();
+					for (var i = 0; i < replies.Count; i++) {
+						var reply = replies[i];
+						AddLayoutNode(reply.Id, reply, NodeType.Reply);
 
-			for (var i = 0; i < replies.Count; i++) {
-				var reply = replies[i];
-				AddLayoutNode(reply.Id, reply, NodeType.Reply);
+						if (reply.EnableCondition != null) {
+							var cond = reply.EnableCondition;
+							AddDecoratorNode(cond.Id, cond, NodeType.Condition, speech.Id, reply.Id);
+						}
 
-				if (reply.EnableCondition != null) {
-					var cond = reply.EnableCondition;
-					AddDecoratorNode(cond.Id, cond, NodeType.Condition, speech.Id, reply.Id);
+						AddLayoutEdge(speech.Id, reply.Id);
+
+						VmElement? nextNode = null;
+
+						if (speech.OutputLinks != null) {
+							var link = speech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == i);
+							if (link?.Destination?.Element is Speech ns) {
+								nextNode = ns;
+								AddLayoutNode(ns.Id, ns, NodeType.Speech);
+							} else if (link?.Destination?.Element is Branch nb) {
+								nextNode = nb;
+								AddLayoutNode(nb.Id, nb, NodeType.Branch);
+							}
+						}
+
+						if (reply.ActionLine != null) {
+							var action = reply.ActionLine;
+
+							if (nextNode != null) {
+								AddDecoratorNode(action.Id, action, NodeType.Action, reply.Id, nextNode.Id);
+								AddLayoutEdge(reply.Id, nextNode.Id);
+							} else {
+								AddLayoutNode(action.Id, action, NodeType.Action);
+								AddLayoutEdge(reply.Id, action.Id);
+							}
+						} else {
+							if (nextNode != null) {
+								AddLayoutEdge(reply.Id, nextNode.Id);
+							}
+						}
+					}
+					break;
 				}
+				case Branch branch: {
+					AddLayoutNode(branch.Id, branch, NodeType.Branch);
 
-				AddLayoutEdge(speech.Id, reply.Id);
-
-				Speech? nextSpeech = null;
-
-				if (speech.OutputLinks != null) {
-					var link = speech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == i);
-					if (link?.Destination?.Element is Speech ns) {
-						nextSpeech = ns;
-						AddLayoutNode(ns.Id, ns, NodeType.Speech);
+					// Each output link from a branch goes to a speech/branch destination
+					if (branch.OutputLinks != null) {
+						foreach (var link in branch.OutputLinks) {
+							if (!link.Enabled) continue;
+							if (link.Destination?.Element is Speech destSpeech) {
+								AddLayoutNode(destSpeech.Id, destSpeech, NodeType.Speech);
+								AddLayoutEdge(branch.Id, destSpeech.Id);
+							} else if (link.Destination?.Element is Branch destBranch) {
+								AddLayoutNode(destBranch.Id, destBranch, NodeType.Branch);
+								AddLayoutEdge(branch.Id, destBranch.Id);
+							}
+						}
 					}
-				}
-
-				if (reply.ActionLine != null) {
-					var action = reply.ActionLine;
-
-					if (nextSpeech != null) {
-						AddDecoratorNode(action.Id, action, NodeType.Action, reply.Id, nextSpeech.Id);
-						AddLayoutEdge(reply.Id, nextSpeech.Id);
-					} else {
-						AddLayoutNode(action.Id, action, NodeType.Action);
-						AddLayoutEdge(reply.Id, action.Id);
-					}
-				} else {
-					if (nextSpeech != null) {
-						AddLayoutEdge(reply.Id, nextSpeech.Id);
-					}
+					break;
 				}
 			}
 		}
@@ -475,14 +501,47 @@ public class DialogGraphViewer : GraphViewer {
 		return NodePositions.TryGetValue(nodeId, out pos);
 	}
 
-	private void InitializeContextMenu() {
+		private void InitializeContextMenu() {
 		_backgroundMenu = new ContextMenuStrip();
 		_backgroundMenu.Items.Add("Fit View", null, (_, _) => CenterView());
+		_backgroundMenu.Items.Add(new ToolStripSeparator());
+		_backgroundMenu.Items.Add("Add Speech", null, (_, _) => AddSpeechNode());
+		_backgroundMenu.Items.Add("Add Branch", null, (_, _) => AddBranchNode());
+
 		GraphPanel.MouseClick += (_, e) => {
 			if (e.Button == MouseButtons.Right && GetNodeAtPosition(e.Location) == null) {
 				_backgroundMenu.Show(GraphPanel, e.Location);
+			} else if (e.Button == MouseButtons.Left && _linkingSourceNodeId != null) {
+				_linkingSourceNodeId = null; // Cancel link if clicked background
+				GraphPanel.Invalidate();
 			}
 		};
+	}
+
+	private void AddSpeechNode() {
+		var speech = new Speech(Core.IdGenerator.GetNewId<Speech>(_vm)) {
+			Name = "New Speech",
+			Parent = _talking,
+			Replies = new(),
+			EntryPoints = new(),
+			InputLinks = new(),
+			OutputLinks = new()
+		};
+		_talking.States.Add(new VmEither<Branch, Speech, State>(speech));
+		_vm.AddElement(speech, typeof(Speech));
+		RefreshView();
+	}
+
+	private void AddBranchNode() {
+		var branch = new Branch(Core.IdGenerator.GetNewId<Branch>(_vm)) {
+			Name = "New Branch",
+			Parent = _talking,
+			OutputLinks = new(),
+			BranchConditions = new()
+		};
+		_talking.States.Add(new VmEither<Branch, Speech, State>(branch));
+		_vm.AddElement(branch, typeof(Branch));
+		RefreshView();
 	}
 
 	protected override void DrawNodes(Graphics g) {
@@ -510,6 +569,9 @@ public class DialogGraphViewer : GraphViewer {
 					break;
 				case NodeType.Reply:
 					DrawReplyNode(g, (Reply)node.Element, screenPos, font, format);
+					break;
+				case NodeType.Branch:
+					DrawBranchNode(g, (Branch)node.Element, screenPos, smallFont, format);
 					break;
 				case NodeType.Condition:
 					DrawConditionNode(g, (Condition)node.Element, screenPos, smallFont, format);
@@ -655,6 +717,38 @@ public class DialogGraphViewer : GraphViewer {
 		g.DrawString("?", font, Brushes.DarkRed, bounds, format);
 	}
 
+	private void DrawBranchNode(Graphics g, Branch branch, Point screenPos, Font font, StringFormat format) {
+		var width = (int)(NODE_WIDTH * 0.75f * ZoomLevel);
+		var height = (int)(NODE_HEIGHT * 0.75f * ZoomLevel);
+		var bounds = new Rectangle(
+			screenPos.X - width / 2,
+			screenPos.Y - height / 2,
+			width, height
+		);
+
+		// Draw as a hexagon
+		var points = new[] {
+			new Point(bounds.X + bounds.Width / 4, bounds.Y),
+			new Point(bounds.Right - bounds.Width / 4, bounds.Y),
+			new Point(bounds.Right, bounds.Y + bounds.Height / 2),
+			new Point(bounds.Right - bounds.Width / 4, bounds.Bottom),
+			new Point(bounds.X + bounds.Width / 4, bounds.Bottom),
+			new Point(bounds.X, bounds.Y + bounds.Height / 2)
+		};
+
+		var fillColor = branch == _selectedNode ? Color.LightBlue : Color.FromArgb(255, 220, 180);
+		using var brush = new SolidBrush(fillColor);
+		g.FillPolygon(brush, points);
+
+		using var pen = new Pen(Color.SaddleBrown, Math.Max(1.0f, 2f * ZoomLevel));
+		g.DrawPolygon(pen, points);
+
+		var condCount = branch.BranchConditions?.Count ?? 0;
+		var label = condCount > 0 ? $"Branch ({condCount})" : "Branch (else)";
+		if (branch.Name is { Length: > 0 } n) label = n;
+		g.DrawString(label, font, Brushes.SaddleBrown, new RectangleF(bounds.X + 4, bounds.Y + 4, bounds.Width - 8, bounds.Height - 8), format);
+	}
+
 	private void DrawActionNode(Graphics g, ActionLine actionLine, Point screenPos, Font font, StringFormat format) {
 		var size = (int)(DECORATOR_SIZE * ZoomLevel);
 		var bounds = new Rectangle(
@@ -684,10 +778,8 @@ public class DialogGraphViewer : GraphViewer {
             
             switch (node.Element) {
                 case Speech speech:
-                    
                     foreach (var reply in speech.Replies.OrderBy(r => r.OrderIndex)) {
                         if (!NodePositions.TryGetValue(reply.Id, out var replyPos)) continue;
-
 
                         if (reply.EnableCondition != null && 
                             NodePositions.ContainsKey(reply.EnableCondition.Id)) {
@@ -707,17 +799,47 @@ public class DialogGraphViewer : GraphViewer {
                     }
     
                     if (reply.Parent is { OutputLinks: not null } parentSpeech) {
-        
                         var replyIndex = parentSpeech.Replies.OrderBy(r => r.OrderIndex).ToList().IndexOf(reply);
-        
                         if (replyIndex >= 0) {
                             var link = parentSpeech.OutputLinks.FirstOrDefault(l => l.SourceExitPointIndex == replyIndex);
-            
                             if (link?.Destination?.Element is Speech nextSpeech && 
                                 NodePositions.TryGetValue(nextSpeech.Id, out var nextPos)) {
                                 DrawSmartArrow(g, pen, pos, nextPos);
+                            } else if (link?.Destination?.Element is Branch nextBranch &&
+                                NodePositions.TryGetValue(nextBranch.Id, out var nextBranchPos)) {
+                                DrawSmartArrow(g, pen, pos, nextBranchPos);
                             }
                         }
+                    }
+                    break;
+
+                case Branch branch:
+                    if (branch.OutputLinks == null) break;
+                    var sortedLinks = branch.OutputLinks.Where(l => l.Enabled).OrderBy(l => l.SourceExitPointIndex).ToList();
+                    for (var li = 0; li < sortedLinks.Count; li++) {
+                        var link = sortedLinks[li];
+                        VmElement? destElem = link.Destination?.Element;
+                        ulong? destId = destElem switch {
+                            Speech s => s.Id,
+                            Branch b => b.Id,
+                            _ => null
+                        };
+                        if (destId == null || !NodePositions.TryGetValue(destId.Value, out var destPos)) continue;
+
+                        // Label each arm with its condition index, or "else" for the last
+                        var isElse = li == sortedLinks.Count - 1;
+                        var label = isElse ? "else" : $"[{li}]";
+                        using var labelPen = new Pen(Color.SaddleBrown, Math.Max(1f, 1.5f * ZoomLevel));
+                        labelPen.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(5 * ZoomLevel, 5 * ZoomLevel);
+                        DrawSmartArrow(g, labelPen, pos, destPos);
+
+                        // Draw label at midpoint
+                        var fromScreen = GameToScreen(pos.x, pos.y);
+                        var toScreen = GameToScreen(destPos.x, destPos.y);
+                        var midX = (fromScreen.X + toScreen.X) / 2f;
+                        var midY = (fromScreen.Y + toScreen.Y) / 2f;
+                        using var labelFont = new Font(FontFamily.GenericSansSerif, Math.Max(1f, 7f * ZoomLevel));
+                        g.DrawString(label, labelFont, Brushes.SaddleBrown, midX, midY);
                     }
                     break;
             }
@@ -734,6 +856,7 @@ public class DialogGraphViewer : GraphViewer {
 
             var (width, height) = node.Type switch {
                 NodeType.Speech or NodeType.Reply => (NODE_WIDTH, NODE_HEIGHT),
+                NodeType.Branch => (NODE_WIDTH * 0.75f, NODE_HEIGHT * 0.75f),
                 NodeType.Condition => (DECORATOR_SIZE, DECORATOR_SIZE),
                 NodeType.Action => (DECORATOR_SIZE, DECORATOR_SIZE),
                 _ => (0f, 0f)
@@ -773,51 +896,64 @@ public class DialogGraphViewer : GraphViewer {
     }
 
 
-    private void ShowNodeContextMenu(VmElement element, Point location) {
-        var menu = new ContextMenuStrip();
-        
-        menu.Items.Add($"ID: {element.Id}", null, null).Enabled = false;
-        menu.Items.Add(new ToolStripSeparator());
-        
-        switch (element) {
-            case Speech speech:
-                menu.Items.Add("Edit Speech", null, (_, _) => EditSpeech(speech));
-                break;
-            case Reply reply:
-                menu.Items.Add("Edit Reply", null, (_, _) => EditReply(reply));
-                break;
-            case Condition condition:
-                menu.Items.Add("Edit Condition", null, (_, _) => EditCondition(condition));
-                break;
-            case ActionLine actionLine:
-                menu.Items.Add("View Actions", null, (_, _) => ViewActionLine(actionLine));
-                break;
-        }
+    	private void ShowNodeContextMenu(VmElement element, Point location) {
+		var menu = new ContextMenuStrip();
+		
+		menu.Items.Add($"ID: {element.Id}", null, null).Enabled = false;
+		menu.Items.Add(new ToolStripSeparator());
+		
+		switch (element) {
+			case Speech speech:
+				menu.Items.Add("Add Reply", null, (_, _) => {
+					var reply = new Reply(Core.IdGenerator.GetNewId<Reply>(_vm)) {
+						Name = "New Reply",
+						Parent = speech,
+						OrderIndex = speech.Replies.Count
+					};
+					speech.Replies.Add(reply);
+					_vm.AddElement(reply, typeof(Reply));
+					RefreshView();
+				});
+				menu.Items.Add("Link to...", null, (_, _) => _linkingSourceNodeId = speech.Id);
+				menu.Items.Add(new ToolStripSeparator());
+				menu.Items.Add("Delete Speech", null, (_, _) => DeleteNode(speech));
+				break;
+			case Reply reply:
+				menu.Items.Add("Link to...", null, (_, _) => _linkingSourceNodeId = reply.Id);
+				menu.Items.Add(new ToolStripSeparator());
+				menu.Items.Add("Delete Reply", null, (_, _) => {
+					reply.Parent.Replies.Remove(reply);
+					_vm.RemoveElement(reply);
+					RefreshView();
+				});
+				break;
+			case Branch branch:
+				menu.Items.Add("Link to...", null, (_, _) => _linkingSourceNodeId = branch.Id);
+				menu.Items.Add(new ToolStripSeparator());
+				menu.Items.Add("Delete Branch", null, (_, _) => DeleteNode(branch));
+				break;
+		}
 
-        menu.Show(GraphPanel.PointToScreen(location));
-    }
+		menu.Show(GraphPanel.PointToScreen(location));
+	}
 
-    private void EditSpeech(Speech speech) {
-        MessageBox.Show($"Speech Editor not yet implemented.\n\nText: {speech.Text.GetText(PreviewLanguageService.CurrentLanguage)}", 
-            "Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
+	private void DeleteNode(VmElement node) {
+		if (MessageBox.Show($"Delete {node.GetType().Name}?", "Confirm", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+		
+		if (node is Speech speech) {
+			var idx = _talking.States.FindIndex(s => s.Element == speech);
+			if (idx >= 0) _talking.States.RemoveAt(idx);
+			foreach(var r in speech.Replies.ToList()) _vm.RemoveElement(r);
+			_vm.RemoveElement(speech);
+		} else if (node is Branch branch) {
+			var idx = _talking.States.FindIndex(s => s.Element == branch);
+			if (idx >= 0) _talking.States.RemoveAt(idx);
+			_vm.RemoveElement(branch);
+		}
+		RefreshView();
+	}
 
-    private void EditReply(Reply reply) {
-        MessageBox.Show($"Reply Editor not yet implemented.\n\nText: {reply.Text.GetText(PreviewLanguageService.CurrentLanguage)}", 
-            "Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-
-    private void EditCondition(Condition condition) {
-        MessageBox.Show($"Condition: {PreviewHelper.Preview(condition)}", 
-            "Condition Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-
-    private void ViewActionLine(ActionLine actionLine) {
-        MessageBox.Show($"ActionLine: {actionLine.Name}\nType: {actionLine.ActionLineType.Serialize()}", 
-            "ActionLine Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-
-    public void RefreshView() {
+	public void RefreshView() {
         CalculateLayout();
         GraphPanel.Invalidate();
     }

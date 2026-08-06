@@ -42,5 +42,17 @@ public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 	public override void OnDestroy(VirtualMachine vm) {
 		if (ActionLine != null)
 			vm.RemoveElement(ActionLine);
+			
+		if (Parent.Element is IGraphElement graphElement) {
+			graphElement.EntryPoints?.Remove(this);
+		} else if (Parent.Element is Speech speech) {
+			speech.EntryPoints?.Remove(this);
+		} else if (Parent.Element is Graph graph) {
+			graph.EntryPoints?.Remove(this);
+		} else if (Parent.Element is Talking talking) {
+			talking.EntryPoints?.Remove(this);
+		} else if (Parent.Element is ActionLine actionLine) {
+			// ActionLine does not have EntryPoints collection in its class definition
+		}
 	}
 }

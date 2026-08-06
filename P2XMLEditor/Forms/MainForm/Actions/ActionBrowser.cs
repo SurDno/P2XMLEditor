@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
+using P2XMLEditor.GameData;
 using P2XMLEditor.Forms.Editors.Actions;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
@@ -63,6 +64,9 @@ public class ActionsBrowser : Panel {
 		var editItem = new ToolStripMenuItem("Edit");
 		editItem.Click += (_, _) => EditSelected();
 
+		var toggleLoopItem = new ToolStripMenuItem("Toggle Loop Type");
+		toggleLoopItem.Click += (_, _) => ToggleSelectedLoop();
+
 		var expandAllItem = new ToolStripMenuItem("Expand All");
 		expandAllItem.Click += (_, _) => _treeView.ExpandAll();
 
@@ -72,7 +76,7 @@ public class ActionsBrowser : Panel {
 		var deleteItem = new ToolStripMenuItem("Delete");
 		deleteItem.Click += (_, _) => DeleteSelectedActionLine();
 
-		_contextMenu.Items.AddRange([editItem, new ToolStripSeparator(), expandAllItem, collapseAllItem,
+		_contextMenu.Items.AddRange([editItem, toggleLoopItem, new ToolStripSeparator(), expandAllItem, collapseAllItem,
 			new ToolStripSeparator(), deleteItem]);
 	}
 
@@ -231,6 +235,25 @@ public class ActionsBrowser : Panel {
 			return;
 
 		_vm.RemoveElement(actionLine);
+		LoadActionLines();
+	}
+
+	private void ToggleSelectedLoop() {
+		if (_treeView.SelectedNode?.Tag is not ActionLine actionLine)
+			return;
+
+		if (actionLine.ActionLineType == ActionLineType.Loop) {
+			actionLine.ActionLineType = ActionLineType.Common;
+		} else {
+			actionLine.ActionLineType = ActionLineType.Loop;
+			actionLine.LoopInfo ??= new ActionLoopInfo(
+				ParameterSource.Create("", _vm),
+				ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+				ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+				false
+			);
+		}
+
 		LoadActionLines();
 	}
 }

@@ -29,8 +29,9 @@ public class ReleaseXElementParameterHolderWriter<T> : IReleaseXElementWriter<T>
 			xElement.Add(CreateDictionaryElement("StandartParams", element.StandartParams.ToDictionary(kv => kv.Key, kv => kv.Value.Id.ToString())));
 		if (element.GameTimeContext != null)
 			xElement.Add(new XElement("GameTimeContext", element.GameTimeContext));
-		xElement.Add(new XElement("Name", element.Name));
-		
+		if (!settings.StripNames || (element.StandartParams.Any(p => p.Key.Contains("Storable") || p.Key.Contains("Combination"))))
+			xElement.Add(new XElement("Name", element.Name));
+
 		if (element.Parent != null)
 			xElement.Add(new XElement("Parent", element.Parent.Id));
 		else if (element is not GameRoot)

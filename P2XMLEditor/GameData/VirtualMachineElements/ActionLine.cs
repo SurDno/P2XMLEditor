@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
@@ -78,7 +79,7 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 	}
 
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach(var action in Actions ?? [])
+		foreach(var action in Actions?.ToList() ?? [])
 			vm.RemoveElement(action.Element);
 	}
 }

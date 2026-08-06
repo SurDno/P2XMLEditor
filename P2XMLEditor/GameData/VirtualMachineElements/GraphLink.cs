@@ -57,4 +57,24 @@ public class GraphLink(ulong id) : VmElement(id), IFiller<RawGraphLinkData> {
 		Name = data.Name;
 		Parent = vm.GetElement<Graph, Talking>(data.ParentId);
 	}
+
+	public override void OnDestroy(VirtualMachine vm) {
+		if (Source?.Element is IGraphElement sourceGraphElement) {
+			sourceGraphElement.OutputLinks?.Remove(this);
+		} else if (Source?.Element is Speech sourceSpeech) {
+			sourceSpeech.OutputLinks?.Remove(this);
+		}
+		
+		if (Destination?.Element is IGraphElement destGraphElement) {
+			destGraphElement.InputLinks?.Remove(this);
+		} else if (Destination?.Element is Speech destSpeech) {
+			destSpeech.InputLinks?.Remove(this);
+		}
+		if (Parent.Element is Graph parentGraph) {
+			parentGraph.EventLinks?.Remove(this);
+		}
+		if (Parent.Element is Talking parentTalking) {
+			parentTalking.EventLinks?.Remove(this);
+		}
+	}
 }

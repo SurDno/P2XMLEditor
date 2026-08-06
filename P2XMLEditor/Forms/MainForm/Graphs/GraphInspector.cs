@@ -184,6 +184,43 @@ public sealed class GraphInspector : Panel {
 			Row(general, "Branch type", type);
 		}
 
+		if (node is ActionLine actionLine) {
+			var lineTypeCombo = NewCombo();
+			foreach (var value in Enum.GetValues<ActionLineType>()) lineTypeCombo.Items.Add(value);
+			lineTypeCombo.SelectedItem = actionLine.ActionLineType;
+			lineTypeCombo.SelectedIndexChanged += (_, _) => {
+				if (lineTypeCombo.SelectedItem is ActionLineType chosen) {
+					actionLine.ActionLineType = chosen;
+					if (chosen == ActionLineType.Loop && actionLine.LoopInfo == null) {
+						actionLine.LoopInfo = new ActionLoopInfo(
+							ParameterSource.Create("", _vm),
+							ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+							ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+							false
+						);
+					}
+				}
+				Touch();
+			};
+			Row(general, "Line type", lineTypeCombo);
+
+			var isLoopCheck = new CheckBox { Text = "Is Loop", Checked = actionLine.ActionLineType == ActionLineType.Loop };
+			isLoopCheck.CheckedChanged += (_, _) => {
+				actionLine.ActionLineType = isLoopCheck.Checked ? ActionLineType.Loop : ActionLineType.Common;
+				lineTypeCombo.SelectedItem = actionLine.ActionLineType;
+				if (isLoopCheck.Checked && actionLine.LoopInfo == null) {
+					actionLine.LoopInfo = new ActionLoopInfo(
+						ParameterSource.Create("", _vm),
+						ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+						ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
+						false
+					);
+				}
+				Touch();
+			};
+			Row(general, "", isLoopCheck);
+		}
+
 		var initial = new CheckBox {
 			Text = "Initial — the FSM starts here", AutoSize = false, Checked = GraphTopology.IsInitial(node)
 		};

@@ -11,7 +11,7 @@ namespace P2XMLEditor.Suggestions.Cleanup;
 [Cleanup("References/Dialogues/Delete disconnected entries"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class DeleteDisconnectedDialogueEntries(VirtualMachine vm) : Suggestion(vm) {
 	public override void Execute() {
-	   var dialogs = Vm.GetElementsByType<Talking>();
+	   var dialogs = Vm.GetElementsByType<Talking>().ToList();
 	   
 	   foreach (var dialog in dialogs) {
 		  var states = dialog.States;
@@ -32,12 +32,21 @@ public class DeleteDisconnectedDialogueEntries(VirtualMachine vm) : Suggestion(v
 		  if (disconnected.Count > 0) {
 			  Logger.Log(LogLevel.Info, $"Found {disconnected.Count} disconnected entries in '{dialog.Name}':");
 			  foreach (var state in disconnected) {
+				  if (!vm.ElementsById.ContainsKey(state.Id)) continue;
+				  
 				  var typeName = state switch {
-					  Speech => "Speech",
-					  Branch => "Branch",
+					  Speech _ => "Speech",
+					  Branch _ => "Branch",
 					  _ => state.GetType().Name
 				  };
-				  Logger.Log(LogLevel.Info, $"  - {typeName}: '{state}' (GUID: {state.Id})");
+				  
+				  string? name = null;
+				  if (state is Speech sp) name = sp.Text?.GetText("english");
+				  else if (state is Branch br) name = br.Name;
+				  
+				  string nameStr = string.IsNullOrEmpty(name) ? "" : $" '{name}'";
+				  
+				  Logger.Log(LogLevel.Info, $"  - Removed {typeName}{nameStr} (GUID: {state.Id})");
 				  
 				  vm.RemoveElement(state);
 			  }

@@ -77,9 +77,11 @@ public class MindMapNode(ulong id) : VmElement(id), IFiller<RawMindMapNodeData>,
 
 	public override void OnDestroy(VirtualMachine vm) {
 		Parent.Nodes.Remove(this);
-		foreach (var link in InputLinks.Concat(OutputLinks))
+		foreach (var link in InputLinks?.ToList() ?? [])
 			vm.RemoveElement(link);
-		foreach (var content in Content)
+		foreach (var content in Content?.ToList() ?? [])
 			vm.RemoveElement(content);
+		foreach (var link in OutputLinks?.ToList() ?? [])
+			vm.RemoveElement(link);
 	}
 }

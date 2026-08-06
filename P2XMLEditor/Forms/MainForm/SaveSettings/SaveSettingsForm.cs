@@ -36,7 +36,7 @@ public class SaveSettingsForm : Form {
 
 	public WriterSettings Settings { get; private set; }
 
-	public SaveSettingsForm(GameType detectedType = GameType.Release, bool isNewVm = false, TemplateManager? templateManager = null, string? defaultPath = null) {
+	public SaveSettingsForm(GameType detectedType = GameType.Release, bool isNewVm = false, TemplateManager? templateManager = null, string? defaultPath = null, VmVersionSettings? defaultMeta = null) {
 		Text = isNewVm ? "Save as New Virtual Machine" : "Save Virtual Machine";
 		ClientSize = isNewVm ? new Size(1080, 720) : new Size(460, 420);
 		FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -102,28 +102,32 @@ public class SaveSettingsForm : Form {
 			for (var i = 0; i < 8; i++) metaLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5f));
 
 			var r = 0;
-			AddMetaRow(metaLayout, r++, "Game Name:", _gameNameBox = new TextBox { Text = "Haruspex", Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
-			AddMetaRow(metaLayout, r++, "Scene:", _sceneCombo = CreateTemplateCombo<SceneObject>(templateManager, new Guid("1d70fc8a-a74d-5144-693c-ae5769293269")));
-			AddMetaRow(metaLayout, r++, "Weather Snapshot:", _weatherCombo = CreateTemplateCombo<WeatherSnapshot>(templateManager, new Guid("16de4259-4406-48d7-9244-84a87cbbc369")));
+			AddMetaRow(metaLayout, r++, "Game Name:", _gameNameBox = new TextBox { Text = defaultMeta?.GameName ?? "Haruspex", Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
+			AddMetaRow(metaLayout, r++, "Scene:", _sceneCombo = CreateTemplateCombo<SceneObject>(templateManager, defaultMeta?.Scene ?? new Guid("1d70fc8a-a74d-5144-693c-ae5769293269")));
+			AddMetaRow(metaLayout, r++, "Weather Snapshot:", _weatherCombo = CreateTemplateCombo<WeatherSnapshot>(templateManager, defaultMeta?.WeatherSnapshot ?? new Guid("16de4259-4406-48d7-9244-84a87cbbc369")));
 			
 			var timeRow = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = new Padding(0) };
 			timeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60));
 			timeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-			timeRow.Controls.Add(_solarDayNum = new NumericUpDown { Minimum = 1, Maximum = 100, Value = 1, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 5, 0) }, 0, 0);
+			timeRow.Controls.Add(_solarDayNum = new NumericUpDown { Minimum = 1, Maximum = 100, Value = defaultMeta?.SolarTime.Day ?? 1, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 5, 0) }, 0, 0);
+			var solarTimeForPicker = defaultMeta?.SolarTime;
+			var pickerValue = solarTimeForPicker.HasValue
+				? new DateTime(2000, 1, 1, solarTimeForPicker.Value.Hour, solarTimeForPicker.Value.Minute, solarTimeForPicker.Value.Second)
+				: new DateTime(2000, 1, 1, 7, 30, 0);
 			timeRow.Controls.Add(_solarTimePicker = new DateTimePicker { 
 				Format = DateTimePickerFormat.Custom, 
 				CustomFormat = "HH:mm:ss", 
 				ShowUpDown = true, 
-				Value = new DateTime(2026, 1, 1, 7, 30, 0),
+				Value = pickerValue,
 				Dock = DockStyle.Fill, 
 				Margin = new Padding(0, 5, 0, 0)
 			}, 1, 0);
 			AddMetaRow(metaLayout, r++, "Solar Time (Day.Time):", timeRow);
 			
-			AddMetaRow(metaLayout, r++, "Sky Rotation:", _skyRotationNum = new NumericUpDown { Minimum = 0, Maximum = 360, Value = 145, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
-			AddMetaRow(metaLayout, r++, "Loading Window Day:", _loadingDayNum = new NumericUpDown { Minimum = -100, Maximum = 100, Value = -1, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
-			AddMetaRow(metaLayout, r++, "Hide Loading Window:", _hideLoadingCheck = new CheckBox { Checked = false, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
-			AddMetaRow(metaLayout, r++, "Loading Screen:", _loadingScreenBox = new TextBox { Text = "PathologicSandbox", Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
+			AddMetaRow(metaLayout, r++, "Sky Rotation:", _skyRotationNum = new NumericUpDown { Minimum = -36000, Maximum = 36000, Value = defaultMeta?.SkyRotation ?? 145, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
+			AddMetaRow(metaLayout, r++, "Loading Window Day:", _loadingDayNum = new NumericUpDown { Minimum = -100, Maximum = 100, Value = defaultMeta?.LoadingWindowGameDay ?? -1, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
+			AddMetaRow(metaLayout, r++, "Hide Loading Window:", _hideLoadingCheck = new CheckBox { Checked = defaultMeta?.HideLoadingWindow ?? false, Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
+			AddMetaRow(metaLayout, r++, "Loading Screen:", _loadingScreenBox = new TextBox { Text = defaultMeta?.LoadingScreenName ?? "PathologicSandbox", Dock = DockStyle.Fill, Margin = new Padding(0, 5, 0, 0) });
 
 			metadataGroup.Controls.Add(metaLayout);
 			mainLayout.Controls.Add(metadataGroup, 1, 1);
@@ -164,7 +168,8 @@ public class SaveSettingsForm : Form {
 		if (defaultGuid.HasValue) {
 			var index = -1;
 			for(var i = 0; i < items.Length; i++) {
-				if (items[i].Id == defaultGuid.Value) { index = i; break; }
+				if (items[i].Id != defaultGuid.Value) continue;
+				index = i; break;
 			}
 			if (index >= 0) combo.SelectedIndex = index;
 			else if (combo.Items.Count > 0) combo.SelectedIndex = 0;

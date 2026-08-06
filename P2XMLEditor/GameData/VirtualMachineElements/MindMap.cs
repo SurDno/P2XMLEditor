@@ -58,11 +58,11 @@ public class MindMap(ulong id) : VmElement(id), IFiller<RawMindMapData>, IVmCrea
 	}
 
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var node in Nodes)
+		foreach (var node in Nodes?.ToList() ?? [])
 			vm.RemoveElement(node);
-		foreach (var link in Links)
+		foreach (var link in Links?.ToList() ?? [])
 			vm.RemoveElement(link);
-		vm.RemoveElement(Title);
+		if (Title != null) vm.RemoveElement(Title);
 		Parent.LogicMaps.Remove(this);
 	}
 }

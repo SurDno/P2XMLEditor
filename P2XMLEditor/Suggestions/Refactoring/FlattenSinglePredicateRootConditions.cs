@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
+using P2XMLEditor.Logging;
 
 namespace P2XMLEditor.Suggestions.Refactoring;
 
@@ -20,6 +21,10 @@ public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : Suggestio
 			cond.Predicates = subcond.Predicates;
 			cond.Operation = subcond.Operation;
 			cond.Name = string.IsNullOrEmpty(subcond.Name) ? cond.Name : subcond.Name;
+			
+			string context = "";
+			
+			Logger.Log(LogLevel.Info, $"Flattened root condition '{cond.Name}' by absorbing nested condition '{subcond.Name}'{context}");
 			subcond.Predicates = [];
 			subcond.Operation = (ConditionOperation)int.MaxValue;
 			subcond.Name = null!;
@@ -28,5 +33,7 @@ public class FlattenSinglePredicateRootConditions(VirtualMachine vm) : Suggestio
 		
 		foreach(var subcond in subcondsToRemove)
 			Vm.RemoveElement(subcond);
+			
+		Logger.Log(LogLevel.Info, $"Completed: Flattened {subcondsToRemove.Count} single-predicate root conditions.");
 	}
 }
