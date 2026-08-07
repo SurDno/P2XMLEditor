@@ -63,7 +63,7 @@ public sealed class HierarchyPicker : Form {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 50,
 			Padding = new Padding(10, 8, 10, 8)
 		};
-		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel };
+		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 		var ok = new Button { Text = "Select", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
 		ok.Click += (_, _) => Accept();
 		var clear = new Button { Text = "Clear", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
@@ -81,7 +81,10 @@ public sealed class HierarchyPicker : Form {
 		Controls.Add(_search);
 
 		ApplyFilter();
-		if (current != null) SelectPath(current);
+		Load += (_, _) => {
+			if (current != null) SelectPath(current);
+			if (_list.SelectedIndices.Count > 0) _list.EnsureVisible(_list.SelectedIndices[0]);
+		};
 	}
 
 	/// <summary>Returns true when the user confirmed; <paramref name="result"/> is null if they cleared.</summary>

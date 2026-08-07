@@ -133,7 +133,7 @@ public class MenuStripManager {
 				   await System.Threading.Tasks.Task.Run(process.WaitForExit);
 			   }
 		   } catch (Exception ex) {
-			   MessageBox.Show($"Failed to play: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			   MessageBox.Show($"Failed to play:\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		   } finally {
 			   if (Directory.Exists(testDir)) {
 				   try {
@@ -288,11 +288,16 @@ public class MenuStripManager {
 	   var settings = saveSettingsForm.Settings;
 	   var outputPath = _mainForm.Paths.VmPath;
 
-	   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
-		   ? new DemoVirtualMachineWriter(outputPath, _mainForm.VirtualMachine)
-		   : new ReleaseVirtualMachineWriter(outputPath, _mainForm.VirtualMachine);
+	   try {
+		   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
+			   ? new DemoVirtualMachineWriter(outputPath, _mainForm.VirtualMachine)
+			   : new ReleaseVirtualMachineWriter(outputPath, _mainForm.VirtualMachine);
 
-	   writer.SaveVirtualMachine(settings);
+		   writer.SaveVirtualMachine(settings);
+		   MessageBox.Show("Virtual machine saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+	   } catch (Exception ex) {
+		   MessageBox.Show($"Failed to save virtual machine:\n{ex}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+	   }
    }
 
    private void SaveAsNewVm_Click(object? sender, EventArgs e) {
@@ -310,13 +315,18 @@ public class MenuStripManager {
 	   var vmSettings = settings.VmMetadata;
 	   if (vmSettings == null) return;
 	   
-	   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
-		   ? new DemoVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine)
-		   : new ReleaseVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine);
+	   try {
+		   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
+			   ? new DemoVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine)
+			   : new ReleaseVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine);
 
-	   writer.SaveVirtualMachine(settings);
-	   
-	   VersionXmlGenerator.Generate(vmSettings.OutputPath, vmSettings, _mainForm.VirtualMachine.GetDataCapacity());
+		   writer.SaveVirtualMachine(settings);
+		   
+		   VersionXmlGenerator.Generate(vmSettings.OutputPath, vmSettings, _mainForm.VirtualMachine.GetDataCapacity());
+		   MessageBox.Show("Virtual machine saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+	   } catch (Exception ex) {
+		   MessageBox.Show($"Failed to save virtual machine:\n{ex}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+	   }
    }
 
    private void SaveAsMod_Click(object? sender, EventArgs e) {

@@ -23,7 +23,7 @@ public class VmSelectionForm : Form {
 
 		FlowLayoutPanel panel = new() { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 40 };
 		var okButton = new Button { Text = "OK", Height = 35, DialogResult = DialogResult.OK, Enabled = false };
-		CancelButton = new Button { Text = "Cancel", Height = 35, DialogResult = DialogResult.Cancel };
+		CancelButton = new Button { Text = "Cancel", Height = 35, DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 		panel.Controls.AddRange([(Control)CancelButton, okButton]);
 		
 		Controls.AddRange([_listBox, panel]);

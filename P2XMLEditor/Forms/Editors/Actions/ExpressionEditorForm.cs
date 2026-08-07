@@ -100,9 +100,10 @@ public sealed class ExpressionEditorForm : Form {
 
 		_targetObject = new TargetObjectEditor(vm, _scope);
 		_targetObject.ValueChanged += (_, _) => {
-			// The target decides which components — and so which functions — are callable, in
+			// The target decides which components - and so which functions - are callable, in
 			// the same way it does for an action.
 			PopulateFunctions();
+			_targetParam.RefreshForTarget();
 			RefreshPreview();
 		};
 
@@ -170,7 +171,7 @@ public sealed class ExpressionEditorForm : Form {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 52,
 			Padding = new Padding(10, 10, 10, 10)
 		};
-		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel };
+		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 		var ok = new Button { Text = "Save", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
 		ok.Click += (_, _) => Save();
 		buttons.Controls.AddRange([cancel, ok]);
@@ -475,7 +476,11 @@ public sealed class ExpressionEditorForm : Form {
 			_targetParam.LoadRaw(expression.TargetParam?.UnresolvedRawString ?? "");
 		}
 
-		if (expression.Const is { } constant) _constant.Load(constant);
+		if (expression.Const is { } constant) {
+			_constant.Load(constant);
+		} else if (_expectedType != null && _expectedType.BaseType != VmType.Unknown) {
+			_constant.Load(new Parameter(0) { Value = ParameterValue.Create(_vm, _expectedType.Serialize(), "")! });
+		}
 
 		if (expression.ExpressionType == ExprKind.Complex)
 			_formula.Load(expression.FormulaChilds, expression.FormulaOperations);
@@ -508,7 +513,9 @@ public sealed class ExpressionEditorForm : Form {
 				return null;
 			case ExprKind.Const:
 				if (_constant.SelectedTypeName.Length == 0) return "Give the constant a type.";
-				return _constant.IsComplete ? null : "Give the constant a value.";
+				if (!_constant.IsComplete) return "Give the constant a value.";
+				if (_constant.Build() == null) return $"'{_constant.SerializedValue}' is not a valid {_constant.SelectedTypeName}.";
+				return null;
 			case ExprKind.Complex:
 				return _formula.Validate();
 			default:
@@ -540,8 +547,7 @@ public sealed class ExpressionEditorForm : Form {
 		_expression.ExpressionType = kind;
 		_expression.Inversion = _inversion.Checked;
 
-		if (kind is ExprKind.Param or ExprKind.Function)
-			_expression.TargetObject = TargetObject.Read(_targetObject.SerializedValue, _vm, _scope.LocalContext);
+		_expression.TargetObject = TargetObject.Read(_targetObject.SerializedValue, _vm, _scope.LocalContext);
 
 		_expression.TargetParam = kind == ExprKind.Param
 			? ExpressionParamTarget.Read(_targetParam.SerializedValue, _vm, _scope.LocalContext)
@@ -605,7 +611,20 @@ public sealed class ExpressionEditorForm : Form {
 				break;
 		}
 
-		var verdict = Comparable(ExpressionTyping.TypeOf(_expression, _vm) ?? CurrentSignature()?.ReturnTypeInfo);
+		var dummy = VmElement.CreateDefault<Expression>(_vm, _scope.LocalContext);
+		dummy.ExpressionType = SelectedKind;
+		if (SelectedKind == ExprKind.Const) {
+			dummy.Const = VmElement.CreateDefault<Parameter>(_vm, dummy);
+			dummy.Const.Value = _constant.Build();
+		} else if (SelectedKind == ExprKind.Param) {
+			try { dummy.TargetParam = ExpressionParamTarget.Read(_targetParam.SerializedValue, _vm, _scope.LocalContext); } catch { }
+		} else if (SelectedKind == ExprKind.Function) {
+			try { dummy.Function = FunctionSignature.Create(SelectedFunctionName!, _vm, ExistingSlotValues()); } catch { }
+		} else if (SelectedKind == ExprKind.Complex) {
+			dummy = _expression;
+		}
+
+		var verdict = Comparable(ExpressionTyping.TypeOf(dummy, _vm) ?? CurrentSignature()?.ReturnTypeInfo);
 		if (verdict.Verdict != ExpressionComparability.Verdict.Fine && verdict.Reason != null)
 			lines.Add($"\r\n{(verdict.IsAllowed ? "note" : "!")} {verdict.Reason}");
 

@@ -80,6 +80,19 @@ public sealed class GraphCanvas : UserControl {
 		Controls.Add(_surface);
 	}
 
+	protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+		if (keyData == Keys.Delete) {
+			if (_selectedNode != null) {
+				DeleteNode(_selectedNode);
+				return true;
+			} else if (_selectedLink != null) {
+				DeleteLink(_selectedLink);
+				return true;
+			}
+		}
+		return base.ProcessCmdKey(ref msg, keyData);
+	}
+
 	public VmElement? SelectedNode => _selectedNode;
 	public GraphLink? SelectedLink => _selectedLink;
 	public VmElement Container => _container;
@@ -836,6 +849,8 @@ public sealed class GraphCanvas : UserControl {
 			return;
 
 		foreach (var link in attached) DeleteLink(link, confirm: false);
+		
+		var wasInitial = GraphTopology.IsInitial(node);
 
 		switch (_container) {
 			case Graph graph: graph.States.RemoveAll(s => s.Element == node); break;
@@ -843,6 +858,11 @@ public sealed class GraphCanvas : UserControl {
 		}
 		_positions.Remove(node.Id);
 		_vm.RemoveElement(node);
+
+		if (wasInitial) {
+			var first = GraphTopology.NodesOf(_container).FirstOrDefault();
+			if (first != null) GraphTopology.SetInitial(first, true);
+		}
 
 		Select(null, null);
 		GraphChanged?.Invoke(this, EventArgs.Empty);

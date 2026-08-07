@@ -120,6 +120,7 @@ public readonly struct TargetObject {
 	};
 
 	public string Write() {
+		if (!IsSet) return "";
 		var value = Kind switch {
 			TargetObjectKind.Holder => ByEngineGuid
 				? (Holder as GameObject)?.EngineTemplateId ?? Holder!.Id.ToString()

@@ -93,7 +93,7 @@ public sealed class VmElementPicker : Form {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 50,
 			Padding = new Padding(10, 8, 10, 8)
 		};
-		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel };
+		var cancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 		var ok = new Button { Text = "Select", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
 		ok.Click += (_, _) => Accept();
 		var clear = new Button { Text = "Clear", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
@@ -112,7 +112,10 @@ public sealed class VmElementPicker : Form {
 		Controls.Add(_search);
 
 		ApplyFilter();
-		if (current != null) SelectElement(current);
+		Load += (_, _) => {
+			if (current != null) SelectElement(current);
+			if (_list.SelectedIndices.Count > 0) _list.EnsureVisible(_list.SelectedIndices[0]);
+		};
 	}
 
 	/// <summary>
@@ -206,8 +209,8 @@ public sealed class VmElementPicker : Form {
 		if (type == AllTypes) {
 			// Grouped, with the kind called out, so a long scroll through everything still
 			// reads as sections rather than one undifferentiated list.
-			foreach (var group in matching.GroupBy(c => c.GetType().Name).OrderBy(g => g.Key, StringComparer.Ordinal)) {
-				_rows.Add(new Row(null, $"── {group.Key} ({group.Count()}) ──", true));
+			foreach (var group in matching.GroupBy(c => c.GetType().Name).OrderBy(g => g.Key == "GameRoot" ? "" : g.Key, StringComparer.Ordinal)) {
+				_rows.Add(new Row(null, $"―― {group.Key} ({group.Count()}) ――", true));
 				foreach (var element in group.OrderBy(_display, StringComparer.Ordinal))
 					_rows.Add(new Row(element, _display(element), false));
 			}

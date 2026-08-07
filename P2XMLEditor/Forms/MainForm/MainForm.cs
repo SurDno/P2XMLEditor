@@ -35,6 +35,7 @@ public class MainForm : Form {
 	private LogViewerForm? _logViewerForm;
 
 	public MainForm() {
+		StartPosition = FormStartPosition.CenterScreen;
 		_tabControl = new TabControl { Dock = DockStyle.Fill }; 
 		_tabControl.Height = Height - 25; 
 		Controls.Add(_tabControl); 

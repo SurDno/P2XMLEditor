@@ -176,7 +176,7 @@ public sealed class ActionEditorForm : Form {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 52,
 			Padding = new Padding(12, 8, 12, 8)
 		};
-		var cancel = new Button { Text = "Cancel", Size = new Size(110, 34), DialogResult = DialogResult.Cancel };
+		var cancel = new Button { Text = "Cancel", Size = new Size(110, 34), DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 		var save = new Button { Text = "Save", Size = new Size(110, 34), Margin = new Padding(8, 0, 0, 0) };
 		save.Click += (_, _) => Save();
 		buttons.Controls.AddRange([cancel, save]);

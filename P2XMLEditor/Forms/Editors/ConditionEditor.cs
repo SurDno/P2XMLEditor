@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
@@ -24,31 +26,49 @@ public class ConditionEditorForm : Form {
     // PartCondition settings panel
     private Panel pnlPartConditionSettings;
     private TextBox txtName;
-    private ComboBox cmbConditionType;
+    private FlowLayoutPanel flowConditionType;
     private LinkLabel lnkFirstExpression;
     private LinkLabel lnkSecondExpression;
-    private FlowLayoutPanel pnlFirstExpression;
-    private FlowLayoutPanel pnlSecondExpression;
+    private Panel pnlFirstExpression;
+    private Panel pnlSecondExpression;
     private PartCondition _currentPartCondition;
+    
+    // Snapshot state for Cancel
+    private bool _snapshotActive = true;
+    private ConditionOperation _originalOperation;
+    private List<VmEither<Condition, PartCondition>> _originalPredicates;
+    private Dictionary<PartCondition, PartConditionSnapshot> _originalPartConditions = new();
+    private List<VmElement> _addedElements = new();
+
+    private class PartConditionSnapshot {
+        public string Name;
+        public ConditionType ConditionType;
+        public Expression FirstExpression;
+        public Expression SecondExpression;
+    }
 
 	public ConditionEditorForm(VirtualMachine vm, Condition condition,
 		VmEither<Branch, Event, MindMapNode, Speech, State> localContext) {
+		StartPosition = FormStartPosition.CenterParent;
 		_vm = vm;
 		_condition = condition;
 		_localContext = localContext;
-		UpdateConditionOrderIndex();
-		InitializeComponents();
-		LoadData();
-	}
-	private void UpdateConditionOrderIndex() { 
-		foreach (var condition in _vm.GetElementsByType<Condition>()) {
-			for (var i = 0; i < condition.Predicates.Count; i++) {
-				if (condition.Predicates[i].Element != _condition) continue;
-				_condition.OrderIndex = (byte)i;
-				return;
+		
+		_originalOperation = condition.Operation;
+		_originalPredicates = condition.Predicates.ToList();
+		foreach (var pred in condition.Predicates) {
+			if (pred.Element is PartCondition pc) {
+				_originalPartConditions[pc] = new PartConditionSnapshot {
+					Name = pc.Name,
+					ConditionType = pc.ConditionType,
+					FirstExpression = pc.FirstExpression,
+					SecondExpression = pc.SecondExpression
+				};
 			}
 		}
-		_condition.OrderIndex = 0;
+		
+		InitializeComponents();
+		LoadData();
 	}
 	private void UpdatePredicateOrderIndices() {
 		for (var i = 0; i < _condition.Predicates.Count; i++) {
@@ -71,7 +91,7 @@ public class ConditionEditorForm : Form {
         var splitContainer = new SplitContainer { Dock = DockStyle.Fill };
         var leftPanel = new Panel { Dock = DockStyle.Fill };
         
-		cmbOperation = new ComboBox { Dock = DockStyle.Top, Enabled = false };
+		cmbOperation = new ComboBox { Dock = DockStyle.Top, Enabled = false, DropDownStyle = ComboBoxStyle.DropDownList };
 		UpdateOperationComboBox();
 		lstPredicates = new ListBox { Dock = DockStyle.Fill };
         lstPredicates.SelectedIndexChanged += (_, _) => {
@@ -90,12 +110,16 @@ public class ConditionEditorForm : Form {
 		};
 		btnAddPartCondition = new Button { Text = "Add PartCondition", Dock = DockStyle.Top, Height = 40 };
 		btnAddPartCondition.Click += (_, _) => {
-			_condition.Predicates.Add(new(VmElement.CreateDefault<PartCondition>(_vm, _localContext.Element)));
+			var newPc = VmElement.CreateDefault<PartCondition>(_vm, _localContext.Element);
+			_addedElements.Add(newPc);
+			_condition.Predicates.Add(new(newPc));
 			LoadData();
 		};
 		btnAddNestedCondition = new Button { Text = "Add Nested Condition", Dock = DockStyle.Top, Height = 40 };
 		btnAddNestedCondition.Click += (_, _) => {
-			_condition.Predicates.Add(new(VmElement.CreateDefault<Condition>(_vm, _localContext.Element)));
+			var newCond = VmElement.CreateDefault<Condition>(_vm, _localContext.Element);
+			_addedElements.Add(newCond);
+			_condition.Predicates.Add(new(newCond));
 			LoadData();
 		};
 		btnRemovePredicate = new Button { Text = "Remove Predicate", Dock = DockStyle.Top, Height = 40 };
@@ -106,8 +130,14 @@ public class ConditionEditorForm : Form {
 			_condition.Predicates.RemoveAt(index);
 			LoadData();
 		};
-		btnOK = new Button { Text = "OK", Dock = DockStyle.Bottom, Height = 40 };
+		
+		var buttonsPanel = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 52, Padding = new Padding(10) };
+		var btnCancel = new Button { Text = "Cancel", Size = new Size(100, 32), DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
+		btnOK = new Button { Text = "Save", Size = new Size(100, 32), Margin = new Padding(8, 0, 0, 0) };
 		btnOK.Click += BtnOK_Click;
+		buttonsPanel.Controls.Add(btnOK);
+		buttonsPanel.Controls.Add(btnCancel);
+		
 		var topPanel = new Panel { Dock = DockStyle.Top, Height = 160 };
 		topPanel.Controls.Add(btnRemovePredicate);
 		topPanel.Controls.Add(btnAddNestedCondition);
@@ -132,54 +162,77 @@ public class ConditionEditorForm : Form {
 		namePanel.Controls.Add(txtName);
 		namePanel.Controls.Add(lblName);
         
-        var typePanel = new Panel { Dock = DockStyle.Top, Height = 60 };
-		var lblType = new Label { Text = "Condition Type:", Dock = DockStyle.Top, Height = 30 };
-		cmbConditionType = new ComboBox { Dock = DockStyle.Top, Height = 30 };
-		cmbConditionType.Items.AddRange(Enum.GetValues(typeof(ConditionType)).Cast<object>().ToArray());
-		cmbConditionType.SelectedIndexChanged += (_, _) => {
-            if (_currentPartCondition == null) return;
-			if (cmbConditionType.SelectedItem is not ConditionType selectedType) return;
-            var oldType = _currentPartCondition.ConditionType;
-			_currentPartCondition.ConditionType = selectedType;
-            
-			if (selectedType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
-				_vm.RemoveElement(_currentPartCondition.FirstExpression);
-				_currentPartCondition.FirstExpression = null;
-				_vm.RemoveElement(_currentPartCondition.SecondExpression);
-				_currentPartCondition.SecondExpression = null;
-			} else if (oldType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
-                // Switching from Const to Binary: Initialize to null to avoid type deadlock
-                _vm.RemoveElement(_currentPartCondition.FirstExpression);
-                _vm.RemoveElement(_currentPartCondition.SecondExpression);
-                _currentPartCondition.FirstExpression = null;
-                _currentPartCondition.SecondExpression = null;
-            }
-			UpdateExpressionsView();
-            RefreshSelectedPredicatePreview();
-		};
-		typePanel.Controls.Add(cmbConditionType);
-		typePanel.Controls.Add(lblType);
+        var typePanel = new GroupBox { Text = "Condition Type", Dock = DockStyle.Top, Height = 100 };
+		flowConditionType = new FlowLayoutPanel { Dock = DockStyle.Fill };
+		foreach (ConditionType t in Enum.GetValues(typeof(ConditionType))) {
+            string label = t switch {
+                ConditionType.ValueEqual => "==",
+                ConditionType.ValueNotEqual => "!=",
+                ConditionType.ValueLess => "<",
+                ConditionType.ValueLessEqual => "<=",
+                ConditionType.ValueLarger => ">",
+                ConditionType.ValueLargerEqual => ">=",
+                ConditionType.ValueExpression => "Expression",
+                ConditionType.ConstTrue => "True",
+                ConditionType.ConstFalse => "False",
+                _ => t.ToString()
+            };
+			var rb = new RadioButton { Text = label, Tag = t, AutoSize = true };
+			rb.CheckedChanged += (_, _) => {
+				if (!rb.Checked) return;
+				if (_currentPartCondition == null) return;
+				var selectedType = (ConditionType)rb.Tag;
+				var oldType = _currentPartCondition.ConditionType;
+				_currentPartCondition.ConditionType = selectedType;
+				
+				if (selectedType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
+					_vm.RemoveElement(_currentPartCondition.FirstExpression);
+					_currentPartCondition.FirstExpression = null;
+					_vm.RemoveElement(_currentPartCondition.SecondExpression);
+					_currentPartCondition.SecondExpression = null;
+				} else if (oldType is ConditionType.ConstTrue or ConditionType.ConstFalse) {
+					_vm.RemoveElement(_currentPartCondition.FirstExpression);
+					_vm.RemoveElement(_currentPartCondition.SecondExpression);
+					_currentPartCondition.FirstExpression = null;
+					_currentPartCondition.SecondExpression = null;
+				}
+				UpdateExpressionsView();
+				RefreshSelectedPredicatePreview();
+			};
+			flowConditionType.Controls.Add(rb);
+		}
+		typePanel.Controls.Add(flowConditionType);
         
-        var exprPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown };
+        var exprPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(0, 10, 0, 0) };
         
-        pnlFirstExpression = new FlowLayoutPanel { Width = 500, Height = 35, FlowDirection = FlowDirection.LeftToRight };
-        lnkFirstExpression = new LinkLabel { Width = 400, Height = 30, AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft };
+        pnlFirstExpression = new Panel { Dock = DockStyle.Top, Height = 60 };
+        var lblFirst = new Label { Text = "First Expression:", Font = new Font(Font, FontStyle.Bold), AutoSize = true, Dock = DockStyle.Top };
+        
+        var innerFirst = new Panel { Dock = DockStyle.Fill, Padding = new Padding(0, 5, 0, 5) };
+        lnkFirstExpression = new LinkLabel { AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft, Dock = DockStyle.Fill };
         lnkFirstExpression.LinkClicked += (_, _) => OpenExpressionEditor(true);
-        var btnClearFirst = new Button { Text = "Clear", Width = 50, Height = 30 };
+        var btnClearFirst = new Button { Text = "Clear", Width = 70, Dock = DockStyle.Right };
         btnClearFirst.Click += (_, _) => ClearExpression(true);
-        pnlFirstExpression.Controls.Add(lnkFirstExpression);
-        pnlFirstExpression.Controls.Add(btnClearFirst);
+        innerFirst.Controls.Add(lnkFirstExpression);
+        innerFirst.Controls.Add(btnClearFirst);
+        pnlFirstExpression.Controls.Add(innerFirst);
+        pnlFirstExpression.Controls.Add(lblFirst);
         
-        pnlSecondExpression = new FlowLayoutPanel { Width = 500, Height = 35, FlowDirection = FlowDirection.LeftToRight };
-        lnkSecondExpression = new LinkLabel { Width = 400, Height = 30, AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft };
+        pnlSecondExpression = new Panel { Dock = DockStyle.Top, Height = 60 };
+        var lblSecond = new Label { Text = "Second Expression:", Font = new Font(Font, FontStyle.Bold), AutoSize = true, Dock = DockStyle.Top };
+        
+        var innerSecond = new Panel { Dock = DockStyle.Fill, Padding = new Padding(0, 5, 0, 5) };
+        lnkSecondExpression = new LinkLabel { AutoSize = false, TextAlign = System.Drawing.ContentAlignment.MiddleLeft, Dock = DockStyle.Fill };
         lnkSecondExpression.LinkClicked += (_, _) => OpenExpressionEditor(false);
-        var btnClearSecond = new Button { Text = "Clear", Width = 50, Height = 30 };
+        var btnClearSecond = new Button { Text = "Clear", Width = 70, Dock = DockStyle.Right };
         btnClearSecond.Click += (_, _) => ClearExpression(false);
-        pnlSecondExpression.Controls.Add(lnkSecondExpression);
-        pnlSecondExpression.Controls.Add(btnClearSecond);
+        innerSecond.Controls.Add(lnkSecondExpression);
+        innerSecond.Controls.Add(btnClearSecond);
+        pnlSecondExpression.Controls.Add(innerSecond);
+        pnlSecondExpression.Controls.Add(lblSecond);
         
-        exprPanel.Controls.Add(pnlFirstExpression);
         exprPanel.Controls.Add(pnlSecondExpression);
+        exprPanel.Controls.Add(pnlFirstExpression);
         
         pnlPartConditionSettings.Controls.Add(exprPanel);
         pnlPartConditionSettings.Controls.Add(typePanel);
@@ -188,7 +241,10 @@ public class ConditionEditorForm : Form {
         splitContainer.Panel2.Controls.Add(pnlPartConditionSettings);
         
 		Controls.Add(splitContainer);
-		Controls.Add(btnOK);
+		Controls.Add(buttonsPanel);
+		
+		AcceptButton = btnOK;
+		CancelButton = btnCancel;
 	}
     
     private void UpdatePartConditionPanel() {
@@ -204,7 +260,12 @@ public class ConditionEditorForm : Form {
             pnlPartConditionSettings.Visible = true;
             
             txtName.Text = partCond.Name ?? string.Empty;
-            cmbConditionType.SelectedItem = partCond.ConditionType;
+            foreach (RadioButton rb in flowConditionType.Controls) {
+                if (rb.Tag is ConditionType t && t == partCond.ConditionType) {
+                    rb.Checked = true;
+                    break;
+                }
+            }
             UpdateExpressionsView();
         } else {
             pnlPartConditionSettings.Visible = false;
@@ -228,9 +289,9 @@ public class ConditionEditorForm : Form {
         pnlSecondExpression.Visible = showSecond;
         
         if (isBinary) {
-            lnkFirstExpression.Text = "First Expression: " + PreviewHelper.Preview(_currentPartCondition.FirstExpression);
+            lnkFirstExpression.Text = PreviewHelper.Preview(_currentPartCondition.FirstExpression);
             if (showSecond)
-                lnkSecondExpression.Text = "Second Expression: " + PreviewHelper.Preview(_currentPartCondition.SecondExpression);
+                lnkSecondExpression.Text = PreviewHelper.Preview(_currentPartCondition.SecondExpression);
         }
     }
     
@@ -309,9 +370,59 @@ public class ConditionEditorForm : Form {
 				}
 			}
 		}
+		
+		var currentSet = new HashSet<VmElement>(_condition.Predicates.Select(p => p.Element));
+		
+		// Remove elements that were originally there but got deleted
+		foreach (var orig in _originalPredicates) {
+			if (!currentSet.Contains(orig.Element)) {
+				if (orig.Element is PartCondition pc) _vm.RemoveElement(pc);
+				else if (orig.Element is Condition cond) {
+					cond.OnDestroy(_vm);
+					_vm.RemoveElement(cond);
+				}
+			}
+		}
+		
+		// Remove added elements that were subsequently deleted before Save
+		foreach (var added in _addedElements) {
+			if (!currentSet.Contains(added)) {
+				if (added is PartCondition pc) _vm.RemoveElement(pc);
+				else if (added is Condition cond) {
+					cond.OnDestroy(_vm);
+					_vm.RemoveElement(cond);
+				}
+			}
+		}
+		
 		_condition.Operation = _condition.Predicates.Count <= 1 ? ConditionOperation.Root : (ConditionOperation)cmbOperation.SelectedItem!;
 		UpdatePredicateOrderIndices();
+		
+		_snapshotActive = false;
 		DialogResult = DialogResult.OK;
 		Close();
+	}
+	
+	protected override void OnFormClosing(FormClosingEventArgs e) {
+		if (_snapshotActive && DialogResult != DialogResult.OK) {
+			_condition.Operation = _originalOperation;
+			_condition.Predicates = _originalPredicates;
+			
+			foreach (var kvp in _originalPartConditions) {
+				kvp.Key.Name = kvp.Value.Name;
+				kvp.Key.ConditionType = kvp.Value.ConditionType;
+				kvp.Key.FirstExpression = kvp.Value.FirstExpression;
+				kvp.Key.SecondExpression = kvp.Value.SecondExpression;
+			}
+			
+			foreach (var added in _addedElements) {
+				if (added is PartCondition pc) _vm.RemoveElement(pc);
+				else if (added is Condition cond) {
+					cond.OnDestroy(_vm);
+					_vm.RemoveElement(cond);
+				}
+			}
+		}
+		base.OnFormClosing(e);
 	}
 }

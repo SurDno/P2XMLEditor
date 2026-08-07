@@ -128,6 +128,12 @@ public sealed class ExpressionParamTargetEditor : UserControl {
 	/// <summary>The wire string, ready for <see cref="ExpressionParamTarget.Read"/>.</summary>
 	public string SerializedValue => _dirty ? Compose() : _originalText;
 
+	public void RefreshForTarget() {
+		_parameter.RefreshForTarget();
+		PopulateKinds();
+		UpdateVisibleControls();
+	}
+
 	public void Load(ExpressionParamTarget? target, string? rawText = null) {
 		var previouslySuppressed = _suppressEvents;
 		_suppressEvents = true;

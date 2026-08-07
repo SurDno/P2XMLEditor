@@ -215,7 +215,7 @@ public sealed class InputParamsEditor : UserControl {
 				Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 48,
 				Padding = new Padding(10)
 			};
-			var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel };
+			var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel, Margin = new Padding(0) };
 			var ok = new Button { Text = "OK", DialogResult = DialogResult.OK, Margin = new Padding(8, 0, 0, 0) };
 			buttons.Controls.AddRange([cancel, ok]);
 			AcceptButton = ok;

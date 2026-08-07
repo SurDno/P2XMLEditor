@@ -24,6 +24,7 @@ public sealed class PathSelectionForm : Form {
     private Button _okButton;
 
     public PathSelectionForm() {
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Configure Paths";
         Size = new(1200, 450);
         FormBorderStyle = FormBorderStyle.FixedDialog;

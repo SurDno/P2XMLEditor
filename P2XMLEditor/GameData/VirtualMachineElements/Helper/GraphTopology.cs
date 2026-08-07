@@ -265,6 +265,15 @@ public static class GraphTopology {
 		return node is IGraphElement element ? element.OutputLinks ?? [] : [];
 	}
 
+	private static void UpdateConditionOrders(Branch branch) {
+		if (branch.BranchConditions == null) return;
+		for (byte i = 0; i < branch.BranchConditions.Count; i++) {
+			var element = branch.BranchConditions[i].Element;
+			if (element is Condition c) c.OrderIndex = i;
+			else if (element is PartCondition pc) pc.OrderIndex = i;
+		}
+	}
+
 	/// <summary>
 	/// Appends a condition, which appends an exit. The new exit takes the number the otherwise
 	/// exit had, so anything already leaving by "otherwise" has to move up with it or it silently
@@ -280,6 +289,7 @@ public static class GraphTopology {
 
 		var condition = VmElement.CreateDefault<Condition>(vm, branch);
 		branch.BranchConditions.Add(new(condition));
+		UpdateConditionOrders(branch);
 		return condition;
 	}
 
@@ -306,6 +316,7 @@ public static class GraphTopology {
 		}
 
 		vm.RemoveElement(condition);
+		UpdateConditionOrders(branch);
 	}
 
 	private static string ElseLabel(BranchType type) => type switch {

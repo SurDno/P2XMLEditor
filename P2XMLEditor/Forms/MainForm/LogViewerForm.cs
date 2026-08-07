@@ -9,6 +9,7 @@ public sealed class LogViewerForm : Form {
 	private readonly TextBox _logTextBox;
 
 	public LogViewerForm() {
+	   StartPosition = FormStartPosition.CenterParent;
 	   Text = "P2XMLEditor Logs";
 	   Size = new Size(1600, 600);
 

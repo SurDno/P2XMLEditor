@@ -82,9 +82,8 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 	public static Expression New(VirtualMachine vm, ulong id, VmElement parent) {
 		var expr = new Expression(id) {
 			ExpressionType = ExpressionType.Const,
-			LocalContext = new(parent)
+			LocalContext = new(ActionLine.LocalContextOf(parent))
 		};
-		expr.Const = CreateDefault<Parameter>(vm, expr);
 		return expr;
 	}
 
