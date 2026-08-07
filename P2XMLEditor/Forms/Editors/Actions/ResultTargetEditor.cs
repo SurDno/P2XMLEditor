@@ -223,15 +223,16 @@ public sealed class ResultTargetEditor : UserControl {
 
 	private IEnumerable<Parameter> CompatibleParameters() => _object == null ? [] : ParametersOf(_object);
 
-	private IEnumerable<Parameter> ParametersOf(ParameterHolder holder) {
-		var standart = holder.StandartParams ?? new Dictionary<string, Parameter>();
-		var custom = holder.CustomParams ?? new Dictionary<string, Parameter>();
-		return standart.Concat(custom)
-			.Where(kvp => kvp.Value != null)
-			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
-			.Select(kvp => kvp.Value)
+	/// <summary>
+	/// Where a call's result may be stored: any parameter of the object, inherited ones included.
+	/// The declaration of an inherited parameter lives on the blueprint and is shared by every
+	/// object deriving from it, so storing into one is ordinary — and it is what the data does,
+	/// including for result destinations.
+	/// </summary>
+	private IEnumerable<Parameter> ParametersOf(ParameterHolder holder) =>
+		ActionScope.ParametersOf(holder, _vm)
+			.Select(available => available.Parameter)
 			.Where(p => VmTypeCompatibility.Matches(_expectedType, p.Type, _vm));
-	}
 
 	private void SelectParameterId(string id) {
 		for (var i = 0; i < _parameter.Items.Count; i++) {

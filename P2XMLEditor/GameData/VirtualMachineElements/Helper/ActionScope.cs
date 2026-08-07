@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData.Enums;
@@ -258,6 +259,73 @@ public sealed class ActionScope {
 		}
 
 		return names;
+	}
+
+	/// <summary>One parameter an object can be asked for, and where it was declared.</summary>
+	/// <param name="DeclaredOn">
+	/// The object carrying the declaration — the target itself, or a blueprint it derives from.
+	/// </param>
+	public readonly record struct AvailableParameter(Parameter Parameter, ParameterHolder DeclaredOn, bool Inherited);
+
+	/// <summary>
+	/// Every parameter an object can be asked for: its own, and the ones it inherits.
+	///
+	/// An inherited parameter is not copied per instance — the declaration is shared and only the
+	/// value is per-object — so an action that writes one names the *blueprint's* parameter id.
+	/// The engine resolves it against the object all the same: VMBlueprint.GetContextVariables
+	/// merges every base blueprint's params ahead of the object's own, FSMParamsManager keys them
+	/// all by their declaring guid, and the lookup is GetContextParam(BaseGuid) with a fallback by
+	/// name. 393 references across the two corpora resolve exactly this way, and offering only an
+	/// object's own parameters made every one of them unpickable.
+	///
+	/// A parameter whose name the object already declares itself is dropped. That is the standard
+	/// component set, which every object redeclares with ids of its own: merging it back in adds a
+	/// median of 36 entries per object of which 33 are duplicate names. With the rule it is a
+	/// median of 3, and nothing is lost — all 393 references are to custom parameters, and not one
+	/// of them shares a name with a parameter of the object itself.
+	/// </summary>
+	public static IReadOnlyList<AvailableParameter> ParametersOf(ParameterHolder? target, VirtualMachine vm) {
+		var available = new List<AvailableParameter>();
+		if (target == null) return available;
+
+		var names = new HashSet<string>(StringComparer.Ordinal);
+		var seen = new HashSet<ulong>();
+
+		// Breadth-first from the object outwards, so a nearer declaration wins the name.
+		var visited = new HashSet<ParameterHolder>();
+		var pending = new Queue<ParameterHolder>();
+		pending.Enqueue(target);
+
+		while (pending.Count > 0) {
+			var holder = pending.Dequeue();
+			if (!visited.Add(holder)) continue;
+			var inherited = !ReferenceEquals(holder, target);
+
+			foreach (var parameter in OwnParameters(holder)) {
+				if (!seen.Add(parameter.Id)) continue;
+				var name = parameter.Name ?? "";
+				if (inherited && !names.Add(name)) continue;
+				names.Add(name);
+				available.Add(new AvailableParameter(parameter, holder, inherited));
+			}
+
+			foreach (var prototype in holder.InheritanceInfo ?? [])
+				if (ulong.TryParse(prototype, out var id) &&
+					vm.GetNullableElement<ParameterHolder>(id) is { } prototypeHolder)
+					pending.Enqueue(prototypeHolder);
+		}
+
+		return available;
+	}
+
+	/// <summary>A holder's own parameters, standard then custom, in a stable order.</summary>
+	private static IEnumerable<Parameter> OwnParameters(ParameterHolder holder) {
+		var standart = holder.StandartParams ?? new Dictionary<string, Parameter>();
+		var custom = holder.CustomParams ?? new Dictionary<string, Parameter>();
+		return standart.Concat(custom)
+			.Where(kvp => kvp.Value != null)
+			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
+			.Select(kvp => kvp.Value);
 	}
 
 	/// <summary>

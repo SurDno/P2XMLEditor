@@ -308,8 +308,15 @@ public sealed class ParamTargetEditor : UserControl {
 		try {
 			_parameter.Items.Clear();
 			var listed = false;
-			foreach (var parameter in ParametersOf(holder)) {
-				_parameter.Items.Add(new ParameterItem(parameter, $"{parameter.Name}   [{parameter.Type}]"));
+			foreach (var available in ParametersOf(holder)) {
+				var parameter = available.Parameter;
+				// Where an inherited parameter comes from is worth a word: it is the same
+				// declaration every object deriving from that blueprint writes, so the name alone
+				// does not say whose flag is being set.
+				var label = available.Inherited
+					? $"{parameter.Name}   [{parameter.Type}]   (from {available.DeclaredOn.Name})"
+					: $"{parameter.Name}   [{parameter.Type}]";
+				_parameter.Items.Add(new ParameterItem(parameter, label));
 				listed |= _storedParameterId == parameter.Id.ToString();
 			}
 
@@ -326,17 +333,16 @@ public sealed class ParamTargetEditor : UserControl {
 		}
 	}
 
-	/// <summary>Standard and custom parameters of the object, in a stable order.</summary>
-	private IEnumerable<Parameter> ParametersOf(ParameterHolder? holder) {
-		if (holder == null) return [];
-		var standart = holder.StandartParams ?? new Dictionary<string, Parameter>();
-		var custom = holder.CustomParams ?? new Dictionary<string, Parameter>();
-		return standart.Concat(custom)
-			.Where(kvp => kvp.Value != null)
-			.Where(kvp => VmTypeCompatibility.Matches(_expectedType, kvp.Value.Type, _vm))
-			.OrderBy(kvp => kvp.Key, StringComparer.Ordinal)
-			.Select(kvp => kvp.Value);
-	}
+	/// <summary>
+	/// Parameters the object can be asked for, its own and its inherited ones, filtered to what
+	/// fits the slot. Inherited ones are as real as the object's own — the declaration lives on
+	/// the blueprint and only the value is per-object — and leaving them out made the 393
+	/// references the corpus makes to one impossible to reproduce here.
+	/// </summary>
+	private IReadOnlyList<ActionScope.AvailableParameter> ParametersOf(ParameterHolder? holder) =>
+		ActionScope.ParametersOf(holder, _vm)
+			.Where(available => VmTypeCompatibility.Matches(_expectedType, available.Parameter.Type, _vm))
+			.ToList();
 
 	private void SelectParameterId(string id) {
 		for (var i = 0; i < _parameter.Items.Count; i++) {
