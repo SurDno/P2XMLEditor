@@ -5,6 +5,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using Action = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Helper;
 
@@ -14,6 +15,7 @@ public static class PreviewHelper {
 		PartCondition pc => Preview(pc),
 		Condition cond => Preview(cond),
 		Expression expr => Preview(expr),
+		Action action => Preview(action),
 		_ => throw new ArgumentOutOfRangeException()
 	};
 
@@ -85,6 +87,13 @@ public static class PreviewHelper {
 		var name = targetObject.Kind switch {
 			TargetObjectKind.Holder => targetObject.Holder?.Name,
 			TargetObjectKind.ParameterRef => targetObject.ParameterRef?.Name,
+			// A hierarchy target is a path through the world, and the ids in it say nothing at
+			// all — 45274 of the Sandbox's placements end at a node the xml never defines, so
+			// the names are the only readable part of one.
+			TargetObjectKind.Hierarchy => targetObject.Hierarchy == null
+				? null
+				: string.Join("/", targetObject.Hierarchy.Elements
+					.Select(e => (e.Element as INamedElement)?.Name ?? e.Id.ToString())),
 			TargetObjectKind.Message => targetObject.Message?.Name,
 			TargetObjectKind.InputParam => targetObject.InputParam?.Name,
 			TargetObjectKind.Loop => targetObject.Loop?.ParamId,
@@ -93,6 +102,53 @@ public static class PreviewHelper {
 		var result = name ?? targetObject.Write();
 		return targetObject.HasLeadingPercent ? "%" + result : result;
 	}
+
+	public static string Preview(ParamTarget target) => target.Kind switch {
+		ParamTargetKind.Parameter =>
+			(target.Parameter?.Element as Parameter)?.Name ?? target.Parameter?.Id.ToString() ?? "",
+		ParamTargetKind.ComponentParam => target.ComponentParamName ?? "",
+		_ => ""
+	};
+
+	/// <summary>
+	/// An action as one line of something like code: what it writes, and what it writes there.
+	///
+	/// The type alone — "ACTION_TYPE_SET_PARAM" — is the one thing about an action that is never
+	/// in question when reading a graph. What is in question is which parameter of which object
+	/// it sets and to what, and none of that is visible until it is written out.
+	/// </summary>
+	public static string Preview(Action action) {
+		string body;
+		try {
+			var target = Preview(action.TargetObject);
+			var param = Preview(action.TargetParam);
+			var arguments = string.Join(", ", action.GetParamStrings() ?? []);
+
+			body = action.ActionType switch {
+				ActionType.SetParam => $"{target}.{param} = {arguments}",
+				ActionType.SetExpression => $"{target}.{param} = {Preview(action.SourceExpression)}",
+				ActionType.Math => $"{target}.{param} {MathSymbol(action.MathOperationType)}= {arguments}",
+				ActionType.DoFunction =>
+					$"{target}.{action.Function?.Name ?? action.TargetFuncName}({arguments})",
+				ActionType.RaiseEvent =>
+					$"{target} ⇒ {action.EventToRaise?.Name ?? action.TargetFuncName}({arguments})",
+				_ => $"{action.ActionType.Serialize()} {target}"
+			};
+		} catch {
+			// A half-written action still has to be listable; the row is how it gets fixed.
+			body = action.ActionType.Serialize();
+		}
+
+		return string.IsNullOrWhiteSpace(action.Name) ? body : $"{action.Name}:  {body}";
+	}
+
+	public static string MathSymbol(MathOperationType operation) => operation switch {
+		MathOperationType.Addition => "+",
+		MathOperationType.Subtraction => "-",
+		MathOperationType.Multiply => "*",
+		MathOperationType.Division => "/",
+		_ => "?"
+	};
 
 	public static string Preview(ExpressionParamTarget? targetParam) {
 		if (targetParam == null) return "<null>";

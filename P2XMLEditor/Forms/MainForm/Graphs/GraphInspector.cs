@@ -262,17 +262,30 @@ public sealed class GraphInspector : Panel {
 
 		Section(node.GetType().Name, generalHost, general.Height + 74);
 
-		var entries = new EntryPointsEditor(_vm);
-		entries.SetNode(node);
-		entries.Changed += (_, _) => Touch();
-		Section("Entry points — what runs when a link arrives", entries, 210);
-
 		if (node is Graph graph) {
 			var inputs = new InputParamsEditor(_vm);
 			inputs.SetGraph(graph);
 			inputs.Changed += (_, _) => Touch();
 			Section("Input params — what every link entering must supply", inputs, 180);
 		}
+
+		// Last and much the largest. This is what the node *does*; everything above it is a
+		// handful of rows saying what the node is, and they were crowding the one section with
+		// unbounded content into a box that showed three actions at a time.
+		var actions = new EntryActionsEditor(_vm);
+		actions.SetNode(node);
+		actions.Changed += (_, _) => Touch();
+		Section("Actions — what runs when a link arrives", actions, ActionsHeight());
+	}
+
+	/// <summary>
+	/// Whatever is left of the inspector, and never less than three times the old box. The stack
+	/// scrolls, so asking for more than fits costs nothing but a scrollbar.
+	/// </summary>
+	private int ActionsHeight() {
+		var used = 0;
+		for (var row = 0; row < _stack.RowStyles.Count; row++) used += (int)_stack.RowStyles[row].Height;
+		return Math.Max(640, _scroll.ClientSize.Height - used - 12);
 	}
 
 	private static bool IgnoreBlockOf(VmElement node) => node switch {
@@ -293,24 +306,35 @@ public sealed class GraphInspector : Panel {
 	/// </summary>
 	private string Summarise(VmElement node) {
 		var exits = GraphTopology.ExitsOf(node).Count;
-		var entries = GraphTopology.EntryPointsOf(node).Count;
 
 		return node switch {
 			Branch branch =>
 				$"{branch.BranchConditions?.Count ?? 0} condition(s), so {exits} exits — one per condition and "
 				+ $"one for when none matched.  Each is written on the link it gates.{Dangling(branch)}"
-				+ $"  {entries} entry point(s).",
+				+ Entryless(node),
 			Graph graph =>
 				$"{graph.GraphType.Serialize()}, {graph.States.Count} node(s), "
-				+ $"{graph.InputParams?.Count ?? 0} input parameter(s), {entries} entry point(s)."
+				+ $"{graph.InputParams?.Count ?? 0} input parameter(s)."
 				+ (graph.SubstituteGraph == null
 					? ""
-					: $"  Substitutes {GraphTopology.NameOf(graph.SubstituteGraph.Value.Element)}."),
-			Speech speech => $"{speech.Replies.Count} reply(ies), so {exits} exits.  {entries} entry point(s).",
-			Talking talking => $"{talking.States.Count} node(s).  {entries} entry point(s).",
-			_ => $"One exit, taken when it finishes.  {entries} entry point(s)."
+					: $"  Substitutes {GraphTopology.NameOf(graph.SubstituteGraph.Value.Element)}.")
+				+ Entryless(node),
+			Speech speech => $"{speech.Replies.Count} reply(ies), so {exits} exits." + Entryless(node),
+			Talking talking => $"{talking.States.Count} node(s)." + Entryless(node),
+			_ => "One exit, taken when it finishes." + Entryless(node)
 		};
 	}
+
+	/// <summary>
+	/// The entry point is worth a word only when there is not one. Every node in all three corpora
+	/// declares exactly one — 44 000 of them, none with two — so counting them here said the same
+	/// number every time; a graph with none, which 866 of the Sandbox's have, runs nothing at all
+	/// when a link arrives and that is worth saying.
+	/// </summary>
+	private static string Entryless(VmElement node) =>
+		GraphTopology.EntryPointsOf(node).Count == 0
+			? "  It has no entry point, so nothing runs when a link arrives."
+			: "";
 
 	/// <summary>
 	/// Conditions with nothing leaving by them. The engine evaluates such an exit and then

@@ -124,62 +124,14 @@ public class ActionsBrowser : Panel {
 		}
 	}
 
-	private TreeNode CreateActionNode(Action action) {
-		var targetObject = Describe(action.TargetObject);
-		var targetParam = Describe(action.TargetParam);
-		var sourceParams = string.Join(", ", action.GetParamStrings() ?? []);
-
-		var actionText = action.ActionType switch {
-			ActionType.SetParam => $"{targetObject}.{targetParam} = {sourceParams}",
-			ActionType.SetExpression =>
-				$"{targetObject}.{targetParam} = {PreviewHelper.Preview(action.SourceExpression)}",
-			ActionType.Math => $"{targetObject}.{targetParam} {MathSymbol(action.MathOperationType)}= {sourceParams}",
-			ActionType.DoFunction => $"{targetObject}.{action.Function?.Name ?? action.TargetFuncName}({sourceParams})",
-			ActionType.RaiseEvent => $"{targetObject} ⇒ {action.EventToRaise?.Name ?? action.TargetFuncName}({sourceParams})",
-			_ => $"{action.ActionType.Serialize()} {targetObject}"
-		};
-
-		if (!string.IsNullOrEmpty(action.Name)) actionText = $"{action.Name}:  {actionText}";
-
-		return new TreeNode(actionText) {
+	private TreeNode CreateActionNode(Action action) =>
+		// One implementation of "what does this action say", shared with the graph editor — two
+		// renderings of the same row is how they drift into disagreeing about it.
+		new(PreviewHelper.Preview(action)) {
 			Tag = action,
 			ToolTipText = $"ID: {action.Id}\nType: {action.ActionType.Serialize()}\nOrder: {action.OrderIndex}",
 			ForeColor = Color.DarkBlue
 		};
-	}
-
-	private static string MathSymbol(MathOperationType operation) => operation switch {
-		MathOperationType.Addition => "+",
-		MathOperationType.Subtraction => "-",
-		MathOperationType.Multiply => "*",
-		MathOperationType.Division => "/",
-		_ => "?"
-	};
-
-	/// <summary>Resolves the ids in a target to names, falling back to the raw text.</summary>
-	private string Describe(TargetObject target) {
-		try {
-			return target.Kind switch {
-				TargetObjectKind.Holder => target.Holder?.Name ?? target.Write(),
-				TargetObjectKind.ParameterRef => target.ParameterRef?.Name ?? target.Write(),
-				TargetObjectKind.Hierarchy => string.Join("/",
-					target.Hierarchy!.Elements.Select(e => (e.Element as INamedElement)?.Name ?? e.Id.ToString())),
-				TargetObjectKind.Message => target.Message?.ParamName ?? target.Write(),
-				TargetObjectKind.InputParam => target.InputParam?.ParamName ?? target.Write(),
-				TargetObjectKind.Loop => target.Loop?.ParamId ?? target.Write(),
-				_ => "?"
-			};
-		} catch {
-			return "?";
-		}
-	}
-
-	private string Describe(ParamTarget target) => target.Kind switch {
-		ParamTargetKind.Empty => "",
-		ParamTargetKind.Parameter => (target.Parameter?.Element as Parameter)?.Name ?? target.Parameter?.Id.ToString() ?? "",
-		ParamTargetKind.ComponentParam => target.ComponentParamName ?? "",
-		_ => ""
-	};
 
 	private TreeNode CreateActionLineNode(ActionLine actionLine) {
 		var node = new TreeNode($"[ActionLine] {actionLine.Name} [{actionLine.ActionLineType.Serialize()}]") {
