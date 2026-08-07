@@ -36,6 +36,7 @@ public sealed class EntryActionsEditor : UserControl {
 	private readonly ComboBox _lineType;
 	private readonly Label _lineTypeCaption;
 	private readonly Button _create;
+	private readonly Label _note;
 	private readonly Button _addAction;
 	private readonly Button _edit;
 	private readonly Button _remove;
@@ -75,6 +76,15 @@ public sealed class EntryActionsEditor : UserControl {
 		};
 
 		_create = NewButton("Create the entry point", CreateEntryPoint);
+
+		// A graph's own entry point is never read: ProcessMoveToState sends a link into a graph
+		// to MoveIntoSubGraph, which applies the link's index to the subgraph's initial state
+		// instead. Nothing written here would ever run, so the editor says so rather than
+		// offering to create it — and all 7989 graph entry points in the corpora are empty.
+		_note = new Label {
+			AutoSize = true, ForeColor = SystemColors.GrayText, Margin = new Padding(0, 6, 0, 4),
+			Text = "A graph runs nothing on arrival — a link entering it goes to its initial node."
+		};
 		_addAction = NewButton("Add action", AddAction);
 		_edit = NewButton("Edit…", () => Edit(_tree.SelectedNode));
 		_remove = NewButton("Remove", RemoveSelected);
@@ -85,7 +95,7 @@ public sealed class EntryActionsEditor : UserControl {
 			Dock = DockStyle.Top, FlowDirection = FlowDirection.LeftToRight, AutoSize = true,
 			WrapContents = true, Padding = new Padding(0, 0, 0, 4)
 		};
-		header.Controls.AddRange([_loop, _lineTypeCaption, _lineType, _create]);
+		header.Controls.AddRange([_loop, _lineTypeCaption, _lineType, _create, _note]);
 
 		var buttons = new FlowLayoutPanel {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.LeftToRight, AutoSize = true,
@@ -134,7 +144,11 @@ public sealed class EntryActionsEditor : UserControl {
 			_loop.Checked = line?.ActionLineType == ActionLineType.Loop;
 			_lineType.Visible = _lineTypeCaption.Visible = unusual;
 			if (line != null) _lineType.SelectedItem = line.ActionLineType;
-			_create.Visible = _node != null && line == null;
+			var inert = _node is Graph;
+			_note.Visible = inert;
+			_create.Visible = _node != null && line == null && !inert;
+			_addAction.Visible = _edit.Visible = _remove.Visible = _up.Visible = _down.Visible =
+				!inert || line != null;
 		} finally {
 			_loading = false;
 		}
