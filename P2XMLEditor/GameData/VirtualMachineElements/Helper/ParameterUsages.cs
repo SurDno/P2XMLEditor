@@ -16,7 +16,16 @@ public enum ParameterUse {
 	Written,
 
 	/// <summary>The parameter's value is consumed — as a value, or as the object to act on.</summary>
-	Read
+	Read,
+
+	/// <summary>
+	/// An event fires when the parameter changes. Nothing consumes the value and nothing assigns
+	/// it, so this is neither of the other two: an event with an EventParameter is
+	/// EVENT_RAISING_TYPE_PARAM_CHANGE, and DynamicEventBody subscribes it to that parameter.
+	/// Calling it a read would say something false about a parameter whose only mention in the
+	/// data is this one — which is the case for 3 of them in PathologicSandbox.
+	/// </summary>
+	Watched
 }
 
 /// <param name="Owner">The element that mentions it — an action, an expression, a link, a line.</param>
@@ -59,6 +68,12 @@ public sealed class ParameterUsageIndex {
 		foreach (var expression in vm.GetElementsByType<Expression>()) index.AddExpression(expression, vm);
 		foreach (var line in vm.GetElementsByType<ActionLine>()) index.AddLine(line);
 		foreach (var link in vm.GetElementsByType<GraphLink>()) index.AddLink(link, vm);
+
+		// An event raised by a parameter changing names that parameter and nothing else does:
+		// 188 events in PathologicSandbox and 2 in MarbleNest are declared this way, and for
+		// three of those parameters it is the only mention in the entire game.
+		foreach (var raised in vm.GetElementsByType<Event>())
+			index.Add(raised.EventParameter, ParameterUse.Watched, raised, "raised when it changes");
 
 		return index;
 	}

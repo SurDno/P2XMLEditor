@@ -267,8 +267,11 @@ public class ParameterHoldersBrowser : SplitContainer {
 			var item = new ListViewItem(key) { Tag = parameter };
 			item.SubItems.Add(parameter.Type);
 			item.SubItems.Add(Truncate(SafePreview(parameter), 60));
-			item.SubItems.Add(parameter.Custom ? "custom" : parameter.OwnerComponent?.Name ?? "standard");
-			if (parameter.Custom) item.ForeColor = Color.DarkGreen;
+			item.SubItems.Add(parameter.Implicit ? "implicit"
+				: parameter.Custom ? "custom"
+				: parameter.OwnerComponent?.Name ?? "standard");
+			if (parameter.Implicit) item.ForeColor = SystemColors.GrayText;
+			else if (parameter.Custom) item.ForeColor = Color.DarkGreen;
 			_parameters.Items.Add(item);
 			if (parameter.Id == selected) item.Selected = true;
 		}
@@ -411,6 +414,15 @@ public class ParameterHoldersBrowser : SplitContainer {
 	private void EditParameter() {
 		if (SelectedParameter() is not { } parameter) return;
 
+		// An implicit parameter's stored value is never read: DynamicParameter computes it from
+		// the FSM. Editing it would look like it did something.
+		if (parameter.Implicit) {
+			MessageBox.Show(this,
+				$"'{parameter.Name}' is implicit — the engine works its value out at runtime and ignores "
+				+ "what is stored here.", "Implicit parameter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			return;
+		}
+
 		using var dialog = new ParameterValueForm(_vm, $"Value of {parameter.Name}", parameter);
 		if (dialog.ShowDialog(FindForm()) != DialogResult.OK) return;
 
@@ -468,13 +480,18 @@ public class ParameterHoldersBrowser : SplitContainer {
 
 		var usages = _usages.Of(parameter);
 		var written = usages.Count(u => u.Use == ParameterUse.Written);
+		var watched = usages.Count(u => u.Use == ParameterUse.Watched);
 
 		foreach (var usage in usages
-					 .OrderBy(u => u.Use == ParameterUse.Written ? 0 : 1)
+					 .OrderBy(u => (int)u.Use)
 					 .ThenBy(u => ParameterUsageIndex.ContextOf(u.Owner), StringComparer.Ordinal)) {
-			var item = new ListViewItem(usage.Use == ParameterUse.Written ? "Edited by" : "Read by") {
+			var item = new ListViewItem(Label(usage.Use)) {
 				Tag = usage,
-				ForeColor = usage.Use == ParameterUse.Written ? Color.Firebrick : Color.DarkBlue
+				ForeColor = usage.Use switch {
+					ParameterUse.Written => Color.Firebrick,
+					ParameterUse.Watched => Color.DarkMagenta,
+					_ => Color.DarkBlue
+				}
 			};
 			item.SubItems.Add(Describe(usage.Owner));
 			item.SubItems.Add(ParameterUsageIndex.ContextOf(usage.Owner));
@@ -483,11 +500,35 @@ public class ParameterHoldersBrowser : SplitContainer {
 		}
 
 		_usageCaption.Text = usages.Count == 0
-			? $"Nothing reads or writes {parameter.Name}."
-			: $"{parameter.Name}: edited by {written}, read by {usages.Count - written}."
-			  + "   Double-click to open where it happens.";
+			? Untouched(parameter)
+			: $"{parameter.Name}: edited by {written}, read by {usages.Count - written - watched}"
+			  + (watched > 0 ? $", raises {watched} event(s)" : "")
+			  + ".   Double-click to open where it happens.";
 
 		_usageList.EndUpdate();
+	}
+
+	private static string Label(ParameterUse use) => use switch {
+		ParameterUse.Written => "Edited by",
+		ParameterUse.Watched => "Raises",
+		_ => "Read by"
+	};
+
+	/// <summary>
+	/// What "no usages" means, which is not the same thing for every parameter. An implicit
+	/// parameter is computed by the engine — DynamicParameter.GetValue hands back the FSM's
+	/// current state for a _state parameter and ignores whatever is stored — so nothing naming it
+	/// is expected rather than suspicious. A standard parameter is read by the engine component
+	/// that declares it, which is not in this data at all. Only a custom one that nothing names
+	/// is genuinely unused, and 596 of the Sandbox's 3461 are.
+	/// </summary>
+	private static string Untouched(Parameter parameter) {
+		if (parameter.Implicit)
+			return $"{parameter.Name} is implicit — the engine maintains its value and the stored one is ignored.";
+		if (!parameter.Custom)
+			return $"Nothing in the graphs names {parameter.Name}; a standard parameter is read by its "
+				   + "component in the engine.";
+		return $"Nothing reads or writes {parameter.Name}.";
 	}
 
 	private string Describe(VmElement owner) {
@@ -497,6 +538,7 @@ public class ParameterHoldersBrowser : SplitContainer {
 				Expression expression => PreviewHelper.Preview(expression),
 				GraphLink link => $"link '{link.Name}'",
 				ActionLine line => $"loop '{line.Name}'",
+				Event raised => $"event '{raised.Name}'",
 				_ => owner.GetType().Name
 			};
 		} catch {
