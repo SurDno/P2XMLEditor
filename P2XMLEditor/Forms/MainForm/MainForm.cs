@@ -9,6 +9,7 @@ using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.Dialogs;
 using P2XMLEditor.Forms.MainForm.Expressions;
 using P2XMLEditor.Forms.MainForm.Graphs;
+using P2XMLEditor.Forms.MainForm.Holders;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
@@ -79,8 +80,27 @@ public class MainForm : Form {
 		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Expressions", () => new ExpressionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-		
+		RegisterTabFactory("Objects", () => {
+			var browser = new ParameterHoldersBrowser(_virtualMachine!) { Dock = DockStyle.Fill };
+			browser.OpenGraphRequested += (_, graph) => ShowGraph(graph);
+			return browser;
+		});
+
 		ShowTab("Mind Maps");
+	}
+
+	/// <summary>
+	/// Brings a graph up in the graph editor, from wherever it was named. The tab is created on
+	/// demand, so this also covers the case where the graph editor has never been opened.
+	/// </summary>
+	public void ShowGraph(GameData.VirtualMachineElements.Graph graph) {
+		ShowTab("Graphs");
+		if (_loadedTabs.TryGetValue("Graphs", out var tab))
+			foreach (var control in tab.Controls)
+				if (control is GraphsBrowser browser) {
+					browser.Open(graph, reset: true);
+					return;
+				}
 	}
 	
 	private void RegisterTabFactory(string name, Func<Control> factory) {

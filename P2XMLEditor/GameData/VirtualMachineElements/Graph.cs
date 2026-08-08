@@ -48,8 +48,35 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 			SubstituteGraph = vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value);
 	}
 	
+	/// <summary>
+	/// An empty graph, owned by the object or graph it is created under.
+	///
+	/// No entry point: a graph's own entry points are never read — a link into one goes through
+	/// MoveIntoSubGraph, which applies the link's index to the subgraph's initial state — and all
+	/// 7989 graph entry points across the two corpora are empty, so creating one here would only
+	/// add data for <c>RemoveUnreadGraphEntryPoints</c> to take away again.
+	/// </summary>
+	public static Graph New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "New graph",
+		GraphType = GraphType.EventGraph,
+		States = [],
+		EventLinks = [],
+		EntryPoints = [],
+		InputParams = null,
+		InputLinks = [],
+		OutputLinks = [],
+		IgnoreBlock = false,
+		Initial = false,
+		Parent = new(parent),
+		Owner = parent switch {
+			ParameterHolder holder => holder,
+			Graph graph => graph.Owner,
+			_ => null!
+		}
+	};
+
 	public override void OnDestroy(VirtualMachine vm) {
-		foreach (var state in States?.ToList() ?? []) 
+		foreach (var state in States?.ToList() ?? [])
 			vm.RemoveElement(state.Element);
 		foreach (var link in InputLinks?.ToList() ?? []) 
 			vm.RemoveElement(link);

@@ -33,6 +33,19 @@ public class FunctionalComponent(ulong id) : VmElement(id), IFiller<RawFunctiona
 		Parent = vm.GetElement<ParameterHolder>(data.ParentId);
 	}
 
+	/// <summary>
+	/// A component with no events and no parameters yet. The parameters it declares are added by
+	/// <see cref="Helper.ComponentCatalogue"/>, which knows what the component looks like on the
+	/// objects that already carry it; a component alone has no way to know.
+	/// </summary>
+	public static FunctionalComponent New(VirtualMachine vm, ulong id, VmElement parent) => new(id) {
+		Name = "NewComponent",
+		Main = false,
+		LoadPriority = 0,
+		Events = [],
+		Parent = (parent as ParameterHolder)!
+	};
+
 	public override void OnDestroy(VirtualMachine vm) {
 		var compToRemove = Parent.FunctionalComponents.FirstOrDefault(f => f == this);
 		if (compToRemove != null)
