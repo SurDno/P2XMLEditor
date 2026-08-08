@@ -36,6 +36,11 @@ namespace P2XMLEditor.Suggestions.Refactoring;
 /// Only the value goes. The parameter stays, because it is a standard parameter its component
 /// declares. The game string it pointed at is left alone too; if nothing else names it,
 /// <c>RemoveUnreferencedGameStrings</c> is the pass that collects it.
+///
+/// Nothing here can lose writing: a reference is only dropped when the string behind it is empty
+/// in every loaded language. Emptying a field that does carry text, on the grounds that the game
+/// never displays that field, is a separate and riskier claim — see
+/// <see cref="StripUnreadTextProperties"/>.
 /// </summary>
 [Refactoring("Refactor/Parameters/Strip text references that have no text"),
  SuppressMessage("ReSharper", "UnusedType.Global")]
