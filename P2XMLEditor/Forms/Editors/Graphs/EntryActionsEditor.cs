@@ -41,6 +41,13 @@ public sealed class EntryActionsEditor : UserControl {
 	private readonly ComboBox _lineType;
 	private readonly Label _lineTypeCaption;
 	private readonly Label _note;
+	private readonly Label _lineLabel;
+	private readonly TableLayoutPanel _loopRow;
+	private ParameterSourceEditor? _loopList;
+	private ParameterSourceEditor? _loopStart;
+	private ParameterSourceEditor? _loopEnd;
+	private CheckBox? _loopRandom;
+	private ActionLine? _loopLine;
 	private readonly Button _addAction;
 	private readonly Button _edit;
 	private readonly Button _remove;
@@ -60,7 +67,12 @@ public sealed class EntryActionsEditor : UserControl {
 			ShowPlusMinus = true, Indent = 18
 		};
 		_tree.NodeMouseDoubleClick += (_, e) => Edit(e.Node);
-		_tree.AfterSelect += (_, _) => UpdateButtons();
+		// The header describes the line the selection sits in, so it follows the selection: a
+		// nested loop line has bounds of its own and nothing else reaches them.
+		_tree.AfterSelect += (_, _) => {
+			RefreshHeader();
+			UpdateButtons();
+		};
 
 		_loop = new CheckBox { Text = "Loop — run the actions once per iteration", AutoSize = true, Margin = new Padding(0, 4, 12, 4) };
 		_loop.CheckedChanged += (_, _) => SetLoop(_loop.Checked);
@@ -72,7 +84,7 @@ public sealed class EntryActionsEditor : UserControl {
 		_lineType = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = 150, Margin = new Padding(0, 4, 12, 4) };
 		foreach (var value in Enum.GetValues<ActionLineType>()) _lineType.Items.Add(value);
 		_lineType.SelectedIndexChanged += (_, _) => {
-			if (_loading || Line() is not { } line || _lineType.SelectedItem is not ActionLineType chosen) return;
+			if (_loading || CurrentLine() is not { } line || _lineType.SelectedItem is not ActionLineType chosen) return;
 			line.ActionLineType = chosen;
 			EnsureLoopInfo(line);
 			Reload();
@@ -86,6 +98,22 @@ public sealed class EntryActionsEditor : UserControl {
 			AutoSize = true, ForeColor = SystemColors.GrayText, Margin = new Padding(0, 6, 0, 4),
 			Text = "A graph runs nothing on arrival — a link entering it goes to its initial node."
 		};
+		_lineLabel = new Label {
+			AutoSize = true, ForeColor = SystemColors.GrayText, Margin = new Padding(0, 8, 0, 4), Visible = false
+		};
+
+		// What a loop actually loops over. The line carries a list and a range — "over this list,
+		// from here to there" — and none of it was editable, so a line could be turned into a loop
+		// and then only ever run with the bounds it was created with: 0 to 2147483647 over nothing.
+		// Filled in by BuildLoopRow, because each editor is bound to one scope for its lifetime and
+		// the scope belongs to whichever line is being edited.
+		_loopRow = new TableLayoutPanel {
+			Dock = DockStyle.Top, ColumnCount = 2, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink,
+			Padding = new Padding(0, 0, 0, 6), Visible = false
+		};
+		_loopRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96));
+		_loopRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+
 		_addAction = NewButton("Add action", AddAction);
 		_edit = NewButton("Edit…", () => Edit(_tree.SelectedNode));
 		_remove = NewButton("Remove", RemoveSelected);
@@ -96,7 +124,7 @@ public sealed class EntryActionsEditor : UserControl {
 			Dock = DockStyle.Top, FlowDirection = FlowDirection.LeftToRight, AutoSize = true,
 			WrapContents = true, Padding = new Padding(0, 0, 0, 4)
 		};
-		header.Controls.AddRange([_loop, _lineTypeCaption, _lineType, _note]);
+		header.Controls.AddRange([_loop, _lineTypeCaption, _lineType, _lineLabel, _note]);
 
 		var buttons = new FlowLayoutPanel {
 			Dock = DockStyle.Bottom, FlowDirection = FlowDirection.LeftToRight, AutoSize = true,
@@ -106,8 +134,12 @@ public sealed class EntryActionsEditor : UserControl {
 
 		Controls.Add(_tree);
 		Controls.Add(buttons);
+		Controls.Add(_loopRow);
 		Controls.Add(header);
 	}
+
+	private static Label Caption(string text) =>
+		new() { Text = text, AutoSize = true, Margin = new Padding(6, 8, 4, 4), ForeColor = SystemColors.GrayText };
 
 	private static Button NewButton(string text, System.Action onClick) {
 		var button = new Button { Text = text, AutoSize = true, Margin = new Padding(0, 0, 6, 0) };
@@ -126,37 +158,137 @@ public sealed class EntryActionsEditor : UserControl {
 
 	private ActionLine? Line() => Point()?.ActionLine;
 
+	/// <summary>
+	/// The line the header edits: the one the selection sits in, so a nested line's own type and
+	/// loop bounds can be reached, and the entry's own line when nothing is selected.
+	/// </summary>
+	private ActionLine? CurrentLine() => SelectedLine() ?? Line();
+
 	// ---------------------------------------------------------------- display
 
 	private void Reload() {
+		var wasLoading = _loading;
 		_loading = true;
 		try {
+			var selected = _tree.SelectedNode?.Tag as VmElement;
+
 			_tree.BeginUpdate();
 			_tree.Nodes.Clear();
-
-			var line = Line();
-			foreach (var child in line?.Actions ?? [])
+			foreach (var child in Line()?.Actions ?? [])
 				_tree.Nodes.Add(ActionNode(child.Element));
 			_tree.ExpandAll();
 			_tree.EndUpdate();
+
+			// Carried across the rebuild: the header follows the selection, so dropping it would
+			// quietly move the header back to the entry's own line mid-edit.
+			if (selected != null) SelectElement(selected);
+		} finally {
+			_loading = wasLoading;
+		}
+
+		RefreshHeader();
+		UpdateButtons();
+	}
+
+	private void RefreshHeader() {
+		var wasLoading = _loading;
+		_loading = true;
+		try {
+			var line = CurrentLine();
 
 			var unusual = line != null && line.ActionLineType is not (ActionLineType.Common or ActionLineType.Loop);
 			_loop.Visible = line != null && !unusual;
 			_loop.Checked = line?.ActionLineType == ActionLineType.Loop;
 			_lineType.Visible = _lineTypeCaption.Visible = unusual;
 			if (line != null) _lineType.SelectedItem = line.ActionLineType;
+
+			// Said out loud only when the header is about something other than the entry's own
+			// line, which is the case the reader has no other way of noticing.
+			var nested = line != null && !ReferenceEquals(line, Line());
+			_lineLabel.Visible = nested;
+			if (nested) _lineLabel.Text = $"— of the line '{line!.Name}'";
+
 			// A graph's actions are inert, so the note appears and the action buttons go. The
 			// entry point itself is not offered either way — it is made and unmade by what is
 			// done to the node, not by a button.
 			var inert = _node is Graph;
 			_note.Visible = inert;
 			_addAction.Visible = _edit.Visible = _remove.Visible = _up.Visible = _down.Visible =
-				!inert || line != null;
+				!inert || Line() != null;
+
+			LoadLoop(line);
 		} finally {
-			_loading = false;
+			_loading = wasLoading;
+		}
+	}
+
+	/// <summary>
+	/// Shows the bounds of the line now being edited, rebuilding them when that line changes.
+	///
+	/// Rebuilt rather than reloaded because a <see cref="ParameterSourceEditor"/> takes its
+	/// <see cref="ActionScope"/> once, and the scope is the line's own — the messages reaching it,
+	/// its graph's input parameters, the loops it sits inside.
+	/// </summary>
+	private void LoadLoop(ActionLine? line) {
+		var info = line is { ActionLineType: ActionLineType.Loop } ? line.LoopInfo : null;
+		if (info == null) {
+			_loopLine = null;
+			_loopRow.Visible = false;
+			return;
 		}
 
-		UpdateButtons();
+		if (!ReferenceEquals(line, _loopLine)) {
+			_loopLine = line;
+			BuildLoopRow(line!, info);
+		}
+		_loopRow.Visible = true;
+	}
+
+	private void BuildLoopRow(ActionLine line, ActionLoopInfo info) {
+		var scope = ActionScope.For(line, _vm);
+
+		// A loop walks a list, so the slot is typed as one: that is what puts global lists on offer
+		// and keeps everything that is not a list off it. It costs nothing in reach — of the two
+		// corpora's 203 loops, 45 name a global list and 155 name a parameter, and every one of
+		// those 118 distinct parameters is declared CommonList.
+		_loopList = NewSource(scope, new GameData.VmTypeInfo(GameData.Enums.VmType.List), false, info.Name);
+		// The bounds are the only place the engine reads a const_ value, which is what 195 of the
+		// Sandbox's 196 loops start at and 187 of them end at.
+		_loopStart = NewSource(scope, GameData.VmTypeInfo.Int32, true, info.Start);
+		_loopEnd = NewSource(scope, GameData.VmTypeInfo.Int32, true, info.End);
+		_loopRandom = new CheckBox {
+			Text = "Random order", AutoSize = true, Checked = info.Random, Margin = new Padding(0, 4, 0, 2)
+		};
+		_loopRandom.CheckedChanged += (_, _) => StoreLoop();
+
+		_loopRow.SuspendLayout();
+		var previous = _loopRow.Controls.Cast<Control>().ToList();
+		_loopRow.Controls.Clear();
+		foreach (var control in previous) control.Dispose();
+
+		_loopRow.RowStyles.Clear();
+		_loopRow.RowCount = 0;
+		LoopRow("over the list", _loopList);
+		LoopRow("from index", _loopStart);
+		LoopRow("to index", _loopEnd);
+		LoopRow("", _loopRandom, false);
+		_loopRow.ResumeLayout();
+	}
+
+	private void LoopRow(string caption, Control editor, bool stretch = true) {
+		var row = _loopRow.RowCount++;
+		_loopRow.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+		_loopRow.Controls.Add(Caption(caption), 0, row);
+		if (stretch) editor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+		_loopRow.Controls.Add(editor, 1, row);
+	}
+
+	private ParameterSourceEditor NewSource(ActionScope scope, GameData.VmTypeInfo type, bool allowConstant,
+		ParameterSource value) {
+		var editor = new ParameterSourceEditor(_vm, scope, type, null, allowConstant) { Width = 460 };
+		editor.Load(value);
+		editor.ValueChanged += (_, _) => StoreLoop();
+		return editor;
 	}
 
 	private TreeNode ActionNode(VmElement element) {
@@ -191,28 +323,50 @@ public sealed class EntryActionsEditor : UserControl {
 	// ---------------------------------------------------------------- commands
 
 	private void SetLoop(bool loop) {
-		if (_loading || Line() is not { } line) return;
+		if (_loading || CurrentLine() is not { } line) return;
 		line.ActionLineType = loop ? ActionLineType.Loop : ActionLineType.Common;
 		EnsureLoopInfo(line);
+		// A nested line says its type in the tree, and the bounds appear or go, so this is a
+		// reload rather than a repaint.
+		Reload();
 		Changed?.Invoke(this, EventArgs.Empty);
 	}
 
 	/// <summary>
-	/// A loop line needs its bounds, or nothing decides how many times it runs. The defaults
-	/// match what the writer emits for a line the editor of the day created.
+	/// Writes the bounds back onto the line. <see cref="ActionLoopInfo"/> holds its three sources
+	/// init-only, so a change means a new one and all four values are written together.
+	///
+	/// Changing the list does not strand the actions inside the loop: a loop element is written as
+	/// local_&lt;lineId&gt;_Loop_List_&lt;list&gt;_Element and <see cref="ParameterSource.Write"/> re-derives
+	/// that middle part from the line's current LoopInfo, so the references follow the rename.
+	/// </summary>
+	private void StoreLoop() {
+		if (_loading || _loopLine is not { } line) return;
+		if (_loopList == null || _loopStart == null || _loopEnd == null || _loopRandom == null) return;
+
+		line.LoopInfo = new ActionLoopInfo(_loopList.Value, _loopStart.Value, _loopEnd.Value, _loopRandom.Checked);
+		Changed?.Invoke(this, EventArgs.Empty);
+	}
+
+	/// <summary>
+	/// A loop line needs its bounds, or nothing decides how many times it runs.
+	///
+	/// The defaults are the whole list — const_0 to const_2147483647 — which is what 187 of the
+	/// Sandbox's 196 loops say, rather than the 0-to-10 the other editors seed, which is a range
+	/// that silently stops after ten elements and is not a shape the shipped data uses anywhere.
 	/// </summary>
 	private void EnsureLoopInfo(ActionLine line) {
 		if (line.ActionLineType != ActionLineType.Loop || line.LoopInfo != null) return;
 		line.LoopInfo = new ActionLoopInfo(
 			ParameterSource.Create("", _vm),
-			ParameterSource.Create("0", _vm, null, GameData.VmTypeInfo.Int32),
-			ParameterSource.Create("10", _vm, null, GameData.VmTypeInfo.Int32),
+			ParameterSource.Create("const_0", _vm, null, GameData.VmTypeInfo.Int32),
+			ParameterSource.Create("const_2147483647", _vm, null, GameData.VmTypeInfo.Int32),
 			false);
 	}
 
-	/// <summary>Adds an action to whichever line the selection sits in, so a nested line fills too.</summary>
 	/// <summary>
-	/// Adds an action, making whatever has to exist for it to sit in. An entry point and its line
+	/// Adds an action to whichever line the selection sits in, so a nested line fills too, making
+	/// whatever has to exist for it to sit in. An entry point and its line
 	/// are not things to be created on their own — they exist because something runs in them.
 	/// </summary>
 	private void AddAction() {
