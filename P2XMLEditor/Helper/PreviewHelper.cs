@@ -41,14 +41,33 @@ public static class PreviewHelper {
 		};
 	}
 
-	public static string Preview(Parameter p) {
-		return p.Value switch {
-			RefValue<GameString> textRef => textRef.TypedValue?.GetText("English") is { Length: > 0 } en ? en : 
-											textRef.TypedValue?.GetText("Russian") is { Length: > 0 } ru ? ru : 
-											textRef.TypedValue?.Id.ToString() ?? p.SerializedValue,
-			RefValue<VmElement> refVal => (refVal.TypedValue as INamedElement)?.Name ?? refVal.TypedValue?.Id.ToString() ?? p.SerializedValue,
+	public static string Preview(Parameter p) => Preview(p.Value) ?? p.SerializedValue;
+
+	/// <summary>
+	/// One stored value, by whatever is readable about it. Null when there is nothing better to
+	/// say than what the xml holds, which the caller falls back to.
+	/// </summary>
+	private static string? Preview(ParameterValue? value) {
+		return value switch {
+			// A path first: HierarchyRefValue is also a reference, and its last element is a poor
+			// answer to "what is this" when the route to it is the whole point.
+			IHierarchyValue path => Preview(path.Hierarchy),
+			// A list of references reads as its members; serialized it is one long LIST&ELEM run.
+			CommonListValue list => list.TypedValue.Count == 0
+				? "(empty list)"
+				: string.Join(", ", list.TypedValue.Select(e => Preview(e) ?? e.Serialize())),
+			// Text reads as its text, in whichever language has any.
+			RefValue<GameString> textRef => textRef.TypedValue?.GetText("English") is { Length: > 0 } en ? en :
+											textRef.TypedValue?.GetText("Russian") is { Length: > 0 } ru ? ru :
+											textRef.TypedValue?.Id.ToString(),
+			// Anything else pointing at an element reads as that element's name. Through the
+			// interface, because the generic test only ever matched RefValue<VmElement> exactly —
+			// which nothing in the data is, so every object, state and sample reference printed
+			// its id.
+			IElementValue { Element: { } element } =>
+				(element as INamedElement)?.Name ?? element.Id.ToString(),
 			BasicValue<bool> b => b.TypedValue ? "true" : "false",
-			_ => p.SerializedValue
+			_ => null
 		};
 	}
 
@@ -74,13 +93,31 @@ public static class PreviewHelper {
 		var results = new System.Collections.Generic.List<string>(raw.Count);
 		for (var i = 0; i < properties.Length; i++) {
 			if (P2XMLEditor.GameData.VirtualMachineElements.Helper.FunctionSignature.LiveSource(properties[i], function) is { } source) {
-				results.Add(source.GetVariableName() ?? source.Write());
+				// Before GetVariableName, which answers a hierarchy with its own ids — it names
+				// variables for the writer, and there the ids are the point.
+				results.Add(source.HierarchyReference != null
+					? Preview(source.HierarchyReference)
+					: source.GetVariableName() ?? source.Write());
 			} else {
 				results.Add(raw[i]);
 			}
 		}
 		return results;
 	}
+
+	/// <summary>
+	/// A path through the world, by the names of the things on it.
+	///
+	/// The ids in one say nothing: a hierarchy is written as "3204H4471H9982" and 45274 of the
+	/// Sandbox's placements end at a node the xml never defines, so the names are the only
+	/// readable part. They turn up in more places than a target object — an expression compares
+	/// against one, a function takes one as an argument, a parameter holds one — and every one of
+	/// those printed the raw ids until they all came through here.
+	/// </summary>
+	public static string Preview(HierarchyGuid? hierarchy) =>
+		hierarchy == null
+			? "<null>"
+			: string.Join("/", hierarchy.Elements.Select(e => (e.Element as INamedElement)?.Name ?? e.Id.ToString()));
 
 	public static string Preview(TargetObject targetObject) {
 		if (!targetObject.IsSet) return "<null>";
@@ -90,10 +127,7 @@ public static class PreviewHelper {
 			// A hierarchy target is a path through the world, and the ids in it say nothing at
 			// all — 45274 of the Sandbox's placements end at a node the xml never defines, so
 			// the names are the only readable part of one.
-			TargetObjectKind.Hierarchy => targetObject.Hierarchy == null
-				? null
-				: string.Join("/", targetObject.Hierarchy.Elements
-					.Select(e => (e.Element as INamedElement)?.Name ?? e.Id.ToString())),
+			TargetObjectKind.Hierarchy => targetObject.Hierarchy == null ? null : Preview(targetObject.Hierarchy),
 			TargetObjectKind.Message => targetObject.Message?.Name,
 			TargetObjectKind.InputParam => targetObject.InputParam?.Name,
 			TargetObjectKind.Loop => targetObject.Loop?.ParamId,
@@ -122,7 +156,11 @@ public static class PreviewHelper {
 		try {
 			var target = Preview(action.TargetObject);
 			var param = Preview(action.TargetParam);
-			var arguments = string.Join(", ", action.GetParamStrings() ?? []);
+			// The same rendering the expression preview uses: an action's arguments were the raw
+			// strings, so a hierarchy printed as ids and so did everything else.
+			var arguments = string.Join(", ", action.Function != null
+				? GetPreviewParamStrings(action.Function)
+				: action.GetParamStrings() ?? []);
 
 			body = action.ActionType switch {
 				ActionType.SetParam => $"{target}.{param} = {arguments}",
@@ -157,7 +195,9 @@ public static class PreviewHelper {
 			ExpressionParamKind.Param => tp.Param?.Parameter?.Element is Parameter p ? p.Name : null,
 			ExpressionParamKind.Message => tp.Message?.Name,
 			ExpressionParamKind.InputParam => tp.InputParam?.Name,
-			ExpressionParamKind.ObjectLiteral => tp.ObjectLiteral is INamedElement ne ? ne.Name : null,
+			ExpressionParamKind.ObjectLiteral => tp.LiteralHierarchy != null
+				? Preview(tp.LiteralHierarchy)
+				: tp.ObjectLiteral is INamedElement ne ? ne.Name : null,
 			_ => null
 		};
 		var result = name ?? tp.Write();

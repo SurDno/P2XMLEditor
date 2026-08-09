@@ -165,17 +165,36 @@ public class UnknownValue(string type, string value) : ParameterValue {
 	public override TVal As<TVal>() => TypedValue is TVal v ? v : default!;
 }
 
-public class RefValue<T>(string type, T? value) : ParameterValue where T : VmElement {
+public class RefValue<T>(string type, T? value) : ParameterValue, IElementValue where T : VmElement {
 	public override string XmlType => type;
 	public bool SerializeAsGuid { get; set; }
 	public T? TypedValue { get; set; } = value;
+	public VmElement? Element => TypedValue;
 	public override string Serialize() => SerializeAsGuid ? (TypedValue as GameObject)?.EngineTemplateId ?? string.Empty
 		: TypedValue?.Id.ToString() ?? string.Empty;
 	public override bool Is<TVal>() => TypedValue is TVal;
 	public override TVal As<TVal>() => TypedValue is TVal v ? v : default!;
 }
 
-public class HierarchyRefValue<T>(string type, HierarchyGuid hierarchy) : ParameterValue where T : VmElement {
+/// <summary>
+/// A value that is a path through the world rather than a single reference. Non-generic, so a
+/// reader that only wants the path — a preview, say — does not have to know what the path ends at.
+/// </summary>
+public interface IHierarchyValue {
+	HierarchyGuid Hierarchy { get; }
+}
+
+/// <summary>
+/// A value that points at one element. Also non-generic, and for the same reason: RefValue&lt;T&gt;
+/// is invariant, so a reader testing for RefValue&lt;VmElement&gt; matches nothing at all — every
+/// value in the data is a RefValue of something narrower.
+/// </summary>
+public interface IElementValue {
+	VmElement? Element { get; }
+}
+
+public class HierarchyRefValue<T>(string type, HierarchyGuid hierarchy) : ParameterValue, IHierarchyValue
+	where T : VmElement {
 	public override string XmlType => type;
 	public HierarchyGuid Hierarchy { get; set; } = hierarchy;
 	public T? TypedValue => Hierarchy.Elements[^1].Element as T;
