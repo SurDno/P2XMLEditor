@@ -26,8 +26,12 @@ namespace P2XMLEditor.Forms.Editors.Graphs;
 /// from were a whole layer of interface over a set that never has more than one member — and the
 /// thing anybody actually opens this for, the actions, was squeezed into what was left.
 ///
-/// Only a graph can have none: 866 of the Sandbox's, 5 of MarbleNest's, 777 of the alpha's. That
-/// is the one case with a button, because there is nowhere to put an action until it exists.
+/// Only a graph can have none: 866 of the Sandbox's, 5 of MarbleNest's, 777 of the alpha's — and
+/// every one of those has no links arriving at it. That is the one case with a button, and the
+/// reason is not the actions, which never run on a graph: it is that
+/// <c>VMState.GetLocalContextVariables</c> checks every input link's index against the list and
+/// logs "Wrong entry point index" when it is empty. A graph with links needs the entry point to
+/// exist even though nothing in it will ever be executed.
 /// </summary>
 public sealed class EntryActionsEditor : UserControl {
 	private readonly VirtualMachine _vm;
@@ -77,13 +81,15 @@ public sealed class EntryActionsEditor : UserControl {
 
 		_create = NewButton("Create the entry point", CreateEntryPoint);
 
-		// A graph's own entry point is never read: ProcessMoveToState sends a link into a graph
-		// to MoveIntoSubGraph, which applies the link's index to the subgraph's initial state
-		// instead. Nothing written here would ever run, so the editor says so rather than
-		// offering to create it — and all 7989 graph entry points in the corpora are empty.
+		// A graph's entry actions never run: ProcessMoveToState sends a link into a graph to
+		// MoveIntoSubGraph, which applies the link's index to the subgraph's initial state. The
+		// entry point still has to exist, though — GetLocalContextVariables checks every input
+		// link's index against it and logs "Wrong entry point index" when the list is empty — so
+		// creating one is still offered, with the reason said out loud.
 		_note = new Label {
 			AutoSize = true, ForeColor = SystemColors.GrayText, Margin = new Padding(0, 6, 0, 4),
-			Text = "A graph runs nothing on arrival — a link entering it goes to its initial node."
+			Text = "A graph runs nothing on arrival — a link entering it goes to its initial node — "
+				   + "but a graph with links needs an entry point for their index to fit."
 		};
 		_addAction = NewButton("Add action", AddAction);
 		_edit = NewButton("Edit…", () => Edit(_tree.SelectedNode));
@@ -144,9 +150,12 @@ public sealed class EntryActionsEditor : UserControl {
 			_loop.Checked = line?.ActionLineType == ActionLineType.Loop;
 			_lineType.Visible = _lineTypeCaption.Visible = unusual;
 			if (line != null) _lineType.SelectedItem = line.ActionLineType;
+			// A graph's actions are inert, but its entry point is not: without one, every link
+			// arriving logs an error. So the note appears and the action buttons go, while the
+			// button that creates the entry point stays.
 			var inert = _node is Graph;
 			_note.Visible = inert;
-			_create.Visible = _node != null && line == null && !inert;
+			_create.Visible = _node != null && Point() == null;
 			_addAction.Visible = _edit.Visible = _remove.Visible = _up.Visible = _down.Visible =
 				!inert || line != null;
 		} finally {
@@ -197,7 +206,8 @@ public sealed class EntryActionsEditor : UserControl {
 		var point = Point();
 		if (point == null) {
 			point = VmElement.CreateDefault<EntryPoint>(_vm, _node);
-			point.Name = "Entry_0";
+			// "Default" on all 7989 graph entry points in the corpora; a state's is named freely.
+			point.Name = _node is Graph ? "Default" : "Entry_0";
 			// Not GraphTopology.EntryPointsOf, which hands back an empty list of its own when the
 			// node has none — adding to that would drop the entry point on the floor.
 			if (!AddPoint(_node, point)) {
@@ -205,7 +215,9 @@ public sealed class EntryActionsEditor : UserControl {
 				return;
 			}
 		}
-		point.ActionLine ??= VmElement.CreateDefault<ActionLine>(_vm, _node);
+		// A graph's line would never run, and 7134 of the Sandbox's 7153 graph entry points carry
+		// none, so one is only made where it can do something.
+		if (_node is not Graph) point.ActionLine ??= VmElement.CreateDefault<ActionLine>(_vm, _node);
 
 		Reload();
 		Changed?.Invoke(this, EventArgs.Empty);

@@ -8,37 +8,43 @@ using P2XMLEditor.Logging;
 namespace P2XMLEditor.Suggestions.Refactoring;
 
 /// <summary>
-/// Removes the entry point of a graph, where the engine never reads it.
+/// Removes a graph's entry point where nothing can arrive at it — which means a graph with no
+/// input links at all, and not merely one whose links carry no event.
 ///
-/// An entry point is not dead weight just because it is empty, and this is worth stating plainly
-/// because the opposite is the obvious guess. <c>FSMGraphManager.MoveIntoState</c> refuses the
-/// move outright when <c>destEntryPoint >= newState.EntryPoints.Count</c> — it logs "Invalid
-/// entry point index" and the node is never entered. Every node in the shipped data has exactly
-/// one entry point and all 38 286 links name index 0, so taking that one away from a state, a
-/// branch, a speech or a talking would stop it being entered at all. Emptiness has nothing to do
-/// with it.
+/// The first version of this pass got that wrong and had to be corrected, so the reasoning is
+/// worth setting out in full.
 ///
-/// A graph is the exception, because a link into one never goes through that path.
-/// <c>ProcessMoveToState</c> routes anything of category GRAPH to <c>MoveIntoSubGraph</c>, which
-/// pushes the state, fills the input params, and then calls
-/// <c>MoveIntoState(subGraph.InitState, destEntryPoint)</c> — the index is applied to the
-/// subgraph's initial state, never to the graph. The graph's own list would only be read if the
-/// graph were itself an initial node, and no graph in either corpus is one (0 of 8019, 0 of 841).
-/// Nor is anything lost: all 7989 graph entry points across the two corpora have an empty action
-/// line or none at all.
+/// A link into a graph does not use the graph's own entry points: ProcessMoveToState routes
+/// anything of category GRAPH to MoveIntoSubGraph, which applies the index to the subgraph's
+/// initial state instead. That much is true, and it is why the shipped data can carry 866 graphs
+/// with no entry point at all in PathologicSandbox. Nothing is lost either — all 7989 graph entry
+/// points across the two corpora have an empty action line or none.
 ///
-/// Two things do still read the list, which is what the guards below are for:
+/// But <c>VMState.GetLocalContextVariables</c> also walks a node's input links, and its bounds
+/// check sits outside the branch that uses the result:
 ///
-/// * <c>VMState.GetLocalContextVariables</c> adds an input link's event return messages to the
-///   local scope only when that link's DestEntryPoint indexes this node's own entry points.
-///   Emptying the list would drop those messages. Graphs whose input links carry an event are
-///   therefore left alone — and tellingly, of the 871 graphs that already ship with no entry
-///   point, not one has an evented input link.
-/// * <c>FiniteStateMachine.EntryPoints</c> returns the substitute's list when a graph has a
-///   SubstituteGraph, so a graph that another graph substitutes is left alone as well; its list
-///   is read on somebody else's behalf.
+/// <code>
+/// int destEntryPoint = inputLinks[i].DestEntryPoint;
+/// if (destEntryPoint &lt; 0 || destEntryPoint >= entryPoints.Count)
+///     Logger.AddError("Wrong entry point index");
+/// else { ... event return messages ... }
+/// </code>
 ///
-/// What is left qualifies: 4967 graphs in PathologicSandbox and 585 in MarbleNest.
+/// So the error is logged for <em>every</em> input link whose index is out of range, whether or
+/// not that link has an event, every time the graph's local context is resolved — which happens
+/// while conditions and expressions on it are updated. The earlier guard only skipped graphs whose
+/// links carried an event, because that is what the else branch consumes; it stripped entry points
+/// from 3757 graphs in the Sandbox that do have links, and each of those graphs then logs one line
+/// per link, 4031 in total per pass.
+///
+/// The data states the real rule plainly, and this is the check that should have been made first:
+/// of the 866 graphs in PathologicSandbox and 5 in MarbleNest that ship without an entry point,
+/// every single one has zero input links. Nothing links into a graph that has none.
+///
+/// So the condition is no input links, no incoming substitution, not the initial node, and an
+/// action line with nothing in it. That leaves 1210 graphs in PathologicSandbox and 290 in
+/// MarbleNest. To repair data the earlier version damaged, see
+/// <see cref="RestoreGraphEntryPoints"/>.
 /// </summary>
 [Refactoring("Refactor/Graphs/Remove unread graph entry points"), SuppressMessage("ReSharper", "UnusedType.Global")]
 public class RemoveUnreadGraphEntryPoints(VirtualMachine vm) : Suggestion(vm) {
@@ -59,7 +65,7 @@ public class RemoveUnreadGraphEntryPoints(VirtualMachine vm) : Suggestion(vm) {
 		var removed = 0;
 		var keptWithActions = 0;
 		var keptInitial = 0;
-		var keptEvented = 0;
+		var keptLinked = 0;
 		var keptSubstituted = 0;
 
 		foreach (var graph in Vm.GetElementsByType<Graph>().ToList()) {
@@ -69,8 +75,11 @@ public class RemoveUnreadGraphEntryPoints(VirtualMachine vm) : Suggestion(vm) {
 				// not a decision for a bulk pass.
 				if (point.ActionLine is { Actions.Count: > 0 }) { keptWithActions++; continue; }
 				if (graph.Initial) { keptInitial++; continue; }
-				if (inbound.TryGetValue(graph.Id, out var links) && links.Any(l => l.Event != null)) {
-					keptEvented++;
+
+				// Any link at all, evented or not: GetLocalContextVariables checks the index of
+				// every one of them and logs an error when the list is empty.
+				if (inbound.TryGetValue(graph.Id, out var links) && links.Count > 0) {
+					keptLinked++;
 					continue;
 				}
 				if (substituted.Contains(graph.Id)) { keptSubstituted++; continue; }
@@ -84,7 +93,7 @@ public class RemoveUnreadGraphEntryPoints(VirtualMachine vm) : Suggestion(vm) {
 
 		Logger.Log(LogLevel.Info,
 			$"Removed {removed} unread graph entry point(s). Kept: {keptWithActions} that run actions, "
-			+ $"{keptInitial} on an initial graph, {keptEvented} whose input links carry an event, "
-			+ $"{keptSubstituted} substituted by another graph.");
+			+ $"{keptInitial} on an initial graph, {keptLinked} with input links that would then log "
+			+ $"\"Wrong entry point index\", {keptSubstituted} substituted by another graph.");
 	}
 }
