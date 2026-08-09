@@ -19,6 +19,15 @@ namespace P2XMLEditor.Suggestions.Cleanup;
 /// event link with no source at all (6009 of them in PathologicSandbox) or one whose source
 /// belongs to another graph. Anything the walk does not reach cannot be entered by a transition.
 ///
+/// Both halves of that starting set matter. A node entered by an event link is a root, not merely
+/// something the walk might arrive at later: 6255 nodes in PathologicSandbox and 582 in MarbleNest
+/// cannot be reached from the initial node at all and are only entered by an event, which is a
+/// quarter of every node in the game. Walking from the initial node alone would delete them.
+///
+/// Reading only the graph's own EventLinks is enough to see every way in, because a link is always
+/// stored in the container its destination belongs to — all 34898 links with a destination in the
+/// Sandbox and all 3388 in MarbleNest, no exceptions.
+///
 /// That alone would be wrong, though, and dangerously so: it condemns 1216 nodes in the Sandbox,
 /// and most of them are alive. Three things enter a node without a link, and each is a guard here:
 ///
