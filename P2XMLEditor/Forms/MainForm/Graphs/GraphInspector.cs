@@ -609,9 +609,15 @@ public sealed class GraphInspector : Panel {
 		if (_loading) return;
 		if (destination?.Id == link.Destination?.Element.Id) return;
 
-		if (link.Destination?.Element is { } previous) InputLinksOf(previous)?.Remove(link);
+		var previousDestination = link.Destination?.Element;
+		if (previousDestination != null) InputLinksOf(previousDestination)?.Remove(link);
 		link.Destination = destination == null ? null : new(destination);
 		if (destination != null && InputLinksOf(destination) is { } list && !list.Contains(link)) list.Add(link);
+
+		// Repointing a link moves the need with it: the new destination has to have an entry point
+		// for the index to fit, and the old one may no longer need the one it has.
+		if (destination != null) GraphTopology.EnsureEntryPoint(destination, _vm);
+		GraphTopology.PruneEntryPointIfUnneeded(previousDestination, _vm);
 	}
 
 	private static List<GraphLink>? InputLinksOf(VmElement node) => node switch {

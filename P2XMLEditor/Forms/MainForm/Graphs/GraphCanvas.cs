@@ -747,6 +747,11 @@ public sealed class GraphCanvas : UserControl {
 			GraphTopology.AddCondition(branch, _vm);
 		}
 
+		// A link needs somewhere to arrive: its DestEntryPointIndex is checked against the
+		// destination's entry points every time that node's local context resolves, and a graph
+		// is allowed to have none until something links into it.
+		GraphTopology.EnsureEntryPoint(to, _vm);
+
 		var link = VmElement.CreateDefault<GraphLink>(_vm, _container);
 		link.Source = new(from);
 		link.Destination = new(to);
@@ -894,8 +899,13 @@ public sealed class GraphCanvas : UserControl {
 				return;
 		}
 
-		Detach(link, link.Source?.Element, link.Destination?.Element);
+		var destination = link.Destination?.Element;
+		Detach(link, link.Source?.Element, destination);
 		_vm.RemoveElement(link);
+
+		// The entry point existed because something arrived there; if nothing does any more, and
+		// the node is a graph that can do without one, it goes the same way it came.
+		GraphTopology.PruneEntryPointIfUnneeded(destination, _vm);
 
 		// After detaching, so this link is not counted as one of the exit's remaining users.
 		if (branch != null && condition != null &&

@@ -187,6 +187,71 @@ public static class GraphTopology {
 		_ => false
 	};
 
+	/// <summary>
+	/// Gives a node its entry point if it has none, and hands back the one it has.
+	///
+	/// Nothing asks for this: it follows from what is being done. An action needs a line to sit in
+	/// and a line needs an entry point to hang off; a link arriving needs an entry point for its
+	/// DestEntryPoint to index, or <c>VMState.GetLocalContextVariables</c> logs "Wrong entry point
+	/// index" once per link every time the node's local context resolves.
+	///
+	/// A graph gets the shape the data uses for one — named "Default", with no action line, which
+	/// is 7134 of PathologicSandbox's 7153 — because a graph's entry actions never run: a link
+	/// into a graph is routed by MoveIntoSubGraph to the subgraph's initial state instead.
+	/// </summary>
+	public static EntryPoint EnsureEntryPoint(VmElement node, VirtualMachine vm) {
+		if (EntryPointsOf(node).FirstOrDefault() is { } existing) return existing;
+
+		var point = VmElement.CreateDefault<EntryPoint>(vm, node);
+		point.Name = node is Graph ? "Default" : "Entry_0";
+
+		if (node is Graph && point.ActionLine is { } inert) {
+			point.ActionLine = null;
+			vm.RemoveElement(inert);
+		}
+
+		switch (node) {
+			case IGraphElement element: (element.EntryPoints ??= []).Add(point); break;
+			case Talking talking: (talking.EntryPoints ??= []).Add(point); break;
+			case Speech speech: (speech.EntryPoints ??= []).Add(point); break;
+			default: vm.RemoveElement(point); return point;
+		}
+
+		return point;
+	}
+
+	/// <summary>
+	/// Drops an entry point that has stopped being needed, and says whether it did.
+	///
+	/// Only a graph is ever in that position, and only when nothing links into it: the shipped
+	/// data is unanimous — of the 866 graphs in PathologicSandbox and 5 in MarbleNest with no
+	/// entry point, every one has zero input links. On a state, a branch, a speech or a talking
+	/// the entry point is what a link arrives through, so it stays whatever else is true.
+	///
+	/// An entry point that runs actions stays too, even on a graph where they will never run.
+	/// Somebody wrote them, and a pass that quietly deletes written work because it judges it
+	/// pointless is not the same thing as one that tidies up after itself.
+	/// </summary>
+	public static bool PruneEntryPointIfUnneeded(VmElement? node, VirtualMachine vm) {
+		if (node is not Graph graph) return false;
+		if (graph.Initial) return false;
+		if (EntryPointsOf(graph).FirstOrDefault() is not { } point) return false;
+		if (point.ActionLine is { Actions.Count: > 0 }) return false;
+		if (LinksInto(graph).Count > 0) return false;
+		if (vm.GetElementsByType<Graph>().Any(other => other.SubstituteGraph?.Element == graph)) return false;
+
+		vm.RemoveElement(point);
+		return true;
+	}
+
+	/// <summary>Every link arriving at a node, read from the container that holds them.</summary>
+	public static IReadOnlyList<GraphLink> LinksInto(VmElement? node) {
+		if (node == null) return [];
+		if (ContainerOf(node) is { } container)
+			return LinksOf(container).Where(l => l.Destination?.Element == node).ToList();
+		return node is IGraphElement element ? element.InputLinks ?? [] : [];
+	}
+
 	public static List<EntryPoint> EntryPointsOf(VmElement? node) => node switch {
 		IGraphElement graphElement => graphElement.EntryPoints ?? [],
 		Talking talking => talking.EntryPoints ?? [],
