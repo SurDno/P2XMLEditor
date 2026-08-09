@@ -25,8 +25,10 @@ namespace P2XMLEditor.Forms.MainForm.Graphs;
 /// conditions is then five distinct places a link can start from, and which one it starts from
 /// is visible without opening anything.
 ///
-/// Dragging from an exit row to a node draws a new link. Nothing else creates one, because a
-/// link with no exit is not a thing the data has.
+/// Dragging from an exit row to a node draws a new link, and dragging into empty space draws one
+/// that leaves the graph instead — a fifth of all links return rather than going somewhere. The
+/// third kind has no source to drag from, since it starts at an event and not at a port, so a
+/// node's menu offers it.
 /// </summary>
 public sealed class GraphCanvas : UserControl {
 	private const float MinZoom = 0.2f;
@@ -58,6 +60,7 @@ public sealed class GraphCanvas : UserControl {
 	// A link being drawn: the node it leaves and the exit it leaves by.
 	private VmElement? _linkFrom;
 	private int _linkFromExit;
+	private Point _linkFromAt;
 	private Point _linkTo;
 
 	public event EventHandler? SelectionChanged;
@@ -699,13 +702,26 @@ public sealed class GraphCanvas : UserControl {
 
 		if (_linkFrom != null) {
 			var target = NodeAt(e.Location);
-			if (target != null && !ReferenceEquals(target, _linkFrom)) Connect(_linkFrom, _linkFromExit, target);
+			if (target != null && !ReferenceEquals(target, _linkFrom))
+				Connect(_linkFrom, _linkFromExit, target);
+			// Released over nothing, and far enough from the port to be a drag rather than a
+			// mis-aimed click: the link leaves the graph instead of going somewhere.
+			else if (target == null && Dragged(e.Location))
+				ConnectToNothing(_linkFrom, _linkFromExit);
+
 			_linkFrom = null;
 			_surface.Invalidate();
 		}
 
 		_dragNode = null;
 	}
+
+	/// <summary>
+	/// Whether the pointer travelled far enough for this to be a drag. Releasing on empty space
+	/// creates a link out of the graph, and a click that misses the port by two pixels should not.
+	/// </summary>
+	private bool Dragged(Point at) =>
+		Math.Abs(at.X - _linkFromAt.X) + Math.Abs(at.Y - _linkFromAt.Y) >= 12;
 
 	private void OnMouseWheel(object? sender, MouseEventArgs e) {
 		var before = ToWorld(e.Location);
@@ -739,13 +755,7 @@ public sealed class GraphCanvas : UserControl {
 	/// belongs beside the canvas rather than on top of it.
 	/// </summary>
 	private void Connect(VmElement from, int exit, VmElement to) {
-		// The empty port has no exit behind it yet, so the condition is written first and the
-		// link leaves by the number it lands on — the one the otherwise exit had a moment ago.
-		if (exit == DraftExit) {
-			if (from is not Branch branch) return;
-			exit = branch.BranchConditions?.Count ?? 0;
-			GraphTopology.AddCondition(branch, _vm);
-		}
+		if (Resolve(from, ref exit)) return;
 
 		// A link needs somewhere to arrive: its DestEntryPointIndex is checked against the
 		// destination's entry points every time that node's local context resolves, and a graph
@@ -762,6 +772,70 @@ public sealed class GraphCanvas : UserControl {
 		Select(null, link);
 		GraphChanged?.Invoke(this, EventArgs.Empty);
 	}
+
+	/// <summary>
+	/// A link out of the graph rather than to another node — dragged from an exit into empty
+	/// space, which is what "and then it returns" looks like as a gesture.
+	///
+	/// A fifth of all links are these. How one returns is DestEntryPointIndex read as a LinkExit,
+	/// and the right default depends on where the link is: inside a subgraph it leaves the
+	/// subgraph (2546 of the Sandbox's 3635 do, against 1086 returning to the previous state),
+	/// while at the top level there is no subgraph to leave and 3872 of 3875 return to the
+	/// previous state. The inspector can say otherwise afterwards.
+	/// </summary>
+	private void ConnectToNothing(VmElement from, int exit) {
+		if (Resolve(from, ref exit)) return;
+
+		var link = VmElement.CreateDefault<GraphLink>(_vm, _container);
+		link.Source = new(from);
+		link.Destination = null;
+		link.SourceExitPointIndex = exit;
+		link.DestEntryPointIndex = (int)(IsSubGraph()
+			? GraphTopology.LinkExit.OuterGraph
+			: GraphTopology.LinkExit.PreviousState);
+
+		LinksOfContainer()?.Add(link);
+		OutputLinksOf(from)?.Add(link);
+		Select(null, link);
+		GraphChanged?.Invoke(this, EventArgs.Empty);
+	}
+
+	/// <summary>
+	/// A link into a node from an event rather than from another node. It has no source: the FSM
+	/// subscribes it while resting anywhere in the graph, and it arrives when the event is raised.
+	/// All 6681 of them in the two corpora write -1 as the exit index, and all but two name an
+	/// event — which is the one thing this cannot choose, so the inspector asks for it next.
+	/// </summary>
+	private void ConnectFromEvent(VmElement to) {
+		GraphTopology.EnsureEntryPoint(to, _vm);
+
+		var link = VmElement.CreateDefault<GraphLink>(_vm, _container);
+		link.Source = null;
+		link.Destination = new(to);
+		link.SourceExitPointIndex = -1;
+		link.DestEntryPointIndex = GraphTopology.EntriesOf(to).FirstOrDefault().Index;
+
+		LinksOfContainer()?.Add(link);
+		InputLinksOf(to)?.Add(link);
+		Select(null, link);
+		GraphChanged?.Invoke(this, EventArgs.Empty);
+	}
+
+	/// <summary>
+	/// Turns the empty port into a real exit, writing the condition it will be taken on. True when
+	/// the gesture cannot be honoured — the port only exists on a branch.
+	/// </summary>
+	private bool Resolve(VmElement from, ref int exit) {
+		if (exit != DraftExit) return false;
+		if (from is not Branch branch) return true;
+
+		exit = branch.BranchConditions?.Count ?? 0;
+		GraphTopology.AddCondition(branch, _vm);
+		return false;
+	}
+
+	/// <summary>Whether this graph sits inside another, which is what makes "out of the subgraph" mean anything.</summary>
+	private bool IsSubGraph() => _container is Graph graph && graph.Parent.Element is Graph;
 
 	private void Attach(GraphLink link, VmElement from, VmElement to) {
 		LinksOfContainer()?.Add(link);
@@ -800,6 +874,8 @@ public sealed class GraphCanvas : UserControl {
 		if (_selectedNode is { } node) {
 			if (GraphTopology.IsContainer(node))
 				menu.Items.Add("Open", null, (_, _) => NodeActivated?.Invoke(this, node));
+			// The one link that cannot be dragged: it starts at an event rather than at a port.
+			menu.Items.Add("Add event link into this", null, (_, _) => ConnectFromEvent(node));
 			menu.Items.Add("Delete node", null, (_, _) => DeleteNode(node));
 			menu.Items.Add(new ToolStripSeparator());
 		} else if (_selectedLink is { } link) {

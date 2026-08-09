@@ -486,11 +486,18 @@ public static class GraphTopology {
 	/// complaint here means the link really is something the game never ships.
 	/// </summary>
 	public static string? Problem(GraphLink link) {
-		var exits = ExitsOf(link.Source?.Element);
+		// A link with no source starts at an event, so there is no exit list to index into — only
+		// the value the data always writes for one, which is -1 on all 6681 of them. Judging it
+		// against an empty list instead, as this once did, complains about every event link there
+		// is.
+		if (link.Source?.Element == null)
+			return link.SourceExitPointIndex == -1
+				? null
+				: "An event link starts from the event rather than a node, so its exit index must be -1.";
+
+		var exits = ExitsOf(link.Source.Value.Element);
 		if (exits.All(e => e.Index != link.SourceExitPointIndex))
-			return link.Source?.Element == null
-				? "An event link starts from the event rather than a node, so its exit index must be -1."
-				: $"{NameOf(link.Source?.Element)} has no exit {link.SourceExitPointIndex}.";
+			return $"{NameOf(link.Source.Value.Element)} has no exit {link.SourceExitPointIndex}.";
 
 		// A link with no destination does not end the flow — it returns, and the way it returns
 		// is DestEntryPointIndex read as a LinkExit. Nothing else validates that number, so a
