@@ -81,6 +81,14 @@ public abstract class ParsingExecutor {
 
 	protected virtual string MindMapLinkFileName => "MindMapLink";
 
+	/// <summary>
+	/// The path a type's file sits at, given the base type name. Flat by default —
+	/// "&lt;dir&gt;/Event.xml" — which is how release and demo lay their files out. The alpha format
+	/// puts each type in its own upper-cased directory, so it overrides this.
+	/// </summary>
+	protected virtual string ResolveFile(string directory, string baseName, string extension) =>
+		Path.Combine(directory, baseName + extension);
+
     public virtual void ExecuteAll(string directory)
 	{
 		ExecuteAll(directory, ".xml");
@@ -89,42 +97,42 @@ public abstract class ParsingExecutor {
 	protected void ExecuteAll(string directory, string extension)
 	{
         System.Action[] actions = [
-			() => Load(EventLoader, Path.Combine(directory, "Event" + extension), Events),
-			() => Load(GraphLinkLoader, Path.Combine(directory, "GraphLink" + extension), GraphLinks),
-			() => Load(GameRootLoader, Path.Combine(directory, "GameRoot" + extension), GameRoots),
-			() => Load(StateLoader, Path.Combine(directory, "State" + extension), States),
-			() => Load(FunctionalComponentLoader, Path.Combine(directory, "FunctionalComponent" + extension), FunctionalComponents),
+			() => Load(EventLoader, ResolveFile(directory, "Event", extension), Events),
+			() => Load(GraphLinkLoader, ResolveFile(directory, "GraphLink", extension), GraphLinks),
+			() => Load(GameRootLoader, ResolveFile(directory, "GameRoot", extension), GameRoots),
+			() => Load(StateLoader, ResolveFile(directory, "State", extension), States),
+			() => Load(FunctionalComponentLoader, ResolveFile(directory, "FunctionalComponent", extension), FunctionalComponents),
 			
-			() => Load(ActionLineLoader, Path.Combine(directory, "ActionLine" + extension), ActionLines),
-			() => Load(ActionLoader, Path.Combine(directory, "Action" + extension), Actions),
-			() => Load(BranchLoader, Path.Combine(directory, "Branch" + extension), Branches),
-			() => Load(ConditionLoader, Path.Combine(directory, "Condition" + extension), Conditions),
-			() => Load(EntryPointLoader, Path.Combine(directory, "EntryPoint" + extension), EntryPoints),
-			() => Load(ExpressionLoader, Path.Combine(directory, "Expression" + extension), Expressions),
+			() => Load(ActionLineLoader, ResolveFile(directory, "ActionLine", extension), ActionLines),
+			() => Load(ActionLoader, ResolveFile(directory, "Action", extension), Actions),
+			() => Load(BranchLoader, ResolveFile(directory, "Branch", extension), Branches),
+			() => Load(ConditionLoader, ResolveFile(directory, "Condition", extension), Conditions),
+			() => Load(EntryPointLoader, ResolveFile(directory, "EntryPoint", extension), EntryPoints),
+			() => Load(ExpressionLoader, ResolveFile(directory, "Expression", extension), Expressions),
 
-			() => Load(ItemLoader, Path.Combine(directory, "Item" + extension), Items),
-			() => Load(OtherLoader, Path.Combine(directory, "Other" + extension), Others),
-			() => Load(SceneLoader, Path.Combine(directory, "Scene" + extension), Scenes),
-			() => Load(GeomLoader, Path.Combine(directory, "Geom" + extension), Geoms),
-			() => Load(CharacterLoader, Path.Combine(directory, "Character" + extension), Characters),
+			() => Load(ItemLoader, ResolveFile(directory, "Item", extension), Items),
+			() => Load(OtherLoader, ResolveFile(directory, "Other", extension), Others),
+			() => Load(SceneLoader, ResolveFile(directory, "Scene", extension), Scenes),
+			() => Load(GeomLoader, ResolveFile(directory, "Geom", extension), Geoms),
+			() => Load(CharacterLoader, ResolveFile(directory, "Character", extension), Characters),
 
-			() => Load(GameStringLoader, Path.Combine(directory, "GameString" + extension), GameStrings),
-			() => Load(GraphLoader, Path.Combine(directory, "Graph" + extension), Graphs),
-			() => Load(MindMapNodeContentLoader, Path.Combine(directory, "MindMapNodeContent" + extension), MindMapNodeContents),
-			() => Load(MindMapNodeLoader, Path.Combine(directory, "MindMapNode" + extension), MindMapNodes),
-			() => Load(ParameterLoader, Path.Combine(directory, "Parameter" + extension), Parameters),
-			() => Load(PartConditionLoader, Path.Combine(directory, "PartCondition" + extension), PartConditions),
-			() => Load(QuestLoader, Path.Combine(directory, "Quest" + extension), Quests),
-			() => Load(ReplyLoader, Path.Combine(directory, "Reply" + extension), Replies),
-			() => Load(SampleLoader, Path.Combine(directory, "Sample" + extension), Samples),
-			() => Load(SpeechLoader, Path.Combine(directory, "Speech" + extension), Speeches),
-			() => Load(TalkingLoader, Path.Combine(directory, "Talking" + extension), Talkings),
+			() => Load(GameStringLoader, ResolveFile(directory, "GameString", extension), GameStrings),
+			() => Load(GraphLoader, ResolveFile(directory, "Graph", extension), Graphs),
+			() => Load(MindMapNodeContentLoader, ResolveFile(directory, "MindMapNodeContent", extension), MindMapNodeContents),
+			() => Load(MindMapNodeLoader, ResolveFile(directory, "MindMapNode", extension), MindMapNodes),
+			() => Load(ParameterLoader, ResolveFile(directory, "Parameter", extension), Parameters),
+			() => Load(PartConditionLoader, ResolveFile(directory, "PartCondition", extension), PartConditions),
+			() => Load(QuestLoader, ResolveFile(directory, "Quest", extension), Quests),
+			() => Load(ReplyLoader, ResolveFile(directory, "Reply", extension), Replies),
+			() => Load(SampleLoader, ResolveFile(directory, "Sample", extension), Samples),
+			() => Load(SpeechLoader, ResolveFile(directory, "Speech", extension), Speeches),
+			() => Load(TalkingLoader, ResolveFile(directory, "Talking", extension), Talkings),
 			
-			() => Load(BlueprintLoader, Path.Combine(directory, "Blueprint" + extension), Blueprints),
-			() => Load(GameModeLoader, Path.Combine(directory, "GameMode" + extension), GameModes),
-			() => Load(CustomTypeLoader, Path.Combine(directory, "CustomType" + extension), CustomTypes),
-			() => Load(MindMapLoader, Path.Combine(directory, "MindMap" + extension), MindMaps),
-			() => Load(MindMapLinkLoader, Path.Combine(directory, MindMapLinkFileName + extension), MindMapLinks)
+			() => Load(BlueprintLoader, ResolveFile(directory, "Blueprint", extension), Blueprints),
+			() => Load(GameModeLoader, ResolveFile(directory, "GameMode", extension), GameModes),
+			() => Load(CustomTypeLoader, ResolveFile(directory, "CustomType", extension), CustomTypes),
+			() => Load(MindMapLoader, ResolveFile(directory, "MindMap", extension), MindMaps),
+			() => Load(MindMapLinkLoader, ResolveFile(directory, MindMapLinkFileName, extension), MindMapLinks)
         ];
 
         if (UseParallel) {

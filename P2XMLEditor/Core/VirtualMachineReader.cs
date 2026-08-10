@@ -28,10 +28,14 @@ public class VirtualMachineReader {
 		_vm = new VirtualMachine(ReadDataCapacity(vmPath, type), GetTemplateManager(templatesPath), type);
 		_vm.VmMetadata = ReadVmMetadata(vmPath, type);
 
-		_executor = type == GameType.Demo ? new DemoXElementParsingExecutor() : mode switch {
-			ParsingMode.Fastest => new FastestParsingExecutor(),
-			ParsingMode.XElement => new XElementParsingExecutor(),
-			_ => new XmlReaderParsingExecutor()
+		_executor = type switch {
+			GameType.Demo => new DemoXElementParsingExecutor(),
+			GameType.Alpha => new AlphaXElementParsingExecutor(),
+			_ => mode switch {
+				ParsingMode.Fastest => new FastestParsingExecutor(),
+				ParsingMode.XElement => new XElementParsingExecutor(),
+				_ => new XmlReaderParsingExecutor()
+			}
 		};
 		_executor.UseParallel = parallel;
 	}
@@ -39,10 +43,16 @@ public class VirtualMachineReader {
 	private static GameType DetectVmType(string vmPath) {
 		if (File.Exists(Path.Combine(vmPath, "Version.xml")))
 			return GameType.Release;
-		
+
 		if (Directory.GetFiles(vmPath, "*.xml.gz").Length > 0)
 			return GameType.Demo;
-			
+
+		// The alpha corpus is the one that keeps each type in its own upper-cased directory, so a
+		// per-type folder beside a root GameRoot.xml marks it apart from the flat release layout.
+		if (Directory.Exists(Path.Combine(vmPath, "ACTION")) &&
+			File.Exists(Path.Combine(vmPath, "GameRoot.xml")))
+			return GameType.Alpha;
+
 		return GameType.Release;
 	}
 	
