@@ -33,7 +33,7 @@ public class DemoXElementQuestLoader : IParser<RawQuestData> {
 				GameTimeContext = element.Element("GameTimeContext")?.Value,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value),
-				InheritanceInfo = ParseDemoList(element, "InheritanceInfo").ToArray(),
+				InheritanceInfo = ParseDemoScalarList(element, "InheritanceInfo"),
 				EventIds = ParseDemoListAsUlong(element, "Events").ToArray(),
 				ChildObjectIds = ParseDemoListAsUlong(element, "ChildObjects").ToArray(),
 				StartEventId = element.Element("StartEvent") != null

@@ -33,7 +33,7 @@ public class DemoXElementBlueprintLoader : IParser<RawBlueprintData> {
 				Name = element.Element("Name")!.Value,
 				ParentId = element.Element("Parent") != null ?
 					ulong.Parse(element.Element("Parent")!.Value) : null,
-				InheritanceInfo = ParseDemoList(element, "InheritanceInfo").ToArray(),
+				InheritanceInfo = ParseDemoScalarList(element, "InheritanceInfo"),
 				EventIds = ParseDemoListAsUlong(element, "Events").ToArray(),
 				ChildObjectIds = ParseDemoListAsUlong(element, "ChildObjects").ToArray()
 			};

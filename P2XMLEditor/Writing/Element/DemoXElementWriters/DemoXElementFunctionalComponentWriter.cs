@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Xml.Linq;
 using P2XMLEditor.Data;
 using P2XMLEditor.GameData.VirtualMachineElements;
@@ -10,6 +11,10 @@ namespace P2XMLEditor.Writing.Element.DemoXElementWriters;
 public class DemoXElementFunctionalComponentWriter : IDemoXElementWriter<FunctionalComponent> {
 	public XElement ToXml(FunctionalComponent element, WriterSettings settings) {
 		var obj = CreateDemoBaseElement(element.Id);
+
+		// The component's events. Without this the demo loader read them (once it too was fixed) and
+		// the writer dropped them, so a component came back with none across a save.
+		obj.Add(CreateDemoListElementAsLong("Events", element.Events?.Select(e => e.Id) ?? []));
 
 		if (!settings.RemoveDefaultValueTypes || element.Main) obj.Add(CreateDemoBoolElement("Main", element.Main));
 

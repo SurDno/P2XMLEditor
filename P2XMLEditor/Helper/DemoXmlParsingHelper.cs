@@ -46,5 +46,17 @@ public static class DemoXmlParsingHelper {
 		return new XElement(dictName, items.Select(x => new XElement(x.Key, x.Value)));
 	}
 
+	/// <summary>
+	/// The write side of <see cref="Parsing.Helpers.XElementExtensions.ParseDemoScalarList"/>: a
+	/// list emitted as one '%'-joined scalar, as the demo stores InheritanceInfo. Null — and so no
+	/// element — when there is nothing, which is how the real files leave an object with no
+	/// inheritance.
+	/// </summary>
+	public static XElement? CreateDemoScalarList(string name, IEnumerable<string>? items) {
+		if (items == null) return null;
+		var joined = string.Join("%", items);
+		return string.IsNullOrEmpty(joined) ? null : new XElement(name, joined);
+	}
+
 	public static XElement CreateGuidElement(ulong id) => new("Guid", id.ToString());
 }

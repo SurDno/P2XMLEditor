@@ -20,6 +20,10 @@ public class DemoXElementGraphLinkWriter : IDemoXElementWriter<GraphLink> {
 			new XElement("DestEntryPointIndex", element.DestEntryPointIndex)
 		);
 
+		// The arguments the link carries into what it enters. The loader read them; the writer left
+		// them out, so a link came back with none — every argument on it lost across a save.
+		obj.Add(CreateDemoListElement("SourceParams", element.SourceParams ?? []));
+
 		if (!settings.RemoveDefaultValueTypes || !element.Enabled) obj.Add(CreateDemoBoolElement("Enabled", element.Enabled));
 
 		obj.Add(

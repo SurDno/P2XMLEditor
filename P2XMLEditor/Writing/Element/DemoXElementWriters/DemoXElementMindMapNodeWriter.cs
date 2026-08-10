@@ -16,7 +16,10 @@ public class DemoXElementMindMapNodeWriter : IDemoXElementWriter<MindMapNode> {
 			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
 			new XElement("Parent", element.Parent.Id),
 			new XElement("LogicMapNodeType", element.LogicMapNodeType.Serialize()),
-			CreateDemoListElementAsLong("Content", element.Content.Select(c => c.Id)),
+			// NodeContent, not Content: the loader reads "NodeContent.List" — the real files' tag —
+			// so a bare "Content.List" was written and then never read back, dropping every node's
+			// content on reload.
+			CreateDemoListElementAsLong("NodeContent", element.Content.Select(c => c.Id)),
 			CreateDemoListElementAsLong("InputLinks", element.InputLinks.Select(l => l.Id)),
 			CreateDemoListElementAsLong("OutputLinks", element.OutputLinks.Select(l => l.Id)),
 			CreateDemoFloatElement("GameScreenPosX", element.GameScreenPosX),

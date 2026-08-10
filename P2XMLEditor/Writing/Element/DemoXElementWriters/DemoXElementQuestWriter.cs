@@ -29,7 +29,7 @@ public class DemoXElementQuestWriter : IDemoXElementWriter<Quest> {
 		if (element.Parent != null)
 			obj.Add(new XElement("Parent", element.Parent.Id));
 
-		obj.Add(CreateDemoListElement("InheritanceInfo", element.InheritanceInfo ?? []));
+		obj.Add(CreateDemoScalarList("InheritanceInfo", element.InheritanceInfo));
 		obj.Add(CreateDemoListElementAsLong("Events", element.Events?.Select(e => e.Id) ?? []));
 		obj.Add(CreateDemoListElementAsLong("ChildObjects", element.ChildObjects?.Select(c => c.Id) ?? []));
 

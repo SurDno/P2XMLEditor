@@ -66,6 +66,16 @@ public static class XElementExtensions {
 		return listElement.Elements().Select(x => x.Value).ToList();
 	}
 
+	/// <summary>
+	/// A list the demo format writes as one '%'-joined scalar rather than a &lt;.List&gt; of
+	/// &lt;value&gt;s — the shape InheritanceInfo takes there: "&lt;InheritanceInfo&gt;A%B&lt;/InheritanceInfo&gt;".
+	/// The tag is omitted for an empty list, so an absent or blank element reads as none.
+	/// </summary>
+	public static string[] ParseDemoScalarList(XElement element, string name) {
+		var value = element.Element(name)?.Value.Trim();
+		return string.IsNullOrEmpty(value) ? [] : value.Split('%');
+	}
+
 	public static List<ulong> ParseDemoListAsUlong(XElement element, string name) {
 		var listElement = element.Element(name + ".List");
 		if (listElement == null || listElement.IsEmpty) return [];

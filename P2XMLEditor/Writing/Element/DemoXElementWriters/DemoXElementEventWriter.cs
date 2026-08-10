@@ -15,7 +15,9 @@ public class DemoXElementEventWriter : IDemoXElementWriter<Event> {
 
 		obj.Add(new XElement("EventTime", element.EventTime.ToString("d\\.hh\\:mm\\:ss")));
 
-		if (!settings.RemoveDefaultValueTypes || !element.Manual) obj.Add(CreateDemoBoolElement("Manual", element.Manual));
+		// The demo names this flag "Procedural", which is the tag the loader reads back; the writer
+		// wrote "Manual" — the release format's name — so it round-tripped through neither reader.
+		if (!settings.RemoveDefaultValueTypes || !element.Manual) obj.Add(CreateDemoBoolElement("Procedural", element.Manual));
 
 		obj.Add(new XElement("EventRaisingType", element.EventRaisingType.Serialize()));
 

@@ -23,6 +23,7 @@ public class DemoXElementFunctionalComponentLoader : IParser<RawFunctionalCompon
 
 			var raw = new RawFunctionalComponentData {
 				Id = id,
+				EventIds = ParseDemoListAsUlong(element, "Events").ToArray(),
 				Main = element.Element("Main")?.Let(ParseBool) ?? false,
 				Name = element.Element("Name")!.Value,
 				ParentId = ulong.Parse(element.Element("Parent")!.Value),
