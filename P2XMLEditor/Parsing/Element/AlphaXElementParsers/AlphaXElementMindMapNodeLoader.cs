@@ -14,7 +14,7 @@ namespace P2XMLEditor.Parsing.Element.AlphaXElementParsers;
 public class AlphaXElementMindMapNodeLoader : IParser<RawMindMapNodeData> {
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawMindMapNodeData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

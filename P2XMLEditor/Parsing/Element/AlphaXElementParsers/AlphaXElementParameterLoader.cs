@@ -13,7 +13,7 @@ public class AlphaXElementParameterLoader : IParser<RawParameterData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawParameterData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

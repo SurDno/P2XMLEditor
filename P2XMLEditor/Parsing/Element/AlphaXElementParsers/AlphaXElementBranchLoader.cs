@@ -15,7 +15,7 @@ public class AlphaXElementBranchLoader : IParser<RawBranchData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawBranchData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

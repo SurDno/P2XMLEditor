@@ -13,6 +13,7 @@ namespace P2XMLEditor.Forms.MainForm.SaveSettings;
 public class SaveSettingsForm : Form {
 	private readonly RadioButton _formatRelease;
 	private readonly RadioButton _formatDemo;
+	private readonly RadioButton _formatAlpha;
 	private readonly CheckBox _cleanUpOrphanedElements;
 	private readonly CheckBox _removeDefaultValueTypes;
 	private readonly CheckBox _stripNames;
@@ -76,10 +77,11 @@ public class SaveSettingsForm : Form {
 
 		// --- Left Side: Format & Cleanup ---
 		var leftPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown };
-		var formatGroup = new GroupBox { Text = "Output Format", Size = new Size(380, 100), Margin = new Padding(0, 0, 0, 20) };
+		var formatGroup = new GroupBox { Text = "Output Format", Size = new Size(380, 130), Margin = new Padding(0, 0, 0, 20) };
 		_formatRelease = new RadioButton { Text = "Release (.xml, <Root> wrapper)", Location = new Point(15, 30), AutoSize = true, Checked = detectedType == GameType.Release };
 		_formatDemo = new RadioButton { Text = "Demo (.xml.gz, GZip compressed)", Location = new Point(15, 60), AutoSize = true, Checked = detectedType == GameType.Demo };
-		formatGroup.Controls.AddRange([_formatRelease, _formatDemo]);
+		_formatAlpha = new RadioButton { Text = "Alpha (.xml, one directory per type)", Location = new Point(15, 90), AutoSize = true, Checked = detectedType == GameType.Alpha };
+		formatGroup.Controls.AddRange([_formatRelease, _formatDemo, _formatAlpha]);
 		leftPanel.Controls.Add(formatGroup);
 
 		var cleanupGroup = new GroupBox { Text = "Minification Options", Size = new Size(380, 160) };
@@ -204,7 +206,7 @@ public class SaveSettingsForm : Form {
 		}
 
 		Settings = new WriterSettings {
-			Format = _formatDemo.Checked ? WriterFormat.Demo : WriterFormat.Release,
+			Format = _formatDemo.Checked ? WriterFormat.Demo : _formatAlpha.Checked ? WriterFormat.Alpha : WriterFormat.Release,
 			CleanUpOrphanedElements = _cleanUpOrphanedElements.Checked,
 			RemoveDefaultValueTypes = _removeDefaultValueTypes.Checked,
 			StripNames = _stripNames.Checked,

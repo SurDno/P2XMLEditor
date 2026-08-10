@@ -14,7 +14,7 @@ public class AlphaXElementGraphLoader : IParser<RawGraphData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawGraphData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

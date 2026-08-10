@@ -12,7 +12,7 @@ namespace P2XMLEditor.Parsing.Element.AlphaXElementParsers;
 public class AlphaXElementQuestLoader : IParser<RawQuestData> {
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawQuestData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

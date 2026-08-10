@@ -27,7 +27,7 @@ namespace P2XMLEditor.Parsing.Element.AlphaXElementParsers;
 public class AlphaXElementGameRootLoader : IParser<RawGameRootData> {
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawGameRootData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

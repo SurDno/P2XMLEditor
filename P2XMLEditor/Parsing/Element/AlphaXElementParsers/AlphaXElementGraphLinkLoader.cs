@@ -12,7 +12,7 @@ public class AlphaXElementGraphLinkLoader : IParser<RawGraphLinkData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawGraphLinkData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

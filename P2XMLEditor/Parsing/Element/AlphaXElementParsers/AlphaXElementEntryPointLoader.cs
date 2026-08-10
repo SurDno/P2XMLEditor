@@ -11,7 +11,7 @@ public class AlphaXElementEntryPointLoader : IParser<RawEntryPointData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawEntryPointData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();
