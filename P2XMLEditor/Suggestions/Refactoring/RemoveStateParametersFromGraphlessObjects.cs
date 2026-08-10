@@ -54,8 +54,8 @@ public class RemoveStateParametersFromGraphlessObjects(VirtualMachine vm) : Sugg
 		}
 
 		Logger.Log(LogLevel.Info,
-			$"Removed {removed} state parameter(s) from objects with no event graph"
-			+ (keptInherited > 0 ? $"; kept {keptInherited} inherited by an object that has one." : "."));
+			$"Removed {removed} state parameter(s) from objects with no event graph; kept {keptInherited} " +
+			$"inherited by an object that has one." );
 	}
 
 	private static bool HasGraph(ParameterHolder holder) => holder.EventGraph != null;

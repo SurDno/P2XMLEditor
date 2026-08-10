@@ -7,6 +7,7 @@ using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Parsing.RawData;
 using static P2XMLEditor.Helper.XmlParsingHelper;
@@ -21,7 +22,7 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 	public GraphType GraphType { get; set; }
 	public List<InputParameter>? InputParams { get; set; }
 	public VmEither<ParameterHolder, Graph> Parent { get; set; }
-	public VmEither<Graph, Talking>? SubstituteGraph { get; set; }
+	public VmEither<Graph, Talking, GraphPlaceholder>? SubstituteGraph { get; set; }
 	
 	public List<EntryPoint> EntryPoints { get; set; }
 	public List<GraphLink>? InputLinks { get; set; }
@@ -45,7 +46,8 @@ public class Graph(ulong id) : VmElement(id), IFiller<RawGraphData>, IGraphEleme
 		Name = data.Name;
 		Parent = vm.GetElement<ParameterHolder, Graph>(data.ParentId);
 		if (data.SubstituteGraphId.HasValue)
-			SubstituteGraph = vm.GetElement<Graph, Talking>(data.SubstituteGraphId.Value);
+			SubstituteGraph = vm.GetNullableElement<Graph, Talking, GraphPlaceholder>(data.SubstituteGraphId.Value) ?? 
+				new(vm.Register(new GraphPlaceholder(data.SubstituteGraphId.Value)));
 	}
 	
 	/// <summary>

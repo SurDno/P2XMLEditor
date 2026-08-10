@@ -96,6 +96,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 		if (OwnerComponent != null) return OwnerComponent;
 		if (Parent.Element is not ParameterHolder ph || IsCustom()) return null;
 		var key = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;
+		if (key == null) return null;
 		return ph.FunctionalComponents.FirstOrDefault(fc => key.StartsWith(fc.Name));
 	}
 
