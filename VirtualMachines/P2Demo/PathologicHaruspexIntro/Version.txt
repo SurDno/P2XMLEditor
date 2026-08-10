@@ -1,0 +1,4 @@
+﻿DataBase: plgamedb_demo
+Project: PathologicHaruspexIntro
+Editor version: 2055
+Game data xml build time: 26.03.2019 16:19:33

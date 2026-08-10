@@ -1,0 +1,4 @@
+﻿DataBase: plgamedb_demo
+Project: PathologicPlagueIntro
+Editor version: 1096
+Game data xml build time: 3/25/2019 1:38:50 PM

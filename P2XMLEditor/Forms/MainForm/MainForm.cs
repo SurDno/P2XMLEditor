@@ -9,6 +9,7 @@ using P2XMLEditor.Forms.MainForm.Combinations;
 using P2XMLEditor.Forms.MainForm.Dialogs;
 using P2XMLEditor.Forms.MainForm.Expressions;
 using P2XMLEditor.Forms.MainForm.Graphs;
+using P2XMLEditor.Forms.MainForm.Hierarchy;
 using P2XMLEditor.Forms.MainForm.Holders;
 using P2XMLEditor.Forms.MainForm.MindMapViewer;
 using P2XMLEditor.Forms.MainForm.Templates;
@@ -85,6 +86,7 @@ public class MainForm : Form {
 			browser.OpenGraphRequested += (_, graph) => ShowGraph(graph);
 			return browser;
 		});
+		RegisterTabFactory("Hierarchy", () => new HierarchyBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 
 		ShowTab("Mind Maps");
 	}

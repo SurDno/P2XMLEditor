@@ -1,0 +1,4 @@
+﻿DataBase: plgamedb_demo
+Project: PathologicSandbox
+Editor version: 9864
+Game data xml build time: 21.03.2019 15:53:21
