@@ -1,15 +1,18 @@
 using System;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using P2XMLEditor.Core;
 using P2XMLEditor.GameData;
 using P2XMLEditor.Forms.Editors;
+using P2XMLEditor.Forms.Editors.Actions;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.Helper;
 using P2XMLEditor.Services;
+using VmAction = P2XMLEditor.GameData.VirtualMachineElements.Action;
 
 namespace P2XMLEditor.Forms.MainForm.Dialogs;
 
@@ -17,6 +20,15 @@ public class DialogPropertiesPanel : Panel {
 	private readonly VirtualMachine _vm;
 	private VmElement? _selectedElement;
 	private readonly TableLayoutPanel _propertiesTable;
+
+	/// <summary>
+	/// Raised when an edit here changed the graph's shape — an action added or removed, a
+	/// condition edited, an action line created. The viewer relays the actual content, so it
+	/// relays this to a redraw rather than the panel repainting a graph it does not own.
+	/// </summary>
+	public event EventHandler? Changed;
+
+	private void NotifyChanged() => Changed?.Invoke(this, EventArgs.Empty);
 
 	public DialogPropertiesPanel(VirtualMachine vm) {
 		_vm = vm;
@@ -236,26 +248,20 @@ public class DialogPropertiesPanel : Panel {
 			AddHeader("ActionLine");
 			AddCheckbox("Is Loop Line", reply.ActionLine.ActionLineType == ActionLineType.Loop, isLoop => {
 				reply.ActionLine.ActionLineType = isLoop ? ActionLineType.Loop : ActionLineType.Common;
-				if (isLoop && reply.ActionLine.LoopInfo == null) {
-					reply.ActionLine.LoopInfo = new ActionLoopInfo(
-						ParameterSource.Create("", _vm),
-						ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-						ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-						false
-					);
-				}
+				EnsureLoopInfo(reply.ActionLine);
 				UpdateControls();
 			});
-			AddProperty("Action Type", reply.ActionLine.ActionLineType.Serialize(), null);
+			AddActionListEditor(reply.ActionLine);
 		} else {
-			var addActionButton = new Button { Text = "Add ActionLine", Dock = DockStyle.Fill, Height = 35 };
-			addActionButton.Click += (_, _) => {
-				reply.ActionLine = ActionLine.New(_vm, Core.IdGenerator.GetNewId<ActionLine>(_vm), reply);
+			AddButtonRow("Add ActionLine", () => {
+				// The line's context is the speech, not the reply: an action inside it resolves its
+				// variables against the speaker, which is where the shipped data points every reply
+				// action line's LocalContext too.
+				reply.ActionLine = ActionLine.New(_vm, Core.IdGenerator.GetNewId<ActionLine>(_vm), reply.Parent);
 				_vm.AddElement(reply.ActionLine, typeof(ActionLine));
 				UpdateControls();
-			};
-			_propertiesTable.Controls.Add(new Label { Text = "ActionLine:" }, 0, _propertiesTable.RowCount);
-			_propertiesTable.Controls.Add(addActionButton, 1, _propertiesTable.RowCount++);
+				NotifyChanged();
+			});
 		}
 
 	}
@@ -265,8 +271,8 @@ public class DialogPropertiesPanel : Panel {
 		AddProperty("Operation", condition.Operation.Serialize(), null);
 		AddProperty("Predicates", condition.Predicates.Count.ToString(), null);
 
-		var previewLabel = new Label { 
-			Text = "Preview:", 
+		var previewLabel = new Label {
+			Text = "Preview:",
 			Dock = DockStyle.Fill,
 			TextAlign = ContentAlignment.TopLeft
 		};
@@ -281,6 +287,36 @@ public class DialogPropertiesPanel : Panel {
 
 		_propertiesTable.Controls.Add(previewLabel, 0, _propertiesTable.RowCount);
 		_propertiesTable.Controls.Add(previewText, 1, _propertiesTable.RowCount++);
+
+		// The panel showed the condition and gave no way to change it — the one editor that opens a
+		// condition, predicates and all, was reachable from a reply but not from the condition node
+		// itself. Its scope is whatever owns it: a reply reads its condition in the speaker's
+		// context, a branch in its own.
+		AddButtonRow("Edit Condition", () => {
+			using var editor = new ConditionEditorForm(_vm, condition, ResolveConditionContext(condition));
+			editor.ShowDialog(FindForm());
+			previewText.Text = PreviewHelper.Preview(condition);
+			NotifyChanged();
+		});
+	}
+
+	/// <summary>
+	/// What a condition is read in the context of. A reply's enable condition resolves against the
+	/// speech it answers, a branch arm against the branch. Found by asking who points at it rather
+	/// than stored, because a condition does not name its owner.
+	/// </summary>
+	private VmEither<Branch, Event, MindMapNode, Speech, State> ResolveConditionContext(Condition condition) {
+		foreach (var reply in _vm.GetElementsByType<Reply>())
+			if (reply.EnableCondition == condition)
+				return new(reply.Parent);
+
+		foreach (var branch in _vm.GetElementsByType<Branch>())
+			if (branch.BranchConditions?.Any(c => c.Element == condition) == true)
+				return new(branch);
+
+		// Nothing owns it — a condition just made, or one detached. A speech from this dialog is
+		// the only context on offer; a Root condition with no variable references needs none anyway.
+		return new(_vm.First<Speech>());
 	}
 
 	private void SetupBranchProperties(Branch branch) {
@@ -308,6 +344,17 @@ public class DialogPropertiesPanel : Panel {
 			};
 			_propertiesTable.Controls.Add(condLabel, 0, _propertiesTable.RowCount);
 			_propertiesTable.Controls.Add(condPreview, 1, _propertiesTable.RowCount++);
+
+			// A whole-condition arm opens in the condition editor, in the branch's own context. A
+			// bare PartCondition arm — 918 of the corpus's 4386 — has no standalone editor, so it
+			// stays a preview rather than a button that would open nothing.
+			if (condOrPart is Condition armCondition)
+				AddButtonRow($"Edit Arm [{i}]", () => {
+					using var editor = new ConditionEditorForm(_vm, armCondition, new(branch));
+					editor.ShowDialog(FindForm());
+					condPreview.Text = PreviewHelper.Preview(armCondition);
+					NotifyChanged();
+				});
 		}
 		
 		AddProperty("[else]", "(last arm, no condition)", null);
@@ -320,27 +367,13 @@ public class DialogPropertiesPanel : Panel {
 		
 		AddComboBox("Line Type", actionLine.ActionLineType, newType => {
 			actionLine.ActionLineType = newType;
-			if (newType == ActionLineType.Loop && actionLine.LoopInfo == null) {
-				actionLine.LoopInfo = new ActionLoopInfo(
-					ParameterSource.Create("", _vm),
-					ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-					ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-					false
-				);
-			}
+			EnsureLoopInfo(actionLine);
 			UpdateControls();
 		});
 
 		AddCheckbox("Is Loop", actionLine.ActionLineType == ActionLineType.Loop, isLoop => {
 			actionLine.ActionLineType = isLoop ? ActionLineType.Loop : ActionLineType.Common;
-			if (isLoop && actionLine.LoopInfo == null) {
-				actionLine.LoopInfo = new ActionLoopInfo(
-					ParameterSource.Create("", _vm),
-					ParameterSource.Create("0", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-					ParameterSource.Create("10", _vm, null, P2XMLEditor.GameData.VmTypeInfo.Int32),
-					false
-				);
-			}
+			EnsureLoopInfo(actionLine);
 			UpdateControls();
 		});
 
@@ -375,26 +408,93 @@ public class DialogPropertiesPanel : Panel {
 			});
 		}
 
-		if (actionLine.Actions != null) {
-			AddProperty("Action Count", actionLine.Actions.Count.ToString(), null);
-			for (var i = 0; i < actionLine.Actions.Count; i++) {
-				if (actionLine.Actions[i].Element is P2XMLEditor.GameData.VirtualMachineElements.Action a) {
-					AddProperty($"[{i}] Type", a.ActionType.Serialize(), null);
-					AddProperty($"[{i}] Target", a.TargetObject.Kind.ToString(), null);
-					if (a.EventToRaise != null)
-						AddProperty($"[{i}] Event", a.EventToRaise.Name, null);
-				}
+		AddActionListEditor(actionLine);
+	}
+
+	/// <summary>
+	/// The line's own bounds, seeded when it becomes a loop. const_0 to const_2147483647 is the
+	/// whole list, which is what almost every shipped loop runs; 0 to 10 — what this panel used to
+	/// seed — silently stops after ten and appears nowhere in the data.
+	/// </summary>
+	private void EnsureLoopInfo(ActionLine line) {
+		if (line.ActionLineType != ActionLineType.Loop || line.LoopInfo != null) return;
+		line.LoopInfo = new ActionLoopInfo(
+			ParameterSource.Create("", _vm),
+			ParameterSource.Create("const_0", _vm, null, VmTypeInfo.Int32),
+			ParameterSource.Create("const_2147483647", _vm, null, VmTypeInfo.Int32),
+			false);
+	}
+
+	/// <summary>
+	/// The actions of a line, each editable in the full action editor, with add and remove. This
+	/// replaces a read-only list and an "Add Action" button that only ever showed a "not
+	/// implemented" box — the one thing this panel most needed to do it could not do.
+	/// </summary>
+	private void AddActionListEditor(ActionLine line) {
+		var actions = line.Actions ?? [];
+		AddProperty("Action Count", actions.Count(a => a.Element is VmAction).ToString(), null);
+
+		for (var i = 0; i < actions.Count; i++) {
+			if (actions[i].Element is not VmAction action) {
+				// A nested action line, not an action — shown, since it counts, but edited by
+				// selecting it as its own node rather than through this row.
+				AddProperty($"[{i}]", actions[i].Element is ActionLine nested ? $"[line] {nested.Name}" : "(line)", null);
+				continue;
 			}
-		} else {
-			AddProperty("Action Count", "0", null);
+
+			var row = new FlowLayoutPanel {
+				Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, WrapContents = false,
+				AutoSize = true, Margin = Padding.Empty, Padding = Padding.Empty
+			};
+			var edit = new Button { Text = "Edit", Width = 48, Height = 26, Margin = new Padding(0, 0, 4, 0) };
+			edit.Click += (_, _) => EditAction(action);
+			var remove = new Button { Text = "✕", Width = 30, Height = 26, Margin = Padding.Empty };
+			remove.Click += (_, _) => {
+				line.Actions?.RemoveAll(a => a.Element == action);
+				_vm.RemoveElement(action);
+				UpdateControls();
+				NotifyChanged();
+			};
+			row.Controls.Add(edit);
+			row.Controls.Add(remove);
+
+			var preview = new Label {
+				Text = $"[{i}] {PreviewHelper.Preview(action)}", Dock = DockStyle.Fill,
+				AutoEllipsis = true, TextAlign = ContentAlignment.MiddleLeft, Height = 30
+			};
+
+			_propertiesTable.Controls.Add(preview, 0, _propertiesTable.RowCount);
+			_propertiesTable.Controls.Add(row, 1, _propertiesTable.RowCount++);
 		}
-		
-		var addActionButton = new Button { Text = "Add Action", Dock = DockStyle.Fill, Height = 35 };
-		addActionButton.Click += (_, _) => {
-			MessageBox.Show("Adding individual actions requires a full Action Editor. Currently not implemented in Properties Panel.");
-		};
-		_propertiesTable.Controls.Add(new Label { Text = "" }, 0, _propertiesTable.RowCount);
-		_propertiesTable.Controls.Add(addActionButton, 1, _propertiesTable.RowCount++);
+
+		AddButtonRow("Add Action", () => {
+			var action = VmElement.CreateDefault<VmAction>(_vm, line);
+			(line.Actions ??= []).Add(new(action));
+
+			using var editor = new ActionEditorForm(_vm, action);
+			if (editor.ShowDialog(FindForm()) != DialogResult.OK) {
+				line.Actions.RemoveAll(a => a.Element == action);
+				_vm.RemoveElement(action);
+			}
+			UpdateControls();
+			NotifyChanged();
+		});
+	}
+
+	private void EditAction(VmAction action) {
+		using var editor = new ActionEditorForm(_vm, action);
+		if (editor.ShowDialog(FindForm()) != DialogResult.OK) return;
+		UpdateControls();
+		NotifyChanged();
+	}
+
+	/// <summary>A full-width button spanning both columns, for an action that is not a field.</summary>
+	private void AddButtonRow(string text, System.Action onClick) {
+		var button = new Button { Text = text, Dock = DockStyle.Fill, Height = 32 };
+		button.Click += (_, _) => onClick();
+		_propertiesTable.Controls.Add(button, 0, _propertiesTable.RowCount);
+		_propertiesTable.SetColumnSpan(button, 2);
+		_propertiesTable.RowCount++;
 	}
 
 	private void AddHeader(string text) {

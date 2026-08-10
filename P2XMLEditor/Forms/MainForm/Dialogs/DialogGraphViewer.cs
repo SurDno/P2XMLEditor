@@ -95,10 +95,14 @@ public class DialogGraphViewer : GraphViewer {
 		
 		CalculateLayout();
 
-		_propertiesPanel = new DialogPropertiesPanel(vm) { 
-			Dock = DockStyle.Right, 
-			Width = 350 
+		_propertiesPanel = new DialogPropertiesPanel(vm) {
+			Dock = DockStyle.Right,
+			Width = 350
 		};
+		// An action added or removed, a condition edited, an action line created — all change what
+		// the graph shows, and adding a line adds a node, so the layout is rebuilt rather than just
+		// repainted.
+		_propertiesPanel.Changed += (_, _) => RefreshView();
 		Controls.Add(_propertiesPanel);
 
 		InitializeContextMenu();
