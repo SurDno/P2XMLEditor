@@ -20,15 +20,22 @@ public class VmPathValidator : PathValidator {
 			return Error("This is a directory containing virtual machines, not a specific virtual machine. Select " +
 						 "one of the nested directories.");
 		
-		if (Directory.GetFiles(PathBox.Text, "*.xml").Length == 0 && Directory.GetFiles(PathBox.Text, "*.xml.gz").Length == 0) 
+		// The alpha corpus keeps each type in its own upper-cased directory with GameRoot.xml at
+		// the root, so its only root-level .xml is GameRoot; the file check still passes on it.
+		var isAlpha = Directory.Exists(Path.Combine(PathBox.Text, "ACTION")) &&
+					  File.Exists(Path.Combine(PathBox.Text, "GameRoot.xml"));
+		var isDemo = !isAlpha && Directory.GetFiles(PathBox.Text, "*.xml.gz").Length > 0;
+		var isRelease = !isAlpha && !isDemo;
+
+		if (Directory.GetFiles(PathBox.Text, "*.xml").Length == 0 && Directory.GetFiles(PathBox.Text, "*.xml.gz").Length == 0)
 			return Error("Not a valid VirtualMachine directory. No XML (or XML.GZ) files found");
-		if (!Directory.Exists(Path.Combine(PathBox.Text, "Localizations"))) 
+		// Only the release format keeps localizations in an external folder; the demo and alpha
+		// formats store them inline in GameString, so requiring the folder there rejected valid
+		// virtual machines.
+		if (isRelease && !Directory.Exists(Path.Combine(PathBox.Text, "Localizations")))
 			return Error("Not a valid VirtualMachine directory. No Localizations folder found");
-		
-		var type = "Release VM";
-		if (!File.Exists(Path.Combine(PathBox.Text, "Version.xml")) && Directory.GetFiles(PathBox.Text, "*.xml.gz").Length > 0)
-			type = "Demo VM";
-			
+
+		var type = isAlpha ? "Alpha VM" : isDemo ? "Demo VM" : "Release VM";
 		return Success($"The virtual machine is valid ({type}).");
 	}
 	
