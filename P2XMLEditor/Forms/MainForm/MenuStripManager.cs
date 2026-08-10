@@ -238,8 +238,15 @@ public class MenuStripManager {
    private void SetupSuggestionMenu(ToolStripMenuItem parentMenu, IEnumerable<Type> suggestionTypes, Func<Type, string> getMenuPath) {
 	   var executeAllItem = new ToolStripMenuItem("Execute All");
 	   executeAllItem.Click += (_, _) => {
-		   foreach (var type in suggestionTypes) 
-			   ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+		   try {
+			   foreach (var type in suggestionTypes)
+				   ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+		   } finally {
+			   // A pass deletes and rewires elements the open tabs are showing, so they are
+			   // rebuilt from the current VM once the batch has run. In a finally because a pass
+			   // that threw partway still changed the data the tabs are displaying.
+			   _mainForm.RefreshLoadedTabs();
+		   }
 	   };
 	   parentMenu.DropDownItems.Add(executeAllItem);
 	   parentMenu.DropDownItems.Add(new ToolStripSeparator());
@@ -262,7 +269,13 @@ public class MenuStripManager {
 		   }
 
 		   var leaf = new ToolStripMenuItem(pathParts.Last());
-		   leaf.Click += (_, _) => ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+		   leaf.Click += (_, _) => {
+			   try {
+				   ((Suggestion)Activator.CreateInstance(type, _mainForm.VirtualMachine)!).Execute();
+			   } finally {
+				   _mainForm.RefreshLoadedTabs();
+			   }
+		   };
 		   currentMenu.DropDownItems.Add(leaf);
 	   }
    }

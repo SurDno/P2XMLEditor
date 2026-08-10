@@ -106,6 +106,32 @@ public class MainForm : Form {
 	private void RegisterTabFactory(string name, Func<Control> factory) {
 		_tabFactories[name] = factory;
 	}
+
+	/// <summary>
+	/// Rebuilds every open tab from its factory. Called after a refactoring or cleanup runs, which
+	/// deletes and rewires elements underneath whatever is on screen: a graph browser still lists
+	/// graphs a merge removed and its canvas may hold one, a dialog viewer points at replies that
+	/// are gone. Every tab factory reads the current VM and nothing else, so recreating the content
+	/// is the one refresh guaranteed to leave nothing stale — at the cost of the open selection,
+	/// which is not worth tracking element by element across passes that can move anything.
+	///
+	/// The <see cref="TabPage"/> is kept, so which tabs are shown and which is selected survive;
+	/// only the control inside it is replaced.
+	/// </summary>
+	public void RefreshLoadedTabs() {
+		if (_virtualMachine == null) return;
+
+		foreach (var (name, tabPage) in _loadedTabs) {
+			if (!_tabFactories.TryGetValue(name, out var factory)) continue;
+
+			var old = new List<Control>(tabPage.Controls.Count);
+			foreach (Control control in tabPage.Controls) old.Add(control);
+			tabPage.Controls.Clear();
+			foreach (var control in old) control.Dispose();
+
+			tabPage.Controls.Add(factory());
+		}
+	}
 	
 	public void ShowTab(string tabName) {
 		if (!_tabFactories.ContainsKey(tabName)) return;
