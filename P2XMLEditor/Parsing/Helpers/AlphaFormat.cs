@@ -1,32 +1,88 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace P2XMLEditor.Parsing.Helpers;
 
 /// <summary>
-/// The one thing about the alpha corpus that is not the demo shape with the id moved: it writes the
-/// engine namespace with a Cyrillic 'с' (U+0441) where the standard uses a Latin 'c' —
-/// "PLVirtualMa<b>с</b>hine" — in every type string it stores. Left as-is, none of those types
-/// resolve (<c>GetVmTypeInfo</c> returns Unknown for thousands of parameters), so type strings are
-/// normalised to the Latin spelling the model works in on the way in and put back on the way out.
+/// The alpha corpus names types the way the old engine assemblies did — fully qualified, and with
+/// the engine namespace spelled with a Cyrillic 'с' (U+0441): "PLVirtualMa<b>с</b>hine.Common.ITextRef",
+/// "Engine.Common.Components.Movable.AreaEnum", "…EngineAPI.VMCommonList". The model works in the
+/// short serialization names the later formats use — "ITextRef", "Area", "CommonList" — and left
+/// alone none of the qualified names resolve, so thousands of parameters load as an Unknown type.
 ///
-/// The swap is of the whole "PLVirtualMachine" substring, never the bare letter, so the Russian
-/// text that fills GameString — which carries the same Cyrillic letter in ordinary words — is left
-/// untouched: that exact Latin-surrounded sequence never occurs inside it.
+/// This converts between the two: the qualified alpha spelling → the short model spelling on the
+/// way in, and back on the way out. Most names are just the qualified name's last segment, but a
+/// handful the engine renamed outright (VMCommonList → CommonList, AreaEnum → Area, LockState →
+/// GateLockState, …), so the whole set is spelled out rather than derived.
+///
+/// Reading replaces the qualified strings wholesale — they are unambiguous, a .NET namespace path
+/// never occurs inside ordinary text, so even the Russian in GameString (which carries the same
+/// Cyrillic letter) is safe. Writing is the ambiguous direction — a short name like "Area" is an
+/// ordinary word — so it only expands a name that sits in a type position: right after a &lt;Type&gt;
+/// tag, after the "_type_" marker inside a serialized value, or after a '%' that joins one type to
+/// the next.
 /// </summary>
 public static class AlphaFormat {
-	public const string EngineNamespace = "PLVirtualMachine";       // Latin c
-	public const string AlphaNamespace = "PLVirtualMaсhine";   // Cyrillic с (U+0441)
+	private const string EngineNamespace = "PLVirtualMachine";       // Latin c
+	private const string AlphaNamespace = "PLVirtualMaсhine";   // Cyrillic с (U+0441)
 
-	/// <summary>Alpha spelling → the Latin spelling the model uses. A no-op on any other format.</summary>
-	public static string Normalize(string text) => text.Replace(AlphaNamespace, EngineNamespace);
+	/// <summary>Qualified alpha type name (Latin, post-Cyrillic-fix) → short model name.</summary>
+	private static readonly (string Qualified, string Short)[] TypeNames = {
+		("PLVirtualMachine.Common.EngineAPI.VMCommonList", "CommonList"),
+		("PLVirtualMachine.Common.EngineAPI.VMECS.EVMGameLocalizationName", "GameLocalizationName"),
+		("PLVirtualMachine.Common.EngineAPI.GameTime", "GameTime"),
+		("PLVirtualMachine.Common.IObjRef", "IObjRef"),
+		("PLVirtualMachine.Common.ITextRef", "ITextRef"),
+		("PLVirtualMachine.Common.IStateRef", "IStateRef"),
+		("PLVirtualMachine.Common.ISampleRef", "ISampleRef"),
+		("PLVirtualMachine.Common.IBlueprintRef", "IBlueprintRef"),
+		("PLVirtualMachine.Common.ObjectCombinationDataStruct", "ObjectCombinationDataStruct"),
+		("Engine.Common.Commons.CombatActionEnum", "CombatAction"),
+		("Engine.Common.Commons.BoundHealthStateEnum", "BoundHealthStateEnum"),
+		("Engine.Common.Commons.CombatStyleEnum", "CombatStyleEnum"),
+		("Engine.Common.Commons.DiseasedStateEnum", "DiseasedStateEnum"),
+		("Engine.Common.Commons.FractionEnum", "FractionEnum"),
+		("Engine.Common.Commons.LiquidTypeEnum", "LiquidTypeEnum"),
+		("Engine.Common.Commons.StammKind", "StammKind"),
+		("Engine.Common.Components.Crowds.OutdoorCrowdLayoutEnum", "OutdoorCrowdLayout"),
+		("Engine.Common.Components.Gate.LockState", "GateLockState"),
+		("Engine.Common.Components.Interactable.InteractType", "InteractType"),
+		("Engine.Common.Components.Movable.AreaEnum", "Area"),
+		("Engine.Common.Components.Regions.BuildingEnum", "BuildingEnum"),
+		("Engine.Common.Components.Storable.ContainerOpenStateEnum", "ContainerOpenState"),
+	};
 
-	/// <summary>The model's Latin spelling → the alpha spelling, for writing the corpus back out.</summary>
-	public static string Denormalize(string text) => text.Replace(EngineNamespace, AlphaNamespace);
+	// A short name expands back only where it is genuinely a type: after "<Type>", after "_type_",
+	// or after a '%' joining types. Longest names first so none is matched inside a longer one.
+	private static readonly Regex ShortNameInTypePosition = new(
+		"(?<=<Type>|_type_|%)(" +
+		string.Join("|", TypeNames.Select(t => Regex.Escape(t.Short)).OrderByDescending(s => s.Length)) +
+		")(?=[%&<]|LIST|ELEM|$)",
+		RegexOptions.Compiled);
+
+	private static readonly Dictionary<string, string> ShortToQualified =
+		TypeNames.GroupBy(t => t.Short).ToDictionary(g => g.Key, g => g.First().Qualified);
+
+	/// <summary>Alpha spelling → the short, Latin spelling the model uses. A no-op on any other format.</summary>
+	public static string Normalize(string text) {
+		text = text.Replace(AlphaNamespace, EngineNamespace);
+		foreach (var (qualified, shortName) in TypeNames)
+			text = text.Replace(qualified, shortName);
+		return text;
+	}
+
+	/// <summary>The model's short spelling → the alpha spelling, for writing the corpus back out.</summary>
+	public static string Denormalize(string text) {
+		text = ShortNameInTypePosition.Replace(text, m => ShortToQualified[m.Value]);
+		return text.Replace(EngineNamespace, AlphaNamespace);
+	}
 
 	/// <summary>
-	/// A reader over an alpha file with its type strings already normalised. The whole file is read
-	/// and the substring replaced before parsing, so every occurrence — a parameter's Type, a type
+	/// A reader over an alpha file with its type names already in the model's spelling. The whole
+	/// file is read and normalised before parsing, so every occurrence — a parameter's Type, a type
 	/// embedded in a serialized Value, a message's declared type — is handled in one place rather
 	/// than field by field.
 	/// </summary>
