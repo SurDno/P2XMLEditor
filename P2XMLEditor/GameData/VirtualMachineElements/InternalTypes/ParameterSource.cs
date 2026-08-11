@@ -324,7 +324,11 @@ public struct ParameterSource {
 		}
 		if (target.Value.Parameter?.Element is Parameter variable) {
 			HitTracker.Hit();
-			src.TypeInfo = VmTypeHelper.GetVmTypeInfo(variable.Value.XmlType, vm);
+			if (variable is ParameterPlaceholder) {
+				src.TypeInfo = VmTypeInfo.Unknown;
+			} else {
+				src.TypeInfo = VmTypeHelper.GetVmTypeInfo(variable.Value.XmlType, vm);
+			}
 			return;
 		}
 		if (target.Value.ComponentParamName is { } componentParam &&
