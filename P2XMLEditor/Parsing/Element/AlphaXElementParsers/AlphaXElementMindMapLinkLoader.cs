@@ -13,7 +13,7 @@ public class AlphaXElementMindMapLinkLoader : IParser<RawMindMapLinkData> {
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawMindMapLinkData> raws) {
 		if (!File.Exists(filePath)) return;
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

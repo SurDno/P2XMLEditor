@@ -13,7 +13,7 @@ namespace P2XMLEditor.Parsing.Element.AlphaXElementParsers;
 
 public class AlphaXElementEventLoader : IParser<RawEventData> {
 	public void ProcessFile(string filePath, List<RawEventData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

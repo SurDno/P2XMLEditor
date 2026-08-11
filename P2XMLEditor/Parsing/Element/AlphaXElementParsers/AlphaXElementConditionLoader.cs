@@ -15,7 +15,7 @@ public class AlphaXElementConditionLoader : IParser<RawConditionData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawConditionData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

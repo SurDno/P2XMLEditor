@@ -14,7 +14,7 @@ public class AlphaXElementExpressionLoader : IParser<RawExpressionData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawExpressionData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

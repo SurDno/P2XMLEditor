@@ -302,9 +302,11 @@ public class MenuStripManager {
 	   var outputPath = _mainForm.Paths.VmPath;
 
 	   try {
-		   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
-			   ? new DemoVirtualMachineWriter(outputPath, _mainForm.VirtualMachine)
-			   : new ReleaseVirtualMachineWriter(outputPath, _mainForm.VirtualMachine);
+		   VirtualMachineWriterBase writer = settings.Format switch {
+			   WriterFormat.Demo => new DemoVirtualMachineWriter(outputPath, _mainForm.VirtualMachine),
+			   WriterFormat.Alpha => new AlphaVirtualMachineWriter(outputPath, _mainForm.VirtualMachine),
+			   _ => new ReleaseVirtualMachineWriter(outputPath, _mainForm.VirtualMachine)
+		   };
 
 		   writer.SaveVirtualMachine(settings);
 		   MessageBox.Show("Virtual machine saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -329,9 +331,11 @@ public class MenuStripManager {
 	   if (vmSettings == null) return;
 	   
 	   try {
-		   VirtualMachineWriterBase writer = settings.Format == WriterFormat.Demo
-			   ? new DemoVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine)
-			   : new ReleaseVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine);
+		   VirtualMachineWriterBase writer = settings.Format switch {
+			   WriterFormat.Demo => new DemoVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine),
+			   WriterFormat.Alpha => new AlphaVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine),
+			   _ => new ReleaseVirtualMachineWriter(vmSettings.OutputPath, _mainForm.VirtualMachine)
+		   };
 
 		   writer.SaveVirtualMachine(settings);
 		   

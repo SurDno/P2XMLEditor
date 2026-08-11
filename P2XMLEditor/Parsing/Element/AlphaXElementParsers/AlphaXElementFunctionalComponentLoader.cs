@@ -12,7 +12,7 @@ public class AlphaXElementFunctionalComponentLoader : IParser<RawFunctionalCompo
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawFunctionalComponentData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

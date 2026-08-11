@@ -13,7 +13,7 @@ public class AlphaXElementCustomTypeLoader : IParser<RawCustomTypeData> {
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawCustomTypeData> raws) {
 		if (!File.Exists(filePath)) return;
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

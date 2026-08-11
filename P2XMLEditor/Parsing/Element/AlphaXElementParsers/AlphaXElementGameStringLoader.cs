@@ -12,7 +12,7 @@ public class AlphaXElementGameStringLoader : IParser<RawGameStringData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawGameStringData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

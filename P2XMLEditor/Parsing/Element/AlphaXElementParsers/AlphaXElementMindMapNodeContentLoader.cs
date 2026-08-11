@@ -13,7 +13,7 @@ public class AlphaXElementMindMapNodeContentLoader : IParser<RawMindMapNodeConte
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawMindMapNodeContentData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();

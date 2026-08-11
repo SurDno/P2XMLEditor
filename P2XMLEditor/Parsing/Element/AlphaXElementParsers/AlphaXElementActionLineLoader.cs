@@ -15,7 +15,7 @@ public class AlphaXElementActionLineLoader : IParser<RawActionLineData> {
 	
 	[PerformanceLogHook]
 	public void ProcessFile(string filePath, List<RawActionLineData> raws) {
-		using var xr = XmlReaderExtensions.InitializeFullFileReader(filePath);
+		using var xr = AlphaFormat.OpenReader(filePath);
 
 		xr.MoveToContent();
 		xr.ReadStartElement();
