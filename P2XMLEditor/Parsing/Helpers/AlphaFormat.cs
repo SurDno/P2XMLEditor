@@ -21,9 +21,11 @@ namespace P2XMLEditor.Parsing.Helpers;
 /// Reading replaces the qualified strings wholesale — they are unambiguous, a .NET namespace path
 /// never occurs inside ordinary text, so even the Russian in GameString (which carries the same
 /// Cyrillic letter) is safe. Writing is the ambiguous direction — a short name like "Area" is an
-/// ordinary word — so it only expands a name that sits in a type position: right after a &lt;Type&gt;
-/// tag, after the "_type_" marker inside a serialized value, or after a '%' that joins one type to
-/// the next.
+/// ordinary word — so it only expands a name that sits in a type position: after a &lt;Type&gt; tag, the
+/// "_type_" marker in a serialized list value, a '%' joining two types, or one of the delimiters of
+/// the packed value strings a type is buried in (a DoFunction argument, a graph input parameter, a
+/// message cast, a readable predicate) — and always immediately before the '%'/'&amp;' a type is joined
+/// on by, which a name never carries. See <see cref="ShortNameInTypePosition"/>.
 /// </summary>
 public static class AlphaFormat {
 	private const string EngineNamespace = "PLVirtualMachine";       // Latin c
@@ -55,10 +57,17 @@ public static class AlphaFormat {
 		("Engine.Common.Components.Storable.ContainerOpenStateEnum", "ContainerOpenState"),
 	};
 
-	// A short name expands back only where it is genuinely a type: after "<Type>", after "_type_",
-	// or after a '%' joining types. Longest names first so none is matched inside a longer one.
+	// A short name expands back only where it is genuinely a type — never where it could be an
+	// ordinary word — which means sitting immediately after one of the markers a type follows and
+	// immediately before the '%'/'&' (or LIST/ELEM) a type is joined to the next thing by. The
+	// markers are every context a type appears in across the corpus: a &lt;Type&gt; element, the "_type_"
+	// tag inside a serialized list value, a '%' joining two types, and the delimiters of the packed
+	// value strings — a DoFunction argument's "PART&amp;<type>&amp;PARAM", a graph input parameter's
+	// "…P&amp;PM<type>", a message cast's "CAST&amp;INFO<type>", a readable predicate's "(?,<type>". A
+	// name never carries the trailing '%'/'&', so &lt;Name&gt;Area&lt;/Name&gt; is left alone. Longest names
+	// first so none is matched inside a longer one.
 	private static readonly Regex ShortNameInTypePosition = new(
-		"(?<=<Type>|_type_|%)(" +
+		@"(?<=<Type>|_type_|%|PART&amp;|P&amp;PM|CAST&amp;INFO|\(\?,)(" +
 		string.Join("|", TypeNames.Select(t => Regex.Escape(t.Short)).OrderByDescending(s => s.Length)) +
 		")(?=[%&<]|LIST|ELEM|$)",
 		RegexOptions.Compiled);
