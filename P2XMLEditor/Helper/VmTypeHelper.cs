@@ -8,6 +8,7 @@ using P2XMLEditor.GameData;
 using P2XMLEditor.GameData.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
+using P2XMLEditor.GameData.VirtualMachineElements.Enums;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
 using P2XMLEditor.GameData.VirtualMachineElements.Placeholders;
 using P2XMLEditor.Logging;
@@ -309,6 +310,38 @@ public static class VmTypeHelper {
 
 	public static string GetXmlType(VmType type) => type.Serialize();
 	public static Type? GetSystemType(VmType type) => VmToSystemType.GetValueOrDefault(type);
+
+	/// <summary>
+	/// The one <see cref="SampleType"/> a sample-valued slot accepts, or null when it accepts any.
+	///
+	/// A sample slot names the kind it wants in its own type: "ISampleRef%ILipSyncObject", or the
+	/// bare "ILipSyncObject" the older declarations use — the spec after the '%', or the whole name
+	/// when there is none, is exactly a SampleType's serialized form. A plain "ISampleRef" pins
+	/// nothing, so it matches no SampleType and every sample stays on offer. This is what stops an
+	/// IModel sample being picked for an ILipSyncObject slot.
+	/// </summary>
+	public static SampleType? RequiredSampleType(VmTypeInfo? type) {
+		if (type == null) return null;
+		string xml;
+		try {
+			xml = ToXmlType(type);
+		} catch {
+			return null;
+		}
+		var kind = xml.Contains('%') ? xml[(xml.LastIndexOf('%') + 1)..] : xml;
+		foreach (var sampleType in Enum.GetValues<SampleType>())
+			if (SafeSerialize(sampleType) == kind)
+				return sampleType;
+		return null;
+	}
+
+	private static string SafeSerialize(SampleType sampleType) {
+		try {
+			return sampleType.Serialize();
+		} catch {
+			return sampleType.ToString();
+		}
+	}
 	public static Type? ResolveType(string xmlType, VirtualMachine vm) => GetSystemType(GetVmType(xmlType, vm));
 
 	public static bool IsVmElement(string xmlType, VirtualMachine vm) {

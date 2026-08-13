@@ -7,6 +7,7 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.Interfaces;
+using P2XMLEditor.Helper;
 using P2XMLEditor.WindowsFormsExtensions;
 
 namespace P2XMLEditor.Forms.Editors.Actions;
@@ -144,9 +145,10 @@ public sealed class VmElementPicker : Form {
 		if (element == null) return "";
 
 		// A Sample carries no name of its own — only the engine GUID of the template it stands
-		// for, which is where the name lives.
-		if (element is Sample sample && TemplateName(sample, vm) is { } templateName)
-			return templateName;
+		// for, which is where the name lives. Failing that (templates not loaded, or a sample the
+		// set does not cover) its kind still beats a bare "Sample" that says nothing apart.
+		if (element is Sample sample)
+			return TemplateName(sample, vm) ?? $"Sample: {SampleKind(sample)}";
 
 		var name = element switch {
 			INamedElement named => named.Name,
@@ -164,6 +166,14 @@ public sealed class VmElementPicker : Form {
 			   !string.IsNullOrEmpty(template.Name)
 			? template.Name
 			: null;
+	}
+
+	private static string SampleKind(Sample sample) {
+		try {
+			return sample.SampleType.Serialize();
+		} catch {
+			return sample.SampleType.ToString();
+		}
 	}
 
 	/// <summary>

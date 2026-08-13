@@ -890,10 +890,19 @@ public sealed class ParameterSourceEditor : UserControl {
 			return _vm.AllParameterHolders().Where(o => o is Item or Other or Character);
 
 		var systemType = type == null ? null : VmTypeHelper.GetSystemType(type.BaseType);
-		if (systemType != null && typeof(VmElement).IsAssignableFrom(systemType) && systemType != typeof(GameObject))
-			return _vm.AllElements()
+		if (systemType != null && typeof(VmElement).IsAssignableFrom(systemType) && systemType != typeof(GameObject)) {
+			var candidates = _vm.AllElements()
 				.Where(element => systemType.IsInstanceOfType(element) && element is not IPlaceholder
 					&& element is not Parameter { IsConstant: true });
+
+			// A sample slot names the sample kind it wants — an IModel sample cannot fill an
+			// ILipSyncObject slot — so only samples of that kind are offered. A plain ISampleRef
+			// pins no kind and keeps them all.
+			if (systemType == typeof(Sample) && VmTypeHelper.RequiredSampleType(type) is { } sampleKind)
+				candidates = candidates.Where(element => element is Sample s && s.SampleType == sampleKind);
+
+			return candidates;
+		}
 
 		return _vm.AllParameterHolders();
 	}
