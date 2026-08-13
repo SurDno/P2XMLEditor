@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Expression">
+  <Item id="1125882730737503">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274214551</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184148301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730737504">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184148301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741305">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%562941395728232</TargetParam>
+    <LocalContext>2814706823022674</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741306">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%5066472274218351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728238</Const>
+    <LocalContext>2814706823022674</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741307">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%562941395728233</TargetParam>
+    <LocalContext>2814706823022674</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741308">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%5066472274218351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728239</Const>
+    <LocalContext>2814706823022674</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741309">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274218352</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184152101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741310">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184152101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741903">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009</TargetObject>
+    <TargetParam>%562941395659385</TargetParam>
+    <LocalContext>3377648184152701</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741904">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728868</Const>
+    <LocalContext>3377648184152701</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741907">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184152702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741908">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728871</Const>
+    <LocalContext>3377648184152702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741917">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%562941395728917</TargetParam>
+    <LocalContext>2814706823023305</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741918">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%5066472274193851</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728919</Const>
+    <LocalContext>2814706823023305</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741919">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%562941395728878</TargetParam>
+    <LocalContext>2814706823023306</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741920">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%5066472274193851</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728921</Const>
+    <LocalContext>2814706823023306</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741923">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%EndIteractEvent_message_тип</TargetParam>
+    <LocalContext>3377648184152705</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730741924">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395728924</Const>
+    <LocalContext>3377648184152705</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746503">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%562941395737566</TargetParam>
+    <LocalContext>3377648184157301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746504">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395737611</Const>
+    <LocalContext>3377648184157301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746505">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%562941395737564</TargetParam>
+    <LocalContext>3377648184157301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746506">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395737612</Const>
+    <LocalContext>3377648184157301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746513">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184157303</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730746514">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184157303</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730747003">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274224051</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184157801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730747004">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184157801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730748203">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184159001</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730748204">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395739053</Const>
+    <LocalContext>3377648184159001</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730753301">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%562941395728878</TargetParam>
+    <LocalContext>11821768631800551</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730753302">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395747752</Const>
+    <LocalContext>11821768631800551</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730753305">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009</TargetObject>
+    <TargetParam>%562941395659385</TargetParam>
+    <LocalContext>3377648184164101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730753306">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395747755</Const>
+    <LocalContext>3377648184164101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754403">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%OnEntityLogicEvent_message_entity</TargetParam>
+    <LocalContext>3377648184165201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754404">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>7599708409295376</TargetParam>
+    <LocalContext>3377648184165201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754407">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%OnEntityLogicEvent_message_name</TargetParam>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754408">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748856</Const>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754409">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%OnEntityLogicEvent_message_name</TargetParam>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754410">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748857</Const>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754411">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%OnEntityLogicEvent_message_name</TargetParam>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754412">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748858</Const>
+    <LocalContext>3377648184165202</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754415">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747778</TargetParam>
+    <LocalContext>3377648184165203</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754416">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748861</Const>
+    <LocalContext>3377648184165203</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754419">
+    <ExpressionType>EXPRESSION_SRC_FUNCTION</ExpressionType>
+    <TargetFunctionName>Support.Random</TargetFunctionName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <LocalContext>3377648184165204</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754420">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748864</Const>
+    <LocalContext>3377648184165204</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754423">
+    <ExpressionType>EXPRESSION_SRC_FUNCTION</ExpressionType>
+    <TargetFunctionName>Support.Random</TargetFunctionName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <LocalContext>3377648184165205</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730754424">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395748867</Const>
+    <LocalContext>3377648184165205</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730760903">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274237951</TargetObject>
+    <TargetParam>%OnStopSee_message_detected object</TargetParam>
+    <LocalContext>3377648184171701</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730760904">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955880283</TargetObject>
+    <TargetParam>5347942955880283</TargetParam>
+    <LocalContext>3377648184171701</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730760907">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274237951</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184171702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730760908">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395777164</Const>
+    <LocalContext>3377648184171702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762503">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274239554</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184173301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762504">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184173301</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762505">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274239553</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184173302</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762506">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184173302</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762507">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274239552</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184173303</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730762508">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184173303</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730767803">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274244852</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184178601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730767804">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184178601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730767805">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274244854</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184178602</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730767806">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184178602</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730768603">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274245651</TargetObject>
+    <TargetParam>%ObjectExitEvent_message_Object</TargetParam>
+    <LocalContext>3377648184179402</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730768604">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184179402</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730781403">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274256953</TargetObject>
+    <TargetParam>%ObjectEnterEvent_message_Object</TargetParam>
+    <LocalContext>3377648184192201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730781404">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>5347942955871761</TargetParam>
+    <LocalContext>3377648184192201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730813703">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%562941395714536</TargetParam>
+    <LocalContext>3377648184224001</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730813704">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395858109</Const>
+    <LocalContext>3377648184224001</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730820003">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184230201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730820004">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395865705</Const>
+    <LocalContext>3377648184230201</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730820005">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184152702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882730820006">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%5066472274218351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941395865712</Const>
+    <LocalContext>3377648184152702</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731196919">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274671751</TargetObject>
+    <TargetParam>%OnTemplateEntityLogicEvent_message_name</TargetParam>
+    <LocalContext>3377648184605606</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731196920">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397242383</Const>
+    <LocalContext>3377648184605606</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731197103">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274671751</TargetObject>
+    <TargetParam>%OnTemplateEntityLogicEvent_message_template entity</TargetParam>
+    <LocalContext>3377648184605801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731197104">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%5cc64fbdc2d040f7a4c93839f30bb658</TargetParam>
+    <LocalContext>3377648184605801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731197105">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274671751%5066472274671751</TargetObject>
+    <TargetParam>%OnTemplateEntityLogicEvent_message_template entity</TargetParam>
+    <LocalContext>3377648184605801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731197106">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%a67133279f064bcf9f71ef9d49e51153</TargetParam>
+    <LocalContext>3377648184605801</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731252903">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274727751</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184661601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731252904">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397434889</Const>
+    <LocalContext>3377648184661601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731261011">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274735852</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184669703</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731261012">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397443264</Const>
+    <LocalContext>3377648184669703</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731261013">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274735851%5066472274735851</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184669704</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731261014">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397443265</Const>
+    <LocalContext>3377648184669704</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270703">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%ArrivedRegionEvent_message_Регион</TargetParam>
+    <LocalContext>3377648184679101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270704">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860867470</TargetObject>
+    <TargetParam>9851473860866276H9851473860867470</TargetParam>
+    <LocalContext>3377648184679101</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270711">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193853</TargetObject>
+    <TargetParam>%ArrivedRegionEvent_message_Регион</TargetParam>
+    <LocalContext>3377648184679103</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270712">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860867877</TargetObject>
+    <TargetParam>9851473860866276H9851473860867877</TargetParam>
+    <LocalContext>3377648184679103</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270713">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274193853%5066472274193853</TargetObject>
+    <TargetParam>%ArrivedRegionEvent_message_Регион</TargetParam>
+    <LocalContext>3377648184679103</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731270714">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860866292</TargetObject>
+    <TargetParam>9851473860866276H9851473860866292</TargetParam>
+    <LocalContext>3377648184679103</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731285607">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860884176H10132944542931802</TargetObject>
+    <TargetParam>%562941395893188</TargetParam>
+    <LocalContext>3377648184694002</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731285608">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397477956</Const>
+    <LocalContext>3377648184694002</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731285611">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>9851473860866276H9851473860884176H10132944542864502</TargetObject>
+    <TargetParam>%562941395812960</TargetParam>
+    <LocalContext>3377648184694003</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731285612">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397477959</Const>
+    <LocalContext>3377648184694003</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731424903">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274897751</TargetObject>
+    <TargetParam>%OnCommonConsoleEvent_message_value</TargetParam>
+    <LocalContext>3377648184831601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731424904">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941397645755</Const>
+    <LocalContext>3377648184831601</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731713501">
+    <ExpressionType>EXPRESSION_SRC_PARAM</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>5066472274671751</TargetObject>
+    <TargetParam>%OnTemplateEntityLogicEvent_message_name</TargetParam>
+    <LocalContext>3377648184605606</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+  <Item id="1125882731713502">
+    <ExpressionType>EXPRESSION_SRC_CONST</ExpressionType>
+    <TargetFunctionName />
+    <TargetObject>%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Const>562941399097352</Const>
+    <LocalContext>3377648184605606</LocalContext>
+    <Inversion>False</Inversion>
+  </Item>
+</Root>

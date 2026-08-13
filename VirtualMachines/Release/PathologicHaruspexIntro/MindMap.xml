@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="MindMap">
+  <Item id="11540297950202426">
+    <Nodes count="5">
+      <Item>11821768631880151</Item>
+      <Item>11821768631880451</Item>
+      <Item>11821768631880452</Item>
+      <Item>11821768631880453</Item>
+      <Item>11821768631880454</Item>
+    </Nodes>
+    <Links count="1">
+      <Item>12103239313558276</Item>
+    </Links>
+    <LogicMapType>LOGIC_MAP_TYPE_GLOBAL_MINDMAP</LogicMapType>
+    <Title>6192355001051851</Title>
+    <Name>PathologicHollywoodIntro_MindMap</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+</Root>

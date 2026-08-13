@@ -1,0 +1,778 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Geom">
+  <Item id="5910884319243526">
+    <WorldPositionGuid />
+    <EngineTemplateID>135304f037e34a62a16e36a0129876f8</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092201848</Item>
+      <Item>7881179092201849</Item>
+      <Item>7881179092201850</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395470815</Item>
+      <Item key="LocationItem.IsHibernation">562941395470816</Item>
+      <Item key="LocationItem.IsIndoor">562941395470817</Item>
+      <Item key="LocationItem.Location">562941395470818</Item>
+    </StandartParams>
+    <Name>Capella_Polyhedron</Name>
+    <Parent>9851473861298080</Parent>
+  </Item>
+  <Item id="5910884319243795">
+    <WorldPositionGuid />
+    <EngineTemplateID>3038d229cf6d43a89ca99e25109de6e1</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092220069</Item>
+      <Item>7881179092220070</Item>
+      <Item>7881179093262542</Item>
+    </FunctionalComponents>
+    <StandartParams count="15">
+      <Item key="Common.ObjectEnabled">562941395506032</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941397595465</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941397595458</Item>
+      <Item key="MapItemComponent.CraftIcon">562941397595462</Item>
+      <Item key="MapItemComponent.Discovered">562941397595459</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941397595457</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941397595464</Item>
+      <Item key="MapItemComponent.Placeholder">562941397595455</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941397595460</Item>
+      <Item key="MapItemComponent.SleepIcon">562941397595461</Item>
+      <Item key="MapItemComponent.StorageIcon">562941397595463</Item>
+      <Item key="MapItemComponent.Text">562941397595453</Item>
+      <Item key="MapItemComponent.Title">562941397595452</Item>
+      <Item key="MapItemComponent.TooltipResource">562941397595456</Item>
+      <Item key="MapItemComponent.TooltipText">562941397595454</Item>
+    </StandartParams>
+    <Name>SkyTrain</Name>
+    <Parent>10132944542782775</Parent>
+  </Item>
+  <Item id="5910884319243903">
+    <WorldPositionGuid />
+    <EngineTemplateID>aff057e3f8434574b716e88da71625e9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092229536</Item>
+      <Item>7881179092229537</Item>
+      <Item>7881179092229538</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395521584</Item>
+      <Item key="LocationItem.IsHibernation">562941395521585</Item>
+      <Item key="LocationItem.IsIndoor">562941395521586</Item>
+      <Item key="LocationItem.Location">562941395521587</Item>
+    </StandartParams>
+    <Name>Spawnpoint</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5910884319269332">
+    <WorldPositionGuid />
+    <EngineTemplateID>3f6b101f1f034c1195445d5cf3a273c6</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092291126</Item>
+      <Item>7881179092291127</Item>
+      <Item>7881179092291128</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395728089</Item>
+      <Item key="LocationItem.IsHibernation">562941395728090</Item>
+      <Item key="LocationItem.IsIndoor">562941395728091</Item>
+      <Item key="LocationItem.Location">562941395728092</Item>
+    </StandartParams>
+    <Name>SickMan2</Name>
+    <Parent>9851473860894178</Parent>
+  </Item>
+  <Item id="5910884319269334">
+    <WorldPositionGuid />
+    <EngineTemplateID>a91a0e00dda44187a1282aa87be411c4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092291132</Item>
+      <Item>7881179092291133</Item>
+      <Item>7881179092291134</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395728099</Item>
+      <Item key="LocationItem.IsHibernation">562941395728100</Item>
+      <Item key="LocationItem.IsIndoor">562941395728101</Item>
+      <Item key="LocationItem.Location">562941395728102</Item>
+    </StandartParams>
+    <Name>SickMan10</Name>
+    <Parent>9851473860894178</Parent>
+  </Item>
+  <Item id="5910884319269337">
+    <WorldPositionGuid />
+    <EngineTemplateID>c485f1e3143544baa242d06fa3bdf3dd</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092291141</Item>
+      <Item>7881179092291142</Item>
+      <Item>7881179092291143</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395728114</Item>
+      <Item key="LocationItem.IsHibernation">562941395728115</Item>
+      <Item key="LocationItem.IsIndoor">562941395728116</Item>
+      <Item key="LocationItem.Location">562941395728117</Item>
+    </StandartParams>
+    <Name>SickMan1</Name>
+    <Parent>9851473860894178</Parent>
+  </Item>
+  <Item id="5910884319269338">
+    <WorldPositionGuid />
+    <EngineTemplateID>59bbb9779ce746099e8098762847fba3</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092291147</Item>
+      <Item>7881179092291148</Item>
+      <Item>7881179092291149</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395728123</Item>
+      <Item key="LocationItem.IsHibernation">562941395728124</Item>
+      <Item key="LocationItem.IsIndoor">562941395728125</Item>
+      <Item key="LocationItem.Location">562941395728126</Item>
+    </StandartParams>
+    <Name>Changelling</Name>
+    <Parent>9851473860894179</Parent>
+  </Item>
+  <Item id="5910884319269342">
+    <WorldPositionGuid />
+    <EngineTemplateID>e041ad86bf254dc99d21d60d388c646e</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092291159</Item>
+      <Item>7881179092291160</Item>
+      <Item>7881179092291161</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395728143</Item>
+      <Item key="LocationItem.IsHibernation">562941395728144</Item>
+      <Item key="LocationItem.IsIndoor">562941395728145</Item>
+      <Item key="LocationItem.Location">562941395728146</Item>
+    </StandartParams>
+    <Name>PlayerSpawn</Name>
+    <Parent>9851473860894179</Parent>
+  </Item>
+  <Item id="5910884319296026">
+    <WorldPositionGuid />
+    <EngineTemplateID>9d619ddee22e440484fd5cb8d77d642a</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092334703</Item>
+      <Item>7881179092334704</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395800754</Item>
+    </StandartParams>
+    <Name>FocusModeTrigger</Name>
+    <Parent>9851473860920676</Parent>
+  </Item>
+  <Item id="5910884319296027">
+    <WorldPositionGuid />
+    <EngineTemplateID>ceb821a68a0d44efac0f2b715cbc45cb</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092334705</Item>
+      <Item>7881179092334706</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395800756</Item>
+    </StandartParams>
+    <Name>MindMapTrigger</Name>
+    <Parent>9851473860920676</Parent>
+  </Item>
+  <Item id="5910884319308135">
+    <WorldPositionGuid />
+    <EngineTemplateID>87502a4126024f7d811cba931dd23cea</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092346872</Item>
+      <Item>7881179092346873</Item>
+      <Item>7881179092346874</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395813063</Item>
+      <Item key="LocationItem.IsHibernation">562941395813064</Item>
+      <Item key="LocationItem.IsIndoor">562941395813065</Item>
+      <Item key="LocationItem.Location">562941395813066</Item>
+    </StandartParams>
+    <Name>Mark</Name>
+    <Parent>9851473860878010</Parent>
+  </Item>
+  <Item id="5910884319468453">
+    <WorldPositionGuid />
+    <EngineTemplateID>c678c80bd65e4dc093d9a8f0745bc0b3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092579404</Item>
+      <Item>7881179092579405</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396423572</Item>
+    </StandartParams>
+    <Name>Soldier_Patrol_Trigger</Name>
+    <Parent>9851473861099107</Parent>
+  </Item>
+  <Item id="5910884319468455">
+    <WorldPositionGuid />
+    <EngineTemplateID>778895d0891d45b0941da1fec4e19b44</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092579419</Item>
+      <Item>7881179092579420</Item>
+      <Item>7881179092579421</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396423588</Item>
+      <Item key="LocationItem.IsHibernation">562941396423589</Item>
+      <Item key="LocationItem.IsIndoor">562941396423590</Item>
+      <Item key="LocationItem.Location">562941396423591</Item>
+    </StandartParams>
+    <Name>Hospital_Soldier_Patrol_1</Name>
+    <Parent>9851473861099112</Parent>
+  </Item>
+  <Item id="5910884319468457">
+    <WorldPositionGuid />
+    <EngineTemplateID>3f81f23afc584e09b53fd7b921f09dbd</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092579429</Item>
+      <Item>7881179092579430</Item>
+      <Item>7881179092579431</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396423602</Item>
+      <Item key="LocationItem.IsHibernation">562941396423603</Item>
+      <Item key="LocationItem.IsIndoor">562941396423604</Item>
+      <Item key="LocationItem.Location">562941396423605</Item>
+    </StandartParams>
+    <Name>Victim_2</Name>
+    <Parent>9851473861099114</Parent>
+  </Item>
+  <Item id="5910884319468458">
+    <WorldPositionGuid />
+    <EngineTemplateID>8322dd352fdb4c2884d4870cd4272ca2</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092579432</Item>
+      <Item>7881179092579433</Item>
+      <Item>7881179092579434</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396423607</Item>
+      <Item key="LocationItem.IsHibernation">562941396423608</Item>
+      <Item key="LocationItem.IsIndoor">562941396423609</Item>
+      <Item key="LocationItem.Location">562941396423610</Item>
+    </StandartParams>
+    <Name>Soldier_1</Name>
+    <Parent>9851473861099114</Parent>
+  </Item>
+  <Item id="5910884319468459">
+    <WorldPositionGuid />
+    <EngineTemplateID>a8afd4791db241a282d5b4108fe4bd89</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092579435</Item>
+      <Item>7881179092579436</Item>
+      <Item>7881179092579437</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396423612</Item>
+      <Item key="LocationItem.IsHibernation">562941396423613</Item>
+      <Item key="LocationItem.IsIndoor">562941396423614</Item>
+      <Item key="LocationItem.Location">562941396423615</Item>
+    </StandartParams>
+    <Name>Officer</Name>
+    <Parent>9851473861099114</Parent>
+  </Item>
+  <Item id="5910884319468460">
+    <WorldPositionGuid />
+    <EngineTemplateID>b6a23bf2433d425a8267906c137cab65</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092579438</Item>
+      <Item>7881179092579439</Item>
+      <Item>7881179092579440</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396423617</Item>
+      <Item key="LocationItem.IsHibernation">562941396423618</Item>
+      <Item key="LocationItem.IsIndoor">562941396423619</Item>
+      <Item key="LocationItem.Location">562941396423620</Item>
+    </StandartParams>
+    <Name>Soldier_2</Name>
+    <Parent>9851473861099114</Parent>
+  </Item>
+  <Item id="5910884319474627">
+    <WorldPositionGuid />
+    <EngineTemplateID>2e6e6f2c84a34ea6be88a6ae72df3b68</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586623</Item>
+      <Item>7881179092586624</Item>
+      <Item>7881179092586625</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470479</Item>
+      <Item key="LocationItem.IsHibernation">562941396470480</Item>
+      <Item key="LocationItem.IsIndoor">562941396470481</Item>
+      <Item key="LocationItem.Location">562941396470482</Item>
+    </StandartParams>
+    <Name>Diseased_1</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474628">
+    <WorldPositionGuid />
+    <EngineTemplateID>33c22a67c61145978088d4a89c8d6cb2</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586626</Item>
+      <Item>7881179092586627</Item>
+      <Item>7881179092586628</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470484</Item>
+      <Item key="LocationItem.IsHibernation">562941396470485</Item>
+      <Item key="LocationItem.IsIndoor">562941396470486</Item>
+      <Item key="LocationItem.Location">562941396470487</Item>
+    </StandartParams>
+    <Name>Diseased_5</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474629">
+    <WorldPositionGuid />
+    <EngineTemplateID>4eb8626fb61d422c99b06b9b02d13125</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586629</Item>
+      <Item>7881179092586630</Item>
+      <Item>7881179092586631</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470489</Item>
+      <Item key="LocationItem.IsHibernation">562941396470490</Item>
+      <Item key="LocationItem.IsIndoor">562941396470491</Item>
+      <Item key="LocationItem.Location">562941396470492</Item>
+    </StandartParams>
+    <Name>Flamethrower_2</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474630">
+    <WorldPositionGuid />
+    <EngineTemplateID>573ee45a545943fe8b9d06c2bcaa65fa</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586632</Item>
+      <Item>7881179092586633</Item>
+      <Item>7881179092586634</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470494</Item>
+      <Item key="LocationItem.IsHibernation">562941396470495</Item>
+      <Item key="LocationItem.IsIndoor">562941396470496</Item>
+      <Item key="LocationItem.Location">562941396470497</Item>
+    </StandartParams>
+    <Name>Flamethrower_1</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474631">
+    <WorldPositionGuid />
+    <EngineTemplateID>69519ede53b44808b5f285bde632c09f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586635</Item>
+      <Item>7881179092586636</Item>
+      <Item>7881179092586637</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470499</Item>
+      <Item key="LocationItem.IsHibernation">562941396470500</Item>
+      <Item key="LocationItem.IsIndoor">562941396470501</Item>
+      <Item key="LocationItem.Location">562941396470502</Item>
+    </StandartParams>
+    <Name>Flamethrower_3</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474632">
+    <WorldPositionGuid />
+    <EngineTemplateID>78f0818e4ca349f0aa19eb42aec7e045</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586638</Item>
+      <Item>7881179092586639</Item>
+      <Item>7881179092586640</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470504</Item>
+      <Item key="LocationItem.IsHibernation">562941396470505</Item>
+      <Item key="LocationItem.IsIndoor">562941396470506</Item>
+      <Item key="LocationItem.Location">562941396470507</Item>
+    </StandartParams>
+    <Name>Diseased_4</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474633">
+    <WorldPositionGuid />
+    <EngineTemplateID>b05d5eb810404b23a7b7fbef5664a22d</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586641</Item>
+      <Item>7881179092586642</Item>
+      <Item>7881179092586643</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470509</Item>
+      <Item key="LocationItem.IsHibernation">562941396470510</Item>
+      <Item key="LocationItem.IsIndoor">562941396470511</Item>
+      <Item key="LocationItem.Location">562941396470512</Item>
+    </StandartParams>
+    <Name>Diseased_6</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474634">
+    <WorldPositionGuid />
+    <EngineTemplateID>cb50569b5263410cb206b713a163f1b9</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586644</Item>
+      <Item>7881179092586645</Item>
+      <Item>7881179092586646</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470514</Item>
+      <Item key="LocationItem.IsHibernation">562941396470515</Item>
+      <Item key="LocationItem.IsIndoor">562941396470516</Item>
+      <Item key="LocationItem.Location">562941396470517</Item>
+    </StandartParams>
+    <Name>Diseased_2</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474635">
+    <WorldPositionGuid />
+    <EngineTemplateID>d5d93ed8ceb846388fbc3fb747427a90</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586647</Item>
+      <Item>7881179092586648</Item>
+      <Item>7881179092586649</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470519</Item>
+      <Item key="LocationItem.IsHibernation">562941396470520</Item>
+      <Item key="LocationItem.IsIndoor">562941396470521</Item>
+      <Item key="LocationItem.Location">562941396470522</Item>
+    </StandartParams>
+    <Name>Diseased_3</Name>
+    <Parent>9851473861105182</Parent>
+  </Item>
+  <Item id="5910884319474636">
+    <WorldPositionGuid />
+    <EngineTemplateID>15ebbd7835f34dc58419e0ac226c6fec</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092586650</Item>
+      <Item>7881179092586651</Item>
+      <Item>7881179092586652</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396470524</Item>
+      <Item key="LocationItem.IsHibernation">562941396470525</Item>
+      <Item key="LocationItem.IsIndoor">562941396470526</Item>
+      <Item key="LocationItem.Location">562941396470527</Item>
+    </StandartParams>
+    <Name>SoldierWalker2</Name>
+    <Parent>9851473861105181</Parent>
+  </Item>
+  <Item id="5910884319474654">
+    <WorldPositionGuid />
+    <EngineTemplateID>02a0429294b64dd69bccca2de3f958f2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092587530</Item>
+      <Item>7881179092587531</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396471447</Item>
+    </StandartParams>
+    <Name>Flamethrowers_Parade_Trigger</Name>
+    <Parent>9851473861105191</Parent>
+  </Item>
+  <Item id="5910884319474655">
+    <WorldPositionGuid />
+    <EngineTemplateID>4e6d42f5030e447ea3c6e672028eda2f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092587532</Item>
+      <Item>7881179092587533</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396471449</Item>
+    </StandartParams>
+    <Name>Soldier_Walker_Trigger</Name>
+    <Parent>9851473861105191</Parent>
+  </Item>
+  <Item id="5910884319474656">
+    <WorldPositionGuid />
+    <EngineTemplateID>4fe89b489fa34b36845658a45e5b30d8</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092587534</Item>
+      <Item>7881179092587535</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396471451</Item>
+    </StandartParams>
+    <Name>Plague_Spots_House_12_Trigger (2)</Name>
+    <Parent>9851473861105191</Parent>
+  </Item>
+  <Item id="5910884319474658">
+    <WorldPositionGuid />
+    <EngineTemplateID>5a3f87f02f5240d09a5a1480bbb93e71</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092587538</Item>
+      <Item>7881179092587539</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396471455</Item>
+    </StandartParams>
+    <Name>Plague_Spots_House_9_Trigger</Name>
+    <Parent>9851473861105191</Parent>
+  </Item>
+  <Item id="5910884319474659">
+    <WorldPositionGuid />
+    <EngineTemplateID>bc58742a63204b0fa2f096956989169f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092587540</Item>
+      <Item>7881179092587541</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396471457</Item>
+    </StandartParams>
+    <Name>Plague_Spots_House_5_6_Trigger (1)</Name>
+    <Parent>9851473861105191</Parent>
+  </Item>
+  <Item id="5910884319486329">
+    <WorldPositionGuid />
+    <EngineTemplateID>172f843a746543d2911a88c62eb6eb15</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598732</Item>
+      <Item>7881179092598733</Item>
+      <Item>7881179092598734</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492795</Item>
+      <Item key="LocationItem.IsHibernation">562941396492796</Item>
+      <Item key="LocationItem.IsIndoor">562941396492797</Item>
+      <Item key="LocationItem.Location">562941396492798</Item>
+    </StandartParams>
+    <Name>DiseasedWalker3</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486330">
+    <WorldPositionGuid />
+    <EngineTemplateID>22ba889600b44b609ba83950db2c8b76</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598735</Item>
+      <Item>7881179092598736</Item>
+      <Item>7881179092598737</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492800</Item>
+      <Item key="LocationItem.IsHibernation">562941396492801</Item>
+      <Item key="LocationItem.IsIndoor">562941396492802</Item>
+      <Item key="LocationItem.Location">562941396492803</Item>
+    </StandartParams>
+    <Name>DiseasedWalker4</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486331">
+    <WorldPositionGuid />
+    <EngineTemplateID>2c25adfd7fa24cd782723b3cc2c90f70</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598738</Item>
+      <Item>7881179092598739</Item>
+      <Item>7881179092598740</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492805</Item>
+      <Item key="LocationItem.IsHibernation">562941396492806</Item>
+      <Item key="LocationItem.IsIndoor">562941396492807</Item>
+      <Item key="LocationItem.Location">562941396492808</Item>
+    </StandartParams>
+    <Name>PlagueCloudSpawn</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486332">
+    <WorldPositionGuid />
+    <EngineTemplateID>2cc643a10b2e4464bda703b36f2f8af4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598741</Item>
+      <Item>7881179092598742</Item>
+      <Item>7881179092598743</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492810</Item>
+      <Item key="LocationItem.IsHibernation">562941396492811</Item>
+      <Item key="LocationItem.IsIndoor">562941396492812</Item>
+      <Item key="LocationItem.Location">562941396492813</Item>
+    </StandartParams>
+    <Name>ScaredGypsy</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486333">
+    <WorldPositionGuid />
+    <EngineTemplateID>8cde8fe5861847539f6e79d53e88d5ce</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598744</Item>
+      <Item>7881179092598745</Item>
+      <Item>7881179092598746</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492815</Item>
+      <Item key="LocationItem.IsHibernation">562941396492816</Item>
+      <Item key="LocationItem.IsIndoor">562941396492817</Item>
+      <Item key="LocationItem.Location">562941396492818</Item>
+    </StandartParams>
+    <Name>DiseasedWalker2</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486334">
+    <WorldPositionGuid />
+    <EngineTemplateID>9f0f9f34d1b14adfb48c3fd1a9862cf7</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598747</Item>
+      <Item>7881179092598748</Item>
+      <Item>7881179092598749</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492820</Item>
+      <Item key="LocationItem.IsHibernation">562941396492821</Item>
+      <Item key="LocationItem.IsIndoor">562941396492822</Item>
+      <Item key="LocationItem.Location">562941396492823</Item>
+    </StandartParams>
+    <Name>DiseasedWalker1</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486336">
+    <WorldPositionGuid />
+    <EngineTemplateID>edaf241ecc274ca1acc96e73386115f9</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092598753</Item>
+      <Item>7881179092598754</Item>
+      <Item>7881179092598755</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941396492830</Item>
+      <Item key="LocationItem.IsHibernation">562941396492831</Item>
+      <Item key="LocationItem.IsIndoor">562941396492832</Item>
+      <Item key="LocationItem.Location">562941396492833</Item>
+    </StandartParams>
+    <Name>DiseasedWalker5</Name>
+    <Parent>9851473861116881</Parent>
+  </Item>
+  <Item id="5910884319486345">
+    <WorldPositionGuid />
+    <EngineTemplateID>51c9fe36b9f947d7a13d2fdb33b95b31</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092598795</Item>
+      <Item>7881179092598796</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941396492891</Item>
+    </StandartParams>
+    <Name>PlagueCloudTrigger</Name>
+    <Parent>9851473861116887</Parent>
+  </Item>
+</Root>

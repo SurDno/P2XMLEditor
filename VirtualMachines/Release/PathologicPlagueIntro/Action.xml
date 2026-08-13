@@ -1,0 +1,3712 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Action">
+  <Item id="1970294775812477">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502523277</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812478">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502523278</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812479">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502523279</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812480">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860877976</TargetObject>
+    <TargetParam>%562941395658952</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523284</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812481">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860867466</TargetObject>
+    <TargetParam>%562941395488592</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523284</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775812482">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274193852</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502523285</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812483">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Weather.SetWeatherSampleGT</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>%BaseLayer</Item>
+      <Item>281470685671027%8725591135779662</Item>
+      <Item>%0:0:0:0</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523286</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812484">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274193853</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502523287</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812486">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetCustomVarGroupObjectStatuses</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276CONTEXT&amp;PARAM9851473860866276</Item>
+      <Item>%Common</Item>
+      <Item>%DiseasedLevel2;DiseasedLevel1</Item>
+      <Item>%0</Item>
+      <Item>%Common.ObjectEnabledPARAM&amp;VAL1</Item>
+      <Item>%100</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775812487">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.ProcessCustomVarGroupObjectAction</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276CONTEXT&amp;PARAM9851473860866276</Item>
+      <Item>%DiseaseComponent</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%ACTION_TYPE_DO_FUNCTION&amp;ACTION&amp;PART&amp;DiseaseComponent&amp;ACTION&amp;PART&amp;DiseaseComponent.SetDiseaseValue&amp;ACTION&amp;PART&amp;&amp;VAR&amp;INFO&amp;1,&amp;VAR&amp;INFO&amp;0:0:0:1</Item>
+      <Item>%100</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775812488">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetCustomVarGroupObjectStatuses</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276CONTEXT&amp;PARAM9851473860866276</Item>
+      <Item>%Common</Item>
+      <Item>%DiseasedLevel0</Item>
+      <Item>%0</Item>
+      <Item>%Common.ObjectEnabledPARAM&amp;VAL0</Item>
+      <Item>%100</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775821076">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531876</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821077">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880277</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531877</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821078">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880278</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531878</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821079">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880279</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531879</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821080">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880280</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531880</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821081">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880281</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531881</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821082">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880282</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531882</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775821083">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955880283</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502531883</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775833176">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274214551</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502543976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775833177">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274214552</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502543977</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775833178">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877H10132944542778090</TargetObject>
+    <TargetParam>%562941395498162</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502543981</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775833179">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877H10132944542778126</TargetObject>
+    <TargetParam>%562941395499362</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502543981</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775833180">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955892376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502543990</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775833181">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955892376</TargetObject>
+    <TargetParam>%562941395724046</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779342</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502543987</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775836976">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502547776</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775836977">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Position.TeleportTo</TargetFuncName>
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009H5910884319308135%9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009H5910884319308135</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547794</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775836978">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%562941395660852</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547794</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775836979">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%562941395660852</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547797</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775836980">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274218352</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502547799</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775836982">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.AddNotification</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%LargeText</Item>
+      <Item>5066472274218352%562941395728244</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547806</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775837576">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955896776</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502548376</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837577">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009</TargetObject>
+    <TargetParam>%562941395659384</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548380</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837578">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878008</TargetObject>
+    <TargetParam>%562941395659380</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548380</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837582">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728245</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135804381</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548381</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775837583">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395728245</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502547809</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837584">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728245</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468458%9851473860866276H9851473861099105H5910884319468458</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548382</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837585">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728245</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135804381</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548382</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837586">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%562941395728232</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548384</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837590">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%562941395728233</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548388</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837592">
+    <ActionType>ACTION_TYPE_RAISE_EVENT</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>2814706823022679</TargetFuncName>
+    <TargetObject>5066472274218351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502547796</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837593">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880281</TargetObject>
+    <TargetParam>%562941395660902</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548385</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837594">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880282</TargetObject>
+    <TargetParam>%562941395660912</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548389</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837601">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Gate.SetLockStateValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H10132944542777489</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Quest</Item>
+      <Item>%Blocked</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548397</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837602">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955896777</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502548398</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837603">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728912</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896777</Item>
+      <Item>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269337%9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269337</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837604">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728912</TargetObject>
+    <TargetParam>%562941395728881</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779809</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837605">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395728913</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502548403</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837606">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Position.TeleportTo</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269342%9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269342</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548404</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837607">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176</TargetObject>
+    <TargetParam>%562941395728062</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548404</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837608">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860877976</TargetObject>
+    <TargetParam>%562941395658952</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548404</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775837609">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395728914</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502548404</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775837614">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Gate.SetLockStateValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H10132944542777489</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Quest</Item>
+      <Item>%Unlocked</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548407</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837615">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Gate.SetLockStateValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H10132944542777489</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Quest</Item>
+      <Item>%Blocked</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548409</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837616">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%562941395728917</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547798</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837617">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%562941395728878</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547782</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837618">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Support.AddObjectToList</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>5066472274218352%562941395728244</Item>
+      <Item>5066472274218352%562941395728243</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547806</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775837619">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%562941395660858</TargetParam>
+    <SourceParams count="1">
+      <Item>5347942955880276%4785001592524833</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547797</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775837620">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>9851473860866276H10132944542778321</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502547806</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775842076">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274223451</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552876</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842077">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901276</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552882</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842081">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901276</TargetObject>
+    <TargetParam>%562941395736957</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779351</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552887</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842177">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274223552</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552977</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842178">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552983</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842179">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901377</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552984</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842182">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737126</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901376</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468457%9851473860866276H9851473861099105H5910884319468457</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552986</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775842183">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395737126</TargetObject>
+    <TargetParam>%562941395737060</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779867</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552986</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775842184">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737127</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901377</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468458%9851473860866276H9851473861099105H5910884319468458</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552987</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842186">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737127</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901377</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468460%9851473860866276H9851473861099105H5910884319468460</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552987</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775842188">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737057</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955880279</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468459%9851473860866276H9851473861099105H5910884319468459</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552988</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842190">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552990</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842191">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901378</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552991</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842192">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552992</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842193">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%562941395737564</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552993</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775842194">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%562941395737552</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779315</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502552993</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842195">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901380</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502552994</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842198">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474627%9851473860866276H9851473861105180H5910884319474627</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842199">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474634%9851473860866276H9851473861105180H5910884319474634</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775842200">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474635%9851473860866276H9851473861105180H5910884319474635</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775842201">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474632%9851473860866276H9851473861105180H5910884319474632</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775842202">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474628%9851473860866276H9851473861105180H5910884319474628</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775842203">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737138</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901379</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474633%9851473860866276H9851473861105180H5910884319474633</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553002</LocalContext>
+    <OrderIndex>6</OrderIndex>
+  </Item>
+  <Item id="1970294775842204">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737137</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901378</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474630%9851473860866276H9851473861105180H5910884319474630</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553003</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842205">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737137</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901378</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474629%9851473860866276H9851473861105180H5910884319474629</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553003</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775842206">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737137</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901378</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474631%9851473860866276H9851473861105180H5910884319474631</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553003</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775842207">
+    <ActionType>ACTION_TYPE_RAISE_EVENT</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>2814706823031209</TargetFuncName>
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553005</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842208">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901379</TargetObject>
+    <TargetParam>%562941395737552</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779342</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553006</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842209">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901378</TargetObject>
+    <TargetParam>%562941395737142</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779350</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553007</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842676">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274224051</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553476</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842677">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901876</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553482</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842678">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901877</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553483</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842679">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274224052</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553484</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842685">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955901878</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553489</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842687">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395737754</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955901876</Item>
+      <Item>9851473860866276H9851473861116879H5910884319486331%9851473860866276H9851473861116879H5910884319486331</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553491</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842689">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395737754</TargetObject>
+    <TargetParam>%562941395737758</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779392</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553492</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775842690">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274224053</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553493</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775843876">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274223554%local_2251765457537503_Loop_List_global_TemplateInstanceList_5347942955901378_Element</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502554678</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775843877">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274223554%local_2251765457537505_Loop_List_global_TemplateInstanceList_5347942955901379_Element</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502554679</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775843878">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>5347942955901378</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%e1612ac7e2fb45c088a05907dbfc6da5</Item>
+      <Item>281470685671027%efe9c6e87e8d4839854a75f4a6cc6535</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502554680</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775843879">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728912</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896777</Item>
+      <Item>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269332%9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269332</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775843887">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728912</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896777</Item>
+      <Item>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269334%9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269334</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>15</OrderIndex>
+  </Item>
+  <Item id="1970294775843889">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728912</TargetObject>
+    <TargetParam>%562941395728881</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135843020</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775843893">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728912</TargetObject>
+    <TargetParam>%562941395728881</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591136299631</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548400</LocalContext>
+    <OrderIndex>16</OrderIndex>
+  </Item>
+  <Item id="1970294775848976">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Weather.SetWeatherSampleGT</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>%BaseLayer</Item>
+      <Item>281470685671027%8725591135779659</Item>
+      <Item>%0:0:0:2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502559777</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775848977">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502559778</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775848978">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274230351</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502559779</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775848979">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.AddLogicMapPage</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%11540297950122726</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502559780</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850076">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%8a5f9bc5c77bab54ba38a704076433eb</Item>
+      <Item>281470685671027%52c1d049cb784f41ac80e5ae93b9f2dd</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560877</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850077">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%d27219cc1f4f4a438271beb7d709db52</Item>
+      <Item>281470685671027%c83365f1d9ca4ed3b32e9619de346388</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560877</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775850078">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%85cd3575c8ec49c9b7d2a39534faadbf</Item>
+      <Item>281470685671027%9a8c6473820646d9b4f3ebc5e99e461e</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560877</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775850079">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%3b1cbba9e27d480599743fce1261ac72</Item>
+      <Item>281470685671027%4ce2c013d9f9483f82ce00ab7868a70a</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560877</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775850080">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%b753876c4b294072aabd86d58bab9ce6</Item>
+      <Item>281470685671027%6441710b85844b5ea5ae186b2cc204ce</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560877</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775850081">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747783</TargetParam>
+    <SourceParams count="1">
+      <Item>%Yellow</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560878</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850083">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%f797ccb0e08c4a00b1a5a5fe0aea1122</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560878</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775850084">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%cc14e44d77794b0595c0576700543873</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560878</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775850085">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%01a2fb3a9c6a4ce98df770681d6c0e46</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560878</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775850086">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%e0a8febca8cc4109b9a900441b944a83</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560878</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775850087">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747783</TargetParam>
+    <SourceParams count="1">
+      <Item>%Red</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560879</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850088">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%f1479691109a4b24aa1e4a25f668563d</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560879</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775850089">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%cc14e44d77794b0595c0576700543873</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560879</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775850090">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%01a2fb3a9c6a4ce98df770681d6c0e46</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560879</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775850091">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%e0a8febca8cc4109b9a900441b944a83</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560879</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775850092">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747783</TargetParam>
+    <SourceParams count="1">
+      <Item>%Grey</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560880</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850093">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%be9da49fb9164687a9564aed308a855c</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560880</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775850094">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%cc14e44d77794b0595c0576700543873</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560880</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775850095">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%4b0160767ffc4a12a543ff68924d0674</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560880</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775850096">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpToInentoryByTemplate</TargetFuncName>
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="3">
+      <Item>281470685671027%e0a8febca8cc4109b9a900441b944a83</Item>
+      <Item>281470685671027%6cdb529b7db8425b8b14b25aa1f73ab8</Item>
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560880</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775850097">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Support.MinMaxRand</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395748868</TargetParam>
+    <SourceParams count="2">
+      <Item>%0.1</Item>
+      <Item>%0.3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560881</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850098">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747780</TargetParam>
+    <SourceParams count="1">
+      <Item>7599708409295376%562941395748868</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560881</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775850099">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637639401</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502560889</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850100">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637639402</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502560890</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850103">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955896777</TargetObject>
+    <TargetParam>%562941395728892</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502560885</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850104">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274231451</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502560893</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850105">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274231452</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502560895</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850776">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637640101</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502561576</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850777">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637640102</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502561577</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775850778">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637640103</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502561578</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775852576">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpCombinationToInentoryByTemplate</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5629413637640103</Item>
+      <Item>281470685671027%20c6eeac8f20492a958e2e011041ffeb</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502563379</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775852577">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpCombinationToInentoryByTemplate</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5629413637640101</Item>
+      <Item>281470685671027%0d3f364cc97c7e04e944a4e81de499f5</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502563379</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775852578">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpCombinationToInentoryByTemplate</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5629413637640102</Item>
+      <Item>281470685671027%dabbbc001de70c4448661e500732af55</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502563379</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775853176">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274234551</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502563976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775853177">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395766560</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%c296f0496c424591a68f4a55e036aa0e</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502563977</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775853977">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.AddDropBagEntity</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274234551%562941395766560</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502563977</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775853978">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274234551%NeedDeleteDropBagEvent_message_object</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564777</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775853983">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728913</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468455%9851473860866276H9851473861099105H5910884319468455</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775853984">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728914</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468455%9851473860866276H9851473861099105H5910884319468455</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775853985">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728913</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135804379</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775853986">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395728914</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135804380</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775853988">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H10132944542817901</TargetObject>
+    <TargetParam>%562941395728119</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564783</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775855576">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H10132944542817901</TargetObject>
+    <TargetParam>%562941395728119</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502566376</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856577">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274237951</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502567377</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856578">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395777154</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468455%9851473860866276H9851473861099105H5910884319468455</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567383</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856580">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473861105180H10132944543042506</TargetObject>
+    <TargetParam>%562941396471386</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567386</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775856581">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880283</TargetObject>
+    <TargetParam>%562941395660922</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567386</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775856582">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395777154</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502567386</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856583">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395777154</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135823976</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567383</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775856584">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274237951%562941395777154</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567389</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856585">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473861105180H10132944543042506</TargetObject>
+    <TargetParam>%562941396471386</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567389</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775856586">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880283</TargetObject>
+    <TargetParam>%562941395660922</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567389</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775856587">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880283</TargetObject>
+    <TargetParam>%562941395660928</TargetParam>
+    <SourceParams count="1">
+      <Item>5347942955880283%4785001592524827</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567389</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775856588">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473861105180H10132944543042506</TargetObject>
+    <TargetParam>%562941396471386</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502567390</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775856589">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BehaviorComponent.SetFloatValue</TargetFuncName>
+    <TargetObject>%562941395737754</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Speed</Item>
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553492</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775858177">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274239552</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502568977</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775858178">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274239553</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502568978</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775858179">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274239554</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502568979</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775858181">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778180</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%0</Item>
+      <Item>%0:0:0:3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568981</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775858182">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542777915</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%0</Item>
+      <Item>%0:0:0:3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568981</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775858183">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778195</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%0</Item>
+      <Item>%0:0:0:3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568981</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775858184">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778165</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%0</Item>
+      <Item>%0:0:0:3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568981</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775858185">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778180</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%1</Item>
+      <Item>%0:0:2:0</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568986</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775858190">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778165</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%1</Item>
+      <Item>%0:0:2:30</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568989</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775858193">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542777915</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%1</Item>
+      <Item>%0:0:2:1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568996</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775858194">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>DiseaseComponent.SetDiseaseValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867877H10132944542778195</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%1</Item>
+      <Item>%0:0:2:1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502568996</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775860476">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866278</TargetObject>
+    <TargetParam>%562941395470770</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775860477">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470</TargetObject>
+    <TargetParam>%562941395488617</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775860478">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866285</TargetObject>
+    <TargetParam>%562941395470855</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775860479">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292</TargetObject>
+    <TargetParam>%562941395471015</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775860480">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877</TargetObject>
+    <TargetParam>%562941395493868</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>6</OrderIndex>
+  </Item>
+  <Item id="1970294775863577">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274244852</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502574277</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775863579">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>9851473860866276H10132944542778322</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502574283</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775863580">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274244854</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502574284</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775863581">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395800793</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502574287</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775863582">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395800793</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468455%9851473860866276H9851473861099105H5910884319468455</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502574291</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775863583">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395800793</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135831677</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502574291</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775864379">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274245651</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502575083</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775864380">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395801556</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502575087</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775864381">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395801556</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861099105H5910884319468455</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502575089</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775864382">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395801556</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135831676</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502575089</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775871276">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>MapItemComponent.AddNode</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%11821768631800551</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564783</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775875676">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274256951</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502586376</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775875677">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GlobalDoorsManager.SetGatesLockState</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="4">
+      <Item>%9851473860866276H9851473860866277CONTEXT&amp;PARAM9851473860866276H9851473860866277</Item>
+      <Item>%Blocked</Item>
+      <Item>%100</Item>
+      <Item>%Quest</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586377</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775875678">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GlobalDoorsManager.SetGatesLockState</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="4">
+      <Item>%9851473860866276H9851473860867470H9851473860867777H10132944542777738CONTEXT&amp;PARAM9851473860866276H9851473860867470H9851473860867777H10132944542777738END&amp;PATH9851473860866276H9851473860867470H9851473860867777H10132944542777738CONTEXT&amp;PARAM9851473860866276H9851473860867470H9851473860867777H10132944542777738</Item>
+      <Item>%Unlocked</Item>
+      <Item>%100</Item>
+      <Item>%Quest</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586377</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775875679">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274256952</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502586379</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775875680">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470</TargetObject>
+    <TargetParam>%562941395488618</TargetParam>
+    <SourceParams count="1">
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586380</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775875681">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866285</TargetObject>
+    <TargetParam>%562941395470856</TargetParam>
+    <SourceParams count="1">
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586380</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775875682">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292</TargetObject>
+    <TargetParam>%562941395471016</TargetParam>
+    <SourceParams count="1">
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586380</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775875683">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877</TargetObject>
+    <TargetParam>%562941395493869</TargetParam>
+    <SourceParams count="1">
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502586380</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775875684">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274256953</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502586381</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775877176">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955936276</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502587876</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775877376">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395814584</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955936276</Item>
+      <Item>9851473860866276H9851473861105180H5910884319474636%9851473860866276H9851473861105180H5910884319474636</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502587878</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775877377">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395814584</TargetObject>
+    <TargetParam>%562941395814554</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779342</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502587880</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775879676">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901878</TargetObject>
+    <TargetParam>%562941395738156</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502590377</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775879677">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901878</TargetObject>
+    <TargetParam>%562941395737839</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502590377</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775894676">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637683901</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502605376</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775894677">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5629413637683902</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502605377</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775900976">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetSolarTimeSpeedFactor</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%0</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502611676</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775900977">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetCurrGameTime</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%12:0:0:0</Item>
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502611676</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775900978">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetGameTimeSpeedFactor</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%1</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502611676</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775900979">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866278</TargetObject>
+    <TargetParam>%562941395470780</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>7</OrderIndex>
+  </Item>
+  <Item id="1970294775900980">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470</TargetObject>
+    <TargetParam>%562941395488627</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>8</OrderIndex>
+  </Item>
+  <Item id="1970294775900981">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866285</TargetObject>
+    <TargetParam>%562941395470865</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>9</OrderIndex>
+  </Item>
+  <Item id="1970294775900982">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860866292</TargetObject>
+    <TargetParam>%562941395471025</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>10</OrderIndex>
+  </Item>
+  <Item id="1970294775900984">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877</TargetObject>
+    <TargetParam>%562941395493878</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523288</LocalContext>
+    <OrderIndex>12</OrderIndex>
+  </Item>
+  <Item id="1970294775902176">
+    <ActionType>ACTION_TYPE_RAISE_EVENT</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>2814706823126451</TargetFuncName>
+    <TargetObject>5066472274193851</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502548404</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775905976">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395728245</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473860866278H5910884319243526%9851473860866276H9851473860866278H5910884319243526</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548381</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775905977">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SleepStateRT</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%2</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502616576</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775905978">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BehaviorComponent.SetFloatValue</TargetFuncName>
+    <TargetObject>%562941395814584</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%IdleTime</Item>
+      <Item>%0.5</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502587880</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775909076">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009H10132944542899101</TargetObject>
+    <TargetParam>%562941395857559</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547797</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775915276">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009H9851473860972276</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502625876</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775915277">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H9851473860867780H9851473860878009H10132944542905413</TargetObject>
+    <TargetParam>%562941395865707</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547797</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775915279">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395865710</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473860866278H5910884319243526%9851473860866276H9851473860866278H5910884319243526</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548381</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775915280">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395865710</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135882478</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502548381</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775915281">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395865710</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502625876</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775915283">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Stop</TargetFuncName>
+    <TargetObject>%562941395865710</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502625877</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775915376">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955880276</TargetObject>
+    <TargetParam>%562941395660852</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502625976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775920576">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860915376</TargetObject>
+    <TargetParam>%562941395786152</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502566376</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775920577">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860915376</TargetObject>
+    <TargetParam>%562941395786152</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502523284</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775920578">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942955979576</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502631176</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775930077">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GlobalStorageManager.AddItemsToStoragesLinear</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276CONTEXT&amp;PARAM9851473860866276</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%5629413637683901</Item>
+      <Item>%RubbishBin</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502640479</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775930078">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GlobalStorageManager.AddItemsToStoragesLinear</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276H9851473860867877H9851473860868370H5629413637599702CONTEXT&amp;PARAM9851473860866276H9851473860867877H9851473860868370H5629413637599702</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%5629413637683902</Item>
+      <Item>%Dustbin</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502640479</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775934379">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877H10132944542924324</TargetObject>
+    <TargetParam>%562941395885508</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502644777</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775934380">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877H10132944542924322</TargetObject>
+    <TargetParam>%562941395885504</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502644777</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775934381">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860867877H10132944542924323</TargetObject>
+    <TargetParam>%562941395885506</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502644777</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775941576">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Gate.SetLockStateValue</TargetFuncName>
+    <TargetObject>9851473860866276H9851473860867470H9851473860867777H10132944542777738</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Quest</Item>
+      <Item>%Blocked</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502651976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775942777">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395801551</TargetObject>
+    <TargetParam>%562941395737756</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502653177</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775942778">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395801552</TargetObject>
+    <TargetParam>%562941395737756</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502653177</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775942779">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395801553</TargetObject>
+    <TargetParam>%562941395737756</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502653177</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775942780">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395801554</TargetObject>
+    <TargetParam>%562941395737756</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502653177</LocalContext>
+    <OrderIndex>4</OrderIndex>
+  </Item>
+  <Item id="1970294775948276">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955979576</TargetObject>
+    <TargetParam>%562941395871002</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135779336</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502658676</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775948277">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BehaviorComponent.SetValue</TargetFuncName>
+    <TargetObject>5347942955979576</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%Target</Item>
+      <Item>9851473860866276H9851473861105180H10132944543042502%9851473860866276H9851473861105180H10132944543042502</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502658676</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775955576">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395907451</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269338%9851473860866276H9851473860866292H9851473860867419H9851473860867428H9851473860894176H5910884319269338</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>5</OrderIndex>
+  </Item>
+  <Item id="1970294775955577">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395907451</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135830733</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502564781</LocalContext>
+    <OrderIndex>6</OrderIndex>
+  </Item>
+  <Item id="1970294775955578">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395907451</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502564783</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775955579">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941395907452</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942955896776</Item>
+      <Item>9851473860866276H9851473861116879H5910884319486332%9851473860866276H9851473861116879H5910884319486332</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553491</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775955580">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%562941395907452</TargetObject>
+    <TargetParam>%562941395728861</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%8725591135830731</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553491</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775955581">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>%562941395907452</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502553492</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294775955583">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274336551</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502665976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294775957876">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Support.AddObjectToList</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>5066472274218352%562941395728244</Item>
+      <Item>5066472274218352%562941395909751</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502547806</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294775962379">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>7599708409295376</TargetObject>
+    <TargetParam>%562941395747786</TargetParam>
+    <SourceParams count="1">
+      <Item>%Normal</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502672783</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776072376">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>9851473860866276H10132944542778517</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502782576</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776072377">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H10132944542832603H10132944542938201</TargetObject>
+    <TargetParam>%562941395900059</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502651976</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776072378">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>BlueprintComponent.Start</TargetFuncName>
+    <TargetObject>9851473860866276H10132944542778517</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177502782577</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776085976">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955901378</TargetObject>
+    <TargetParam>%562941395737144</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502553007</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776098176">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765457791101_Loop_List_ObjectsSpotlight_Element</TargetObject>
+    <TargetParam>%Common.ObjectEnabled</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502612777</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776139476">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942955896777</TargetObject>
+    <TargetParam>%562941395739063</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177502849676</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776294579">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274671751</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503003980</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776294776">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpByTemplate</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%7311f0102a9a4c86ab2a434d62c2dcf5</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503004176</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776294777">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpByTemplate</TargetFuncName>
+    <TargetObject>5347942955871761</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%90d9d75ffd9946dcaf49c9de40e21aff</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503004177</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776339876">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941397169752</TargetParam>
+    <SourceParams count="1">
+      <Item>%0,7</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503049176</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776344276">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Storage.PickUpByTemplate</TargetFuncName>
+    <TargetObject>9851473860866276H9851473861418676H10132944543365901</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>281470685671027%e407b445f63544819f2919fe2af334eb</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503052077</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776344277">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473861418676H10132944543365901</TargetObject>
+    <TargetParam>%562941397299351</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503052077</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776350676">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274727751</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503059976</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776350677">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942956405576</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503059978</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776350678">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5066472274727751%562941397434886</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503059977</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776350679">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.CreateObjectTo</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941397434886</TargetParam>
+    <SourceParams count="2">
+      <Item>281470685671027%5347942956405576</Item>
+      <Item>5347942955871761%5347942955871761</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503059977</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776353376">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.BlockNotificationType</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%Region</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503062676</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776353377">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.UnblockNotificationType</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%Region</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503062677</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358776">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274735851</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503068076</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358777">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274735852</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503068077</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358778">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274735852</TargetObject>
+    <TargetParam>%562941397443255</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503068083</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358780">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5066472274735851%5066472274735851</TargetObject>
+    <TargetParam>%562941397443266</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503068089</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358781">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860884176H10132944542864502</TargetObject>
+    <TargetParam>%562941395812959</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503068087</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776358782">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H9851473860884176H10132944542931802</TargetObject>
+    <TargetParam>%562941395893187</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503068080</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776368076">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.BlockNotificationType</TargetFuncName>
+    <TargetObject>281470685671027%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%Map</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503062676</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776368276">
+    <ActionType>ACTION_TYPE_RAISE_EVENT</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>2814706824349351</TargetFuncName>
+    <TargetObject>5066472274223554</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503077577</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776368277">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5347942955901378</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503077578</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776368278">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.RemoveObject</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>5347942955901379%5347942955901379</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503077579</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776368289">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.ProcessCustomVarGroupObjectAction</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276H9851473860866292CONTEXT&amp;PARAM9851473860866276H9851473860866292</Item>
+      <Item>%DiseaseComponent</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%ACTION_TYPE_DO_FUNCTION&amp;ACTION&amp;PART&amp;DiseaseComponent&amp;ACTION&amp;PART&amp;DiseaseComponent.SetDiseaseValue&amp;ACTION&amp;PART&amp;&amp;VAR&amp;INFO&amp;0,&amp;VAR&amp;INFO&amp;0:0:0:1</Item>
+      <Item>%100</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503077584</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776368305">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.ProcessCustomVarGroupObjectAction</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="6">
+      <Item>%9851473860866276H9851473860866292CONTEXT&amp;PARAM9851473860866276H9851473860866292</Item>
+      <Item>%DiseaseComponent</Item>
+      <Item>%0</Item>
+      <Item>%0</Item>
+      <Item>%ACTION_TYPE_DO_FUNCTION&amp;ACTION&amp;PART&amp;DiseaseComponent&amp;ACTION&amp;PART&amp;DiseaseComponent.SetDiseaseValue&amp;ACTION&amp;PART&amp;&amp;VAR&amp;INFO&amp;1,&amp;VAR&amp;INFO&amp;0:0:0:1</Item>
+      <Item>%100</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503077586</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776369076">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.UnblockNotificationType</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%Map</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503078376</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388176">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274765051</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503097476</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388177">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765458079503_Loop_List_RegionList_Element</TargetObject>
+    <TargetParam>%Region.RegionDiseaseLevel</TargetParam>
+    <SourceParams count="1">
+      <Item>%3</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097477</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388179">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765458079504_Loop_List_RegionMapItemList_Element</TargetObject>
+    <TargetParam>%MapItemComponent.Discovered</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097477</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388180">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5347942956442876</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503097478</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388182">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>5347942956442876</TargetObject>
+    <TargetParam>%562941397491014</TargetParam>
+    <SourceParams count="1">
+      <Item>%Dead</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097479</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388183">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765458079507_Loop_List_BoundHousesMapItems_Element</TargetObject>
+    <TargetParam>%MapItemComponent.BoundCharacter</TargetParam>
+    <SourceParams count="1">
+      <Item>5347942956442876%5347942956442876</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097479</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776388184">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765458079507_Loop_List_BoundHousesMapItems_Element</TargetObject>
+    <TargetParam>%MapItemComponent.Discovered</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097479</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776388185">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>%local_2251765458079503_Loop_List_RegionList_Element</TargetObject>
+    <TargetParam>%Region.Reputation</TargetParam>
+    <SourceParams count="1">
+      <Item>%0</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503097477</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776420276">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.BlockBoundsInterface</TargetFuncName>
+    <TargetObject>281470685671027%281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="1">
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503062676</LocalContext>
+    <OrderIndex>3</OrderIndex>
+  </Item>
+  <Item id="1970294776420676">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941397531054</TargetParam>
+    <SourceParams count="1">
+      <Item>%Black</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3940589547596151</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776420677">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%562941397531054</TargetParam>
+    <SourceParams count="1">
+      <Item>%Default</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3940589547596151</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776494676">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetProfileBoolValue</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%IsJerboaBlack</Item>
+      <Item>%True</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3940589547596151</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776494677">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>GameComponent.SetProfileBoolValue</TargetFuncName>
+    <TargetObject>281470685671027</TargetObject>
+    <TargetParam>%</TargetParam>
+    <SourceParams count="2">
+      <Item>%IsJerboaBlack</Item>
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3940589547596151</LocalContext>
+    <OrderIndex>2</OrderIndex>
+  </Item>
+  <Item id="1970294776522176">
+    <ActionType>ACTION_TYPE_DO_FUNCTION</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName>Common.Init</TargetFuncName>
+    <TargetObject>5066472274897751</TargetObject>
+    <TargetParam>%</TargetParam>
+    <Name />
+    <LocalContext>3096177503231176</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+  <Item id="1970294776522177">
+    <ActionType>ACTION_TYPE_SET_PARAM</ActionType>
+    <MathOperationType>ACTION_OPERATION_TYPE_NONE</MathOperationType>
+    <TargetFuncName />
+    <TargetObject>9851473860866276H10132944542832604H10132944543560801</TargetObject>
+    <TargetParam>%562941397645351</TargetParam>
+    <SourceParams count="1">
+      <Item>%False</Item>
+    </SourceParams>
+    <Name />
+    <LocalContext>3096177503231179</LocalContext>
+    <OrderIndex>1</OrderIndex>
+  </Item>
+</Root>

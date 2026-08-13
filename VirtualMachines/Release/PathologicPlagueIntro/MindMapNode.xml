@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="MindMapNode">
+  <Item id="11821768631800551">
+    <LogicMapNodeType>LM_NODE_TYPE_INITIAL</LogicMapNodeType>
+    <NodeContent count="2">
+      <Item>12384709995156201</Item>
+      <Item>12384709995156202</Item>
+    </NodeContent>
+    <GameScreenPosX>0</GameScreenPosX>
+    <GameScreenPosY>0</GameScreenPosY>
+    <Name>Init</Name>
+    <Parent>11540297950122726</Parent>
+  </Item>
+</Root>

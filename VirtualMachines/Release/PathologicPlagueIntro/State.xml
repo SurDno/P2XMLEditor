@@ -1,0 +1,3895 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="State">
+  <Item id="3096177502523277">
+    <EntryPoints count="1">
+      <Item>2533236139257929</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>281470685671027</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267177</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229799376</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909302</Parent>
+  </Item>
+  <Item id="3096177502523278">
+    <EntryPoints count="1">
+      <Item>2533236139257931</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267178</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229357277</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909303</Parent>
+  </Item>
+  <Item id="3096177502523279">
+    <EntryPoints count="1">
+      <Item>2533236139257933</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267179</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229267182</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909304</Parent>
+  </Item>
+  <Item id="3096177502523281">
+    <EntryPoints count="1">
+      <Item>2533236139257936</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229267180</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909305</Parent>
+  </Item>
+  <Item id="3096177502523283">
+    <EntryPoints count="1">
+      <Item>2533236139257939</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229292311</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502523284">
+    <EntryPoints count="1">
+      <Item>2533236139257940</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267180</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229267183</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableFurniture</Name>
+    <Parent>4503530910909305</Parent>
+  </Item>
+  <Item id="3096177502523285">
+    <EntryPoints count="1">
+      <Item>2533236139257942</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267184</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229267185</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909307</Parent>
+  </Item>
+  <Item id="3096177502523286">
+    <EntryPoints count="1">
+      <Item>2533236139257943</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267185</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229303776</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableRain</Name>
+    <Parent>4503530910909307</Parent>
+  </Item>
+  <Item id="3096177502523287">
+    <EntryPoints count="1">
+      <Item>2533236139257945</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267186</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229267187</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910909308</Parent>
+  </Item>
+  <Item id="3096177502523288">
+    <EntryPoints count="1">
+      <Item>2533236139257946</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267187</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312981</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableBasicPlagueEverywhere</Name>
+    <Parent>4503530910909308</Parent>
+  </Item>
+  <Item id="3096177502531876">
+    <EntryPoints count="1">
+      <Item>2533236139266527</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275776</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291684</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917901</Parent>
+  </Item>
+  <Item id="3096177502531877">
+    <EntryPoints count="1">
+      <Item>2533236139266529</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275777</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917902</Parent>
+  </Item>
+  <Item id="3096177502531878">
+    <EntryPoints count="1">
+      <Item>2533236139266531</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275778</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292305</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917903</Parent>
+  </Item>
+  <Item id="3096177502531879">
+    <EntryPoints count="1">
+      <Item>2533236139266533</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275779</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917904</Parent>
+  </Item>
+  <Item id="3096177502531880">
+    <EntryPoints count="1">
+      <Item>2533236139266535</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275780</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291680</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917905</Parent>
+  </Item>
+  <Item id="3096177502531881">
+    <EntryPoints count="1">
+      <Item>2533236139266537</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275781</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292289</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="3096177502531882">
+    <EntryPoints count="1">
+      <Item>2533236139266539</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275782</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292295</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="3096177502531883">
+    <EntryPoints count="1">
+      <Item>2533236139266541</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275783</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910917908</Parent>
+  </Item>
+  <Item id="3096177502543976">
+    <EntryPoints count="1">
+      <Item>2533236139278627</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287876</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287894</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910930001</Parent>
+  </Item>
+  <Item id="3096177502543977">
+    <EntryPoints count="1">
+      <Item>2533236139278629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287877</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287880</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910930002</Parent>
+  </Item>
+  <Item id="3096177502543979">
+    <EntryPoints count="1">
+      <Item>2533236139278632</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229287878</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910930003</Parent>
+  </Item>
+  <Item id="3096177502543980">
+    <EntryPoints count="1">
+      <Item>2533236139278633</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287879</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910930002</Parent>
+  </Item>
+  <Item id="3096177502543981">
+    <EntryPoints count="1">
+      <Item>2533236139278634</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287878</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287881</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeOpeningState</Name>
+    <Parent>4503530910930003</Parent>
+  </Item>
+  <Item id="3096177502543985">
+    <EntryPoints count="1">
+      <Item>2533236139278640</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229287886</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910930005</Parent>
+  </Item>
+  <Item id="3096177502543986">
+    <EntryPoints count="1">
+      <Item>2533236139278641</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287884</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910930001</Parent>
+  </Item>
+  <Item id="3096177502543987">
+    <EntryPoints count="1">
+      <Item>2533236139278642</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287890</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287891</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeBT</Name>
+    <Parent>4503530910930005</Parent>
+  </Item>
+  <Item id="3096177502543990">
+    <EntryPoints count="1">
+      <Item>2533236139278648</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955892376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287892</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910930007</Parent>
+  </Item>
+  <Item id="3096177502547776">
+    <EntryPoints count="1">
+      <Item>2533236139282427</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291676</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291679</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910933801</Parent>
+  </Item>
+  <Item id="3096177502547780">
+    <EntryPoints count="1">
+      <Item>2533236139282433</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229291700</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502547781">
+    <EntryPoints count="1">
+      <Item>2533236139282434</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291680</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291681</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910917905</Parent>
+  </Item>
+  <Item id="3096177502547782">
+    <EntryPoints count="1">
+      <Item>2533236139282435</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291681</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>TalkedToExecutor</Name>
+    <Parent>4503530910917905</Parent>
+  </Item>
+  <Item id="3096177502547792">
+    <EntryPoints count="1">
+      <Item>2533236139282448</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229291685</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547793">
+    <EntryPoints count="1">
+      <Item>2533236139282449</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291685</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291686</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>MarkInTheater</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547794">
+    <EntryPoints count="1">
+      <Item>2533236139282450</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229364277</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291688</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TeleportToCathedralAndDisable</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547795">
+    <EntryPoints count="1">
+      <Item>2533236139282451</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291688</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229370676</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitTalkingToEveryone</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547796">
+    <EntryPoints count="1">
+      <Item>2533236139282452</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291690</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>TalkedToMark</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547797">
+    <EntryPoints count="1">
+      <Item>2533236139282453</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370579</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291690</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableAndWait</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547798">
+    <EntryPoints count="1">
+      <Item>2533236139282454</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291686</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForHibernation</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502547799">
+    <EntryPoints count="1">
+      <Item>2533236139282456</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291691</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291692</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910933807</Parent>
+  </Item>
+  <Item id="3096177502547803">
+    <EntryPoints count="1">
+      <Item>2533236139282461</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291698</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910933807</Parent>
+  </Item>
+  <Item id="3096177502547805">
+    <EntryPoints count="1">
+      <Item>2533236139282464</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229291694</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910933809</Parent>
+  </Item>
+  <Item id="3096177502547806">
+    <EntryPoints count="1">
+      <Item>2533236139282465</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291696</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291697</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>PlayText</Name>
+    <Parent>4503530910933809</Parent>
+  </Item>
+  <Item id="3096177502547808">
+    <EntryPoints count="1">
+      <Item>2533236139282468</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="2">
+      <Item>4222060229370580</Item>
+      <Item>4222060229528578</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292276</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForTalkingToMark</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502547809">
+    <EntryPoints count="1">
+      <Item>2533236139282469</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="2">
+      <Item>4222060229361177</Item>
+      <Item>4222060229812977</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>StartNewGame</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502548376">
+    <EntryPoints count="1">
+      <Item>2533236139283027</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896776</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292277</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910934401</Parent>
+  </Item>
+  <Item id="3096177502548377">
+    <EntryPoints count="1">
+      <Item>2533236139283028</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291700</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292278</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInCathedral</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502548379">
+    <EntryPoints count="1">
+      <Item>2533236139283031</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229292279</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910934402</Parent>
+  </Item>
+  <Item id="3096177502548380">
+    <EntryPoints count="1">
+      <Item>2533236139283032</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292279</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292281</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableRightCathedral</Name>
+    <Parent>4503530910934402</Parent>
+  </Item>
+  <Item id="3096177502548381">
+    <EntryPoints count="1">
+      <Item>2533236139283033</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229397276</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292282</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateBlueprint</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502548382">
+    <EntryPoints count="1">
+      <Item>2533236139283036</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292287</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229361176</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateBlueprint</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502548383">
+    <EntryPoints count="1">
+      <Item>2533236139283037</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292289</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229292290</Item>
+      <Item>4222060229370677</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="3096177502548384">
+    <EntryPoints count="1">
+      <Item>2533236139283038</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="2">
+      <Item>4222060229292290</Item>
+      <Item>4222060229370677</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>SetParam</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="3096177502548385">
+    <EntryPoints count="1">
+      <Item>2533236139283039</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <Initial>False</Initial>
+    <Name>DisableSelf</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="3096177502548387">
+    <EntryPoints count="1">
+      <Item>2533236139283041</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292295</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229292293</Item>
+      <Item>4222060229370678</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="3096177502548388">
+    <EntryPoints count="1">
+      <Item>2533236139283042</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="2">
+      <Item>4222060229292293</Item>
+      <Item>4222060229370678</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>SetParam</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="3096177502548389">
+    <EntryPoints count="1">
+      <Item>2533236139283043</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <Initial>False</Initial>
+    <Name>DisableSelf</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="3096177502548391">
+    <EntryPoints count="1">
+      <Item>2533236139283045</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <Initial>False</Initial>
+    <Name>New state</Name>
+    <Parent>4503530910917902</Parent>
+  </Item>
+  <Item id="3096177502548396">
+    <EntryPoints count="1">
+      <Item>2533236139283051</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292305</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForHibernation</Name>
+    <Parent>4503530910917903</Parent>
+  </Item>
+  <Item id="3096177502548397">
+    <EntryPoints count="1">
+      <Item>2533236139283053</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267183</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292307</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CloseMainDoor</Name>
+    <Parent>4503530910909305</Parent>
+  </Item>
+  <Item id="3096177502548398">
+    <EntryPoints count="1">
+      <Item>2533236139283055</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292308</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229596376</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="3096177502548400">
+    <EntryPoints count="1">
+      <Item>2533236139283057</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292307</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292310</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateSickPersonTest</Name>
+    <Parent>4503530910909305</Parent>
+  </Item>
+  <Item id="3096177502548401">
+    <EntryPoints count="1">
+      <Item>2533236139283058</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292321</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910909304</Parent>
+  </Item>
+  <Item id="3096177502548402">
+    <EntryPoints count="1">
+      <Item>2533236139283059</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292311</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292312</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForTalkingToMark</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502548403">
+    <EntryPoints count="1">
+      <Item>2533236139283060</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229829276</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292313</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartFadeIn</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502548404">
+    <EntryPoints count="1">
+      <Item>2533236139283061</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292313</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292315</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TeleportPlayerAndStartFadeOut</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502548406">
+    <EntryPoints count="1">
+      <Item>2533236139283063</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229528579</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292316</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502548407">
+    <EntryPoints count="1">
+      <Item>2533236139283064</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229308781</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292317</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpenTheDoor</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502548409">
+    <EntryPoints count="1">
+      <Item>2533236139283067</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292319</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292320</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CloseMainDoor</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502552876">
+    <EntryPoints count="1">
+      <Item>2533236139287527</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296776</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296779</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910938901</Parent>
+  </Item>
+  <Item id="3096177502552882">
+    <EntryPoints count="1">
+      <Item>2533236139287536</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296781</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910938904</Parent>
+  </Item>
+  <Item id="3096177502552886">
+    <EntryPoints count="1">
+      <Item>2533236139287541</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296779</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910938901</Parent>
+  </Item>
+  <Item id="3096177502552887">
+    <EntryPoints count="1">
+      <Item>2533236139287542</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296876</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeAI</Name>
+    <Parent>4503530910938904</Parent>
+  </Item>
+  <Item id="3096177502552977">
+    <EntryPoints count="1">
+      <Item>2533236139287629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296878</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296882</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939002</Parent>
+  </Item>
+  <Item id="3096177502552979">
+    <EntryPoints count="1">
+      <Item>2533236139287632</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229296879</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939003</Parent>
+  </Item>
+  <Item id="3096177502552982">
+    <EntryPoints count="1">
+      <Item>2533236139287636</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296880</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910939002</Parent>
+  </Item>
+  <Item id="3096177502552983">
+    <EntryPoints count="1">
+      <Item>2533236139287638</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296883</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939005</Parent>
+  </Item>
+  <Item id="3096177502552984">
+    <EntryPoints count="1">
+      <Item>2533236139287640</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901377</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296884</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939006</Parent>
+  </Item>
+  <Item id="3096177502552986">
+    <EntryPoints count="1">
+      <Item>2533236139287642</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296879</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296885</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateVictims</Name>
+    <Parent>4503530910939003</Parent>
+  </Item>
+  <Item id="3096177502552987">
+    <EntryPoints count="1">
+      <Item>2533236139287643</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296885</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296887</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateSoldier</Name>
+    <Parent>4503530910939003</Parent>
+  </Item>
+  <Item id="3096177502552988">
+    <EntryPoints count="1">
+      <Item>2533236139287644</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296887</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296886</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateOfficer</Name>
+    <Parent>4503530910939003</Parent>
+  </Item>
+  <Item id="3096177502552990">
+    <EntryPoints count="1">
+      <Item>2533236139287648</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296889</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296901</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939008</Parent>
+  </Item>
+  <Item id="3096177502552991">
+    <EntryPoints count="1">
+      <Item>2533236139287650</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901378</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296890</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229298583</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939009</Parent>
+  </Item>
+  <Item id="3096177502552992">
+    <EntryPoints count="1">
+      <Item>2533236139287652</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901379</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296891</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297377</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939010</Parent>
+  </Item>
+  <Item id="3096177502552993">
+    <EntryPoints count="1">
+      <Item>2533236139287653</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901379</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296894</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>SetIsDead</Name>
+    <Parent>4503530910939010</Parent>
+  </Item>
+  <Item id="3096177502552994">
+    <EntryPoints count="1">
+      <Item>2533236139287655</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901380</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296895</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939011</Parent>
+  </Item>
+  <Item id="3096177502552997">
+    <EntryPoints count="1">
+      <Item>2533236139287660</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229296899</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939012</Parent>
+  </Item>
+  <Item id="3096177502552999">
+    <EntryPoints count="1">
+      <Item>2533236139287663</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229296905</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939013</Parent>
+  </Item>
+  <Item id="3096177502553001">
+    <EntryPoints count="1">
+      <Item>2533236139287665</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="2">
+      <Item>4222060229296901</Item>
+      <Item>4222060229296902</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910939008</Parent>
+  </Item>
+  <Item id="3096177502553002">
+    <EntryPoints count="1">
+      <Item>2533236139287666</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296899</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296903</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateDiseased</Name>
+    <Parent>4503530910939012</Parent>
+  </Item>
+  <Item id="3096177502553003">
+    <EntryPoints count="1">
+      <Item>2533236139287667</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296903</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296904</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateSanitar</Name>
+    <Parent>4503530910939012</Parent>
+  </Item>
+  <Item id="3096177502553004">
+    <EntryPoints count="1">
+      <Item>2533236139287668</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296905</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296906</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910939013</Parent>
+  </Item>
+  <Item id="3096177502553005">
+    <EntryPoints count="1">
+      <Item>2533236139287669</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296908</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296909</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RiseAttackEvent</Name>
+    <Parent>4503530910939013</Parent>
+  </Item>
+  <Item id="3096177502553006">
+    <EntryPoints count="1">
+      <Item>2533236139287671</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901379</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297377</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeAI</Name>
+    <Parent>4503530910939010</Parent>
+  </Item>
+  <Item id="3096177502553007">
+    <EntryPoints count="1">
+      <Item>2533236139287672</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901378</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297376</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeAI</Name>
+    <Parent>4503530910939009</Parent>
+  </Item>
+  <Item id="3096177502553476">
+    <EntryPoints count="1">
+      <Item>2533236139288127</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297378</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297382</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939501</Parent>
+  </Item>
+  <Item id="3096177502553478">
+    <EntryPoints count="1">
+      <Item>2533236139288130</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229297379</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939502</Parent>
+  </Item>
+  <Item id="3096177502553479">
+    <EntryPoints count="1">
+      <Item>2533236139288131</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297381</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910939501</Parent>
+  </Item>
+  <Item id="3096177502553481">
+    <EntryPoints count="1">
+      <Item>2533236139288134</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229297393</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910939503</Parent>
+  </Item>
+  <Item id="3096177502553482">
+    <EntryPoints count="1">
+      <Item>2533236139288136</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901876</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297383</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939504</Parent>
+  </Item>
+  <Item id="3096177502553483">
+    <EntryPoints count="1">
+      <Item>2533236139288138</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901877</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297384</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939505</Parent>
+  </Item>
+  <Item id="3096177502553484">
+    <EntryPoints count="1">
+      <Item>2533236139288140</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224052</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297385</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297388</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939506</Parent>
+  </Item>
+  <Item id="3096177502553485">
+    <EntryPoints count="1">
+      <Item>2533236139288141</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224052</Owner>
+    <InputLinks count="2">
+      <Item>4222060229297387</Item>
+      <Item>4222060229297388</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910939506</Parent>
+  </Item>
+  <Item id="3096177502553489">
+    <EntryPoints count="1">
+      <Item>2533236139288147</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901878</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297390</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229334676</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939508</Parent>
+  </Item>
+  <Item id="3096177502553491">
+    <EntryPoints count="1">
+      <Item>2533236139288149</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297379</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297392</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreatePlagueCloud</Name>
+    <Parent>4503530910939502</Parent>
+  </Item>
+  <Item id="3096177502553492">
+    <EntryPoints count="1">
+      <Item>2533236139288150</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297395</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229411276</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeCloudAI</Name>
+    <Parent>4503530910939503</Parent>
+  </Item>
+  <Item id="3096177502553493">
+    <EntryPoints count="1">
+      <Item>2533236139288153</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224053</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297396</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297398</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910939509</Parent>
+  </Item>
+  <Item id="3096177502553494">
+    <EntryPoints count="1">
+      <Item>2533236139288154</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224053</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297398</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229357279</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableEmpty</Name>
+    <Parent>4503530910939509</Parent>
+  </Item>
+  <Item id="3096177502554677">
+    <EntryPoints count="1">
+      <Item>2533236139289329</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229298576</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910940701</Parent>
+  </Item>
+  <Item id="3096177502554678">
+    <EntryPoints count="1">
+      <Item>2533236139289330</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229298576</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229298581</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RemoveFlamethrowers</Name>
+    <Parent>4503530910940701</Parent>
+  </Item>
+  <Item id="3096177502554679">
+    <EntryPoints count="1">
+      <Item>2533236139289331</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229298581</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229298582</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RemoveDiseased</Name>
+    <Parent>4503530910940701</Parent>
+  </Item>
+  <Item id="3096177502554680">
+    <EntryPoints count="1">
+      <Item>2533236139289332</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901378</Owner>
+    <InputLinks count="1">
+      <Item>4222060229298583</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297376</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>GiveFlame</Name>
+    <Parent>4503530910939009</Parent>
+  </Item>
+  <Item id="3096177502559776">
+    <EntryPoints count="1">
+      <Item>2533236139294426</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229356176</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229303777</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInCathedral</Name>
+    <Parent>4503530910909307</Parent>
+  </Item>
+  <Item id="3096177502559777">
+    <EntryPoints count="1">
+      <Item>2533236139294427</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303779</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>ClearWeather</Name>
+    <Parent>4503530910909307</Parent>
+  </Item>
+  <Item id="3096177502559778">
+    <EntryPoints count="1">
+      <Item>2533236139294430</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303780</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910945801</Parent>
+  </Item>
+  <Item id="3096177502559779">
+    <EntryPoints count="1">
+      <Item>2533236139294432</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274230351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303781</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229303782</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910945802</Parent>
+  </Item>
+  <Item id="3096177502559780">
+    <EntryPoints count="1">
+      <Item>2533236139294433</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274230351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303782</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>AddPage</Name>
+    <Parent>4503530910945802</Parent>
+  </Item>
+  <Item id="3096177502559782">
+    <EntryPoints count="1">
+      <Item>2533236139294436</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303783</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910945803</Parent>
+  </Item>
+  <Item id="3096177502559784">
+    <EntryPoints count="1">
+      <Item>2533236139294439</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303785</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910945804</Parent>
+  </Item>
+  <Item id="3096177502559786">
+    <EntryPoints count="1">
+      <Item>2533236139294442</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303787</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910945805</Parent>
+  </Item>
+  <Item id="3096177502560877">
+    <EntryPoints count="1">
+      <Item>2533236139295530</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303783</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304885</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AddDiseasedOrgans</Name>
+    <Parent>4503530910945803</Parent>
+  </Item>
+  <Item id="3096177502560878">
+    <EntryPoints count="1">
+      <Item>2533236139295533</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304887</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304888</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StammYellowAndSymptoms</Name>
+    <Parent>4503530910945804</Parent>
+  </Item>
+  <Item id="3096177502560879">
+    <EntryPoints count="1">
+      <Item>2533236139295534</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304890</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304892</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StammRedAndSymptoms</Name>
+    <Parent>4503530910945804</Parent>
+  </Item>
+  <Item id="3096177502560880">
+    <EntryPoints count="1">
+      <Item>2533236139295535</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304889</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304891</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StammGreyAndSymptoms</Name>
+    <Parent>4503530910945804</Parent>
+  </Item>
+  <Item id="3096177502560881">
+    <EntryPoints count="1">
+      <Item>2533236139295536</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303787</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304893</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetRandomPain</Name>
+    <Parent>4503530910945805</Parent>
+  </Item>
+  <Item id="3096177502560885">
+    <EntryPoints count="1">
+      <Item>2533236139295540</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="2">
+      <Item>4222060229304895</Item>
+      <Item>4222060229304897</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304903</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetIsFree</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="3096177502560889">
+    <EntryPoints count="1">
+      <Item>2533236139295546</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637639401</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304901</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910946905</Parent>
+  </Item>
+  <Item id="3096177502560890">
+    <EntryPoints count="1">
+      <Item>2533236139295548</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637639402</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304902</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910946906</Parent>
+  </Item>
+  <Item id="3096177502560891">
+    <EntryPoints count="1">
+      <Item>2533236139295549</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304903</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="3096177502560893">
+    <EntryPoints count="1">
+      <Item>2533236139295552</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304905</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229385776</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910946907</Parent>
+  </Item>
+  <Item id="3096177502560895">
+    <EntryPoints count="1">
+      <Item>2533236139295555</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231452</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304906</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910946908</Parent>
+  </Item>
+  <Item id="3096177502561576">
+    <EntryPoints count="1">
+      <Item>2533236139296227</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640101</Owner>
+    <InputLinks count="1">
+      <Item>4222060229305576</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910947601</Parent>
+  </Item>
+  <Item id="3096177502561577">
+    <EntryPoints count="1">
+      <Item>2533236139296229</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640102</Owner>
+    <InputLinks count="1">
+      <Item>4222060229305577</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910947602</Parent>
+  </Item>
+  <Item id="3096177502561578">
+    <EntryPoints count="1">
+      <Item>2533236139296231</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640103</Owner>
+    <InputLinks count="1">
+      <Item>4222060229305578</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910947603</Parent>
+  </Item>
+  <Item id="3096177502563378">
+    <EntryPoints count="1">
+      <Item>2533236139298029</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229307379</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910949401</Parent>
+  </Item>
+  <Item id="3096177502563379">
+    <EntryPoints count="1">
+      <Item>2533236139298030</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <InputLinks count="1">
+      <Item>4222060229307379</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Player_Items</Name>
+    <Parent>4503530910949401</Parent>
+  </Item>
+  <Item id="3096177502563976">
+    <EntryPoints count="1">
+      <Item>2533236139298627</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274234551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229307976</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910950001</Parent>
+  </Item>
+  <Item id="3096177502563977">
+    <EntryPoints count="1">
+      <Item>2533236139298628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274234551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229307977</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Create</Name>
+    <Parent>4503530910950001</Parent>
+  </Item>
+  <Item id="3096177502564777">
+    <EntryPoints count="1">
+      <Item>2533236139299428</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274234551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229308777</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Delete</Name>
+    <Parent>4503530910950001</Parent>
+  </Item>
+  <Item id="3096177502564781">
+    <EntryPoints count="1">
+      <Item>2533236139299432</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292310</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229308779</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateBlueprints</Name>
+    <Parent>4503530910909305</Parent>
+  </Item>
+  <Item id="3096177502564783">
+    <EntryPoints count="1">
+      <Item>2533236139299434</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292316</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229308781</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>EnableLampsAndAddMarkOnMap</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502566376">
+    <EntryPoints count="1">
+      <Item>2533236139301026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292312</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229310376</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableLamps</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502567377">
+    <EntryPoints count="1">
+      <Item>2533236139302028</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311376</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311395</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910953401</Parent>
+  </Item>
+  <Item id="3096177502567379">
+    <EntryPoints count="1">
+      <Item>2533236139302031</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229311382</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910953402</Parent>
+  </Item>
+  <Item id="3096177502567380">
+    <EntryPoints count="1">
+      <Item>2533236139302032</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311378</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910953401</Parent>
+  </Item>
+  <Item id="3096177502567382">
+    <EntryPoints count="1">
+      <Item>2533236139302035</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229311379</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910953403</Parent>
+  </Item>
+  <Item id="3096177502567383">
+    <EntryPoints count="1">
+      <Item>2533236139302036</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311394</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311381</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateBlueprint</Name>
+    <Parent>4503530910953403</Parent>
+  </Item>
+  <Item id="3096177502567384">
+    <EntryPoints count="1">
+      <Item>2533236139302037</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311382</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311383</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitingForDialogue</Name>
+    <Parent>4503530910953402</Parent>
+  </Item>
+  <Item id="3096177502567385">
+    <EntryPoints count="1">
+      <Item>2533236139302038</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311383</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311384</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForLooseSight</Name>
+    <Parent>4503530910953402</Parent>
+  </Item>
+  <Item id="3096177502567386">
+    <EntryPoints count="1">
+      <Item>2533236139302039</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311386</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229968579</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartEffectAndEnableCorpseAndDisableAspity</Name>
+    <Parent>4503530910953402</Parent>
+  </Item>
+  <Item id="3096177502567388">
+    <EntryPoints count="1">
+      <Item>2533236139302044</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229311390</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910953404</Parent>
+  </Item>
+  <Item id="3096177502567389">
+    <EntryPoints count="1">
+      <Item>2533236139302045</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311390</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311393</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RemoveObjectDisableCorpseEnableAspity</Name>
+    <Parent>4503530910953404</Parent>
+  </Item>
+  <Item id="3096177502567390">
+    <EntryPoints count="1">
+      <Item>2533236139302046</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311379</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311394</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableCorpse</Name>
+    <Parent>4503530910953403</Parent>
+  </Item>
+  <Item id="3096177502568977">
+    <EntryPoints count="1">
+      <Item>2533236139303629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312977</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229313002</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955002</Parent>
+  </Item>
+  <Item id="3096177502568978">
+    <EntryPoints count="1">
+      <Item>2533236139303631</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312978</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312995</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955003</Parent>
+  </Item>
+  <Item id="3096177502568979">
+    <EntryPoints count="1">
+      <Item>2533236139303633</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312979</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312982</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955004</Parent>
+  </Item>
+  <Item id="3096177502568981">
+    <EntryPoints count="1">
+      <Item>2533236139303636</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312981</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229828482</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CancelDiseaseForEvents</Name>
+    <Parent>4503530910909308</Parent>
+  </Item>
+  <Item id="3096177502568983">
+    <EntryPoints count="1">
+      <Item>2533236139303639</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229312984</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955006</Parent>
+  </Item>
+  <Item id="3096177502568984">
+    <EntryPoints count="1">
+      <Item>2533236139303640</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312983</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910955004</Parent>
+  </Item>
+  <Item id="3096177502568986">
+    <EntryPoints count="1">
+      <Item>2533236139303642</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312987</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312988</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AddDisease</Name>
+    <Parent>4503530910955006</Parent>
+  </Item>
+  <Item id="3096177502568987">
+    <EntryPoints count="1">
+      <Item>2533236139303644</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312984</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312985</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayer</Name>
+    <Parent>4503530910955006</Parent>
+  </Item>
+  <Item id="3096177502568988">
+    <EntryPoints count="1">
+      <Item>2533236139303646</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229312989</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955007</Parent>
+  </Item>
+  <Item id="3096177502568989">
+    <EntryPoints count="1">
+      <Item>2533236139303647</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312992</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312993</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AddDisease</Name>
+    <Parent>4503530910955007</Parent>
+  </Item>
+  <Item id="3096177502568990">
+    <EntryPoints count="1">
+      <Item>2533236139303649</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312989</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312990</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayer</Name>
+    <Parent>4503530910955007</Parent>
+  </Item>
+  <Item id="3096177502568991">
+    <EntryPoints count="1">
+      <Item>2533236139303650</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312994</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910955003</Parent>
+  </Item>
+  <Item id="3096177502568992">
+    <EntryPoints count="1">
+      <Item>2533236139303652</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229312996</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910955008</Parent>
+  </Item>
+  <Item id="3096177502568994">
+    <EntryPoints count="1">
+      <Item>2533236139303655</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312996</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312997</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayer</Name>
+    <Parent>4503530910955008</Parent>
+  </Item>
+  <Item id="3096177502568995">
+    <EntryPoints count="1">
+      <Item>2533236139303656</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229313001</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910955002</Parent>
+  </Item>
+  <Item id="3096177502568996">
+    <EntryPoints count="1">
+      <Item>2533236139303657</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312999</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229313003</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CancelDiseaseForEvents</Name>
+    <Parent>4503530910955008</Parent>
+  </Item>
+  <Item id="3096177502574277">
+    <EntryPoints count="1">
+      <Item>2533236139308929</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318277</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318279</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910960302</Parent>
+  </Item>
+  <Item id="3096177502574280">
+    <EntryPoints count="1">
+      <Item>2533236139308934</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229318281</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910960304</Parent>
+  </Item>
+  <Item id="3096177502574281">
+    <EntryPoints count="1">
+      <Item>2533236139308935</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318280</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910960302</Parent>
+  </Item>
+  <Item id="3096177502574282">
+    <EntryPoints count="1">
+      <Item>2533236139308936</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318281</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318282</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910960304</Parent>
+  </Item>
+  <Item id="3096177502574283">
+    <EntryPoints count="1">
+      <Item>2533236139308937</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318284</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318285</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ShowFocusMode</Name>
+    <Parent>4503530910960304</Parent>
+  </Item>
+  <Item id="3096177502574284">
+    <EntryPoints count="1">
+      <Item>2533236139308939</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318291</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318292</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910960305</Parent>
+  </Item>
+  <Item id="3096177502574285">
+    <EntryPoints count="1">
+      <Item>2533236139308941</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229318286</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910960306</Parent>
+  </Item>
+  <Item id="3096177502574286">
+    <EntryPoints count="1">
+      <Item>2533236139308942</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229320576</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318287</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910960306</Parent>
+  </Item>
+  <Item id="3096177502574287">
+    <EntryPoints count="1">
+      <Item>2533236139308943</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318289</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318290</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ShowMindMap</Name>
+    <Parent>4503530910960306</Parent>
+  </Item>
+  <Item id="3096177502574288">
+    <EntryPoints count="1">
+      <Item>2533236139308945</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318293</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910960305</Parent>
+  </Item>
+  <Item id="3096177502574290">
+    <EntryPoints count="1">
+      <Item>2533236139308948</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229318294</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910960307</Parent>
+  </Item>
+  <Item id="3096177502574291">
+    <EntryPoints count="1">
+      <Item>2533236139308949</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318294</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318296</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Create</Name>
+    <Parent>4503530910960307</Parent>
+  </Item>
+  <Item id="3096177502575083">
+    <EntryPoints count="1">
+      <Item>2533236139309735</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319090</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319091</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910961102</Parent>
+  </Item>
+  <Item id="3096177502575084">
+    <EntryPoints count="1">
+      <Item>2533236139309736</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319092</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910961102</Parent>
+  </Item>
+  <Item id="3096177502575085">
+    <EntryPoints count="1">
+      <Item>2533236139309738</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229319083</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910961103</Parent>
+  </Item>
+  <Item id="3096177502575086">
+    <EntryPoints count="1">
+      <Item>2533236139309739</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319083</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319084</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910961103</Parent>
+  </Item>
+  <Item id="3096177502575087">
+    <EntryPoints count="1">
+      <Item>2533236139309740</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319086</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319087</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ShowFocusMode</Name>
+    <Parent>4503530910961103</Parent>
+  </Item>
+  <Item id="3096177502575088">
+    <EntryPoints count="1">
+      <Item>2533236139309743</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229319088</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910961104</Parent>
+  </Item>
+  <Item id="3096177502575089">
+    <EntryPoints count="1">
+      <Item>2533236139309744</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319088</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319089</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Create</Name>
+    <Parent>4503530910961104</Parent>
+  </Item>
+  <Item id="3096177502576476">
+    <EntryPoints count="1">
+      <Item>2533236139311126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318286</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229320576</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForExecutorDialogue</Name>
+    <Parent>4503530910960306</Parent>
+  </Item>
+  <Item id="3096177502586376">
+    <EntryPoints count="1">
+      <Item>2533236139321127</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330676</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229357276</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910972401</Parent>
+  </Item>
+  <Item id="3096177502586377">
+    <EntryPoints count="1">
+      <Item>2533236139321128</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229357276</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>BlockAllDoorsQuestLayer</Name>
+    <Parent>4503530910972401</Parent>
+  </Item>
+  <Item id="3096177502586378">
+    <EntryPoints count="1">
+      <Item>2533236139321129</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330678</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910909303</Parent>
+  </Item>
+  <Item id="3096177502586379">
+    <EntryPoints count="1">
+      <Item>2533236139321131</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256952</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330679</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229330680</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910972402</Parent>
+  </Item>
+  <Item id="3096177502586380">
+    <EntryPoints count="1">
+      <Item>2533236139321132</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256952</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330680</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>SetParam</Name>
+    <Parent>4503530910972402</Parent>
+  </Item>
+  <Item id="3096177502586381">
+    <EntryPoints count="1">
+      <Item>2533236139321134</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330681</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229332177</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910972403</Parent>
+  </Item>
+  <Item id="3096177502586383">
+    <EntryPoints count="1">
+      <Item>2533236139321137</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229330682</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910972404</Parent>
+  </Item>
+  <Item id="3096177502586385">
+    <EntryPoints count="1">
+      <Item>2533236139321140</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229332180</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910972405</Parent>
+  </Item>
+  <Item id="3096177502587876">
+    <EntryPoints count="1">
+      <Item>2533236139322627</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955936276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229332176</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910973901</Parent>
+  </Item>
+  <Item id="3096177502587877">
+    <EntryPoints count="1">
+      <Item>2533236139322628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229332178</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530910972403</Parent>
+  </Item>
+  <Item id="3096177502587878">
+    <EntryPoints count="1">
+      <Item>2533236139322629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330682</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229332179</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>CreateObject</Name>
+    <Parent>4503530910972404</Parent>
+  </Item>
+  <Item id="3096177502587879">
+    <EntryPoints count="1">
+      <Item>2533236139322630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229332180</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229332181</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerInTrigger</Name>
+    <Parent>4503530910972405</Parent>
+  </Item>
+  <Item id="3096177502587880">
+    <EntryPoints count="1">
+      <Item>2533236139322631</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229332183</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229332184</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ChangeBT</Name>
+    <Parent>4503530910972405</Parent>
+  </Item>
+  <Item id="3096177502588076">
+    <EntryPoints count="1">
+      <Item>2533236139322826</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292291</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>New state</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="3096177502588077">
+    <EntryPoints count="1">
+      <Item>2533236139322827</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292294</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>New state</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="3096177502590377">
+    <EntryPoints count="1">
+      <Item>2533236139325127</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901878</Owner>
+    <InputLinks count="1">
+      <Item>4222060229334676</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>set  ignoredinCombat </Name>
+    <Parent>4503530910939508</Parent>
+  </Item>
+  <Item id="3096177502605376">
+    <EntryPoints count="1">
+      <Item>2533236139340327</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637683901</Owner>
+    <InputLinks count="1">
+      <Item>4222060229349876</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910991401</Parent>
+  </Item>
+  <Item id="3096177502605377">
+    <EntryPoints count="1">
+      <Item>2533236139340329</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637683902</Owner>
+    <InputLinks count="1">
+      <Item>4222060229349877</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530910991402</Parent>
+  </Item>
+  <Item id="3096177502611676">
+    <EntryPoints count="1">
+      <Item>2533236139346626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229303776</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229356176</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetGameAndSolarTime</Name>
+    <Parent>4503530910909307</Parent>
+  </Item>
+  <Item id="3096177502612776">
+    <EntryPoints count="1">
+      <Item>2533236139347726</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <InputLinks count="1">
+      <Item>4222060229357277</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229357278</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530910909303</Parent>
+  </Item>
+  <Item id="3096177502612777">
+    <EntryPoints count="1">
+      <Item>2533236139347727</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224053</Owner>
+    <InputLinks count="1">
+      <Item>4222060229357279</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229390077</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableTheaterTumba</Name>
+    <Parent>4503530910939509</Parent>
+  </Item>
+  <Item id="3096177502616576">
+    <EntryPoints count="1">
+      <Item>2533236139351626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229361176</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229361177</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SleepState</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502625876">
+    <EntryPoints count="1">
+      <Item>2533236139361026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370576</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229370580</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>ActivatePauseBlueprint</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502625877">
+    <EntryPoints count="1">
+      <Item>2533236139361028</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370581</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>StopPauseBlueprintAndWaitForFinishingTheGame</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502625976">
+    <EntryPoints count="1">
+      <Item>2533236139361126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370676</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>EnableMarkAndWait</Name>
+    <Parent>4503530910933806</Parent>
+  </Item>
+  <Item id="3096177502631176">
+    <EntryPoints count="1">
+      <Item>2533236139366327</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955979576</Owner>
+    <InputLinks count="1">
+      <Item>4222060229375876</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229403976</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911017201</Parent>
+  </Item>
+  <Item id="3096177502640478">
+    <EntryPoints count="1">
+      <Item>2533236139375829</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229385777</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911026501</Parent>
+  </Item>
+  <Item id="3096177502640479">
+    <EntryPoints count="1">
+      <Item>2533236139375830</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229385777</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229802277</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TrashLoot</Name>
+    <Parent>4503530911026501</Parent>
+  </Item>
+  <Item id="3096177502644777">
+    <EntryPoints count="1">
+      <Item>2533236139380127</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224053</Owner>
+    <InputLinks count="1">
+      <Item>4222060229390077</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>DisableStvorkiDiseasedObjects</Name>
+    <Parent>4503530910939509</Parent>
+  </Item>
+  <Item id="3096177502651976">
+    <EntryPoints count="1">
+      <Item>2533236139387326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292284</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229397276</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LockCathedralDoor</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502653177">
+    <EntryPoints count="1">
+      <Item>2533236139388527</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229398477</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableClouds</Name>
+    <Parent>4503530910930003</Parent>
+  </Item>
+  <Item id="3096177502658676">
+    <EntryPoints count="1">
+      <Item>2533236139394026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955979576</Owner>
+    <InputLinks count="1">
+      <Item>4222060229403976</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>LookAtSetTarget</Name>
+    <Parent>4503530911017201</Parent>
+  </Item>
+  <Item id="3096177502665976">
+    <EntryPoints count="1">
+      <Item>2533236139401327</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274336551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229411277</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911052001</Parent>
+  </Item>
+  <Item id="3096177502665979">
+    <EntryPoints count="1">
+      <Item>2533236139401331</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274336551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229411278</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530911052001</Parent>
+  </Item>
+  <Item id="3096177502672782">
+    <EntryPoints count="1">
+      <Item>2533236139408133</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229418180</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911058803</Parent>
+  </Item>
+  <Item id="3096177502672783">
+    <EntryPoints count="1">
+      <Item>2533236139408134</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229418180</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229418182</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetToNormal</Name>
+    <Parent>4503530911058803</Parent>
+  </Item>
+  <Item id="3096177502782576">
+    <EntryPoints count="1">
+      <Item>2533236139518026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292315</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229528579</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartAutosave</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177502782577">
+    <EntryPoints count="1">
+      <Item>2533236139518027</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292282</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229528578</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartAutosave</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177502849676">
+    <EntryPoints count="1">
+      <Item>2533236139585326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="1">
+      <Item>4222060229596376</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229596377</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableHealing</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="3096177503003980">
+    <EntryPoints count="1">
+      <Item>2533236139741536</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274671751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229753389</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229753579</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911387903</Parent>
+  </Item>
+  <Item id="3096177503004176">
+    <EntryPoints count="1">
+      <Item>2533236139741727</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274671751</Owner>
+    <InputLinks count="2">
+      <Item>4222060229753576</Item>
+      <Item>4222060230279582</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>AddEmptyBottle</Name>
+    <Parent>4503530911387903</Parent>
+  </Item>
+  <Item id="3096177503004177">
+    <EntryPoints count="1">
+      <Item>2533236139741728</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274671751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229753577</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>AddBrokenAmpoule</Name>
+    <Parent>4503530911387903</Parent>
+  </Item>
+  <Item id="3096177503004178">
+    <EntryPoints count="1">
+      <Item>2533236139741729</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274671751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229753579</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530911387903</Parent>
+  </Item>
+  <Item id="3096177503049176">
+    <EntryPoints count="1">
+      <Item>2533236139787026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>281470685671027</Owner>
+    <InputLinks count="1">
+      <Item>4222060229799376</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229812976</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetDefaultJerboaAmount</Name>
+    <Parent>4503530910909302</Parent>
+  </Item>
+  <Item id="3096177503052077">
+    <EntryPoints count="1">
+      <Item>2533236139789928</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229802277</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>AddNoteToTable</Name>
+    <Parent>4503530911026501</Parent>
+  </Item>
+  <Item id="3096177503059976">
+    <EntryPoints count="1">
+      <Item>2533236139797827</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274727751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229810276</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911443901</Parent>
+  </Item>
+  <Item id="3096177503059977">
+    <EntryPoints count="1">
+      <Item>2533236139797828</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274727751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229810279</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>SpawnSpecialCharacter</Name>
+    <Parent>4503530911443901</Parent>
+  </Item>
+  <Item id="3096177503059978">
+    <EntryPoints count="1">
+      <Item>2533236139797830</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956405576</Owner>
+    <InputLinks count="1">
+      <Item>4222060229810277</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911443902</Parent>
+  </Item>
+  <Item id="3096177503062676">
+    <EntryPoints count="1">
+      <Item>2533236139800526</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>281470685671027</Owner>
+    <InputLinks count="1">
+      <Item>4222060229812976</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>BlockNotificationsAndUIBound</Name>
+    <Parent>4503530910909302</Parent>
+  </Item>
+  <Item id="3096177503062677">
+    <EntryPoints count="1">
+      <Item>2533236139800527</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292276</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229812977</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>UnblockNotifications</Name>
+    <Parent>4503530910933803</Parent>
+  </Item>
+  <Item id="3096177503068076">
+    <EntryPoints count="1">
+      <Item>2533236139805927</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818476</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818496</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911452001</Parent>
+  </Item>
+  <Item id="3096177503068077">
+    <EntryPoints count="1">
+      <Item>2533236139805929</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818477</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818478</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911452002</Parent>
+  </Item>
+  <Item id="3096177503068079">
+    <EntryPoints count="1">
+      <Item>2533236139805932</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229818482</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911452003</Parent>
+  </Item>
+  <Item id="3096177503068080">
+    <EntryPoints count="1">
+      <Item>2533236139805933</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229843779</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818488</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableScene</Name>
+    <Parent>4503530911452003</Parent>
+  </Item>
+  <Item id="3096177503068081">
+    <EntryPoints count="1">
+      <Item>2533236139805936</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818482</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818485</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530911452003</Parent>
+  </Item>
+  <Item id="3096177503068083">
+    <EntryPoints count="1">
+      <Item>2533236139805938</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818487</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818479</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetCutsceneFinishedParam</Name>
+    <Parent>4503530911452003</Parent>
+  </Item>
+  <Item id="3096177503068084">
+    <EntryPoints count="1">
+      <Item>2533236139805940</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818489</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530911452002</Parent>
+  </Item>
+  <Item id="3096177503068086">
+    <EntryPoints count="1">
+      <Item>2533236139805943</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229818491</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911452004</Parent>
+  </Item>
+  <Item id="3096177503068087">
+    <EntryPoints count="1">
+      <Item>2533236139805944</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229843781</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818495</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableScene</Name>
+    <Parent>4503530911452004</Parent>
+  </Item>
+  <Item id="3096177503068088">
+    <EntryPoints count="1">
+      <Item>2533236139805945</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818491</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818492</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530911452004</Parent>
+  </Item>
+  <Item id="3096177503068089">
+    <EntryPoints count="1">
+      <Item>2533236139805946</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818494</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818490</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetCutsceneFinishedParam</Name>
+    <Parent>4503530911452004</Parent>
+  </Item>
+  <Item id="3096177503068090">
+    <EntryPoints count="1">
+      <Item>2533236139805948</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818497</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530911452001</Parent>
+  </Item>
+  <Item id="3096177503077576">
+    <EntryPoints count="1">
+      <Item>2533236139815626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296909</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229828476</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>WaitForPlayerOutOfSight</Name>
+    <Parent>4503530910939013</Parent>
+  </Item>
+  <Item id="3096177503077577">
+    <EntryPoints count="1">
+      <Item>2533236139815628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828478</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229828479</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RiseRemoveAll</Name>
+    <Parent>4503530910939013</Parent>
+  </Item>
+  <Item id="3096177503077578">
+    <EntryPoints count="1">
+      <Item>2533236139815629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901378</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828480</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>RemoveSelf</Name>
+    <Parent>4503530910939009</Parent>
+  </Item>
+  <Item id="3096177503077579">
+    <EntryPoints count="1">
+      <Item>2533236139815630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901379</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828481</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>RemoveSelf</Name>
+    <Parent>4503530910939010</Parent>
+  </Item>
+  <Item id="3096177503077581">
+    <EntryPoints count="1">
+      <Item>2533236139815633</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229828484</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911461401</Parent>
+  </Item>
+  <Item id="3096177503077582">
+    <EntryPoints count="1">
+      <Item>2533236139815634</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828484</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Wait</Name>
+    <Parent>4503530911461401</Parent>
+  </Item>
+  <Item id="3096177503077584">
+    <EntryPoints count="1">
+      <Item>2533236139815637</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828486</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>DisableSerdechnikPlagueSpots</Name>
+    <Parent>4503530911461401</Parent>
+  </Item>
+  <Item id="3096177503077586">
+    <EntryPoints count="1">
+      <Item>2533236139815640</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828489</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>EnableSerdechnikPlagueSpots</Name>
+    <Parent>4503530911461401</Parent>
+  </Item>
+  <Item id="3096177503078376">
+    <EntryPoints count="1">
+      <Item>2533236139816426</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229310376</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229829276</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>UnblockMapNotifications</Name>
+    <Parent>4503530910909306</Parent>
+  </Item>
+  <Item id="3096177503097476">
+    <EntryPoints count="1">
+      <Item>2533236139835727</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274765051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229849076</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229849077</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911481201</Parent>
+  </Item>
+  <Item id="3096177503097477">
+    <EntryPoints count="1">
+      <Item>2533236139835728</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274765051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229849077</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229849079</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetDiseaseReputationAndDiscover</Name>
+    <Parent>4503530911481201</Parent>
+  </Item>
+  <Item id="3096177503097478">
+    <EntryPoints count="1">
+      <Item>2533236139835730</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956442876</Owner>
+    <InputLinks count="1">
+      <Item>4222060229849078</Item>
+    </InputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911481202</Parent>
+  </Item>
+  <Item id="3096177503097479">
+    <EntryPoints count="1">
+      <Item>2533236139835731</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274765051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229849079</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>KillDeadCharacterAndAssign</Name>
+    <Parent>4503530911481201</Parent>
+  </Item>
+  <Item id="3096177503231176">
+    <EntryPoints count="1">
+      <Item>2533236139971327</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229986276</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229986277</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911614701</Parent>
+  </Item>
+  <Item id="3096177503231178">
+    <EntryPoints count="1">
+      <Item>2533236139971330</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229986278</Item>
+    </OutputLinks>
+    <Initial>True</Initial>
+    <Name>initState</Name>
+    <Parent>4503530911614702</Parent>
+  </Item>
+  <Item id="3096177503231179">
+    <EntryPoints count="1">
+      <Item>2533236139971331</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229986280</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229986282</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DisableTriggerObject</Name>
+    <Parent>4503530911614702</Parent>
+  </Item>
+  <Item id="3096177503231180">
+    <EntryPoints count="1">
+      <Item>2533236139971333</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229986281</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Closed</Name>
+    <Parent>4503530911614701</Parent>
+  </Item>
+</Root>

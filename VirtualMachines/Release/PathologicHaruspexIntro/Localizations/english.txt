@@ -1,0 +1,535 @@
+﻿6192355000539051 Executor
+6192355000539053 As you can see, the blood no longer flows in this artery. There's a clot. You're a doctor, aren't you? Do you have medicine with you?
+6192355000539054 Medicine? What for?
+6192355000540251 How did you get inside this coffin?
+6192355000540252 Me? You were the one in the coffin. Why did you crawl in there?
+6192355000553551 Someone heavy… I hear heavy steps, in the dark. I can't see you. Are you death?
+6192355000553552 You're feverish.
+6192355000557553 Fellow Traveler
+6192355000561651 You mean this train?
+6192355000561652 A coffin is the best means of transportation in the world. It can get you to unimaginable places.
+6192355000561653 You look alive though. So that vehicle is beyond your means for now. A freerider, huh?
+6192355000561654 Just like you.
+6192355000561656 I was hiding.
+6192355000561657 From whom? Death?
+6192355000561658 No way. We're no birds of feather, you and I.
+6192355000561659 Yes. And people, too. It's a bit too early for me to show my face. A bit too early.
+6192355000561660 So you're visiting our town too, huh?
+6192355000561661 True.
+6192355000561663 That's one tiny compartment. Your bones must be aching.
+6192355000561664 Then get back inside your hiding place, if you like it.
+6192355000561669 No one sells tickets to ride this train.
+6192355000561670 And now—enough chatter, all right? You woke me up. And I want to sleep.
+6192355000562610 Let Mother Boddho caress your step, kholboön. You haven't forgotten your people, have you?
+6192355000562611 No. I haven't.
+6192355000562612 Let us trade hearts, kholboön. Let's become kin.
+6192355000562613 What need do you have of mine? Isn't it rotten?
+6192355000562614 I'm not one of you. I wasn't raised on the steppe.
+6192355000562615 Bayarlaa, kholboön.
+6192355000562637 Do you have a good heart?
+6192355000562638 Well, it's healthy.
+6192355000562639 I don't know. I'm afraid it's sick.
+6192355000562640 Who is the judge?
+6192355000562641 We hear Earth with our hearts. The heart has a pulse. So does Earth. If they sing in harmony, you hear the language of Earth and herbs. The language of warmth and cold. Look, tangher, and listen. Whose words are all around? What does Earth say?
+6192355000562642 It says a lot of things.
+6192355000562643 I can't decipher this language.
+6192355000562644 This is just my inner voice.
+6192355000562645 A lot of time passed. You were gone. You forgot many things. Your heart is spoiled, Khatangher. Let us see if it's rotten.
+6192355000562646 Like hell. I'm perfectly happy with my heart.
+6192355000562647 How can you see that?
+6192355000562648 The fight will show. Whose heart is keen? Who hears the unheard words? You will see my heart. The Kin's blood runs through me. I was never torn from my people. 
+6192355000562649 I'll take a look.
+6192355000562650 I haven't forgotten anything.
+6192355000563251 Neither was I.
+6192355000563252 You aren't people, but beasts. I'm not one of you.
+6192355000563253 No. I'd rather keep mine.
+6192355000563254 A river of good washes away a drop of rot. There's no "me" and "you." There's a people, Khatanghe. Mix your flesh with ours.
+6192355000563255 Just let me go in peace.
+6192355000563256 All right. Let it be so.
+6192355000563257 Railroads are beautiful. They always lead to one place you can't turn from… except when there's a silly mistake, like this crash. Dying just to escape fate. Stupid. Boring.
+6192355000563258 What is that monster?
+6192355000563259 Ahead or behind?
+6192355000563260 Behind me.
+6192355000563261 That is Bos Turokh. A creature of steppe legends from which the world was created. What was he trying to achieve here? Stupid. Life can never prevent death.
+6192355000563262 What is ahead, then? Why the fires?
+6192355000563263 Who are you?
+6192355000563264 Is there something monstrous ahead? I don't see any danger.
+6192355000563265 Look closer. Ahead is death. Would you like to check?
+6192355000563266 What about the bull on the tracks?
+6192355000563267 Us? Kind volunteers, who advise you to return to the train car. It will soon leave.
+6192355000563268 That bull… What has it done?
+6192355000563269 What happened here?
+6192355000563270 Yes.
+6192355000563271 No.
+6192355000563272 What clot? What are those black flakes?
+6192355000563273 How should we know? You're the doctor, not us. Go and see. We're only ensuring no other trains are derailed. We'll fix yours, too, once the beast leaves the tracks.
+6192355000563274 I have a lot of time on my hands, then. Bulls are stubborn.
+6192355000563275 Death?
+6192355000563276 I'll go on foot, then. Someone's waiting for me.
+6192355000563277 Water… I'm so thirsty. I need a drink of fresh water. Please, bring it to me…
+6192355000563278 Where do I get it?
+6192355000563279 How can I help you?
+6192355000563280 No, I'm a doctor. What's wrong with you?
+6192355000563281 All right. Wait a bit.
+6192355000563282 Outside… In the yard… Hard to talk…
+6192355000563283 Keep silent, then.
+6192355000563284 Wait for me.
+6192355000610751 Charm
+6192355000610752 Averts bad fortune. Unhelpful to me.
+6192355000610753 You can't bring about good fortune—but you can craft it, like this handwoven charm. I suppose I could trade it for something.
+6192355000610754 Neomycinum (+)
+6192355000610755 Lowers infection. Fixes the Bone Layer of the human body. Doesn't completely heal the patient, but significantly lowers the chance of death.
+6192355000610756 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave. This one is an even better killer than the others.
+6192355000610757 Black Twyre
+6192355000610758 Twyre, the herb with many faces. Used to make tinctures.
+6192355000610759 Herbs are the words of Earth. She grants them to us by splitting herself open; and so, an herb given to the human body can tell us what ails it.\n\nEach blade of twyre is unique. Herbalists tell them apart by their voices.
+6192355000610760 Herbs are the words of Earth. She grants them to us by splitting herself open; and so, an herb given to the human body can tell us what ails it.\n\nEach blade of twyre is unique. Herbalists tell them apart by their voices.
+6192355000610761 Twyre, the herb with many faces. Used to make tinctures.
+6192355000610762 Blood Twyre
+6192355000610763 Painkiller
+6192355000610764 Helps lower a patient's pain. Made from heart tissue.
+6192355000610765 A mixture of herbs and human organs is called "dead broth." It is believed to absorb death and feebleness, invigorating whoever takes it.
+6192355000610766 "Medrel" Antibiotic
+6192355000610767 All antibiotics do is smother whatever life they can. It's no panacea.
+6192355000610768 Man is a microbe for a town and a town for a microbe. Billions of useful bacteria inhabit our body; we would be empty and dead without them. And they're barely distinguishable from lethal microbes.
+6192355000610769 Beetle
+6192355000610770 A surprising find in autumn, if not useless.
+6192355000610771 Where do they go in winter?
+6192355000610772 Coffee
+6192355000610773 Coffee beans will immediately energize you, but it's very unhealthy.
+6192355000610774 Offering coffee beans to the tombs of the Mistresses is considered tone-deaf, for theirs is the element of Dreams.
+6192355000610775 Nothing like a good egg. Delicious. The chicken has yet to be seen.
+6192355000610776 People mostly eat unfertilized eggs. This is an empty illusion of possible life.
+6192355000610777 Egg
+6192355000610778 Empty Bottle
+6192355000610779 Can be filled with water or blood.
+6192355000610780 Water flows like time.
+6192355000610781 Infected Blood
+6192355000610782 Can be used like any other infected organ.
+6192355000610783 Among the Layers of the body, Blood is often mentioned; at other times, Flesh; but rarely both as two separate Layers. Blood <i>is</i> flesh. "We are of the same blood, you and I." "You are flesh of our flesh."
+6192355000610784 Rotten Heart
+6192355000610785 A human heart. Living, but vermiculous.
+6192355000610786 In steppe lore, the center of mind and knowledge is the liver, while the center of feeling and emotion is the lower guts. They view the heart as a less crucial and rather mechanical organ that simply pumps life around, oddly arriving at a consensus with science-based medicine.
+6192355000610787 Good Heart
+6192355000610788 A living human heart.
+6192355000610789 In steppe lore, the center of mind and knowledge is the liver, while the center of feeling and emotion is the lower guts. They view the heart as a less crucial and rather mechanical organ that simply pumps life around, oddly arriving at a consensus with science-based medicine.
+6192355000610790 Immunity Boosters
+6192355000610791 Assorted pills of unknown origin. Boost immunity. Smell suspicious.
+6192355000610792 Scientifically speaking, there's no consensus on if immunity can be boosted at all. However, these pills work well. According to the box, they were manufactured more than fifty years ago.
+6192355000610793 Cloth Mask
+6192355000610794 Covers the face.
+6192355000610795 This mask resembles those worn by medical personnel, but instead of sterile gauze, it's made of dirty cloth, and instead of clinging tightly to my face, it hangs loose. Frankly, it's just a rag with two ties.
+6192355000610796 Match
+6192355000610797 Draw the short one!
+6192355000610798 One must recall that which is most dear to them <i>before</i> the match burns out, or the whole thing won't work.
+6192355000610799 Smoked Meat
+6192355000610800 Not as good as fresh meat, but better preserved. Tear it apart with your teeth; no forks or knives required.
+6192355000610801 Canned meat. Jerked meat. Smoked meat. Boiled meat. Beef, ham. The art of cooking meat is truly honored in the Town.
+6192355000610802 Milk
+6192355000610803 Warm, creamy. Satisfies hunger and thirst. Reminds me of childhood.
+6192355000610804 Often used an an offering to the dead, milk serves as a reminder that all that is born must come to an end. It is said that the dead drink milk over water because the flow of water reminds them of the flow of time.
+6192355000610805 Money
+6192355000610806 Shines in the dim light.
+6192355000610807 While we all know what actual money looks like, coins from different countries and times can be seen in the Town. Incredibly, shops and traders accept them all.
+6192355000610808 Scrap Name
+6192355000610809 When a person is done with their name, they discard it.
+6192355000610810 People in this town are like a flight of birds, and birds don't require names. Individuality is overrated.
+6192355000610811 Needle
+6192355000610812 "His death is hidden inside a needle, which is in an egg, which is in a duck..."
+6192355000610813 They say that when Lara Ravel pricked her finger with a needle, no blood was drawn, and she hasn't ever fallen asleep ever since.
+6192355000610814 Keeps darkness at bay.
+6192355000610815 Torch
+6192355000610816 Keeps darkness at bay.
+6192355000610817 Straight Razor
+6192355000610818 Too wonky to be used as a weapon or surgical instrument, but kids love it.
+6192355000610819 Ten years ago, local bandits used to call themselves "barbers" and brandish a particular style of razors as a mark of their identity. I wonder what became of that culture.
+6192355000610820 Scalpel
+6192355000610821 Either a weapon that can take someone's life, or an essential tool for a surgeon.
+6192355000610822 A tool for a surgeon. A tool for a menkhu. A tool for a bandit. A tool for a ripper. A tool for me.
+6192355000610823 Soap
+6192355000610824 A bar of common soap.
+6192355000610825 Nothing fancy, but soap is the best way to maintain hygiene. Essential.
+6192355000610826 Spindle
+6192355000610827 It's almost out of thread.
+6192355000610828 Victoria Olgimskaya used to spin. Only for show, of course. What's there to spin when your husband slaughters bulls instead of herding sheep?
+6192355000610829 "Yas" Tincture
+6192355000610830 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355000610831 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Bones.
+6192355000610832 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355000610833 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Nerves.
+6192355000610834 "Medrel" Tincture
+6192355000610835 Boosts immunity. Reveals disease symptoms when given to an infected person. Particularly potent.
+6192355000610836 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Flesh.
+6192355000610837 "Zürkh" Tincture (+)
+6192355000610838 "Fingernail"
+6192355000610839 The ferryman requires payment before he'll let me on the boat. This odd coin will do.
+6192355000610840 Kids play "Mice and Guardians" with these. The rules of this game are unknown, but the rumors say they change every day.
+6192355000610841 Repellent Cloak
+6192355000610842 It's not pretty, but it does its job, repelling infection.
+6192355000610843 Of all the things people can argue about, "canvas vs leather" used to be a very prevalent subject of discussion when I was a kid. Leather items are sturdier, but harder to mend.\n\nFather used to have a good supply of both.
+6192355000610844 Walnuts
+6192355000610845 Can be munched down—with little effect.
+6192355000610846 The game goes like this: find a nut that has traveled far, guess its name, shake it, and listen to stories from the soul trapped inside.\n\nThis originated with the Polyhedron. We didn't play it as kids.
+6192355000610847 Water Bottle
+6192355000610848 Quenches thirst. But it won't cure the sick girl.
+6192355000610849 Fresh water is brought to the town daily from a spring in the steppe and distributed among the households by water-bearers. The Gorkhon water was proven to be clean, but the locals refuse to drink it.
+6192355000617951 Survivor
+6192355000617952 Kin One
+6192355000969051 Fellow Traveller
+6192355000969068 Do you want to play?
+6192355000969069 I'm game.
+6192355000969070 No, I'm not interested.
+6192355000969071 Dice?
+6192355000969072 What are the stakes?
+6192355000969073 With a stranger? No chance. I could be gambling with the devil.
+6192355000969074 Want to share secrets?
+6192355000969075 You first.
+6192355000969076 Why?
+6192355000969077 I'm worried people won't be so happy to see me in the Town. What if they shun me like some mutt and slam doors in my face? What if my toll is too small? I could fail to meet my goal. But, maybe this is only anxiety. Yes, I can do it.
+6192355000969078 Are you an insurance man?
+6192355000969079 You don't look like a tax collector. They ride first-class.
+6192355000969080 Recruiter?
+6192355000969081 Are you a preacher?
+6192355000969082 You can share your worries, and I'll take them with me.
+6192355000969083 Into the coffin? Deal.
+6192355000969084 No. I don't like the sound of this.
+6192355000969085 Not really… Your turn now. Be honest, and your fate will change. That's how it goes.
+6192355000969086 I'm worried about my father. He summoned me with a letter—a troublesome one. Something bad has happened.
+6192355000969087 I'm a surgeon. I could become a good doctor. But I can't find myself. I'm afraid I'll waste my whole life in this state.
+6192355000969088 No, I think I'll decline. You look untrustworthy.
+6192355000969089 Who goes first?
+6192355000969090 You.
+6192355000969091 I have no worries.
+6192355000969092 Your fate.
+6192355000969093 You're a funny man.
+6192355000969094 I don't believe in fate.
+6192355000969095 A person can't lose their fate.
+6192355000969129 Fellow Traveler
+6192355000969651 Fellow Traveller
+6192355000969652 Fellow Traveller
+6192355000969851 Bad dream?
+6192355000969852 Why did you wake me up?
+6192355000969853 Yeah, a dream. I hope it doesn't come true.
+6192355000969854 Did I? Awake, asleep, it doesn't matter… You're a restless man. I just wondered what's inside you.
+6192355000969855 Why?
+6192355000969856 Same stuff as everyone else. Blood, intestines, and soul.
+6192355000969857 I told you already. I'm worried about Father.
+6192355000969858 Just who I am. I like to get under people's skin, to look beneath the surface.
+6192355000969859 Same here.
+6192355000969860 Curiosity killed the cat.
+6192355000969861 So you want to meet your dad?
+6192355000969862 Yes.
+6192355000969863 Me too.
+6192355000969864 Good for you. Now leave me alone.
+6192355000969865 Why have we stopped? Are we there already…?
+6192355000969866 Are you good at it, though?
+6192355000969867 Will you please get off my back? Can't you see I'm sleeping?
+6192355000969868 Yes.
+6192355000969951 Fellow Traveller
+6192355000970014 We're almost there.
+6192355000970015 Want to play dice?
+6192355000970016 Are you relieved?
+6192355000970017 We've played enough, I think. There's no more time for games. You have work to do.
+6192355000970018 Are we there already?
+6192355000970019 True.
+6192355000970020 Oh yes. Can't wait to get there. Just can't wait.
+6192355000970021 Are we there already?
+6192355000970022 It feels like we're riding in circles.
+6192355000970023 Well, it was nice passing the time. Good luck with your father. I'm sure he can't wait.
+6192355000970024 Good luck to you, too.
+6192355000970025 I hope so. This trip has been a long time coming…
+6192355000970026 Don't worry. You can't miss it. We're riding the rails, and a railroad, like fate, always has a final destination. Our next stop will be our last. The true stop.
+6192355000970027 Good.
+6192355000970028 These rails feel endless… I'll walk next time.
+6192355000988851 Fellow Traveler
+6192355000988852 Fellow Traveler
+6192355001035051 ON THE WAY HOME,
+6192355001037051 Fellow Traveler
+6192355001037052 Thirsty, fellow traveler?
+6192355001037053 Not me. Someone else.
+6192355001037451 Each has two eyes and two ears. Most have one nose and one mouth.\nRiddle me this: If eyes and ears were switched, what would be right? If noses and mouths were switched, what would be fixed?
+6192355001037452 …Did you kill him?
+6192355001045551 I am.
+6192355001045552 There is water in a wooden barrel, behind you. You walked past your goal. Not for the first time, and certainly not for the last.
+6192355001045553 It's not fair. You have a clear view from up there.
+6192355001045554 I saw the light. I thought it invited me here.
+6192355001045555 Like a moth.
+6192355001045556 Ouch.
+6192355001045557 But the train was in my path.
+6192355001045558 Answer the question, khayaala. You're a steppe man. You must know the answer.
+6192355001045559 But I don't.
+6192355001045560 Absit omen…
+6192355001045561 Then be on your way, khayaala. People don't kill people.
+6192355001045562 Are you even human?
+6192355001045563 Is that man alive, then?
+6192355001045564 Pack
+6192355001051851 Twilight
+6192355001051852 
+6192355001051853 
+6192355001051855 Twilight.
+6192355001051856 I'm coming home. All I need is to avoid distraction.
+6192355001051857 
+6192355001051858 
+6192355001051860 There's darkness ahead. I follow the rails into a black cloud.
+6192355001051861 
+6192355001051862 
+6192355001051863 This place is wrong. It's not my home. Who is in the back room?
+6192355001051864 
+6192355001051865 
+6192355001051866 Life is in the water. Water—in a barrel outside. Take a bottle from a cupboard. It all crumbles.
+6192355001051867 
+6192355001051868 
+6192355001051869 I was summoned back to my hometown by a distressing letter from my father. But who is in the back room?
+6192355001051870 For the first time in many years, I'm home.
+6192355001068751 when it all begins
+6192355001082252 "Zürkh" Tincture
+6192355001082253 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355001082254 Rusty Scalpel
+6192355001082255 Either a weapon that can take someone's life, or an essential tool for a surgeon. Shame it's so shoddy.
+6192355001082256 A tool for a surgeon. A tool for a menkhu. A tool for a bandit. A tool for a ripper. A tool for me.\n\nThis tool would easily damage an internal organ during an autopsy.
+6192355001387951 
+6192355001387959 
+6192355001387960 
+6192355001387961 
+6192355001387962 
+6192355001432159 
+6192355001432165 
+6192355001432166 
+6192355001432167 
+6192355001432168 
+6192355001432169 
+6192355001432170 
+6192355001432171 
+6192355001432172 
+6192355001432173 
+6192355001432174 
+6192355001432175 
+6192355001432176 
+6192355001432177 
+6192355001432178 
+6192355001432179 
+6192355001432180 
+6192355001465261 
+6192355001465262 
+6192355001465263 
+6192355001465264 
+6192355001465265 
+6192355001465266 
+6192355001465267 
+6192355001465268 
+6192355001465269 
+6192355001465270 
+6192355001465271 
+6192355001465272 
+6192355001465273 
+6192355001465274 
+6192355001465275 
+6192355001465276 
+6192355001465277 
+6192355001465278 
+6192355001465279 
+6192355001465280 
+6192355001465281 
+6192355001465282 
+6192355001465283 
+6192355001465284 
+6192355001465285 
+6192355001465286 
+6192355001465287 
+6192355001465288 
+6192355001465289 
+6192355001465290 
+6192355001465291 
+6192355001465292 
+6192355001465293 
+6192355001465294 
+6192355001465295 
+6192355001465296 
+6192355001465297 
+6192355001465298 
+6192355001465299 
+6192355001465300 
+6192355001465301 
+6192355001465302 
+6192355001465303 
+6192355001465304 
+6192355001465305 
+6192355001465306 
+6192355001465307 
+6192355001465308 
+6192355001465309 
+6192355001465310 
+6192355001465311 
+6192355001465312 
+6192355001465313 
+6192355001465314 
+6192355001465315 
+6192355001465316 
+6192355001465317 
+6192355001465318 
+6192355001465319 
+6192355001465320 
+6192355001465321 
+6192355001465322 
+6192355001465323 
+6192355001465324 
+6192355001465325 
+6192355001465326 
+6192355001465327 
+6192355001465328 
+6192355001465329 
+6192355001465330 
+6192355001465331 
+6192355001465332 
+6192355001465333 
+6192355001465334 
+6192355001465335 
+6192355001465336 
+6192355001465337 
+6192355001465338 
+6192355001465339 
+6192355001465340 
+6192355001465341 
+6192355001465342 
+6192355001465343 
+6192355001465344 
+6192355001470954 
+6192355001470955 
+6192355001470956 
+6192355001470957 
+6192355001482651 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Flesh.
+6192355001615364 
+6192355001615365 
+6192355001615366 
+6192355001615435 
+6192355001615436 
+6192355001615437 
+6192355001615438 
+6192355001615439 
+6192355001615440 
+6192355001615441 
+6192355001615442 
+6192355001615443 
+6192355001615444 
+6192355001615445 
+6192355001615446 
+6192355001615447 
+6192355001615448 
+6192355001615449 
+6192355001615450 
+6192355001615651 
+6192355001615652 
+6192355001615653 
+6192355001615654 
+6192355001615655 
+6192355001615656 
+6192355001615657 
+6192355001615658 
+6192355001615659 
+6192355001615660 
+6192355001615661 
+6192355001615662 
+6192355001615663 
+6192355001615664 
+6192355001615665 
+6192355001615666 
+6192355001615667 
+6192355001615668 
+6192355001615669 
+6192355001615670 
+6192355001615671 
+6192355001615672 
+6192355001615673 
+6192355001615674 
+6192355001615675 
+6192355001615676 
+6192355001615677 
+6192355001615678 
+6192355001615679 
+6192355001615680 
+6192355001615681 
+6192355001615682 
+6192355001615683 
+6192355001615684 
+6192355001615685 
+6192355001615686 
+6192355001615687 
+6192355001615688 
+6192355001615689 
+6192355001615690 
+6192355001615691 
+6192355001615692 
+6192355001615693 
+6192355001615694 
+6192355001615695 
+6192355001615696 
+6192355001615697 
+6192355001615698 
+6192355001615699 
+6192355001615700 
+6192355001615701 
+6192355001615702 
+6192355001615703 
+6192355001615704 
+6192355001615705 
+6192355001615706 
+6192355001615707 
+6192355001615708 
+6192355001615709 
+6192355001615710 
+6192355001615711 
+6192355001615712 
+6192355001615713 
+6192355001615714 
+6192355001615715 
+6192355001615716 
+6192355001615717 
+6192355001615718 
+6192355001615719 
+6192355001615720 
+6192355001615721 
+6192355001615722 
+6192355001615723 
+6192355001615724 
+6192355001615725 
+6192355001615726 
+6192355001615727 
+6192355001615728 
+6192355001615729 
+6192355001615730 
+6192355001615731 
+6192355001615732 
+6192355001615733 
+6192355001615734 
+6192355001615735 
+6192355001615736 
+6192355001615737 
+6192355001615738 
+6192355001615739 
+6192355001615740 
+6192355001615741 
+6192355001615742 
+6192355001615743 
+6192355001615744 
+6192355001615745 
+6192355001615746 
+6192355001615747 
+6192355001615748 
+6192355001615749 
+6192355001615750 
+6192355002022501 
+6192355002022502 
+6192355002022503 
+6192355002022504 
+6192355002022505 
+6192355002022506 
+6192355002022507 
+6192355002022508 
+6192355002022509 
+6192355002022510 
+6192355002022511 
+6192355002022512 
+6192355002022513 
+6192355002022514 
+6192355002022515 
+6192355002022516 

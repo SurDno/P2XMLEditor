@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Blueprint">
+  <Item id="7599708408846976">
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091548048</Item>
+      <Item>7881179091548049</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496605</EventGraph>
+    <Events count="2">
+      <Item>2814706822109327</Item>
+      <Item>2814706822109328</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="QuestsBaseFunctions_state">562941394089255</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394089254</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>QuestsBaseFunctions</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="7599708408846977">
+    <Static>False</Static>
+    <FunctionalComponents count="8">
+      <Item>7881179091552247</Item>
+      <Item>7881179091552248</Item>
+      <Item>7881179091552249</Item>
+      <Item>7881179091552250</Item>
+      <Item>7881179091552251</Item>
+      <Item>7881179091552252</Item>
+      <Item>7881179091552253</Item>
+      <Item>7881179091552254</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496644</EventGraph>
+    <CustomParams count="1">
+      <Item key="ImmortalCharacter_state">562941394095343</Item>
+    </CustomParams>
+    <StandartParams count="9">
+      <Item key="BehaviorComponent.Behavior">562941394095338</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162965</Item>
+      <Item key="Common.ObjectEnabled">562941394095336</Item>
+      <Item key="Detectable.DetectableEnabled">562941394095341</Item>
+      <Item key="Detector.DetectorEnabled">562941394095340</Item>
+      <Item key="Interactive.ObjectName">562941394095339</Item>
+      <Item key="Model.Object">562941394095337</Item>
+      <Item key="Speaking.CurrentTalking">562941394095342</Item>
+      <Item key="Speaking.InitialPhrase">562941394494947</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>ImmortalCharacter</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="7599708408846978">
+    <Static>False</Static>
+    <FunctionalComponents count="8">
+      <Item>7881179091552255</Item>
+      <Item>7881179091552256</Item>
+      <Item>7881179091552257</Item>
+      <Item>7881179091552258</Item>
+      <Item>7881179091552259</Item>
+      <Item>7881179091552260</Item>
+      <Item>7881179091552261</Item>
+      <Item>7881179091552262</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496645</EventGraph>
+    <CustomParams count="1">
+      <Item key="CombatTutor_state">562941394096252</Item>
+    </CustomParams>
+    <StandartParams count="9">
+      <Item key="BehaviorComponent.Behavior">562941394095347</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162966</Item>
+      <Item key="Common.ObjectEnabled">562941394095345</Item>
+      <Item key="Detectable.DetectableEnabled">562941394095350</Item>
+      <Item key="Detector.DetectorEnabled">562941394095349</Item>
+      <Item key="Interactive.ObjectName">562941394095348</Item>
+      <Item key="Model.Object">562941394095346</Item>
+      <Item key="Speaking.CurrentTalking">562941394096251</Item>
+      <Item key="Speaking.InitialPhrase">562941394494948</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>CombatTutor</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+</Root>

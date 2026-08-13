@@ -1,0 +1,1706 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Geom">
+  <Item id="5910884318828350">
+    <WorldPositionGuid />
+    <EngineTemplateID>3038d229cf6d43a89ca99e25109de6e1</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091504640</Item>
+      <Item>7881179091504641</Item>
+      <Item>7881179093262231</Item>
+    </FunctionalComponents>
+    <StandartParams count="15">
+      <Item key="Common.ObjectEnabled">562941393997707</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941397595660</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941397595653</Item>
+      <Item key="MapItemComponent.CraftIcon">562941397595657</Item>
+      <Item key="MapItemComponent.Discovered">562941397595654</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941397595652</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941397595659</Item>
+      <Item key="MapItemComponent.Placeholder">562941397595150</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941397595655</Item>
+      <Item key="MapItemComponent.SleepIcon">562941397595656</Item>
+      <Item key="MapItemComponent.StorageIcon">562941397595658</Item>
+      <Item key="MapItemComponent.Text">562941397595148</Item>
+      <Item key="MapItemComponent.Title">562941397595147</Item>
+      <Item key="MapItemComponent.TooltipResource">562941397595651</Item>
+      <Item key="MapItemComponent.TooltipText">562941397595149</Item>
+    </StandartParams>
+    <Name>SkyTrain</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5910884318828527">
+    <WorldPositionGuid />
+    <EngineTemplateID>aff057e3f8434574b716e88da71625e9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091514085</Item>
+      <Item>7881179091514086</Item>
+      <Item>7881179091514087</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394011120</Item>
+      <Item key="LocationItem.IsHibernation">562941394011121</Item>
+      <Item key="LocationItem.IsIndoor">562941395684365</Item>
+      <Item key="LocationItem.Location">562941394011122</Item>
+    </StandartParams>
+    <Name>Spawnpoint</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5910884318856626">
+    <WorldPositionGuid />
+    <EngineTemplateID>1b347221b09142efb08e84f855930ff2</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606412</Item>
+      <Item>7881179091606413</Item>
+      <Item>7881179091606414</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153165</Item>
+      <Item key="LocationItem.IsHibernation">562941394153166</Item>
+      <Item key="LocationItem.IsIndoor">562941395686772</Item>
+      <Item key="LocationItem.Location">562941394153167</Item>
+    </StandartParams>
+    <Name>Player_Suok_Spawn</Name>
+    <Parent>9851473860475779</Parent>
+  </Item>
+  <Item id="5910884318856628">
+    <WorldPositionGuid />
+    <EngineTemplateID>498de903a58848f49dd76df43eae0a3f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606418</Item>
+      <Item>7881179091606419</Item>
+      <Item>7881179091606420</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153173</Item>
+      <Item key="LocationItem.IsHibernation">562941394153174</Item>
+      <Item key="LocationItem.IsIndoor">562941395686773</Item>
+      <Item key="LocationItem.Location">562941394153175</Item>
+    </StandartParams>
+    <Name>Opponent_Suok_Spawn</Name>
+    <Parent>9851473860475779</Parent>
+  </Item>
+  <Item id="5910884318856640">
+    <WorldPositionGuid />
+    <EngineTemplateID>61986d69dedc4529b6ec9391220045ee</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606466</Item>
+      <Item>7881179091606467</Item>
+      <Item>7881179091606468</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153236</Item>
+      <Item key="LocationItem.IsHibernation">562941394153237</Item>
+      <Item key="LocationItem.IsIndoor">562941395686799</Item>
+      <Item key="LocationItem.Location">562941394153238</Item>
+    </StandartParams>
+    <Name>Doghead_3</Name>
+    <Parent>9851473860536581</Parent>
+  </Item>
+  <Item id="5910884318856641">
+    <WorldPositionGuid />
+    <EngineTemplateID>980cf168c0734f2c938b7e37c6edf0d0</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606469</Item>
+      <Item>7881179091606470</Item>
+      <Item>7881179091606471</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153240</Item>
+      <Item key="LocationItem.IsHibernation">562941394153241</Item>
+      <Item key="LocationItem.IsIndoor">562941395686800</Item>
+      <Item key="LocationItem.Location">562941394153242</Item>
+    </StandartParams>
+    <Name>Doghead_2</Name>
+    <Parent>9851473860536581</Parent>
+  </Item>
+  <Item id="5910884318856642">
+    <WorldPositionGuid />
+    <EngineTemplateID>ad54e0eba95b4a8ab2a1e7c7bb60d8b4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606472</Item>
+      <Item>7881179091606473</Item>
+      <Item>7881179091606474</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153244</Item>
+      <Item key="LocationItem.IsHibernation">562941394153245</Item>
+      <Item key="LocationItem.IsIndoor">562941395686801</Item>
+      <Item key="LocationItem.Location">562941394153246</Item>
+    </StandartParams>
+    <Name>Doghead_1</Name>
+    <Parent>9851473860536581</Parent>
+  </Item>
+  <Item id="5910884318856643">
+    <WorldPositionGuid />
+    <EngineTemplateID>db557933ffed40c2830ca1a5daa61919</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606475</Item>
+      <Item>7881179091606476</Item>
+      <Item>7881179091606477</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153248</Item>
+      <Item key="LocationItem.IsHibernation">562941394153249</Item>
+      <Item key="LocationItem.IsIndoor">562941395686802</Item>
+      <Item key="LocationItem.Location">562941394153250</Item>
+    </StandartParams>
+    <Name>Corpse</Name>
+    <Parent>9851473860536581</Parent>
+  </Item>
+  <Item id="5910884318856645">
+    <WorldPositionGuid />
+    <EngineTemplateID>4cea74c44d4840f0b52b521ccf703458</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606496</Item>
+      <Item>7881179091606497</Item>
+      <Item>7881179091606498</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153284</Item>
+      <Item key="LocationItem.IsHibernation">562941394153285</Item>
+      <Item key="LocationItem.IsIndoor">562941395686827</Item>
+      <Item key="LocationItem.Location">562941394153286</Item>
+    </StandartParams>
+    <Name>Executor_Meeting_1</Name>
+    <Parent>9851473860536586</Parent>
+  </Item>
+  <Item id="5910884318856646">
+    <WorldPositionGuid />
+    <EngineTemplateID>f013c64bf218461fb2e1e06e76f3a3d2</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606499</Item>
+      <Item>7881179091606500</Item>
+      <Item>7881179091606501</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153288</Item>
+      <Item key="LocationItem.IsHibernation">562941394153289</Item>
+      <Item key="LocationItem.IsIndoor">562941395686810</Item>
+      <Item key="LocationItem.Location">562941394153290</Item>
+    </StandartParams>
+    <Name>Player_Derailment_Spawn</Name>
+    <Parent>9851473860475785</Parent>
+  </Item>
+  <Item id="5910884318856647">
+    <WorldPositionGuid />
+    <EngineTemplateID>70f23209908f471baa167a029f3fc8e5</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606506</Item>
+      <Item>7881179091606507</Item>
+      <Item>7881179091606508</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153296</Item>
+      <Item key="LocationItem.IsHibernation">562941394153297</Item>
+      <Item key="LocationItem.IsIndoor">562941395686830</Item>
+      <Item key="LocationItem.Location">562941394153298</Item>
+    </StandartParams>
+    <Name>Player_Start_Spawn</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884318856648">
+    <WorldPositionGuid />
+    <EngineTemplateID>8ae4be0dc14446a8bacefcace7dabba6</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606509</Item>
+      <Item>7881179091606510</Item>
+      <Item>7881179091606511</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153300</Item>
+      <Item key="LocationItem.IsHibernation">562941394153301</Item>
+      <Item key="LocationItem.IsIndoor">562941395686831</Item>
+      <Item key="LocationItem.Location">562941394153302</Item>
+    </StandartParams>
+    <Name>Companion_Sitting</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884318856650">
+    <WorldPositionGuid />
+    <EngineTemplateID>e8ee4588443449f68a46fe38dec2f3a0</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606522</Item>
+      <Item>7881179091606523</Item>
+      <Item>7881179091606524</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153315</Item>
+      <Item key="LocationItem.IsHibernation">562941394153316</Item>
+      <Item key="LocationItem.IsIndoor">562941395686837</Item>
+      <Item key="LocationItem.Location">562941394153317</Item>
+    </StandartParams>
+    <Name>Player_Father_Spawn</Name>
+    <Parent>9851473860475790</Parent>
+  </Item>
+  <Item id="5910884318856651">
+    <WorldPositionGuid />
+    <EngineTemplateID>21ba6e2c365d4cf78f1445cc056be71d</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091606534</Item>
+      <Item>7881179091606535</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394153330</Item>
+    </StandartParams>
+    <Name>CathedralExitTrigger</Name>
+    <Parent>9851473860475793</Parent>
+  </Item>
+  <Item id="5910884318856653">
+    <WorldPositionGuid />
+    <EngineTemplateID>36c84251829d41d1a76b1e0dca133a99</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091606541</Item>
+      <Item>7881179091606542</Item>
+      <Item>7881179091606543</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394153338</Item>
+      <Item key="LocationItem.IsHibernation">562941394153339</Item>
+      <Item key="LocationItem.IsIndoor">562941395686844</Item>
+      <Item key="LocationItem.Location">562941394153340</Item>
+    </StandartParams>
+    <Name>Player_Cleansing_Spawn</Name>
+    <Parent>9851473860475794</Parent>
+  </Item>
+  <Item id="5910884318858126">
+    <WorldPositionGuid />
+    <EngineTemplateID>5928d6966ba7493d8036a18346982e83</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608103</Item>
+      <Item>7881179091608104</Item>
+      <Item>7881179091608105</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155354</Item>
+      <Item key="LocationItem.IsHibernation">562941394155355</Item>
+      <Item key="LocationItem.IsIndoor">562941395686873</Item>
+      <Item key="LocationItem.Location">562941394155356</Item>
+    </StandartParams>
+    <Name>Water_Katerina</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858127">
+    <WorldPositionGuid />
+    <EngineTemplateID>8248facc517a4c4ab0b624a807e0c967</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608106</Item>
+      <Item>7881179091608107</Item>
+      <Item>7881179091608108</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155358</Item>
+      <Item key="LocationItem.IsHibernation">562941394155359</Item>
+      <Item key="LocationItem.IsIndoor">562941395686874</Item>
+      <Item key="LocationItem.Location">562941394155360</Item>
+    </StandartParams>
+    <Name>Executor_Water</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858128">
+    <WorldPositionGuid />
+    <EngineTemplateID>93013e0be1894fb5b17ec7042ed99b94</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608109</Item>
+      <Item>7881179091608110</Item>
+      <Item>7881179091608111</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155362</Item>
+      <Item key="LocationItem.IsHibernation">562941394155363</Item>
+      <Item key="LocationItem.IsIndoor">562941395686875</Item>
+      <Item key="LocationItem.Location">562941394155364</Item>
+    </StandartParams>
+    <Name>Water_Bachelor</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858129">
+    <WorldPositionGuid />
+    <EngineTemplateID>c8eaffc034ff4af89c1a40d2ceb3ba20</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608112</Item>
+      <Item>7881179091608113</Item>
+      <Item>7881179091608114</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155366</Item>
+      <Item key="LocationItem.IsHibernation">562941394155367</Item>
+      <Item key="LocationItem.IsIndoor">562941395686876</Item>
+      <Item key="LocationItem.Location">562941394155368</Item>
+    </StandartParams>
+    <Name>Water_Changeling</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858130">
+    <WorldPositionGuid />
+    <EngineTemplateID>d3dbe0a2b50e412289c87a1648af359c</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608115</Item>
+      <Item>7881179091608116</Item>
+      <Item>7881179091608117</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155370</Item>
+      <Item key="LocationItem.IsHibernation">562941394155371</Item>
+      <Item key="LocationItem.IsIndoor">562941395686877</Item>
+      <Item key="LocationItem.Location">562941394155372</Item>
+    </StandartParams>
+    <Name>Water_Oyun</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858131">
+    <WorldPositionGuid />
+    <EngineTemplateID>dd162be7f70c4fc9be29d4706e7c0112</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608118</Item>
+      <Item>7881179091608119</Item>
+      <Item>7881179091608120</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155374</Item>
+      <Item key="LocationItem.IsHibernation">562941394155375</Item>
+      <Item key="LocationItem.IsIndoor">562941395686878</Item>
+      <Item key="LocationItem.Location">562941394155376</Item>
+    </StandartParams>
+    <Name>Water_Sick_Woman</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318858132">
+    <WorldPositionGuid />
+    <EngineTemplateID>e72885b92bbc42c6aa3f73139cd2ca99</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091608121</Item>
+      <Item>7881179091608122</Item>
+      <Item>7881179091608123</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394155378</Item>
+      <Item key="LocationItem.IsHibernation">562941394155379</Item>
+      <Item key="LocationItem.IsIndoor">562941395686879</Item>
+      <Item key="LocationItem.Location">562941394155380</Item>
+    </StandartParams>
+    <Name>Player_Water_Spawn</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318872926">
+    <WorldPositionGuid />
+    <EngineTemplateID>7711e00b10f24a37bf41aa472a812a16</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091779722</Item>
+      <Item>7881179091779723</Item>
+      <Item>7881179091779724</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394483236</Item>
+      <Item key="LocationItem.IsHibernation">562941394483237</Item>
+      <Item key="LocationItem.IsIndoor">562941395686832</Item>
+      <Item key="LocationItem.Location">562941394483238</Item>
+    </StandartParams>
+    <Name>Companion_WakeUp</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884318872927">
+    <WorldPositionGuid />
+    <EngineTemplateID>a68c209a4d4a4037b86333840516d26f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091779725</Item>
+      <Item>7881179091779726</Item>
+      <Item>7881179091779727</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394483240</Item>
+      <Item key="LocationItem.IsHibernation">562941394483241</Item>
+      <Item key="LocationItem.IsIndoor">562941395686833</Item>
+      <Item key="LocationItem.Location">562941394483242</Item>
+    </StandartParams>
+    <Name>Player_WakeUp_Spawn</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884318873626">
+    <WorldPositionGuid />
+    <EngineTemplateID>1fe0fa0193194da5870e882c5b2be4ab</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091780001</Item>
+      <Item>7881179091780002</Item>
+      <Item>7881179091780003</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394483452</Item>
+      <Item key="LocationItem.IsHibernation">562941394483453</Item>
+      <Item key="LocationItem.IsIndoor">562941395686834</Item>
+      <Item key="LocationItem.Location">562941394483454</Item>
+    </StandartParams>
+    <Name>Companion_AlmostThere</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884318875226">
+    <WorldPositionGuid />
+    <EngineTemplateID>aab3c0e3dd6140a3953291c0eb66af38</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091781612</Item>
+      <Item>7881179091781613</Item>
+      <Item>7881179091781614</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394485183</Item>
+      <Item key="LocationItem.IsHibernation">562941394485184</Item>
+      <Item key="LocationItem.IsIndoor">562941395686798</Item>
+      <Item key="LocationItem.Location">562941394485185</Item>
+    </StandartParams>
+    <Name>Companion_Water</Name>
+    <Parent>9851473860475781</Parent>
+  </Item>
+  <Item id="5910884318878626">
+    <WorldPositionGuid />
+    <EngineTemplateID>035181c99e484d348fff73b7614abfc0</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091785101</Item>
+      <Item>7881179091785102</Item>
+      <Item>7881179091785103</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394489799</Item>
+      <Item key="LocationItem.IsHibernation">562941394489800</Item>
+      <Item key="LocationItem.IsIndoor">562941395686880</Item>
+      <Item key="LocationItem.Location">562941394489801</Item>
+    </StandartParams>
+    <Name>Water_Capella</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318878627">
+    <WorldPositionGuid />
+    <EngineTemplateID>96d2599561b64b2aa29bb7678c0aba78</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091785104</Item>
+      <Item>7881179091785105</Item>
+      <Item>7881179091785106</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394489803</Item>
+      <Item key="LocationItem.IsHibernation">562941394489804</Item>
+      <Item key="LocationItem.IsIndoor">562941395686881</Item>
+      <Item key="LocationItem.Location">562941394489805</Item>
+    </StandartParams>
+    <Name>Water_Maria</Name>
+    <Parent>10132944542337201</Parent>
+  </Item>
+  <Item id="5910884318893037">
+    <WorldPositionGuid />
+    <EngineTemplateID>0385aaac733440a9a774d6ae332327f3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091802122</Item>
+      <Item>7881179091802123</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394517510</Item>
+    </StandartParams>
+    <Name>Coffin_Fall_Trigger</Name>
+    <Parent>9851473860516176</Parent>
+  </Item>
+  <Item id="5910884318893038">
+    <WorldPositionGuid />
+    <EngineTemplateID>d62324a4c5ed43af95252e0c4692b011</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091802124</Item>
+      <Item>7881179091802125</Item>
+      <Item>7881179091802126</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394517512</Item>
+      <Item key="LocationItem.IsHibernation">562941394517513</Item>
+      <Item key="LocationItem.IsIndoor">562941395686811</Item>
+      <Item key="LocationItem.Location">562941394517514</Item>
+    </StandartParams>
+    <Name>Aurochs</Name>
+    <Parent>9851473860475785</Parent>
+  </Item>
+  <Item id="5910884318913526">
+    <WorldPositionGuid />
+    <EngineTemplateID>5b51e77124e14d009dc462a02fabdac9</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822803</Item>
+      <Item>7881179091822804</Item>
+      <Item>7881179091822805</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539154</Item>
+      <Item key="LocationItem.IsHibernation">562941394539155</Item>
+      <Item key="LocationItem.IsIndoor">562941395686775</Item>
+      <Item key="LocationItem.Location">562941394539156</Item>
+    </StandartParams>
+    <Name>Spectator_Aigul_2</Name>
+    <Parent>9851473860536576</Parent>
+  </Item>
+  <Item id="5910884318913527">
+    <WorldPositionGuid />
+    <EngineTemplateID>e68ee24dbe7040c5bbf7f778dbc9988c</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822806</Item>
+      <Item>7881179091822807</Item>
+      <Item>7881179091822808</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539158</Item>
+      <Item key="LocationItem.IsHibernation">562941394539159</Item>
+      <Item key="LocationItem.IsIndoor">562941395686776</Item>
+      <Item key="LocationItem.Location">562941394539160</Item>
+    </StandartParams>
+    <Name>Spectator_Aigul_1</Name>
+    <Parent>9851473860536576</Parent>
+  </Item>
+  <Item id="5910884318913528">
+    <WorldPositionGuid />
+    <EngineTemplateID>4b4a3e52daf040b0a8859ec6ce3e7a17</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822811</Item>
+      <Item>7881179091822812</Item>
+      <Item>7881179091822813</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539164</Item>
+      <Item key="LocationItem.IsHibernation">562941394539165</Item>
+      <Item key="LocationItem.IsIndoor">562941395686777</Item>
+      <Item key="LocationItem.Location">562941394539166</Item>
+    </StandartParams>
+    <Name>Spectator_Beybars_2</Name>
+    <Parent>9851473860536577</Parent>
+  </Item>
+  <Item id="5910884318913529">
+    <WorldPositionGuid />
+    <EngineTemplateID>7f1a928817de4ea3a8cc243dd8038d10</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822814</Item>
+      <Item>7881179091822815</Item>
+      <Item>7881179091822816</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539168</Item>
+      <Item key="LocationItem.IsHibernation">562941394539169</Item>
+      <Item key="LocationItem.IsIndoor">562941395686778</Item>
+      <Item key="LocationItem.Location">562941394539170</Item>
+    </StandartParams>
+    <Name>Spectator_Beybars_1</Name>
+    <Parent>9851473860536577</Parent>
+  </Item>
+  <Item id="5910884318913530">
+    <WorldPositionGuid />
+    <EngineTemplateID>ed2cd593a6dc48909b8b5224a9904c84</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822817</Item>
+      <Item>7881179091822818</Item>
+      <Item>7881179091822819</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539172</Item>
+      <Item key="LocationItem.IsHibernation">562941394539173</Item>
+      <Item key="LocationItem.IsIndoor">562941395686779</Item>
+      <Item key="LocationItem.Location">562941394539174</Item>
+    </StandartParams>
+    <Name>Spectator_Beybars_3</Name>
+    <Parent>9851473860536577</Parent>
+  </Item>
+  <Item id="5910884318913531">
+    <WorldPositionGuid />
+    <EngineTemplateID>1e30f498fee645a782222987ba5a1047</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822822</Item>
+      <Item>7881179091822823</Item>
+      <Item>7881179091822824</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539178</Item>
+      <Item key="LocationItem.IsHibernation">562941394539179</Item>
+      <Item key="LocationItem.IsIndoor">562941395686780</Item>
+      <Item key="LocationItem.Location">562941394539180</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_7</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913532">
+    <WorldPositionGuid />
+    <EngineTemplateID>62e12a5bf04847f0ad832deb7b193001</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822825</Item>
+      <Item>7881179091822826</Item>
+      <Item>7881179091822827</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539182</Item>
+      <Item key="LocationItem.IsHibernation">562941394539183</Item>
+      <Item key="LocationItem.IsIndoor">562941395686781</Item>
+      <Item key="LocationItem.Location">562941394539184</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_4</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913533">
+    <WorldPositionGuid />
+    <EngineTemplateID>63e7ef6ea0b44d40903259a6da78627f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822828</Item>
+      <Item>7881179091822829</Item>
+      <Item>7881179091822830</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539186</Item>
+      <Item key="LocationItem.IsHibernation">562941394539187</Item>
+      <Item key="LocationItem.IsIndoor">562941395686782</Item>
+      <Item key="LocationItem.Location">562941394539188</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_2</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913534">
+    <WorldPositionGuid />
+    <EngineTemplateID>71e315d01ca04a1380951b8645c43bee</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822831</Item>
+      <Item>7881179091822832</Item>
+      <Item>7881179091822833</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539190</Item>
+      <Item key="LocationItem.IsHibernation">562941394539191</Item>
+      <Item key="LocationItem.IsIndoor">562941395686783</Item>
+      <Item key="LocationItem.Location">562941394539192</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_3</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913535">
+    <WorldPositionGuid />
+    <EngineTemplateID>8538eae8ccb047e9800726b58d0c37dc</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822834</Item>
+      <Item>7881179091822835</Item>
+      <Item>7881179091822836</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539194</Item>
+      <Item key="LocationItem.IsHibernation">562941394539195</Item>
+      <Item key="LocationItem.IsIndoor">562941395686784</Item>
+      <Item key="LocationItem.Location">562941394539196</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_6</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913536">
+    <WorldPositionGuid />
+    <EngineTemplateID>92c5c7674b9e4969b291610e73002e60</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822837</Item>
+      <Item>7881179091822838</Item>
+      <Item>7881179091822839</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539198</Item>
+      <Item key="LocationItem.IsHibernation">562941394539199</Item>
+      <Item key="LocationItem.IsIndoor">562941395686785</Item>
+      <Item key="LocationItem.Location">562941394539200</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_1</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913537">
+    <WorldPositionGuid />
+    <EngineTemplateID>a03bba2a942e46c0bee0c7d0a02937c7</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822840</Item>
+      <Item>7881179091822841</Item>
+      <Item>7881179091822842</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539202</Item>
+      <Item key="LocationItem.IsHibernation">562941394539203</Item>
+      <Item key="LocationItem.IsIndoor">562941395686786</Item>
+      <Item key="LocationItem.Location">562941394539204</Item>
+    </StandartParams>
+    <Name>Spectator_Bride_5</Name>
+    <Parent>9851473860536578</Parent>
+  </Item>
+  <Item id="5910884318913538">
+    <WorldPositionGuid />
+    <EngineTemplateID>26f2dac03866437a93a6c2498a7b1b40</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822845</Item>
+      <Item>7881179091822846</Item>
+      <Item>7881179091822847</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539208</Item>
+      <Item key="LocationItem.IsHibernation">562941394539209</Item>
+      <Item key="LocationItem.IsIndoor">562941395686787</Item>
+      <Item key="LocationItem.Location">562941394539210</Item>
+    </StandartParams>
+    <Name>Spectator_Zakir_2</Name>
+    <Parent>9851473860536579</Parent>
+  </Item>
+  <Item id="5910884318913539">
+    <WorldPositionGuid />
+    <EngineTemplateID>91350c6e0fb34c5cbea441c4448a4c5f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822848</Item>
+      <Item>7881179091822849</Item>
+      <Item>7881179091822850</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539212</Item>
+      <Item key="LocationItem.IsHibernation">562941394539213</Item>
+      <Item key="LocationItem.IsIndoor">562941395686788</Item>
+      <Item key="LocationItem.Location">562941394539214</Item>
+    </StandartParams>
+    <Name>Spectator_Zakir_3</Name>
+    <Parent>9851473860536579</Parent>
+  </Item>
+  <Item id="5910884318913540">
+    <WorldPositionGuid />
+    <EngineTemplateID>fccd55eca2634f3f99e164621afa1856</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822851</Item>
+      <Item>7881179091822852</Item>
+      <Item>7881179091822853</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539216</Item>
+      <Item key="LocationItem.IsHibernation">562941394539217</Item>
+      <Item key="LocationItem.IsIndoor">562941395686789</Item>
+      <Item key="LocationItem.Location">562941394539218</Item>
+    </StandartParams>
+    <Name>Spectator_Zakir_1</Name>
+    <Parent>9851473860536579</Parent>
+  </Item>
+  <Item id="5910884318913541">
+    <WorldPositionGuid />
+    <EngineTemplateID>d7e327217e9d4889b953e7df6788acc8</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822854</Item>
+      <Item>7881179091822855</Item>
+      <Item>7881179091822856</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539220</Item>
+      <Item key="LocationItem.IsHibernation">562941394539221</Item>
+      <Item key="LocationItem.IsIndoor">562941395686774</Item>
+      <Item key="LocationItem.Location">562941394539222</Item>
+    </StandartParams>
+    <Name>Aspity</Name>
+    <Parent>9851473860475779</Parent>
+  </Item>
+  <Item id="5910884318913542">
+    <WorldPositionGuid />
+    <EngineTemplateID>0606bc034b5541a99876462f213c30c9</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822859</Item>
+      <Item>7881179091822860</Item>
+      <Item>7881179091822861</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539226</Item>
+      <Item key="LocationItem.IsHibernation">562941394539227</Item>
+      <Item key="LocationItem.IsIndoor">562941395686790</Item>
+      <Item key="LocationItem.Location">562941394539228</Item>
+    </StandartParams>
+    <Name>Spectator_Fat_4</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913543">
+    <WorldPositionGuid />
+    <EngineTemplateID>06efe78e611143b3beec03fc53b7d9f6</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822862</Item>
+      <Item>7881179091822863</Item>
+      <Item>7881179091822864</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539230</Item>
+      <Item key="LocationItem.IsHibernation">562941394539231</Item>
+      <Item key="LocationItem.IsIndoor">562941395686791</Item>
+      <Item key="LocationItem.Location">562941394539232</Item>
+    </StandartParams>
+    <Name>Spectator_Fat_2</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913544">
+    <WorldPositionGuid />
+    <EngineTemplateID>0d5e68d048ed4953968e60b2c98f8704</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822865</Item>
+      <Item>7881179091822866</Item>
+      <Item>7881179091822867</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539234</Item>
+      <Item key="LocationItem.IsHibernation">562941394539235</Item>
+      <Item key="LocationItem.IsIndoor">562941395686792</Item>
+      <Item key="LocationItem.Location">562941394539236</Item>
+    </StandartParams>
+    <Name>Spectator_Fat_3</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913545">
+    <WorldPositionGuid />
+    <EngineTemplateID>106efafe9b67498d8e54ff16eb32af15</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822868</Item>
+      <Item>7881179091822869</Item>
+      <Item>7881179091822870</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539238</Item>
+      <Item key="LocationItem.IsHibernation">562941394539239</Item>
+      <Item key="LocationItem.IsIndoor">562941395686793</Item>
+      <Item key="LocationItem.Location">562941394539240</Item>
+    </StandartParams>
+    <Name>Spectator_Slim_1</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913546">
+    <WorldPositionGuid />
+    <EngineTemplateID>200a8f6223284533812d500d529097d7</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822871</Item>
+      <Item>7881179091822872</Item>
+      <Item>7881179091822873</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539242</Item>
+      <Item key="LocationItem.IsHibernation">562941394539243</Item>
+      <Item key="LocationItem.IsIndoor">562941395686794</Item>
+      <Item key="LocationItem.Location">562941394539244</Item>
+    </StandartParams>
+    <Name>Spectator_Slim_2</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913547">
+    <WorldPositionGuid />
+    <EngineTemplateID>96a743543a39401ea4269254af8bf268</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822874</Item>
+      <Item>7881179091822875</Item>
+      <Item>7881179091822876</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539246</Item>
+      <Item key="LocationItem.IsHibernation">562941394539247</Item>
+      <Item key="LocationItem.IsIndoor">562941395686795</Item>
+      <Item key="LocationItem.Location">562941394539248</Item>
+    </StandartParams>
+    <Name>Spectator_Fat_5</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913548">
+    <WorldPositionGuid />
+    <EngineTemplateID>ca8a3e230d724457bc89beb217b53ed4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822877</Item>
+      <Item>7881179091822878</Item>
+      <Item>7881179091822879</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539250</Item>
+      <Item key="LocationItem.IsHibernation">562941394539351</Item>
+      <Item key="LocationItem.IsIndoor">562941395686796</Item>
+      <Item key="LocationItem.Location">562941394539352</Item>
+    </StandartParams>
+    <Name>Spectator_Slim_3</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913549">
+    <WorldPositionGuid />
+    <EngineTemplateID>d1872ad934a64d85bf340753fafe4556</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822880</Item>
+      <Item>7881179091822881</Item>
+      <Item>7881179091822882</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539354</Item>
+      <Item key="LocationItem.IsHibernation">562941394539355</Item>
+      <Item key="LocationItem.IsIndoor">562941395686797</Item>
+      <Item key="LocationItem.Location">562941394539356</Item>
+    </StandartParams>
+    <Name>Spectator_Fat_1</Name>
+    <Parent>9851473860536580</Parent>
+  </Item>
+  <Item id="5910884318913550">
+    <WorldPositionGuid />
+    <EngineTemplateID>484d5f9f3b8f418daf91583198a28d8d</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822887</Item>
+      <Item>7881179091822888</Item>
+      <Item>7881179091822889</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539362</Item>
+      <Item key="LocationItem.IsHibernation">562941394539363</Item>
+      <Item key="LocationItem.IsIndoor">562941395686812</Item>
+      <Item key="LocationItem.Location">562941394539364</Item>
+    </StandartParams>
+    <Name>Executor_Fire_7</Name>
+    <Parent>9851473860536582</Parent>
+  </Item>
+  <Item id="5910884318913551">
+    <WorldPositionGuid />
+    <EngineTemplateID>5420e05752ec45b0bccdef4f1e225e29</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822890</Item>
+      <Item>7881179091822891</Item>
+      <Item>7881179091822892</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539366</Item>
+      <Item key="LocationItem.IsHibernation">562941394539367</Item>
+      <Item key="LocationItem.IsIndoor">562941395686813</Item>
+      <Item key="LocationItem.Location">562941394539368</Item>
+    </StandartParams>
+    <Name>Executor_Fire_5</Name>
+    <Parent>9851473860536582</Parent>
+  </Item>
+  <Item id="5910884318913552">
+    <WorldPositionGuid />
+    <EngineTemplateID>5db957ef14a14c03983d10e924f756d4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822893</Item>
+      <Item>7881179091822894</Item>
+      <Item>7881179091822895</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539370</Item>
+      <Item key="LocationItem.IsHibernation">562941394539371</Item>
+      <Item key="LocationItem.IsIndoor">562941395686814</Item>
+      <Item key="LocationItem.Location">562941394539372</Item>
+    </StandartParams>
+    <Name>Executor_Fire_8</Name>
+    <Parent>9851473860536582</Parent>
+  </Item>
+  <Item id="5910884318913553">
+    <WorldPositionGuid />
+    <EngineTemplateID>e1edff640eb84ec48132155ac9ac1745</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822896</Item>
+      <Item>7881179091822897</Item>
+      <Item>7881179091822898</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539374</Item>
+      <Item key="LocationItem.IsHibernation">562941394539375</Item>
+      <Item key="LocationItem.IsIndoor">562941395686815</Item>
+      <Item key="LocationItem.Location">562941394539376</Item>
+    </StandartParams>
+    <Name>Executor_Fire_9</Name>
+    <Parent>9851473860536582</Parent>
+  </Item>
+  <Item id="5910884318913554">
+    <WorldPositionGuid />
+    <EngineTemplateID>faa414bdf04a49dc910bc82428fc2ef4</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091822899</Item>
+      <Item>7881179091822900</Item>
+      <Item>7881179091823001</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539378</Item>
+      <Item key="LocationItem.IsHibernation">562941394539379</Item>
+      <Item key="LocationItem.IsIndoor">562941395686816</Item>
+      <Item key="LocationItem.Location">562941394539380</Item>
+    </StandartParams>
+    <Name>Executor_Fire_6</Name>
+    <Parent>9851473860536582</Parent>
+  </Item>
+  <Item id="5910884318913555">
+    <WorldPositionGuid />
+    <EngineTemplateID>428cd79566374d7e81aba8e9329cfa90</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823004</Item>
+      <Item>7881179091823005</Item>
+      <Item>7881179091823006</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539384</Item>
+      <Item key="LocationItem.IsHibernation">562941394539385</Item>
+      <Item key="LocationItem.IsIndoor">562941395686817</Item>
+      <Item key="LocationItem.Location">562941394539386</Item>
+    </StandartParams>
+    <Name>Executor_Block_4</Name>
+    <Parent>9851473860536583</Parent>
+  </Item>
+  <Item id="5910884318913556">
+    <WorldPositionGuid />
+    <EngineTemplateID>dca14aabb7444a22be206d4d211be3c2</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823007</Item>
+      <Item>7881179091823008</Item>
+      <Item>7881179091823009</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539388</Item>
+      <Item key="LocationItem.IsHibernation">562941394539389</Item>
+      <Item key="LocationItem.IsIndoor">562941395686818</Item>
+      <Item key="LocationItem.Location">562941394539390</Item>
+    </StandartParams>
+    <Name>Executor_Block_6</Name>
+    <Parent>9851473860536583</Parent>
+  </Item>
+  <Item id="5910884318913557">
+    <WorldPositionGuid />
+    <EngineTemplateID>f61406209f0e46e78685464730856de8</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823010</Item>
+      <Item>7881179091823011</Item>
+      <Item>7881179091823012</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539392</Item>
+      <Item key="LocationItem.IsHibernation">562941394539393</Item>
+      <Item key="LocationItem.IsIndoor">562941395686819</Item>
+      <Item key="LocationItem.Location">562941394539394</Item>
+    </StandartParams>
+    <Name>Executor_Block_5</Name>
+    <Parent>9851473860536583</Parent>
+  </Item>
+  <Item id="5910884318913558">
+    <WorldPositionGuid />
+    <EngineTemplateID>466a1bedd74244759ed9aa47b1a207aa</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823015</Item>
+      <Item>7881179091823016</Item>
+      <Item>7881179091823017</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539398</Item>
+      <Item key="LocationItem.IsHibernation">562941394539399</Item>
+      <Item key="LocationItem.IsIndoor">562941395686820</Item>
+      <Item key="LocationItem.Location">562941394539400</Item>
+    </StandartParams>
+    <Name>Executor_Fire_4</Name>
+    <Parent>9851473860536584</Parent>
+  </Item>
+  <Item id="5910884318913559">
+    <WorldPositionGuid />
+    <EngineTemplateID>73d27514a164441f895c5d2d96251371</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823018</Item>
+      <Item>7881179091823019</Item>
+      <Item>7881179091823020</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539402</Item>
+      <Item key="LocationItem.IsHibernation">562941394539403</Item>
+      <Item key="LocationItem.IsIndoor">562941395686821</Item>
+      <Item key="LocationItem.Location">562941394539404</Item>
+    </StandartParams>
+    <Name>Executor_Fire_3</Name>
+    <Parent>9851473860536584</Parent>
+  </Item>
+  <Item id="5910884318913560">
+    <WorldPositionGuid />
+    <EngineTemplateID>7838ced6391f4b3186c8a51853acf70f</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823021</Item>
+      <Item>7881179091823022</Item>
+      <Item>7881179091823023</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539406</Item>
+      <Item key="LocationItem.IsHibernation">562941394539407</Item>
+      <Item key="LocationItem.IsIndoor">562941395686822</Item>
+      <Item key="LocationItem.Location">562941394539408</Item>
+    </StandartParams>
+    <Name>Executor_Fire_1</Name>
+    <Parent>9851473860536584</Parent>
+  </Item>
+  <Item id="5910884318913561">
+    <WorldPositionGuid />
+    <EngineTemplateID>9237c8c351224e72a5a82a2aa99e3700</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823024</Item>
+      <Item>7881179091823025</Item>
+      <Item>7881179091823026</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539410</Item>
+      <Item key="LocationItem.IsHibernation">562941394539411</Item>
+      <Item key="LocationItem.IsIndoor">562941395686823</Item>
+      <Item key="LocationItem.Location">562941394539412</Item>
+    </StandartParams>
+    <Name>Executor_Fire_2</Name>
+    <Parent>9851473860536584</Parent>
+  </Item>
+  <Item id="5910884318913562">
+    <WorldPositionGuid />
+    <EngineTemplateID>1289bca3d06b435fbee1d3f954b67677</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823029</Item>
+      <Item>7881179091823030</Item>
+      <Item>7881179091823031</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539416</Item>
+      <Item key="LocationItem.IsHibernation">562941394539417</Item>
+      <Item key="LocationItem.IsIndoor">562941395686824</Item>
+      <Item key="LocationItem.Location">562941394539418</Item>
+    </StandartParams>
+    <Name>Executor_Block_1</Name>
+    <Parent>9851473860536585</Parent>
+  </Item>
+  <Item id="5910884318913563">
+    <WorldPositionGuid />
+    <EngineTemplateID>19a2238d3322488e86108a3e9b27fe57</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823032</Item>
+      <Item>7881179091823033</Item>
+      <Item>7881179091823034</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539420</Item>
+      <Item key="LocationItem.IsHibernation">562941394539421</Item>
+      <Item key="LocationItem.IsIndoor">562941395686825</Item>
+      <Item key="LocationItem.Location">562941394539422</Item>
+    </StandartParams>
+    <Name>Executor_Block_3</Name>
+    <Parent>9851473860536585</Parent>
+  </Item>
+  <Item id="5910884318913564">
+    <WorldPositionGuid />
+    <EngineTemplateID>5369561f3b794c4eb946f25b404d2d83</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823035</Item>
+      <Item>7881179091823036</Item>
+      <Item>7881179091823037</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539424</Item>
+      <Item key="LocationItem.IsHibernation">562941394539425</Item>
+      <Item key="LocationItem.IsIndoor">562941395686826</Item>
+      <Item key="LocationItem.Location">562941394539426</Item>
+    </StandartParams>
+    <Name>Executor_Block_2</Name>
+    <Parent>9851473860536585</Parent>
+  </Item>
+  <Item id="5910884318913565">
+    <WorldPositionGuid />
+    <EngineTemplateID>4102f05f27bc4b6783e857e05c2ce45e</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823040</Item>
+      <Item>7881179091823041</Item>
+      <Item>7881179091823042</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539430</Item>
+      <Item key="LocationItem.IsHibernation">562941394539431</Item>
+      <Item key="LocationItem.IsIndoor">562941395686828</Item>
+      <Item key="LocationItem.Location">562941394539432</Item>
+    </StandartParams>
+    <Name>Executor_Meeting_3</Name>
+    <Parent>9851473860536586</Parent>
+  </Item>
+  <Item id="5910884318913566">
+    <WorldPositionGuid />
+    <EngineTemplateID>85311b6e20c14e39a30f44e7dabaa7e6</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091823043</Item>
+      <Item>7881179091823044</Item>
+      <Item>7881179091823045</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394539434</Item>
+      <Item key="LocationItem.IsHibernation">562941394539435</Item>
+      <Item key="LocationItem.IsIndoor">562941395686829</Item>
+      <Item key="LocationItem.Location">562941394539436</Item>
+    </StandartParams>
+    <Name>Executor_Meeting_2</Name>
+    <Parent>9851473860536586</Parent>
+  </Item>
+  <Item id="5910884318919626">
+    <WorldPositionGuid />
+    <EngineTemplateID>06f37b555be54520b3364d47262411cd</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091829103</Item>
+      <Item>7881179091829104</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394545554</Item>
+    </StandartParams>
+    <Name>Laughter_4_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884318919627">
+    <WorldPositionGuid />
+    <EngineTemplateID>0e5afe375a754026929b6931f1ac8d95</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091829105</Item>
+      <Item>7881179091829106</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394545556</Item>
+    </StandartParams>
+    <Name>Laughter_5_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884318919628">
+    <WorldPositionGuid />
+    <EngineTemplateID>c5c91a3fb6fe48c488c6afe12f247846</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091829107</Item>
+      <Item>7881179091829108</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394545558</Item>
+    </StandartParams>
+    <Name>Laughter_2_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884318919629">
+    <WorldPositionGuid />
+    <EngineTemplateID>cd6b8231952d481dab8f883e46cae2b1</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091829109</Item>
+      <Item>7881179091829110</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394545560</Item>
+    </StandartParams>
+    <Name>Laughter_1_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884318919630">
+    <WorldPositionGuid />
+    <EngineTemplateID>da04705f3ea745da84225a40e19d9ea3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091829111</Item>
+      <Item>7881179091829112</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394545562</Item>
+    </StandartParams>
+    <Name>Laughter_3_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884318919632">
+    <WorldPositionGuid />
+    <EngineTemplateID>55dbcd375afd4e0999fe6ea3ecf475f8</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179091829117</Item>
+      <Item>7881179091829118</Item>
+      <Item>7881179091829119</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941394545570</Item>
+      <Item key="LocationItem.IsHibernation">562941394545571</Item>
+      <Item key="LocationItem.IsIndoor">562941395686836</Item>
+      <Item key="LocationItem.Location">562941394545572</Item>
+    </StandartParams>
+    <Name>Player_Dice_Spawn</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884319344926">
+    <WorldPositionGuid />
+    <EngineTemplateID>9276fff93af843288c82348a8c4a6b4a</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092387905</Item>
+      <Item>7881179092387906</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395861259</Item>
+    </StandartParams>
+    <Name>WaterFinishTrigger</Name>
+    <Parent>9851473860969476</Parent>
+  </Item>
+  <Item id="5910884319345426">
+    <WorldPositionGuid />
+    <EngineTemplateID>7542312f9f094defb3f0ae53a6d19d7c</EngineTemplateID>
+    <EngineBaseTemplateID>aff057e3f8434574b716e88da71625e9</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="3">
+      <Item>7881179092389001</Item>
+      <Item>7881179092389002</Item>
+      <Item>7881179092389003</Item>
+    </FunctionalComponents>
+    <StandartParams count="4">
+      <Item key="Common.ObjectEnabled">562941395862856</Item>
+      <Item key="LocationItem.IsHibernation">562941395862857</Item>
+      <Item key="LocationItem.IsIndoor">562941395862858</Item>
+      <Item key="LocationItem.Location">562941395862859</Item>
+    </StandartParams>
+    <Name>Companion_AlmostThere_Executor</Name>
+    <Parent>9851473860475787</Parent>
+  </Item>
+  <Item id="5910884319379426">
+    <WorldPositionGuid />
+    <EngineTemplateID>02cee65e61c944e9846803f3185de4a9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092423301</Item>
+      <Item>7881179092423302</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395898452</Item>
+    </StandartParams>
+    <Name>FinalDoorInSight_Trigger</Name>
+    <Parent>9851473860542676</Parent>
+  </Item>
+  <Item id="5910884319383426">
+    <WorldPositionGuid />
+    <EngineTemplateID>5dbb88cfe993470a9dbf34631cbce19f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092427403</Item>
+      <Item>7881179092427404</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395902954</Item>
+    </StandartParams>
+    <Name>IsidorLetter_Trigger</Name>
+    <Parent>9851473861007976</Parent>
+  </Item>
+  <Item id="5910884319787226">
+    <WorldPositionGuid />
+    <EngineTemplateID>10d2c40389e341fa99424bd2d4cdc9f0</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110103</Item>
+      <Item>7881179093110104</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434652</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_2</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787227">
+    <WorldPositionGuid />
+    <EngineTemplateID>19b4c0103aaf49b0bf6187572bc2432d</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110105</Item>
+      <Item>7881179093110106</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434653</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_7</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787228">
+    <WorldPositionGuid />
+    <EngineTemplateID>3c0165eea3e746f4a54320831ddb9576</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110107</Item>
+      <Item>7881179093110108</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434654</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_1</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787229">
+    <WorldPositionGuid />
+    <EngineTemplateID>71db2f795ba040429f72af4d2a6fbaf3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110109</Item>
+      <Item>7881179093110110</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434655</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_5</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787230">
+    <WorldPositionGuid />
+    <EngineTemplateID>8917443f767d42fd9acc40bc7d6152ac</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110111</Item>
+      <Item>7881179093110112</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434656</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_4</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787231">
+    <WorldPositionGuid />
+    <EngineTemplateID>98a1c13334a34258882051dd36a5e1d7</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110113</Item>
+      <Item>7881179093110114</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434657</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_6</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+  <Item id="5910884319787232">
+    <WorldPositionGuid />
+    <EngineTemplateID>dec436bf93384f50bcf04b344f7de5e6</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110115</Item>
+      <Item>7881179093110116</Item>
+    </FunctionalComponents>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434658</Item>
+    </StandartParams>
+    <Name>PlagueEntryTrigger_3</Name>
+    <Parent>9851473861434176</Parent>
+  </Item>
+</Root>

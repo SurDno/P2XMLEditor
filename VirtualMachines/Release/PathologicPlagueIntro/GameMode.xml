@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="GameMode">
+  <Item id="9007061817260602">
+    <IsMain>True</IsMain>
+    <StartGameTime>0:0:0:0</StartGameTime>
+    <GameTimeSpeed>1</GameTimeSpeed>
+    <StartSolarTime>0:0:0:0</StartSolarTime>
+    <SolarTimeSpeed>0</SolarTimeSpeed>
+    <PlayerRef>5347942955871761</PlayerRef>
+    <Name>common</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+</Root>

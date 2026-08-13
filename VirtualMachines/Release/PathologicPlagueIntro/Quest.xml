@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Quest">
+  <Item id="5066472274193851">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092258780</Item>
+      <Item>7881179092258781</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910909304</EventGraph>
+    <Events count="3">
+      <Item>2814706823023305</Item>
+      <Item>2814706823023306</Item>
+      <Item>2814706823126451</Item>
+    </Events>
+    <CustomParams count="9">
+      <Item key="FadeInBlueprint">562941395728913</Item>
+      <Item key="FadeOutBlueprint">562941395728914</Item>
+      <Item key="SickPerson">562941395728912</Item>
+      <Item key="SoundTheaterDoorsBlueprint">562941395907451</Item>
+      <Item key="TalkedToBachelor">562941395728877</Item>
+      <Item key="TalkedToChangelling">562941395728876</Item>
+      <Item key="TalkedToExecutor">562941395728878</Item>
+      <Item key="TalkedToMark">562941395728917</Item>
+      <Item key="Theater_Main_state">562941395595427</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395595426</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>Theater_Main</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274193852">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092258782</Item>
+      <Item>7881179092258783</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910909307</EventGraph>
+    <CustomParams count="1">
+      <Item key="WeatherAndTimeManager_state">562941395595430</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395595429</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>WeatherAndTimeManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274193853">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092258784</Item>
+      <Item>7881179092258785</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910909308</EventGraph>
+    <CustomParams count="1">
+      <Item key="DistrictsPlagueManager_state">562941395595433</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395595432</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>DistrictsPlagueManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274214551">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092287186</Item>
+      <Item>7881179092287187</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910930001</EventGraph>
+    <CustomParams count="1">
+      <Item key="SoldierWalker_state">562941395724036</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395724035</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>SoldierWalker</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274214552">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092287188</Item>
+      <Item>7881179092287189</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910930002</EventGraph>
+    <CustomParams count="5">
+      <Item key="PlagueCloud1">562941395801551</Item>
+      <Item key="PlagueCloud2">562941395801552</Item>
+      <Item key="PlagueCloud3">562941395801553</Item>
+      <Item key="PlagueCloud4">562941395801554</Item>
+      <Item key="Shop_Event_state">562941395724039</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395724038</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>Shop_Event</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274218351">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092291191</Item>
+      <Item>7881179092291192</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910933801</EventGraph>
+    <Events count="2">
+      <Item>2814706823022674</Item>
+      <Item>2814706823022679</Item>
+    </Events>
+    <CustomParams count="5">
+      <Item key="Blueprint_Final">562941395728245</Item>
+      <Item key="Blueprint_TimeStopVisualEffect">562941395865710</Item>
+      <Item key="CathedralFinal_state">562941395728231</Item>
+      <Item key="TalkedToAglaya">562941395728232</Item>
+      <Item key="TalkedToBlock">562941395728233</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395728230</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>CathedralFinal</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274218352">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092291193</Item>
+      <Item>7881179092291194</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910933807</EventGraph>
+    <CustomParams count="4">
+      <Item key="CapsText">562941395728243</Item>
+      <Item key="ListOfTexts">562941395728244</Item>
+      <Item key="NarratorTextManager_state">562941395728242</Item>
+      <Item key="NormalText">562941395909751</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395728241</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>NarratorTextManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274223451">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298301</Item>
+      <Item>7881179092298302</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910938901</EventGraph>
+    <Events count="1">
+      <Item>2814706823030583</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="Flamethrower">562941395736989</Item>
+      <Item key="FlamethrowersBurn_state">562941395736953</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395736952</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>FlamethrowersBurn</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274223552">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298403</Item>
+      <Item>7881179092298404</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910939002</EventGraph>
+    <CustomParams count="4">
+      <Item key="ArrestEvent_state">562941395737056</Item>
+      <Item key="Plague_Officer_Intro">562941395737057</Item>
+      <Item key="Soldier">562941395737127</Item>
+      <Item key="Victim">562941395737126</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395737055</Item>
+    </StandartParams>
+    <Name>ArrestEvent</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274223554">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298433</Item>
+      <Item>7881179092298434</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910939008</EventGraph>
+    <Events count="2">
+      <Item>2814706823031209</Item>
+      <Item>2814706824349351</Item>
+    </Events>
+    <CustomParams count="3">
+      <Item key="Diseased">562941395737138</Item>
+      <Item key="Flamethrower">562941395737137</Item>
+      <Item key="FlamethrowersVersusDiseased_state">562941395737136</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395737135</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>FlamethrowersVersusDiseased</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274224051">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298901</Item>
+      <Item>7881179092298902</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910939501</EventGraph>
+    <CustomParams count="4">
+      <Item key="PlagueCloud">562941395737754</Item>
+      <Item key="PlagueCloud_state">562941395737753</Item>
+      <Item key="SoundKidsBlueprint">562941395907452</Item>
+      <Item key="Victim">562941395738157</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395737752</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>PlagueCloud</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274224052">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298926</Item>
+      <Item>7881179092298927</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910939506</EventGraph>
+    <CustomParams count="1">
+      <Item key="DiseasedWalking_state">562941395737823</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395737822</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>DiseasedWalking</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274224053">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092298940</Item>
+      <Item>7881179092298941</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910939509</EventGraph>
+    <CustomParams count="2">
+      <Item key="EnablingObjectsManager_state">562941395738163</Item>
+      <Item key="ObjectsSpotlight">562941396742656</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395738162</Item>
+    </StandartParams>
+    <Name>EnablingObjectsManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274230351">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092307215</Item>
+      <Item>7881179092307216</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910945802</EventGraph>
+    <CustomParams count="1">
+      <Item key="MindMapPagesManager_state">562941395747793</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395747792</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>MindMapPagesManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274231451">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092308309</Item>
+      <Item>7881179092308310</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910946907</EventGraph>
+    <CustomParams count="1">
+      <Item key="LootManager_state">562941395748895</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395748894</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>LootManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274231452">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092308311</Item>
+      <Item>7881179092308312</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910946908</EventGraph>
+    <CustomParams count="1">
+      <Item key="Theater_Tooltips_state">562941395748898</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395748897</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>Theater_Tooltips</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274234551">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092316203</Item>
+      <Item>7881179092316204</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910950001</EventGraph>
+    <CustomParams count="2">
+      <Item key="Bag">562941395766560</Item>
+      <Item key="DropBagManager_state">562941395766559</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395766558</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>DropBagManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274237951">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092322001</Item>
+      <Item>7881179092322002</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910953401</EventGraph>
+    <CustomParams count="2">
+      <Item key="Aspity_Corpse_Event_state">562941395777153</Item>
+      <Item key="Blueprint">562941395777154</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395777152</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>Aspity_Corpse_Event</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274239552">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092326016</Item>
+      <Item>7881179092326017</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910955002</EventGraph>
+    <CustomParams count="1">
+      <Item key="Stvorki_Houses_5_6_state">562941395786171</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395786170</Item>
+    </StandartParams>
+    <Name>Stvorki_Houses_5_6</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274239553">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092326018</Item>
+      <Item>7881179092326019</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910955003</EventGraph>
+    <CustomParams count="1">
+      <Item key="Stvorki_House_12_state">562941395786174</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395786173</Item>
+    </StandartParams>
+    <Name>Stvorki_House_12</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274239554">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092326020</Item>
+      <Item>7881179092326021</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910955004</EventGraph>
+    <CustomParams count="1">
+      <Item key="Stovrki_House_9_state">562941395786177</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395786176</Item>
+    </StandartParams>
+    <Name>Stovrki_House_9</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274244852">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092334723</Item>
+      <Item>7881179092334724</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910960302</EventGraph>
+    <CustomParams count="1">
+      <Item key="FocusModeTutorial_state">562941395800783</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395800782</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>FocusModeTutorial</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274244854">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092334727</Item>
+      <Item>7881179092334728</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910960305</EventGraph>
+    <CustomParams count="2">
+      <Item key="Blueprint">562941395800793</Item>
+      <Item key="MindMapTutorial_state">562941395800791</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395800792</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>MindMapTutorial</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274245651">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092335501</Item>
+      <Item>7881179092335502</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910961102</EventGraph>
+    <CustomParams count="2">
+      <Item key="Blueprint">562941395801556</Item>
+      <Item key="CityMapTutorial_state">562941395801557</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395801558</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>CityMapTutorial</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274256951">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092346870</Item>
+      <Item>7881179092346871</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910972401</EventGraph>
+    <CustomParams count="1">
+      <Item key="DoorsManager_state">562941395813061</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395813060</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>DoorsManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274256952">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092346880</Item>
+      <Item>7881179092346881</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910972402</EventGraph>
+    <CustomParams count="1">
+      <Item key="ReputationManager_state">562941395813076</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395813075</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>ReputationManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274256953">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092346882</Item>
+      <Item>7881179092346883</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910972403</EventGraph>
+    <CustomParams count="2">
+      <Item key="Soldier">562941395814584</Item>
+      <Item key="SoldierWalker2_state">562941395813079</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395813078</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>SoldierWalker2</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274336551">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092431801</Item>
+      <Item>7881179092431802</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911052001</EventGraph>
+    <CustomParams count="1">
+      <Item key="Schitalochka_state">562941395907455</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395907454</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>Schitalochka</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274671751">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092981701</Item>
+      <Item>7881179092981702</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911387903</EventGraph>
+    <CustomParams count="1">
+      <Item key="UsableItemsManager_state">562941397242380</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397242379</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>UsableItemsManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274727751">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093110301</Item>
+      <Item>7881179093110302</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911443901</EventGraph>
+    <CustomParams count="2">
+      <Item key="ConsoleManagers_state">562941397434852</Item>
+      <Item key="SpecialCharacterInstance">562941397434886</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397434851</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>ConsoleManagers</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274735851">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093118401</Item>
+      <Item>7881179093118402</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911452001</EventGraph>
+    <CustomParams count="2">
+      <Item key="CutsceneFinished">562941397443266</Item>
+      <Item key="RiotCutsceneListener_state">562941397443252</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397443251</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>RiotCutsceneListener</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274735852">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093118403</Item>
+      <Item>7881179093118404</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911452002</EventGraph>
+    <CustomParams count="2">
+      <Item key="CutsceneFinished">562941397443255</Item>
+      <Item key="FlamethrowersCutsceneListener_state">562941397443254</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397443253</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>FlamethrowersCutsceneListener</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274765051">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093165203</Item>
+      <Item>7881179093165204</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911481201</EventGraph>
+    <CustomParams count="4">
+      <Item key="BoundHousesMapItems">562941397490990</Item>
+      <Item key="DeadRegionMapManager_state">562941397490977</Item>
+      <Item key="RegionList">562941397490978</Item>
+      <Item key="RegionMapItemList">562941397490979</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397490976</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>DeadRegionMapManager</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="5066472274897751">
+    <StartEvent>2814706822898668</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179093311801</Item>
+      <Item>7881179093311802</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911614701</EventGraph>
+    <CustomParams count="1">
+      <Item key="BurningWindowsCutsceneListener_state">562941397645752</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397645751</Item>
+    </StandartParams>
+    <GameTimeContext>9007061817260602</GameTimeContext>
+    <Name>BurningWindowsCutsceneListener</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+</Root>

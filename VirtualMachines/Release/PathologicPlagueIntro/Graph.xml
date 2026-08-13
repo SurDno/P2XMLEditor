@@ -1,0 +1,2542 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Graph">
+  <Item id="4503530910909302">
+    <States count="3">
+      <Item>3096177502523277</Item>
+      <Item>3096177503049176</Item>
+      <Item>3096177503062676</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229267177</Item>
+      <Item>4222060229799376</Item>
+      <Item>4222060229812976</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257928</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>281470685671027</Owner>
+    <Initial>False</Initial>
+    <Name>PathologicPlagueIntro: event graph</Name>
+    <Parent>281470685671027</Parent>
+  </Item>
+  <Item id="4503530910909303">
+    <States count="4">
+      <Item>3096177502523278</Item>
+      <Item>3096177502586378</Item>
+      <Item>3096177502612776</Item>
+      <Item>4503530910949401</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229267178</Item>
+      <Item>4222060229330678</Item>
+      <Item>4222060229357277</Item>
+      <Item>4222060229357278</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257930</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <Initial>False</Initial>
+    <Name>Player: event graph</Name>
+    <Parent>5347942955871761</Parent>
+  </Item>
+  <Item id="4503530910909304">
+    <States count="4">
+      <Item>3096177502523279</Item>
+      <Item>3096177502548401</Item>
+      <Item>4503530910909305</Item>
+      <Item>4503530910909306</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229267179</Item>
+      <Item>4222060229267181</Item>
+      <Item>4222060229267182</Item>
+      <Item>4222060229292321</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257932</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <Initial>False</Initial>
+    <Name>Theater_Main: event graph</Name>
+    <Parent>5066472274193851</Parent>
+  </Item>
+  <Item id="4503530910909305">
+    <States count="5">
+      <Item>3096177502523281</Item>
+      <Item>3096177502523284</Item>
+      <Item>3096177502548397</Item>
+      <Item>3096177502548400</Item>
+      <Item>3096177502564781</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229267180</Item>
+      <Item>4222060229267183</Item>
+      <Item>4222060229292307</Item>
+      <Item>4222060229292310</Item>
+      <Item>4222060229308779</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257934</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267182</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229267181</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910909304</Parent>
+  </Item>
+  <Item id="4503530910909306">
+    <States count="12">
+      <Item>3096177502523283</Item>
+      <Item>3096177502548402</Item>
+      <Item>3096177502548403</Item>
+      <Item>3096177502548404</Item>
+      <Item>3096177502548406</Item>
+      <Item>3096177502548407</Item>
+      <Item>3096177502548409</Item>
+      <Item>3096177502564783</Item>
+      <Item>3096177502566376</Item>
+      <Item>3096177502782576</Item>
+      <Item>3096177503078376</Item>
+      <Item>3377648184152705</Item>
+    </States>
+    <EventLinks count="13">
+      <Item>4222060229292311</Item>
+      <Item>4222060229292312</Item>
+      <Item>4222060229292313</Item>
+      <Item>4222060229292315</Item>
+      <Item>4222060229292316</Item>
+      <Item>4222060229292317</Item>
+      <Item>4222060229292318</Item>
+      <Item>4222060229292319</Item>
+      <Item>4222060229292320</Item>
+      <Item>4222060229308781</Item>
+      <Item>4222060229310376</Item>
+      <Item>4222060229528579</Item>
+      <Item>4222060229829276</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257937</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229267181</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292321</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910909304</Parent>
+  </Item>
+  <Item id="4503530910909307">
+    <States count="6">
+      <Item>3096177502523285</Item>
+      <Item>3096177502523286</Item>
+      <Item>3096177502559776</Item>
+      <Item>3096177502559777</Item>
+      <Item>3096177502611676</Item>
+      <Item>3377648184164101</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060229267184</Item>
+      <Item>4222060229267185</Item>
+      <Item>4222060229303776</Item>
+      <Item>4222060229303777</Item>
+      <Item>4222060229303778</Item>
+      <Item>4222060229303779</Item>
+      <Item>4222060229356176</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257941</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193852</Owner>
+    <Initial>False</Initial>
+    <Name>WeatherAndTimeManager: event graph</Name>
+    <Parent>5066472274193852</Parent>
+  </Item>
+  <Item id="4503530910909308">
+    <States count="4">
+      <Item>3096177502523287</Item>
+      <Item>3096177502523288</Item>
+      <Item>3096177502568981</Item>
+      <Item>4503530911461401</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229267186</Item>
+      <Item>4222060229267187</Item>
+      <Item>4222060229312981</Item>
+      <Item>4222060229828482</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139257944</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <Initial>False</Initial>
+    <Name>DistrictsPlagueManager: event graph</Name>
+    <Parent>5066472274193853</Parent>
+  </Item>
+  <Item id="4503530910917901">
+    <States count="4">
+      <Item>3096177502531876</Item>
+      <Item>4503530910933806</Item>
+      <Item>4785001592524832</Item>
+      <Item>4785001592524833</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229275776</Item>
+      <Item>4222060229291684</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266526</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro: event graph</Name>
+    <Parent>5347942955880276</Parent>
+  </Item>
+  <Item id="4503530910917902">
+    <States count="3">
+      <Item>3096177502531877</Item>
+      <Item>3096177502548391</Item>
+      <Item>4785001592524828</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229275777</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266528</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <Initial>False</Initial>
+    <Name>Bachelor PlagueIntro: event graph</Name>
+    <Parent>5347942955880277</Parent>
+  </Item>
+  <Item id="4503530910917903">
+    <States count="3">
+      <Item>3096177502531878</Item>
+      <Item>3096177502548396</Item>
+      <Item>4785001592524829</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229275778</Item>
+      <Item>4222060229292305</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266530</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <Initial>False</Initial>
+    <Name>Changelling PlagueIntro: event graph</Name>
+    <Parent>5347942955880278</Parent>
+  </Item>
+  <Item id="4503530910917904">
+    <States count="2">
+      <Item>3096177502531879</Item>
+      <Item>4785001592524831</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229275779</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266532</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro: event graph</Name>
+    <Parent>5347942955880279</Parent>
+  </Item>
+  <Item id="4503530910917905">
+    <States count="4">
+      <Item>3096177502531880</Item>
+      <Item>3096177502547781</Item>
+      <Item>3096177502547782</Item>
+      <Item>4785001592524834</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229275780</Item>
+      <Item>4222060229291680</Item>
+      <Item>4222060229291681</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266534</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <Initial>False</Initial>
+    <Name>Executor PlagueIntro: event graph</Name>
+    <Parent>5347942955880280</Parent>
+  </Item>
+  <Item id="4503530910917906">
+    <States count="6">
+      <Item>3096177502531881</Item>
+      <Item>3096177502548383</Item>
+      <Item>3096177502548384</Item>
+      <Item>3096177502548385</Item>
+      <Item>3096177502588076</Item>
+      <Item>4785001592524826</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229275781</Item>
+      <Item>4222060229292289</Item>
+      <Item>4222060229292290</Item>
+      <Item>4222060229292291</Item>
+      <Item>4222060229370677</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266536</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro: event graph</Name>
+    <Parent>5347942955880281</Parent>
+  </Item>
+  <Item id="4503530910917907">
+    <States count="6">
+      <Item>3096177502531882</Item>
+      <Item>3096177502548387</Item>
+      <Item>3096177502548388</Item>
+      <Item>3096177502548389</Item>
+      <Item>3096177502588077</Item>
+      <Item>4785001592524830</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229275782</Item>
+      <Item>4222060229292293</Item>
+      <Item>4222060229292294</Item>
+      <Item>4222060229292295</Item>
+      <Item>4222060229370678</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266538</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro: event graph</Name>
+    <Parent>5347942955880282</Parent>
+  </Item>
+  <Item id="4503530910917908">
+    <States count="2">
+      <Item>3096177502531883</Item>
+      <Item>4785001592524827</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229275783</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266540</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <Initial>False</Initial>
+    <Name>AspityPlagueIntro: event graph</Name>
+    <Parent>5347942955880283</Parent>
+  </Item>
+  <Item id="4503530910930001">
+    <States count="3">
+      <Item>3096177502543976</Item>
+      <Item>3096177502543986</Item>
+      <Item>4503530910930005</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229287876</Item>
+      <Item>4222060229287884</Item>
+      <Item>4222060229287894</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139278626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <Initial>False</Initial>
+    <Name>SoldierWalker: event graph</Name>
+    <Parent>5066472274214551</Parent>
+  </Item>
+  <Item id="4503530910930002">
+    <States count="3">
+      <Item>3096177502543977</Item>
+      <Item>3096177502543980</Item>
+      <Item>4503530910930003</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229287877</Item>
+      <Item>4222060229287879</Item>
+      <Item>4222060229287880</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139278628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <Initial>False</Initial>
+    <Name>Shop_Event: event graph</Name>
+    <Parent>5066472274214552</Parent>
+  </Item>
+  <Item id="4503530910930003">
+    <States count="3">
+      <Item>3096177502543979</Item>
+      <Item>3096177502543981</Item>
+      <Item>3096177502653177</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229287878</Item>
+      <Item>4222060229287881</Item>
+      <Item>4222060229398477</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139278630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287880</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287879</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910930002</Parent>
+  </Item>
+  <Item id="4503530910930005">
+    <States count="3">
+      <Item>3096177502543985</Item>
+      <Item>3096177502543987</Item>
+      <Item>3377648184148301</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229287886</Item>
+      <Item>4222060229287887</Item>
+      <Item>4222060229287890</Item>
+      <Item>4222060229287891</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139278638</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274214551</Owner>
+    <InputLinks count="1">
+      <Item>4222060229287894</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229287884</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910930001</Parent>
+  </Item>
+  <Item id="4503530910930007">
+    <States count="1">
+      <Item>3096177502543990</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229287892</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139278647</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955892376</Owner>
+    <Initial>False</Initial>
+    <Name>WalkerSoldier: event graph</Name>
+    <Parent>5347942955892376</Parent>
+  </Item>
+  <Item id="4503530910933801">
+    <States count="3">
+      <Item>3096177502547776</Item>
+      <Item>4503530910933803</Item>
+      <Item>4503530910934402</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229291676</Item>
+      <Item>4222060229291679</Item>
+      <Item>4222060229292280</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139282426</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <Initial>False</Initial>
+    <Name>CathedralFinal: event graph</Name>
+    <Parent>5066472274218351</Parent>
+  </Item>
+  <Item id="4503530910933803">
+    <States count="14">
+      <Item>3096177502547780</Item>
+      <Item>3096177502547808</Item>
+      <Item>3096177502547809</Item>
+      <Item>3096177502548377</Item>
+      <Item>3096177502548381</Item>
+      <Item>3096177502548382</Item>
+      <Item>3096177502616576</Item>
+      <Item>3096177502625876</Item>
+      <Item>3096177502625877</Item>
+      <Item>3096177502651976</Item>
+      <Item>3096177502782577</Item>
+      <Item>3096177503062677</Item>
+      <Item>3377648184152701</Item>
+      <Item>3377648184152702</Item>
+    </States>
+    <EventLinks count="17">
+      <Item>4222060229291700</Item>
+      <Item>4222060229292276</Item>
+      <Item>4222060229292278</Item>
+      <Item>4222060229292282</Item>
+      <Item>4222060229292283</Item>
+      <Item>4222060229292284</Item>
+      <Item>4222060229292285</Item>
+      <Item>4222060229292286</Item>
+      <Item>4222060229292287</Item>
+      <Item>4222060229361176</Item>
+      <Item>4222060229361177</Item>
+      <Item>4222060229370576</Item>
+      <Item>4222060229370580</Item>
+      <Item>4222060229370581</Item>
+      <Item>4222060229397276</Item>
+      <Item>4222060229528578</Item>
+      <Item>4222060229812977</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139282431</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229292280</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910933801</Parent>
+  </Item>
+  <Item id="4503530910933806">
+    <States count="10">
+      <Item>3096177502547792</Item>
+      <Item>3096177502547793</Item>
+      <Item>3096177502547794</Item>
+      <Item>3096177502547795</Item>
+      <Item>3096177502547796</Item>
+      <Item>3096177502547797</Item>
+      <Item>3096177502547798</Item>
+      <Item>3096177502625976</Item>
+      <Item>3377648184224001</Item>
+      <Item>3377648184230201</Item>
+    </States>
+    <EventLinks count="11">
+      <Item>4222060229291685</Item>
+      <Item>4222060229291686</Item>
+      <Item>4222060229291687</Item>
+      <Item>4222060229291688</Item>
+      <Item>4222060229291690</Item>
+      <Item>4222060229364276</Item>
+      <Item>4222060229364277</Item>
+      <Item>4222060229370577</Item>
+      <Item>4222060229370578</Item>
+      <Item>4222060229370579</Item>
+      <Item>4222060229370676</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139282446</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291684</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>IntroLogic</Name>
+    <Parent>4503530910917901</Parent>
+  </Item>
+  <Item id="4503530910933807">
+    <States count="3">
+      <Item>3096177502547799</Item>
+      <Item>3096177502547803</Item>
+      <Item>4503530910933809</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229291691</Item>
+      <Item>4222060229291692</Item>
+      <Item>4222060229291698</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139282455</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <Initial>False</Initial>
+    <Name>NarratorTextManager: event graph</Name>
+    <Parent>5066472274218352</Parent>
+  </Item>
+  <Item id="4503530910933809">
+    <States count="3">
+      <Item>3096177502547805</Item>
+      <Item>3096177502547806</Item>
+      <Item>3377648184152101</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229291694</Item>
+      <Item>4222060229291695</Item>
+      <Item>4222060229291696</Item>
+      <Item>4222060229291697</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139282463</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218352</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291692</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229291698</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910933807</Parent>
+  </Item>
+  <Item id="4503530910934401">
+    <States count="1">
+      <Item>3096177502548376</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229292277</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139283026</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896776</Owner>
+    <Initial>False</Initial>
+    <Name>BlueprintTemplate: event graph</Name>
+    <Parent>5347942955896776</Parent>
+  </Item>
+  <Item id="4503530910934402">
+    <States count="2">
+      <Item>3096177502548379</Item>
+      <Item>3096177502548380</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229292279</Item>
+      <Item>4222060229292281</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139283029</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274218351</Owner>
+    <InputLinks count="1">
+      <Item>4222060229291679</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229292280</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910933801</Parent>
+  </Item>
+  <Item id="4503530910934403">
+    <States count="6">
+      <Item>3096177502548398</Item>
+      <Item>3096177502560885</Item>
+      <Item>3096177502560891</Item>
+      <Item>3096177502849676</Item>
+      <Item>4503530910946901</Item>
+      <Item>4503530910946903</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060229292308</Item>
+      <Item>4222060229304895</Item>
+      <Item>4222060229304896</Item>
+      <Item>4222060229304897</Item>
+      <Item>4222060229304903</Item>
+      <Item>4222060229596376</Item>
+      <Item>4222060229596377</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139283054</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <Initial>False</Initial>
+    <Name>SickPerson: event graph</Name>
+    <Parent>5347942955896777</Parent>
+  </Item>
+  <Item id="4503530910938901">
+    <States count="2">
+      <Item>3096177502552876</Item>
+      <Item>3096177502552886</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229296776</Item>
+      <Item>4222060229296779</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287526</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223451</Owner>
+    <Initial>False</Initial>
+    <Name>FlamethrowersBurn: event graph</Name>
+    <Parent>5066472274223451</Parent>
+  </Item>
+  <Item id="4503530910938904">
+    <States count="2">
+      <Item>3096177502552882</Item>
+      <Item>3096177502552887</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229296781</Item>
+      <Item>4222060229296876</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287535</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901276</Owner>
+    <Initial>False</Initial>
+    <Name>FlamethrowerBurnBodies: event graph</Name>
+    <Parent>5347942955901276</Parent>
+  </Item>
+  <Item id="4503530910939002">
+    <States count="3">
+      <Item>3096177502552977</Item>
+      <Item>3096177502552982</Item>
+      <Item>4503530910939003</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229296878</Item>
+      <Item>4222060229296880</Item>
+      <Item>4222060229296882</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <Initial>False</Initial>
+    <Name>ArrestEvent: event graph</Name>
+    <Parent>5066472274223552</Parent>
+  </Item>
+  <Item id="4503530910939003">
+    <States count="4">
+      <Item>3096177502552979</Item>
+      <Item>3096177502552986</Item>
+      <Item>3096177502552987</Item>
+      <Item>3096177502552988</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229296879</Item>
+      <Item>4222060229296885</Item>
+      <Item>4222060229296886</Item>
+      <Item>4222060229296887</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296882</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296880</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910939002</Parent>
+  </Item>
+  <Item id="4503530910939005">
+    <States count="1">
+      <Item>3096177502552983</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229296883</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287637</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901376</Owner>
+    <Initial>False</Initial>
+    <Name>Victim: event graph</Name>
+    <Parent>5347942955901376</Parent>
+  </Item>
+  <Item id="4503530910939006">
+    <States count="1">
+      <Item>3096177502552984</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229296884</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287639</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901377</Owner>
+    <Initial>False</Initial>
+    <Name>Soldier: event graph</Name>
+    <Parent>5347942955901377</Parent>
+  </Item>
+  <Item id="4503530910939008">
+    <States count="6">
+      <Item>3096177502552990</Item>
+      <Item>3096177502553001</Item>
+      <Item>3377648184159001</Item>
+      <Item>4503530910939012</Item>
+      <Item>4503530910939013</Item>
+      <Item>4503530910940701</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060229296889</Item>
+      <Item>4222060229296900</Item>
+      <Item>4222060229296901</Item>
+      <Item>4222060229296902</Item>
+      <Item>4222060229298577</Item>
+      <Item>4222060229298578</Item>
+      <Item>4222060229298579</Item>
+      <Item>4222060229298580</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287647</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <Initial>False</Initial>
+    <Name>FlamethrowersVersusDiseased: event graph</Name>
+    <Parent>5066472274223554</Parent>
+  </Item>
+  <Item id="4503530910939009">
+    <States count="4">
+      <Item>3096177502552991</Item>
+      <Item>3096177502553007</Item>
+      <Item>3096177502554680</Item>
+      <Item>3096177503077578</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229296890</Item>
+      <Item>4222060229297376</Item>
+      <Item>4222060229298583</Item>
+      <Item>4222060229828480</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287649</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901378</Owner>
+    <Initial>False</Initial>
+    <Name>Flamethrower: event graph</Name>
+    <Parent>5347942955901378</Parent>
+  </Item>
+  <Item id="4503530910939010">
+    <States count="5">
+      <Item>3096177502552992</Item>
+      <Item>3096177502552993</Item>
+      <Item>3096177502553006</Item>
+      <Item>3096177503077579</Item>
+      <Item>3377648184157301</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060229296891</Item>
+      <Item>4222060229296892</Item>
+      <Item>4222060229296893</Item>
+      <Item>4222060229296894</Item>
+      <Item>4222060229297377</Item>
+      <Item>4222060229828481</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287651</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901379</Owner>
+    <Initial>False</Initial>
+    <Name>Diseased: event graph</Name>
+    <Parent>5347942955901379</Parent>
+  </Item>
+  <Item id="4503530910939011">
+    <States count="1">
+      <Item>3096177502552994</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229296895</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901380</Owner>
+    <Initial>False</Initial>
+    <Name>DiseasedWalking: event graph</Name>
+    <Parent>5347942955901380</Parent>
+  </Item>
+  <Item id="4503530910939012">
+    <States count="3">
+      <Item>3096177502552997</Item>
+      <Item>3096177502553002</Item>
+      <Item>3096177502553003</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229296899</Item>
+      <Item>4222060229296903</Item>
+      <Item>4222060229296904</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287658</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229298577</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296900</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910939008</Parent>
+  </Item>
+  <Item id="4503530910939013">
+    <States count="7">
+      <Item>3096177502552999</Item>
+      <Item>3096177502553004</Item>
+      <Item>3096177502553005</Item>
+      <Item>3096177503077576</Item>
+      <Item>3096177503077577</Item>
+      <Item>3377648184157303</Item>
+      <Item>3377648184679101</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060229296905</Item>
+      <Item>4222060229296906</Item>
+      <Item>4222060229296907</Item>
+      <Item>4222060229296908</Item>
+      <Item>4222060229296909</Item>
+      <Item>4222060229828476</Item>
+      <Item>4222060229828477</Item>
+      <Item>4222060229828478</Item>
+      <Item>4222060229828479</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139287661</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229296900</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229296902</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910939008</Parent>
+  </Item>
+  <Item id="4503530910939501">
+    <States count="4">
+      <Item>3096177502553476</Item>
+      <Item>3096177502553479</Item>
+      <Item>4503530910939502</Item>
+      <Item>4503530910939503</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229297378</Item>
+      <Item>4222060229297380</Item>
+      <Item>4222060229297381</Item>
+      <Item>4222060229297382</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <Initial>False</Initial>
+    <Name>PlagueCloud: event graph</Name>
+    <Parent>5066472274224051</Parent>
+  </Item>
+  <Item id="4503530910939502">
+    <States count="2">
+      <Item>3096177502553478</Item>
+      <Item>3096177502553491</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229297379</Item>
+      <Item>4222060229297392</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288128</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297382</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297380</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparation</Name>
+    <Parent>4503530910939501</Parent>
+  </Item>
+  <Item id="4503530910939503">
+    <States count="3">
+      <Item>3096177502553481</Item>
+      <Item>3096177502553492</Item>
+      <Item>3377648184157801</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229297393</Item>
+      <Item>4222060229297394</Item>
+      <Item>4222060229297395</Item>
+      <Item>4222060229411276</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288132</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224051</Owner>
+    <InputLinks count="1">
+      <Item>4222060229297380</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229297381</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910939501</Parent>
+  </Item>
+  <Item id="4503530910939504">
+    <States count="1">
+      <Item>3096177502553482</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229297383</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288135</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901876</Owner>
+    <Initial>False</Initial>
+    <Name>PlagueCloudPatrol: event graph</Name>
+    <Parent>5347942955901876</Parent>
+  </Item>
+  <Item id="4503530910939505">
+    <States count="1">
+      <Item>3096177502553483</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229297384</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288137</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901877</Owner>
+    <Initial>False</Initial>
+    <Name>CloudVictim: event graph</Name>
+    <Parent>5347942955901877</Parent>
+  </Item>
+  <Item id="4503530910939506">
+    <States count="2">
+      <Item>3096177502553484</Item>
+      <Item>3096177502553485</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229297385</Item>
+      <Item>4222060229297387</Item>
+      <Item>4222060229297388</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288139</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224052</Owner>
+    <Initial>False</Initial>
+    <Name>DiseasedWalking: event graph</Name>
+    <Parent>5066472274224052</Parent>
+  </Item>
+  <Item id="4503530910939508">
+    <States count="2">
+      <Item>3096177502553489</Item>
+      <Item>3096177502590377</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229297390</Item>
+      <Item>4222060229334676</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288146</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955901878</Owner>
+    <Initial>False</Initial>
+    <Name>ScaredGypsy: event graph</Name>
+    <Parent>5347942955901878</Parent>
+  </Item>
+  <Item id="4503530910939509">
+    <States count="4">
+      <Item>3096177502553493</Item>
+      <Item>3096177502553494</Item>
+      <Item>3096177502612777</Item>
+      <Item>3096177502644777</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229297396</Item>
+      <Item>4222060229297398</Item>
+      <Item>4222060229357279</Item>
+      <Item>4222060229390077</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139288152</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274224053</Owner>
+    <Initial>False</Initial>
+    <Name>EnablingObjectsManager: event graph</Name>
+    <Parent>5066472274224053</Parent>
+  </Item>
+  <Item id="4503530910940701">
+    <States count="3">
+      <Item>3096177502554677</Item>
+      <Item>3096177502554678</Item>
+      <Item>3096177502554679</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229298576</Item>
+      <Item>4222060229298581</Item>
+      <Item>4222060229298582</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139289327</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274223554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229298579</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229298577</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Destroy</Name>
+    <Parent>4503530910939008</Parent>
+  </Item>
+  <Item id="4503530910945801">
+    <States count="8">
+      <Item>3096177502559778</Item>
+      <Item>3377648184165201</Item>
+      <Item>3377648184165202</Item>
+      <Item>3377648184165203</Item>
+      <Item>4503530910945803</Item>
+      <Item>4503530910945804</Item>
+      <Item>4503530910945805</Item>
+      <Item>4503530911058803</Item>
+    </States>
+    <EventLinks count="15">
+      <Item>4222060229303780</Item>
+      <Item>4222060229303784</Item>
+      <Item>4222060229303786</Item>
+      <Item>4222060229303788</Item>
+      <Item>4222060229304876</Item>
+      <Item>4222060229304877</Item>
+      <Item>4222060229304878</Item>
+      <Item>4222060229304879</Item>
+      <Item>4222060229304880</Item>
+      <Item>4222060229304881</Item>
+      <Item>4222060229304882</Item>
+      <Item>4222060229304883</Item>
+      <Item>4222060229304884</Item>
+      <Item>4222060229304899</Item>
+      <Item>4222060229418181</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139294429</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <Initial>False</Initial>
+    <Name>SickCharacters: event graph</Name>
+    <Parent>7599708409295376</Parent>
+  </Item>
+  <Item id="4503530910945802">
+    <States count="2">
+      <Item>3096177502559779</Item>
+      <Item>3096177502559780</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229303781</Item>
+      <Item>4222060229303782</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139294431</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274230351</Owner>
+    <Initial>False</Initial>
+    <Name>MindMapPagesManager: event graph</Name>
+    <Parent>5066472274230351</Parent>
+  </Item>
+  <Item id="4503530910945803">
+    <States count="2">
+      <Item>3096177502559782</Item>
+      <Item>3096177502560877</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229303783</Item>
+      <Item>4222060229304885</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139294434</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303784</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AddDiseasedOrgans</Name>
+    <Parent>4503530910945801</Parent>
+  </Item>
+  <Item id="4503530910945804">
+    <States count="6">
+      <Item>3096177502559784</Item>
+      <Item>3096177502560878</Item>
+      <Item>3096177502560879</Item>
+      <Item>3096177502560880</Item>
+      <Item>3377648184165204</Item>
+      <Item>3377648184165205</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060229303785</Item>
+      <Item>4222060229304886</Item>
+      <Item>4222060229304887</Item>
+      <Item>4222060229304888</Item>
+      <Item>4222060229304889</Item>
+      <Item>4222060229304890</Item>
+      <Item>4222060229304891</Item>
+      <Item>4222060229304892</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139294437</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303786</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>GiveRandomStammAndSymptoms</Name>
+    <Parent>4503530910945801</Parent>
+  </Item>
+  <Item id="4503530910945805">
+    <States count="2">
+      <Item>3096177502559786</Item>
+      <Item>3096177502560881</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229303787</Item>
+      <Item>4222060229304893</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139294440</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <OutputLinks count="1">
+      <Item>4222060229303788</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetPain</Name>
+    <Parent>4503530910945801</Parent>
+  </Item>
+  <Item id="4503530910946901">
+    <SubstituteGraph>4503530910945803</SubstituteGraph>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295537</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="1">
+      <Item>4222060229596377</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304895</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>New state</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="4503530910946903">
+    <SubstituteGraph>4503530910945805</SubstituteGraph>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295539</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955896777</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304896</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229304897</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>New state</Name>
+    <Parent>4503530910934403</Parent>
+  </Item>
+  <Item id="4503530910946905">
+    <States count="1">
+      <Item>3096177502560889</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229304901</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295545</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637639401</Owner>
+    <Initial>False</Initial>
+    <Name>BagLoot: event graph</Name>
+    <Parent>5629413637639401</Parent>
+  </Item>
+  <Item id="4503530910946906">
+    <States count="1">
+      <Item>3096177502560890</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229304902</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295547</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637639402</Owner>
+    <Initial>False</Initial>
+    <Name>PocketLoot: event graph</Name>
+    <Parent>5629413637639402</Parent>
+  </Item>
+  <Item id="4503530910946907">
+    <States count="2">
+      <Item>3096177502560893</Item>
+      <Item>4503530911026501</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229304905</Item>
+      <Item>4222060229385776</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295551</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <Initial>False</Initial>
+    <Name>LootManager: event graph</Name>
+    <Parent>5066472274231451</Parent>
+  </Item>
+  <Item id="4503530910946908">
+    <States count="1">
+      <Item>3096177502560895</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229304906</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139295554</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231452</Owner>
+    <Initial>False</Initial>
+    <Name>Theater_Tooltips: event graph</Name>
+    <Parent>5066472274231452</Parent>
+  </Item>
+  <Item id="4503530910947601">
+    <States count="1">
+      <Item>3096177502561576</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229305576</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139296226</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640101</Owner>
+    <Initial>False</Initial>
+    <Name>Player Left Pocket: event graph</Name>
+    <Parent>5629413637640101</Parent>
+  </Item>
+  <Item id="4503530910947602">
+    <States count="1">
+      <Item>3096177502561577</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229305577</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139296228</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640102</Owner>
+    <Initial>False</Initial>
+    <Name>Player Right Pocket: event graph</Name>
+    <Parent>5629413637640102</Parent>
+  </Item>
+  <Item id="4503530910947603">
+    <States count="1">
+      <Item>3096177502561578</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229305578</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139296230</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637640103</Owner>
+    <Initial>False</Initial>
+    <Name>Player Bag: event graph</Name>
+    <Parent>5629413637640103</Parent>
+  </Item>
+  <Item id="4503530910949401">
+    <States count="2">
+      <Item>3096177502563378</Item>
+      <Item>3096177502563379</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229307379</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139298027</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955871761</Owner>
+    <InputLinks count="1">
+      <Item>4222060229357278</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229330678</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Give_Player_Items</Name>
+    <Parent>4503530910909303</Parent>
+  </Item>
+  <Item id="4503530910950001">
+    <States count="3">
+      <Item>3096177502563976</Item>
+      <Item>3096177502563977</Item>
+      <Item>3096177502564777</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229307976</Item>
+      <Item>4222060229307977</Item>
+      <Item>4222060229308777</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139298626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274234551</Owner>
+    <Initial>False</Initial>
+    <Name>DropBagManager: event graph</Name>
+    <Parent>5066472274234551</Parent>
+  </Item>
+  <Item id="4503530910953401">
+    <States count="6">
+      <Item>3096177502567377</Item>
+      <Item>3096177502567380</Item>
+      <Item>3377648184171702</Item>
+      <Item>4503530910953402</Item>
+      <Item>4503530910953403</Item>
+      <Item>4503530910953404</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060229311376</Item>
+      <Item>4222060229311378</Item>
+      <Item>4222060229311380</Item>
+      <Item>4222060229311388</Item>
+      <Item>4222060229311389</Item>
+      <Item>4222060229311391</Item>
+      <Item>4222060229311392</Item>
+      <Item>4222060229311395</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139302027</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <Initial>False</Initial>
+    <Name>Aspity_Corpse_Event: event graph</Name>
+    <Parent>5066472274237951</Parent>
+  </Item>
+  <Item id="4503530910953402">
+    <States count="5">
+      <Item>3096177502567379</Item>
+      <Item>3096177502567384</Item>
+      <Item>3096177502567385</Item>
+      <Item>3096177502567386</Item>
+      <Item>3377648184171701</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060229311382</Item>
+      <Item>4222060229311383</Item>
+      <Item>4222060229311384</Item>
+      <Item>4222060229311385</Item>
+      <Item>4222060229311386</Item>
+      <Item>4222060229968579</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139302029</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311380</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311378</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910953401</Parent>
+  </Item>
+  <Item id="4503530910953403">
+    <States count="3">
+      <Item>3096177502567382</Item>
+      <Item>3096177502567383</Item>
+      <Item>3096177502567390</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229311379</Item>
+      <Item>4222060229311381</Item>
+      <Item>4222060229311394</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139302033</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="2">
+      <Item>4222060229311391</Item>
+      <Item>4222060229311395</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311380</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparations</Name>
+    <Parent>4503530910953401</Parent>
+  </Item>
+  <Item id="4503530910953404">
+    <States count="2">
+      <Item>3096177502567388</Item>
+      <Item>3096177502567389</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229311390</Item>
+      <Item>4222060229311393</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139302042</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274237951</Owner>
+    <InputLinks count="1">
+      <Item>4222060229311392</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229311391</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Destroy</Name>
+    <Parent>4503530910953401</Parent>
+  </Item>
+  <Item id="4503530910955002">
+    <States count="3">
+      <Item>3096177502568977</Item>
+      <Item>3096177502568995</Item>
+      <Item>4503530910955008</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229312977</Item>
+      <Item>4222060229313001</Item>
+      <Item>4222060229313002</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <Initial>False</Initial>
+    <Name>Stvorki_Houses_5_6: event graph</Name>
+    <Parent>5066472274239552</Parent>
+  </Item>
+  <Item id="4503530910955003">
+    <States count="3">
+      <Item>3096177502568978</Item>
+      <Item>3096177502568991</Item>
+      <Item>4503530910955007</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229312978</Item>
+      <Item>4222060229312994</Item>
+      <Item>4222060229312995</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303630</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <Initial>False</Initial>
+    <Name>Stvorki_House_12: event graph</Name>
+    <Parent>5066472274239553</Parent>
+  </Item>
+  <Item id="4503530910955004">
+    <States count="3">
+      <Item>3096177502568979</Item>
+      <Item>3096177502568984</Item>
+      <Item>4503530910955006</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229312979</Item>
+      <Item>4222060229312982</Item>
+      <Item>4222060229312983</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303632</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <Initial>False</Initial>
+    <Name>Stovrki_House_9: event graph</Name>
+    <Parent>5066472274239554</Parent>
+  </Item>
+  <Item id="4503530910955006">
+    <States count="4">
+      <Item>3096177502568983</Item>
+      <Item>3096177502568986</Item>
+      <Item>3096177502568987</Item>
+      <Item>3377648184173301</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229312984</Item>
+      <Item>4222060229312985</Item>
+      <Item>4222060229312986</Item>
+      <Item>4222060229312987</Item>
+      <Item>4222060229312988</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303637</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239554</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312982</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312983</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910955004</Parent>
+  </Item>
+  <Item id="4503530910955007">
+    <States count="4">
+      <Item>3096177502568988</Item>
+      <Item>3096177502568989</Item>
+      <Item>3096177502568990</Item>
+      <Item>3377648184173302</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229312989</Item>
+      <Item>4222060229312990</Item>
+      <Item>4222060229312991</Item>
+      <Item>4222060229312992</Item>
+      <Item>4222060229312993</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303645</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239553</Owner>
+    <InputLinks count="1">
+      <Item>4222060229312995</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229312994</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910955003</Parent>
+  </Item>
+  <Item id="4503530910955008">
+    <States count="4">
+      <Item>3096177502568992</Item>
+      <Item>3096177502568994</Item>
+      <Item>3096177502568996</Item>
+      <Item>3377648184173303</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229312996</Item>
+      <Item>4222060229312997</Item>
+      <Item>4222060229312998</Item>
+      <Item>4222060229312999</Item>
+      <Item>4222060229313003</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139303651</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274239552</Owner>
+    <InputLinks count="1">
+      <Item>4222060229313002</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229313001</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910955002</Parent>
+  </Item>
+  <Item id="4503530910960302">
+    <States count="3">
+      <Item>3096177502574277</Item>
+      <Item>3096177502574281</Item>
+      <Item>4503530910960304</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229318277</Item>
+      <Item>4222060229318279</Item>
+      <Item>4222060229318280</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139308928</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <Initial>False</Initial>
+    <Name>FocusModeTutorial: event graph</Name>
+    <Parent>5066472274244852</Parent>
+  </Item>
+  <Item id="4503530910960304">
+    <States count="4">
+      <Item>3096177502574280</Item>
+      <Item>3096177502574282</Item>
+      <Item>3096177502574283</Item>
+      <Item>3377648184178601</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229318281</Item>
+      <Item>4222060229318282</Item>
+      <Item>4222060229318283</Item>
+      <Item>4222060229318284</Item>
+      <Item>4222060229318285</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139308932</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318279</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318280</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910960302</Parent>
+  </Item>
+  <Item id="4503530910960305">
+    <States count="4">
+      <Item>3096177502574284</Item>
+      <Item>3096177502574288</Item>
+      <Item>4503530910960306</Item>
+      <Item>4503530910960307</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229318291</Item>
+      <Item>4222060229318292</Item>
+      <Item>4222060229318293</Item>
+      <Item>4222060229318295</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <Initial>False</Initial>
+    <Name>MindMapTutorial: event graph</Name>
+    <Parent>5066472274244854</Parent>
+  </Item>
+  <Item id="4503530910960306">
+    <States count="5">
+      <Item>3096177502574285</Item>
+      <Item>3096177502574286</Item>
+      <Item>3096177502574287</Item>
+      <Item>3096177502576476</Item>
+      <Item>3377648184178602</Item>
+    </States>
+    <EventLinks count="6">
+      <Item>4222060229318286</Item>
+      <Item>4222060229318287</Item>
+      <Item>4222060229318288</Item>
+      <Item>4222060229318289</Item>
+      <Item>4222060229318290</Item>
+      <Item>4222060229320576</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139308940</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318295</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318293</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910960305</Parent>
+  </Item>
+  <Item id="4503530910960307">
+    <States count="2">
+      <Item>3096177502574290</Item>
+      <Item>3096177502574291</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229318294</Item>
+      <Item>4222060229318296</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139308946</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274244854</Owner>
+    <InputLinks count="1">
+      <Item>4222060229318292</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229318295</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparations</Name>
+    <Parent>4503530910960305</Parent>
+  </Item>
+  <Item id="4503530910961102">
+    <States count="4">
+      <Item>3096177502575083</Item>
+      <Item>3096177502575084</Item>
+      <Item>4503530910961103</Item>
+      <Item>4503530910961104</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229319090</Item>
+      <Item>4222060229319091</Item>
+      <Item>4222060229319092</Item>
+      <Item>4222060229319093</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <Initial>False</Initial>
+    <Name>CityMapTutorial: event graph</Name>
+    <Parent>5066472274245651</Parent>
+  </Item>
+  <Item id="4503530910961103">
+    <States count="4">
+      <Item>3096177502575085</Item>
+      <Item>3096177502575086</Item>
+      <Item>3096177502575087</Item>
+      <Item>3377648184179402</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229319083</Item>
+      <Item>4222060229319084</Item>
+      <Item>4222060229319085</Item>
+      <Item>4222060229319086</Item>
+      <Item>4222060229319087</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139309737</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319093</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319092</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910961102</Parent>
+  </Item>
+  <Item id="4503530910961104">
+    <States count="2">
+      <Item>3096177502575088</Item>
+      <Item>3096177502575089</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229319088</Item>
+      <Item>4222060229319089</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139309742</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274245651</Owner>
+    <InputLinks count="1">
+      <Item>4222060229319091</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229319093</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparations</Name>
+    <Parent>4503530910961102</Parent>
+  </Item>
+  <Item id="4503530910972401">
+    <States count="2">
+      <Item>3096177502586376</Item>
+      <Item>3096177502586377</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229330676</Item>
+      <Item>4222060229357276</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139321126</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256951</Owner>
+    <Initial>False</Initial>
+    <Name>DoorsManager: event graph</Name>
+    <Parent>5066472274256951</Parent>
+  </Item>
+  <Item id="4503530910972402">
+    <States count="2">
+      <Item>3096177502586379</Item>
+      <Item>3096177502586380</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229330679</Item>
+      <Item>4222060229330680</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139321130</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256952</Owner>
+    <Initial>False</Initial>
+    <Name>ReputationManager: event graph</Name>
+    <Parent>5066472274256952</Parent>
+  </Item>
+  <Item id="4503530910972403">
+    <States count="4">
+      <Item>3096177502586381</Item>
+      <Item>3096177502587877</Item>
+      <Item>4503530910972404</Item>
+      <Item>4503530910972405</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229330681</Item>
+      <Item>4222060229330683</Item>
+      <Item>4222060229332177</Item>
+      <Item>4222060229332178</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139321133</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <Initial>False</Initial>
+    <Name>SoldierWalker2: event graph</Name>
+    <Parent>5066472274256953</Parent>
+  </Item>
+  <Item id="4503530910972404">
+    <States count="2">
+      <Item>3096177502586383</Item>
+      <Item>3096177502587878</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229330682</Item>
+      <Item>4222060229332179</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139321135</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229332177</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229330683</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Preparations</Name>
+    <Parent>4503530910972403</Parent>
+  </Item>
+  <Item id="4503530910972405">
+    <States count="4">
+      <Item>3096177502586385</Item>
+      <Item>3096177502587879</Item>
+      <Item>3096177502587880</Item>
+      <Item>3377648184192201</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229332180</Item>
+      <Item>4222060229332181</Item>
+      <Item>4222060229332182</Item>
+      <Item>4222060229332183</Item>
+      <Item>4222060229332184</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139321138</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274256953</Owner>
+    <InputLinks count="1">
+      <Item>4222060229330683</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229332178</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530910972403</Parent>
+  </Item>
+  <Item id="4503530910973901">
+    <States count="1">
+      <Item>3096177502587876</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229332176</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139322626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955936276</Owner>
+    <Initial>False</Initial>
+    <Name>SoldierWalker: event graph</Name>
+    <Parent>5347942955936276</Parent>
+  </Item>
+  <Item id="4503530910991401">
+    <States count="1">
+      <Item>3096177502605376</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229349876</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139340326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637683901</Owner>
+    <Initial>False</Initial>
+    <Name>Trash_can: event graph</Name>
+    <Parent>5629413637683901</Parent>
+  </Item>
+  <Item id="4503530910991402">
+    <States count="1">
+      <Item>3096177502605377</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229349877</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139340328</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5629413637683902</Owner>
+    <Initial>False</Initial>
+    <Name>Dustbin: event graph</Name>
+    <Parent>5629413637683902</Parent>
+  </Item>
+  <Item id="4503530911017201">
+    <States count="3">
+      <Item>3096177502631176</Item>
+      <Item>3096177502658676</Item>
+      <Item>4785001592624126</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229375876</Item>
+      <Item>4222060229403976</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139366326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955979576</Owner>
+    <Initial>False</Initial>
+    <Name>RatProphet: event graph</Name>
+    <Parent>5347942955979576</Parent>
+  </Item>
+  <Item id="4503530911026501">
+    <States count="3">
+      <Item>3096177502640478</Item>
+      <Item>3096177502640479</Item>
+      <Item>3096177503052077</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229385777</Item>
+      <Item>4222060229802277</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139375827</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274231451</Owner>
+    <InputLinks count="1">
+      <Item>4222060229385776</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>StreetLoot</Name>
+    <Parent>4503530910946907</Parent>
+  </Item>
+  <Item id="4503530911052001">
+    <States count="2">
+      <Item>3096177502665976</Item>
+      <Item>3096177502665979</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229411277</Item>
+      <Item>4222060229411278</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139401326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274336551</Owner>
+    <Initial>False</Initial>
+    <Name>Schitalochka: event graph</Name>
+    <Parent>5066472274336551</Parent>
+  </Item>
+  <Item id="4503530911058803">
+    <States count="2">
+      <Item>3096177502672782</Item>
+      <Item>3096177502672783</Item>
+    </States>
+    <EventLinks count="2">
+      <Item>4222060229418180</Item>
+      <Item>4222060229418182</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_PROCEDURE</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139408131</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>7599708409295376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229304880</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229418181</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>SetToNormalHealthState</Name>
+    <Parent>4503530910945801</Parent>
+  </Item>
+  <Item id="4503530911387903">
+    <States count="6">
+      <Item>3096177503003980</Item>
+      <Item>3096177503004176</Item>
+      <Item>3096177503004177</Item>
+      <Item>3096177503004178</Item>
+      <Item>3377648184605606</Item>
+      <Item>3377648184605801</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060229753389</Item>
+      <Item>4222060229753390</Item>
+      <Item>4222060229753391</Item>
+      <Item>4222060229753392</Item>
+      <Item>4222060229753576</Item>
+      <Item>4222060229753577</Item>
+      <Item>4222060229753578</Item>
+      <Item>4222060229753579</Item>
+      <Item>4222060230279582</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139741535</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274671751</Owner>
+    <Initial>False</Initial>
+    <Name>UsableItemsManager: event graph</Name>
+    <Parent>5066472274671751</Parent>
+  </Item>
+  <Item id="4503530911443901">
+    <States count="3">
+      <Item>3096177503059976</Item>
+      <Item>3096177503059977</Item>
+      <Item>3377648184661601</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229810276</Item>
+      <Item>4222060229810278</Item>
+      <Item>4222060229810279</Item>
+      <Item>4222060229810280</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139797826</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274727751</Owner>
+    <Initial>False</Initial>
+    <Name>ConsoleManagers: event graph</Name>
+    <Parent>5066472274727751</Parent>
+  </Item>
+  <Item id="4503530911443902">
+    <States count="1">
+      <Item>3096177503059978</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229810277</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139797829</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956405576</Owner>
+    <Initial>False</Initial>
+    <Name>SpecialCharacter: event graph</Name>
+    <Parent>5347942956405576</Parent>
+  </Item>
+  <Item id="4503530911452001">
+    <States count="3">
+      <Item>3096177503068076</Item>
+      <Item>3096177503068090</Item>
+      <Item>4503530911452004</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229818476</Item>
+      <Item>4222060229818496</Item>
+      <Item>4222060229818497</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139805926</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <Initial>False</Initial>
+    <Name>RiotCutsceneListener: event graph</Name>
+    <Parent>5066472274735851</Parent>
+  </Item>
+  <Item id="4503530911452002">
+    <States count="3">
+      <Item>3096177503068077</Item>
+      <Item>3096177503068084</Item>
+      <Item>4503530911452003</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229818477</Item>
+      <Item>4222060229818478</Item>
+      <Item>4222060229818489</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139805928</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <Initial>False</Initial>
+    <Name>FlamethrowersCutsceneListener: event graph</Name>
+    <Parent>5066472274735852</Parent>
+  </Item>
+  <Item id="4503530911452003">
+    <States count="6">
+      <Item>3096177503068079</Item>
+      <Item>3096177503068080</Item>
+      <Item>3096177503068081</Item>
+      <Item>3096177503068083</Item>
+      <Item>3377648184669703</Item>
+      <Item>3377648184694002</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060229818479</Item>
+      <Item>4222060229818482</Item>
+      <Item>4222060229818485</Item>
+      <Item>4222060229818486</Item>
+      <Item>4222060229818487</Item>
+      <Item>4222060229818488</Item>
+      <Item>4222060229843778</Item>
+      <Item>4222060229843779</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139805930</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735852</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818478</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818489</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530911452002</Parent>
+  </Item>
+  <Item id="4503530911452004">
+    <States count="6">
+      <Item>3096177503068086</Item>
+      <Item>3096177503068087</Item>
+      <Item>3096177503068088</Item>
+      <Item>3096177503068089</Item>
+      <Item>3377648184669704</Item>
+      <Item>3377648184694003</Item>
+    </States>
+    <EventLinks count="8">
+      <Item>4222060229818490</Item>
+      <Item>4222060229818491</Item>
+      <Item>4222060229818492</Item>
+      <Item>4222060229818493</Item>
+      <Item>4222060229818494</Item>
+      <Item>4222060229818495</Item>
+      <Item>4222060229843780</Item>
+      <Item>4222060229843781</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139805942</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274735851</Owner>
+    <InputLinks count="1">
+      <Item>4222060229818496</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229818497</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530911452001</Parent>
+  </Item>
+  <Item id="4503530911461401">
+    <States count="5">
+      <Item>3096177503077581</Item>
+      <Item>3096177503077582</Item>
+      <Item>3096177503077584</Item>
+      <Item>3096177503077586</Item>
+      <Item>3377648184679103</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229828484</Item>
+      <Item>4222060229828485</Item>
+      <Item>4222060229828486</Item>
+      <Item>4222060229828488</Item>
+      <Item>4222060229828489</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139815631</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274193853</Owner>
+    <InputLinks count="1">
+      <Item>4222060229828482</Item>
+    </InputLinks>
+    <Initial>False</Initial>
+    <Name>RegionListener</Name>
+    <Parent>4503530910909308</Parent>
+  </Item>
+  <Item id="4503530911481201">
+    <States count="3">
+      <Item>3096177503097476</Item>
+      <Item>3096177503097477</Item>
+      <Item>3096177503097479</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229849076</Item>
+      <Item>4222060229849077</Item>
+      <Item>4222060229849079</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139835726</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274765051</Owner>
+    <Initial>False</Initial>
+    <Name>DeadRegionMapManager: event graph</Name>
+    <Parent>5066472274765051</Parent>
+  </Item>
+  <Item id="4503530911481202">
+    <States count="1">
+      <Item>3096177503097478</Item>
+    </States>
+    <EventLinks count="1">
+      <Item>4222060229849078</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139835729</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942956442876</Owner>
+    <Initial>False</Initial>
+    <Name>DeadBoundCharacter: event graph</Name>
+    <Parent>5347942956442876</Parent>
+  </Item>
+  <Item id="4503530911614701">
+    <States count="3">
+      <Item>3096177503231176</Item>
+      <Item>3096177503231180</Item>
+      <Item>4503530911614702</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229986276</Item>
+      <Item>4222060229986277</Item>
+      <Item>4222060229986281</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139971326</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <Initial>False</Initial>
+    <Name>BurningWindowsCutsceneListener: event graph</Name>
+    <Parent>5066472274897751</Parent>
+  </Item>
+  <Item id="4503530911614702">
+    <States count="3">
+      <Item>3096177503231178</Item>
+      <Item>3096177503231179</Item>
+      <Item>3377648184831601</Item>
+    </States>
+    <EventLinks count="4">
+      <Item>4222060229986278</Item>
+      <Item>4222060229986279</Item>
+      <Item>4222060229986280</Item>
+      <Item>4222060229986282</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_EVENTGRAPH</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139971328</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5066472274897751</Owner>
+    <InputLinks count="1">
+      <Item>4222060229986277</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229986281</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Active</Name>
+    <Parent>4503530911614701</Parent>
+  </Item>
+</Root>

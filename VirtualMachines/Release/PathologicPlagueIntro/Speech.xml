@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Speech">
+  <Item id="3940589547496851">
+    <Replyes count="2">
+      <Item>3659118865828726</Item>
+      <Item>3659118865828727</Item>
+    </Replyes>
+    <Text>6192355000943851</Text>
+    <AuthorGuid>5347942955880281</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266544</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275784</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275785</Item>
+      <Item>4222060229275788</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_speech_1</Name>
+    <Parent>4785001592524826</Parent>
+  </Item>
+  <Item id="3940589547496852">
+    <Replyes count="1">
+      <Item>3659118865828728</Item>
+    </Replyes>
+    <Text>6192355000943854</Text>
+    <AuthorGuid>5347942955880281</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266545</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275785</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229275791</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_speech_2</Name>
+    <Parent>4785001592524826</Parent>
+  </Item>
+  <Item id="3940589547496853">
+    <Replyes count="1">
+      <Item>3659118865828729</Item>
+    </Replyes>
+    <Text>6192355000943856</Text>
+    <AuthorGuid>5347942955880281</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266546</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275788</Item>
+      <Item>4222060229275791</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229275787</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_speech_3</Name>
+    <Parent>4785001592524826</Parent>
+  </Item>
+  <Item id="3940589547496854">
+    <Replyes count="2">
+      <Item>3659118865828730</Item>
+      <Item>3659118865828731</Item>
+    </Replyes>
+    <Text>6192355000943858</Text>
+    <AuthorGuid>5347942955880281</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266547</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275787</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275789</Item>
+      <Item>4222060229275794</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_speech_4</Name>
+    <Parent>4785001592524826</Parent>
+  </Item>
+  <Item id="3940589547496855">
+    <Replyes count="2">
+      <Item>3659118865828732</Item>
+      <Item>3659118865828733</Item>
+    </Replyes>
+    <Text>6192355000943861</Text>
+    <AuthorGuid>5347942955880281</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266548</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275789</Item>
+      <Item>4222060229275794</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275792</Item>
+      <Item>4222060229275793</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_speech_5</Name>
+    <Parent>4785001592524826</Parent>
+  </Item>
+  <Item id="3940589547496856">
+    <Replyes count="2">
+      <Item>3659118865828734</Item>
+      <Item>3659118865828735</Item>
+    </Replyes>
+    <Text>6192355000943864</Text>
+    <AuthorGuid>5347942955880283</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266551</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275795</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275798</Item>
+      <Item>4222060229275803</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AspityPlagueIntro_speech_1</Name>
+    <Parent>4785001592524827</Parent>
+  </Item>
+  <Item id="3940589547496857">
+    <Replyes count="2">
+      <Item>3659118865828736</Item>
+      <Item>3659118865828737</Item>
+    </Replyes>
+    <Text>6192355000943867</Text>
+    <AuthorGuid>5347942955880283</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266552</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275798</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275797</Item>
+      <Item>4222060229275802</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AspityPlagueIntro_speech_2</Name>
+    <Parent>4785001592524827</Parent>
+  </Item>
+  <Item id="3940589547496858">
+    <Replyes count="2">
+      <Item>3659118865828738</Item>
+      <Item>3659118865828739</Item>
+    </Replyes>
+    <Text>6192355000943870</Text>
+    <AuthorGuid>5347942955880283</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266553</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <InputLinks count="3">
+      <Item>4222060229275797</Item>
+      <Item>4222060229275802</Item>
+      <Item>4222060229275803</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275800</Item>
+      <Item>4222060229275801</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>AspityPlagueIntro_speech_3</Name>
+    <Parent>4785001592524827</Parent>
+  </Item>
+  <Item id="3940589547496859">
+    <Replyes count="2">
+      <Item>3659118865828740</Item>
+      <Item>3659118865828743</Item>
+    </Replyes>
+    <Text>6192355000943873</Text>
+    <AuthorGuid>5347942955880277</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266556</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275804</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275806</Item>
+      <Item>4222060229275808</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Bachelor PlagueIntro_speech_1</Name>
+    <Parent>4785001592524828</Parent>
+  </Item>
+  <Item id="3940589547496860">
+    <Replyes count="2">
+      <Item>3659118865828741</Item>
+      <Item>3659118865828742</Item>
+    </Replyes>
+    <Text>6192355000943875</Text>
+    <AuthorGuid>5347942955880277</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266557</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275806</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275805</Item>
+      <Item>4222060229275807</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Bachelor PlagueIntro_speech_2</Name>
+    <Parent>4785001592524828</Parent>
+  </Item>
+  <Item id="3940589547496861">
+    <Replyes count="2">
+      <Item>3659118865828744</Item>
+      <Item>3659118865828746</Item>
+    </Replyes>
+    <Text>6192355000943879</Text>
+    <AuthorGuid>5347942955880278</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266560</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275809</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275811</Item>
+      <Item>4222060229275812</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Changelling PlagueIntro_speech_1</Name>
+    <Parent>4785001592524829</Parent>
+  </Item>
+  <Item id="3940589547496862">
+    <Replyes count="2">
+      <Item>3659118865828745</Item>
+      <Item>3659118865828747</Item>
+    </Replyes>
+    <Text>6192355000943881</Text>
+    <AuthorGuid>5347942955880278</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266561</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275811</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275810</Item>
+      <Item>4222060229275813</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Changelling PlagueIntro_speech_2</Name>
+    <Parent>4785001592524829</Parent>
+  </Item>
+  <Item id="3940589547496863">
+    <Replyes count="2">
+      <Item>3659118865828748</Item>
+      <Item>3659118865828749</Item>
+    </Replyes>
+    <Text>6192355000943885</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266564</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275814</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275815</Item>
+      <Item>4222060229275817</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_1</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496864">
+    <Replyes count="2">
+      <Item>3659118865828750</Item>
+      <Item>3659118865828751</Item>
+    </Replyes>
+    <Text>6192355000943888</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266565</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275817</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275816</Item>
+      <Item>4222060229275818</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_2</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496865">
+    <Replyes count="2">
+      <Item>3659118865828752</Item>
+      <Item>3659118865828757</Item>
+    </Replyes>
+    <Text>6192355000943891</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266566</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="5">
+      <Item>4222060229275816</Item>
+      <Item>4222060229275822</Item>
+      <Item>4222060229275823</Item>
+      <Item>4222060229275826</Item>
+      <Item>4222060229275827</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275819</Item>
+      <Item>4222060229275836</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_3</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496866">
+    <Replyes count="2">
+      <Item>3659118865828753</Item>
+      <Item>3659118865828754</Item>
+    </Replyes>
+    <Text>6192355000943893</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266567</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275818</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275822</Item>
+      <Item>4222060229275823</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_4</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496867">
+    <Replyes count="2">
+      <Item>3659118865828755</Item>
+      <Item>3659118865828756</Item>
+    </Replyes>
+    <Text>6192355000943896</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266568</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275815</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275826</Item>
+      <Item>4222060229275827</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_5</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496868">
+    <Replyes count="3">
+      <Item>3659118865828758</Item>
+      <Item>3659118865828759</Item>
+      <Item>3659118865828760</Item>
+    </Replyes>
+    <Text>6192355000943900</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266569</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275819</Item>
+      <Item>4222060229275836</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060229275829</Item>
+      <Item>4222060229275834</Item>
+      <Item>4222060229275835</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_6</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496869">
+    <Replyes count="2">
+      <Item>3659118865828761</Item>
+      <Item>3659118865828762</Item>
+    </Replyes>
+    <Text>6192355000943904</Text>
+    <AuthorGuid>5347942955880282</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266570</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <InputLinks count="3">
+      <Item>4222060229275829</Item>
+      <Item>4222060229275834</Item>
+      <Item>4222060229275835</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275832</Item>
+      <Item>4222060229275833</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro_speech_7</Name>
+    <Parent>4785001592524830</Parent>
+  </Item>
+  <Item id="3940589547496870">
+    <Replyes count="2">
+      <Item>3659118865828763</Item>
+      <Item>3659118865878033</Item>
+    </Replyes>
+    <Text>6192355000943907</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266573</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275837</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275840</Item>
+      <Item>4222060229325284</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_1</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547496871">
+    <Replyes count="2">
+      <Item>3659118865828765</Item>
+      <Item>3659118865828766</Item>
+    </Replyes>
+    <Text>6192355000943910</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266574</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <OutputLinks count="2">
+      <Item>4222060229275839</Item>
+      <Item>4222060229275843</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_2</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547496872">
+    <Replyes count="2">
+      <Item>3659118865828767</Item>
+      <Item>3659118865828768</Item>
+    </Replyes>
+    <Text>6192355000943913</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266575</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275839</Item>
+      <Item>4222060229275843</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275842</Item>
+      <Item>4222060229275844</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_3</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547496873">
+    <Replyes count="2">
+      <Item>3659118865828769</Item>
+      <Item>3659118865828770</Item>
+    </Replyes>
+    <Text>6192355000943916</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266578</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275845</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275846</Item>
+      <Item>4222060229275848</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_1</Name>
+    <Parent>4785001592524832</Parent>
+  </Item>
+  <Item id="3940589547496874">
+    <Replyes count="2">
+      <Item>3659118865828771</Item>
+      <Item>3659118865828772</Item>
+    </Replyes>
+    <Text>6192355000943919</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266579</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="3">
+      <Item>4222060229275848</Item>
+      <Item>4222060229275851</Item>
+      <Item>4222060229275853</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275847</Item>
+      <Item>4222060229275849</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_2</Name>
+    <Parent>4785001592524832</Parent>
+  </Item>
+  <Item id="3940589547496875">
+    <Replyes count="2">
+      <Item>3659118865828773</Item>
+      <Item>3659118865828774</Item>
+    </Replyes>
+    <Text>6192355000943922</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266580</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275846</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275851</Item>
+      <Item>4222060229275853</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_3</Name>
+    <Parent>4785001592524832</Parent>
+  </Item>
+  <Item id="3940589547496876">
+    <Replyes count="2">
+      <Item>3659118865828775</Item>
+      <Item>3659118865828776</Item>
+    </Replyes>
+    <Text>6192355000943925</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266581</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275847</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275854</Item>
+      <Item>4222060229275855</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_4</Name>
+    <Parent>4785001592524832</Parent>
+  </Item>
+  <Item id="3940589547496877">
+    <Replyes count="1">
+      <Item>3659118865828777</Item>
+    </Replyes>
+    <Text>6192355000943928</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266582</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275855</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229275856</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_5</Name>
+    <Parent>4785001592524832</Parent>
+  </Item>
+  <Item id="3940589547496878">
+    <Replyes count="2">
+      <Item>3659118865828778</Item>
+      <Item>3659118865828779</Item>
+    </Replyes>
+    <Text>6192355000943930</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266585</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275857</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275860</Item>
+      <Item>4222060229275861</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_1</Name>
+    <Parent>4785001592524833</Parent>
+  </Item>
+  <Item id="3940589547496879">
+    <Replyes count="2">
+      <Item>3659118865828780</Item>
+      <Item>3659118865828781</Item>
+    </Replyes>
+    <Text>6192355000943933</Text>
+    <AuthorGuid>5347942955880276</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266586</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275860</Item>
+      <Item>4222060229275861</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229275859</Item>
+      <Item>4222060229275862</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_speech_2</Name>
+    <Parent>4785001592524833</Parent>
+  </Item>
+  <Item id="3940589547496880">
+    <Replyes count="1">
+      <Item>3659118865828782</Item>
+    </Replyes>
+    <Text>6192355000943936</Text>
+    <AuthorGuid>5347942955880280</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266589</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275863</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229275865</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Executor PlagueIntro_speech_1</Name>
+    <Parent>4785001592524834</Parent>
+  </Item>
+  <Item id="3940589547496881">
+    <Replyes count="1">
+      <Item>3659118865828783</Item>
+    </Replyes>
+    <Text>6192355000943938</Text>
+    <AuthorGuid>5347942955880280</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139266590</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <InputLinks count="1">
+      <Item>4222060229275865</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229275864</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Executor PlagueIntro_speech_2</Name>
+    <Parent>4785001592524834</Parent>
+  </Item>
+  <Item id="3940589547546154">
+    <Replyes count="2">
+      <Item>3659118865878032</Item>
+      <Item>3659118865879131</Item>
+    </Replyes>
+    <Text>6192355000993160</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139315831</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="2">
+      <Item>4222060229275840</Item>
+      <Item>4222060229326483</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229325283</Item>
+      <Item>4222060229326484</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_4</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547546155">
+    <Replyes count="2">
+      <Item>3659118865878034</Item>
+      <Item>3659118865879128</Item>
+    </Replyes>
+    <Text>6192355000993163</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139315832</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="1">
+      <Item>4222060229325284</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229325285</Item>
+      <Item>4222060229326479</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_5</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547547251">
+    <Replyes count="2">
+      <Item>3659118865879126</Item>
+      <Item>3659118865879130</Item>
+    </Replyes>
+    <Text>6192355000994251</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139316926</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="1">
+      <Item>4222060229325285</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229326476</Item>
+      <Item>4222060229326482</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_6</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547547252">
+    <Replyes count="1">
+      <Item>3659118865879127</Item>
+    </Replyes>
+    <Text>6192355000994253</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139316927</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="2">
+      <Item>4222060229326476</Item>
+      <Item>4222060229326479</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229326477</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_7</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547547253">
+    <Replyes count="1">
+      <Item>3659118865879129</Item>
+    </Replyes>
+    <Text>6192355000994256</Text>
+    <AuthorGuid>5347942955880279</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139316928</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <InputLinks count="2">
+      <Item>4222060229326477</Item>
+      <Item>4222060229326482</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229326483</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro_speech_8</Name>
+    <Parent>4785001592524831</Parent>
+  </Item>
+  <Item id="3940589547596151">
+    <Replyes count="2">
+      <Item>3659118865928026</Item>
+      <Item>3659118865928027</Item>
+    </Replyes>
+    <Text>6192355001043251</Text>
+    <AuthorGuid>5347942955979576</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139366330</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955979576</Owner>
+    <InputLinks count="1">
+      <Item>4222060229375877</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229375878</Item>
+      <Item>4222060229375879</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>RatProphet_speech_1</Name>
+    <Parent>4785001592624126</Parent>
+  </Item>
+</Root>

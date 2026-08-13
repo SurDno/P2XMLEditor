@@ -1,0 +1,2628 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Character">
+  <Item id="5347942955459577">
+    <WorldPositionGuid />
+    <EngineTemplateID>a8024488a46f4c268612ddad2052a614</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="14">
+      <Item>7881179091514543</Item>
+      <Item>7881179091514544</Item>
+      <Item>7881179091514545</Item>
+      <Item>7881179091514546</Item>
+      <Item>7881179091514547</Item>
+      <Item>7881179091514548</Item>
+      <Item>7881179091514549</Item>
+      <Item>7881179091514550</Item>
+      <Item>7881179091514551</Item>
+      <Item>7881179091514552</Item>
+      <Item>7881179091514553</Item>
+      <Item>7881179091514554</Item>
+      <Item>7881179091514555</Item>
+      <Item>7881179092148310</Item>
+    </FunctionalComponents>
+    <StandartParams count="35">
+      <Item key="BehaviorComponent.Behavior">562941394012989</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162759</Item>
+      <Item key="Common.ObjectEnabled">562941394012985</Item>
+      <Item key="CrowdItemComponent.Area">562941394012995</Item>
+      <Item key="Detectable.DetectableEnabled">562941394012992</Item>
+      <Item key="Detector.DetectorEnabled">562941394012991</Item>
+      <Item key="Interactive.ObjectName">562941394012990</Item>
+      <Item key="LocationItem.IsHibernation">562941394012987</Item>
+      <Item key="LocationItem.IsIndoor">562941395681258</Item>
+      <Item key="LocationItem.Location">562941394012988</Item>
+      <Item key="Market.MarketEnabled">562941394013009</Item>
+      <Item key="Model.Object">562941394012986</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011656</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394012999</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394013002</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394013000</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506651</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394013001</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394013007</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029652</Item>
+      <Item key="NpcControllerComponent.Health">562941394012998</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264652</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011655</Item>
+      <Item key="NpcControllerComponent.Infection">562941394013003</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394013005</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011657</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394012996</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394012997</Item>
+      <Item key="NpcControllerComponent.Pain">562941394013004</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011654</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010251</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394013006</Item>
+      <Item key="Speaking.CurrentTalking">562941394013008</Item>
+      <Item key="Speaking.InitialPhrase">562941394494852</Item>
+      <Item key="Storage.IsFree">562941394012994</Item>
+    </StandartParams>
+    <Name>Diseased_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459578">
+    <WorldPositionGuid />
+    <EngineTemplateID>2c136966a4f2701489a77b1c693b9226</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Patrolman_Barricade_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459579">
+    <WorldPositionGuid />
+    <EngineTemplateID>5718c1abf0174b21961bfe00121f60b9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Patrolman_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459580">
+    <WorldPositionGuid />
+    <EngineTemplateID>def624cbcec745b1bab629ddf040878b</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Sanitar_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459581">
+    <WorldPositionGuid />
+    <EngineTemplateID>575e06c5155879045aae23c6f4713b4c</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>SickPersonCrowd_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459582">
+    <WorldPositionGuid />
+    <EngineTemplateID>bf834cf86dbc46659909a0b7cd6ddd0b</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Soldier_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459583">
+    <WorldPositionGuid />
+    <EngineTemplateID>c1fb92d8c80616e4a98099370b1f0167</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boyteen_Nazlo_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459584">
+    <WorldPositionGuid />
+    <EngineTemplateID>1738133a13b6ea345ae2ba1b5497d573</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Little_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459585">
+    <WorldPositionGuid />
+    <EngineTemplateID>984c36ca1eeffd44ab9c63d474402dbd</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Little_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459586">
+    <WorldPositionGuid />
+    <EngineTemplateID>20de6d79e4937de428e289cfc78b0648</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Teen_Nata_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459587">
+    <WorldPositionGuid />
+    <EngineTemplateID>b330f0942de5f704ea41f47b68a91dda</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Тeen_Baybars_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459588">
+    <WorldPositionGuid />
+    <EngineTemplateID>b9bf8f1497b9b05428ac1f141421b599</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Zakir_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459589">
+    <WorldPositionGuid />
+    <EngineTemplateID>ed102b1151fec3643b1da7affc3bc17b</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Sign_Male_Marat_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459590">
+    <WorldPositionGuid />
+    <EngineTemplateID>3d5e1d354e33e9c4fba6efe04b844bde</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Sign_Woman_Charlotte_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459591">
+    <WorldPositionGuid />
+    <EngineTemplateID>e01c9e019a49ecb42930b6f5638705d9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Martha_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459592">
+    <WorldPositionGuid />
+    <EngineTemplateID>48d2d18a60824524ea6a62790c9046bd</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Native_Aigul_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459593">
+    <WorldPositionGuid />
+    <EngineTemplateID>7543212bbb8b54d478efba6ea9b25233</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Worker_Izek_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459594">
+    <WorldPositionGuid />
+    <EngineTemplateID>9c7740f54a4846a47b1468650ccf83e7</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Beybars_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459595">
+    <WorldPositionGuid />
+    <EngineTemplateID>f8119a74efc878a4f8e98962b85439cb</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Little_Gavrosh_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459596">
+    <WorldPositionGuid />
+    <EngineTemplateID>e066efb1f476a5e45b4cf63532d623b6</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Little_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459597">
+    <WorldPositionGuid />
+    <EngineTemplateID>a8540ebe417fa90409257c2b88b59414</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Teen_Nazlo_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459598">
+    <WorldPositionGuid />
+    <EngineTemplateID>1a9f2073196125a4198c19dee1b11f78</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Little_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459599">
+    <WorldPositionGuid />
+    <EngineTemplateID>211a24e605e2bad44b2a9713a970914f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Teen_Nata_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459600">
+    <WorldPositionGuid />
+    <EngineTemplateID>93390c9b16cf1fc4ebeae71a82509060</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459601">
+    <WorldPositionGuid />
+    <EngineTemplateID>1f9876a179a7e734d9fad759c6a4f273</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Akulich_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459602">
+    <WorldPositionGuid />
+    <EngineTemplateID>0d82fb0dbc479ab4fb56896774605982</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Izek_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459603">
+    <WorldPositionGuid />
+    <EngineTemplateID>c5e81ab6c4ef94046a99d3ee0f6c81f2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Marat_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459604">
+    <WorldPositionGuid />
+    <EngineTemplateID>5d516504e1d47e9438e6e9d2a5755abe</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Zakir_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459605">
+    <WorldPositionGuid />
+    <EngineTemplateID>195f048a722c1704eb57c733f8155255</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Odong_Fat_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459606">
+    <WorldPositionGuid />
+    <EngineTemplateID>e570c282878941f4d97c805d63fc6fa5</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Odong_Slim_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459607">
+    <WorldPositionGuid />
+    <EngineTemplateID>179a6246093c5f24fb163753b4ef27b2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Aigul_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459608">
+    <WorldPositionGuid />
+    <EngineTemplateID>e6b3a7160e5e71f4eb757c4601bdbfd1</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Charlotte_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459609">
+    <WorldPositionGuid />
+    <EngineTemplateID>2a004aefaa650a74e84c843f10f30219</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Klava_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459610">
+    <WorldPositionGuid />
+    <EngineTemplateID>e50434fcfcd4984468914a67e0b344ee</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Martha_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459611">
+    <WorldPositionGuid />
+    <EngineTemplateID>36e95e640d35411689859b7de980c512</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Bandit_Bombs_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459612">
+    <WorldPositionGuid />
+    <EngineTemplateID>e9884d9f89a191d4bbe64d33a292dbba</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Bandit_Fists_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459613">
+    <WorldPositionGuid />
+    <EngineTemplateID>f815dddcfdfb49ef938aa2899947c3d5</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Beybars_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459614">
+    <WorldPositionGuid />
+    <EngineTemplateID>f2045ff07b6e4b48aa39d6601e294cc7</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Little_Gavrosh_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459615">
+    <WorldPositionGuid />
+    <EngineTemplateID>a6d4984c670a472ba35011f7520e5484</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Little_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459616">
+    <WorldPositionGuid />
+    <EngineTemplateID>3560c30ab9924689bd20f6f0fd949cec</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Teen_Nazlo_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459617">
+    <WorldPositionGuid />
+    <EngineTemplateID>5df69958c06d4906a7529e3c8972e628</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Little_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459618">
+    <WorldPositionGuid />
+    <EngineTemplateID>b07c7a9c42fb428b9e1695001acac668</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Girl_Teen_Nata_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459619">
+    <WorldPositionGuid />
+    <EngineTemplateID>75b360729bc695b408493e861e3d56e8</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Clothed_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459620">
+    <WorldPositionGuid />
+    <EngineTemplateID>0593dfc7280e45fdb467b67fabf7409e</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Exposed_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459621">
+    <WorldPositionGuid />
+    <EngineTemplateID>6e250752cd014de7aa59023b69020b4d</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Naked_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459622">
+    <WorldPositionGuid />
+    <EngineTemplateID>6f6b946ecc3c4ee1b06eb221ed5cefbd</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Akulich_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459623">
+    <WorldPositionGuid />
+    <EngineTemplateID>1976345cb5cd4fa7993e2d73ff4bf6c2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Izek_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459624">
+    <WorldPositionGuid />
+    <EngineTemplateID>d538e295f3b3454ca2c742a939baa23d</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Marat_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459625">
+    <WorldPositionGuid />
+    <EngineTemplateID>b015090042a442c392ab7489c3b4d731</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Zakir_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459626">
+    <WorldPositionGuid />
+    <EngineTemplateID>a77e317215fc481cb9e3357211cd56ac</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Odong_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459627">
+    <WorldPositionGuid />
+    <EngineTemplateID>eed721a843b24516bd80d50181d0e36f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Odong_Slim_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459628">
+    <WorldPositionGuid />
+    <EngineTemplateID>80bd1164cbec4e9c84bac233db3e2f9c</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Aigul_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459629">
+    <WorldPositionGuid />
+    <EngineTemplateID>6bf80e0be331471d88d37225532c276e</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Charlotte_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459630">
+    <WorldPositionGuid />
+    <EngineTemplateID>ad78bb621ffd474bb7eaaf65fd23a9d3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Klava_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459631">
+    <WorldPositionGuid />
+    <EngineTemplateID>0816fbe9999c4348b42dd95c615f6a18</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Martha_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459632">
+    <WorldPositionGuid />
+    <EngineTemplateID>fb9134fb65724067b2a4a625fae3eee2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Rubin_Hunter_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459633">
+    <WorldPositionGuid />
+    <EngineTemplateID>0feec47efab6496497bb2f9317dac143</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Martha_Witch</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459635">
+    <WorldPositionGuid />
+    <EngineTemplateID>3843e98b2b6440298d1bb1195a76a10d</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>DefaultNpc_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459636">
+    <WorldPositionGuid />
+    <EngineTemplateID>240846487c564d22ba15e01a089f10cc</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>DyingNpc_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459638">
+    <WorldPositionGuid />
+    <EngineTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091515326</Item>
+      <Item>7881179091515327</Item>
+      <Item>7881179091515328</Item>
+      <Item>7881179091515329</Item>
+      <Item>7881179091515330</Item>
+      <Item>7881179091515331</Item>
+      <Item>7881179091515332</Item>
+      <Item>7881179091515333</Item>
+      <Item>7881179091515334</Item>
+      <Item>7881179091515336</Item>
+      <Item>7881179091515337</Item>
+      <Item>7881179092148413</Item>
+    </FunctionalComponents>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394014565</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162819</Item>
+      <Item key="Common.ObjectEnabled">562941394014561</Item>
+      <Item key="Detectable.DetectableEnabled">562941394014568</Item>
+      <Item key="Detector.DetectorEnabled">562941394014567</Item>
+      <Item key="Interactive.ObjectName">562941394014566</Item>
+      <Item key="LocationItem.IsHibernation">562941394014563</Item>
+      <Item key="LocationItem.IsIndoor">562941395681319</Item>
+      <Item key="LocationItem.Location">562941394014564</Item>
+      <Item key="Model.Object">562941394014562</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011900</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394014575</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394014578</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394014576</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506712</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394014577</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394014583</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029713</Item>
+      <Item key="NpcControllerComponent.Health">562941394014574</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264713</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011899</Item>
+      <Item key="NpcControllerComponent.Infection">562941394014579</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394014581</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011901</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394014572</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394014573</Item>
+      <Item key="NpcControllerComponent.Pain">562941394014580</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011898</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010312</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394014582</Item>
+      <Item key="Speaking.CurrentTalking">562941394014584</Item>
+      <Item key="Speaking.InitialPhrase">562941394494912</Item>
+      <Item key="Storage.IsFree">562941394014570</Item>
+    </StandartParams>
+    <Name>Npc_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459642">
+    <WorldPositionGuid />
+    <EngineTemplateID>b73225f845711134caa1247b6f3b3633</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Dynamic_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459643">
+    <WorldPositionGuid />
+    <EngineTemplateID>cab18e52665c449484d62af64d424109</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Static_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459646">
+    <WorldPositionGuid>9851473860445176H9851473860475776H9851473860475777H5910884318856647</WorldPositionGuid>
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3996c431a9f741e38325ad0a7842b4d0</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>True</Static>
+    <FunctionalComponents count="14">
+      <Item>7881179091548030</Item>
+      <Item>7881179091548031</Item>
+      <Item>7881179091548033</Item>
+      <Item>7881179091548034</Item>
+      <Item>7881179091548035</Item>
+      <Item>7881179091548036</Item>
+      <Item>7881179091548037</Item>
+      <Item>7881179091548038</Item>
+      <Item>7881179091548039</Item>
+      <Item>7881179091548040</Item>
+      <Item>7881179091548041</Item>
+      <Item>7881179091548042</Item>
+      <Item>7881179091548043</Item>
+      <Item>7881179092150794</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496602</EventGraph>
+    <Events count="1">
+      <Item>2814706823137252</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="Intro_Player_state">562941394089023</Item>
+    </CustomParams>
+    <StandartParams count="47">
+      <Item key="AttackerPlayer.IsUnholstered">562941394089026</Item>
+      <Item key="Common.ObjectEnabled">562941394089016</Item>
+      <Item key="Detectable.DetectableEnabled">562941394089021</Item>
+      <Item key="Detector.DetectorEnabled">562941394089020</Item>
+      <Item key="Interactive.ObjectName">562941394089019</Item>
+      <Item key="LocationItem.IsHibernation">562941394089024</Item>
+      <Item key="LocationItem.IsIndoor">562941395681327</Item>
+      <Item key="LocationItem.Location">562941394089025</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941397066462</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941395011928</Item>
+      <Item key="MapItemComponent.CraftIcon">562941395681331</Item>
+      <Item key="MapItemComponent.Discovered">562941395681328</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941394089046</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941395681333</Item>
+      <Item key="MapItemComponent.Placeholder">562941394089044</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941395681329</Item>
+      <Item key="MapItemComponent.SleepIcon">562941395681330</Item>
+      <Item key="MapItemComponent.StorageIcon">562941395681332</Item>
+      <Item key="MapItemComponent.Text">562941394089042</Item>
+      <Item key="MapItemComponent.Title">562941394089041</Item>
+      <Item key="MapItemComponent.TooltipResource">562941394089045</Item>
+      <Item key="MapItemComponent.TooltipText">562941394089043</Item>
+      <Item key="Model.Object">562941394089017</Item>
+      <Item key="PlayerControllerComponent.CanReceiveMail">562941397595052</Item>
+      <Item key="PlayerControllerComponent.CanTrade">562941394089039</Item>
+      <Item key="PlayerControllerComponent.Fatigue">562941394089035</Item>
+      <Item key="PlayerControllerComponent.Fraction">562941394089040</Item>
+      <Item key="PlayerControllerComponent.FundEnabled">562941397271154</Item>
+      <Item key="PlayerControllerComponent.FundFinished">562941397271155</Item>
+      <Item key="PlayerControllerComponent.FundPoints">562941397271156</Item>
+      <Item key="PlayerControllerComponent.Health">562941394089031</Item>
+      <Item key="PlayerControllerComponent.Hunger">562941394089033</Item>
+      <Item key="PlayerControllerComponent.Immunity">562941394527652</Item>
+      <Item key="PlayerControllerComponent.Infection">562941394089037</Item>
+      <Item key="PlayerControllerComponent.IsDead">562941394089029</Item>
+      <Item key="PlayerControllerComponent.IsImmortal">562941394089030</Item>
+      <Item key="PlayerControllerComponent.MaxFatigue">562941397066461</Item>
+      <Item key="PlayerControllerComponent.MaxHealth">562941395011926</Item>
+      <Item key="PlayerControllerComponent.MaxHunger">562941397066460</Item>
+      <Item key="PlayerControllerComponent.MinHealth">562941395011927</Item>
+      <Item key="PlayerControllerComponent.PreInfection">562941394089036</Item>
+      <Item key="PlayerControllerComponent.Reputation">562941394089032</Item>
+      <Item key="PlayerControllerComponent.Sleep">562941394089038</Item>
+      <Item key="PlayerControllerComponent.Thirst">562941394089034</Item>
+      <Item key="Speaking.CurrentTalking">562941394089022</Item>
+      <Item key="Speaking.InitialPhrase">562941394494915</Item>
+      <Item key="Storage.IsFree">562941394089028</Item>
+    </StandartParams>
+    <Name>Intro_Player</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955459648">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>9bfc172312535914baca06a5bd8bbcfb</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="15">
+      <Item>7881179091552235</Item>
+      <Item>7881179091552236</Item>
+      <Item>7881179091552238</Item>
+      <Item>7881179091552239</Item>
+      <Item>7881179091552241</Item>
+      <Item>7881179091552242</Item>
+      <Item>7881179091552243</Item>
+      <Item>7881179091552246</Item>
+      <Item>7881179091802135</Item>
+      <Item>7881179091802136</Item>
+      <Item>7881179091802140</Item>
+      <Item>7881179091802141</Item>
+      <Item>7881179091802142</Item>
+      <Item>7881179091802144</Item>
+      <Item>7881179092150795</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496643</EventGraph>
+    <Events count="4">
+      <Item>2814706822158351</Item>
+      <Item>2814706822158352</Item>
+      <Item>2814706822428951</Item>
+      <Item>2814706822428952</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="StartingCompanion_state">562941394095317</Item>
+      <Item key="ToldAboutFather">562941394483246</Item>
+    </CustomParams>
+    <StandartParams count="32">
+      <Item key="BlueprintComponent.Blueprint">562941394517522</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269288</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264721</Item>
+      <Item key="Common.ObjectEnabled">562941394095310</Item>
+      <Item key="Detectable.DetectableEnabled">562941394095315</Item>
+      <Item key="Interactive.ObjectName">562941394095313</Item>
+      <Item key="LocationItem.IsHibernation">562941394095318</Item>
+      <Item key="LocationItem.IsIndoor">562941395681334</Item>
+      <Item key="LocationItem.Location">562941394095319</Item>
+      <Item key="Model.Object">562941394095311</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011931</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394095326</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394095329</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394095327</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506719</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394095328</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394095334</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029720</Item>
+      <Item key="NpcControllerComponent.Health">562941394095325</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264720</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011930</Item>
+      <Item key="NpcControllerComponent.Infection">562941394095330</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394095332</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011932</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394095323</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394095324</Item>
+      <Item key="NpcControllerComponent.Pain">562941394095331</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011929</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010319</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394095333</Item>
+      <Item key="Speaking.CurrentTalking">562941394095316</Item>
+      <Item key="Speaking.InitialPhrase">562941394494916</Item>
+    </StandartParams>
+    <Name>StartingCompanion</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955475376">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>547f9ba85808455b996c124ab5647f49</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="13">
+      <Item>7881179091582801</Item>
+      <Item>7881179091582802</Item>
+      <Item>7881179091582803</Item>
+      <Item>7881179091582804</Item>
+      <Item>7881179091582805</Item>
+      <Item>7881179091582806</Item>
+      <Item>7881179091582807</Item>
+      <Item>7881179091582808</Item>
+      <Item>7881179091582809</Item>
+      <Item>7881179091582810</Item>
+      <Item>7881179091582812</Item>
+      <Item>7881179091823064</Item>
+      <Item>7881179092150796</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910512401</EventGraph>
+    <Events count="1">
+      <Item>2814706822436051</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="OpponentOdongh_state">562941394130259</Item>
+    </CustomParams>
+    <StandartParams count="34">
+      <Item key="BehaviorComponent.Behavior">562941394130254</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162826</Item>
+      <Item key="Common.ObjectEnabled">562941394130252</Item>
+      <Item key="Detectable.DetectableEnabled">562941394130257</Item>
+      <Item key="Detector.DetectorEnabled">562941394130256</Item>
+      <Item key="Interactive.ObjectName">562941394130255</Item>
+      <Item key="LocationItem.IsHibernation">562941394130260</Item>
+      <Item key="LocationItem.IsIndoor">562941395681335</Item>
+      <Item key="LocationItem.Location">562941394130261</Item>
+      <Item key="Market.MarketEnabled">562941394539471</Item>
+      <Item key="Model.Object">562941394130253</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011935</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394130268</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394130271</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394130269</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506720</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394130270</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394130276</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029721</Item>
+      <Item key="NpcControllerComponent.Health">562941394130267</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264722</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011934</Item>
+      <Item key="NpcControllerComponent.Infection">562941394130272</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394130274</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011936</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394130265</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394130266</Item>
+      <Item key="NpcControllerComponent.Pain">562941394130273</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011933</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010320</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394130275</Item>
+      <Item key="Speaking.CurrentTalking">562941394130258</Item>
+      <Item key="Speaking.InitialPhrase">562941394494917</Item>
+      <Item key="Storage.IsFree">562941394130263</Item>
+    </StandartParams>
+    <Name>OpponentOdongh</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955475379">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091582833</Item>
+      <Item>7881179091582834</Item>
+      <Item>7881179091582835</Item>
+      <Item>7881179091582836</Item>
+      <Item>7881179091582837</Item>
+      <Item>7881179091582838</Item>
+      <Item>7881179091582839</Item>
+      <Item>7881179091582840</Item>
+      <Item>7881179091582841</Item>
+      <Item>7881179091582842</Item>
+      <Item>7881179091582844</Item>
+      <Item>7881179092150797</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910512406</EventGraph>
+    <CustomParams count="1">
+      <Item key="Soldier_state">562941394130318</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394130321</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162827</Item>
+      <Item key="Common.ObjectEnabled">562941394130319</Item>
+      <Item key="Detectable.DetectableEnabled">562941394130324</Item>
+      <Item key="Detector.DetectorEnabled">562941394130323</Item>
+      <Item key="Interactive.ObjectName">562941394130322</Item>
+      <Item key="LocationItem.IsHibernation">562941394130326</Item>
+      <Item key="LocationItem.IsIndoor">562941395681336</Item>
+      <Item key="LocationItem.Location">562941394130327</Item>
+      <Item key="Model.Object">562941394130320</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011939</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394130334</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394130337</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394130335</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506721</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394130336</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394130342</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029722</Item>
+      <Item key="NpcControllerComponent.Health">562941394130333</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264723</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011938</Item>
+      <Item key="NpcControllerComponent.Infection">562941394130338</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394130340</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011940</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394130331</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394130332</Item>
+      <Item key="NpcControllerComponent.Pain">562941394130339</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011937</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010321</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394130341</Item>
+      <Item key="Speaking.CurrentTalking">562941394130325</Item>
+      <Item key="Speaking.InitialPhrase">562941394494919</Item>
+      <Item key="Storage.IsFree">562941394130329</Item>
+    </StandartParams>
+    <Name>Soldier</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955475380">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091582845</Item>
+      <Item>7881179091582846</Item>
+      <Item>7881179091582847</Item>
+      <Item>7881179091582848</Item>
+      <Item>7881179091582849</Item>
+      <Item>7881179091582850</Item>
+      <Item>7881179091582851</Item>
+      <Item>7881179091582852</Item>
+      <Item>7881179091582853</Item>
+      <Item>7881179091582854</Item>
+      <Item>7881179091582856</Item>
+      <Item>7881179092150798</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910512407</EventGraph>
+    <CustomParams count="1">
+      <Item key="Sanitar_state">562941394130344</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394130347</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162828</Item>
+      <Item key="Common.ObjectEnabled">562941394130345</Item>
+      <Item key="Detectable.DetectableEnabled">562941394130350</Item>
+      <Item key="Detector.DetectorEnabled">562941394130349</Item>
+      <Item key="Interactive.ObjectName">562941394130348</Item>
+      <Item key="LocationItem.IsHibernation">562941394130352</Item>
+      <Item key="LocationItem.IsIndoor">562941395681337</Item>
+      <Item key="LocationItem.Location">562941394130353</Item>
+      <Item key="Model.Object">562941394130346</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011943</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394130360</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394130363</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394130361</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506722</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394130362</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394130368</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029723</Item>
+      <Item key="NpcControllerComponent.Health">562941394130359</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264724</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011942</Item>
+      <Item key="NpcControllerComponent.Infection">562941394130364</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394130366</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011944</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394130357</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394130358</Item>
+      <Item key="NpcControllerComponent.Pain">562941394130365</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011941</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010322</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394130367</Item>
+      <Item key="Speaking.CurrentTalking">562941394130351</Item>
+      <Item key="Speaking.InitialPhrase">562941394494920</Item>
+      <Item key="Storage.IsFree">562941394130355</Item>
+    </StandartParams>
+    <Name>Sanitar</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955477476">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091591442</Item>
+      <Item>7881179091591443</Item>
+      <Item>7881179091591444</Item>
+      <Item>7881179091591445</Item>
+      <Item>7881179091591446</Item>
+      <Item>7881179091591447</Item>
+      <Item>7881179091591448</Item>
+      <Item>7881179091591449</Item>
+      <Item>7881179091591450</Item>
+      <Item>7881179091591451</Item>
+      <Item>7881179091591453</Item>
+      <Item>7881179092150799</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910514501</EventGraph>
+    <CustomParams count="2">
+      <Item key="MyModel">562941395862854</Item>
+      <Item key="TalkingExecutor_state">562941394133994</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394133989</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162829</Item>
+      <Item key="Common.ObjectEnabled">562941394133987</Item>
+      <Item key="Detectable.DetectableEnabled">562941394133992</Item>
+      <Item key="Detector.DetectorEnabled">562941394133991</Item>
+      <Item key="Interactive.ObjectName">562941394133990</Item>
+      <Item key="LocationItem.IsHibernation">562941394133995</Item>
+      <Item key="LocationItem.IsIndoor">562941395681338</Item>
+      <Item key="LocationItem.Location">562941394133996</Item>
+      <Item key="Model.Object">562941394133988</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011947</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394134003</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394134006</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394134004</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506723</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394134005</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394134011</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029724</Item>
+      <Item key="NpcControllerComponent.Health">562941394134002</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264725</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011946</Item>
+      <Item key="NpcControllerComponent.Infection">562941394134007</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394134009</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011948</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394134000</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394134001</Item>
+      <Item key="NpcControllerComponent.Pain">562941394134008</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011945</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010323</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394134010</Item>
+      <Item key="Speaking.CurrentTalking">562941394133993</Item>
+      <Item key="Speaking.InitialPhrase">562941394494921</Item>
+      <Item key="Storage.IsFree">562941394133998</Item>
+    </StandartParams>
+    <Name>TalkingExecutor</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955478676">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846977</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="12">
+      <Item>7881179091592005</Item>
+      <Item>7881179091592006</Item>
+      <Item>7881179091592007</Item>
+      <Item>7881179091592008</Item>
+      <Item>7881179091592009</Item>
+      <Item>7881179091592010</Item>
+      <Item>7881179091592011</Item>
+      <Item>7881179091592012</Item>
+      <Item>7881179091592013</Item>
+      <Item>7881179091592014</Item>
+      <Item>7881179091592016</Item>
+      <Item>7881179092150800</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910515702</EventGraph>
+    <CustomParams count="1">
+      <Item key="CircleSpectator_state">562941394134664</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394134667</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162830</Item>
+      <Item key="Common.ObjectEnabled">562941394134665</Item>
+      <Item key="Detectable.DetectableEnabled">562941394134670</Item>
+      <Item key="Detector.DetectorEnabled">562941394134669</Item>
+      <Item key="Interactive.ObjectName">562941394134668</Item>
+      <Item key="LocationItem.IsHibernation">562941394134672</Item>
+      <Item key="LocationItem.IsIndoor">562941395681339</Item>
+      <Item key="LocationItem.Location">562941394134673</Item>
+      <Item key="Model.Object">562941394134666</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011951</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394134680</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394134683</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394134681</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506725</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394134682</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394134688</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029725</Item>
+      <Item key="NpcControllerComponent.Health">562941394134679</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264726</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011950</Item>
+      <Item key="NpcControllerComponent.Infection">562941394134684</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394134686</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011952</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394134677</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394134678</Item>
+      <Item key="NpcControllerComponent.Pain">562941394134685</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011949</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010324</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394134687</Item>
+      <Item key="Speaking.CurrentTalking">562941394134671</Item>
+      <Item key="Speaking.InitialPhrase">562941394494923</Item>
+      <Item key="Storage.IsFree">562941394134675</Item>
+    </StandartParams>
+    <Name>CircleSpectator</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955487076">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091606550</Item>
+      <Item>7881179091606551</Item>
+      <Item>7881179091606552</Item>
+      <Item>7881179091606553</Item>
+      <Item>7881179091606554</Item>
+      <Item>7881179091606555</Item>
+      <Item>7881179091606556</Item>
+      <Item>7881179091606557</Item>
+      <Item>7881179091606582</Item>
+      <Item>7881179091606583</Item>
+      <Item>7881179091606585</Item>
+      <Item>7881179092150801</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910524101</EventGraph>
+    <CustomParams count="1">
+      <Item key="Doghead_Talking_1_state">562941394153757</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394153752</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162831</Item>
+      <Item key="Common.ObjectEnabled">562941394153350</Item>
+      <Item key="Detectable.DetectableEnabled">562941394153755</Item>
+      <Item key="Detector.DetectorEnabled">562941394153754</Item>
+      <Item key="Interactive.ObjectName">562941394153753</Item>
+      <Item key="LocationItem.IsHibernation">562941394153785</Item>
+      <Item key="LocationItem.IsIndoor">562941395681340</Item>
+      <Item key="LocationItem.Location">562941394153786</Item>
+      <Item key="Model.Object">562941394153751</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011955</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394153793</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394153796</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394153794</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506726</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394153795</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394153801</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029726</Item>
+      <Item key="NpcControllerComponent.Health">562941394153792</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264727</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011954</Item>
+      <Item key="NpcControllerComponent.Infection">562941394153797</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394153799</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011956</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394153790</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394153791</Item>
+      <Item key="NpcControllerComponent.Pain">562941394153798</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011953</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010325</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394153800</Item>
+      <Item key="Speaking.CurrentTalking">562941394153756</Item>
+      <Item key="Speaking.InitialPhrase">562941394494928</Item>
+      <Item key="Storage.IsFree">562941394153788</Item>
+    </StandartParams>
+    <Name>Doghead_Talking_1</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955487077">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091606558</Item>
+      <Item>7881179091606559</Item>
+      <Item>7881179091606560</Item>
+      <Item>7881179091606561</Item>
+      <Item>7881179091606562</Item>
+      <Item>7881179091606563</Item>
+      <Item>7881179091606564</Item>
+      <Item>7881179091606565</Item>
+      <Item>7881179091606586</Item>
+      <Item>7881179091606587</Item>
+      <Item>7881179091606589</Item>
+      <Item>7881179092150802</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910524102</EventGraph>
+    <CustomParams count="1">
+      <Item key="Doghead_Sitting_2_state">562941394153759</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394153762</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162832</Item>
+      <Item key="Common.ObjectEnabled">562941394153760</Item>
+      <Item key="Detectable.DetectableEnabled">562941394153765</Item>
+      <Item key="Detector.DetectorEnabled">562941394153764</Item>
+      <Item key="Interactive.ObjectName">562941394153763</Item>
+      <Item key="LocationItem.IsHibernation">562941394153802</Item>
+      <Item key="LocationItem.IsIndoor">562941395681341</Item>
+      <Item key="LocationItem.Location">562941394153803</Item>
+      <Item key="Model.Object">562941394153761</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011959</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394153810</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394153813</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394153811</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506727</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394153812</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394153818</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029727</Item>
+      <Item key="NpcControllerComponent.Health">562941394153809</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264728</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011958</Item>
+      <Item key="NpcControllerComponent.Infection">562941394153814</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394153816</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011960</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394153807</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394153808</Item>
+      <Item key="NpcControllerComponent.Pain">562941394153815</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011957</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010326</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394153817</Item>
+      <Item key="Speaking.CurrentTalking">562941394153766</Item>
+      <Item key="Speaking.InitialPhrase">562941394494929</Item>
+      <Item key="Storage.IsFree">562941394153805</Item>
+    </StandartParams>
+    <Name>Doghead_Sitting_2</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955487078">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091606566</Item>
+      <Item>7881179091606567</Item>
+      <Item>7881179091606568</Item>
+      <Item>7881179091606569</Item>
+      <Item>7881179091606570</Item>
+      <Item>7881179091606571</Item>
+      <Item>7881179091606572</Item>
+      <Item>7881179091606573</Item>
+      <Item>7881179091606590</Item>
+      <Item>7881179091606591</Item>
+      <Item>7881179091606593</Item>
+      <Item>7881179092150803</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910524103</EventGraph>
+    <CustomParams count="1">
+      <Item key="Doghead_Sitting_3_state">562941394153768</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394153771</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162833</Item>
+      <Item key="Common.ObjectEnabled">562941394153769</Item>
+      <Item key="Detectable.DetectableEnabled">562941394153774</Item>
+      <Item key="Detector.DetectorEnabled">562941394153773</Item>
+      <Item key="Interactive.ObjectName">562941394153772</Item>
+      <Item key="LocationItem.IsHibernation">562941394153819</Item>
+      <Item key="LocationItem.IsIndoor">562941395681342</Item>
+      <Item key="LocationItem.Location">562941394153820</Item>
+      <Item key="Model.Object">562941394153770</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011963</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394153827</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394153830</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394153828</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506728</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394153829</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394153835</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029728</Item>
+      <Item key="NpcControllerComponent.Health">562941394153826</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264729</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011962</Item>
+      <Item key="NpcControllerComponent.Infection">562941394153831</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394153833</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011964</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394153824</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394153825</Item>
+      <Item key="NpcControllerComponent.Pain">562941394153832</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011961</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010327</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394153834</Item>
+      <Item key="Speaking.CurrentTalking">562941394153775</Item>
+      <Item key="Speaking.InitialPhrase">562941394494930</Item>
+      <Item key="Storage.IsFree">562941394153822</Item>
+    </StandartParams>
+    <Name>Doghead_Sitting_3</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955487079">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091606574</Item>
+      <Item>7881179091606575</Item>
+      <Item>7881179091606576</Item>
+      <Item>7881179091606577</Item>
+      <Item>7881179091606578</Item>
+      <Item>7881179091606579</Item>
+      <Item>7881179091606580</Item>
+      <Item>7881179091606581</Item>
+      <Item>7881179091606594</Item>
+      <Item>7881179091606595</Item>
+      <Item>7881179091606597</Item>
+      <Item>7881179092150804</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910524104</EventGraph>
+    <CustomParams count="1">
+      <Item key="Corpse_state">562941394153777</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394153780</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162834</Item>
+      <Item key="Common.ObjectEnabled">562941394153778</Item>
+      <Item key="Detectable.DetectableEnabled">562941394153783</Item>
+      <Item key="Detector.DetectorEnabled">562941394153782</Item>
+      <Item key="Interactive.ObjectName">562941394153781</Item>
+      <Item key="LocationItem.IsHibernation">562941394153836</Item>
+      <Item key="LocationItem.IsIndoor">562941395681343</Item>
+      <Item key="LocationItem.Location">562941394153837</Item>
+      <Item key="Model.Object">562941394153779</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011967</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394153844</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394153847</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394153845</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506729</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394153846</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394153852</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029729</Item>
+      <Item key="NpcControllerComponent.Health">562941394153843</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264730</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011966</Item>
+      <Item key="NpcControllerComponent.Infection">562941394153848</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394153850</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011968</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394153841</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394153842</Item>
+      <Item key="NpcControllerComponent.Pain">562941394153849</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011965</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010328</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394153851</Item>
+      <Item key="Speaking.CurrentTalking">562941394153784</Item>
+      <Item key="Speaking.InitialPhrase">562941394494931</Item>
+      <Item key="Storage.IsFree">562941394153839</Item>
+    </StandartParams>
+    <Name>Corpse</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955491877">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>9bfc172312535914baca06a5bd8bbcfb</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="11">
+      <Item>7881179091719514</Item>
+      <Item>7881179091719515</Item>
+      <Item>7881179091719517</Item>
+      <Item>7881179091719518</Item>
+      <Item>7881179091719520</Item>
+      <Item>7881179091719521</Item>
+      <Item>7881179091719522</Item>
+      <Item>7881179091719525</Item>
+      <Item>7881179091824811</Item>
+      <Item>7881179091824812</Item>
+      <Item>7881179092150805</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910528903</EventGraph>
+    <CustomParams count="1">
+      <Item key="Thirsty_Marta_state">562941394370783</Item>
+    </CustomParams>
+    <StandartParams count="32">
+      <Item key="BlueprintComponent.Blueprint">562941394539515</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269301</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264732</Item>
+      <Item key="Common.ObjectEnabled">562941394370776</Item>
+      <Item key="Detectable.DetectableEnabled">562941394370781</Item>
+      <Item key="Interactive.ObjectName">562941394370779</Item>
+      <Item key="LocationItem.IsHibernation">562941394370784</Item>
+      <Item key="LocationItem.IsIndoor">562941395681344</Item>
+      <Item key="LocationItem.Location">562941394370785</Item>
+      <Item key="Model.Object">562941394370777</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011971</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394370792</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394370795</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394370793</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506730</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394370794</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394370800</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029730</Item>
+      <Item key="NpcControllerComponent.Health">562941394370791</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264731</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011970</Item>
+      <Item key="NpcControllerComponent.Infection">562941394370796</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394370798</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011972</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394370789</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394370790</Item>
+      <Item key="NpcControllerComponent.Pain">562941394370797</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011969</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010329</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394370799</Item>
+      <Item key="Speaking.CurrentTalking">562941394370782</Item>
+      <Item key="Speaking.InitialPhrase">562941394494932</Item>
+    </StandartParams>
+    <Name>Thirsty_Marta</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955493576">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091770001</Item>
+      <Item>7881179091770002</Item>
+      <Item>7881179091770003</Item>
+      <Item>7881179091770004</Item>
+      <Item>7881179091770005</Item>
+      <Item>7881179091770006</Item>
+      <Item>7881179091770007</Item>
+      <Item>7881179091770008</Item>
+      <Item>7881179091770009</Item>
+      <Item>7881179091770010</Item>
+      <Item>7881179091770012</Item>
+      <Item>7881179092150806</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910530603</EventGraph>
+    <CustomParams count="1">
+      <Item key="Water_Executor_state">562941394472164</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394472159</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162835</Item>
+      <Item key="Common.ObjectEnabled">562941394472157</Item>
+      <Item key="Detectable.DetectableEnabled">562941394472162</Item>
+      <Item key="Detector.DetectorEnabled">562941394472161</Item>
+      <Item key="Interactive.ObjectName">562941394472160</Item>
+      <Item key="LocationItem.IsHibernation">562941394472165</Item>
+      <Item key="LocationItem.IsIndoor">562941395681345</Item>
+      <Item key="LocationItem.Location">562941394472166</Item>
+      <Item key="Model.Object">562941394472158</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011975</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394472173</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394472176</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394472174</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506731</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394472175</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394472181</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029731</Item>
+      <Item key="NpcControllerComponent.Health">562941394472172</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264733</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011974</Item>
+      <Item key="NpcControllerComponent.Infection">562941394472177</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394472179</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011976</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394472170</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394472171</Item>
+      <Item key="NpcControllerComponent.Pain">562941394472178</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011973</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010330</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394472180</Item>
+      <Item key="Speaking.CurrentTalking">562941394472163</Item>
+      <Item key="Speaking.InitialPhrase">562941394494933</Item>
+      <Item key="Storage.IsFree">562941394472168</Item>
+    </StandartParams>
+    <Name>Water_Executor</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955495876">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>a8024488a46f4c268612ddad2052a614</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="14">
+      <Item>7881179091773110</Item>
+      <Item>7881179091773111</Item>
+      <Item>7881179091773112</Item>
+      <Item>7881179091773113</Item>
+      <Item>7881179091773114</Item>
+      <Item>7881179091773115</Item>
+      <Item>7881179091773116</Item>
+      <Item>7881179091773117</Item>
+      <Item>7881179091773118</Item>
+      <Item>7881179091773119</Item>
+      <Item>7881179091773120</Item>
+      <Item>7881179091773121</Item>
+      <Item>7881179091773122</Item>
+      <Item>7881179092150807</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910532914</EventGraph>
+    <CustomParams count="1">
+      <Item key="Diseased_state">562941394475889</Item>
+    </CustomParams>
+    <StandartParams count="35">
+      <Item key="BehaviorComponent.Behavior">562941394475884</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162836</Item>
+      <Item key="Common.ObjectEnabled">562941394475882</Item>
+      <Item key="CrowdItemComponent.Area">562941394475894</Item>
+      <Item key="Detectable.DetectableEnabled">562941394475887</Item>
+      <Item key="Detector.DetectorEnabled">562941394475886</Item>
+      <Item key="Interactive.ObjectName">562941394475885</Item>
+      <Item key="LocationItem.IsHibernation">562941394475890</Item>
+      <Item key="LocationItem.IsIndoor">562941395681346</Item>
+      <Item key="LocationItem.Location">562941394475891</Item>
+      <Item key="Market.MarketEnabled">562941394475907</Item>
+      <Item key="Model.Object">562941394475883</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011979</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394475898</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394475901</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394475899</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394506732</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394475900</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394475906</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029732</Item>
+      <Item key="NpcControllerComponent.Health">562941394475897</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264734</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011978</Item>
+      <Item key="NpcControllerComponent.Infection">562941394475902</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394475904</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011980</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394475895</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394475896</Item>
+      <Item key="NpcControllerComponent.Pain">562941394475903</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011977</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010331</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394475905</Item>
+      <Item key="Speaking.CurrentTalking">562941394475888</Item>
+      <Item key="Speaking.InitialPhrase">562941394494934</Item>
+      <Item key="Storage.IsFree">562941394475893</Item>
+    </StandartParams>
+    <Name>Diseased</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955514976">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179091793213</Item>
+      <Item>7881179091793214</Item>
+      <Item>7881179091793216</Item>
+      <Item>7881179091793221</Item>
+      <Item>7881179091823066</Item>
+      <Item>7881179091823067</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910552001</EventGraph>
+    <Events count="4">
+      <Item>2814706822448235</Item>
+      <Item>2814706822473202</Item>
+      <Item>2814706822473204</Item>
+      <Item>2814706822476051</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="Character_Base_state">562941394506883</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941394539474</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269305</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264735</Item>
+      <Item key="Common.ObjectEnabled">562941394506875</Item>
+      <Item key="LocationItem.IsHibernation">562941394506884</Item>
+      <Item key="LocationItem.IsIndoor">562941395681347</Item>
+      <Item key="LocationItem.Location">562941394506885</Item>
+      <Item key="Model.Object">562941394506876</Item>
+    </StandartParams>
+    <Name>Character_Base</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955514977">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179091793225</Item>
+      <Item>7881179091793226</Item>
+      <Item>7881179091793228</Item>
+      <Item>7881179091793233</Item>
+      <Item>7881179091823068</Item>
+      <Item>7881179091823069</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910552002</EventGraph>
+    <Events count="2">
+      <Item>2814706822448236</Item>
+      <Item>2814706822473203</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="Character_Tragedian_state">562941394506911</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941394539475</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269306</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264736</Item>
+      <Item key="Common.ObjectEnabled">562941394506903</Item>
+      <Item key="LocationItem.IsHibernation">562941394506912</Item>
+      <Item key="LocationItem.IsIndoor">562941395681348</Item>
+      <Item key="LocationItem.Location">562941394506913</Item>
+      <Item key="Model.Object">562941394506904</Item>
+    </StandartParams>
+    <Name>Character_Tragedian</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955515676">
+    <WorldPositionGuid />
+    <EngineTemplateID>3996c431a9f741e38325ad0a7842b4d0</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="14">
+      <Item>7881179091793901</Item>
+      <Item>7881179091793902</Item>
+      <Item>7881179091793903</Item>
+      <Item>7881179091793904</Item>
+      <Item>7881179091793905</Item>
+      <Item>7881179091793906</Item>
+      <Item>7881179091793907</Item>
+      <Item>7881179091793908</Item>
+      <Item>7881179091793909</Item>
+      <Item>7881179091793910</Item>
+      <Item>7881179091793911</Item>
+      <Item>7881179091793912</Item>
+      <Item>7881179091793913</Item>
+      <Item>7881179092148308</Item>
+    </FunctionalComponents>
+    <StandartParams count="47">
+      <Item key="AttackerPlayer.IsUnholstered">562941394507660</Item>
+      <Item key="Common.ObjectEnabled">562941394507652</Item>
+      <Item key="Detectable.DetectableEnabled">562941394507663</Item>
+      <Item key="Detector.DetectorEnabled">562941394507657</Item>
+      <Item key="Interactive.ObjectName">562941394507656</Item>
+      <Item key="LocationItem.IsHibernation">562941394507654</Item>
+      <Item key="LocationItem.IsIndoor">562941395681349</Item>
+      <Item key="LocationItem.Location">562941394507655</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941397066465</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941395011983</Item>
+      <Item key="MapItemComponent.CraftIcon">562941395681353</Item>
+      <Item key="MapItemComponent.Discovered">562941395681350</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941394507681</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941395681355</Item>
+      <Item key="MapItemComponent.Placeholder">562941394507679</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941395681351</Item>
+      <Item key="MapItemComponent.SleepIcon">562941395681352</Item>
+      <Item key="MapItemComponent.StorageIcon">562941395681354</Item>
+      <Item key="MapItemComponent.Text">562941394507677</Item>
+      <Item key="MapItemComponent.Title">562941394507676</Item>
+      <Item key="MapItemComponent.TooltipResource">562941394507680</Item>
+      <Item key="MapItemComponent.TooltipText">562941394507678</Item>
+      <Item key="Model.Object">562941394507653</Item>
+      <Item key="PlayerControllerComponent.CanReceiveMail">562941397595053</Item>
+      <Item key="PlayerControllerComponent.CanTrade">562941394507674</Item>
+      <Item key="PlayerControllerComponent.Fatigue">562941394507670</Item>
+      <Item key="PlayerControllerComponent.Fraction">562941394507675</Item>
+      <Item key="PlayerControllerComponent.FundEnabled">562941397271157</Item>
+      <Item key="PlayerControllerComponent.FundFinished">562941397271158</Item>
+      <Item key="PlayerControllerComponent.FundPoints">562941397271159</Item>
+      <Item key="PlayerControllerComponent.Health">562941394507666</Item>
+      <Item key="PlayerControllerComponent.Hunger">562941394507668</Item>
+      <Item key="PlayerControllerComponent.Immunity">562941394527658</Item>
+      <Item key="PlayerControllerComponent.Infection">562941394507672</Item>
+      <Item key="PlayerControllerComponent.IsDead">562941394507664</Item>
+      <Item key="PlayerControllerComponent.IsImmortal">562941394507665</Item>
+      <Item key="PlayerControllerComponent.MaxFatigue">562941397066464</Item>
+      <Item key="PlayerControllerComponent.MaxHealth">562941395011981</Item>
+      <Item key="PlayerControllerComponent.MaxHunger">562941397066463</Item>
+      <Item key="PlayerControllerComponent.MinHealth">562941395011982</Item>
+      <Item key="PlayerControllerComponent.PreInfection">562941394507671</Item>
+      <Item key="PlayerControllerComponent.Reputation">562941394507667</Item>
+      <Item key="PlayerControllerComponent.Sleep">562941394507673</Item>
+      <Item key="PlayerControllerComponent.Thirst">562941394507669</Item>
+      <Item key="Speaking.CurrentTalking">562941394507658</Item>
+      <Item key="Speaking.InitialPhrase">562941394507659</Item>
+      <Item key="Storage.IsFree">562941394507662</Item>
+    </StandartParams>
+    <Name>Intro_Player_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955521578">
+    <WorldPositionGuid>9851473860445176H9851473860475776H9851473860475777H5910884318856648</WorldPositionGuid>
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>True</Static>
+    <FunctionalComponents count="8">
+      <Item>7881179091801363</Item>
+      <Item>7881179091801364</Item>
+      <Item>7881179091801366</Item>
+      <Item>7881179091801383</Item>
+      <Item>7881179091802133</Item>
+      <Item>7881179091802134</Item>
+      <Item>7881179091808601</Item>
+      <Item>7881179091808602</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910558604</EventGraph>
+    <CustomParams count="1">
+      <Item key="Coffin_state">562941394516798</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941394517521</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269307</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264737</Item>
+      <Item key="Common.ObjectEnabled">562941394516790</Item>
+      <Item key="LocationItem.IsHibernation">562941394516829</Item>
+      <Item key="LocationItem.IsIndoor">562941395681356</Item>
+      <Item key="LocationItem.Location">562941394516830</Item>
+      <Item key="Model.Object">562941394516791</Item>
+    </StandartParams>
+    <Name>Coffin</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955521579">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179091801371</Item>
+      <Item>7881179091801372</Item>
+      <Item>7881179091801373</Item>
+      <Item>7881179091801374</Item>
+      <Item>7881179091801375</Item>
+      <Item>7881179091801376</Item>
+      <Item>7881179091801377</Item>
+      <Item>7881179091801378</Item>
+      <Item>7881179091801379</Item>
+      <Item>7881179091801380</Item>
+      <Item>7881179091801382</Item>
+      <Item>7881179092150808</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910558605</EventGraph>
+    <CustomParams count="1">
+      <Item key="Aurochs_state">562941394516810</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941394516804</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162837</Item>
+      <Item key="Common.ObjectEnabled">562941394516802</Item>
+      <Item key="Detectable.DetectableEnabled">562941394516807</Item>
+      <Item key="Detector.DetectorEnabled">562941394516806</Item>
+      <Item key="Interactive.ObjectName">562941394516805</Item>
+      <Item key="LocationItem.IsHibernation">562941394516811</Item>
+      <Item key="LocationItem.IsIndoor">562941395681357</Item>
+      <Item key="LocationItem.Location">562941394516812</Item>
+      <Item key="Model.Object">562941394516803</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011986</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394516819</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394516822</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394516820</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394516828</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394516821</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394516827</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029733</Item>
+      <Item key="NpcControllerComponent.Health">562941394516818</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264738</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011985</Item>
+      <Item key="NpcControllerComponent.Infection">562941394516823</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394516825</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011987</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394516816</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394516817</Item>
+      <Item key="NpcControllerComponent.Pain">562941394516824</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011984</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010332</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394516826</Item>
+      <Item key="Speaking.CurrentTalking">562941394516808</Item>
+      <Item key="Speaking.InitialPhrase">562941394516809</Item>
+      <Item key="Storage.IsFree">562941394516814</Item>
+    </StandartParams>
+    <Name>Aurochs</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955532276">
+    <WorldPositionGuid>9851473860445176H9851473860475776H9851473860475777H5910884318856647</WorldPositionGuid>
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3996c431a9f741e38325ad0a7842b4d0</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="14">
+      <Item>7881179091812101</Item>
+      <Item>7881179091812102</Item>
+      <Item>7881179091812103</Item>
+      <Item>7881179091812104</Item>
+      <Item>7881179091812105</Item>
+      <Item>7881179091812106</Item>
+      <Item>7881179091812107</Item>
+      <Item>7881179091812108</Item>
+      <Item>7881179091812109</Item>
+      <Item>7881179091812110</Item>
+      <Item>7881179091812111</Item>
+      <Item>7881179091812112</Item>
+      <Item>7881179091812113</Item>
+      <Item>7881179092150809</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910569301</EventGraph>
+    <CustomParams count="1">
+      <Item key="Intro_Player_Deprecated_state">562941394527953</Item>
+    </CustomParams>
+    <StandartParams count="47">
+      <Item key="AttackerPlayer.IsUnholstered">562941394527963</Item>
+      <Item key="Common.ObjectEnabled">562941394527954</Item>
+      <Item key="Detectable.DetectableEnabled">562941394527958</Item>
+      <Item key="Detector.DetectorEnabled">562941394527957</Item>
+      <Item key="Interactive.ObjectName">562941394527956</Item>
+      <Item key="LocationItem.IsHibernation">562941394527961</Item>
+      <Item key="LocationItem.IsIndoor">562941395681358</Item>
+      <Item key="LocationItem.Location">562941394527962</Item>
+      <Item key="MapItemComponent.BoundCharacter">562941397066468</Item>
+      <Item key="MapItemComponent.BoundHealthState">562941395011990</Item>
+      <Item key="MapItemComponent.CraftIcon">562941395681362</Item>
+      <Item key="MapItemComponent.Discovered">562941395681359</Item>
+      <Item key="MapItemComponent.EnableMapItem">562941394527984</Item>
+      <Item key="MapItemComponent.MerchantIcon">562941395681364</Item>
+      <Item key="MapItemComponent.Placeholder">562941394527982</Item>
+      <Item key="MapItemComponent.SavePointIcon">562941395681360</Item>
+      <Item key="MapItemComponent.SleepIcon">562941395681361</Item>
+      <Item key="MapItemComponent.StorageIcon">562941395681363</Item>
+      <Item key="MapItemComponent.Text">562941394527980</Item>
+      <Item key="MapItemComponent.Title">562941394527979</Item>
+      <Item key="MapItemComponent.TooltipResource">562941394527983</Item>
+      <Item key="MapItemComponent.TooltipText">562941394527981</Item>
+      <Item key="Model.Object">562941394527955</Item>
+      <Item key="PlayerControllerComponent.CanReceiveMail">562941397595054</Item>
+      <Item key="PlayerControllerComponent.CanTrade">562941394527977</Item>
+      <Item key="PlayerControllerComponent.Fatigue">562941394527972</Item>
+      <Item key="PlayerControllerComponent.Fraction">562941394527978</Item>
+      <Item key="PlayerControllerComponent.FundEnabled">562941397271160</Item>
+      <Item key="PlayerControllerComponent.FundFinished">562941397271161</Item>
+      <Item key="PlayerControllerComponent.FundPoints">562941397271162</Item>
+      <Item key="PlayerControllerComponent.Health">562941394527968</Item>
+      <Item key="PlayerControllerComponent.Hunger">562941394527970</Item>
+      <Item key="PlayerControllerComponent.Immunity">562941394527975</Item>
+      <Item key="PlayerControllerComponent.Infection">562941394527974</Item>
+      <Item key="PlayerControllerComponent.IsDead">562941394527966</Item>
+      <Item key="PlayerControllerComponent.IsImmortal">562941394527967</Item>
+      <Item key="PlayerControllerComponent.MaxFatigue">562941397066467</Item>
+      <Item key="PlayerControllerComponent.MaxHealth">562941395011988</Item>
+      <Item key="PlayerControllerComponent.MaxHunger">562941397066466</Item>
+      <Item key="PlayerControllerComponent.MinHealth">562941395011989</Item>
+      <Item key="PlayerControllerComponent.PreInfection">562941394527973</Item>
+      <Item key="PlayerControllerComponent.Reputation">562941394527969</Item>
+      <Item key="PlayerControllerComponent.Sleep">562941394527976</Item>
+      <Item key="PlayerControllerComponent.Thirst">562941394527971</Item>
+      <Item key="Speaking.CurrentTalking">562941394527959</Item>
+      <Item key="Speaking.InitialPhrase">562941394527960</Item>
+      <Item key="Storage.IsFree">562941394527965</Item>
+    </StandartParams>
+    <Name>Intro_Player_Deprecated</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955542076">
+    <WorldPositionGuid />
+    <EngineTemplateID>547f9ba85808455b996c124ab5647f49</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="13">
+      <Item>7881179091823049</Item>
+      <Item>7881179091823050</Item>
+      <Item>7881179091823051</Item>
+      <Item>7881179091823052</Item>
+      <Item>7881179091823053</Item>
+      <Item>7881179091823054</Item>
+      <Item>7881179091823055</Item>
+      <Item>7881179091823056</Item>
+      <Item>7881179091823057</Item>
+      <Item>7881179091823058</Item>
+      <Item>7881179091823060</Item>
+      <Item>7881179091823061</Item>
+      <Item>7881179092148417</Item>
+    </FunctionalComponents>
+    <StandartParams count="34">
+      <Item key="BehaviorComponent.Behavior">562941394539444</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162839</Item>
+      <Item key="Common.ObjectEnabled">562941394539440</Item>
+      <Item key="Detectable.DetectableEnabled">562941394539447</Item>
+      <Item key="Detector.DetectorEnabled">562941394539446</Item>
+      <Item key="Interactive.ObjectName">562941394539445</Item>
+      <Item key="LocationItem.IsHibernation">562941394539442</Item>
+      <Item key="LocationItem.IsIndoor">562941395681366</Item>
+      <Item key="LocationItem.Location">562941394539443</Item>
+      <Item key="Market.MarketEnabled">562941394539448</Item>
+      <Item key="Model.Object">562941394539441</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395011997</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941394539455</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941394539458</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941394539456</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941394539464</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941394539457</Item>
+      <Item key="NpcControllerComponent.Fraction">562941394539463</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395029735</Item>
+      <Item key="NpcControllerComponent.Health">562941394539454</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395264740</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395011996</Item>
+      <Item key="NpcControllerComponent.Infection">562941394539459</Item>
+      <Item key="NpcControllerComponent.IsAway">562941394539461</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395011998</Item>
+      <Item key="NpcControllerComponent.IsDead">562941394539452</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941394539453</Item>
+      <Item key="NpcControllerComponent.Pain">562941394539460</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395011995</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010335</Item>
+      <Item key="NpcControllerComponent.StammKind">562941394539462</Item>
+      <Item key="Speaking.CurrentTalking">562941394539465</Item>
+      <Item key="Speaking.InitialPhrase">562941394539466</Item>
+      <Item key="Storage.IsFree">562941394539450</Item>
+    </StandartParams>
+    <Name>Npc_Intro_SuokFighter_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955542079">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179091823089</Item>
+      <Item>7881179091823090</Item>
+      <Item>7881179091823092</Item>
+      <Item>7881179091823097</Item>
+      <Item>7881179091823098</Item>
+      <Item>7881179091823099</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910579107</EventGraph>
+    <CustomParams count="1">
+      <Item key="Cup_state">562941394539500</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941394539503</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269311</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264741</Item>
+      <Item key="Common.ObjectEnabled">562941394539501</Item>
+      <Item key="LocationItem.IsHibernation">562941394539504</Item>
+      <Item key="LocationItem.IsIndoor">562941395681367</Item>
+      <Item key="LocationItem.Location">562941394539505</Item>
+      <Item key="Model.Object">562941394539502</Item>
+    </StandartParams>
+    <Name>Cup</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955542080">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179091823100</Item>
+      <Item>7881179091824801</Item>
+      <Item>7881179091824803</Item>
+      <Item>7881179091824808</Item>
+      <Item>7881179091824809</Item>
+      <Item>7881179091824810</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910579108</EventGraph>
+    <CustomParams count="1">
+      <Item key="Dice_state">562941394539507</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941394539510</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269312</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395264742</Item>
+      <Item key="Common.ObjectEnabled">562941394539508</Item>
+      <Item key="LocationItem.IsHibernation">562941394539511</Item>
+      <Item key="LocationItem.IsIndoor">562941395681368</Item>
+      <Item key="LocationItem.Location">562941394539512</Item>
+      <Item key="Model.Object">562941394539509</Item>
+    </StandartParams>
+    <Name>Dice</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955665176">
+    <WorldPositionGuid />
+    <EngineTemplateID>fb00eb1b1ed447e892382d9771cb0d1a</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Marauder_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955665177">
+    <WorldPositionGuid />
+    <EngineTemplateID>0f2a92d8b23343e19e21a8fec44080b3</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Marauder_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903476">
+    <WorldPositionGuid />
+    <EngineTemplateID>525217163755425496583cb746859e90</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Pankrat_Babyface_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903477">
+    <WorldPositionGuid />
+    <EngineTemplateID>4ab53246a9aa4c42b2e91ebc88d0833f</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Pankrat_Outdoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903479">
+    <WorldPositionGuid />
+    <EngineTemplateID>b9e7f503b1ac4740b779295d41b4f4bf</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Ambush_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903480">
+    <WorldPositionGuid />
+    <EngineTemplateID>3bbe1993422f43ddb836902e8bf9bbdd</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Bullet_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903481">
+    <WorldPositionGuid />
+    <EngineTemplateID>c1deb168a8dd4d41b7c7b7c8edb2621e</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Hunt_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955903482">
+    <WorldPositionGuid />
+    <EngineTemplateID>7327664d065744aabbbc3b0669aff8b8</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Cloud_Patrol_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955905477">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>9bfc172312535914baca06a5bd8bbcfb</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="15">
+      <Item>7881179092304511</Item>
+      <Item>7881179092304512</Item>
+      <Item>7881179092304513</Item>
+      <Item>7881179092304514</Item>
+      <Item>7881179092304515</Item>
+      <Item>7881179092304516</Item>
+      <Item>7881179092304517</Item>
+      <Item>7881179092304518</Item>
+      <Item>7881179092304519</Item>
+      <Item>7881179092304520</Item>
+      <Item>7881179092304521</Item>
+      <Item>7881179092304522</Item>
+      <Item>7881179092304523</Item>
+      <Item>7881179092304524</Item>
+      <Item>7881179092304525</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910943106</EventGraph>
+    <CustomParams count="2">
+      <Item key="DiceCompanion_state">562941395745072</Item>
+      <Item key="ToldAboutFather">562941395745071</Item>
+    </CustomParams>
+    <StandartParams count="32">
+      <Item key="BlueprintComponent.Blueprint">562941395745101</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269403</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395745102</Item>
+      <Item key="Common.ObjectEnabled">562941395745073</Item>
+      <Item key="Detectable.DetectableEnabled">562941395745076</Item>
+      <Item key="Interactive.ObjectName">562941395745075</Item>
+      <Item key="LocationItem.IsHibernation">562941395745079</Item>
+      <Item key="LocationItem.IsIndoor">562941395745080</Item>
+      <Item key="LocationItem.Location">562941395745081</Item>
+      <Item key="Model.Object">562941395745074</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395745097</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941395745085</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941395745088</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941395745086</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941395745096</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941395745087</Item>
+      <Item key="NpcControllerComponent.Fraction">562941395745095</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395745098</Item>
+      <Item key="NpcControllerComponent.Health">562941395745084</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395745099</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395745092</Item>
+      <Item key="NpcControllerComponent.Infection">562941395745089</Item>
+      <Item key="NpcControllerComponent.IsAway">562941395745093</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395745100</Item>
+      <Item key="NpcControllerComponent.IsDead">562941395745082</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941395745083</Item>
+      <Item key="NpcControllerComponent.Pain">562941395745091</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395745090</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010348</Item>
+      <Item key="NpcControllerComponent.StammKind">562941395745094</Item>
+      <Item key="Speaking.CurrentTalking">562941395745077</Item>
+      <Item key="Speaking.InitialPhrase">562941395745078</Item>
+    </StandartParams>
+    <Name>DiceCompanion</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955906076">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>9bfc172312535914baca06a5bd8bbcfb</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="15">
+      <Item>7881179092305103</Item>
+      <Item>7881179092305104</Item>
+      <Item>7881179092305105</Item>
+      <Item>7881179092305106</Item>
+      <Item>7881179092305107</Item>
+      <Item>7881179092305108</Item>
+      <Item>7881179092305109</Item>
+      <Item>7881179092305110</Item>
+      <Item>7881179092305111</Item>
+      <Item>7881179092305112</Item>
+      <Item>7881179092305113</Item>
+      <Item>7881179092305114</Item>
+      <Item>7881179092305115</Item>
+      <Item>7881179092305116</Item>
+      <Item>7881179092305117</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910943705</EventGraph>
+    <CustomParams count="2">
+      <Item key="ToldAboutFather">562941395745655</Item>
+      <Item key="WakeUpCompanion_state">562941395745656</Item>
+    </CustomParams>
+    <StandartParams count="32">
+      <Item key="BlueprintComponent.Blueprint">562941395745685</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269404</Item>
+      <Item key="BlueprintComponent.IsStarted">562941395745686</Item>
+      <Item key="Common.ObjectEnabled">562941395745657</Item>
+      <Item key="Detectable.DetectableEnabled">562941395745660</Item>
+      <Item key="Interactive.ObjectName">562941395745659</Item>
+      <Item key="LocationItem.IsHibernation">562941395745663</Item>
+      <Item key="LocationItem.IsIndoor">562941395745664</Item>
+      <Item key="LocationItem.Location">562941395745665</Item>
+      <Item key="Model.Object">562941395745658</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395745681</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941395745669</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941395745672</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941395745670</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941395745680</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941395745671</Item>
+      <Item key="NpcControllerComponent.Fraction">562941395745679</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395745682</Item>
+      <Item key="NpcControllerComponent.Health">562941395745668</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395745683</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395745676</Item>
+      <Item key="NpcControllerComponent.Infection">562941395745673</Item>
+      <Item key="NpcControllerComponent.IsAway">562941395745677</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395745684</Item>
+      <Item key="NpcControllerComponent.IsDead">562941395745666</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941395745667</Item>
+      <Item key="NpcControllerComponent.Pain">562941395745675</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395745674</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010349</Item>
+      <Item key="NpcControllerComponent.StammKind">562941395745678</Item>
+      <Item key="Speaking.CurrentTalking">562941395745661</Item>
+      <Item key="Speaking.InitialPhrase">562941395745662</Item>
+    </StandartParams>
+    <Name>WakeUpCompanion</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955906376">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="16">
+      <Item>7881179092305401</Item>
+      <Item>7881179092305402</Item>
+      <Item>7881179092305403</Item>
+      <Item>7881179092305404</Item>
+      <Item>7881179092305405</Item>
+      <Item>7881179092305406</Item>
+      <Item>7881179092305407</Item>
+      <Item>7881179092305408</Item>
+      <Item>7881179092305411</Item>
+      <Item>7881179092305412</Item>
+      <Item>7881179092305413</Item>
+      <Item>7881179092305414</Item>
+      <Item>7881179092305415</Item>
+      <Item>7881179092389009</Item>
+      <Item>7881179092389010</Item>
+      <Item>7881179092389011</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910944001</EventGraph>
+    <Events count="4">
+      <Item>2814706823038483</Item>
+      <Item>2814706823038484</Item>
+      <Item>2814706823038485</Item>
+      <Item>2814706823038486</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="AlmostThereCompanion_state">562941395745953</Item>
+      <Item key="ToldAboutFather">562941395745952</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941395862869</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162952</Item>
+      <Item key="Common.ObjectEnabled">562941395745954</Item>
+      <Item key="Detectable.DetectableEnabled">562941395745957</Item>
+      <Item key="Detector.DetectorEnabled">562941395862870</Item>
+      <Item key="Interactive.ObjectName">562941395745956</Item>
+      <Item key="LocationItem.IsHibernation">562941395745960</Item>
+      <Item key="LocationItem.IsIndoor">562941395745961</Item>
+      <Item key="LocationItem.Location">562941395745962</Item>
+      <Item key="Model.Object">562941395745955</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395745978</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941395745966</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941395745969</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941395745967</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941395745977</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941395745968</Item>
+      <Item key="NpcControllerComponent.Fraction">562941395745976</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395745979</Item>
+      <Item key="NpcControllerComponent.Health">562941395745965</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395745980</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395745973</Item>
+      <Item key="NpcControllerComponent.Infection">562941395745970</Item>
+      <Item key="NpcControllerComponent.IsAway">562941395745974</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395745981</Item>
+      <Item key="NpcControllerComponent.IsDead">562941395745963</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941395745964</Item>
+      <Item key="NpcControllerComponent.Pain">562941395745972</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395745971</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010350</Item>
+      <Item key="NpcControllerComponent.StammKind">562941395745975</Item>
+      <Item key="Speaking.CurrentTalking">562941395745958</Item>
+      <Item key="Speaking.InitialPhrase">562941395745959</Item>
+      <Item key="Storage.IsFree">562941395862871</Item>
+    </StandartParams>
+    <Name>AlmostThereCompanion</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955973476">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="12">
+      <Item>7881179092390701</Item>
+      <Item>7881179092390702</Item>
+      <Item>7881179092390703</Item>
+      <Item>7881179092390704</Item>
+      <Item>7881179092390705</Item>
+      <Item>7881179092390706</Item>
+      <Item>7881179092390707</Item>
+      <Item>7881179092390708</Item>
+      <Item>7881179092390709</Item>
+      <Item>7881179092390710</Item>
+      <Item>7881179092390711</Item>
+      <Item>7881179092390712</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911011101</EventGraph>
+    <CustomParams count="1">
+      <Item key="Water_Companion_state">562941395864860</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941395864854</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162953</Item>
+      <Item key="Common.ObjectEnabled">562941395864852</Item>
+      <Item key="Detectable.DetectableEnabled">562941395864857</Item>
+      <Item key="Detector.DetectorEnabled">562941395864856</Item>
+      <Item key="Interactive.ObjectName">562941395864855</Item>
+      <Item key="LocationItem.IsHibernation">562941395864861</Item>
+      <Item key="LocationItem.IsIndoor">562941395864862</Item>
+      <Item key="LocationItem.Location">562941395864863</Item>
+      <Item key="Model.Object">562941395864853</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395864880</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941395864868</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941395864871</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941395864869</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941395864879</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941395864870</Item>
+      <Item key="NpcControllerComponent.Fraction">562941395864878</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395864881</Item>
+      <Item key="NpcControllerComponent.Health">562941395864867</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395864882</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395864875</Item>
+      <Item key="NpcControllerComponent.Infection">562941395864872</Item>
+      <Item key="NpcControllerComponent.IsAway">562941395864876</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395864883</Item>
+      <Item key="NpcControllerComponent.IsDead">562941395864865</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941395864866</Item>
+      <Item key="NpcControllerComponent.Pain">562941395864874</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395864873</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010351</Item>
+      <Item key="NpcControllerComponent.StammKind">562941395864877</Item>
+      <Item key="Speaking.CurrentTalking">562941395864858</Item>
+      <Item key="Speaking.InitialPhrase">562941395864859</Item>
+      <Item key="Storage.IsFree">562941395864864</Item>
+    </StandartParams>
+    <Name>Water_Companion</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942955974976">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>605ea8c1548904e4a84007d8230ac2fc</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846977</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="12">
+      <Item>7881179092392201</Item>
+      <Item>7881179092392202</Item>
+      <Item>7881179092392203</Item>
+      <Item>7881179092392204</Item>
+      <Item>7881179092392205</Item>
+      <Item>7881179092392206</Item>
+      <Item>7881179092392207</Item>
+      <Item>7881179092392208</Item>
+      <Item>7881179092392209</Item>
+      <Item>7881179092392210</Item>
+      <Item>7881179092392211</Item>
+      <Item>7881179092392212</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911012601</EventGraph>
+    <CustomParams count="1">
+      <Item key="CircleSpectatorOdongh_state">562941395866352</Item>
+    </CustomParams>
+    <StandartParams count="33">
+      <Item key="BehaviorComponent.Behavior">562941395866355</Item>
+      <Item key="BehaviorComponent.BehaviorForced">562941397162954</Item>
+      <Item key="Common.ObjectEnabled">562941395866353</Item>
+      <Item key="Detectable.DetectableEnabled">562941395866358</Item>
+      <Item key="Detector.DetectorEnabled">562941395866357</Item>
+      <Item key="Interactive.ObjectName">562941395866356</Item>
+      <Item key="LocationItem.IsHibernation">562941395866361</Item>
+      <Item key="LocationItem.IsIndoor">562941395866362</Item>
+      <Item key="LocationItem.Location">562941395866363</Item>
+      <Item key="Model.Object">562941395866354</Item>
+      <Item key="NpcControllerComponent.BoundHealthState">562941395866380</Item>
+      <Item key="NpcControllerComponent.CanAutopsy">562941395866368</Item>
+      <Item key="NpcControllerComponent.CanHeal">562941395866371</Item>
+      <Item key="NpcControllerComponent.CanTrade">562941395866369</Item>
+      <Item key="NpcControllerComponent.CombatStyle">562941395866379</Item>
+      <Item key="NpcControllerComponent.ForceTrade">562941395866370</Item>
+      <Item key="NpcControllerComponent.Fraction">562941395866378</Item>
+      <Item key="NpcControllerComponent.HealingAttempted">562941395866381</Item>
+      <Item key="NpcControllerComponent.Health">562941395866367</Item>
+      <Item key="NpcControllerComponent.ImmuneBoostAttempted">562941395866382</Item>
+      <Item key="NpcControllerComponent.Immunity">562941395866375</Item>
+      <Item key="NpcControllerComponent.Infection">562941395866372</Item>
+      <Item key="NpcControllerComponent.IsAway">562941395866376</Item>
+      <Item key="NpcControllerComponent.IsCombatIgnored">562941395866383</Item>
+      <Item key="NpcControllerComponent.IsDead">562941395866365</Item>
+      <Item key="NpcControllerComponent.IsImmortal">562941395866366</Item>
+      <Item key="NpcControllerComponent.Pain">562941395866374</Item>
+      <Item key="NpcControllerComponent.PreInfection">562941395866373</Item>
+      <Item key="NpcControllerComponent.SayReplicsInIdle">562941399010352</Item>
+      <Item key="NpcControllerComponent.StammKind">562941395866377</Item>
+      <Item key="Speaking.CurrentTalking">562941395866359</Item>
+      <Item key="Speaking.InitialPhrase">562941395866360</Item>
+      <Item key="Storage.IsFree">562941395866364</Item>
+    </StandartParams>
+    <Name>CircleSpectatorOdongh</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956131576">
+    <WorldPositionGuid />
+    <EngineTemplateID>c064ec5a48751f646bf12a2df0f2849c</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Npc_MobileMessenger_BarterQuest_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956131582">
+    <WorldPositionGuid />
+    <EngineTemplateID>bae058d36db142ecb93b94980dec7ecb</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Face_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956227576">
+    <WorldPositionGuid />
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179092854401</Item>
+      <Item>7881179092854402</Item>
+      <Item>7881179092854404</Item>
+      <Item>7881179092854409</Item>
+      <Item>7881179092854410</Item>
+      <Item>7881179092854411</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911265401</EventGraph>
+    <CustomParams count="1">
+      <Item key="Cutscene_Blueprint_Instance_state">562941397069459</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941397069460</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269423</Item>
+      <Item key="BlueprintComponent.IsStarted">562941397069461</Item>
+      <Item key="Common.ObjectEnabled">562941397069451</Item>
+      <Item key="LocationItem.IsHibernation">562941397069462</Item>
+      <Item key="LocationItem.IsIndoor">562941397069463</Item>
+      <Item key="LocationItem.Location">562941397069464</Item>
+      <Item key="Model.Object">562941397069452</Item>
+    </StandartParams>
+    <Name>Cutscene_Blueprint_Instance</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956231876">
+    <WorldPositionGuid />
+    <EngineTemplateID>9cc27b38a65e310429ede564705a7ed0</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Soldier_Barricade_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956231877">
+    <WorldPositionGuid>9851473860445176H9851473860475776H9851473860475777H5910884318893036</WorldPositionGuid>
+    <EngineTemplateID>00000000000000000000000000000000</EngineTemplateID>
+    <EngineBaseTemplateID>3854f2326d534dbab487999dc36f73b2</EngineBaseTemplateID>
+    <Instantiated>True</Instantiated>
+    <Static>True</Static>
+    <FunctionalComponents count="6">
+      <Item>7881179092858757</Item>
+      <Item>7881179092858758</Item>
+      <Item>7881179092858760</Item>
+      <Item>7881179092858765</Item>
+      <Item>7881179092858766</Item>
+      <Item>7881179092858767</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911269701</EventGraph>
+    <CustomParams count="1">
+      <Item key="FadeFastestBlueprint_state">562941397074877</Item>
+    </CustomParams>
+    <StandartParams count="8">
+      <Item key="BlueprintComponent.Blueprint">562941397074878</Item>
+      <Item key="BlueprintComponent.IsAttached">562941397269424</Item>
+      <Item key="BlueprintComponent.IsStarted">562941397074879</Item>
+      <Item key="Common.ObjectEnabled">562941397074869</Item>
+      <Item key="LocationItem.IsHibernation">562941397074880</Item>
+      <Item key="LocationItem.IsIndoor">562941397074881</Item>
+      <Item key="LocationItem.Location">562941397074882</Item>
+      <Item key="Model.Object">562941397074870</Item>
+    </StandartParams>
+    <Name>FadeFastestBlueprint</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956276576">
+    <WorldPositionGuid />
+    <EngineTemplateID>0aa1ee4f5da54d2a8a06fdcfd6402586</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>AndrewBar_Patron_Indoor_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956361776">
+    <WorldPositionGuid />
+    <EngineTemplateID>e61e803c82edd754daaadbef8f2ae51a</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Klava_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956361777">
+    <WorldPositionGuid />
+    <EngineTemplateID>a3f99ecfe4846644abeb76553d0b0300</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Worker_Akulich_Gypsy_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956361778">
+    <WorldPositionGuid />
+    <EngineTemplateID>5bfceccfd78fbcd468c24e9508329915</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Zakir_Termitnik_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956361779">
+    <WorldPositionGuid />
+    <EngineTemplateID>c0a42702c978e37498f084fb67f733cb</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Aigul_Termitnik_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531476">
+    <WorldPositionGuid />
+    <EngineTemplateID>ff1e630072d6e2a40a0f08c4b01ceaba</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Boy_Beybars_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531477">
+    <WorldPositionGuid />
+    <EngineTemplateID>774bf5799c27b384298f402c3ec71575</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Bull_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531478">
+    <WorldPositionGuid />
+    <EngineTemplateID>88588c73941965045bd1cb8dd93ea027</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Dancing_HerbBride_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531479">
+    <WorldPositionGuid />
+    <EngineTemplateID>8dc310ccc857b3e409b628eb526a3549</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Clothed_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531480">
+    <WorldPositionGuid />
+    <EngineTemplateID>9cfe6057cf35363488904c2a44c98066</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Herb_Bride_Exposed_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531481">
+    <WorldPositionGuid />
+    <EngineTemplateID>c59d2f0fdcd9bff4da06604b320c23be</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Man_Zakir_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956531482">
+    <WorldPositionGuid />
+    <EngineTemplateID>3d4fa8fbf708e6f41b532ff6801a59a0</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Woman_Aigul_Village_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956840277">
+    <WorldPositionGuid />
+    <EngineTemplateID>4273aa853d7b4da4695ac3f397881eb2</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>AnimationTest2_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5347942956840279">
+    <WorldPositionGuid />
+    <EngineTemplateID>bfdccd8c8b9a5b549ab8e56854cfc0a9</EngineTemplateID>
+    <EngineBaseTemplateID>00000000000000000000000000000000</EngineBaseTemplateID>
+    <Instantiated>False</Instantiated>
+    <Static>False</Static>
+    <Name>Plague_Face_MN_Entity</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+</Root>

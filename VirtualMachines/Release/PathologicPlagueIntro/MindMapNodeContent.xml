@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="MindMapNodeContent">
+  <Item id="12384709995156201">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355000971753</ContentDescriptionText>
+    <ContentPicture>8725591135779644</ContentPicture>
+    <ContentCondition>1688824094100451</ContentCondition>
+    <Name />
+    <Parent>11821768631800551</Parent>
+  </Item>
+  <Item id="12384709995156202">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>1</Number>
+    <ContentDescriptionText>6192355000971754</ContentDescriptionText>
+    <ContentPicture>8725591135779634</ContentPicture>
+    <ContentCondition>1688824094100452</ContentCondition>
+    <Name />
+    <Parent>11821768631800551</Parent>
+  </Item>
+</Root>

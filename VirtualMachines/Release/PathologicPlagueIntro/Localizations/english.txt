@@ -1,0 +1,541 @@
+﻿6192355000943851 Why have you come?
+6192355000943852 You now decide the Town's fate.
+6192355000943853 To confirm to you that we have the means to fight the plague.
+6192355000943854 The plague. Not the outbreak.
+6192355000943855 Who cares!
+6192355000943856 We already decided everything, without you. You've come uninvited.
+6192355000943857 What did you decide?
+6192355000943858 Who are you to demand reports from us? A backwoodsman, a self-taught doctor practicing barbaric traditional medicine.\nOh, but I know who you are. You're the person I was very wrong to put my hopes on, the person who let me down. Out! Now.
+6192355000943859 I only need one more day!
+6192355000943860 I know where to get the ingredient for my serum. We can produce it!
+6192355000943861 Hey, you, over there! Seize this man and throw him out.
+6192355000943862 Aglaya! Listen to me…
+6192355000943863 All of you, please listen…
+6192355000943864 I know where you're going. Want a piece of advice?
+6192355000943865 Speak, but please be quick.
+6192355000943866 What? You're alive…?
+6192355000943867 I won't take long.\nThe Town is gone—and to hell with it. But the Kin are also gone. Your family is gone. Your father remains unavenged. His path, unfollowed.\nThe seven children who entrusted their lives to you are dead. You are the only one left. Do you want to save yourself, at least?
+6192355000943868 No.
+6192355000943869 No. You don't know the whole situation. Not all is lost. The outbreak can still be curbed. That's why I'm going to the Cathedral: It's there that the decision about the bombardment is made.
+6192355000943870 Heed my advice. You think she loves you? Think <i>she's</i> a friend and <i>he's</i> a foe because he brought in cannons?\nDon't talk to <i>her</i> first. Talk to <i>him.</i>
+6192355000943871 You know nothing. She's my ally.
+6192355000943872 Bayarlaa, Sahba. And now I need to go.
+6192355000943873 They don't trust me anymore. I wasn't even invited to the final council.
+6192355000943874 Where are the birds?
+6192355000943875 Up, where else? If you mean the real ones.
+6192355000943876 I meant the real ones, yeah.
+6192355000943877 I meant the orderlies.
+6192355000943878 I can imagine what kind of advice you would have given them, erdem.
+6192355000943879 Turns out the birds aren't birds at all. Want to know what they are? Lean down, and I'll tell you… Lower, lower now… They're fingers!
+6192355000943880 Did they tell you that?
+6192355000943881 Yeah. This is a direct quote: "We're not birds. We're fingers." That why people call them Executors.\nAre you tired? Want me to relieve your headache?
+6192355000943882 Go ahead. It's not like you can actually do it.
+6192355000943883 Why the happy face? How many have you revived? You should be ashamed… People believed in you.
+6192355000943884 I'd rather you relieve my heartache. It's become so acute lately, like my heart expires.
+6192355000943885 Is this the doctor?
+6192355000943886 This is the doctor.
+6192355000943887 You aren't going to level the Town, are you, General?
+6192355000943888 What do you want?
+6192355000943889 I want to… influence your decision, somehow.
+6192355000943890 We can cure this disease. I know how.
+6192355000943891 What is this nonsense? State your name and occupation!
+6192355000943892 Artemy Burakh, surgeon.
+6192355000943893 Proof?
+6192355000943894 I… I didn't have time to collect it.
+6192355000943895 It's… not exactly scientific. Our people have a different approach.
+6192355000943896 Am I supposed to discuss this matter with civilians?
+6192355000943897 Yes.
+6192355000943898 I'm not just any civilian. I'm a doctor.
+6192355000943899 Burakh. Three doctors operated in this town. I'm one of them.
+6192355000943900 I see. Give me a reason to call off the bombardment. You have one chance.
+6192355000943901 I know how to make a serum. We'll need time to produce it at scale, but the recipe has been developed.
+6192355000943902 There are still many survivors here. That's enough.
+6192355000943903 You are a war hero. The only person in our Army who can truly be called human.
+6192355000943904 No, Burakh. If you told me you had three tank cars of that panacea and an army of doctors from the Capital ready to administer it, that would have convinced me.\nAs it stands, there's no going back. It's too great a risk.
+6192355000943905 Don't…
+6192355000943906 We only had twelve days! That's not enough time!
+6192355000943907 Move along, doctor, nothing to see here. Work as usual.
+6192355000943908 Who are these people?
+6192355000943910 
+6192355000943911 
+6192355000943912 
+6192355000943913 
+6192355000943914 
+6192355000943915 
+6192355000943916 So, Burakh, your performance was a flop. You're unfit for the role. A cursed production! This is our second attempt… and a second failure.
+6192355000943917 Come on. The first run was decent.
+6192355000943918 Will you try to stage it yet again?
+6192355000943919 That is, ahem, not for you to judge.
+6192355000943920 We gave it all we had.
+6192355000943921 It's not our fault you put us into these… inhuman conditions.
+6192355000943922 Why not? But you won't be there. You do nothing to improve yourself.
+6192355000943923 But I do.
+6192355000943924 Like I'm the problem here!
+6192355000943925 Whatever. You are dismissed. The bird will give you your final payment.
+6192355000943926 Whatever.
+6192355000943927 Aren't you tired of those beakheads? They're trouble.
+6192355000943928 They were the only useful people around.
+6192355000943929 Right…
+6192355000943930 So you insist on a second attempt, huh? Stubborn.
+6192355000943931 Perhaps.
+6192355000943932 Not a second. A first one.
+6192355000943933 All right, let's roll then. Let us imagine that the last train has not yet left the station. Just don't be late.
+6192355000943934 Now all I need is to not miss my stop.
+6192355000943935 All right. Let's roll.
+6192355000943936 Want to receive your payment? Well, everyone will get paid what they're due in the Cathedral. That's where the final choice will be made.
+6192355000943937 By whom?
+6192355000943938 The authorities.
+6192355000943939 Fitting…
+6192355000959751 Bachelor
+6192355000959752 Day 12, the last one,
+6192355000971751 
+6192355000971752 
+6192355000971753 It's still dark.
+6192355000971754 We'll fix everything. The decision will be made in the Cathedral.
+6192355000971755 Dismissal
+6192355000975351 
+6192355000979451 
+6192355000993160 They're looters. Like I said, it's work as usual. You do your job, and we'll do ours.
+6192355000993161 You should let them go… A couple less, a couple more, what does it matter?
+6192355000993162 …Butchers' work. You're killing people, you bastards! I can't believe this is our military. Even invaders are more humane. Stop this circus, now!
+6192355000993163 You know better than anyone there's no salvation from the sand pest. People go mad with pain. They're not responsible for their actions.\nWe put them out of their misery, and protect the healthy. Legal orders.
+6192355000993164 You burn them alive!
+6192355000994251 No, we burn infected miasmas.
+6192355000994252 What miasmas? You know nothing about this disease!
+6192355000994253 We have our instructions, compiled by your own doctors. "Mode of infection: unknown." It's transmitted through air, saliva, touch, and God knows what else! We've lost half our men already!
+6192355000994254 You deserve it.
+6192355000994255 What orders?
+6192355000994256 Go, doctor. Stop lecturing us. If you were better at your job, we wouldn't have to be so good at ours. But there's still no cure.\nOr do you think we enjoy shooting and burning civilians?
+6192355000994257 Those people are healthy! Why have you seized them?
+6192355000994258 Your orders are illegal!
+6192355000994259 Fine. You do what you have to.
+6192355001023651 The Polyhedron
+6192355001039951 
+6192355001039952 The Bridge Square
+6192355001039953 The Cape
+6192355001039954 The Marrow
+6192355001039955 Steppe
+6192355001039956 The Atrium
+6192355001039957 The Cathedral
+6192355001039958 We'll fix everything. The decision will be made in the Cathedral.
+6192355001039959 Theater
+6192355001039960 Odd mime shows are performed here every night.
+6192355001039961 
+6192355001040452 Common revolver ammo.
+6192355001040453 Black powder. A lead flat-nosed bullet. It's heavy, weighing more than 17 grams. Contrary to popular belief, it doesn't always have its billet.
+6192355001040454 Rifle Ammo
+6192355001040455 Common rifle ammo.
+6192355001040456 The local children call this pointed ammo "beakers." They often carry a couple in their pockets.
+6192355001040457 Shotgun Ammo
+6192355001040458 Common shotgun ammo.
+6192355001040459 Perfect for putting on railroad tracks. Stakh, Gravel, Grief, and I would do it all the time as kids. Trains were more common back then.
+6192355001040460 "Yas" Tincture
+6192355001040461 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355001040462 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Bones.
+6192355001040463 "Medrel" Tincture
+6192355001040464 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355001040465 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Nerves.
+6192355001040466 Boosts immunity. Reveals disease symptoms when given to an infected person.
+6192355001040467 "Yas" Tincture (+)
+6192355001040468 Boosts immunity. Reveals disease symptoms when given to an infected person. Particularly potent.
+6192355001040469 A tincture reveals some symptoms of the disease, showing which of the three Nyespa is damaged. But if a patient is administered too many tinctures, the pain can kill them.
+6192355001040471 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Flesh.
+6192355001040472 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Bones.
+6192355001040473 "Medrel" Tincture (+)
+6192355001040474 Boosts immunity. Reveals disease symptoms when given to an infected person. Particularly potent.
+6192355001040475 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Nerves.
+6192355001040476 "Zürkh" Tincture (+)
+6192355001040477 Boosts immunity. Reveals disease symptoms when given to an infected person. Particularly potent.
+6192355001040478 A body consists of three Layers: Flesh, Bones, and Nerves. Any affliction can be cured if one discovers which Layer has been poisoned.\n\nThis potion allows me to touch the Flesh.
+6192355001040479 Panacea
+6192355001040480 A run-of-the-mill medicine vial filled with clotty reddish liquid that smells of Earth.
+6192355001040481 …Is this it?
+6192355001040482 Too wonky to be used as a weapon or surgical instrument, but kids love it.
+6192355001040483 Straight Razor
+6192355001040484 Ten years ago, local bandits used to call themselves "barbers" and brandish a particular style of razors as a mark of their identity. I wonder what became of that culture.
+6192355001040485 Tan
+6192355001040486 A tasty dairy drink. Satisfies hunger, quenches thirst.
+6192355001040487 The Kin once told me the best tan is made during thunderstorms, or by swearing at the milk as harsh as you can. I tried every cuss in the book, but I never learned the art very well.
+6192355001040488 Tourniquet
+6192355001040489 Used to improve health. The townsfolk prefer locally made leather tourniquets over rubber ones.
+6192355001040490 Alexander Saburov hoped to outlaw tourniquets in a desperate attempt to protect his Katerina from morphine addiction. What a silly idea. One can't just outlaw bands made out of rubber and leather.
+6192355001040491 Chalk
+6192355001040492 A piece of chalk. Used to draw lines.
+6192355001040493 The world is one whole, having form only where it is divided. Some Lines are natural; others, man-made. Chalk, composed of the dead bodies of sea creatures, is a good tool for setting boundaries.
+6192355001040494 Morphine
+6192355001040495 Relieves fear and pain, leaving you drowsy and numb. If I take this before sleep, I'll recuperate better.
+6192355001040496 A person is only alive for as long as they feel pain. No matter what Katerina Saburova does, she remains alive.
+6192355001040497 Neomycinum
+6192355001040498 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040499 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040500 Neomycinum (+)
+6192355001040501 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040502 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040503 Ferromycinum
+6192355001040504 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040505 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040506 Ferromycinum (+)
+6192355001040507 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040508 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040509 Monomycinum
+6192355001040510 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040511 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040512 Monomycinum (+)
+6192355001040513 The best way to avoid infection is to be dead. Antibiotics are the first step in that direction.
+6192355001040514 The best way to avoid infection is to be dead. Antibiotics, which lower infection at the cost of health in general, are the first step to the grave.
+6192355001040515 Lancet
+6192355001040519 Empty Bottle
+6192355001040520 Can be filled with water or blood.
+6192355001040521 No one drinks water from the Gorkhon river in our town, which is quite sensible. No one digs wells either, which is less so. \n\nClear drinkable water is valued. People can often tell which spring it is from by the taste.
+6192355001040522 Smoked Meat
+6192355001040523 Not as good as fresh meat, but better preserved. Tear it apart with your teeth; no forks or knives required.
+6192355001040524 Canned meat. Jerked meat. Smoked meat. Boiled meat. Beef, ham. The art of cooking meat is truly honored in the Town.
+6192355001040525 Infected Heart
+6192355001040526 Ulcerous, yet still almost alive.
+6192355001040527 "Every object has a heartbeat. Can't you hear it?"
+6192355001040528 Bloody Bandage
+6192355001040529 Who in their right mind would keep this trash?
+6192355001040530 According to sanitary procedures, any object that bears the trace of a deceased person's blood must be burned. According to local belief, it's pointless since the blood will simply appear elsewhere.
+6192355001040531 Broken Ampoule
+6192355001040532 The glass is suspiciously warm to the touch.
+6192355001040533 Perhaps it contained a life-saving drug, or maybe it was poison. In any case, it's useless now.
+6192355001040534 Candle Stub
+6192355001040535 The stub of a nuptial candle. It smells of Earth.
+6192355001040536 They say when Wild Nina Kaina, the Dark Mistress of our town, so much as glanced at candles, they'd bow to her—even without wind. 
+6192355001040537 Spring
+6192355001040538 A rusty metal spring. Useful to fix all kinds of tools.
+6192355001040539 Industrialization granted the local workers new rights and fixed working hours. All it asked in return was their free will.
+6192355001040540 Broken Scissors
+6192355001040541 The Moerae must have been in a hurry.
+6192355001040542 It's said that Clara the Changeling, a thief girl who claims to be a saint, can repair any sharp object just as easily as she cures the sand pest, simply by laying her hands on it.
+6192355001040543 Beetle
+6192355001040544 A surprising find in autumn, if not useless.
+6192355001040545 Where do they go in winter?
+6192355001040546 Button
+6192355001040547 A trifle to a human, but a whole eye to a doll.
+6192355001040548 Murky is said to have a doll, but no one's ever seen it. Perhaps it simply lives all over the Town?
+6192355001040549 Needle
+6192355001040550 As piercing as a wise person's stare. Can be used to pick small locks, such as the ones in cabinet drawers.
+6192355001041351 They say that when Lara Ravel pricked her finger with a needle, no blood was drawn, and she hasn't ever fallen asleep ever since.
+6192355001043151 Revolver
+6192355001043152 A six-chambered, military-grade revolver. Imprecise. Limited range.
+6192355001043153 The civil war has gone on for more than two years. The hostility mostly passed our hellhole by, but refugees and deserters keep spreading military equipment to the furthest parts of the country.
+6192355001043251 Curious creatures, although I can't say I'm fond of the color. We'll have to paint them black. What do you think, doctor?
+6192355001043252 Black would look nice.
+6192355001043253 Leave them as they are. They're unpleasant enough already.
+6192355001080451 which the Haruspex ends with a semicolon
+6192355001080452 Mark Immortell
+6192355001080453 Changeling
+6192355001080454 Executor
+6192355001080455 Aspity
+6192355001080457 Commander
+6192355001080458 Officer
+6192355001082251 Inquisitor
+6192355001458076 
+6192355001458079 
+6192355001458080 
+6192355001458081 
+6192355001458082 
+6192355001458083 
+6192355001458084 
+6192355001458085 
+6192355001458086 
+6192355001458087 
+6192355001458088 
+6192355001458089 
+6192355001458090 
+6192355001458091 
+6192355001458092 
+6192355001458093 
+6192355001458094 
+6192355001458095 
+6192355001458096 
+6192355001458097 
+6192355001458098 
+6192355001458099 
+6192355001458100 
+6192355001458101 
+6192355001458102 
+6192355001458103 
+6192355001458104 
+6192355001458105 
+6192355001458106 
+6192355001458107 
+6192355001458108 
+6192355001458109 
+6192355001458110 
+6192355001458111 
+6192355001458112 
+6192355001458113 
+6192355001458114 
+6192355001458115 
+6192355001458116 
+6192355001458117 
+6192355001458118 
+6192355001458119 
+6192355001458120 
+6192355001458121 
+6192355001458122 
+6192355001458123 
+6192355001458124 
+6192355001458125 
+6192355001458126 
+6192355001458127 
+6192355001458128 
+6192355001458129 
+6192355001458130 
+6192355001458131 
+6192355001458132 
+6192355001458133 
+6192355001458134 
+6192355001458135 
+6192355001458136 
+6192355001458137 
+6192355001458138 
+6192355001458139 
+6192355001458140 
+6192355001458141 
+6192355001458142 
+6192355001458143 
+6192355001458144 
+6192355001458145 
+6192355001458146 
+6192355001458147 
+6192355001458148 
+6192355001458149 
+6192355001458150 
+6192355001458251 
+6192355001458252 
+6192355001458253 
+6192355001458254 
+6192355001458255 
+6192355001458256 
+6192355001458257 
+6192355001458258 
+6192355001458259 
+6192355001458260 
+6192355001458261 
+6192355001458262 
+6192355001458263 
+6192355001458264 
+6192355001458265 
+6192355001458266 
+6192355001458267 
+6192355001458268 
+6192355001458269 
+6192355001458270 
+6192355001458271 
+6192355001458272 
+6192355001458273 
+6192355001458274 
+6192355001458275 
+6192355001458276 
+6192355001458277 
+6192355001458278 
+6192355001460251 Water Bottle
+6192355001460252 Quenches thirst. Serves as a base for tinctures. Water from the Gorkhon river is undrinkable.
+6192355001460253 Fresh water is carried into the Town daily from steppe springs, then distributed by water bearers. The Gorkhon water has long been poisoned by the Factory pollution. It's dangerous to even touch.
+6192355001469051 
+6192355001469052 
+6192355001469053 
+6192355001469054 
+6192355001482551 Torn Note
+6192355001482552 A dirty piece of paper. Touch to read the barely legible writing.
+6192355001482553 "Schlafer contracted it. Anichkov contracted it. Jaksen contracted it. Lieutenant contracted it. Kurbanov contracted it. Vyuzhin contracted it.\n\nCaptain hasn't contracted it. Put a bullet in his head."
+6192355001485351 A surgeon's tool of stellar quality. Good at murder, too.
+6192355001485352 A tool for a surgeon. A tool for a menkhu. A tool for a bandit. A tool for a ripper. A tool for me.\n\nThis tool was made specifically for surgeons, so it's perfect for autopsies.
+6192355001485751 
+6192355001523851 
+6192355001523852 
+6192355001523853 
+6192355001523866 
+6192355001523867 
+6192355001523868 
+6192355001523869 
+6192355001523870 
+6192355001523871 
+6192355001523872 
+6192355001523873 
+6192355001523874 
+6192355001523875 
+6192355001523876 
+6192355001523877 
+6192355001523878 
+6192355001523879 
+6192355001523880 
+6192355001523881 
+6192355001523882 
+6192355001523883 
+6192355001523884 
+6192355001523885 
+6192355001523886 
+6192355001523887 
+6192355001523888 
+6192355001523889 
+6192355001523890 
+6192355001523891 
+6192355001523892 
+6192355001523893 
+6192355001523894 
+6192355001523895 
+6192355001523896 
+6192355001523897 
+6192355001523898 
+6192355001523899 
+6192355001523900 
+6192355001523901 
+6192355001523902 
+6192355001523903 
+6192355001523904 
+6192355001523905 
+6192355001523906 
+6192355001523907 
+6192355001523908 
+6192355001523909 
+6192355001523910 
+6192355001523911 
+6192355001523912 
+6192355001523913 
+6192355001523914 
+6192355001523915 
+6192355001523916 
+6192355001523917 
+6192355001523918 
+6192355001523919 
+6192355001523920 
+6192355001523921 
+6192355001523922 
+6192355001523923 
+6192355001523924 
+6192355001523925 
+6192355001523926 
+6192355001523927 
+6192355001523928 
+6192355001523929 
+6192355001523930 
+6192355001523931 
+6192355001523932 
+6192355001523933 
+6192355001523934 
+6192355001523935 
+6192355001523936 
+6192355001523937 
+6192355001523938 
+6192355001523939 
+6192355001523940 
+6192355001523941 
+6192355001523942 
+6192355001523943 
+6192355001523944 
+6192355001523945 
+6192355001523946 
+6192355001523947 
+6192355001523948 
+6192355001523949 
+6192355001523950 
+6192355001524051 
+6192355001524052 
+6192355001524053 
+6192355001524054 
+6192355001524055 
+6192355001524056 
+6192355001524057 
+6192355001524058 
+6192355001524059 
+6192355001524060 
+6192355001524061 
+6192355001524651 
+6192355001524652 
+6192355001524653 
+6192355001524657 
+6192355001524658 
+6192355001524659 
+6192355001524660 
+6192355001524661 
+6192355001524662 
+6192355001524663 
+6192355001524664 
+6192355001524665 
+6192355001524666 
+6192355001524667 
+6192355001524668 
+6192355001524669 
+6192355001524670 
+6192355001524671 
+6192355001524672 
+6192355001524673 
+6192355001524674 
+6192355001524675 
+6192355001524676 
+6192355001524677 
+6192355001524678 
+6192355001524679 
+6192355001524680 
+6192355001524681 
+6192355001524682 
+6192355001524683 
+6192355001524687 
+6192355001524688 
+6192355001524689 
+6192355001524690 
+6192355001524691 
+6192355001524692 
+6192355001524693 
+6192355001524694 
+6192355001524695 
+6192355001524696 
+6192355001524697 The Tanners
+6192355001524698 The Backbone
+6192355001524699 The Maw
+6192355001524700 The Hindquarters
+6192355001524701 The Cemetery
+6192355001524702 The Skinners
+6192355001524703 The Spleen
+6192355001524704 The Chine
+6192355001524705 The Flank
+6192355001524706 The Crude Sprawl
+6192355001524707 The Warehouses
+6192355001524708 The Gut
+6192355001524709 The Factory
+6192355001582369 
+6192355001582370 
+6192355001582371 
+6192355001582372 
+6192355001582373 
+6192355001582374 
+6192355001582375 
+6192355001582376 
+6192355001582377 
+6192355001582378 
+6192355001582379 
+6192355001582380 
+6192355001582381 
+6192355001582382 
+6192355001582383 
+6192355001582384 
+6192355001615257 
+6192355001615258 
+6192355001615259 
+6192355001615260 
+6192355001615261 
+6192355001615262 
+6192355001615263 
+6192355001672351 Revolver Ammo
+6192355001672352 "Zürkh" Tincture
+6192355002011361 
+6192355002011362 
+6192355002011363 
+6192355002011364 
+6192355002011365 
+6192355002011366 
+6192355002011367 
+6192355002011368 
+6192355002011369 
+6192355002011370 
+6192355002011371 
+6192355002011372 
+6192355002011373 
+6192355002011374 
+6192355002011375 
+6192355002011376 
+6192355002033651 The Station

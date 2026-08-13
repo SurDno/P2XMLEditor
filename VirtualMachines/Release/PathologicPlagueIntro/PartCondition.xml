@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="PartCondition">
+  <Item id="1407353412407426">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730737503</FirstExpression>
+    <SecondExpression>1125882730737504</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411228">
+    <Name />
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741305</FirstExpression>
+    <SecondExpression>1125882730741306</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411229">
+    <Name>Cathedral.TalkedToAglayaEQUALTrue</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741307</FirstExpression>
+    <SecondExpression>1125882730741308</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411230">
+    <Name>NarratorTextManager.EQUALPlayer.Player_Self</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741309</FirstExpression>
+    <SecondExpression>1125882730741310</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411233">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_FALSE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411826">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741903</FirstExpression>
+    <SecondExpression>1125882730741904</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411827">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741907</FirstExpression>
+    <SecondExpression>1125882730741908</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411832">
+    <Name />
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741917</FirstExpression>
+    <SecondExpression>1125882730741918</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411833">
+    <Name />
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741919</FirstExpression>
+    <SecondExpression>1125882730741920</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412411834">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730741923</FirstExpression>
+    <SecondExpression>1125882730741924</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416327">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_FALSE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416426">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730746503</FirstExpression>
+    <SecondExpression>1125882730746504</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416427">
+    <Name>Diseased.HealthEQUAL0</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730746505</FirstExpression>
+    <SecondExpression>1125882730746506</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416430">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_FALSE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416431">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730746513</FirstExpression>
+    <SecondExpression>1125882730746514</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412416926">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730747003</FirstExpression>
+    <SecondExpression>1125882730747004</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412418126">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730748203</FirstExpression>
+    <SecondExpression>1125882730748204</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412423226">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_TRUE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412423227">
+    <Name />
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730753301</FirstExpression>
+    <SecondExpression>1125882730753302</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412423228">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730753305</FirstExpression>
+    <SecondExpression>1125882730753306</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424326">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730754403</FirstExpression>
+    <SecondExpression>1125882730754404</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424327">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730754407</FirstExpression>
+    <SecondExpression>1125882730754408</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424329">
+    <Name>SickCharacters.OnEntityLogicEvent_message_nameEQUALHealingAntibioticCorrect</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730754409</FirstExpression>
+    <SecondExpression>1125882730754410</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424331">
+    <Name>SickCharacters.OnEntityLogicEvent_message_nameEQUALHealingAntibioticWrong</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730754411</FirstExpression>
+    <SecondExpression>1125882730754412</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424332">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730754415</FirstExpression>
+    <SecondExpression>1125882730754416</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424334">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_LESS</ConditionType>
+    <FirstExpression>1125882730754419</FirstExpression>
+    <SecondExpression>1125882730754420</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412424335">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_LARGER</ConditionType>
+    <FirstExpression>1125882730754423</FirstExpression>
+    <SecondExpression>1125882730754424</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412430827">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730760903</FirstExpression>
+    <SecondExpression>1125882730760904</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412430828">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730760907</FirstExpression>
+    <SecondExpression>1125882730760908</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412432426">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730762503</FirstExpression>
+    <SecondExpression>1125882730762504</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412432427">
+    <Name>Stvorki_House_12.EQUALPlayer.Player_Self</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730762505</FirstExpression>
+    <SecondExpression>1125882730762506</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412432428">
+    <Name>Stvorki_Houses_5_6.EQUALPlayer.Player_Self</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730762507</FirstExpression>
+    <SecondExpression>1125882730762508</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412437726">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730767803</FirstExpression>
+    <SecondExpression>1125882730767804</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412437727">
+    <Name>FocusModeTutorial.EQUALPlayer.Player_Self</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730767805</FirstExpression>
+    <SecondExpression>1125882730767806</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412438527">
+    <Name>MindMapTutorial.EQUALPlayer.Player_Self</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730768603</FirstExpression>
+    <SecondExpression>1125882730768604</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412451326">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730781403</FirstExpression>
+    <SecondExpression>1125882730781404</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412476226">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_FALSE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412483326">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730813703</FirstExpression>
+    <SecondExpression>1125882730813704</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412489526">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730820003</FirstExpression>
+    <SecondExpression>1125882730820004</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412489527">
+    <Name>Default False</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882730820005</FirstExpression>
+    <SecondExpression>1125882730820006</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412865431">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731196919</FirstExpression>
+    <SecondExpression>1125882731196920</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412865626">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731197103</FirstExpression>
+    <SecondExpression>1125882731197104</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412865628">
+    <Name>UsableItemsManager.OnTemplateEntityLogicEvent_message_template entityEQUALPathologicPlagueIntro.Water_Bottle_Entity</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731197105</FirstExpression>
+    <SecondExpression>1125882731197106</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412921426">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731252903</FirstExpression>
+    <SecondExpression>1125882731252904</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412929528">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731261011</FirstExpression>
+    <SecondExpression>1125882731261012</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412929529">
+    <Name>RiotCutsceneListener.EQUALPlagueIntroFlamethrowersDone</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731261013</FirstExpression>
+    <SecondExpression>1125882731261014</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412939026">
+    <Name />
+    <ConditionType>CONDITION_TYPE_CONST_FALSE</ConditionType>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412939027">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731270703</FirstExpression>
+    <SecondExpression>1125882731270704</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412939029">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731270711</FirstExpression>
+    <SecondExpression>1125882731270712</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412939031">
+    <Name>DistrictsPlagueManager.ArrivedRegionEvent_message_РегионEQUALStvorki_Region.Stvorki_Region</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731270713</FirstExpression>
+    <SecondExpression>1125882731270714</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412953927">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731285607</FirstExpression>
+    <SecondExpression>1125882731285608</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353412953928">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731285611</FirstExpression>
+    <SecondExpression>1125882731285612</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353413092626">
+    <Name>Rand05</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731424903</FirstExpression>
+    <SecondExpression>1125882731424904</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+  <Item id="1407353413379526">
+    <Name>Default False</Name>
+    <ConditionType>CONDITION_TYPE_VALUE_EQUAL</ConditionType>
+    <FirstExpression>1125882731713501</FirstExpression>
+    <SecondExpression>1125882731713502</SecondExpression>
+    <OrderIndex>0</OrderIndex>
+  </Item>
+</Root>

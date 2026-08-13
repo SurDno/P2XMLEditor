@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Quest">
+  <Item id="5066472273781754">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091548052</Item>
+      <Item>7881179091548053</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496607</EventGraph>
+    <CustomParams count="1">
+      <Item key="IntroManager_state">562941394089261</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394089260</Item>
+    </StandartParams>
+    <Name>IntroManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781755">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091550813</Item>
+      <Item>7881179091550814</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496611</EventGraph>
+    <Events count="15">
+      <Item>2814706822113182</Item>
+      <Item>2814706822113183</Item>
+      <Item>2814706822113184</Item>
+      <Item>2814706822113185</Item>
+      <Item>2814706822113186</Item>
+      <Item>2814706822113187</Item>
+      <Item>2814706822426789</Item>
+      <Item>2814706822426790</Item>
+      <Item>2814706822426791</Item>
+      <Item>2814706822426792</Item>
+      <Item>2814706822426793</Item>
+      <Item>2814706822434246</Item>
+      <Item>2814706822449078</Item>
+      <Item>2814706822473201</Item>
+      <Item>2814706822496451</Item>
+    </Events>
+    <CustomParams count="5">
+      <Item key="Coffin">562941394516799</Item>
+      <Item key="Companion">562941394139851</Item>
+      <Item key="Cup">562941394539513</Item>
+      <Item key="Dice">562941394539514</Item>
+      <Item key="OLD_CarriageQuest_state">562941394093828</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394093827</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>OLD_CarriageQuest</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781757">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091550817</Item>
+      <Item>7881179091550818</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496613</EventGraph>
+    <Events count="1">
+      <Item>2814706822480275</Item>
+    </Events>
+    <CustomParams count="8">
+      <Item key="1_Derailment_state">562941394093833</Item>
+      <Item key="Aurochs">562941394516847</Item>
+      <Item key="CurrentExecutors">562941394480221</Item>
+      <Item key="CurrentModel">562941394480220</Item>
+      <Item key="EnteredPlagueCloud">562941397434659</Item>
+      <Item key="ExecutorModelList">562941394480218</Item>
+      <Item key="SpokeToDerailmentExecutor">562941395881270</Item>
+      <Item key="TalkingExecutor">562941394153857</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394093834</Item>
+    </StandartParams>
+    <Name>1_Derailment</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781759">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091550821</Item>
+      <Item>7881179091550822</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496615</EventGraph>
+    <Events count="3">
+      <Item>2814706822342611</Item>
+      <Item>2814706822448231</Item>
+      <Item>2814706823214357</Item>
+    </Events>
+    <CustomParams count="35">
+      <Item key="3_Water_state">562941394093839</Item>
+      <Item key="Anna_Base">562941394506934</Item>
+      <Item key="Anna_Tragedian">562941394506935</Item>
+      <Item key="ArrivedToWater">562941395881271</Item>
+      <Item key="Bachelor_Base">562941394495507</Item>
+      <Item key="Bachelor_Tragedian">562941394495508</Item>
+      <Item key="BachelorAndChangeling_Triggered">562941394487454</Item>
+      <Item key="Blueprint_Cutscene_DankoAndChangeling">562941397069468</Item>
+      <Item key="Blueprint_Cutscene_Mistresses">562941397069465</Item>
+      <Item key="Blueprint_Cutscene_Oyun">562941397069467</Item>
+      <Item key="Blueprint_Cutscene_PeterAndAnna">562941397069466</Item>
+      <Item key="Changeling_Base">562941394487203</Item>
+      <Item key="Changeling_Tragedian">562941394487204</Item>
+      <Item key="Corpse">562941394153856</Item>
+      <Item key="Doghead_Sitting_2">562941394153854</Item>
+      <Item key="Doghead_Sitting_3">562941394153855</Item>
+      <Item key="Doghead_Talking_1">562941394153853</Item>
+      <Item key="Kapella_Base">562941394506943</Item>
+      <Item key="Kapella_Tragedian">562941394506944</Item>
+      <Item key="Katerina_Base">562941394506945</Item>
+      <Item key="Katerina_Tragedian">562941394506946</Item>
+      <Item key="Maria_Base">562941394506947</Item>
+      <Item key="Maria_Tragedian">562941394506948</Item>
+      <Item key="Mistresses_Triggered">562941394506871</Item>
+      <Item key="Oyun_Base">562941394506949</Item>
+      <Item key="Oyun_Tragedian">562941394506950</Item>
+      <Item key="Oyun_Triggered">562941394506869</Item>
+      <Item key="Petr_Base">562941394506936</Item>
+      <Item key="Petr_Tragedian">562941394506937</Item>
+      <Item key="PetrAndAnna_Triggered">562941394506870</Item>
+      <Item key="PlayerGotWater">562941395868151</Item>
+      <Item key="SpokeToMartha">562941394475878</Item>
+      <Item key="Thirsty_Woman">562941394472151</Item>
+      <Item key="WaterCompanion">562941395864884</Item>
+      <Item key="WaterExecutor">562941394545568</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394093840</Item>
+    </StandartParams>
+    <Name>3_Water</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781761">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091550825</Item>
+      <Item>7881179091550826</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496617</EventGraph>
+    <Events count="4">
+      <Item>2814706822457791</Item>
+      <Item>2814706822473207</Item>
+      <Item>2814706822473208</Item>
+      <Item>2814706822495751</Item>
+    </Events>
+    <CustomParams count="5">
+      <Item key="5_Suok_state">562941394093845</Item>
+      <Item key="CurrentModel">562941394475751</Item>
+      <Item key="CurrentOdongh">562941395866384</Item>
+      <Item key="CurrentSpectator">562941394130306</Item>
+      <Item key="Opponent">562941394130307</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394093846</Item>
+    </StandartParams>
+    <Name>5_Suok</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781764">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091550831</Item>
+      <Item>7881179091550832</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496620</EventGraph>
+    <CustomParams count="8">
+      <Item key="7_FathersHouse_state">562941394094154</Item>
+      <Item key="ArrivedToIsidoorHouse">562941395881272</Item>
+      <Item key="EnteredHouse">562941394475874</Item>
+      <Item key="FinalDoorTimerId">562941396744966</Item>
+      <Item key="IsGrammophoneOn">562941397628354</Item>
+      <Item key="LaughCount">562941394524113</Item>
+      <Item key="LaughTimerId">562941395902959</Item>
+      <Item key="OpenedPenultimateDoor">562941395881273</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394094155</Item>
+    </StandartParams>
+    <Name>7_FathersHouse</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781765">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179091552217</Item>
+      <Item>7881179091552218</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496621</EventGraph>
+    <CustomParams count="1">
+      <Item key="ConsoleNavigation_state">562941394095265</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394095264</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>ConsoleNavigation</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472273781766">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179091552221</Item>
+      <Item>7881179091552222</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910496630</EventGraph>
+    <Events count="1">
+      <Item>2814706822434244</Item>
+    </Events>
+    <CustomParams count="6">
+      <Item key="CurrentDiseased">562941394481304</Item>
+      <Item key="CurrentDiseasedModel">562941394481303</Item>
+      <Item key="DiseasedModels">562941394481302</Item>
+      <Item key="DiseasedSpawnpoints">562941394481301</Item>
+      <Item key="OLD_Cleansing_state">562941394095269</Item>
+      <Item key="SoldierSpawnpoints">562941394130369</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941394095270</Item>
+    </StandartParams>
+    <Name>OLD_Cleansing</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274226852">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179092303703</Item>
+      <Item>7881179092303704</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910942302</EventGraph>
+    <Events count="2">
+      <Item>2814706823036755</Item>
+      <Item>2814706823036757</Item>
+    </Events>
+    <CustomParams count="3">
+      <Item key="0_StartingCarriage_state">562941395744256</Item>
+      <Item key="Companion">562941395744260</Item>
+      <Item key="SpokeToCompanionFirst">562941395881269</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395744255</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>0_StartingCarriage</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274227651">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179092304501</Item>
+      <Item>7881179092304502</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910943101</EventGraph>
+    <Events count="1">
+      <Item>2814706823038151</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="2_DiceCarriage_state">562941395745053</Item>
+      <Item key="Companion">562941395745059</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395745052</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>2_DiceCarriage</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274228251">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179092305101</Item>
+      <Item>7881179092305102</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910943701</EventGraph>
+    <Events count="2">
+      <Item>2814706823038351</Item>
+      <Item>2814706823060151</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="4_WakeUpCarriage_state">562941395745653</Item>
+      <Item key="WakeUpCompanion">562941395745687</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395745652</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>4_WakeUpCarriage</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274228751">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179092305601</Item>
+      <Item>7881179092305602</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910944201</EventGraph>
+    <Events count="1">
+      <Item>2814706823038653</Item>
+    </Events>
+    <CustomParams count="2">
+      <Item key="6_AlmostThereCarriage_state">562941395746153</Item>
+      <Item key="AlmostThereCompanion">562941396749869</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395746152</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>6_AlmostThereCarriage</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274245551">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092335401</Item>
+      <Item>7881179092335402</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910961001</EventGraph>
+    <CustomParams count="1">
+      <Item key="TimeAndWeatherManager_state">562941395801453</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395801452</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>TimeAndWeatherManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274245552">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092335403</Item>
+      <Item>7881179092335404</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530910961002</EventGraph>
+    <CustomParams count="1">
+      <Item key="SoundManager_state">562941395801456</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395801455</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>SoundManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274293651">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <InheritanceInfo count="1">
+      <Item>7599708408846976</Item>
+    </InheritanceInfo>
+    <FunctionalComponents count="2">
+      <Item>7881179092387901</Item>
+      <Item>7881179092387902</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911009102</EventGraph>
+    <CustomParams count="4">
+      <Item key="CapsText">562941395861254</Item>
+      <Item key="ListOfTexts">562941395861255</Item>
+      <Item key="NarratorText_state">562941395861253</Item>
+      <Item key="NormalText">562941395897451</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395861252</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>NarratorText</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274300251">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092395301</Item>
+      <Item>7881179092395302</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911015701</EventGraph>
+    <Events count="1">
+      <Item>2814706823145153</Item>
+    </Events>
+    <CustomParams count="1">
+      <Item key="TooltipManager_state">562941395869453</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395869452</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>TooltipManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274300252">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092395303</Item>
+      <Item>7881179092395304</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911015702</EventGraph>
+    <CustomParams count="2">
+      <Item key="Bag">562941395869460</Item>
+      <Item key="DropBagManager_state">562941395869459</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395869458</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>DropBagManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274327151">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092422301</Item>
+      <Item>7881179092422302</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911042601</EventGraph>
+    <CustomParams count="1">
+      <Item key="MindMapManager_state">562941395897454</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941395897453</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>MindMapManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+  <Item id="5066472274671951">
+    <StartEvent>2814706822036151</StartEvent>
+    <Static>True</Static>
+    <FunctionalComponents count="2">
+      <Item>7881179092981901</Item>
+      <Item>7881179092981902</Item>
+    </FunctionalComponents>
+    <EventGraph>4503530911388101</EventGraph>
+    <CustomParams count="1">
+      <Item key="UsableItemsManager_state">562941397242569</Item>
+    </CustomParams>
+    <StandartParams count="1">
+      <Item key="Common.ObjectEnabled">562941397242568</Item>
+    </StandartParams>
+    <GameTimeContext>9007061816848801</GameTimeContext>
+    <Name>UsableItemsManager</Name>
+    <Parent>281470685259026</Parent>
+  </Item>
+</Root>

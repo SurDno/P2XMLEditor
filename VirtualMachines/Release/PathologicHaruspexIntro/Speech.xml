@@ -1,0 +1,1231 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Speech">
+  <Item id="3940589547094051">
+    <Replyes count="2">
+      <Item>3659118865425426</Item>
+      <Item>3659118865449012</Item>
+    </Replyes>
+    <Text>6192355000539053</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138860132</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="4">
+      <Item>4222060228890289</Item>
+      <Item>4222060228890300</Item>
+      <Item>4222060228890305</Item>
+      <Item>4222060228890307</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890301</Item>
+      <Item>4222060228890304</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_1</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547095251">
+    <Replyes count="2">
+      <Item>3659118865426626</Item>
+      <Item>3659118865448026</Item>
+    </Replyes>
+    <Text>6192355000540251</Text>
+    <AuthorGuid>5347942955459648</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138861365</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955459648</Owner>
+    <InputLinks count="1">
+      <Item>4222060228867311</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228872289</Item>
+      <Item>4222060228888776</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_speech_1</Name>
+    <Parent>4785001592123226</Parent>
+  </Item>
+  <Item id="3940589547108451">
+    <Replyes count="3">
+      <Item>3659118865439926</Item>
+      <Item>3659118865449017</Item>
+      <Item>3659118865449018</Item>
+    </Replyes>
+    <Text>6192355000553551</Text>
+    <AuthorGuid>5347942955491877</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138874540</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955491877</Owner>
+    <InputLinks count="1">
+      <Item>4222060228880588</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228880589</Item>
+      <Item>4222060228890311</Item>
+      <Item>4222060228890313</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Thirsty_Marta_speech_1</Name>
+    <Parent>4785001592136426</Parent>
+  </Item>
+  <Item id="3940589547116551">
+    <Replyes count="2">
+      <Item>3659118865448027</Item>
+      <Item>3659118865448032</Item>
+    </Replyes>
+    <Text>6192355000561652</Text>
+    <AuthorGuid>5347942955459648</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138882726</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955459648</Owner>
+    <InputLinks count="3">
+      <Item>4222060228888776</Item>
+      <Item>4222060228888787</Item>
+      <Item>4222060228888794</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228888777</Item>
+      <Item>4222060228888784</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_speech_2</Name>
+    <Parent>4785001592123226</Parent>
+  </Item>
+  <Item id="3940589547116552">
+    <Replyes count="3">
+      <Item>3659118865448030</Item>
+      <Item>3659118865448038</Item>
+      <Item>3659118865448039</Item>
+    </Replyes>
+    <Text>6192355000561654</Text>
+    <AuthorGuid>5347942955459648</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138882727</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955459648</Owner>
+    <InputLinks count="1">
+      <Item>4222060228888777</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228888781</Item>
+      <Item>4222060228888795</Item>
+      <Item>4222060228888796</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_speech_3</Name>
+    <Parent>4785001592123226</Parent>
+  </Item>
+  <Item id="3940589547116553">
+    <Replyes count="2">
+      <Item>3659118865448029</Item>
+      <Item>3659118865448034</Item>
+    </Replyes>
+    <Text>6192355000561656</Text>
+    <AuthorGuid>5347942955459648</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138882728</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955459648</Owner>
+    <InputLinks count="1">
+      <Item>4222060228872289</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228888779</Item>
+      <Item>4222060228888787</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_speech_4</Name>
+    <Parent>4785001592123226</Parent>
+  </Item>
+  <Item id="3940589547116554">
+    <Replyes count="2">
+      <Item>3659118865448031</Item>
+      <Item>3659118865448035</Item>
+    </Replyes>
+    <Text>6192355000561659</Text>
+    <AuthorGuid>5347942955459648</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138882729</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955459648</Owner>
+    <InputLinks count="1">
+      <Item>4222060228888779</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228888788</Item>
+      <Item>4222060228888794</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_speech_5</Name>
+    <Parent>4785001592123226</Parent>
+  </Item>
+  <Item id="3940589547117467">
+    <Replyes count="3">
+      <Item>3659118865448969</Item>
+      <Item>3659118865448971</Item>
+      <Item>3659118865448972</Item>
+    </Replyes>
+    <Text>6192355000562610</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883644</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="1">
+      <Item>4222060228889734</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228889759</Item>
+      <Item>4222060228889769</Item>
+      <Item>4222060228889770</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_1</Name>
+    <Parent>4785001592145426</Parent>
+  </Item>
+  <Item id="3940589547117468">
+    <Replyes count="2">
+      <Item>3659118865448970</Item>
+      <Item>3659118865448999</Item>
+    </Replyes>
+    <Text>6192355000562612</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883647</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="1">
+      <Item>4222060228889735</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890284</Item>
+      <Item>4222060228890285</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_Before_speech</Name>
+    <Parent>4785001592145427</Parent>
+  </Item>
+  <Item id="3940589547117476">
+    <Replyes count="3">
+      <Item>3659118865448987</Item>
+      <Item>3659118865448988</Item>
+      <Item>3659118865448989</Item>
+    </Replyes>
+    <Text>6192355000562637</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883657</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="3">
+      <Item>4222060228889759</Item>
+      <Item>4222060228889769</Item>
+      <Item>4222060228889770</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228889762</Item>
+      <Item>4222060228889771</Item>
+      <Item>4222060228889772</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_5</Name>
+    <Parent>4785001592145426</Parent>
+  </Item>
+  <Item id="3940589547117477">
+    <Replyes count="3">
+      <Item>3659118865448990</Item>
+      <Item>3659118865448991</Item>
+      <Item>3659118865448992</Item>
+    </Replyes>
+    <Text>6192355000562641</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883658</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="3">
+      <Item>4222060228889762</Item>
+      <Item>4222060228889771</Item>
+      <Item>4222060228889772</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228889765</Item>
+      <Item>4222060228889773</Item>
+      <Item>4222060228889774</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_6</Name>
+    <Parent>4785001592145426</Parent>
+  </Item>
+  <Item id="3940589547117478">
+    <Replyes count="3">
+      <Item>3659118865448993</Item>
+      <Item>3659118865448994</Item>
+      <Item>3659118865448996</Item>
+    </Replyes>
+    <Text>6192355000562645</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883659</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="3">
+      <Item>4222060228889765</Item>
+      <Item>4222060228889773</Item>
+      <Item>4222060228889774</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228889768</Item>
+      <Item>4222060228890278</Item>
+      <Item>4222060228890279</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_7</Name>
+    <Parent>4785001592145426</Parent>
+  </Item>
+  <Item id="3940589547117479">
+    <Replyes count="3">
+      <Item>3659118865448995</Item>
+      <Item>3659118865448997</Item>
+      <Item>3659118865448998</Item>
+    </Replyes>
+    <Text>6192355000562648</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883660</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="3">
+      <Item>4222060228889768</Item>
+      <Item>4222060228890278</Item>
+      <Item>4222060228890279</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228890276</Item>
+      <Item>4222060228890280</Item>
+      <Item>4222060228890281</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_8</Name>
+    <Parent>4785001592145426</Parent>
+  </Item>
+  <Item id="3940589547117480">
+    <Replyes count="2">
+      <Item>3659118865449000</Item>
+      <Item>3659118865449001</Item>
+    </Replyes>
+    <Text>6192355000563254</Text>
+    <AuthorGuid>5347942955475376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883661</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955475376</Owner>
+    <InputLinks count="2">
+      <Item>4222060228890284</Item>
+      <Item>4222060228890285</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890283</Item>
+      <Item>4222060228890286</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>OpponentOdongh_speech_2</Name>
+    <Parent>4785001592145427</Parent>
+  </Item>
+  <Item id="3940589547117481">
+    <Replyes count="2">
+      <Item>3659118865449002</Item>
+      <Item>3659118865449005</Item>
+    </Replyes>
+    <Text>6192355000563257</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883662</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="1">
+      <Item>4222060228866079</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890287</Item>
+      <Item>4222060228890290</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_3</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117482">
+    <Replyes count="2">
+      <Item>3659118865449003</Item>
+      <Item>3659118865449006</Item>
+    </Replyes>
+    <Text>6192355000563259</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883663</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="2">
+      <Item>4222060228890287</Item>
+      <Item>4222060228890297</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890288</Item>
+      <Item>4222060228890291</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_4</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117483">
+    <Replyes count="2">
+      <Item>3659118865449004</Item>
+      <Item>3659118865449014</Item>
+    </Replyes>
+    <Text>6192355000563261</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883664</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="3">
+      <Item>4222060228890288</Item>
+      <Item>4222060228890293</Item>
+      <Item>4222060228890295</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890289</Item>
+      <Item>4222060228890307</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_5</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117484">
+    <Replyes count="3">
+      <Item>3659118865449007</Item>
+      <Item>3659118865449010</Item>
+      <Item>3659118865449011</Item>
+    </Replyes>
+    <Text>6192355000563265</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883665</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="1">
+      <Item>4222060228890291</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060228890293</Item>
+      <Item>4222060228890300</Item>
+      <Item>4222060228890305</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_6</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117485">
+    <Replyes count="2">
+      <Item>3659118865449008</Item>
+      <Item>3659118865449009</Item>
+    </Replyes>
+    <Text>6192355000563267</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883666</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="1">
+      <Item>4222060228890290</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890295</Item>
+      <Item>4222060228890297</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_7</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117486">
+    <Replyes count="2">
+      <Item>3659118865449013</Item>
+      <Item>3659118865449015</Item>
+    </Replyes>
+    <Text>6192355000563273</Text>
+    <AuthorGuid>5347942955477476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883667</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955477476</Owner>
+    <InputLinks count="2">
+      <Item>4222060228890301</Item>
+      <Item>4222060228890304</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890303</Item>
+      <Item>4222060228890308</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>TalkingExecutor_speech_8</Name>
+    <Parent>4785001592122026</Parent>
+  </Item>
+  <Item id="3940589547117487">
+    <Replyes count="2">
+      <Item>3659118865449016</Item>
+      <Item>3659118865449019</Item>
+    </Replyes>
+    <Text>6192355000563277</Text>
+    <AuthorGuid>5347942955491877</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883668</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955491877</Owner>
+    <InputLinks count="3">
+      <Item>4222060228880589</Item>
+      <Item>4222060228890311</Item>
+      <Item>4222060228890313</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890309</Item>
+      <Item>4222060228890314</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Thirsty_Marta_speech_2</Name>
+    <Parent>4785001592136426</Parent>
+  </Item>
+  <Item id="3940589547117488">
+    <Replyes count="2">
+      <Item>3659118865449020</Item>
+      <Item>3659118865449021</Item>
+    </Replyes>
+    <Text>6192355000563282</Text>
+    <AuthorGuid>5347942955491877</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236138883669</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955491877</Owner>
+    <InputLinks count="1">
+      <Item>4222060228890309</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060228890315</Item>
+      <Item>4222060228890316</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Thirsty_Marta_speech_3</Name>
+    <Parent>4785001592136426</Parent>
+  </Item>
+  <Item id="3940589547522056">
+    <Replyes count="2">
+      <Item>3659118865853937</Item>
+      <Item>3659118865853938</Item>
+    </Replyes>
+    <Text>6192355000969068</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291795</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="4">
+      <Item>4222060229301041</Item>
+      <Item>4222060229301046</Item>
+      <Item>4222060229301050</Item>
+      <Item>4222060229301051</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301032</Item>
+      <Item>4222060229301033</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522057">
+    <Replyes count="2">
+      <Item>3659118865853939</Item>
+      <Item>3659118865853940</Item>
+    </Replyes>
+    <Text>6192355000969071</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291796</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301032</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301034</Item>
+      <Item>4222060229301035</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522058">
+    <Replyes count="2">
+      <Item>3659118865853941</Item>
+      <Item>3659118865853942</Item>
+    </Replyes>
+    <Text>6192355000969074</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291797</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301031</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301036</Item>
+      <Item>4222060229301038</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522059">
+    <Replyes count="4">
+      <Item>3659118865853943</Item>
+      <Item>3659118865853944</Item>
+      <Item>3659118865853945</Item>
+      <Item>3659118865853946</Item>
+    </Replyes>
+    <Text>6192355000969077</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291798</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="2">
+      <Item>4222060229301036</Item>
+      <Item>4222060229301042</Item>
+    </InputLinks>
+    <OutputLinks count="4">
+      <Item>4222060229301037</Item>
+      <Item>4222060229301043</Item>
+      <Item>4222060229301044</Item>
+      <Item>4222060229301045</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522060">
+    <Replyes count="2">
+      <Item>3659118865853947</Item>
+      <Item>3659118865853948</Item>
+    </Replyes>
+    <Text>6192355000969082</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291799</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301038</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301039</Item>
+      <Item>4222060229301040</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522061">
+    <Replyes count="3">
+      <Item>3659118865853949</Item>
+      <Item>3659118865853950</Item>
+      <Item>3659118865853951</Item>
+    </Replyes>
+    <Text>6192355000969085</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291800</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="4">
+      <Item>4222060229301037</Item>
+      <Item>4222060229301043</Item>
+      <Item>4222060229301044</Item>
+      <Item>4222060229301045</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060229301041</Item>
+      <Item>4222060229301046</Item>
+      <Item>4222060229301050</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522062">
+    <Replyes count="2">
+      <Item>3659118865853952</Item>
+      <Item>3659118865853953</Item>
+    </Replyes>
+    <Text>6192355000969089</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291801</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301039</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301042</Item>
+      <Item>4222060229301051</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522063">
+    <Replyes count="3">
+      <Item>3659118865853954</Item>
+      <Item>3659118865853955</Item>
+      <Item>3659118865853956</Item>
+    </Replyes>
+    <Text>6192355000969092</Text>
+    <AuthorGuid>5347942955905477</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139291802</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955905477</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301034</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060229301047</Item>
+      <Item>4222060229301048</Item>
+      <Item>4222060229301049</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>DiceCompanion_RollTheDice_speech</Name>
+    <Parent>4785001592550027</Parent>
+  </Item>
+  <Item id="3940589547522851">
+    <Replyes count="2">
+      <Item>3659118865854726</Item>
+      <Item>3659118865854727</Item>
+    </Replyes>
+    <Text>6192355000969851</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292533</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301881</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301882</Item>
+      <Item>4222060229301893</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522852">
+    <Replyes count="3">
+      <Item>3659118865854728</Item>
+      <Item>3659118865854729</Item>
+      <Item>3659118865854730</Item>
+    </Replyes>
+    <Text>6192355000969854</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292534</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <InputLinks count="2">
+      <Item>4222060229301882</Item>
+      <Item>4222060229301890</Item>
+    </InputLinks>
+    <OutputLinks count="3">
+      <Item>4222060229301883</Item>
+      <Item>4222060229301886</Item>
+      <Item>4222060229301887</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522853">
+    <Replyes count="2">
+      <Item>3659118865854731</Item>
+      <Item>3659118865854732</Item>
+    </Replyes>
+    <Text>6192355000969858</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292535</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301883</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301884</Item>
+      <Item>4222060229301885</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522854">
+    <Replyes count="1">
+      <Item>3659118865854733</Item>
+    </Replyes>
+    <Text>6192355000969861</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292536</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <InputLinks count="3">
+      <Item>4222060229301887</Item>
+      <Item>4222060229301891</Item>
+      <Item>4222060229301893</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229301888</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522855">
+    <Replyes count="2">
+      <Item>3659118865854734</Item>
+      <Item>3659118865854735</Item>
+    </Replyes>
+    <Text>6192355000969863</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292537</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229301888</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229301889</Item>
+      <Item>4222060229301892</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522856">
+    <Replyes count="2">
+      <Item>3659118865854736</Item>
+      <Item>3659118865854737</Item>
+    </Replyes>
+    <Text>6192355000969866</Text>
+    <AuthorGuid>5347942955906076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292538</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906076</Owner>
+    <OutputLinks count="2">
+      <Item>4222060229301890</Item>
+      <Item>4222060229301891</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>StartingCompanion_WakeUpBuddy_speech</Name>
+    <Parent>4785001592550826</Parent>
+  </Item>
+  <Item id="3940589547522970">
+    <Replyes count="2">
+      <Item>3659118865854869</Item>
+      <Item>3659118865854870</Item>
+    </Replyes>
+    <Text>6192355000970014</Text>
+    <AuthorGuid>5347942955906376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292670</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229302028</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229302029</Item>
+      <Item>4222060229302031</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LastMeetCompanion_AlmostThere_speech</Name>
+    <Parent>4785001592550929</Parent>
+  </Item>
+  <Item id="3940589547522971">
+    <Replyes count="2">
+      <Item>3659118865854871</Item>
+      <Item>3659118865854872</Item>
+    </Replyes>
+    <Text>6192355000970017</Text>
+    <AuthorGuid>5347942955906376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292671</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229302029</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229302030</Item>
+      <Item>4222060229302034</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LastMeetCompanion_AlmostThere_speech</Name>
+    <Parent>4785001592550929</Parent>
+  </Item>
+  <Item id="3940589547522972">
+    <Replyes count="2">
+      <Item>3659118865854873</Item>
+      <Item>3659118865854874</Item>
+    </Replyes>
+    <Text>6192355000970020</Text>
+    <AuthorGuid>5347942955906376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292672</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906376</Owner>
+    <InputLinks count="1">
+      <Item>4222060229302031</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229302036</Item>
+      <Item>4222060229302038</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LastMeetCompanion_AlmostThere_speech</Name>
+    <Parent>4785001592550929</Parent>
+  </Item>
+  <Item id="3940589547522973">
+    <Replyes count="2">
+      <Item>3659118865854875</Item>
+      <Item>3659118865854876</Item>
+    </Replyes>
+    <Text>6192355000970023</Text>
+    <AuthorGuid>5347942955906376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292673</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906376</Owner>
+    <InputLinks count="3">
+      <Item>4222060229302035</Item>
+      <Item>4222060229302037</Item>
+      <Item>4222060229302038</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229302032</Item>
+      <Item>4222060229302033</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LastMeetCompanion_AlmostThere_speech</Name>
+    <Parent>4785001592550929</Parent>
+  </Item>
+  <Item id="3940589547522974">
+    <Replyes count="2">
+      <Item>3659118865854877</Item>
+      <Item>3659118865854878</Item>
+    </Replyes>
+    <Text>6192355000970026</Text>
+    <AuthorGuid>5347942955906376</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139292674</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955906376</Owner>
+    <InputLinks count="2">
+      <Item>4222060229302030</Item>
+      <Item>4222060229302036</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229302035</Item>
+      <Item>4222060229302037</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>LastMeetCompanion_AlmostThere_speech</Name>
+    <Parent>4785001592550929</Parent>
+  </Item>
+  <Item id="3940589547590051">
+    <Replyes count="2">
+      <Item>3659118865921926</Item>
+      <Item>3659118865930326</Item>
+    </Replyes>
+    <Text>6192355001037052</Text>
+    <AuthorGuid>5347942955973476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139360234</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955973476</Owner>
+    <InputLinks count="1">
+      <Item>4222060229369781</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229369782</Item>
+      <Item>4222060229378278</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Water_Companion_speech_1</Name>
+    <Parent>4785001592618026</Parent>
+  </Item>
+  <Item id="3940589547590451">
+    <Replyes count="2">
+      <Item>3659118865922326</Item>
+      <Item>3659118865930332</Item>
+    </Replyes>
+    <Text>6192355001037451</Text>
+    <AuthorGuid>5347942955487076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139360628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955487076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370176</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229370177</Item>
+      <Item>4222060229378283</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Doghead_Talking_1_speech_1</Name>
+    <Parent>4785001592618426</Parent>
+  </Item>
+  <Item id="3940589547598451">
+    <Replyes count="2">
+      <Item>3659118865930327</Item>
+      <Item>3659118865930328</Item>
+    </Replyes>
+    <Text>6192355001045552</Text>
+    <AuthorGuid>5347942955973476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139368626</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955973476</Owner>
+    <InputLinks count="2">
+      <Item>4222060229369782</Item>
+      <Item>4222060229378278</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229378277</Item>
+      <Item>4222060229378279</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Water_Companion_speech_2</Name>
+    <Parent>4785001592618026</Parent>
+  </Item>
+  <Item id="3940589547598452">
+    <Replyes count="2">
+      <Item>3659118865930329</Item>
+      <Item>3659118865930330</Item>
+    </Replyes>
+    <Text>6192355001045555</Text>
+    <AuthorGuid>5347942955973476</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139368627</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955973476</Owner>
+    <InputLinks count="1">
+      <Item>4222060229378279</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229378280</Item>
+      <Item>4222060229378281</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Water_Companion_speech_3</Name>
+    <Parent>4785001592618026</Parent>
+  </Item>
+  <Item id="3940589547598453">
+    <Replyes count="1">
+      <Item>3659118865930331</Item>
+    </Replyes>
+    <Text>6192355001045558</Text>
+    <AuthorGuid>5347942955487076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139368628</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955487076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229370177</Item>
+    </InputLinks>
+    <OutputLinks count="1">
+      <Item>4222060229378282</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Doghead_Talking_1_speech_2</Name>
+    <Parent>4785001592618426</Parent>
+  </Item>
+  <Item id="3940589547598454">
+    <Replyes count="2">
+      <Item>3659118865930333</Item>
+      <Item>3659118865930334</Item>
+    </Replyes>
+    <Text>6192355001045561</Text>
+    <AuthorGuid>5347942955487076</AuthorGuid>
+    <OnlyOnce>False</OnlyOnce>
+    <IsTrade>False</IsTrade>
+    <EntryPoints count="1">
+      <Item>2533236139368629</Item>
+    </EntryPoints>
+    <IgnoreBlock>False</IgnoreBlock>
+    <Owner>5347942955487076</Owner>
+    <InputLinks count="1">
+      <Item>4222060229378282</Item>
+    </InputLinks>
+    <OutputLinks count="2">
+      <Item>4222060229378284</Item>
+      <Item>4222060229378285</Item>
+    </OutputLinks>
+    <Initial>False</Initial>
+    <Name>Doghead_Talking_1_speech_3</Name>
+    <Parent>4785001592618426</Parent>
+  </Item>
+</Root>

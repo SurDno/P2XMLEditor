@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="Talking">
+  <Item id="4785001592524826">
+    <States count="6">
+      <Item>3377648184136201</Item>
+      <Item>3940589547496851</Item>
+      <Item>3940589547496852</Item>
+      <Item>3940589547496853</Item>
+      <Item>3940589547496854</Item>
+      <Item>3940589547496855</Item>
+    </States>
+    <EventLinks count="9">
+      <Item>4222060229275784</Item>
+      <Item>4222060229275785</Item>
+      <Item>4222060229275787</Item>
+      <Item>4222060229275788</Item>
+      <Item>4222060229275789</Item>
+      <Item>4222060229275791</Item>
+      <Item>4222060229275792</Item>
+      <Item>4222060229275793</Item>
+      <Item>4222060229275794</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266542</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880281</Owner>
+    <Initial>False</Initial>
+    <Name>Aglaya PlagueIntro_Cathedral</Name>
+    <Parent>4503530910917906</Parent>
+  </Item>
+  <Item id="4785001592524827">
+    <States count="4">
+      <Item>3377648184136202</Item>
+      <Item>3940589547496856</Item>
+      <Item>3940589547496857</Item>
+      <Item>3940589547496858</Item>
+    </States>
+    <EventLinks count="7">
+      <Item>4222060229275795</Item>
+      <Item>4222060229275797</Item>
+      <Item>4222060229275798</Item>
+      <Item>4222060229275800</Item>
+      <Item>4222060229275801</Item>
+      <Item>4222060229275802</Item>
+      <Item>4222060229275803</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266549</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880283</Owner>
+    <Initial>False</Initial>
+    <Name>AspityPlagueIntro</Name>
+    <Parent>4503530910917908</Parent>
+  </Item>
+  <Item id="4785001592524828">
+    <States count="3">
+      <Item>3377648184136203</Item>
+      <Item>3940589547496859</Item>
+      <Item>3940589547496860</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229275804</Item>
+      <Item>4222060229275805</Item>
+      <Item>4222060229275806</Item>
+      <Item>4222060229275807</Item>
+      <Item>4222060229275808</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266554</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880277</Owner>
+    <Initial>False</Initial>
+    <Name>Bachelor PlagueIntro</Name>
+    <Parent>4503530910917902</Parent>
+  </Item>
+  <Item id="4785001592524829">
+    <States count="3">
+      <Item>3377648184136204</Item>
+      <Item>3940589547496861</Item>
+      <Item>3940589547496862</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229275809</Item>
+      <Item>4222060229275810</Item>
+      <Item>4222060229275811</Item>
+      <Item>4222060229275812</Item>
+      <Item>4222060229275813</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266558</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880278</Owner>
+    <Initial>False</Initial>
+    <Name>Changelling PlagueIntro_talking_4</Name>
+    <Parent>4503530910917903</Parent>
+  </Item>
+  <Item id="4785001592524830">
+    <States count="8">
+      <Item>3377648184136205</Item>
+      <Item>3940589547496863</Item>
+      <Item>3940589547496864</Item>
+      <Item>3940589547496865</Item>
+      <Item>3940589547496866</Item>
+      <Item>3940589547496867</Item>
+      <Item>3940589547496868</Item>
+      <Item>3940589547496869</Item>
+    </States>
+    <EventLinks count="16">
+      <Item>4222060229275814</Item>
+      <Item>4222060229275815</Item>
+      <Item>4222060229275816</Item>
+      <Item>4222060229275817</Item>
+      <Item>4222060229275818</Item>
+      <Item>4222060229275819</Item>
+      <Item>4222060229275822</Item>
+      <Item>4222060229275823</Item>
+      <Item>4222060229275826</Item>
+      <Item>4222060229275827</Item>
+      <Item>4222060229275829</Item>
+      <Item>4222060229275832</Item>
+      <Item>4222060229275833</Item>
+      <Item>4222060229275834</Item>
+      <Item>4222060229275835</Item>
+      <Item>4222060229275836</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266562</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880282</Owner>
+    <Initial>False</Initial>
+    <Name>Block PlagueIntro</Name>
+    <Parent>4503530910917907</Parent>
+  </Item>
+  <Item id="4785001592524831">
+    <States count="9">
+      <Item>3377648184136206</Item>
+      <Item>3940589547496870</Item>
+      <Item>3940589547496871</Item>
+      <Item>3940589547496872</Item>
+      <Item>3940589547546154</Item>
+      <Item>3940589547546155</Item>
+      <Item>3940589547547251</Item>
+      <Item>3940589547547252</Item>
+      <Item>3940589547547253</Item>
+    </States>
+    <EventLinks count="15">
+      <Item>4222060229275837</Item>
+      <Item>4222060229275839</Item>
+      <Item>4222060229275840</Item>
+      <Item>4222060229275842</Item>
+      <Item>4222060229275843</Item>
+      <Item>4222060229275844</Item>
+      <Item>4222060229325283</Item>
+      <Item>4222060229325284</Item>
+      <Item>4222060229325285</Item>
+      <Item>4222060229326476</Item>
+      <Item>4222060229326477</Item>
+      <Item>4222060229326479</Item>
+      <Item>4222060229326482</Item>
+      <Item>4222060229326483</Item>
+      <Item>4222060229326484</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266571</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880279</Owner>
+    <Initial>False</Initial>
+    <Name>Officer PlagueIntro</Name>
+    <Parent>4503530910917904</Parent>
+  </Item>
+  <Item id="4785001592524832">
+    <States count="6">
+      <Item>3377648184136207</Item>
+      <Item>3940589547496873</Item>
+      <Item>3940589547496874</Item>
+      <Item>3940589547496875</Item>
+      <Item>3940589547496876</Item>
+      <Item>3940589547496877</Item>
+    </States>
+    <EventLinks count="10">
+      <Item>4222060229275845</Item>
+      <Item>4222060229275846</Item>
+      <Item>4222060229275847</Item>
+      <Item>4222060229275848</Item>
+      <Item>4222060229275849</Item>
+      <Item>4222060229275851</Item>
+      <Item>4222060229275853</Item>
+      <Item>4222060229275854</Item>
+      <Item>4222060229275855</Item>
+      <Item>4222060229275856</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266576</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_Theater</Name>
+    <Parent>4503530910917901</Parent>
+  </Item>
+  <Item id="4785001592524833">
+    <States count="3">
+      <Item>3377648184136208</Item>
+      <Item>3940589547496878</Item>
+      <Item>3940589547496879</Item>
+    </States>
+    <EventLinks count="5">
+      <Item>4222060229275857</Item>
+      <Item>4222060229275859</Item>
+      <Item>4222060229275860</Item>
+      <Item>4222060229275861</Item>
+      <Item>4222060229275862</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266583</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880276</Owner>
+    <Initial>False</Initial>
+    <Name>Mark PlagueIntro_Cathedral</Name>
+    <Parent>4503530910917901</Parent>
+  </Item>
+  <Item id="4785001592524834">
+    <States count="3">
+      <Item>3377648184136209</Item>
+      <Item>3940589547496880</Item>
+      <Item>3940589547496881</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229275863</Item>
+      <Item>4222060229275864</Item>
+      <Item>4222060229275865</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139266587</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955880280</Owner>
+    <Initial>False</Initial>
+    <Name>Executor PlagueIntro</Name>
+    <Parent>4503530910917905</Parent>
+  </Item>
+  <Item id="4785001592624126">
+    <States count="2">
+      <Item>3377648184235501</Item>
+      <Item>3940589547596151</Item>
+    </States>
+    <EventLinks count="3">
+      <Item>4222060229375877</Item>
+      <Item>4222060229375878</Item>
+      <Item>4222060229375879</Item>
+    </EventLinks>
+    <GraphType>GRAPH_TYPE_TALKING</GraphType>
+    <EntryPoints count="1">
+      <Item>2533236139366328</Item>
+    </EntryPoints>
+    <IgnoreBlock>True</IgnoreBlock>
+    <Owner>5347942955979576</Owner>
+    <Initial>False</Initial>
+    <Name>RatProphet_talking_13</Name>
+    <Parent>4503530911017201</Parent>
+  </Item>
+</Root>

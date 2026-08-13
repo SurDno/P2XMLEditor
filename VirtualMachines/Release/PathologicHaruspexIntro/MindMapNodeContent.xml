@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xml_data_format_version="14" default_type="MindMapNodeContent">
+  <Item id="12384709995236102">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355001051855</ContentDescriptionText>
+    <ContentPicture>8725591135729322</ContentPicture>
+    <ContentCondition>1688824094180451</ContentCondition>
+    <Name />
+    <Parent>11821768631880151</Parent>
+  </Item>
+  <Item id="12384709995236103">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>1</Number>
+    <ContentDescriptionText>6192355001051856</ContentDescriptionText>
+    <ContentPicture>8725591135729351</ContentPicture>
+    <ContentCondition>1688824094180452</ContentCondition>
+    <Name />
+    <Parent>11821768631880151</Parent>
+  </Item>
+  <Item id="12384709995236105">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355001051860</ContentDescriptionText>
+    <ContentPicture>8725591135365306</ContentPicture>
+    <ContentCondition>1688824094180453</ContentCondition>
+    <Name />
+    <Parent>11821768631880451</Parent>
+  </Item>
+  <Item id="12384709995236106">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355001051863</ContentDescriptionText>
+    <ContentPicture>8725591135729298</ContentPicture>
+    <ContentCondition>1688824094180454</ContentCondition>
+    <Name />
+    <Parent>11821768631880452</Parent>
+  </Item>
+  <Item id="12384709995236107">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355001051866</ContentDescriptionText>
+    <ContentPicture>8725591135729353</ContentPicture>
+    <ContentCondition>1688824094180455</ContentCondition>
+    <Name />
+    <Parent>11821768631880453</Parent>
+  </Item>
+  <Item id="12384709995236108">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>2</Number>
+    <ContentDescriptionText>6192355001051869</ContentDescriptionText>
+    <ContentPicture>8725591135365377</ContentPicture>
+    <ContentCondition>1688824094180456</ContentCondition>
+    <Name />
+    <Parent>11821768631880151</Parent>
+  </Item>
+  <Item id="12384709995236109">
+    <ContentType>NODE_CONTENT_TYPE_INFO</ContentType>
+    <Number>0</Number>
+    <ContentDescriptionText>6192355001051870</ContentDescriptionText>
+    <ContentPicture>8725591135365380</ContentPicture>
+    <ContentCondition>1688824094180457</ContentCondition>
+    <Name />
+    <Parent>11821768631880454</Parent>
+  </Item>
+</Root>
