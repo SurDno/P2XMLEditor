@@ -160,12 +160,10 @@ public sealed class VmElementPicker : Form {
 	}
 
 	private static string? TemplateName(Sample sample, VirtualMachine? vm) {
-		if (vm == null || string.IsNullOrEmpty(sample.EngineId)) return null;
-		if (!Guid.TryParse(sample.EngineId, out var id)) return null;
-		return vm.TemplateManagerInst.Templates.TryGetValue(id, out var template) &&
-			   !string.IsNullOrEmpty(template.Name)
-			? template.Name
-			: null;
+		// FindByEngineGuid reconciles the two GUID spellings — the VM's hyphenless one against the
+		// template's hyphenated one — which a direct match never does.
+		var template = vm?.TemplateManagerInst.FindByEngineGuid(sample.EngineId);
+		return string.IsNullOrEmpty(template?.Name) ? null : template.Name;
 	}
 
 	private static string SampleKind(Sample sample) {

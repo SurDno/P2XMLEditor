@@ -17,9 +17,35 @@ public class TemplateManager(string templatesPath) {
 	public Dictionary<Guid, TemplateObject> Templates { get; } = new();
 	public static ConcurrentDictionary<string,int> InvalidTemplates = new();
 
+	// Built on first use from Templates, so it follows a reload.
+	private Dictionary<string, TemplateObject>? _byEngineGuid;
+
+	/// <summary>
+	/// The template an engine GUID names, or null. The VM writes those GUIDs without hyphens
+	/// ("61afc953e5ef44748c8b3477d4ee52d3") while a template stores its own with them
+	/// ("61afc953-e5ef-4474-8c8b-3477d4ee52d3"), so a plain string compare between the two never
+	/// matches; both sides are reduced to the hyphenless, lower-case form before lookup.
+	/// </summary>
+	public TemplateObject? FindByEngineGuid(string? engineGuid) {
+		if (string.IsNullOrEmpty(engineGuid)) return null;
+		_byEngineGuid ??= BuildEngineGuidIndex();
+		return _byEngineGuid.GetValueOrDefault(NormalizeGuid(engineGuid));
+	}
+
+	private Dictionary<string, TemplateObject> BuildEngineGuidIndex() {
+		var index = new Dictionary<string, TemplateObject>();
+		foreach (var template in Templates.Values)
+			index[template.Id.ToString("N")] = template; // "N" is the hyphenless, lower-case form
+		return index;
+	}
+
+	private static string NormalizeGuid(string guid) =>
+		Guid.TryParse(guid, out var parsed) ? parsed.ToString("N") : guid.Replace("-", "").ToLowerInvariant();
+
 	[PerformanceLogHook]
 	public void LoadTemplates() {
 		Templates.Clear();
+		_byEngineGuid = null;
 
 		var templateFiles = Directory.GetFiles(templatesPath, "*.xml.gz");
 		var localTemplates = new ConcurrentDictionary<Guid, TemplateObject>();
