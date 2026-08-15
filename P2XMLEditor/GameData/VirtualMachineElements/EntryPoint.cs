@@ -16,13 +16,13 @@ namespace P2XMLEditor.GameData.VirtualMachineElements;
 public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 	public string Name { get; set; }
 	public ActionLine? ActionLine { get; set; }
-	public VmEither<State, Graph, Branch, Speech, Talking> Parent { get; set; }
+	public VmEither<State, Graph, Branch, Speech, Talking>? Parent { get; set; }
 
 
 	public void FillFromRawData(RawEntryPointData data, VirtualMachine vm) {
 		Name = data.Name;
 		ActionLine = data.ActionLineId.HasValue ? vm.GetElement<ActionLine>(data.ActionLineId.Value) : null;
-		Parent = vm.GetElement<State, Graph, Branch, Speech, Talking>(data.ParentId);
+		Parent = data.ParentId.HasValue ? (VmEither<State, Graph, Branch, Speech, Talking>?)vm.GetElement<State, Graph, Branch, Speech, Talking>(data.ParentId.Value) : null;
 	}
 	
 	/// <summary>
@@ -43,15 +43,15 @@ public class EntryPoint(ulong id) : VmElement(id), IFiller<RawEntryPointData> {
 		if (ActionLine != null)
 			vm.RemoveElement(ActionLine);
 			
-		if (Parent.Element is IGraphElement graphElement) {
+		if (Parent?.Element is IGraphElement graphElement) {
 			graphElement.EntryPoints?.Remove(this);
-		} else if (Parent.Element is Speech speech) {
+		} else if (Parent?.Element is Speech speech) {
 			speech.EntryPoints?.Remove(this);
-		} else if (Parent.Element is Graph graph) {
+		} else if (Parent?.Element is Graph graph) {
 			graph.EntryPoints?.Remove(this);
-		} else if (Parent.Element is Talking talking) {
+		} else if (Parent?.Element is Talking talking) {
 			talking.EntryPoints?.Remove(this);
-		} else if (Parent.Element is ActionLine actionLine) {
+		} else if (Parent?.Element is ActionLine actionLine) {
 			// ActionLine does not have EntryPoints collection in its class definition
 		}
 	}

@@ -25,7 +25,8 @@ public class XElementEntryPointLoader : IParser<RawEntryPointData> {
 				Name = element.Element(XNameCache.Name)!.Value,
 				ActionLineId = element.Element(XNameCache.ActionLine) != null ?
 					ulong.Parse(element.Element(XNameCache.ActionLine)!.Value) : null,
-				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value)
+				ParentId = element.Element(XNameCache.Parent) != null && !string.IsNullOrEmpty(element.Element(XNameCache.Parent)!.Value) ?
+					ulong.Parse(element.Element(XNameCache.Parent)!.Value) : null
 			};
 
 			raws.Add(raw);

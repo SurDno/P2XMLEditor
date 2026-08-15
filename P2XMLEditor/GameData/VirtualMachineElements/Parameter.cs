@@ -23,7 +23,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 	public string Name { get; set; }
 	public FunctionalComponent? OwnerComponent { get; set; }
 	public bool Implicit { get; set; }
-	public VmEither<ParameterHolder, Expression> Parent { get; set; }
+	public VmEither<ParameterHolder, Expression>? Parent { get; set; }
 	public bool Custom { get; set; }
 	public ParameterValue Value { get; set; }
 
@@ -37,10 +37,10 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 	/// parameters in PathologicSandbox and 512 in MarbleNest, not one is named by any action —
 	/// not as a target object, not as a target param, not as a source.
 	/// </summary>
-	public bool IsConstant => Parent.Element is Expression;
+	public bool IsConstant => Parent?.Element is Expression;
 
 	public override bool IsOrphaned() {
-		return Parent.Element switch {
+		return Parent?.Element switch {
 			ParameterHolder ph => ph.StandartParams.Concat(ph.CustomParams ?? []).All(p => p.Value != this),
 			Expression e => e.Const != this,
 			_ => true
@@ -53,7 +53,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 			? vm.GetElement<FunctionalComponent>(data.OwnerComponentId.Value)
 			: null;
 		Implicit = data.Implicit;
-		Parent = vm.GetElement<ParameterHolder, Expression>(data.ParentId);
+		Parent = data.ParentId.HasValue ? (VmEither<ParameterHolder, Expression>?)vm.GetElement<ParameterHolder, Expression>(data.ParentId.Value) : null;
 		Custom = data.Custom;
 		Value = ParameterValue.Create(vm, data.Type, data.Value);
 	}
@@ -69,7 +69,7 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 	}
 
 	public override void OnDestroy(VirtualMachine vm) {
-		switch (Parent.Element) {
+		switch (Parent?.Element) {
 			case ParameterHolder ph:
 				var keyToRemove = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;
 				if (keyToRemove != null) ph.StandartParams.Remove(keyToRemove);
@@ -88,13 +88,13 @@ public class Parameter(ulong id) : VmElement(id), IFiller<RawParameterData>, IVm
 
 	public bool IsCustom() {
 		return Custom;
-		if (Parent.Element is not ParameterHolder ph) return true;
+		if (Parent?.Element is not ParameterHolder ph) return true;
 		return ph.CustomParams != null && ph.CustomParams.Any(kvp => kvp.Value == this);
 	}
 
 	public FunctionalComponent? FindOwnerComponent() {
 		if (OwnerComponent != null) return OwnerComponent;
-		if (Parent.Element is not ParameterHolder ph || IsCustom()) return null;
+		if (Parent?.Element is not ParameterHolder ph || IsCustom()) return null;
 		var key = ph.StandartParams.FirstOrDefault(kvp => kvp.Value == this).Key;
 		if (key == null) return null;
 		return ph.FunctionalComponents.FirstOrDefault(fc => key.StartsWith(fc.Name));

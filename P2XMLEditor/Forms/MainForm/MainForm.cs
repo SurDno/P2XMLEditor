@@ -16,6 +16,8 @@ using P2XMLEditor.Forms.MainForm.Templates;
 using P2XMLEditor.Forms.PathSelection;
 using P2XMLEditor.Logging;
 using P2XMLEditor.Services;
+using P2XMLEditor.Helper;
+using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 
 namespace P2XMLEditor.Forms.MainForm;
 
@@ -78,8 +80,6 @@ public class MainForm : Form {
 		RegisterTabFactory("Graphs", () => new GraphsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Combinations", () => new CombinationsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Templates", () => new TemplatesViewer(_virtualMachine.TemplateManagerInst) { Dock = DockStyle.Fill });
-		RegisterTabFactory("Actions", () => new ActionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
-		RegisterTabFactory("Expressions", () => new ExpressionsBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Dialogs", () => new DialogBrowser(_virtualMachine) { Dock = DockStyle.Fill });
 		RegisterTabFactory("Objects", () => {
 			var browser = new ParameterHoldersBrowser(_virtualMachine!) { Dock = DockStyle.Fill };
@@ -87,6 +87,11 @@ public class MainForm : Form {
 			return browser;
 		});
 		RegisterTabFactory("Hierarchy", () => new HierarchyBrowser(_virtualMachine) { Dock = DockStyle.Fill });
+
+		foreach (var type in _virtualMachine.ElementsByType.Keys) {
+			if (type == typeof(VmElement) || type == typeof(object)) continue;
+			RegisterTabFactory($"Raw {type.Name}s", () => new P2XMLEditor.Forms.MainForm.Raw.RawBrowser(_virtualMachine, type) { Dock = DockStyle.Fill });
+		}
 
 		ShowTab("Mind Maps");
 	}

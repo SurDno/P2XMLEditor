@@ -25,7 +25,8 @@ public class DemoXElementEntryPointLoader : IParser<RawEntryPointData> {
 				ActionLineId = element.Element("ActionLine") != null ?
 					ulong.Parse(element.Element("ActionLine")!.Value) : null,
 				Name = element.Element("Name")!.Value,
-				ParentId = ulong.Parse(element.Element("Parent")!.Value)
+				ParentId = element.Element("Parent") != null && !string.IsNullOrEmpty(element.Element("Parent")!.Value) ?
+					ulong.Parse(element.Element("Parent")!.Value) : null
 			};
 
 			raws.Add(raw);

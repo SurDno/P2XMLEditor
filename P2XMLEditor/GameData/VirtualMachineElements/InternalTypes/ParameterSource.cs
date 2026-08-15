@@ -454,7 +454,7 @@ public struct ParameterSource {
 			value = InputParamReference.Name;
 		} else if (ParameterReference != null) {
 			value = ParameterReference.Id.ToString();
-			prefix ??= ParameterReference.Parent.Id.ToString();
+			prefix ??= (ParameterReference.Parent?.Id.ToString() ?? "");
 		} else if (HierarchyReference != null) {
 			value = HierarchyReference.Write();
 		} else if (BlueprintReference != null) {

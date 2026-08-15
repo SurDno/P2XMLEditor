@@ -19,7 +19,7 @@ public class ReleaseXElementParameterWriter : IReleaseXElementWriter<Parameter> 
 		);
 		if (!settings.RemoveDefaultValueTypes || element.Implicit)
 			xElement.Add(CreateBoolElement("Implicit", element.Implicit));
-		xElement.Add(new XElement("Parent", element.Parent.Id)); 
+		if (element.Parent != null) xElement.Add(new XElement("Parent", element.Parent.Value.Id)); 
 		if (!settings.RemoveDefaultValueTypes || element.IsCustom())
 			xElement.Add(CreateBoolElement("Custom", element.IsCustom()));
 		return EnsureFullClosingTag(xElement);

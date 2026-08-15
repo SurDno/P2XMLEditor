@@ -32,7 +32,8 @@ public class DemoXElementParameterLoader : IParser<RawParameterData> {
 			raw.Value = element.Element("Value") != null ? element.Element("Value")!.Value : string.Empty;
 			raw.Implicit = element.Element("Implicit")?.Let(ParseBool) ?? false;
 			raw.Name = element.Element("Name") != null ? element.Element("Name")!.Value : string.Empty;
-			raw.ParentId = ulong.Parse(element.Element("Parent")!.Value);
+			raw.ParentId = element.Element("Parent") != null && !string.IsNullOrEmpty(element.Element("Parent")!.Value) ?
+				ulong.Parse(element.Element("Parent")!.Value) : null;
 			// The demo has no <Custom> flag — it says the same thing with ParamType. Without this
 			// every parameter loaded as standard, so IsCustom answered no for all of them and the
 			// editor could not tell a custom parameter from a built-in one.

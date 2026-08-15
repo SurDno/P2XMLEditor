@@ -19,7 +19,7 @@ public class RemoveEmptyActionLines(VirtualMachine vm) : Suggestion(vm) {
 			if (actionLine.Actions != null && actionLine.Actions.Count != 0) continue;
 			
 			string parentInfo = "EntryPoint";
-			if (entryPoint.Parent.Element is P2XMLEditor.GameData.VirtualMachineElements.Interfaces.IGraphElement parentElement) {
+			if (entryPoint.Parent?.Element is P2XMLEditor.GameData.VirtualMachineElements.Interfaces.IGraphElement parentElement) {
 				if (parentElement is State st) parentInfo = $"state '{st.Name}'";
 				else if (parentElement is Speech sp) parentInfo = $"speech '{sp.Text}'";
 				else if (parentElement is Branch br) parentInfo = $"branch '{br.Name}'";

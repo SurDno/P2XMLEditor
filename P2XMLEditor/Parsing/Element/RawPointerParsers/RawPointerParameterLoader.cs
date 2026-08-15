@@ -62,12 +62,17 @@ public class RawPointerParameterLoader : IParser<RawParameterData> {
 
 				p += 19;
 				var impl = ParseBool(ref p);
-				p += 25;
+				p += 17;
 
-				var parent = ParseParent(p, out var len);
-				p += len;
+				ulong? parent = null;
+				if (p[1] == 'P') {
+					p += 8;
+					parent = ParseParent(p, out var len);
+					p += len;
+					p += 15;
+				}
 
-				p += 23;
+				p += 8;
 				var custom = ParseBool(ref p);
 				p += 22;
 
@@ -80,7 +85,11 @@ public class RawPointerParameterLoader : IParser<RawParameterData> {
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private static unsafe ulong ParseParent(byte* p, out int len) {
+	private static unsafe ulong? ParseParent(byte* p, out int len) {
+		if (*p == (byte)'<') {
+			len = 0;
+			return null;
+		}
 		switch ((char)p[0]) {
 			case '2':
 				len = 15;

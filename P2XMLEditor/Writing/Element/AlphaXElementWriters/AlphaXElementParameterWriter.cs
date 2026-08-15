@@ -26,7 +26,7 @@ public class AlphaXElementParameterWriter : IAlphaXElementWriter<Parameter> {
 
 		if (!settings.RemoveDefaultValueTypes || element.Implicit) obj.Add(CreateDemoBoolElement("Implicit", element.Implicit));
 
-		obj.Add(new XElement("Parent", element.Parent.Id));
+		if (element.Parent != null) obj.Add(new XElement("Parent", element.Parent.Value.Id));
 		// ParamType is the demo's Custom flag. It has to be written for the value to survive a
 		// reload — the loader reads custom-ness back from here — so it is not gated on StripNames.
 		obj.Add(new XElement("ParamType", element.IsCustom() ? "PARAM_TYPE_CUSTOM" : "PARAM_TYPE_STANDART"));

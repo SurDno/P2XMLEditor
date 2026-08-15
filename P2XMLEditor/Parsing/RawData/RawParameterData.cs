@@ -7,7 +7,7 @@ public struct RawParameterData {
 	public string Type;
 	public string Value;
 	public bool Implicit;
-	public ulong ParentId;
+	public ulong? ParentId;
 	public bool Custom;
 
 	public override int GetHashCode() => Id.GetHashCode();

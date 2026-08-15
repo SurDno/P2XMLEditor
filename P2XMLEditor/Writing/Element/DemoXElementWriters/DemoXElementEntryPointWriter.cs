@@ -15,7 +15,7 @@ public class DemoXElementEntryPointWriter : IDemoXElementWriter<EntryPoint> {
 			obj.Add(new XElement("ActionLine", element.ActionLine.Id));
 		obj.Add(
 			settings.StripNames ? null : CreateDemoStringElement("Name", element.Name),
-			new XElement("Parent", element.Parent.Id),
+			element.Parent.HasValue ? new XElement("Parent", element.Parent.Value.Id) : null,
 			CreateGuidElement(element.Id)
 		);
 

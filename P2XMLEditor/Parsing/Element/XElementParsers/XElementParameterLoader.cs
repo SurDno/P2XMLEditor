@@ -30,7 +30,9 @@ public class XElementParameterLoader : IParser<RawParameterData> {
 				Implicit = element.Element(XNameCache.Implicit) != null
 					? bool.Parse(element.Element(XNameCache.Implicit)!.Value)
 					: false,
-				ParentId = ulong.Parse(element.Element(XNameCache.Parent)!.Value),
+				ParentId = element.Element(XNameCache.Parent) != null && !string.IsNullOrEmpty(element.Element(XNameCache.Parent)!.Value)
+					? ulong.Parse(element.Element(XNameCache.Parent)!.Value)
+					: null,
 				Custom = element.Element(XNameCache.Custom) != null
 					? bool.Parse(element.Element(XNameCache.Custom)!.Value)
 					: false

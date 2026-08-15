@@ -63,7 +63,7 @@ public class ActionLine(ulong id) : VmElement(id), IFiller<RawActionLineData>, I
 				case State or Graph or Branch or Talking or Speech:
 					return element;
 				case EntryPoint point:
-					element = point.Parent.Element;
+					element = point.Parent?.Element;
 					break;
 				case ActionLine line:
 					element = line.LocalContext.Element;
