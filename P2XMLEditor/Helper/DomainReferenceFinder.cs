@@ -4,11 +4,15 @@ using P2XMLEditor.Core;
 using P2XMLEditor.GameData.VirtualMachineElements;
 using P2XMLEditor.GameData.VirtualMachineElements.Abstract;
 using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes;
+using P2XMLEditor.GameData.VirtualMachineElements.InternalTypes.Abstract;
 
 namespace P2XMLEditor.Helper;
 
 public static class DomainReferenceFinder {
-    public static IEnumerable<VmElement> GetDirectReferences(VmElement target, VirtualMachine vm) {
+    public static IEnumerable<VmElement> GetDirectReferences(VmElement target, VirtualMachine vm) =>
+        GetDirectReferencesCore(target, vm).Distinct();
+
+    private static IEnumerable<VmElement> GetDirectReferencesCore(VmElement target, VirtualMachine vm) {
         return target switch {
             Sample s => GetDirectReferences(s, vm),
             Action a => GetDirectReferences(a, vm),
@@ -86,8 +90,14 @@ public static class DomainReferenceFinder {
         foreach (var b in vm.GetElementsByType<Branch>()) {
             if (b.Parent.Element == target) yield return b;
         }
+        // A talking graph owns its links the same way an ordinary graph does — they name it as
+        // Parent, not only as an endpoint.
         foreach (var gl in vm.GetElementsByType<GraphLink>()) {
-            if (gl.Source?.Element == target || gl.Destination?.Element == target) yield return gl;
+            if (gl.Source?.Element == target || gl.Destination?.Element == target ||
+                gl.Parent.Element == target) yield return gl;
+        }
+        foreach (var ep in vm.GetElementsByType<EntryPoint>()) {
+            if (ep.Parent?.Element == target) yield return ep;
         }
         foreach (var p in vm.GetElementsByType<Parameter>()) {
             if (ParameterReferencesElement(p, target)) yield return p;
@@ -160,11 +170,10 @@ public static class DomainReferenceFinder {
 
     public static IEnumerable<VmElement> GetDirectReferences(MindMap target, VirtualMachine vm) {
         foreach (var a in vm.GetElementsByType<Action>()) {
-            if (a.EventParams != null) {
-                foreach (var p in a.EventParams) {
-                    if (ParameterSourceReferencesElement(p, target)) yield return a;
-                }
-            }
+            if (ActionReferences(a, target)) yield return a;
+        }
+        foreach (var e in vm.GetElementsByType<Expression>()) {
+            if (ExpressionReferences(e, target)) yield return e;
         }
         foreach (var gs in vm.GetElementsByType<GameString>()) {
             if (gs.Parent.Element == target) yield return gs;
@@ -183,14 +192,10 @@ public static class DomainReferenceFinder {
     public static IEnumerable<VmElement> GetDirectReferences(MindMapNode target, VirtualMachine vm) {
         if (target.Parent != null) yield return target.Parent;
         foreach (var a in vm.GetElementsByType<Action>()) {
-            if (a.EventParams != null) {
-                foreach (var p in a.EventParams) {
-                    if (ParameterSourceReferencesElement(p, target)) yield return a;
-                }
-            }
+            if (ActionReferences(a, target)) yield return a;
         }
         foreach (var e in vm.GetElementsByType<Expression>()) {
-            if (e.TargetParam != null && e.TargetParam.Value.ObjectLiteral == target) yield return e;
+            if (ExpressionReferences(e, target)) yield return e;
         }
         foreach (var mm in vm.GetElementsByType<MindMap>()) {
             if (mm.Nodes != null && mm.Nodes.Contains(target)) yield return mm;
@@ -239,6 +244,53 @@ public static class DomainReferenceFinder {
         }
     }
 
+    // An action and an expression each reach an element through several surfaces at once — a target
+    // object, a target parameter (which itself carries a context object), the sources it reads, and
+    // the ids buried in a function's packed argument strings. Every overload that scans actions or
+    // expressions routes through these so no surface is checked in one place and forgotten in
+    // another; the SetParam single Source and the TargetParam context object were the two the
+    // hand-written per-target checks kept missing.
+    private static bool HierarchyContains(HierarchyGuid hierarchy, VmElement target) =>
+        hierarchy.Elements.Any(el => el.Element == target);
+
+    private static bool TargetObjectReferences(TargetObject to, VmElement target) {
+        if (to.Holder == target || to.ParameterRef == target) return true;
+        return to.Hierarchy != null && HierarchyContains(to.Hierarchy, target);
+    }
+
+    private static bool ParamTargetReferences(ParamTarget tp, VmElement target) {
+        if (tp.ContextHolder == target) return true;
+        if (tp.Parameter?.Element == target) return true;
+        return tp.ContextHierarchy != null && HierarchyContains(tp.ContextHierarchy, target);
+    }
+
+    private static bool ExpressionParamTargetReferences(ExpressionParamTarget tp, VmElement target) {
+        if (tp.ObjectLiteral == target) return true;
+        if (tp.LiteralHierarchy != null && HierarchyContains(tp.LiteralHierarchy, target)) return true;
+        return tp.Param.HasValue && ParamTargetReferences(tp.Param.Value, target);
+    }
+
+    private static bool FunctionReferences(VmFunction? function, VmElement target) {
+        var strings = function?.GetParamStrings();
+        return strings != null && strings.Any(s => s.Contains(target.Id.ToString()));
+    }
+
+    private static bool ActionReferences(Action a, VmElement target) {
+        if (a.EventToRaise == target || a.SourceExpression == target) return true;
+        if (TargetObjectReferences(a.TargetObject, target)) return true;
+        if (ParamTargetReferences(a.TargetParam, target)) return true;
+        if (a.Source.HasValue && ParameterSourceReferencesElement(a.Source.Value, target)) return true;
+        if (a.EventParams != null && a.EventParams.Any(ps => ParameterSourceReferencesElement(ps, target))) return true;
+        return FunctionReferences(a.Function, target);
+    }
+
+    private static bool ExpressionReferences(Expression e, VmElement target) {
+        if (e.Const == target) return true;
+        if (TargetObjectReferences(e.TargetObject, target)) return true;
+        if (e.TargetParam.HasValue && ExpressionParamTargetReferences(e.TargetParam.Value, target)) return true;
+        return FunctionReferences(e.Function, target);
+    }
+
     private static bool ParameterReferencesElement(Parameter p, VmElement target) {
         if (p.Value is IElementValue ev && ev.Element == target) return true;
         if (p.Value is IHierarchyValue hv && hv.Hierarchy != null) {
@@ -277,13 +329,11 @@ public static class DomainReferenceFinder {
         foreach (var p in vm.GetElementsByType<Parameter>()) {
             if (ParameterReferencesElement(p, target)) yield return p;
         }
-        
         foreach (var a in vm.GetElementsByType<Action>()) {
-            if (a.EventParams != null) {
-                foreach (var ep in a.EventParams) {
-                    if (ParameterSourceReferencesElement(ep, target)) yield return a;
-                }
-            }
+            if (ActionReferences(a, target)) yield return a;
+        }
+        foreach (var e in vm.GetElementsByType<Expression>()) {
+            if (ExpressionReferences(e, target)) yield return e;
         }
     }
 
@@ -303,16 +353,10 @@ public static class DomainReferenceFinder {
             if (ParameterReferencesElement(p, target)) yield return p;
         }
         foreach (var a in vm.GetElementsByType<Action>()) {
-            if (a.TargetObject.ParameterRef == target) yield return a;
-            if (a.EventParams != null) {
-                foreach (var ep in a.EventParams) {
-                    if (ParameterSourceReferencesElement(ep, target)) yield return a;
-                }
-            }
+            if (ActionReferences(a, target)) yield return a;
         }
         foreach (var e in vm.GetElementsByType<Expression>()) {
-            if (e.Const == target) yield return e;
-            if (e.TargetParam?.Param?.Parameter?.Element == target) yield return e;
+            if (ExpressionReferences(e, target)) yield return e;
         }
     }
     
@@ -325,6 +369,12 @@ public static class DomainReferenceFinder {
         foreach (var pc in vm.GetElementsByType<PartCondition>()) {
             if (pc.FirstExpression == target) yield return pc;
             if (pc.SecondExpression == target) yield return pc;
+        }
+        foreach (var a in vm.GetElementsByType<Action>()) {
+            if (a.SourceExpression == target) yield return a;
+        }
+        foreach (var e in vm.GetElementsByType<Expression>()) {
+            if (e.FormulaChilds != null && e.FormulaChilds.Contains(target)) yield return e;
         }
     }
     
@@ -355,8 +405,11 @@ public static class DomainReferenceFinder {
         foreach (var ep in vm.GetElementsByType<EntryPoint>()) {
             if (ep.Parent?.Element == target) yield return ep;
         }
+        // A graph owns its links and its nested graph nodes, each of which points back at it
+        // through Parent; those belong in the reference tree alongside the endpoints and states.
         foreach (var gl in vm.GetElementsByType<GraphLink>()) {
-            if (gl.Source?.Element == target || gl.Destination?.Element == target) yield return gl;
+            if (gl.Source?.Element == target || gl.Destination?.Element == target ||
+                gl.Parent.Element == target) yield return gl;
         }
         foreach (var gr in vm.GetElementsByType<GameRoot>()) {
             if (gr.EventGraph == target) yield return gr;
@@ -369,10 +422,17 @@ public static class DomainReferenceFinder {
         }
         foreach (var g in vm.GetElementsByType<Graph>()) {
             if (g.SubstituteGraph?.Element == target) yield return g;
+            if (g.Parent.Element == target) yield return g;
             if (g.States != null && g.States.Any(s => s.Element == target)) yield return g;
         }
         foreach (var st in vm.GetElementsByType<State>()) {
             if (st.Parent == target) yield return st;
+        }
+        foreach (var br in vm.GetElementsByType<Branch>()) {
+            if (br.Parent.Element == target) yield return br;
+        }
+        foreach (var tk in vm.GetElementsByType<Talking>()) {
+            if (tk.Parent == target) yield return tk;
         }
     }
     
@@ -400,47 +460,16 @@ public static class DomainReferenceFinder {
                     if (fc.Parent == target) yield return fc;
                     break;
                 case Action a:
-                    if (a.TargetObject.Holder == target) yield return a;
-                    if (a.TargetObject.ObjectLiteral == target) yield return a;
-                    if (a.TargetObject.Hierarchy != null) {
-                        foreach (var el in a.TargetObject.Hierarchy.Elements) {
-                            if (el.Element == target) yield return a;
-                        }
-                    }
-                    if (a.EventParams != null) {
-                        foreach (var ep in a.EventParams) {
-                            if (ParameterSourceReferencesElement(ep, target)) yield return a;
-                        }
-                    }
-                    if (a.Function != null) {
-                        var strings = a.Function.GetParamStrings();
-                        if (strings != null && strings.Any(s => s.Contains(target.Id.ToString()))) yield return a;
-                    }
+                    if (ActionReferences(a, target)) yield return a;
                     break;
                 case Expression e:
-                    if (e.TargetObject.Holder == target) yield return e;
-                    if (e.TargetObject.ObjectLiteral == target) yield return e;
-                    if (e.TargetObject.Hierarchy != null) {
-                        foreach (var el in e.TargetObject.Hierarchy.Elements) {
-                            if (el.Element == target) yield return e;
-                        }
-                    }
-                    if (e.TargetParam != null) {
-                        var tp = e.TargetParam.Value;
-                        if (tp.ObjectLiteral == target) yield return e;
-                        if (tp.LiteralHierarchy != null) {
-                            foreach (var el in tp.LiteralHierarchy.Elements) {
-                                if (el.Element == target) {
-                                    yield return e;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (e.Function != null) {
-                        var strings = e.Function.GetParamStrings();
-                        if (strings != null && strings.Any(s => s.Contains(target.Id.ToString()))) yield return e;
-                    }
+                    if (ExpressionReferences(e, target)) yield return e;
+                    break;
+                case Speech sp:
+                    if (sp.Owner.Element == target) yield return sp;
+                    break;
+                case Talking tk:
+                    if (tk.Owner.Element == target) yield return tk;
                     break;
                 case Graph g:
                     if (g.Parent.Element == target) yield return g;
@@ -465,6 +494,7 @@ public static class DomainReferenceFinder {
                     break;
                 case GameMode gm:
                     if (gm.Parent == target) yield return gm;
+                    if (gm.PlayerRef == target.Id.ToString()) yield return gm;
                     break;
                 case MindMap mm:
                     if (mm.Parent == target) yield return mm;
@@ -474,9 +504,6 @@ public static class DomainReferenceFinder {
                     break;
                 case Event ev:
                     if (ev.Parent.Element == target) yield return ev;
-                    break;
-                case GameMode gm:
-                    if (gm.PlayerRef == target.Id.ToString()) yield return gm;
                     break;
             }
         }
@@ -521,53 +548,10 @@ public static class DomainReferenceFinder {
         }
         var targetId = target.Id.ToString();
         foreach (var a in vm.GetElementsByType<Action>()) {
-            if (a.TargetObject.Hierarchy != null) {
-                foreach (var el in a.TargetObject.Hierarchy.Elements) {
-                    if (el.Element == target) {
-                        yield return a;
-                        break;
-                    }
-                }
-            }
-            if (a.EventParams != null) {
-                foreach (var ep in a.EventParams) {
-                    if (ParameterSourceReferencesElement(ep, target)) yield return a;
-                }
-            }
-            if (a.Function != null) {
-                var strings = a.Function.GetParamStrings();
-                if (strings != null && strings.Any(s => s.Contains(targetId))) {
-                    yield return a;
-                }
-            }
+            if (ActionReferences(a, target)) yield return a;
         }
         foreach (var e in vm.GetElementsByType<Expression>()) {
-            if (e.TargetObject.Hierarchy != null) {
-                foreach (var el in e.TargetObject.Hierarchy.Elements) {
-                    if (el.Element == target) {
-                        yield return e;
-                        break;
-                    }
-                }
-            }
-            if (e.TargetParam != null) {
-                var tp = e.TargetParam.Value;
-                if (tp.ObjectLiteral == target) yield return e;
-                if (tp.LiteralHierarchy != null) {
-                    foreach (var el in tp.LiteralHierarchy.Elements) {
-                        if (el.Element == target) {
-                            yield return e;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (e.Function != null) {
-                var strings = e.Function.GetParamStrings();
-                if (strings != null && strings.Any(s => s.Contains(targetId))) {
-                    yield return e;
-                }
-            }
+            if (ExpressionReferences(e, target)) yield return e;
         }
         foreach (var q in vm.GetElementsByType<Quest>()) {
             if (q.GameTimeContext == targetId) yield return q;

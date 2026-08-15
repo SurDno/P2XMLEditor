@@ -371,7 +371,7 @@ public sealed class ParameterSourceEditor : UserControl {
 				// parameter's own parent, and is overridable because a placed owner cannot be
 				// named by id — "<hierarchyPath>%<parameterId>" is how the data does it.
 				if (_pickedElement is not Parameter p) return "";
-				return $"{PrefixText() ?? p.Parent.Id.ToString()}%{p.Id}";
+				return $"{PrefixText() ?? p.Parent?.Id.ToString()}%{p.Id}";
 			case ParameterSourceKind.DynamicParameter:
 				if (_extra.Text.Length == 0) return "";
 				var owner = PrefixText() ?? _pickedElement?.Id.ToString();
