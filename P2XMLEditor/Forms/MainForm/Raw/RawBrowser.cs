@@ -61,6 +61,7 @@ public class RawBrowser : Panel {
             ShowLines = true,
             ShowPlusMinus = true,
         };
+        _treeView.BeforeExpand += OnBeforeExpand;
 
         split.Panel1.Controls.Add(leftPanel);
         split.Panel2.Controls.Add(_treeView);
@@ -112,47 +113,46 @@ public class RawBrowser : Panel {
         _treeView.Nodes.Clear();
 
         if (_listBox.SelectedItem is ListBoxItem item) {
-            var root = new TreeNode($"References to {item.Text}");
-            var visited = new HashSet<ulong>();
-            var childNodes = BuildReferenceTree(item.Element, visited);
-            root.Nodes.AddRange(childNodes);
+            var root = new TreeNode($"References to {item.Text}") { Tag = item.Element };
+            PopulateChildren(root, item.Element);
             _treeView.Nodes.Add(root);
-            
-            if (item.Element is INamedElement named && !string.IsNullOrEmpty(named.Name)) {
-                var nameRoot = new TreeNode($"References to Name '{named.Name}'");
-                var nameVisited = new HashSet<ulong>();
-                var nameChildNodes = BuildNameReferenceTree(named.Name, nameVisited);
-                nameRoot.Nodes.AddRange(nameChildNodes);
-                _treeView.Nodes.Add(nameRoot);
-            }
-            
-            root.ExpandAll();
+            root.Expand();
         }
 
         _treeView.EndUpdate();
     }
 
-    private TreeNode[] BuildReferenceTree(VmElement target, HashSet<ulong> visited) {
-        if (!visited.Add(target.Id)) return Array.Empty<TreeNode>(); // prevent cycles within path
-        
-        var refs = DomainReferenceFinder.GetDirectReferences(target, _vm).ToList();
-        if (refs.Count > 0) {
-            var nodes = new List<TreeNode>(refs.Count);
-            foreach (var r in refs) {
-                var name = r is INamedElement named ? named.Name : "";
-                var childNodes = BuildReferenceTree(r, new HashSet<ulong>(visited));
-                
-                var node = new TreeNode($"{r.GetType().Name}: {r.Id} - {name}", childNodes) { Tag = r };
-                nodes.Add(node);
-            }
-            return nodes.ToArray();
-        }
-        return Array.Empty<TreeNode>();
+    // The reference graph is dense and cyclic — a whole VM's worth of actions, expressions and
+    // links can lead back to one element — so the tree is built one level at a time and only where
+    // the user looks. Each referrer that can itself have referrers is given a placeholder child so
+    // it shows as expandable; the real children are computed in OnBeforeExpand when it is opened.
+    // Eagerly walking the transitive closure (and re-walking every diamond) was what hung the form.
+    private static readonly string Placeholder = "\0loading";
+
+    private void OnBeforeExpand(object? sender, TreeViewCancelEventArgs e) {
+        var node = e.Node;
+        if (node?.Tag is not VmElement target) return;
+        if (node.Nodes.Count != 1 || node.Nodes[0].Text != Placeholder) return; // already realised
+        _treeView.BeginUpdate();
+        node.Nodes.Clear();
+        PopulateChildren(node, target);
+        _treeView.EndUpdate();
     }
-    
-    private TreeNode[] BuildNameReferenceTree(string name, HashSet<ulong> visited) {
-        // Name references are not currently supported by DomainReferenceFinder directly.
-        // We will implement them in DomainReferenceFinder if requested.
-        return Array.Empty<TreeNode>();
+
+    private void PopulateChildren(TreeNode node, VmElement target) {
+        // The chain from the root to this node — a referrer already on it is a cycle back, shown as
+        // a leaf rather than expanded again.
+        var ancestors = new HashSet<ulong>();
+        for (var n = node; n != null; n = n.Parent)
+            if (n.Tag is VmElement e) ancestors.Add(e.Id);
+
+        foreach (var r in DomainReferenceFinder.GetDirectReferences(target, _vm)) {
+            var name = r is INamedElement named ? named.Name : "";
+            var child = new TreeNode($"{r.GetType().Name}: {r.Id} - {name}") { Tag = r };
+            if (!ancestors.Contains(r.Id))
+                child.Nodes.Add(new TreeNode(Placeholder)); // realised lazily on expand
+            node.Nodes.Add(child);
+        }
     }
 }
+
