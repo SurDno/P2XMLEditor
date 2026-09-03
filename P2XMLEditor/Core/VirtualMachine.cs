@@ -60,6 +60,15 @@ public class VirtualMachine {
 	// fast access cache
 	private Dictionary<string, Message>? _messageIndex;
 	private Dictionary<string, GameObject>? _byEngineTemplateId;
+	// Reverse reference map (target id -> the elements that name it), built once on first use and
+	// dropped whenever an element is added or removed. Lets the reference browser answer "where is
+	// this used" from a dictionary lookup instead of a whole-VM scan per element.
+	private Dictionary<ulong, List<VmElement>>? _referrers;
+
+	public IReadOnlyList<VmElement> GetReferrers(ulong id) {
+		_referrers ??= DomainReferenceFinder.BuildReferenceIndex(this);
+		return _referrers.GetValueOrDefault(id) ?? (IReadOnlyList<VmElement>)Array.Empty<VmElement>();
+	}
 	
 	private Dictionary<string, VmTypeInfo>? _standartParamTypes;
 	public bool TryResolveStandartParamType(string name, out VmTypeInfo type) {
@@ -117,6 +126,7 @@ public class VirtualMachine {
 	}
 	
 	public T AddElement<T>(T element, Type elementType) where T : VmElement {
+		_referrers = null; // stale once the element set changes; rebuilt on next GetReferrers
 		ElementsById[element.Id] = element;
 		if (element is IPlaceholder) return element;
 		while (elementType != typeof(VmElement) && elementType != typeof(object)) {
@@ -143,6 +153,7 @@ public class VirtualMachine {
 			return;
 		
 		el.OnDestroy(this);
+		_referrers = null; // stale once the element set changes; rebuilt on next GetReferrers
 		var id = el.Id;
 		if (!ElementsById.Remove(id, out var element))
 			throw new ArgumentException($"Element with id {id} does not exist.");

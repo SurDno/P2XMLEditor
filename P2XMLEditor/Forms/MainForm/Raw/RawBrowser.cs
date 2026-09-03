@@ -61,7 +61,6 @@ public class RawBrowser : Panel {
             ShowLines = true,
             ShowPlusMinus = true,
         };
-        _treeView.BeforeExpand += OnBeforeExpand;
 
         split.Panel1.Controls.Add(leftPanel);
         split.Panel2.Controls.Add(_treeView);
@@ -114,7 +113,12 @@ public class RawBrowser : Panel {
 
         if (_listBox.SelectedItem is ListBoxItem item) {
             var root = new TreeNode($"References to {item.Text}") { Tag = item.Element };
-            PopulateChildren(root, item.Element);
+            // Referrers come from a reverse index the VirtualMachine builds once, so the whole tree
+            // is a series of dictionary lookups — fast enough to build eagerly. A shared visited set
+            // means each element is expanded once (the first time it is reached); a later occurrence
+            // is a leaf, which both bounds the tree and breaks the reference cycles.
+            var budget = MaxNodes;
+            AddReferences(root, item.Element, new HashSet<ulong> { item.Element.Id }, ref budget);
             _treeView.Nodes.Add(root);
             root.Expand();
         }
@@ -122,36 +126,20 @@ public class RawBrowser : Panel {
         _treeView.EndUpdate();
     }
 
-    // The reference graph is dense and cyclic — a whole VM's worth of actions, expressions and
-    // links can lead back to one element — so the tree is built one level at a time and only where
-    // the user looks. Each referrer that can itself have referrers is given a placeholder child so
-    // it shows as expandable; the real children are computed in OnBeforeExpand when it is opened.
-    // Eagerly walking the transitive closure (and re-walking every diamond) was what hung the form.
-    private static readonly string Placeholder = "\0loading";
+    // A hub element (say a character much of the map reads) has a transitive closure of tens of
+    // thousands of nodes — instant to compute but pointless to render in full — so the build stops
+    // here and marks where it stopped.
+    private const int MaxNodes = 20000;
 
-    private void OnBeforeExpand(object? sender, TreeViewCancelEventArgs e) {
-        var node = e.Node;
-        if (node?.Tag is not VmElement target) return;
-        if (node.Nodes.Count != 1 || node.Nodes[0].Text != Placeholder) return; // already realised
-        _treeView.BeginUpdate();
-        node.Nodes.Clear();
-        PopulateChildren(node, target);
-        _treeView.EndUpdate();
-    }
-
-    private void PopulateChildren(TreeNode node, VmElement target) {
-        // The chain from the root to this node — a referrer already on it is a cycle back, shown as
-        // a leaf rather than expanded again.
-        var ancestors = new HashSet<ulong>();
-        for (var n = node; n != null; n = n.Parent)
-            if (n.Tag is VmElement e) ancestors.Add(e.Id);
-
+    private void AddReferences(TreeNode node, VmElement target, HashSet<ulong> visited, ref int budget) {
         foreach (var r in DomainReferenceFinder.GetDirectReferences(target, _vm)) {
+            if (budget <= 0) { node.Nodes.Add(new TreeNode("… (more not shown)")); return; }
+            budget--;
             var name = r is INamedElement named ? named.Name : "";
             var child = new TreeNode($"{r.GetType().Name}: {r.Id} - {name}") { Tag = r };
-            if (!ancestors.Contains(r.Id))
-                child.Nodes.Add(new TreeNode(Placeholder)); // realised lazily on expand
             node.Nodes.Add(child);
+            if (visited.Add(r.Id))
+                AddReferences(child, r, visited, ref budget);
         }
     }
 }
