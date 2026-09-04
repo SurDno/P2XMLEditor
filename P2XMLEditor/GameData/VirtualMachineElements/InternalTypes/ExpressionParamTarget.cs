@@ -52,7 +52,7 @@ public readonly struct ExpressionParamTarget {
 				HasLeadingPercent = leading
 			};
 
-		if (body.Contains("_inputparam_") && InputParameter.TryParse(body, out var ip, scope))
+		if (body.Contains("_inputparam_") && InputParameter.TryParse(body, vm, out var ip, scope))
 			return new() {
 				Kind = ExpressionParamKind.InputParam,
 				InputParam = ip,

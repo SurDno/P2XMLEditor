@@ -14,7 +14,7 @@ using P2XMLEditor.Services;
 namespace P2XMLEditor.Forms.MainForm.MindMapViewer;
 
 public class NodePropertiesPanel : Panel {
-	private static readonly Dictionary<string, string> EngineIdToImageMap = new();
+	private readonly Dictionary<string, string> EngineIdToImageMap = new();
 		
 	private readonly VirtualMachine _vm;
 	private MindMapNode? _currentNode;

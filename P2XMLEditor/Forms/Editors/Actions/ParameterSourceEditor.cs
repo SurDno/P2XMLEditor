@@ -242,11 +242,11 @@ public sealed class ParameterSourceEditor : UserControl {
 		get {
 			try {
 				// ParameterSource.Create resolves "<graphId>_inputparam_<name>" through
-				// InputParameter.TryParse, which walks up from VirtualMachine.FillScope to find
+				// InputParameter.TryParse, which walks up from the VM's fill scope to find
 				// the declaring graph. That is only set while the XML is being read, so outside
 				// a load an input-param reference silently degrades to a literal string. The
 				// action's own local context is exactly the scope it should resolve against.
-				using var fillScope = VirtualMachine.EnterFillScope(_scope.LocalContext);
+				using var fillScope = _vm.EnterFillScope(_scope.LocalContext);
 				return ParameterSource.Create(SerializedValue, _vm, _target, _expectedType);
 			} catch (Exception ex) {
 				Logger.Log(LogLevel.Warning, $"Could not build a parameter source from '{SerializedValue}': {ex.Message}");

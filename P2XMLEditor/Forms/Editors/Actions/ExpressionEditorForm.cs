@@ -435,7 +435,7 @@ public sealed class ExpressionEditorForm : Form {
 
 		if (!string.IsNullOrEmpty(value)) {
 			try {
-				using var fillScope = VirtualMachine.EnterFillScope(_scope.LocalContext);
+				using var fillScope = _vm.EnterFillScope(_scope.LocalContext);
 				editor.Load(ParameterSource.Create(value, _vm, null, slot.Type), value);
 			} catch {
 				editor.LoadRaw(value);

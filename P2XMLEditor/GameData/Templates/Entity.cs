@@ -17,7 +17,8 @@ namespace P2XMLEditor.GameData.Templates;
 public class Entity : TemplateObject, IEnableable {
 	public List<ITemplateComponent> Components { get; set; } = [];
 	public bool IsEnabled { get; set; } = true;
-	public static ConcurrentDictionary<string,int> invalidComponent = new();
+	// Component types this entity did not recognise, aggregated per load by the TemplateManager.
+	public ConcurrentDictionary<string,int> invalidComponent = new();
 	public override void LoadFromXml(XElement element) {
 		base.LoadFromXml(element);
 		var componentsElement = element.Element("Components");

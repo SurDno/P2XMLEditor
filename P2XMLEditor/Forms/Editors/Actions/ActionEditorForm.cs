@@ -572,9 +572,9 @@ public sealed class ActionEditorForm : Form {
 		editor.ValueChanged += (_, _) => RefreshPreview();
 		if (!string.IsNullOrEmpty(value)) {
 			try {
-				// Input-param references resolve against VirtualMachine.FillScope; without it
+				// Input-param references resolve against the VM's fill scope; without it
 				// they degrade to literals and the editor shows the wrong kind.
-				using var fillScope = VirtualMachine.EnterFillScope(_scope.LocalContext);
+				using var fillScope = _vm.EnterFillScope(_scope.LocalContext);
 				editor.Load(ParameterSource.Create(value, _vm, target, expectedType), value);
 			} catch {
 				// A value the parser rejects still has to be visible and editable, so it is

@@ -53,13 +53,13 @@ public class InputParameter : IEquatable<InputParameter> {
 	/// Element the reference lives in. Defaults to the element currently being filled;
 	/// pass explicitly when resolving outside a load.
 	/// </param>
-	public static bool TryParse(string input, out InputParameter? result, VmElement? scope = null) {
+	public static bool TryParse(string input, VirtualMachine vm, out InputParameter? result, VmElement? scope = null) {
 		result = null;
 		if (!input.Contains("_inputparam_")) return false;
 
 		// Returns the graph's own instance — a reference and its declaration are the
 		// same object, so navigation and rename work without any copy to keep in sync.
-		result = OwningGraph(scope ?? VirtualMachine.FillScope)?
+		result = OwningGraph(scope ?? vm.FillScope)?
 			.InputParams?.FirstOrDefault(p => p.Name == input);
 		return result != null;
 	}

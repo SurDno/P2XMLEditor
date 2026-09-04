@@ -138,7 +138,7 @@ public struct ParameterSource {
 				return src;
 			}
 		} else if (content.Contains("_inputparam_")) {
-			if (InputParameter.TryParse(content, out var inputParam)) {
+			if (InputParameter.TryParse(content, vm, out var inputParam)) {
 				src.InputParamReference = inputParam;
 				src.TypeInfo = expectedType ?? VmTypeHelper.GetVmTypeInfo(inputParam!.Type, vm);
 				return src;
@@ -223,7 +223,7 @@ public struct ParameterSource {
 			} catch (Exception ex) {
 				HitTracker.Hit(data);
 				Logger.Log(LogLevel.Error,
-					$"Failed to parse '{data}' as {src.TypeInfo}: {ex.Message} in {VirtualMachine.FillScope.Id}. Preserving as raw string.");
+					$"Failed to parse '{data}' as {src.TypeInfo}: {ex.Message} in {vm.FillScope?.Id}. Preserving as raw string.");
 				src.LiteralValue = new BasicValue<string>(src.TypeInfo.Serialize(), content);
 			}
 

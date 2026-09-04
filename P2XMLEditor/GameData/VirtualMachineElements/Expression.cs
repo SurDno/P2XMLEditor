@@ -66,7 +66,7 @@ public class Expression(ulong id) : VmElement(id), IFiller<RawExpressionData>, I
 	public void FillFromRawData(RawExpressionData data, VirtualMachine vm) {
 		ExpressionType = data.ExpressionType.Deserialize<ExpressionType>();
 		LocalContext = vm.GetElement<Branch, Event, MindMapNode, Speech, State>(data.LocalContextId);
-		using var scope = VirtualMachine.EnterFillScope(LocalContext.Element);
+		using var scope = vm.EnterFillScope(LocalContext.Element);
 		Inversion = data.Inversion;
 		TargetObject = TargetObject.Read(data.TargetObject, vm);
 		Const = data.ConstId.HasValue ? vm.GetElement<Parameter>(data.ConstId.Value) : null;

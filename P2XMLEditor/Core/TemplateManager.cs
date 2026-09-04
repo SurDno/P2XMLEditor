@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using P2XMLEditor.GameData.Templates;
@@ -15,7 +16,8 @@ public class TemplateManager(string templatesPath) {
 	static readonly XName ObjectName = "Object";
 	static readonly XName TypeAttr = "type";
 	public Dictionary<Guid, TemplateObject> Templates { get; } = new();
-	public static ConcurrentDictionary<string,int> InvalidTemplates = new();
+	// Diagnostics for the last load, per manager instead of shared across every VM's templates.
+	public ConcurrentDictionary<string,int> InvalidTemplates { get; } = new();
 
 	// Built on first use from Templates, so it follows a reload.
 	private Dictionary<string, TemplateObject>? _byEngineGuid;
@@ -45,6 +47,7 @@ public class TemplateManager(string templatesPath) {
 	[PerformanceLogHook]
 	public void LoadTemplates() {
 		Templates.Clear();
+		InvalidTemplates.Clear();
 		_byEngineGuid = null;
 
 		var templateFiles = Directory.GetFiles(templatesPath, "*.xml.gz");
@@ -78,9 +81,13 @@ public class TemplateManager(string templatesPath) {
 		foreach (var kvp in localTemplates)
 			Templates[kvp.Key] = kvp.Value;
 
-		foreach (var invalidType in InvalidTemplates) 
+		foreach (var invalidType in InvalidTemplates)
 			Logger.Log(LogLevel.Info, $"Invalid template type {invalidType.Key}: {invalidType.Value}");
-		foreach (var invalidType in Entity.invalidComponent) 
+		var invalidComponents = new Dictionary<string, int>();
+		foreach (var entity in localTemplates.Values.OfType<Entity>())
+			foreach (var kvp in entity.invalidComponent)
+				invalidComponents[kvp.Key] = invalidComponents.GetValueOrDefault(kvp.Key) + kvp.Value;
+		foreach (var invalidType in invalidComponents)
 			Logger.Log(LogLevel.Info, $"Invalid entity component type {invalidType.Key}: {invalidType.Value}");
 
 		Logger.Log(LogLevel.Info, $"Loaded {Templates.Count} templates from {templateFiles.Length} files");

@@ -21,7 +21,7 @@ public readonly struct BranchVariantInfo {
 		if (vm.TryResolveMessage(name, out var message))
 			return new() { Name = name, Type = castType, Message = message };
 
-		if (InputParameter.TryParse(name, out var inputParam, scope))
+		if (InputParameter.TryParse(name, vm, out var inputParam, scope))
 			return new() { Name = name, Type = castType, InputParam = inputParam };
 
 		Logger.Log(LogLevel.Warning, $"BranchVariantInfo '{name}' resolves to neither a message nor an input param.");

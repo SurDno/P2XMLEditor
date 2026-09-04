@@ -108,14 +108,16 @@ public class VirtualMachine {
 		return _byEngineTemplateId.GetValueOrDefault(guid);
 	}
 	
-	// TODO: REFACTOR AWAY
-	[field: ThreadStatic]
-	public static VmElement? FillScope { get; private set; }
-	public static FillScopeHandle EnterFillScope(VmElement? scope) => new(scope); 
+	// The element currently being filled, so a reference deep in the parse (an input parameter
+	// walking up to its graph) can find its context without threading the scope through every call.
+	// Instance state, not a static, so two VMs can load without trampling each other.
+	public VmElement? FillScope { get; private set; }
+	public FillScopeHandle EnterFillScope(VmElement? scope) => new(this, scope);
 	public readonly struct FillScopeHandle : IDisposable {
+		private readonly VirtualMachine _vm;
 		private readonly VmElement? _previous;
-		internal FillScopeHandle(VmElement? scope) { _previous = FillScope; FillScope = scope; }
-		public void Dispose() => FillScope = _previous;
+		internal FillScopeHandle(VirtualMachine vm, VmElement? scope) { _vm = vm; _previous = vm.FillScope; vm.FillScope = scope; }
+		public void Dispose() => _vm.FillScope = _previous;
 	}
 	
 	

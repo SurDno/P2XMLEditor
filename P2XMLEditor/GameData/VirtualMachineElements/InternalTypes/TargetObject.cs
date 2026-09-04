@@ -75,7 +75,7 @@ public readonly struct TargetObject {
 		if (body.Contains("_message_") && vm.TryResolveMessage(body, out var msg))
 			return new() { Kind = TargetObjectKind.Message, Message = msg, HasLeadingPercent = leading };
 
-		if (body.Contains("_inputparam_") && InputParameter.TryParse(body, out var ip, scope))
+		if (body.Contains("_inputparam_") && InputParameter.TryParse(body, vm, out var ip, scope))
 			return new() { Kind = TargetObjectKind.InputParam, InputParam = ip, HasLeadingPercent = leading };
 
 		if (body.Contains("_Loop_") && LoopParameter.TryParse(body, vm, out var loop))

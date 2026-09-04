@@ -733,7 +733,7 @@ public sealed class GraphInspector : Panel {
 
 		if (!string.IsNullOrEmpty(value)) {
 			try {
-				using var fillScope = VirtualMachine.EnterFillScope(scope.LocalContext);
+				using var fillScope = _vm.EnterFillScope(scope.LocalContext);
 				editor.Load(ParameterSource.Create(value, _vm, null, type), value);
 			} catch {
 				editor.LoadRaw(value);

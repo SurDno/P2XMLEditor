@@ -81,7 +81,7 @@ public class Action(ulong id) : VmElement(id), IFiller<RawActionData>, INamedEle
 		_rawTargetFuncName = data.TargetFuncName;
 		Name = data.Name;
 		LocalContext = vm.GetElement<State, Graph, Branch, Talking, Speech>(data.LocalContextId);
-		using var scope = VirtualMachine.EnterFillScope(LocalContext.Element);
+		using var scope = vm.EnterFillScope(LocalContext.Element);
 		OrderIndex = data.OrderIndex;
 		Enabled = data.Enabled;
 		switch (ActionType) {
